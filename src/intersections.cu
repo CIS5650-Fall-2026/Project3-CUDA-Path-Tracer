@@ -56,6 +56,177 @@ __host__ __device__ float boxIntersectionTest(
     return -1;
 }
 
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle &tri,
+    Ray r,
+    glm::vec3 &intersectionPoint,
+    glm::vec3 &normal,
+    bool &outside)
+{
+    // double-sided Moller-Trumbore. glm::intersectRayTriangle culls
+    // backfaces, which breaks badly wound meshes and refraction through solids.
+    const glm::vec3 edge1 = tri.v1 - tri.v0;
+    const glm::vec3 edge2 = tri.v2 - tri.v0;
+    const glm::vec3 pvec = glm::cross(r.direction, edge2);
+    const float det = glm::dot(edge1, pvec);
+
+    if (fabsf(det) < 1e-9f)
+    {
+        return -1;
+    }
+
+    const float invDet = 1.0f / det;
+    const glm::vec3 tvec = r.origin - tri.v0;
+    const float u = glm::dot(tvec, pvec) * invDet;
+    if (u < 0.0f || u > 1.0f)
+    {
+        return -1;
+    }
+
+    const glm::vec3 qvec = glm::cross(tvec, edge1);
+    const float v = glm::dot(r.direction, qvec) * invDet;
+    if (v < 0.0f || u + v > 1.0f)
+    {
+        return -1;
+    }
+
+    const float t = glm::dot(edge2, qvec) * invDet;
+    if (t <= 0.0f)
+    {
+        return -1;
+    }
+
+    const float w = 1.0f - u - v;
+
+    intersectionPoint = r.origin + t * r.direction;
+    glm::vec3 shadingNormal = glm::normalize(w * tri.n0 + u * tri.n1 + v * tri.n2);
+
+    // same convention as the analytic prims: normal faces the ray,
+    // outside carries the real side
+    outside = glm::dot(r.direction, shadingNormal) < 0.0f;
+    normal = outside ? shadingNormal : -shadingNormal;
+
+    return t;
+}
+
+__host__ __device__ inline bool aabbIntersect(
+    const glm::vec3 &bboxMin,
+    const glm::vec3 &bboxMax,
+    const glm::vec3 &origin,
+    const glm::vec3 &invDir,
+    float tMax,
+    float &tEnter)
+{
+    glm::vec3 t0 = (bboxMin - origin) * invDir;
+    glm::vec3 t1 = (bboxMax - origin) * invDir;
+    glm::vec3 tSmall = glm::min(t0, t1);
+    glm::vec3 tBig = glm::max(t0, t1);
+
+    float tMin = fmaxf(fmaxf(tSmall.x, tSmall.y), tSmall.z);
+    float tFar = fminf(fminf(tBig.x, tBig.y), tBig.z);
+
+    tEnter = fmaxf(tMin, 0.0f);
+    return tFar >= tEnter && tEnter < tMax;
+}
+
+__host__ __device__ float bvhIntersectionTest(
+    const BVHNode *nodes,
+    const Triangle *triangles,
+    Ray r,
+    float tMax,
+    glm::vec3 &intersectionPoint,
+    glm::vec3 &normal,
+    bool &outside,
+    int &materialId)
+{
+    const glm::vec3 dir = glm::normalize(r.direction);
+    const glm::vec3 invDir(1.0f / dir.x, 1.0f / dir.y, 1.0f / dir.z);
+    Ray normalizedRay{ r.origin, dir };
+
+    float tBest = tMax;
+    bool hit = false;
+
+    // explicit stack, no recursion on the GPU. 64 is plenty for a
+    // median-split tree.
+    int stack[64];
+    int stackSize = 0;
+    stack[stackSize++] = 0;
+
+    while (stackSize > 0)
+    {
+        const BVHNode node = nodes[stack[--stackSize]];
+
+        float tEnter;
+        if (!aabbIntersect(node.bboxMin, node.bboxMax, normalizedRay.origin, invDir, tBest, tEnter))
+        {
+            continue;
+        }
+
+        if (node.leftChild < 0)
+        {
+            for (int i = 0; i < node.triCount; i++)
+            {
+                const Triangle &tri = triangles[node.firstTri + i];
+                glm::vec3 tmpPoint;
+                glm::vec3 tmpNormal;
+                bool tmpOutside;
+                float t = triangleIntersectionTest(tri, normalizedRay, tmpPoint, tmpNormal, tmpOutside);
+                if (t > 0.0f && t < tBest)
+                {
+                    tBest = t;
+                    intersectionPoint = tmpPoint;
+                    normal = tmpNormal;
+                    outside = tmpOutside;
+                    materialId = tri.materialId;
+                    hit = true;
+                }
+            }
+        }
+        else
+        {
+            stack[stackSize++] = node.leftChild;
+            stack[stackSize++] = node.leftChild + 1;
+        }
+    }
+
+    return hit ? tBest : -1.0f;
+}
+
+__host__ __device__ float meshBruteForceIntersectionTest(
+    const Triangle *triangles,
+    int triangleCount,
+    Ray r,
+    float tMax,
+    glm::vec3 &intersectionPoint,
+    glm::vec3 &normal,
+    bool &outside,
+    int &materialId)
+{
+    Ray normalizedRay{ r.origin, glm::normalize(r.direction) };
+
+    float tBest = tMax;
+    bool hit = false;
+
+    for (int i = 0; i < triangleCount; i++)
+    {
+        glm::vec3 tmpPoint;
+        glm::vec3 tmpNormal;
+        bool tmpOutside;
+        float t = triangleIntersectionTest(triangles[i], normalizedRay, tmpPoint, tmpNormal, tmpOutside);
+        if (t > 0.0f && t < tBest)
+        {
+            tBest = t;
+            intersectionPoint = tmpPoint;
+            normal = tmpNormal;
+            outside = tmpOutside;
+            materialId = triangles[i].materialId;
+            hit = true;
+        }
+    }
+
+    return hit ? tBest : -1.0f;
+}
+
 __host__ __device__ float sphereIntersectionTest(
     Geom sphere,
     Ray r,
