@@ -71,3 +71,40 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+/**
+ * Ray vs. world-space triangle, with an interpolated shading normal.
+ */
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& tri,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+/**
+ * Closest triangle hit, or -1. `tMax` bounds the search so an already-hit
+ * analytic primitive can cull the tree.
+ */
+__host__ __device__ float bvhIntersectionTest(
+    const BVHNode* nodes,
+    const Triangle* triangles,
+    Ray r,
+    float tMax,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    int& materialId);
+
+/**
+ * Same query without the acceleration structure, for A/B comparison.
+ */
+__host__ __device__ float meshBruteForceIntersectionTest(
+    const Triangle* triangles,
+    int triangleCount,
+    Ray r,
+    float tMax,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    int& materialId);

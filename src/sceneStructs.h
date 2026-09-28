@@ -12,7 +12,26 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
+};
+
+// baked to world space at load time
+struct Triangle
+{
+    glm::vec3 v0, v1, v2;
+    glm::vec3 n0, n1, n2;
+    int materialId;
+};
+
+// right child is always leftChild + 1
+struct BVHNode
+{
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+    int leftChild;  // -1 for a leaf
+    int firstTri;
+    int triCount;
 };
 
 struct Ray
@@ -57,6 +76,9 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    // 0 = pinhole
+    float lensRadius;
+    float focalDistance;
 };
 
 struct RenderState
@@ -84,4 +106,6 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  // normals always face the ray, so this is how refraction knows in/out
+  bool outside;
 };
