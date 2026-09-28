@@ -5,6 +5,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 
+__host__ __device__ bool intersectsBounds(Ray ray, glm::vec3 boundsMin,
+    glm::vec3 boundsMax, float maxDistance);
+__host__ __device__ float triangleIntersectionTest(const Triangle& triangle, Ray ray);
+__host__ __device__ float meshIntersectionTest(const Geom& mesh, const Triangle* triangles,
+    Ray ray, glm::vec3& normal, bool culling, float maxDistance, int* hitTriangle = nullptr);
+
 
 /**
  * Handy-dandy hash function that provides seeds for random number generation.
@@ -23,11 +29,11 @@ __host__ __device__ inline unsigned int utilhash(unsigned int a)
 // CHECKITOUT
 /**
  * Compute a point at parameter value `t` on ray `r`.
- * Falls slightly short so that it doesn't intersect the object it's hitting.
+ * Ray origins are offset separately when scattering.
  */
 __host__ __device__ inline glm::vec3 getPointOnRay(Ray r, float t)
 {
-    return r.origin + (t - .0001f) * glm::normalize(r.direction);
+    return r.origin + t * glm::normalize(r.direction);
 }
 
 /**

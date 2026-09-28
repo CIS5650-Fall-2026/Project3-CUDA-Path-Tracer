@@ -501,21 +501,34 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-    if (MouseOverImGuiWindow())
+    // Always handle releases, even if a drag ends over the UI.
+    if (action == GLFW_PRESS && MouseOverImGuiWindow())
     {
         return;
     }
 
-    leftMousePressed = (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS);
-    rightMousePressed = (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS);
-    middleMousePressed = (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS);
+    if (button == GLFW_MOUSE_BUTTON_LEFT) {
+        leftMousePressed = (action == GLFW_PRESS);
+    }
+    if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+        rightMousePressed = (action == GLFW_PRESS);
+    }
+    if (button == GLFW_MOUSE_BUTTON_MIDDLE) {
+        middleMousePressed = (action == GLFW_PRESS);
+    }
+
+    // Start each drag at the cursor, not at the last position from an old drag.
+    if (action == GLFW_PRESS) {
+        glfwGetCursorPos(window, &lastX, &lastY);
+    }
 }
 
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    if (xpos == lastX || ypos == lastY)
+    if (xpos == lastX && ypos == lastY)
     {
-        return; // otherwise, clicking back into window causes re-start
+        // No movement means there is nothing to change.
+        return;
     }
 
     if (leftMousePressed)

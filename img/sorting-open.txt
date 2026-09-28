@@ -1,0 +1,22 @@
+Reading scene from scenes/benchmark-open.json ...
+
+round,sorting,milliseconds_per_sample
+0,0,7.32278
+0,1,21.5612
+1,1,20.0518
+1,0,7.0645
+2,0,7.09222
+2,1,18.5122
+bounce,active_paths
+1,83670
+2,58634
+3,47095
+4,39213
+5,33033
+6,27716
+7,23463
+8,19787
+9,16595
+10,14040
+11,11866
+12,0

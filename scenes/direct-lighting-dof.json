@@ -1,0 +1,146 @@
+{
+  "Materials": {
+    "white": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "gold": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.85,
+        0.5,
+        0.15
+      ]
+    },
+    "blue": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.15,
+        0.5,
+        0.85
+      ]
+    },
+    "light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        1,
+        1
+      ],
+      "EMITTANCE": 8
+    }
+  },
+  "Camera": {
+    "RES": [
+      240,
+      180
+    ],
+    "FOVY": 25,
+    "ITERATIONS": 256,
+    "DEPTH": 6,
+    "FILE": "build/direct-lighting-dof",
+    "EYE": [
+      0,
+      2,
+      8
+    ],
+    "LOOKAT": [
+      0,
+      2,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ],
+    "MESH_CULLING": true,
+    "DIRECT_LIGHTING": true,
+    "APERTURE_RADIUS": 0.35,
+    "FOCAL_DISTANCE": 8.0
+  },
+  "Objects": [
+    {
+      "TYPE": "mesh",
+      "FILE": "meshes/torus.gltf",
+      "MATERIAL": "gold",
+      "TRANS": [
+        -1.3,
+        1.6,
+        0
+      ],
+      "ROTAT": [
+        0,
+        25,
+        0
+      ],
+      "SCALE": [
+        1.4,
+        1.4,
+        1.4
+      ]
+    },
+    {
+      "TYPE": "mesh",
+      "FILE": "meshes/torus.gltf",
+      "MATERIAL": "blue",
+      "TRANS": [
+        1.5,
+        1.4,
+        -1
+      ],
+      "ROTAT": [
+        0,
+        -30,
+        20
+      ],
+      "SCALE": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        0,
+        -0.1,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        20,
+        0.2,
+        20
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "light",
+      "TRANS": [
+        0,
+        7,
+        2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        7,
+        0.1,
+        7
+      ]
+    }
+  ]
+}

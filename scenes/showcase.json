@@ -1,0 +1,30 @@
+{
+  "Materials": {
+    "ivory": {"TYPE": "Diffuse", "RGB": [0.72, 0.69, 0.62]},
+    "navy": {"TYPE": "Diffuse", "RGB": [0.08, 0.14, 0.22]},
+    "gold": {"TYPE": "Diffuse", "RGB": [0.85, 0.43, 0.10]},
+    "teal": {"TYPE": "Diffuse", "RGB": [0.06, 0.55, 0.49]},
+    "mirror": {"TYPE": "Specular", "RGB": [0.96, 0.96, 0.96], "ROUGHNESS": 0},
+    "glass": {"TYPE": "Refractive", "RGB": [1, 1, 1], "IOR": 1.5},
+    "light": {"TYPE": "Emitting", "RGB": [1, 0.94, 0.82], "EMITTANCE": 18},
+    "fill": {"TYPE": "Emitting", "RGB": [0.7, 0.85, 1], "EMITTANCE": 5}
+  },
+  "Camera": {
+    "RES": [640, 480], "FOVY": 19, "ITERATIONS": 2048, "DEPTH": 12,
+    "FILE": "build/showcase", "EYE": [0, 3.3, 11], "LOOKAT": [0, 1.8, 0],
+    "UP": [0, 1, 0], "STREAM_COMPACTION": true, "MATERIAL_SORTING": false,
+    "ANTIALIASING": true, "MESH_CULLING": true, "DIRECT_LIGHTING": true,
+    "APERTURE_RADIUS": 0.12, "FOCAL_DISTANCE": 11.1
+  },
+  "Objects": [
+    {"TYPE": "cube", "MATERIAL": "ivory", "TRANS": [0, -0.15, 0], "ROTAT": [0, 0, 0], "SCALE": [24, 0.3, 24]},
+    {"TYPE": "cube", "MATERIAL": "navy", "TRANS": [0, 5, -4], "ROTAT": [0, 0, 0], "SCALE": [24, 10, 0.2]},
+    {"TYPE": "cube", "MATERIAL": "ivory", "TRANS": [-1.5, 0.3, -0.1], "ROTAT": [0, 12, 0], "SCALE": [2.9, 0.6, 2.2]},
+    {"TYPE": "mesh", "FILE": "meshes/torus.gltf", "MATERIAL": "gold", "TRANS": [-1.5, 2.1, -0.1], "ROTAT": [0, 22, -12], "SCALE": [1.4, 1.4, 1.4]},
+    {"TYPE": "mesh", "FILE": "meshes/torus.gltf", "MATERIAL": "teal", "TRANS": [1.7, 1.95, -1.5], "ROTAT": [0, -25, 15], "SCALE": [1.8, 1.8, 1.8]},
+    {"TYPE": "sphere", "MATERIAL": "glass", "TRANS": [1.25, 1.05, 1.2], "ROTAT": [0, 0, 0], "SCALE": [2.1, 2.1, 2.1]},
+    {"TYPE": "sphere", "MATERIAL": "mirror", "TRANS": [-0.6, 0.55, 2.1], "ROTAT": [0, 0, 0], "SCALE": [1.1, 1.1, 1.1]},
+    {"TYPE": "cube", "MATERIAL": "light", "TRANS": [-2, 9, 3], "ROTAT": [0, 0, -15], "SCALE": [5, 0.1, 4]},
+    {"TYPE": "cube", "MATERIAL": "fill", "TRANS": [6, 4, 4], "ROTAT": [0, -35, 0], "SCALE": [0.1, 4, 4]}
+  ]
+}

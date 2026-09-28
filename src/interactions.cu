@@ -51,7 +51,50 @@ __host__ __device__ void scatterRay(
     const Material &m,
     thrust::default_random_engine &rng)
 {
-    // TODO: implement this.
-    // A basic implementation of pure-diffuse shading will just call the
-    // calculateRandomDirectionInHemisphere defined above.
+    normal = glm::normalize(normal);
+    glm::vec3 incoming = glm::normalize(pathSegment.ray.direction);
+    bool entering = glm::dot(incoming, normal) < 0.0f;
+    glm::vec3 facingNormal = entering ? normal : -normal;
+    glm::vec3 outgoing;
+
+    if (m.hasRefractive) {
+        // These materials describe a solid object surrounded by air.
+        float incidentIOR = entering ? 1.0f : m.indexOfRefraction;
+        float transmittedIOR = entering ? m.indexOfRefraction : 1.0f;
+        float ratio = incidentIOR / transmittedIOR;
+        float cosine = glm::clamp(-glm::dot(incoming, facingNormal), 0.0f, 1.0f);
+        float transmittedSineSquared = ratio * ratio * (1.0f - cosine * cosine);
+
+        float reflectance = 1.0f;
+        if (transmittedSineSquared < 1.0f) {
+            float base = (incidentIOR - transmittedIOR) / (incidentIOR + transmittedIOR);
+            base *= base;
+            // Use the transmitted angle when leaving the denser medium.
+            float fresnelCosine = incidentIOR > transmittedIOR
+                ? sqrtf(1.0f - transmittedSineSquared) : cosine;
+            reflectance = base + (1.0f - base) * powf(1.0f - fresnelCosine, 5.0f);
+            if (incidentIOR == transmittedIOR) {
+                reflectance = 0.0f;
+            }
+        }
+
+        thrust::uniform_real_distribution<float> uniform(0.0f, 1.0f);
+        if (transmittedSineSquared >= 1.0f || uniform(rng) < reflectance) {
+            outgoing = glm::reflect(incoming, facingNormal);
+        } else {
+            outgoing = glm::refract(incoming, facingNormal, ratio);
+            // Camera paths carry radiance; entry and exit factors cancel.
+            pathSegment.color *= ratio * ratio;
+        }
+    } else if (m.hasReflective) {
+        outgoing = glm::reflect(incoming, facingNormal);
+    } else {
+        outgoing = calculateRandomDirectionInHemisphere(facingNormal, rng);
+    }
+
+    pathSegment.ray.direction = glm::normalize(outgoing);
+    float side = glm::dot(outgoing, normal) >= 0.0f ? 1.0f : -1.0f;
+    pathSegment.ray.origin = intersect + side * normal * 0.0001f;
+    // Sampling by Fresnel probability (or cosine for diffuse) leaves just the tint.
+    pathSegment.color *= m.color;
 }

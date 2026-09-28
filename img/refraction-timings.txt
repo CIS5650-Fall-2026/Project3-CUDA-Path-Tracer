@@ -1,0 +1,22 @@
+Reading scene from scenes/cornell-materials.json ...
+
+round,refraction,milliseconds_per_sample
+0,0,13.7035
+0,1,14.5974
+1,1,15.3851
+1,0,13.9584
+2,0,13.2266
+2,1,14.1012
+bounce,active_paths
+1,130709
+2,91763
+3,73639
+4,61329
+5,51646
+6,43474
+7,36829
+8,31051
+9,26124
+10,22155
+11,18697
+12,0

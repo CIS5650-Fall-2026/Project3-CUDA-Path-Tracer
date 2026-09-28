@@ -1,0 +1,11 @@
+Reading scene from scenes/depth-of-field.json ...
+
+round,dof,milliseconds_per_sample
+0,0,1.91711
+0,1,1.87878
+1,1,1.75982
+1,0,1.71425
+2,0,1.69588
+2,1,1.70157
+bounce,active_paths
+1,0

@@ -12,7 +12,8 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
 };
 
 struct Ray
@@ -23,6 +24,10 @@ struct Ray
 
 struct Geom
 {
+    int triangleStart = 0;
+    int triangleCount = 0;
+    glm::vec3 boundsMin;
+    glm::vec3 boundsMax;
     enum GeomType type;
     int materialid;
     glm::vec3 translation;
@@ -31,6 +36,12 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+};
+
+struct Triangle
+{
+    glm::vec3 a, b, c;
+    glm::vec3 normal;
 };
 
 struct Material
@@ -49,6 +60,8 @@ struct Material
 
 struct Camera
 {
+    float apertureRadius = 0.0f;
+    float focalDistance = 1.0f;
     glm::ivec2 resolution;
     glm::vec3 position;
     glm::vec3 lookAt;
@@ -61,6 +74,13 @@ struct Camera
 
 struct RenderState
 {
+    bool streamCompaction = true;
+    bool materialSorting = false;
+    bool antialiasing = true;
+    bool meshCulling = true;
+    bool directLighting = true;
+    bool recordPathCounts = false;
+    std::vector<int> activePaths;
     Camera camera;
     unsigned int iterations;
     int traceDepth;
@@ -70,6 +90,9 @@ struct RenderState
 
 struct PathSegment
 {
+    bool useMis = false;
+    float previousPdf = 0.0f;
+    glm::vec3 previousHitPoint;
     Ray ray;
     glm::vec3 color;
     int pixelIndex;
@@ -81,6 +104,8 @@ struct PathSegment
 // 2) BSDF evaluation: generate a new ray
 struct ShadeableIntersection
 {
+  int geomId;
+  int triangleIndex;
   float t;
   glm::vec3 surfaceNormal;
   int materialId;

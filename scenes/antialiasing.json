@@ -1,0 +1,24 @@
+{
+    "Materials": {
+        "white": {"TYPE": "Emitting", "RGB": [1.0, 1.0, 1.0], "EMITTANCE": 1.0}
+    },
+    "Camera": {
+        "RES": [128, 128],
+        "FOVY": 30.0,
+        "ITERATIONS": 1024,
+        "DEPTH": 1,
+        "FILE": "build/antialiasing-on",
+        "EYE": [0.0, 0.0, 5.0],
+        "LOOKAT": [0.0, 0.0, 0.0],
+        "UP": [0.0, 1.0, 0.0],
+        "STREAM_COMPACTION": true,
+        "MATERIAL_SORTING": false,
+        "ANTIALIASING": true
+    },
+    "Objects": [
+        {"TYPE": "sphere", "MATERIAL": "white", "TRANS": [-0.9, 0.0, 0.0],
+         "ROTAT": [0.0, 0.0, 0.0], "SCALE": [1.8, 1.8, 1.8]},
+        {"TYPE": "cube", "MATERIAL": "white", "TRANS": [0.9, 0.0, 0.0],
+         "ROTAT": [0.0, 0.0, 27.0], "SCALE": [0.13, 3.2, 0.1]}
+    ]
+}

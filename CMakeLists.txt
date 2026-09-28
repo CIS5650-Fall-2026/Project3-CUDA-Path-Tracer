@@ -60,6 +60,7 @@ set(headers
 )
 
 set(sources
+    src/mesh.cpp
     src/main.cpp
     src/stb.cpp
     src/image.cpp
@@ -114,8 +115,45 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
 
+if(MSVC)
+    # CUDA's Thrust headers need the standard MSVC preprocessor.
+    # For .cu files, nvcc passes this option to the host compiler.
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
+        "$<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>"
+        "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+    )
+endif()
+
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,RelWithDebInfo>,$<COMPILE_LANGUAGE:CUDA>>:-G;-src-in-ptx>")
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
+
+# Optional checks use the real input callbacks and an OpenGL window.
+option(BUILD_CONTROL_CHECKS "Build the camera and keyboard checks" OFF)
+if(BUILD_CONTROL_CHECKS)
+    set(control_sources ${sources})
+    list(REMOVE_ITEM control_sources src/main.cpp)
+    add_executable(control_checks tests/control_checks.cpp ${control_sources} ${imgui_sources})
+    target_link_libraries(control_checks ${GL_LIBRARIES})
+    set_target_properties(control_checks PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON CUDA_ARCHITECTURES native)
+    get_target_property(renderer_options ${CMAKE_PROJECT_NAME} COMPILE_OPTIONS)
+    target_compile_options(control_checks PRIVATE ${renderer_options})
+endif()
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    VS_DEBUGGER_COMMAND_ARGUMENTS "\"${CMAKE_SOURCE_DIR}/scenes/cornell.json\""
+)
+
+
+option(BUILD_PATHTRACE_CHECKS "Build diffuse path tracing checks" OFF)
+if(BUILD_PATHTRACE_CHECKS)
+    add_executable(pathtrace_checks tests/pathtrace_checks.cu
+        src/pathtrace.cu src/interactions.cu src/intersections.cu src/scene.cpp src/mesh.cpp src/utilities.cpp)
+    set_target_properties(pathtrace_checks PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON CUDA_ARCHITECTURES native)
+    get_target_property(renderer_options ${CMAKE_PROJECT_NAME} COMPILE_OPTIONS)
+    target_compile_options(pathtrace_checks PRIVATE ${renderer_options})
+endif()
 

@@ -1,0 +1,18 @@
+Reading scene from scenes/direct-lighting.json ...
+
+round,lighting,milliseconds_per_sample
+0,0,6.23778
+0,1,10.1069
+1,1,10.0503
+1,0,6.04494
+2,0,6.06118
+2,1,9.86446
+bounce,active_paths
+1,83670
+2,57713
+3,44652
+4,35493
+5,28784
+6,23429
+7,19109
+8,0

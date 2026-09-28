@@ -1,0 +1,22 @@
+Reading scene from scenes/benchmark-closed.json ...
+
+round,compaction,milliseconds_per_sample
+0,0,14.0721
+0,1,14.6163
+1,1,14.4401
+1,0,13.6816
+2,0,13.6958
+2,1,14.4103
+bounce,active_paths
+1,101266
+2,99965
+3,98884
+4,97758
+5,96702
+6,95670
+7,94692
+8,93709
+9,92711
+10,91781
+11,90820
+12,0

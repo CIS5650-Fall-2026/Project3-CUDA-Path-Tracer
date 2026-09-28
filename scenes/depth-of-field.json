@@ -1,0 +1,121 @@
+{
+  "Materials": {
+    "pink": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.25,
+        0.35
+      ],
+      "EMITTANCE": 1
+    },
+    "gold": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.65,
+        0.12
+      ],
+      "EMITTANCE": 1
+    },
+    "blue": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.2,
+        0.55,
+        1
+      ],
+      "EMITTANCE": 1
+    }
+  },
+  "Camera": {
+    "RES": [
+      300,
+      180
+    ],
+    "FOVY": 25,
+    "ITERATIONS": 1024,
+    "DEPTH": 1,
+    "FILE": "build/dof-on",
+    "EYE": [
+      0,
+      0,
+      9
+    ],
+    "LOOKAT": [
+      0,
+      0,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ],
+    "MESH_CULLING": true,
+    "APERTURE_RADIUS": 0.6,
+    "FOCAL_DISTANCE": 9
+  },
+  "Objects": [
+    {
+      "TYPE": "mesh",
+      "FILE": "meshes/torus.gltf",
+      "MATERIAL": "pink",
+      "TRANS": [
+        -2.2,
+        0,
+        2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "TYPE": "mesh",
+      "FILE": "meshes/torus.gltf",
+      "MATERIAL": "gold",
+      "TRANS": [
+        0,
+        0,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "TYPE": "mesh",
+      "FILE": "meshes/torus.gltf",
+      "MATERIAL": "blue",
+      "TRANS": [
+        3,
+        0,
+        -3
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

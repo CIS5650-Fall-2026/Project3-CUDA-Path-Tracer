@@ -1,0 +1,16 @@
+Reading scene from scenes/benchmark-mesh.json ...
+
+round,culling,milliseconds_per_sample
+0,0,17.1606
+0,1,10.5566
+1,1,11.5208
+1,0,15.7129
+2,0,14.8448
+2,1,10.5584
+bounce,active_paths
+1,34938
+2,6535
+3,2470
+4,909
+5,465
+6,0

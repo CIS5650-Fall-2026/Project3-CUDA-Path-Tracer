@@ -1,4 +1,6 @@
 #include "scene.h"
+#include "mesh.h"
+#include <filesystem>
 
 #include "utilities.h"
 
@@ -7,6 +9,8 @@
 #include "json.hpp"
 
 #include <fstream>
+#include <cmath>
+#include <stdexcept>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -58,6 +62,17 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = 1.0f;
+        }
+        else if (p["TYPE"] == "Refractive")
+        {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasRefractive = 1.0f;
+            newMaterial.indexOfRefraction = p.value("IOR", 1.5f);
+            if (!std::isfinite(newMaterial.indexOfRefraction) || newMaterial.indexOfRefraction <= 0.0f) {
+                throw std::runtime_error("Refractive material IOR must be positive and finite");
+            }
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -66,16 +81,21 @@ void Scene::loadFromJSON(const std::string& jsonName)
     for (const auto& p : objectsData)
     {
         const auto& type = p["TYPE"];
-        Geom newGeom;
+        Geom newGeom{};
         if (type == "cube")
         {
             newGeom.type = CUBE;
         }
-        else
+        else if (type == "sphere")
         {
             newGeom.type = SPHERE;
         }
-        newGeom.materialid = MatNameToID[p["MATERIAL"]];
+        else if (type == "mesh") {
+            newGeom.type = MESH;
+        } else {
+            throw std::runtime_error("Unknown geometry type");
+        }
+        newGeom.materialid = MatNameToID.at(p["MATERIAL"]);
         const auto& trans = p["TRANS"];
         const auto& rotat = p["ROTAT"];
         const auto& scale = p["SCALE"];
@@ -87,6 +107,11 @@ void Scene::loadFromJSON(const std::string& jsonName)
         newGeom.inverseTransform = glm::inverse(newGeom.transform);
         newGeom.invTranspose = glm::inverseTranspose(newGeom.transform);
 
+        if (newGeom.type == MESH) {
+            auto path = std::filesystem::path(jsonName).parent_path() / p.at("FILE").get<std::string>();
+            loadGltf(path.string(), newGeom, triangles);
+        }
+
         geoms.push_back(newGeom);
     }
     const auto& cameraData = data["Camera"];
@@ -97,6 +122,11 @@ void Scene::loadFromJSON(const std::string& jsonName)
     float fovy = cameraData["FOVY"];
     state.iterations = cameraData["ITERATIONS"];
     state.traceDepth = cameraData["DEPTH"];
+    state.streamCompaction = cameraData.value("STREAM_COMPACTION", true);
+    state.materialSorting = cameraData.value("MATERIAL_SORTING", false);
+    state.antialiasing = cameraData.value("ANTIALIASING", true);
+    state.meshCulling = cameraData.value("MESH_CULLING", true);
+    state.directLighting = cameraData.value("DIRECT_LIGHTING", true);
     state.imageName = cameraData["FILE"];
     const auto& pos = cameraData["EYE"];
     const auto& lookat = cameraData["LOOKAT"];
@@ -104,6 +134,12 @@ void Scene::loadFromJSON(const std::string& jsonName)
     camera.position = glm::vec3(pos[0], pos[1], pos[2]);
     camera.lookAt = glm::vec3(lookat[0], lookat[1], lookat[2]);
     camera.up = glm::vec3(up[0], up[1], up[2]);
+    camera.apertureRadius = cameraData.value("APERTURE_RADIUS", 0.0f);
+    camera.focalDistance = cameraData.value("FOCAL_DISTANCE", glm::length(camera.lookAt - camera.position));
+    if (!std::isfinite(camera.apertureRadius) || camera.apertureRadius < 0.0f
+        || !std::isfinite(camera.focalDistance) || camera.focalDistance <= 0.0f) {
+        throw std::runtime_error("Camera needs a nonnegative aperture radius and positive focal distance");
+    }
 
     //calculate fov based on resolution
     float yscaled = tan(fovy * (PI / 180));
@@ -111,11 +147,10 @@ void Scene::loadFromJSON(const std::string& jsonName)
     float fovx = (atan(xscaled) * 180) / PI;
     camera.fov = glm::vec2(fovx, fovy);
 
+    camera.view = glm::normalize(camera.lookAt - camera.position);
     camera.right = glm::normalize(glm::cross(camera.view, camera.up));
     camera.pixelLength = glm::vec2(2 * xscaled / (float)camera.resolution.x,
         2 * yscaled / (float)camera.resolution.y);
-
-    camera.view = glm::normalize(camera.lookAt - camera.position);
 
     //set up render camera stuff
     int arraylen = camera.resolution.x * camera.resolution.y;

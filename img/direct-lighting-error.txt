@@ -1,0 +1,6 @@
+Reading scene from scenes/direct-lighting.json ...
+
+Reference: 64x64, 4096 direct-light samples, seeds 10001 through 14096
+direct_lighting,samples,milliseconds,mse,mean_radiance
+0,128,215.9,0.0031842,0.172383
+1,128,234.7,0.000777654,0.171546

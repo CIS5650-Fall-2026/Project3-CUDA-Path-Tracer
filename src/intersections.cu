@@ -18,15 +18,20 @@ __host__ __device__ float boxIntersectionTest(
     for (int xyz = 0; xyz < 3; ++xyz)
     {
         float qdxyz = q.direction[xyz];
-        /*if (glm::abs(qdxyz) > 0.00001f)*/
+        if (qdxyz == 0.0f) {
+            if (q.origin[xyz] < -0.5f || q.origin[xyz] > 0.5f) {
+                return -1.0f;
+            }
+            continue;
+        }
         {
             float t1 = (-0.5f - q.origin[xyz]) / qdxyz;
             float t2 = (+0.5f - q.origin[xyz]) / qdxyz;
             float ta = glm::min(t1, t2);
             float tb = glm::max(t1, t2);
-            glm::vec3 n;
+            glm::vec3 n(0.0f);
             n[xyz] = t2 < t1 ? +1 : -1;
-            if (ta > 0 && ta > tmin)
+            if (ta > tmin)
             {
                 tmin = ta;
                 tmin_n = n;
@@ -34,7 +39,7 @@ __host__ __device__ float boxIntersectionTest(
             if (tb < tmax)
             {
                 tmax = tb;
-                tmax_n = n;
+                tmax_n = -n;
             }
         }
     }
@@ -104,10 +109,63 @@ __host__ __device__ float sphereIntersectionTest(
 
     intersectionPoint = multiplyMV(sphere.transform, glm::vec4(objspaceIntersection, 1.f));
     normal = glm::normalize(multiplyMV(sphere.invTranspose, glm::vec4(objspaceIntersection, 0.f)));
-    if (!outside)
-    {
-        normal = -normal;
-    }
 
     return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ bool intersectsBounds(Ray ray, glm::vec3 boundsMin,
+    glm::vec3 boundsMax, float maxDistance) {
+    float nearDistance = 0.0f;
+    float farDistance = maxDistance;
+    for (int axis = 0; axis < 3; axis++) {
+        if (ray.direction[axis] == 0.0f) {
+            if (ray.origin[axis] < boundsMin[axis] || ray.origin[axis] > boundsMax[axis]) {
+                return false;
+            }
+            continue;
+        }
+        float a = (boundsMin[axis] - ray.origin[axis]) / ray.direction[axis];
+        float b = (boundsMax[axis] - ray.origin[axis]) / ray.direction[axis];
+        nearDistance = glm::max(nearDistance, glm::min(a, b));
+        farDistance = glm::min(farDistance, glm::max(a, b));
+        if (nearDistance > farDistance) return false;
+    }
+    return farDistance > 0.0f;
+}
+
+__host__ __device__ float triangleIntersectionTest(const Triangle& triangle, Ray ray) {
+    glm::vec3 edge1 = triangle.b - triangle.a;
+    glm::vec3 edge2 = triangle.c - triangle.a;
+    glm::vec3 perpendicular = glm::cross(ray.direction, edge2);
+    float determinant = glm::dot(edge1, perpendicular);
+    if (fabsf(determinant) < 1e-8f) return -1.0f;
+    float inverse = 1.0f / determinant;
+    glm::vec3 offset = ray.origin - triangle.a;
+    float u = glm::dot(offset, perpendicular) * inverse;
+    if (u < 0.0f || u > 1.0f) return -1.0f;
+    glm::vec3 crossOffset = glm::cross(offset, edge1);
+    float v = glm::dot(ray.direction, crossOffset) * inverse;
+    if (v < 0.0f || u + v > 1.0f) return -1.0f;
+    float distance = glm::dot(edge2, crossOffset) * inverse;
+    return distance > 0.0f ? distance : -1.0f;
+}
+
+__host__ __device__ float meshIntersectionTest(const Geom& mesh, const Triangle* triangles,
+    Ray ray, glm::vec3& normal, bool culling, float maxDistance, int* hitTriangle) {
+    if (culling && !intersectsBounds(ray, mesh.boundsMin, mesh.boundsMax, maxDistance)) {
+        return -1.0f;
+    }
+    float closest = maxDistance;
+    bool hit = false;
+    for (int i = 0; i < mesh.triangleCount; i++) {
+        const Triangle& triangle = triangles[mesh.triangleStart + i];
+        float distance = triangleIntersectionTest(triangle, ray);
+        if (distance > 0.0f && distance < closest) {
+            closest = distance;
+            normal = triangle.normal;
+            if (hitTriangle != nullptr) *hitTriangle = mesh.triangleStart + i;
+            hit = true;
+        }
+    }
+    return hit ? closest : -1.0f;
 }
