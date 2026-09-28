@@ -13,6 +13,7 @@
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_glfw.h"
 #include "ImGui/imgui_impl_opengl3.h"
+#include "tonemap.h"
 
 #include <cuda_runtime.h>
 #include <cuda_gl_interop.h>
@@ -286,6 +287,38 @@ void RenderImGui()
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    ImGui::Separator();
+    ImGui::Text("ACES Filmic");
+    ImGui::Checkbox("Enable Tone Mapping", &imguiData->EnableToneMapping);
+    ImGui::SliderFloat("Exposure (EV)", &imguiData->Exposure, -5.0f, 5.0f, "%.2f");
+
+    if (ImGui::Button("Reset Exposure"))
+    {
+        imguiData->Exposure = 0.0f;
+    }
+
+    ImGui::Separator();
+    ImGui::Text("Depth of Field");
+
+    Camera& cam = renderState->camera;
+    bool changed = ImGui::Checkbox("Enable DOF", &cam.enableDOF);
+    changed |= ImGui::SliderFloat(
+        "Lens Radius", &cam.lensRadius, 0.0f, 1.0f, "%.3f");
+    changed |= ImGui::SliderFloat(
+        "Focus Distance", &cam.focusDistance, 0.01f, 100.0f, "%.2f");
+
+    if (ImGui::Button("Focus on LookAt"))
+    {
+        cam.focusDistance = glm::length(cam.lookAt - cam.position);
+        changed = true;
+    }
+
+    if (changed)
+    {
+        iteration = 0;
+    }
+
     ImGui::End();
 
 
@@ -372,12 +405,13 @@ int main(int argc, char** argv)
 
     // compute phi (horizontal) and theta (vertical) relative 3D axis
     // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    const glm::vec3 offset = cam.position - cam.lookAt;
+    const glm::vec3 dir = glm::normalize(offset);
+    phi = glm::atan(dir.x, dir.z);
+    theta = glm::acos(glm::clamp(dir.y, -1.0f, 1.0f));
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
+    cam.focusDistance = zoom;
 
     // Initialize CUDA and GL components
     init();
@@ -396,15 +430,17 @@ void saveImage()
 {
     float samples = iteration;
     // output image file
-    Image img(width, height);
+    Image png(width, height);
+    Image hdr(width, height);
 
     for (int x = 0; x < width; x++)
     {
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::vec3 color = renderState->image[index] / samples;
+            png.setPixel(width - 1 - x, y, toneMap(color, guiData->Exposure, guiData->EnableToneMapping));
+            hdr.setPixel(width - 1 - x, y, color);
         }
     }
 
@@ -414,7 +450,8 @@ void saveImage()
     filename = ss.str();
 
     // CHECKITOUT
-    img.savePNG(filename);
+    png.savePNG(filename);
+    hdr.saveHDR(filename);
     //img.saveHDR(filename);  // Save a Radiance HDR file
 }
 

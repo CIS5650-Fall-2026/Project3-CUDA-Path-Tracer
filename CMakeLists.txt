@@ -57,11 +57,15 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/shading.h
+    src/bvh.h
+    src/tonemap.h
 )
 
 set(sources
     src/main.cpp
     src/stb.cpp
+    src/gltf.cpp
     src/image.cpp
     src/glslUtility.cpp
     src/pathtrace.cu
@@ -69,6 +73,9 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/shading.cu
+    src/bvh.cu
+    src/tonemap.cu
 )
 
 set(imgui_headers
@@ -107,6 +114,13 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+
+if(MSVC)
+    target_compile_options(cis565_path_tracer PRIVATE
+        "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+    )
+endif()
+
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction

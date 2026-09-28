@@ -11,7 +11,7 @@
  * Computes a cosine-weighted random direction in a hemisphere.
  * Used for diffuse lighting.
  */
-__host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
+__host__ __device__ glm::vec3 sampleCosineWeightedHemisphere(
     glm::vec3 normal, 
     thrust::default_random_engine& rng);
 
@@ -44,5 +44,6 @@ __host__ __device__ void scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    glm::vec3 geometricNormal,
     const Material& m,
     thrust::default_random_engine& rng);
