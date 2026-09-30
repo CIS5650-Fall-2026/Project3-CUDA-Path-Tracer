@@ -3,9 +3,15 @@
 #include <cstdio>
 #include <cuda.h>
 #include <cmath>
+#include <algorithm>
+#include <numeric>
+#include <vector>
 #include <thrust/execution_policy.h>
 #include <thrust/random.h>
+#include <thrust/sort.h>
 #include <thrust/remove.h>
+#include <thrust/tuple.h>
+#include <thrust/iterator/zip_iterator.h>
 
 #include "sceneStructs.h"
 #include "scene.h"
@@ -73,15 +79,564 @@ __global__ void sendImageToPBO(uchar4* pbo, glm::ivec2 resolution, int iter, glm
     }
 }
 
+
+// Max depth allowed when constructing CPU-side BVH
+// Keeping this configurable seems to follow project guidance and prevents pathological trees from growing without bound
+static const int BVH_MAX_DEPTH = 32;
+
+// Max number of primitives stored in a BVH leaf before subdivision
+static const int BVH_LEAF_SIZE = 2;
+
+// Fixed stack capacity for iterative GPU BVH traversal
+// Sized from the configurable construction depth with room for traversal bookkeeping
+static const int BVH_STACK_SIZE = BVH_MAX_DEPTH + 2;
+
+
 static Scene* hst_scene = NULL;
 static GuiDataContainer* guiData = NULL;
 static glm::vec3* dev_image = NULL;
 static Geom* dev_geoms = NULL;
+static Triangle* dev_triangles = NULL; // Imported mesh triangles stored on GPU for ray intersection
 static Material* dev_materials = NULL;
 static PathSegment* dev_paths = NULL;
 static ShadeableIntersection* dev_intersections = NULL;
 // TODO: static variables for device memory, any extra info you need, etc
 // ...
+
+
+// Device-side flattened BVH data constructed once from the scene on the CPU
+static BVHNode* dev_bvhNodes = NULL;
+static int* dev_bvhGeomIndices = NULL;
+static int bvhNodeCount = 0;
+
+
+// Device-side flattened BVH data for imported mesh triangles
+static TriangleBVHNode* dev_triangleBvhNodes = NULL;
+static int* dev_triangleBvhIndices = NULL;
+static int triangleBvhNodeCount = 0;
+
+
+// CPU-side world-space bounds and centroid used while constructing BVH
+struct BVHPrimitiveInfo {
+    glm::vec3 boundsMin;
+    glm::vec3 boundsMax;
+    glm::vec3 centroid;
+};
+
+
+
+// Compute conservative world-space AABB for a transformed scene primitive
+static BVHPrimitiveInfo computeBVHPrimitiveInfo(const Geom& geom) {
+
+
+    BVHPrimitiveInfo info;
+
+    info.boundsMin = glm::vec3(FLT_MAX);
+    info.boundsMax = glm::vec3(-FLT_MAX);
+
+
+
+    // Sphere and cube primitives are both defined inside local-space bounding box [-0.5, 0.5]^3, so transform its eight corners to world space
+    for (int x = 0; x < 2; x++) {
+        for (int y = 0; y < 2; y++) {
+            for (int z = 0; z < 2; z++) {
+
+                glm::vec3 localCorner(
+                    x == 0 ? -0.5f : 0.5f,
+                    y == 0 ? -0.5f : 0.5f,
+                    z == 0 ? -0.5f : 0.5f
+                );
+
+
+                glm::vec3 worldCorner = glm::vec3(geom.transform * glm::vec4(localCorner, 1.0f));
+
+
+                info.boundsMin = glm::min(info.boundsMin, worldCorner);
+                info.boundsMax = glm::max(info.boundsMax, worldCorner);
+            }
+        }
+    }
+
+    info.centroid = 0.5f * (info.boundsMin + info.boundsMax);
+    return info;
+}
+
+
+
+// Compute world-space AABB and centroid for imported mesh triangle
+static BVHPrimitiveInfo computeTriangleBVHPrimitiveInfo(const Triangle& triangle) {
+
+
+    BVHPrimitiveInfo info;
+
+
+    // Imported mesh vertices transformed into world space during OBJ loading
+    info.boundsMin = glm::min(triangle.v0, glm::min(triangle.v1, triangle.v2));
+
+
+
+    info.boundsMax = glm::max(triangle.v0, glm::max(triangle.v1, triangle.v2));
+
+
+
+    // Triangle centroid is used only for BVH partitioning
+    info.centroid = (triangle.v0 + triangle.v1 + triangle.v2) / 3.0f;
+
+    return info;
+}
+
+
+// CPU-side flattened BVH data populated during construction and copied to GPU
+static std::vector<BVHNode> hst_bvhNodes;
+static std::vector<int> hst_bvhGeomIndices;
+
+
+// CPU-side flattened triangle BVH data populated during construction and copied to GPU
+static std::vector<TriangleBVHNode> hst_triangleBvhNodes;
+static std::vector<int> hst_triangleBvhIndices;
+
+
+// Recursively construct BVH on CPU and flatten nodes into array for later iterative GPU traversal
+static int buildBVHRecursive(
+    const std::vector<BVHPrimitiveInfo>& primitiveInfo,
+    std::vector<int>& geomIndices,
+    int start,
+    int end,
+    int depth
+) {
+
+
+    // Reserve this node's position in the flattened BVH array before constructing its contents or children
+
+    int nodeIndex = static_cast<int>(hst_bvhNodes.size());
+
+
+    BVHNode node = {};
+
+    node.boundsMin = glm::vec3(FLT_MAX);
+    node.boundsMax = glm::vec3(-FLT_MAX);
+    node.leftChild = -1;
+    node.rightChild = -1;
+    node.firstGeomIndex = -1;
+    node.geomCount = 0;
+
+
+    // Expand this node's world-space bounds to enclose every primitive in its current range
+    for (int i = start; i < end; i++) {
+
+        int geomIndex = geomIndices[i];
+
+        node.boundsMin = glm::min(
+            node.boundsMin,
+            primitiveInfo[geomIndex].boundsMin
+        );
+
+        node.boundsMax = glm::max(
+            node.boundsMax,
+            primitiveInfo[geomIndex].boundsMax
+        );
+    }
+
+    hst_bvhNodes.push_back(node);
+
+
+    // Stop subdividing when this node is small enough or reaches the configured maximum depth
+    int geomCount = end - start;
+
+    if (geomCount <= BVH_LEAF_SIZE || depth >= BVH_MAX_DEPTH) {
+
+        // Store this leaf's primitive indices contiguously in flattened geometry-index array
+        node.firstGeomIndex = static_cast<int>(hst_bvhGeomIndices.size());
+        node.geomCount = geomCount;
+
+        for (int i = start; i < end; i++) {
+            hst_bvhGeomIndices.push_back(geomIndices[i]);
+        }
+
+        hst_bvhNodes[nodeIndex] = node;
+        return nodeIndex;
+    }
+
+    // Compute centroid bounds for choosing the subdivision axis of this interior node
+    glm::vec3 centroidMin = glm::vec3(FLT_MAX);
+    glm::vec3 centroidMax = glm::vec3(-FLT_MAX);
+
+    for (int i = start; i < end; i++) {
+        
+        
+        int geomIndex = geomIndices[i];
+
+
+
+        const glm::vec3& centroid = primitiveInfo[geomIndex].centroid;
+
+        centroidMin = glm::min(centroidMin, centroid);
+        centroidMax = glm::max(centroidMax, centroid);
+    }
+
+    // Choose the axis along which primitive centroids have the greatest spatial extent
+    glm::vec3 centroidExtent = centroidMax - centroidMin;
+
+    int splitAxis = 0;
+
+
+    if (centroidExtent.y > centroidExtent.x) {
+        splitAxis = 1;
+    }
+
+
+    if (centroidExtent.z > centroidExtent[splitAxis]) {
+        splitAxis = 2;
+    }
+
+
+    // Split the current primitive range into two non-empty halves at its median
+    int middle = start + geomCount / 2;
+
+
+    // Partition primitive indices around the median centroid on the selected split axis
+    std::nth_element(
+        geomIndices.begin() + start,
+        geomIndices.begin() + middle,
+        geomIndices.begin() + end,
+        [&primitiveInfo, splitAxis](int a, int b) {
+            return primitiveInfo[a].centroid[splitAxis]
+                < primitiveInfo[b].centroid[splitAxis];
+        }
+    );
+
+
+
+    // Recursively construct the two child ranges created by the median partition
+    node.leftChild = buildBVHRecursive(
+        primitiveInfo,
+        geomIndices,
+        start,
+        middle,
+        depth + 1
+    );
+
+    node.rightChild = buildBVHRecursive(
+        primitiveInfo,
+        geomIndices,
+        middle,
+        end,
+        depth + 1
+    );
+
+
+
+    // Write the completed interior node back after recursive calls have appended its children
+    hst_bvhNodes[nodeIndex] = node;
+
+    return nodeIndex;
+}
+
+// Recursively construct triangle BVH on CPU and flatten nodes for iterative GPU traversal
+static int buildTriangleBVHRecursive(
+    const std::vector<BVHPrimitiveInfo>& primitiveInfo,
+    std::vector<int>& triangleIndices,
+    int start, int end, int depth
+) {
+
+    // Reserve this node's position before recursively appending its children
+    int nodeIndex = static_cast<int>(hst_triangleBvhNodes.size());
+
+
+    TriangleBVHNode node = {};
+
+
+    node.boundsMin = glm::vec3(FLT_MAX);
+    node.boundsMax = glm::vec3(-FLT_MAX);
+
+    node.leftChild = -1;
+    node.rightChild = -1;
+    node.firstTriangleIndex = -1;
+    node.triangleCount = 0;
+
+
+    // Expand this node's bounds to enclose every triangle in its current range
+    for (int i = start; i < end; i++) {
+
+        int triangleIndex = triangleIndices[i];
+
+
+
+        node.boundsMin = glm::min(node.boundsMin, primitiveInfo[triangleIndex].boundsMin);
+
+
+        node.boundsMax = glm::max(node.boundsMax, primitiveInfo[triangleIndex].boundsMax);
+    }
+
+
+
+    hst_triangleBvhNodes.push_back(node);
+
+
+    int triangleCount = end - start;
+
+
+
+
+    // Stop subdividing at the configured leaf size or maximum tree depth
+    if (triangleCount <= BVH_LEAF_SIZE || depth >= BVH_MAX_DEPTH) {
+
+
+        node.firstTriangleIndex = static_cast<int>(hst_triangleBvhIndices.size());
+
+
+
+        node.triangleCount = triangleCount;
+
+
+
+        for (int i = start; i < end; i++) {
+            hst_triangleBvhIndices.push_back(triangleIndices[i]);
+        }
+
+
+        hst_triangleBvhNodes[nodeIndex] = node;
+
+        return nodeIndex;
+    }
+
+
+    // Compute centroid bounds to choose longest subdivision axis
+    glm::vec3 centroidMin = glm::vec3(FLT_MAX);
+    glm::vec3 centroidMax = glm::vec3(-FLT_MAX);
+
+
+
+
+    for (int i = start; i < end; i++) {
+
+        int triangleIndex = triangleIndices[i];
+
+
+        const glm::vec3& centroid = primitiveInfo[triangleIndex].centroid;
+
+        centroidMin = glm::min(centroidMin, centroid);
+        centroidMax = glm::max(centroidMax, centroid);
+    }
+
+
+    glm::vec3 centroidExtent = centroidMax - centroidMin;
+
+
+    int splitAxis = 0;
+
+
+
+    if (centroidExtent.y > centroidExtent.x) {
+        splitAxis = 1;
+    }
+
+
+
+
+    if (centroidExtent.z > centroidExtent[splitAxis]) {
+        splitAxis = 2;
+    }
+
+
+    // Partition triangle range at its median centroid
+    int middle = start + triangleCount / 2;
+
+
+    std::nth_element(
+        triangleIndices.begin() + start,
+        triangleIndices.begin() + middle,
+        triangleIndices.begin() + end,
+        [&primitiveInfo, splitAxis](int a, int b) {
+            return primitiveInfo[a].centroid[splitAxis] < primitiveInfo[b].centroid[splitAxis];
+        }
+    );
+
+
+    node.leftChild = buildTriangleBVHRecursive(
+        primitiveInfo, triangleIndices, start, middle, depth + 1
+    );
+
+
+
+    node.rightChild = buildTriangleBVHRecursive(
+        primitiveInfo, triangleIndices, middle, end, depth + 1
+    );
+
+    // Recursive calls may reallocate the vector, so write back by index
+    hst_triangleBvhNodes[nodeIndex] = node;
+
+
+    return nodeIndex;
+}
+
+
+// Build flattened BVH once on the CPU from the scene geometry
+static void buildBVH(const std::vector<Geom>& geoms) {
+
+
+
+    hst_bvhNodes.clear();
+
+
+    hst_bvhGeomIndices.clear();
+
+
+    bvhNodeCount = 0;
+
+    // An empty scene has no BVH to construct
+    if (geoms.empty()) {
+        return;
+    }
+
+    // Temporary CPU-side data used to organize scene primitives during BVH construction
+    std::vector<BVHPrimitiveInfo> primitiveInfo(geoms.size());
+    std::vector<int> geomIndices(geoms.size());
+
+
+    // Precompute each primitive's world-space bounds and centroid for BVH construction
+    for (int i = 0; i < static_cast<int>(geoms.size()); i++) {
+
+
+        primitiveInfo[i] = computeBVHPrimitiveInfo(geoms[i]);
+    }
+
+    // Initialize primitive indices before the recursive builder reorders them during BVH partitioning
+    std::iota(geomIndices.begin(), geomIndices.end(), 0);
+
+
+    // Construct the flattened BVH beginning with the full primitive range at the root
+    buildBVHRecursive(primitiveInfo, geomIndices, 0, static_cast<int>(geomIndices.size()), 0);
+
+
+    // Record the number of flattened BVH nodes for later GPU allocation and traversal
+    bvhNodeCount = static_cast<int>(hst_bvhNodes.size());
+
+
+}
+
+
+// Build flattened triangle BVH once on the CPU from imported mesh triangles
+static void buildTriangleBVH(const std::vector<Triangle>& triangles) {
+
+
+    hst_triangleBvhNodes.clear();
+    hst_triangleBvhIndices.clear();
+
+
+    triangleBvhNodeCount = 0;
+
+
+
+    // A scene without imported mesh triangles has no triangle BVH to construct
+    if (triangles.empty()) {
+        return;
+    }
+
+
+
+
+    // Temporary CPU-side data used to organize triangles during BVH construction
+    std::vector<BVHPrimitiveInfo> primitiveInfo(triangles.size());
+
+
+    std::vector<int> triangleIndices(triangles.size());
+
+
+
+
+    // Precompute each triangle's world-space bounds and centroid
+    for (int i = 0; i < static_cast<int>(triangles.size()); i++) {
+        primitiveInfo[i] = computeTriangleBVHPrimitiveInfo(triangles[i]);
+    }
+
+
+
+
+    // Initialize triangle indices before recursive median partitioning reorders them
+    std::iota(triangleIndices.begin(), triangleIndices.end(), 0);
+
+
+
+
+
+    // Construct flattened triangle BVH beginning with the full triangle range
+    buildTriangleBVHRecursive(
+        primitiveInfo,
+        triangleIndices,
+        0,
+        static_cast<int>(triangleIndices.size()),
+        0
+    );
+
+
+
+
+
+    // Record flattened node count for later GPU allocation and traversal
+    triangleBvhNodeCount = static_cast<int>(hst_triangleBvhNodes.size());
+
+
+
+}
+
+// Test whether a ray intersects world-space BVH axis-aligned bounding box using slab method, while ignoring boxes farther than the closes known hit
+__device__ bool rayIntersectsAABB(
+    const Ray& ray,
+    const glm::vec3& boundsMin,
+    const glm::vec3& boundsMax,
+    float currentClosestT
+) {
+
+    float tMin = 0.0f;
+    float tMax = currentClosestT;
+
+
+
+    for (int axis = 0; axis < 3; axis++) {
+        float origin = ray.origin[axis];
+
+        float direction = ray.direction[axis];
+
+
+        // Handle rays parallelt to this slab without dividing by 0
+        if (fabsf(direction) < 1e-8f) {
+            if (origin < boundsMin[axis] || origin > boundsMax[axis]) {
+                return false;
+            }
+
+            continue;
+        }
+
+
+        float inverseDirection = 1.0f / direction;
+
+        float t0 = (boundsMin[axis] - origin) * inverseDirection;
+        float t1 = (boundsMax[axis] - origin) * inverseDirection;
+
+
+        if (t0 > t1) {
+            float temp = t0;
+            t0 = t1;
+            t1 = temp;
+        }
+
+
+        tMin = fmaxf(tMin, t0);
+        tMax = fminf(tMax, t1);
+
+
+
+        if (tMax < tMin) {
+            return false;
+        }
+
+
+
+    }
+
+    return true;
+}
 
 void InitDataContainer(GuiDataContainer* imGuiData)
 {
@@ -103,6 +658,19 @@ void pathtraceInit(Scene* scene)
     cudaMalloc(&dev_geoms, scene->geoms.size() * sizeof(Geom));
     cudaMemcpy(dev_geoms, scene->geoms.data(), scene->geoms.size() * sizeof(Geom), cudaMemcpyHostToDevice);
 
+
+    // Copy imported mesh triangles to GPU memory for ray intersection
+    if (!scene->triangles.empty()) {
+        cudaMalloc(&dev_triangles, scene->triangles.size() * sizeof(Triangle));
+
+        cudaMemcpy(dev_triangles, scene->triangles.data(), scene->triangles.size() * sizeof(Triangle), cudaMemcpyHostToDevice);
+
+
+
+    }
+
+
+
     cudaMalloc(&dev_materials, scene->materials.size() * sizeof(Material));
     cudaMemcpy(dev_materials, scene->materials.data(), scene->materials.size() * sizeof(Material), cudaMemcpyHostToDevice);
 
@@ -110,6 +678,79 @@ void pathtraceInit(Scene* scene)
     cudaMemset(dev_intersections, 0, pixelcount * sizeof(ShadeableIntersection));
 
     // TODO: initialize any extra device memeory you need
+
+
+    // Construct CPU-side flattened BVH once when the scene is initialized
+    buildBVH(scene->geoms);
+
+
+    // Construct CPU-side flattened BVH for imported mesh triangles
+    buildTriangleBVH(scene->triangles);
+
+
+
+
+    // Allocate device storage for the flattened BVH nodes produced by CPU construction
+    if (bvhNodeCount > 0) {
+        cudaMalloc(&dev_bvhNodes, bvhNodeCount * sizeof(BVHNode));
+
+        // Copy the CPU-built flattened BVH nodes to device memory for later GPU traversal
+        cudaMemcpy(
+            dev_bvhNodes,
+            hst_bvhNodes.data(),
+            bvhNodeCount * sizeof(BVHNode),
+            cudaMemcpyHostToDevice
+        );
+    }
+
+
+    // Allocate device storage for primitive indices referenced by BVH leaf nodes
+    if (!hst_bvhGeomIndices.empty()) {
+        cudaMalloc(&dev_bvhGeomIndices, hst_bvhGeomIndices.size() * sizeof(int));
+
+
+        // Copy the flattened leaf primitive-index array to device memory
+        cudaMemcpy(
+            dev_bvhGeomIndices,
+            hst_bvhGeomIndices.data(),
+            hst_bvhGeomIndices.size() * sizeof(int),
+            cudaMemcpyHostToDevice
+        );
+    }
+
+
+    // Allocate device storage for flattened triangle BVH nodes
+    if (triangleBvhNodeCount > 0) {
+
+        cudaMalloc(&dev_triangleBvhNodes, triangleBvhNodeCount * sizeof(TriangleBVHNode));
+
+
+        // Copy CPU-built triangle BVH nodes to device memory for iterative traversal
+        cudaMemcpy(dev_triangleBvhNodes, hst_triangleBvhNodes.data(), triangleBvhNodeCount * sizeof(TriangleBVHNode), cudaMemcpyHostToDevice);
+
+
+    }
+
+
+    
+
+
+
+    // Allocate device storage for triangle indices referenced by triangle BVH leaf nodes
+    if (!hst_triangleBvhIndices.empty()) {
+        
+        
+        
+        cudaMalloc(&dev_triangleBvhIndices, hst_triangleBvhIndices.size() * sizeof(int));
+
+
+
+
+        // Copy flattened triangle leaf-index array to device memory
+        cudaMemcpy(dev_triangleBvhIndices, hst_triangleBvhIndices.data(), hst_triangleBvhIndices.size() * sizeof(int), cudaMemcpyHostToDevice);
+
+
+    }
 
     checkCUDAError("pathtraceInit");
 }
@@ -119,9 +760,27 @@ void pathtraceFree()
     cudaFree(dev_image);  // no-op if dev_image is null
     cudaFree(dev_paths);
     cudaFree(dev_geoms);
+    cudaFree(dev_triangles);
     cudaFree(dev_materials);
     cudaFree(dev_intersections);
     // TODO: clean up any extra device memory you created
+
+
+    // Free device storage allocated for the flattened BVH nodes
+    cudaFree(dev_bvhNodes);
+
+
+    // Free device storage allocated for BVH leaf primitive indices
+    cudaFree(dev_bvhGeomIndices);
+
+
+    // Free device storage allocated for imported triangle BVH nodes
+    cudaFree(dev_triangleBvhNodes);
+
+
+    // Free device storage allocated for triangle BVH leaf indices
+    cudaFree(dev_triangleBvhIndices);
+
 
     checkCUDAError("pathtraceFree");
 }
@@ -147,10 +806,61 @@ __global__ void generateRayFromCamera(Camera cam, int iter, int traceDepth, Path
         segment.color = glm::vec3(1.0f, 1.0f, 1.0f);
 
         // TODO: implement antialiasing by jittering the ray
+        
+
+        // Generate a different random sub-pixel sample for this pixel on each iteration
+        thrust::default_random_engine rng = makeSeededRandomEngine(iter, index, 0);
+        thrust::uniform_real_distribution<float> u01(0.0f, 1.0f);
+
+
+        float jitterX = u01(rng) - 0.5f;
+        float jitterY = u01(rng) - 0.5f;
+        
+        
+        
+        
         segment.ray.direction = glm::normalize(cam.view
-            - cam.right * cam.pixelLength.x * ((float)x - (float)cam.resolution.x * 0.5f)
-            - cam.up * cam.pixelLength.y * ((float)y - (float)cam.resolution.y * 0.5f)
+            - cam.right * cam.pixelLength.x * ((float)x + jitterX - (float)cam.resolution.x * 0.5f)
+            - cam.up * cam.pixelLength.y * ((float)y + jitterY - (float)cam.resolution.y * 0.5f)
         );
+
+
+        // Physically based depth of field using a thin-lens camera model.
+        // Keep the original pinhole behavior when the lens radius is zero.
+        if (cam.lensRadius > 0.0f && cam.focalDistance > 0.0f) {
+
+
+
+            // The existing antialiased ray determines the point on the focal plane that every lens sample for this pixel sample should converge toward.
+            glm::vec3 pinholeDirection = segment.ray.direction;
+
+
+
+            glm::vec3 cameraForward = glm::normalize(cam.view);
+
+
+
+            float focalPlaneT = cam.focalDistance / glm::dot(pinholeDirection, cameraForward);
+
+            glm::vec3 focalPoint = cam.position + focalPlaneT * pinholeDirection;
+
+            // Uniformly sample the circular lens area rather than a square aperture.
+            float lensSampleRadius = cam.lensRadius * sqrtf(u01(rng));
+
+
+            float lensSampleAngle = 2.0f * PI * u01(rng);
+
+
+            glm::vec3 lensOffset = glm::normalize(cam.right) * (lensSampleRadius * cosf(lensSampleAngle)) + glm::normalize(cam.up) * (lensSampleRadius * sinf(lensSampleAngle));
+
+
+
+            // Move the ray origin onto the sampled lens position and redirect the ray through the focal point determined by the original pinhole ray.
+            segment.ray.origin = cam.position + lensOffset;
+
+
+            segment.ray.direction = glm::normalize(focalPoint - segment.ray.origin);
+        }
 
         segment.pixelIndex = index;
         segment.remainingBounces = traceDepth;
@@ -167,6 +877,8 @@ __global__ void computeIntersections(
     PathSegment* pathSegments,
     Geom* geoms,
     int geoms_size,
+    Triangle* triangles,
+    int triangle_count,
     ShadeableIntersection* intersections)
 {
     int path_index = blockIdx.x * blockDim.x + threadIdx.x;
@@ -180,6 +892,7 @@ __global__ void computeIntersections(
         glm::vec3 normal;
         float t_min = FLT_MAX;
         int hit_geom_index = -1;
+        int hit_material_id = -1;
         bool outside = true;
 
         glm::vec3 tmp_intersect;
@@ -207,24 +920,285 @@ __global__ void computeIntersections(
             {
                 t_min = t;
                 hit_geom_index = i;
+                hit_material_id = geom.materialid;
                 intersect_point = tmp_intersect;
                 normal = tmp_normal;
             }
         }
 
-        if (hit_geom_index == -1)
+        // Test imported mesh triangles against the same ray and keep the closest primitive hit across both analytic geometry and mesh geometry
+        for (int i = 0; i < triangle_count; i++)
+        {
+            Triangle& triangle = triangles[i];
+
+
+
+            t = triangleIntersectionTest(
+                triangle,
+                pathSegment.ray,
+                tmp_intersect,
+                tmp_normal,
+                outside
+            );
+
+            if (t > 0.0f && t_min > t) {
+                t_min = t;
+
+                hit_material_id = triangle.materialid;
+
+
+
+                intersect_point = tmp_intersect;
+
+
+                normal = tmp_normal;
+            }
+
+
+        }
+
+        if (hit_material_id == -1)
         {
             intersections[path_index].t = -1.0f;
+
+            // Explicitly mark rays that missed all geometry as having no material
+            intersections[path_index].materialId = -1;
         }
         else
         {
             // The ray hits something
             intersections[path_index].t = t_min;
-            intersections[path_index].materialId = geoms[hit_geom_index].materialid;
+            intersections[path_index].materialId = hit_material_id; // geoms[hit_geom_index].materialid;
             intersections[path_index].surfaceNormal = normal;
         }
     }
 }
+
+
+// Compute ray-scene intersections using iterative traversal of flattened BVH
+// Kept separate from naive intersection kernel so both implementations can be compared
+__global__ void computeIntersectionsBVH(
+    int depth, int num_paths,
+    PathSegment* pathSegments, Geom* geoms,
+    BVHNode* bvhNodes, int* bvhGeomIndices,
+    int bvhNodeCount, Triangle* triangles, TriangleBVHNode* triangleBvhNodes,
+    int* triangleBvhIndices, int triangleBvhNodeCount,
+    ShadeableIntersection* intersections
+) {
+
+    int path_index = (blockIdx.x * blockDim.x) + threadIdx.x;
+
+
+    if (path_index < num_paths) {
+
+        PathSegment pathSegment = pathSegments[path_index];
+
+
+        // Track the closest primitive intersection found during BVH traversal
+        float t_min = FLT_MAX;
+        int hit_geom_index = -1;
+        int hit_material_id = -1;
+        glm::vec3 normal;
+
+
+        glm::vec3 tmp_intersect;
+        glm::vec3 tmp_normal;
+        bool outside = true;
+
+
+        // Explicit local stack for iterative GPU BVH traversal
+        int traversalStack[BVH_STACK_SIZE];
+        int stackSize = 0;
+
+
+
+        // Begin traversal at the root node when the BVH is non-empty
+        if (bvhNodeCount > 0) {
+            traversalStack[stackSize++] = 0;
+        }
+
+
+
+        // Iteratively traverse BVH nodes until no nodes remain on the explicit stack
+        while (stackSize > 0) {
+
+            // Pop the next flattened BVH node to process
+            int nodeIndex = traversalStack[--stackSize];
+
+
+            BVHNode node = bvhNodes[nodeIndex];
+
+            // Skip this node when its bounding box is missed or lies beyond the closest hit found so far
+            if (!rayIntersectsAABB(
+                pathSegment.ray,
+                node.boundsMin,
+                node.boundsMax,
+                t_min)) {
+                continue;
+            }
+
+
+
+            // Leaf nodes contain a contiguous range of primitive indices to test
+            if (node.geomCount > 0) {
+
+
+                for (int i = 0; i < node.geomCount; i++) {
+
+
+                    int geomIndex = bvhGeomIndices[node.firstGeomIndex + i];
+
+                    Geom& geom = geoms[geomIndex];
+
+
+                    float t = -1.0f;
+
+
+                    // Reuse starter primitive intersection tests exactly as naive path does
+                    if (geom.type == CUBE) {
+
+                        t = boxIntersectionTest(
+                            geom, pathSegment.ray,
+                            tmp_intersect, tmp_normal,
+                            outside
+                        );
+                    }
+                    else if (geom.type == SPHERE) {
+
+                        t = sphereIntersectionTest(
+                            geom, pathSegment.ray,
+                            tmp_intersect, tmp_normal,
+                            outside
+                        );
+
+                    }
+
+                    // Preserve naive kernel's nearest positive intersection semantics
+                    if (t > 0.0f && t_min > t) {
+                        t_min = t;
+                        hit_geom_index = geomIndex;
+                        hit_material_id = geom.materialid;
+                        normal = tmp_normal;
+                    }
+                }
+
+                continue;
+            }
+
+
+            // Interior nodes store child indices into same flattened BVH array
+            // Push both children onto explicit stack so traversal remains iterative on GPU
+            if (node.rightChild >= 0) {
+                traversalStack[stackSize++] = node.rightChild;
+            }
+
+            if (node.leftChild >= 0) {
+                traversalStack[stackSize++] = node.leftChild;
+            }
+      
+        }
+
+
+        // Explicit local stack for iterative traversal of imported triangle BVH
+        int triangleTraversalStack[BVH_STACK_SIZE];
+        int triangleStackSize = 0;
+
+
+        // Begin triangle BVH traversal at its root when imported mesh triangles are present
+        if (triangleBvhNodeCount > 0) {
+            triangleTraversalStack[triangleStackSize++] = 0;
+        }
+
+
+        // Iteratively traverse triangle BVH nodes until no nodes remain on the explicitstack
+        while (triangleStackSize > 0) {
+
+            // Pop next flattened triangle BVH node to process
+            int nodeIndex = triangleTraversalStack[--triangleStackSize];
+
+
+
+            TriangleBVHNode node = triangleBvhNodes[nodeIndex];
+
+
+
+            // Skip this node when its bounding box is missed or lies beyond closest hit found so far
+            if (!rayIntersectsAABB(pathSegment.ray, node.boundsMin, node.boundsMax, t_min)) {
+
+                continue;
+            }
+
+
+            // Leaf nodes contain a contiguous range of imported triangle indices to test
+            if (node.triangleCount > 0) {
+
+                for (int i = 0; i < node.triangleCount; i++) {
+
+                    int triangleIndex = triangleBvhIndices[node.firstTriangleIndex + i];
+
+                    Triangle& triangle = triangles[triangleIndex];
+
+                    float t = triangleIntersectionTest(triangle, pathSegment.ray, tmp_intersect, tmp_normal, outside);
+
+
+
+
+                    // Keep the closest hit across both analytic geometry and imported triangles
+                    if (t > 0.0f && t_min > t) {
+                        t_min = t;
+                        hit_material_id = triangle.materialid;
+                        normal = tmp_normal;
+                    }
+                }
+
+                continue;
+            }
+
+
+            // Interior triangle BVH nodes store child indices into the same flattened node array
+            // Push both children onto the explicit stack so GPU traversal remains iterative
+            if (node.rightChild >= 0) {
+                triangleTraversalStack[triangleStackSize++] = node.rightChild;
+            }
+
+
+
+
+            if (node.leftChild >= 0) {
+                triangleTraversalStack[triangleStackSize++] = node.leftChild;
+            }
+
+
+        }
+
+
+        // Match the naive intersection kernel's output convention for misses and closest hits
+        //if (hit_geom_index == -1) {
+        //    intersections[path_index].t = -1.0f;
+        //    intersections[path_index].materialId = -1;
+        //}
+        //else {
+        //    intersections[path_index].t = t_min;
+        //    intersections[path_index].materialId = geoms[hit_geom_index].materialid;
+        //    intersections[path_index].surfaceNormal = normal;
+        //}
+
+        if (hit_material_id == -1) {
+            intersections[path_index].t = -1.0f;
+            intersections[path_index].materialId = -1;
+        }
+        else {
+            intersections[path_index].t = t_min;
+            intersections[path_index].materialId = hit_material_id;
+            intersections[path_index].surfaceNormal = normal;
+        }
+
+    }
+}
+
+
+
+
 
 // LOOK: "fake" shader demonstrating what you might do with the info in
 // a ShadeableIntersection, as well as how to use thrust's random number
@@ -280,6 +1254,85 @@ __global__ void shadeFakeMaterial(
     }
 }
 
+__global__ void shadeMaterial(int iter, int depth, int num_paths, ShadeableIntersection* shadeableIntersections, PathSegment* pathSegments, Material* materials) {
+    int index = (blockIdx.x * blockDim.x) + threadIdx.x;
+
+
+    if (index < num_paths) {
+        ShadeableIntersection intersection = shadeableIntersections[index];
+
+        PathSegment& pathSegment = pathSegments[index];
+
+
+        // If ray did not hit anything, it contributes no radiance and terminates
+        if (intersection.t <= 0.0f) {
+            pathSegment.color = glm::vec3(0.0f);
+
+            pathSegment.remainingBounces = 0;
+
+            return;
+        }
+
+        // Retrieve material associated with the surface that this ray hit
+        Material material = materials[intersection.materialId];
+
+
+        // If the ray hit an emissive material, accumulate its emitted radiance into the path throughput and terminate the path
+        if (material.emittance > 0.0f) {
+            pathSegment.color *= material.color * material.emittance;
+
+            pathSegment.remainingBounces = 0;
+            return;
+        }
+
+
+        // Reconstruct world-space surface intersection point from the ray and the parametric intersection distance t
+        glm::vec3 intersectPoint = pathSegment.ray.origin + intersection.t * pathSegment.ray.direction;
+
+
+        // Seed random number generator for this path and bounce
+        thrust::default_random_engine rng = makeSeededRandomEngine(iter, index, depth);
+
+        // Evaluate diffuse BSDF and generate next ray in the path
+        scatterRay(pathSegment, intersectPoint, intersection.surfaceNormal, material, rng);
+
+        // One bounce has been consumed by this scattering event
+        pathSegment.remainingBounces--;
+
+
+        // If path exhausted its bounce budget without hitting a light, it contributes zero radiance
+        if (pathSegment.remainingBounces <= 0) {
+            pathSegment.color = glm::vec3(0.0f);
+        }
+
+    }
+}
+
+// Predicate used by stream compaction to identify terminated paths
+struct pathTerminated {
+
+    __host__ __device__
+        bool operator()(const PathSegment& pathSegment) const {
+        return pathSegment.remainingBounces <= 0;
+    }
+};
+
+
+// Comparator for sorting paired intersections and paths by material ID
+struct compareMaterial {
+
+    __host__ __device__
+        bool operator()(
+            const thrust::tuple<ShadeableIntersection, PathSegment>& a,
+            const thrust::tuple<ShadeableIntersection, PathSegment>& b
+        ) const {
+        return thrust::get<0>(a).materialId < thrust::get<0>(b).materialId;
+    }
+};
+
+
+
+
 // Add the current iteration's output to the overall image
 __global__ void finalGather(int nPaths, glm::vec3* image, PathSegment* iterationPaths)
 {
@@ -289,6 +1342,20 @@ __global__ void finalGather(int nPaths, glm::vec3* image, PathSegment* iteration
     {
         PathSegment iterationPath = iterationPaths[index];
         image[iterationPath.pixelIndex] += iterationPath.color;
+    }
+}
+
+
+// Accumulate completed path contributions before stream compaction removes them
+__global__ void gatherTerminatedPaths(int nPaths, glm::vec3* image, PathSegment* pathSegments) {
+
+    int index = (blockIdx.x * blockDim.x) + threadIdx.x;
+
+
+    if (index < nPaths && pathSegments[index].remainingBounces <= 0) {
+        PathSegment pathSegment = pathSegments[index];
+
+        image[pathSegment.pixelIndex] += pathSegment.color;
     }
 }
 
@@ -360,17 +1427,56 @@ void pathtrace(uchar4* pbo, int frame, int iter)
 
         // tracing
         dim3 numblocksPathSegmentTracing = (num_paths + blockSize1d - 1) / blockSize1d;
-        computeIntersections<<<numblocksPathSegmentTracing, blockSize1d>>> (
-            depth,
-            num_paths,
-            dev_paths,
-            dev_geoms,
-            hst_scene->geoms.size(),
-            dev_intersections
-        );
+
+
+
+        // Select between BVH-accelerated and naive intersection testing for performance comparison
+        if (guiData != NULL && guiData->UseBVH && (bvhNodeCount > 0 || triangleBvhNodeCount > 0)) {
+            computeIntersectionsBVH<<<numblocksPathSegmentTracing, blockSize1d>>>(
+                depth,
+                num_paths,
+                dev_paths,
+                dev_geoms,
+                dev_bvhNodes,
+                dev_bvhGeomIndices,
+                bvhNodeCount,
+                dev_triangles,
+                dev_triangleBvhNodes,
+                dev_triangleBvhIndices,
+                triangleBvhNodeCount,
+                dev_intersections
+            );
+        }
+        else {
+            computeIntersections<<<numblocksPathSegmentTracing, blockSize1d>>>(
+                depth,
+                num_paths,
+                dev_paths,
+                dev_geoms,
+                hst_scene->geoms.size(),
+                dev_triangles,
+                hst_scene->triangles.size(),
+                dev_intersections
+            );
+        }
+
+
+
         checkCUDAError("trace one bounce");
         cudaDeviceSynchronize();
         depth++;
+
+        // Keep each intersection paired with its corresponding path during material sorting
+        auto zippedBegin = thrust::make_zip_iterator(
+            thrust::make_tuple(dev_intersections, dev_paths)
+        );
+
+
+        auto zippedEnd = zippedBegin + num_paths;
+
+        if (guiData != NULL && guiData->SortByMaterial) {
+            thrust::sort(thrust::device, zippedBegin, zippedEnd, compareMaterial());
+        }
 
         // TODO:
         // --- Shading Stage ---
@@ -381,14 +1487,47 @@ void pathtrace(uchar4* pbo, int frame, int iter)
         // TODO: compare between directly shading the path segments and shading
         // path segments that have been reshuffled to be contiguous in memory.
 
-        shadeFakeMaterial<<<numblocksPathSegmentTracing, blockSize1d>>>(
+        //shadeFakeMaterial<<<numblocksPathSegmentTracing, blockSize1d>>>(
+        //    iter,
+        //    num_paths,
+        //    dev_intersections,
+        //    dev_paths,
+        //    dev_materials
+        //);
+
+
+        shadeMaterial<<<numblocksPathSegmentTracing, blockSize1d>>>(
             iter,
+            depth,
             num_paths,
             dev_intersections,
             dev_paths,
             dev_materials
         );
-        iterationComplete = true; // TODO: should be based off stream compaction results.
+
+        checkCUDAError("shade material");
+
+        // Accumulate completed path contributions before removing terminated paths
+        gatherTerminatedPaths<<<numblocksPathSegmentTracing, blockSize1d>>>(
+            num_paths,
+            dev_image,
+            dev_paths
+        );
+
+        checkCUDAError("gather terminated paths");
+
+        // Stream compact terminated paths so only active paths remain
+        dev_path_end = thrust::remove_if(
+            thrust::device, dev_paths, dev_path_end, pathTerminated()
+        );
+
+        // Update the number of active paths after stream compaction
+        num_paths = dev_path_end - dev_paths;
+
+        // Print number of unterminated paths after this bounce for stream-compaction analysis
+        printf("Stream Compaction: bounce %d, active paths = %d\n", depth, num_paths);
+
+        iterationComplete = (num_paths == 0); //true; // TODO: should be based off stream compaction results.
 
         if (guiData != NULL)
         {
@@ -398,7 +1537,9 @@ void pathtrace(uchar4* pbo, int frame, int iter)
 
     // Assemble this iteration and apply it to the image
     dim3 numBlocksPixels = (pixelcount + blockSize1d - 1) / blockSize1d;
-    finalGather<<<numBlocksPixels, blockSize1d>>>(num_paths, dev_image, dev_paths);
+    
+    // Completed paths are gathered before stream compaction inside tracing loop
+    // finalGather<<<numBlocksPixels, blockSize1d>>>(num_paths, dev_image, dev_paths);
 
     ///////////////////////////////////////////////////////////////////////////
 
