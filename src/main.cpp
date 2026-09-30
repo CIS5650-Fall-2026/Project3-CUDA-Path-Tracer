@@ -286,6 +286,77 @@ void RenderImGui()
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::Text("Iteration %d, path tracing %.3f ms/iter (avg)", iteration, imguiData->AvgIterationMs);
+
+    // Flipping a toggle restarts the render, so images and timings stay comparable
+    ImGui::Separator();
+    if (ImGui::Checkbox("Stream compaction", &imguiData->StreamCompaction))
+    {
+        camchanged = true;
+    }
+    if (ImGui::Checkbox("Sort by material", &imguiData->SortByMaterial))
+    {
+        camchanged = true;
+    }
+    if (ImGui::Checkbox("Anti-aliasing", &imguiData->AntiAliasing))
+    {
+        camchanged = true;
+    }
+    if (ImGui::Checkbox("Russian roulette", &imguiData->RussianRoulette))
+    {
+        camchanged = true;
+    }
+    if (ImGui::Checkbox("Mesh bounding box culling", &imguiData->BBoxCulling))
+    {
+        camchanged = true;
+    }
+    if (ImGui::Checkbox("Direct lighting (last ray)", &imguiData->DirectLighting))
+    {
+        camchanged = true;
+    }
+    if (ImGui::Checkbox("Motion blur", &imguiData->MotionBlur))
+    {
+        camchanged = true;
+    }
+
+    // Depth of field: lens radius 0 means a pinhole camera (everything sharp)
+    ImGui::Separator();
+    Camera& cam = renderState->camera;
+    if (ImGui::SliderFloat("Lens radius", &cam.lensRadius, 0.0f, 1.0f))
+    {
+        camchanged = true;
+    }
+    if (ImGui::SliderFloat("Focal distance", &cam.focalDistance, 0.1f, 30.0f))
+    {
+        camchanged = true;
+    }
+
+    // How many paths are still bouncing after each bounce (from the last iteration)
+    ImGui::Separator();
+    if (ImGui::CollapsingHeader("Alive paths per bounce", ImGuiTreeNodeFlags_DefaultOpen))
+    {
+        for (int d = 0; d < imguiData->TracedDepth && d < MAX_STAT_DEPTH; ++d)
+        {
+            if (imguiData->AlivePaths[d] < 0)
+            {
+                ImGui::Text("bounce %2d: n/a (compaction off)", d + 1);
+            }
+            else
+            {
+                ImGui::Text("bounce %2d: %d", d + 1, imguiData->AlivePaths[d]);
+            }
+        }
+
+        // Dump the numbers as CSV-ish lines so they're easy to paste into a chart
+        if (ImGui::Button("Print stats to console"))
+        {
+            printf("iteration,%d,avg_ms,%.4f\n", iteration, imguiData->AvgIterationMs);
+            for (int d = 0; d < imguiData->TracedDepth && d < MAX_STAT_DEPTH; ++d)
+            {
+                printf("bounce,%d,alive,%d\n", d + 1, imguiData->AlivePaths[d]);
+            }
+        }
+    }
     ImGui::End();
 
 
@@ -372,10 +443,12 @@ int main(int argc, char** argv)
 
     // compute phi (horizontal) and theta (vertical) relative 3D axis
     // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    // Fix: runCuda() rebuilds the camera from these angles as the direction from the
+    // look-at point to the camera (= -view), so take the angles of -view. The old
+    // version flipped tilted cameras upside down and lost left/right (acos has no sign).
+    glm::vec3 toCamera = -glm::normalize(view);
+    phi = glm::atan(toCamera.x, toCamera.z);
+    theta = glm::acos(toCamera.y);
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
 

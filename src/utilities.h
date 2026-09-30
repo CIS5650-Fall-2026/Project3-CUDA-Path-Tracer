@@ -15,11 +15,26 @@
 #define SQRT_OF_ONE_THIRD 0.5773502691896257645091487805019574556476f
 #define EPSILON           0.00001f
 
+#define MAX_STAT_DEPTH 32
+
 class GuiDataContainer
 {
 public:
     GuiDataContainer() : TracedDepth(0) {}
     int TracedDepth;
+
+    // Toggles shown in the ImGui panel
+    bool StreamCompaction = true;
+    bool SortByMaterial = false;
+    bool AntiAliasing = true;
+    bool RussianRoulette = true;
+    bool BBoxCulling = true;
+    bool DirectLighting = false;
+    bool MotionBlur = true;
+
+    // Stats shown in the ImGui panel
+    float AvgIterationMs = 0.0f;            // average time per iteration since the last restart
+    int AlivePaths[MAX_STAT_DEPTH] = {};    // paths still alive after each bounce, -1 if unknown
 };
 
 namespace utilityCore

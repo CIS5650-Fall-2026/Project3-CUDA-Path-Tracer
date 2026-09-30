@@ -44,5 +44,27 @@ __host__ __device__ void scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    bool outside,
     const Material& m,
+    thrust::default_random_engine& rng);
+
+// Random point on a light's surface (cube or sphere), with its outward normal
+// and the light's total surface area, so the pdf should be 1 / area
+__host__ __device__ void sampleLightSurface(
+    const Geom& light,
+    thrust::default_random_engine& rng,
+    glm::vec3& point,
+    glm::vec3& lightNormal,
+    float& area);
+
+// Direct lighting for a diffuse surface: aim the ray straight at a random point
+// on a random light instead of bouncing randomly
+__host__ __device__ void sampleDirectLight(
+    PathSegment& pathSegment,
+    glm::vec3 intersect,
+    glm::vec3 normal,
+    const Material& m,
+    const Geom* geoms,
+    const int* lightIndices,
+    int numLights,
     thrust::default_random_engine& rng);

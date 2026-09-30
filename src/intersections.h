@@ -71,3 +71,20 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+// Does the ray hit this box at all? Used to skip whole meshes.
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 boxMin,
+    glm::vec3 boxMax,
+    Ray r);
+
+// Ray vs. mesh (triangles already in world space). Returns t of the closest hit, -1 if nothing.
+// bboxCulling = check the bounding box first
+__host__ __device__ float meshIntersectionTest(
+    const Geom& mesh,
+    const Triangle* triangles,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    bool bboxCulling);

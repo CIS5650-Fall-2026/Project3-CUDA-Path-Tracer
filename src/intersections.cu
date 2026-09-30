@@ -1,5 +1,7 @@
 #include "intersections.h"
 
+#include <cfloat>
+
 __host__ __device__ float boxIntersectionTest(
     Geom box,
     Ray r,
@@ -110,4 +112,103 @@ __host__ __device__ float sphereIntersectionTest(
     }
 
     return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 boxMin,
+    glm::vec3 boxMax,
+    Ray r)
+{
+    // Slab test: on each axis, when does the ray enter/leave the box?
+    // It's a hit if the last "enter" comes before the first "leave"
+    glm::vec3 invDir = 1.0f / r.direction;
+    glm::vec3 t0 = (boxMin - r.origin) * invDir;
+    glm::vec3 t1 = (boxMax - r.origin) * invDir;
+    glm::vec3 tSmall = glm::min(t0, t1);
+    glm::vec3 tBig = glm::max(t0, t1);
+
+    float tEnter = glm::max(tSmall.x, glm::max(tSmall.y, tSmall.z));
+    float tExit = glm::min(tBig.x, glm::min(tBig.y, tBig.z));
+
+    // tExit < 0 means the box is behind us
+    return tExit >= glm::max(tEnter, 0.0f);
+}
+
+__host__ __device__ float meshIntersectionTest(
+    const Geom& mesh,
+    const Triangle* triangles,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    bool bboxCulling)
+{
+    // Miss the box = miss every triangle inside, skip them all
+    if (bboxCulling && !aabbIntersectionTest(mesh.bboxMin, mesh.bboxMax, r))
+    {
+        return -1.0f;
+    }
+
+    float tClosest = FLT_MAX;
+    int hitIndex = -1;
+    float hitU = 0.0f;  // how much of v1 (barycentric)
+    float hitV = 0.0f;  // how much of v2 (barycentric)
+
+    for (int i = mesh.triStart; i < mesh.triStart + mesh.triCount; ++i)
+    {
+        const Triangle& tri = triangles[i];
+
+        // glm only hits front faces, so if that misses, swap two corners
+        // and try the back side. result = (bary x, bary y, distance)
+        glm::vec3 result;
+        float u, v;
+        if (glm::intersectRayTriangle(r.origin, r.direction, tri.v0, tri.v1, tri.v2, result))
+        {
+            u = result.x;
+            v = result.y;
+        }
+        else if (glm::intersectRayTriangle(r.origin, r.direction, tri.v0, tri.v2, tri.v1, result))
+        {
+            u = result.y;   // corners were swapped, swap back
+            v = result.x;
+        }
+        else
+        {
+            continue;
+        }
+
+        float t = result.z;
+        if (t > 0.0001f && t < tClosest)
+        {
+            tClosest = t;
+            hitIndex = i;
+            hitU = u;
+            hitV = v;
+        }
+    }
+
+    if (hitIndex == -1)
+    {
+        return -1.0f;
+    }
+
+    const Triangle& tri = triangles[hitIndex];
+    intersectionPoint = r.origin + tClosest * r.direction;
+
+    // Inside or outside? Ask the real face normal (winding order = which way is out)
+    glm::vec3 faceNormal = glm::normalize(glm::cross(tri.v1 - tri.v0, tri.v2 - tri.v0));
+    outside = glm::dot(r.direction, faceNormal) < 0.0f;
+    if (!outside)
+    {
+        faceNormal = -faceNormal;
+    }
+
+    // Blend the vertex normals for smooth shading, keep it on the face's side
+    normal = glm::normalize((1.0f - hitU - hitV) * tri.n0 + hitU * tri.n1 + hitV * tri.n2);
+    if (glm::dot(normal, faceNormal) < 0.0f)
+    {
+        normal = -normal;
+    }
+
+    return tClosest;
 }
