@@ -1,0 +1,155 @@
+{
+  "Materials": {
+    "ceramic": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.95,
+        0.95,
+        0.95
+      ],
+      "TEXTURE": "assets/glaze.bmp",
+      "BUMP": "assets/height.bmp",
+      "BUMP_STRENGTH": 0.025
+    },
+    "glass": {
+      "TYPE": "Glass",
+      "RGB": [
+        0.99,
+        0.995,
+        1
+      ],
+      "IOR": 1.5
+    },
+    "gold": {
+      "TYPE": "Specular",
+      "RGB": [
+        0.93,
+        0.68,
+        0.28
+      ],
+      "ROUGHNESS": 0
+    },
+    "floor": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.7,
+        0.73,
+        0.8
+      ],
+      "PROCEDURAL": "checker"
+    },
+    "wall": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.08,
+        0.115,
+        0.18
+      ]
+    },
+    "warm": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.82,
+        0.62
+      ],
+      "EMITTANCE": 16
+    },
+    "cool": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.5,
+        0.72,
+        1
+      ],
+      "EMITTANCE": 12
+    }
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0,
+        -0.2,
+        0
+      ],
+      "SCALE": [
+        18,
+        0.4,
+        18
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "glass",
+      "TRANS": [
+        0,
+        1.1,
+        0.5
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "warm",
+      "TRANS": [
+        -2,
+        5.3,
+        2
+      ],
+      "SCALE": [
+        4,
+        0.15,
+        2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "Camera": {
+    "RES": [
+      192,
+      128
+    ],
+    "FOVY": 22,
+    "ITERATIONS": 16,
+    "DEPTH": 12,
+    "FILE": "open-benchmark",
+    "EYE": [
+      4.8,
+      2.8,
+      7.2
+    ],
+    "LOOKAT": [
+      0,
+      1.2,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ],
+    "APERTURE": 0,
+    "FOCUS": 8.8
+  },
+  "BVH_MAX_DEPTH": 32
+}

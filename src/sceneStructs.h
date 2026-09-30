@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cuda_runtime.h>
-
 #include "glm/glm.hpp"
 
 #include <string>
@@ -12,58 +10,72 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    TRIANGLE
 };
 
 struct Ray
 {
-    glm::vec3 origin;
-    glm::vec3 direction;
+    glm::vec3 origin{0.0f};
+    glm::vec3 direction{0.0f, 0.0f, -1.0f};
 };
 
 struct Geom
 {
-    enum GeomType type;
-    int materialid;
-    glm::vec3 translation;
-    glm::vec3 rotation;
-    glm::vec3 scale;
-    glm::mat4 transform;
-    glm::mat4 inverseTransform;
-    glm::mat4 invTranspose;
+    enum GeomType type = SPHERE;
+    int materialid = -1;
+    glm::vec3 translation{0.0f};
+    glm::vec3 rotation{0.0f};
+    glm::vec3 scale{1.0f};
+    glm::mat4 transform{1.0f};
+    glm::mat4 inverseTransform{1.0f};
+    glm::mat4 invTranspose{1.0f};
+
+    glm::vec3 vertices[3]{};
+    glm::vec3 normals[3]{};
+    glm::vec2 uvs[3]{};
+    bool hasNormals = false;
+    bool hasUVs = false;
 };
 
 struct Material
 {
-    glm::vec3 color;
+    glm::vec3 color{1.0f};
     struct
     {
-        float exponent;
-        glm::vec3 color;
+        float exponent = 0.0f;
+        glm::vec3 color{1.0f};
     } specular;
-    float hasReflective;
-    float hasRefractive;
-    float indexOfRefraction;
-    float emittance;
+    float hasReflective = 0.0f;
+    float hasRefractive = 0.0f;
+    float indexOfRefraction = 1.0f;
+    float emittance = 0.0f;
+    int textureId = -1;
+    int bumpTextureId = -1;
+    int procedural = 0;
+    float bumpStrength = 1.0f;
+    float checkerScale = 8.0f;
 };
 
 struct Camera
 {
-    glm::ivec2 resolution;
-    glm::vec3 position;
-    glm::vec3 lookAt;
-    glm::vec3 view;
-    glm::vec3 up;
-    glm::vec3 right;
-    glm::vec2 fov;
-    glm::vec2 pixelLength;
+    glm::ivec2 resolution{0};
+    glm::vec3 position{0.0f};
+    glm::vec3 lookAt{0.0f, 0.0f, -1.0f};
+    glm::vec3 view{0.0f, 0.0f, -1.0f};
+    glm::vec3 up{0.0f, 1.0f, 0.0f};
+    glm::vec3 right{1.0f, 0.0f, 0.0f};
+    glm::vec2 fov{0.0f};
+    glm::vec2 pixelLength{0.0f};
+    float aperture = 0.0f;
+    float focusDistance = 1.0f;
 };
 
 struct RenderState
 {
-    Camera camera;
-    unsigned int iterations;
-    int traceDepth;
+    Camera camera{};
+    unsigned int iterations = 0;
+    int traceDepth = 0;
     std::vector<glm::vec3> image;
     std::string imageName;
 };

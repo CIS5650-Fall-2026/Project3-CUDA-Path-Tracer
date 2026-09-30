@@ -557,3 +557,9 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# Local credentials, compiled builds, and Python cache
+.local/
+build*/
+__pycache__/
+*.checkpoint

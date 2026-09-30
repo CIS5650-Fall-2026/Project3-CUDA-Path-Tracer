@@ -1,48 +1,48 @@
 #pragma once
 
-#include "sceneStructs.h"
+#include "geometry.h"
 
-#include <glm/glm.hpp>
+#include <cstdint>
 
-#include <thrust/random.h>
+namespace renderer {
 
-// CHECKITOUT
-/**
- * Computes a cosine-weighted random direction in a hemisphere.
- * Used for diffuse lighting.
- */
-__host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
-    glm::vec3 normal, 
-    thrust::default_random_engine& rng);
+struct SurfaceEvaluation
+{
+    glm::vec3 baseColor{1.0f};
+    glm::vec3 emission{0.0f};
+    glm::vec3 shadingNormal{0.0f, 1.0f, 0.0f};
+};
 
-/**
- * Scatter a ray with some probabilities according to the material properties.
- * For example, a diffuse surface scatters in a cosine-weighted hemisphere.
- * A perfect specular surface scatters in the reflected ray direction.
- * In order to apply multiple effects to one surface, probabilistically choose
- * between them.
- *
- * The visual effect you want is to straight-up add the diffuse and specular
- * components. You can do this in a few ways. This logic also applies to
- * combining other types of materias (such as refractive).
- *
- * - Always take an even (50/50) split between a each effect (a diffuse bounce
- *   and a specular bounce), but divide the resulting color of either branch
- *   by its probability (0.5), to counteract the chance (0.5) of the branch
- *   being taken.
- *   - This way is inefficient, but serves as a good starting point - it
- *     converges slowly, especially for pure-diffuse or pure-specular.
- * - Pick the split based on the intensity of each material color, and divide
- *   branch result by that branch's probability (whatever probability you use).
- *
- * This method applies its changes to the Ray parameter `ray` in place.
- * It also modifies the color `color` of the ray in place.
- *
- * You may need to change the parameter list for your purposes!
- */
-__host__ __device__ void scatterRay(
-    PathSegment& pathSegment,
-    glm::vec3 intersect,
-    glm::vec3 normal,
-    const Material& m,
-    thrust::default_random_engine& rng);
+// Counter-based random samples. Every value is a pure function of the run
+// seed, original pixel, global sample number, bounce, and named dimension.
+__host__ __device__ std::uint32_t counterRandomWord(std::uint64_t seed,
+    int pixel, std::uint64_t sample, int bounce, int dimension);
+__host__ __device__ float randomFloat(std::uint64_t seed, int pixel,
+    std::uint64_t sample, int bounce, int dimension);
+
+__host__ __device__ glm::vec3 safeNormalize(const glm::vec3& value,
+    const glm::vec3& fallback);
+__host__ __device__ glm::vec3 orientedGeometricNormal(const Hit& hit);
+__host__ __device__ glm::vec3 offsetRayOrigin(const glm::vec3& position,
+    const glm::vec3& outwardNormal, const glm::vec3& direction);
+__host__ __device__ glm::vec3 cosineHemisphere(const glm::vec3& normal,
+    float u0, float u1);
+__host__ __device__ float cosineHemispherePdf(const glm::vec3& normal,
+    const glm::vec3& direction);
+__host__ __device__ float dielectricFresnel(float cosIncident,
+    float etaIncident, float etaTransmitted, bool* totalInternalReflection);
+__host__ __device__ bool refractDirection(const glm::vec3& incident,
+    const glm::vec3& normalAgainstIncident, float etaIncident,
+    float etaTransmitted, glm::vec3* transmitted);
+__host__ __device__ float powerHeuristic(float firstPdf, float secondPdf);
+
+// Scene stores normalized source texels. Color lookup decodes each fetched
+// texel from sRGB before interpolation; height lookup retains the raw samples.
+__device__ glm::vec3 sampleTexture(const SceneView& scene, int textureId,
+    const glm::vec2& uv, bool decodeSrgb);
+__device__ float sampleHeight(const SceneView& scene, int textureId,
+    const glm::vec2& uv);
+__device__ SurfaceEvaluation evaluateSurface(const SceneView& scene,
+    const Material& material, const Hit& hit);
+
+} // namespace renderer

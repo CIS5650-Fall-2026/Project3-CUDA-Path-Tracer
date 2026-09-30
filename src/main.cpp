@@ -17,14 +17,21 @@
 #include <cuda_runtime.h>
 #include <cuda_gl_interop.h>
 
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
 #include <cstdlib>
 #include <cstring>
+#include <filesystem>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 #include <string>
+#include <vector>
 
 static std::string startTimeString;
+static std::uint64_t saveSequence = 0;
 
 // For camera controls
 static bool leftMousePressed = false;
@@ -32,14 +39,14 @@ static bool rightMousePressed = false;
 static bool middleMousePressed = false;
 static double lastX;
 static double lastY;
+static bool cursorPositionValid = false;
 
-static bool camchanged = true;
-static float dtheta = 0, dphi = 0;
-static glm::vec3 cammove;
+static bool camchanged = false;
 
 float zoom, theta, phi;
+float originalZoom, originalTheta, originalPhi;
 glm::vec3 cameraPosition;
-glm::vec3 ogLookAt; // for recentering the camera
+Camera originalCamera;
 
 Scene* scene;
 GuiDataContainer* guiData;
@@ -48,6 +55,7 @@ int iteration;
 
 int width;
 int height;
+bool pathTracerInitialized = false;
 
 GLuint positionLocation = 0;
 GLuint texcoordsLocation = 1;
@@ -72,6 +80,55 @@ std::string currentTimeString()
     char buf[sizeof "0000-00-00_00-00-00z"];
     strftime(buf, sizeof buf, "%Y-%m-%d_%H-%M-%Sz", gmtime(&now));
     return std::string(buf);
+}
+
+glm::vec3 normalizedOr(const glm::vec3& value, const glm::vec3& fallback)
+{
+    const float squaredLength = glm::dot(value, value);
+    if (!(squaredLength > 1.0e-12f) || !std::isfinite(squaredLength))
+    {
+        return fallback;
+    }
+    const glm::vec3 result = value / std::sqrt(squaredLength);
+    return std::isfinite(result.x) && std::isfinite(result.y)
+            && std::isfinite(result.z) ? result : fallback;
+}
+
+void updateOrbitCamera(Camera& camera)
+{
+    constexpr float poleEpsilon = 1.0e-4f;
+    zoom = std::max(zoom, 0.1f);
+    theta = std::clamp(theta, poleEpsilon,
+        static_cast<float>(PI) - poleEpsilon);
+
+    const glm::vec3 offset(
+        zoom * std::sin(phi) * std::sin(theta),
+        zoom * std::cos(theta),
+        zoom * std::cos(phi) * std::sin(theta));
+    camera.position = camera.lookAt + offset;
+    camera.view = normalizedOr(camera.lookAt - camera.position,
+        normalizedOr(originalCamera.view, glm::vec3(0.0f, 0.0f, -1.0f)));
+
+    const glm::vec3 referenceUp = normalizedOr(originalCamera.up,
+        glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::vec3 rightCandidate = glm::cross(camera.view, referenceUp);
+    if (glm::dot(rightCandidate, rightCandidate) <= 1.0e-12f)
+    {
+        rightCandidate = camera.right
+            - camera.view * glm::dot(camera.right, camera.view);
+    }
+    if (glm::dot(rightCandidate, rightCandidate) <= 1.0e-12f)
+    {
+        const glm::vec3 helper = std::fabs(camera.view.y) < 0.999f
+            ? glm::vec3(0.0f, 1.0f, 0.0f)
+            : glm::vec3(0.0f, 0.0f, 1.0f);
+        rightCandidate = glm::cross(camera.view, helper);
+    }
+    camera.right = normalizedOr(rightCandidate,
+        glm::vec3(1.0f, 0.0f, 0.0f));
+    camera.up = normalizedOr(glm::cross(camera.right, camera.view),
+        referenceUp);
+    cameraPosition = camera.position;
 }
 
 //-------------------------------
@@ -362,22 +419,26 @@ int main(int argc, char** argv)
     Camera& cam = renderState->camera;
     width = cam.resolution.x;
     height = cam.resolution.y;
-
-    glm::vec3 view = cam.view;
-    glm::vec3 up = cam.up;
-    glm::vec3 right = glm::cross(view, up);
-    up = glm::cross(right, view);
-
+    originalCamera = cam;
     cameraPosition = cam.position;
 
-    // compute phi (horizontal) and theta (vertical) relative 3D axis
-    // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
-    ogLookAt = cam.lookAt;
-    zoom = glm::length(cam.position - ogLookAt);
+    const glm::vec3 offset = cam.position - cam.lookAt;
+    zoom = glm::length(offset);
+    if (!(zoom > 1.0e-6f) || !std::isfinite(zoom))
+    {
+        zoom = cam.focusDistance > 1.0e-6f && std::isfinite(cam.focusDistance)
+            ? cam.focusDistance : 1.0f;
+    }
+    phi = std::atan2(offset.x, offset.z);
+    theta = std::acos(std::clamp(offset.y / zoom, -1.0f, 1.0f));
+    if (!std::isfinite(phi) || !std::isfinite(theta))
+    {
+        phi = 0.0f;
+        theta = 0.5f * static_cast<float>(PI);
+    }
+    originalZoom = zoom;
+    originalPhi = phi;
+    originalTheta = theta;
 
     // Initialize CUDA and GL components
     init();
@@ -389,12 +450,39 @@ int main(int argc, char** argv)
     // GLFW main loop
     mainLoop();
 
+    if (pathTracerInitialized)
+    {
+        pathtraceFree();
+        pathTracerInitialized = false;
+    }
+
     return 0;
 }
 
 void saveImage()
 {
-    float samples = iteration;
+    if (!pathTracerInitialized)
+    {
+        std::cerr << "Renderer is not initialized; no image was saved." << std::endl;
+        return;
+    }
+    const std::uint64_t completedSamples = pathtraceSampleCount();
+    if (completedSamples == 0)
+    {
+        std::cerr << "No completed samples to save." << std::endl;
+        return;
+    }
+
+    std::vector<glm::vec3> accumulation;
+    pathtraceDownloadAccumulation(accumulation);
+    const std::size_t expectedPixels = static_cast<std::size_t>(width)
+        * static_cast<std::size_t>(height);
+    if (accumulation.size() != expectedPixels)
+    {
+        throw std::runtime_error("renderer returned an unexpected accumulation size");
+    }
+
+    const float samples = static_cast<float>(completedSamples);
     // output image file
     Image img(width, height);
 
@@ -403,19 +491,28 @@ void saveImage()
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
+            const glm::vec3 pix = accumulation[static_cast<std::size_t>(index)];
             img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
         }
     }
 
-    std::string filename = renderState->imageName;
-    std::ostringstream ss;
-    ss << filename << "." << startTimeString << "." << samples << "samp";
-    filename = ss.str();
-
-    // CHECKITOUT
+    std::string filename;
+    std::error_code error;
+    do
+    {
+        std::ostringstream name;
+        name << renderState->imageName << "." << startTimeString << "."
+             << completedSamples << "samp.save" << saveSequence++;
+        filename = name.str();
+        error.clear();
+    }
+    while (std::filesystem::exists(filename + ".png", error) && !error);
+    if (error)
+    {
+        throw std::runtime_error("could not choose a unique preview filename: "
+            + error.message());
+    }
     img.savePNG(filename);
-    //img.saveHDR(filename);  // Save a Radiance HDR file
 }
 
 void runCuda()
@@ -424,20 +521,7 @@ void runCuda()
     {
         iteration = 0;
         Camera& cam = renderState->camera;
-        cameraPosition.x = zoom * sin(phi) * sin(theta);
-        cameraPosition.y = zoom * cos(theta);
-        cameraPosition.z = zoom * cos(phi) * sin(theta);
-
-        cam.view = -glm::normalize(cameraPosition);
-        glm::vec3 v = cam.view;
-        glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
-        cam.right = r;
-
-        cam.position = cameraPosition;
-        cameraPosition += cam.lookAt;
-        cam.position = cameraPosition;
+        updateOrbitCamera(cam);
         camchanged = false;
     }
 
@@ -447,7 +531,9 @@ void runCuda()
     if (iteration == 0)
     {
         pathtraceFree();
+        pathTracerInitialized = false;
         pathtraceInit(scene);
+        pathTracerInitialized = true;
     }
 
     if (iteration < renderState->iterations)
@@ -467,6 +553,7 @@ void runCuda()
     {
         saveImage();
         pathtraceFree();
+        pathTracerInitialized = false;
         cudaDeviceReset();
         exit(EXIT_SUCCESS);
     }
@@ -490,10 +577,14 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
                 saveImage();
                 break;
             case GLFW_KEY_SPACE:
-                camchanged = true;
                 renderState = &scene->state;
-                Camera& cam = renderState->camera;
-                cam.lookAt = ogLookAt;
+                renderState->camera = originalCamera;
+                zoom = originalZoom;
+                phi = originalPhi;
+                theta = originalTheta;
+                cameraPosition = originalCamera.position;
+                camchanged = false;
+                iteration = 0;
                 break;
         }
     }
@@ -501,53 +592,109 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-    if (MouseOverImGuiWindow())
+    (void)mods;
+    bool* pressed = nullptr;
+    if (button == GLFW_MOUSE_BUTTON_LEFT)
+    {
+        pressed = &leftMousePressed;
+    }
+    else if (button == GLFW_MOUSE_BUTTON_RIGHT)
+    {
+        pressed = &rightMousePressed;
+    }
+    else if (button == GLFW_MOUSE_BUTTON_MIDDLE)
+    {
+        pressed = &middleMousePressed;
+    }
+    if (pressed == nullptr)
     {
         return;
     }
 
-    leftMousePressed = (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS);
-    rightMousePressed = (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS);
-    middleMousePressed = (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS);
+    if (action == GLFW_RELEASE)
+    {
+        *pressed = false;
+        if (!leftMousePressed && !rightMousePressed && !middleMousePressed)
+        {
+            cursorPositionValid = false;
+        }
+        return;
+    }
+    if (action == GLFW_PRESS && !MouseOverImGuiWindow())
+    {
+        *pressed = true;
+        glfwGetCursorPos(window, &lastX, &lastY);
+        cursorPositionValid = true;
+    }
 }
 
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    if (xpos == lastX || ypos == lastY)
+    (void)window;
+    if (!cursorPositionValid)
     {
-        return; // otherwise, clicking back into window causes re-start
+        lastX = xpos;
+        lastY = ypos;
+        return;
     }
+    if (xpos == lastX && ypos == lastY)
+    {
+        return;
+    }
+
+    const double deltaX = xpos - lastX;
+    const double deltaY = ypos - lastY;
+    lastX = xpos;
+    lastY = ypos;
 
     if (leftMousePressed)
     {
-        // compute new camera parameters
-        phi -= (xpos - lastX) / width;
-        theta -= (ypos - lastY) / height;
-        theta = std::fmax(0.001f, std::fmin(theta, PI));
+        phi -= static_cast<float>(deltaX) / std::max(width, 1);
+        theta -= static_cast<float>(deltaY) / std::max(height, 1);
+        theta = std::clamp(theta, 1.0e-4f,
+            static_cast<float>(PI) - 1.0e-4f);
         camchanged = true;
     }
     else if (rightMousePressed)
     {
-        zoom += (ypos - lastY) / height;
-        zoom = std::fmax(0.1f, zoom);
+        const float scale = std::max(zoom, 1.0f);
+        zoom += static_cast<float>(deltaY) * scale / std::max(height, 1);
+        zoom = std::max(0.1f, zoom);
         camchanged = true;
     }
     else if (middleMousePressed)
     {
         renderState = &scene->state;
         Camera& cam = renderState->camera;
-        glm::vec3 forward = cam.view;
-        forward.y = 0.0f;
-        forward = glm::normalize(forward);
-        glm::vec3 right = cam.right;
-        right.y = 0.0f;
-        right = glm::normalize(right);
-
-        cam.lookAt -= (float)(xpos - lastX) * right * 0.01f;
-        cam.lookAt += (float)(ypos - lastY) * forward * 0.01f;
-        camchanged = true;
+        if (camchanged)
+        {
+            updateOrbitCamera(cam);
+            camchanged = false;
+        }
+        const glm::vec3 view = normalizedOr(cam.view,
+            glm::vec3(0.0f, 0.0f, -1.0f));
+        const glm::vec3 right = normalizedOr(cam.right
+            - view * glm::dot(cam.right, view),
+            normalizedOr(glm::cross(view, cam.up),
+                glm::vec3(1.0f, 0.0f, 0.0f)));
+        const glm::vec3 up = normalizedOr(glm::cross(right, view),
+            glm::vec3(0.0f, 1.0f, 0.0f));
+        float worldPerPixelX = zoom * std::fabs(cam.pixelLength.x);
+        float worldPerPixelY = zoom * std::fabs(cam.pixelLength.y);
+        if (!(worldPerPixelX > 0.0f) || !std::isfinite(worldPerPixelX))
+        {
+            worldPerPixelX = zoom / std::max(width, 1);
+        }
+        if (!(worldPerPixelY > 0.0f) || !std::isfinite(worldPerPixelY))
+        {
+            worldPerPixelY = zoom / std::max(height, 1);
+        }
+        const glm::vec3 translation =
+            -static_cast<float>(deltaX) * worldPerPixelX * right
+            + static_cast<float>(deltaY) * worldPerPixelY * up;
+        cam.position += translation;
+        cam.lookAt += translation;
+        cameraPosition = cam.position;
+        iteration = 0;
     }
-
-    lastX = xpos;
-    lastY = ypos;
 }

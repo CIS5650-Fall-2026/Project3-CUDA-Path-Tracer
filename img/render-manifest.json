@@ -1,0 +1,98 @@
+[
+  {
+    "image": "workbench.png",
+    "source": "results/gallery-20260930T234411Z/workbench.png",
+    "sha256": "f5287b4131b6ef868e339b2bfcfe0b2b5b294d4b84492b873fd15ec83dab5f6b",
+    "metadata": "results/gallery-20260930T234411Z/workbench.json"
+  },
+  {
+    "image": "comparison-bump.png",
+    "source": "results/gallery-20260930T234411Z/comparison-bump.png",
+    "sha256": "f0c9812d6e9a1a8952e3304ce737d502ea9f01094fd8b7ff55a49f5bf0b91ec2",
+    "metadata": "results/gallery-20260930T234411Z/comparison-bump.json"
+  },
+  {
+    "image": "comparison-no-bump.png",
+    "source": "results/gallery-20260930T234411Z/comparison-no-bump.png",
+    "sha256": "13cfc99cc16ef8b148048aae70953eae00d5d1fb9272ab8c162886243fb5aad8",
+    "metadata": "results/gallery-20260930T234411Z/comparison-no-bump.json"
+  },
+  {
+    "image": "comparison-procedural.png",
+    "source": "results/gallery-20260930T234411Z/comparison-procedural.png",
+    "sha256": "d8728d19429883d8005a15227ada044da45ce6e42de0f45a47556dbf35b2fe6d",
+    "metadata": "results/gallery-20260930T234411Z/comparison-procedural.json"
+  },
+  {
+    "image": "comparison-glass.png",
+    "source": "results/gallery-20260930T234411Z/comparison-glass.png",
+    "sha256": "f0c9812d6e9a1a8952e3304ce737d502ea9f01094fd8b7ff55a49f5bf0b91ec2",
+    "metadata": "results/gallery-20260930T234411Z/comparison-glass.json"
+  },
+  {
+    "image": "comparison-mirror.png",
+    "source": "results/gallery-20260930T234411Z/comparison-mirror.png",
+    "sha256": "ae656de67a4a0fa83d30c78fed88253026a8d0cb45fdf1cb1e0602dc6e6cd3c3",
+    "metadata": "results/gallery-20260930T234411Z/comparison-mirror.json"
+  },
+  {
+    "image": "comparison-dof.png",
+    "source": "results/gallery-20260930T234411Z/comparison-dof.png",
+    "sha256": "e9bce0925a54855d88f66500f309eddc501e282fb0ddd034f377cac02a086432",
+    "metadata": "results/gallery-20260930T234411Z/comparison-dof.json"
+  },
+  {
+    "image": "comparison-nee.png",
+    "source": "results/gallery-20260930T234411Z/comparison-nee.png",
+    "sha256": "eb27116c0bca19ee024700bb8119ba56e0368e7d0d9665d86358a3f684bdaa4c",
+    "metadata": "results/gallery-20260930T234411Z/comparison-nee.json"
+  },
+  {
+    "image": "comparison-no-nee.png",
+    "source": "results/gallery-20260930T234411Z/comparison-no-nee.png",
+    "sha256": "5a6493f4027c3d8b41e0ca7cb65ec98443166318681f9ee863a1ae7fb4c49a30",
+    "metadata": "results/gallery-20260930T234411Z/comparison-no-nee.json"
+  },
+  {
+    "image": "comparison-aa.png",
+    "source": "results/gallery-20260930T234411Z/comparison-aa.png",
+    "sha256": "f0c9812d6e9a1a8952e3304ce737d502ea9f01094fd8b7ff55a49f5bf0b91ec2",
+    "metadata": "results/gallery-20260930T234411Z/comparison-aa.json"
+  },
+  {
+    "image": "comparison-no-aa.png",
+    "source": "results/gallery-20260930T234411Z/comparison-no-aa.png",
+    "sha256": "039eb27b0722f340fe0e4ef83b82abf7d1b619bdbbd1ab4bd61fd3d9ccb2a6e1",
+    "metadata": "results/gallery-20260930T234411Z/comparison-no-aa.json"
+  },
+  {
+    "image": "restart-partial.png",
+    "source": "results/gallery-20260930T234411Z/restart-partial.png",
+    "sha256": "3892ac175b18fec571d8699c922edceb062e5726e39bc5b4fb64785b34e88287",
+    "metadata": "results/gallery-20260930T234411Z/restart-partial.json"
+  },
+  {
+    "image": "restart-resumed.png",
+    "source": "results/gallery-20260930T234411Z/restart-resumed.png",
+    "sha256": "f0c9812d6e9a1a8952e3304ce737d502ea9f01094fd8b7ff55a49f5bf0b91ec2",
+    "metadata": "results/gallery-20260930T234411Z/restart-resumed.json"
+  },
+  {
+    "image": "debug-normals.png",
+    "source": "results/gallery-20260930T234411Z/debug-normals.png",
+    "sha256": "d6df54b6924e78379a4cb45e07c407ea5def2c7deb111c8e064a9da0458796a6",
+    "metadata": "results/gallery-20260930T234411Z/debug-normals.json"
+  },
+  {
+    "image": "debug-uv.png",
+    "source": "results/gallery-20260930T234411Z/debug-uv.png",
+    "sha256": "ecb2cc22927cab6a7b6ec6fea10c087b2fa50fb7515cc3b8bfcc237d8e46b40a",
+    "metadata": "results/gallery-20260930T234411Z/debug-uv.json"
+  },
+  {
+    "image": "debug-depth.png",
+    "source": "results/gallery-20260930T234411Z/debug-depth.png",
+    "sha256": "71d80b03e36f981c328c46fdd35469ca6da254199e9526494f6237a6139297e5",
+    "metadata": "results/gallery-20260930T234411Z/debug-depth.json"
+  }
+]

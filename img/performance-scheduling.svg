@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="538" viewBox="0 0 1000 538">
+<rect width="1000" height="538" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Compaction and material sorting</text>
+<text x="28" y="67" font-size="14">Three measured repeats; bars show median GPU ms per sample, whiskers min–max. Lower is faster.</text>
+<path d="M240.00 92 V493" stroke="#dce2ec"/>
+<text x="240.00" y="514" text-anchor="middle" font-size="13">0.00</text>
+<path d="M374.00 92 V493" stroke="#dce2ec"/>
+<text x="374.00" y="514" text-anchor="middle" font-size="13">2.91</text>
+<path d="M508.00 92 V493" stroke="#dce2ec"/>
+<text x="508.00" y="514" text-anchor="middle" font-size="13">5.81</text>
+<path d="M642.00 92 V493" stroke="#dce2ec"/>
+<text x="642.00" y="514" text-anchor="middle" font-size="13">8.72</text>
+<path d="M776.00 92 V493" stroke="#dce2ec"/>
+<text x="776.00" y="514" text-anchor="middle" font-size="13">11.62</text>
+<path d="M910.00 92 V493" stroke="#dce2ec"/>
+<text x="910.00" y="514" text-anchor="middle" font-size="13">14.53</text>
+<text x="226" y="121" text-anchor="end" font-size="14">compact-open / off</text>
+<rect x="240" y="100" width="69.75" height="29" rx="3" fill="#2166ac"/>
+<path d="M309.59 114 H309.75 M309.59 108 V120 M309.75 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="317.75" y="121" font-size="13">1.512</text>
+<text x="226" y="167" text-anchor="end" font-size="14">compact-open / on</text>
+<rect x="240" y="146" width="67.62" height="29" rx="3" fill="#ca6e22"/>
+<path d="M306.38 160 H310.45 M306.38 154 V166 M310.45 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="315.62" y="167" font-size="13">1.466</text>
+<text x="226" y="213" text-anchor="end" font-size="14">compact-closed / off</text>
+<rect x="240" y="192" width="112.74" height="29" rx="3" fill="#2166ac"/>
+<path d="M349.71 206 H352.79 M349.71 200 V212 M352.79 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="360.74" y="213" font-size="13">2.445</text>
+<text x="226" y="259" text-anchor="end" font-size="14">compact-closed / on</text>
+<rect x="240" y="238" width="118.20" height="29" rx="3" fill="#ca6e22"/>
+<path d="M357.66 252 H358.23 M357.66 246 V258 M358.23 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="366.20" y="259" font-size="13">2.563</text>
+<text x="226" y="305" text-anchor="end" font-size="14">sort-uniform / off</text>
+<rect x="240" y="284" width="519.49" height="29" rx="3" fill="#2166ac"/>
+<path d="M756.79 298 H760.15 M756.79 292 V304 M760.15 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="767.49" y="305" font-size="13">11.264</text>
+<text x="226" y="351" text-anchor="end" font-size="14">sort-uniform / on</text>
+<rect x="240" y="330" width="581.42" height="29" rx="3" fill="#ca6e22"/>
+<path d="M817.61 344 H821.69 M817.61 338 V350 M821.69 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="829.42" y="351" font-size="13">12.607</text>
+<text x="226" y="397" text-anchor="end" font-size="14">sort-mixed / off</text>
+<rect x="240" y="376" width="504.14" height="29" rx="3" fill="#2166ac"/>
+<path d="M743.52 390 H744.74 M743.52 384 V396 M744.74 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="752.14" y="397" font-size="13">10.931</text>
+<text x="226" y="443" text-anchor="end" font-size="14">sort-mixed / on</text>
+<rect x="240" y="422" width="598.05" height="29" rx="3" fill="#ca6e22"/>
+<path d="M836.96 436 H838.21 M836.96 430 V442 M838.21 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="846.05" y="443" font-size="13">12.968</text>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="262" viewBox="0 0 1000 262">
+<rect width="1000" height="262" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Checkpointing during rendering</text>
+<text x="28" y="67" font-size="14">Three measured repeats; bars show median render-loop ms per sample, whiskers min–max. Lower is faster.</text>
+<path d="M240.00 92 V217" stroke="#dce2ec"/>
+<text x="240.00" y="238" text-anchor="middle" font-size="13">0.00</text>
+<path d="M374.00 92 V217" stroke="#dce2ec"/>
+<text x="374.00" y="238" text-anchor="middle" font-size="13">2.51</text>
+<path d="M508.00 92 V217" stroke="#dce2ec"/>
+<text x="508.00" y="238" text-anchor="middle" font-size="13">5.02</text>
+<path d="M642.00 92 V217" stroke="#dce2ec"/>
+<text x="642.00" y="238" text-anchor="middle" font-size="13">7.52</text>
+<path d="M776.00 92 V217" stroke="#dce2ec"/>
+<text x="776.00" y="238" text-anchor="middle" font-size="13">10.03</text>
+<path d="M910.00 92 V217" stroke="#dce2ec"/>
+<text x="910.00" y="238" text-anchor="middle" font-size="13">12.54</text>
+<text x="226" y="121" text-anchor="end" font-size="14">checkpoint / off</text>
+<rect x="240" y="100" width="585.63" height="29" rx="3" fill="#2166ac"/>
+<path d="M825.49 114 H825.70 M825.49 108 V120 M825.70 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="833.63" y="121" font-size="13">10.961</text>
+<text x="226" y="167" text-anchor="end" font-size="14">checkpoint / on</text>
+<rect x="240" y="146" width="597.64" height="29" rx="3" fill="#ca6e22"/>
+<path d="M834.72 160 H838.21 M834.72 154 V166 M838.21 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="845.64" y="167" font-size="13">11.186</text>
+</g>
+</svg>

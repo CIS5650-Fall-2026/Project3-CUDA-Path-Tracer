@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="630" viewBox="0 0 1000 630">
+<rect width="1000" height="630" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Surviving paths in the closed scene</text>
+<text x="28" y="67" font-size="14">Mean live queue length after each bounce across the measured image samples.</text>
+<path d="M240.00 92 V585" stroke="#dce2ec"/>
+<text x="240.00" y="606" text-anchor="middle" font-size="13">0.00</text>
+<path d="M374.00 92 V585" stroke="#dce2ec"/>
+<text x="374.00" y="606" text-anchor="middle" font-size="13">3797.68</text>
+<path d="M508.00 92 V585" stroke="#dce2ec"/>
+<text x="508.00" y="606" text-anchor="middle" font-size="13">7595.36</text>
+<path d="M642.00 92 V585" stroke="#dce2ec"/>
+<text x="642.00" y="606" text-anchor="middle" font-size="13">11393.05</text>
+<path d="M776.00 92 V585" stroke="#dce2ec"/>
+<text x="776.00" y="606" text-anchor="middle" font-size="13">15190.73</text>
+<path d="M910.00 92 V585" stroke="#dce2ec"/>
+<text x="910.00" y="606" text-anchor="middle" font-size="13">18988.41</text>
+<text x="226" y="121" text-anchor="end" font-size="14">Bounce 0</text>
+<rect x="240" y="100" width="598.21" height="29" rx="3" fill="#2166ac"/>
+<text x="846.21" y="121" font-size="13">16953.938</text>
+<text x="226" y="167" text-anchor="end" font-size="14">Bounce 1</text>
+<rect x="240" y="146" width="587.89" height="29" rx="3" fill="#ca6e22"/>
+<text x="835.89" y="167" font-size="13">16661.438</text>
+<text x="226" y="213" text-anchor="end" font-size="14">Bounce 2</text>
+<rect x="240" y="192" width="581.43" height="29" rx="3" fill="#2166ac"/>
+<text x="829.43" y="213" font-size="13">16478.250</text>
+<text x="226" y="259" text-anchor="end" font-size="14">Bounce 3</text>
+<rect x="240" y="238" width="574.62" height="29" rx="3" fill="#ca6e22"/>
+<text x="822.62" y="259" font-size="13">16285.250</text>
+<text x="226" y="305" text-anchor="end" font-size="14">Bounce 4</text>
+<rect x="240" y="284" width="568.44" height="29" rx="3" fill="#2166ac"/>
+<text x="816.44" y="305" font-size="13">16110.125</text>
+<text x="226" y="351" text-anchor="end" font-size="14">Bounce 5</text>
+<rect x="240" y="330" width="562.08" height="29" rx="3" fill="#ca6e22"/>
+<text x="810.08" y="351" font-size="13">15929.750</text>
+<text x="226" y="397" text-anchor="end" font-size="14">Bounce 6</text>
+<rect x="240" y="376" width="555.87" height="29" rx="3" fill="#2166ac"/>
+<text x="803.87" y="397" font-size="13">15754.000</text>
+<text x="226" y="443" text-anchor="end" font-size="14">Bounce 7</text>
+<rect x="240" y="422" width="549.66" height="29" rx="3" fill="#ca6e22"/>
+<text x="797.66" y="443" font-size="13">15577.875</text>
+<text x="226" y="489" text-anchor="end" font-size="14">Bounce 8</text>
+<rect x="240" y="468" width="543.62" height="29" rx="3" fill="#2166ac"/>
+<text x="791.62" y="489" font-size="13">15406.625</text>
+<text x="226" y="535" text-anchor="end" font-size="14">Bounce 9</text>
+<rect x="240" y="514" width="0.00" height="29" rx="3" fill="#ca6e22"/>
+<text x="248.00" y="535" font-size="13">0.000</text>
+</g>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="446" viewBox="0 0 1000 446">
+<rect width="1000" height="446" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">BVH traversal across mesh complexity</text>
+<text x="28" y="67" font-size="14">Three measured repeats; bars show median GPU ms per sample, whiskers min–max. Lower is faster.</text>
+<path d="M240.00 92 V401" stroke="#dce2ec"/>
+<text x="240.00" y="422" text-anchor="middle" font-size="13">0.00</text>
+<path d="M374.00 92 V401" stroke="#dce2ec"/>
+<text x="374.00" y="422" text-anchor="middle" font-size="13">34.45</text>
+<path d="M508.00 92 V401" stroke="#dce2ec"/>
+<text x="508.00" y="422" text-anchor="middle" font-size="13">68.90</text>
+<path d="M642.00 92 V401" stroke="#dce2ec"/>
+<text x="642.00" y="422" text-anchor="middle" font-size="13">103.35</text>
+<path d="M776.00 92 V401" stroke="#dce2ec"/>
+<text x="776.00" y="422" text-anchor="middle" font-size="13">137.80</text>
+<path d="M910.00 92 V401" stroke="#dce2ec"/>
+<text x="910.00" y="422" text-anchor="middle" font-size="13">172.25</text>
+<text x="226" y="121" text-anchor="end" font-size="14">bvh-low / off</text>
+<rect x="240" y="100" width="47.96" height="29" rx="3" fill="#2166ac"/>
+<path d="M287.56 114 H288.02 M287.56 108 V120 M288.02 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="295.96" y="121" font-size="13">12.331</text>
+<text x="226" y="167" text-anchor="end" font-size="14">bvh-low / on</text>
+<rect x="240" y="146" width="21.55" height="29" rx="3" fill="#ca6e22"/>
+<path d="M261.53 160 H261.56 M261.53 154 V166 M261.56 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="269.55" y="167" font-size="13">5.539</text>
+<text x="226" y="213" text-anchor="end" font-size="14">bvh-medium / off</text>
+<rect x="240" y="192" width="159.73" height="29" rx="3" fill="#2166ac"/>
+<path d="M399.63 206 H399.80 M399.63 200 V212 M399.80 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="407.73" y="213" font-size="13">41.067</text>
+<text x="226" y="259" text-anchor="end" font-size="14">bvh-medium / on</text>
+<rect x="240" y="238" width="25.54" height="29" rx="3" fill="#ca6e22"/>
+<path d="M265.52 252 H265.60 M265.52 246 V258 M265.60 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="273.54" y="259" font-size="13">6.566</text>
+<text x="226" y="305" text-anchor="end" font-size="14">bvh-high / off</text>
+<rect x="240" y="284" width="597.71" height="29" rx="3" fill="#2166ac"/>
+<path d="M836.98 298 H838.21 M836.98 292 V304 M838.21 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="845.71" y="305" font-size="13">153.670</text>
+<text x="226" y="351" text-anchor="end" font-size="14">bvh-high / on</text>
+<rect x="240" y="330" width="30.01" height="29" rx="3" fill="#ca6e22"/>
+<path d="M269.58 344 H270.07 M269.58 338 V350 M270.07 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="278.01" y="351" font-size="13">7.716</text>
+</g>
+</svg>

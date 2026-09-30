@@ -1,0 +1,496 @@
+[
+  {
+    "experiment": "compact-open",
+    "variant": "off",
+    "label": "compact-open / off",
+    "gpu_ms_per_sample": 1.512372,
+    "gpu_min": 1.5090319875,
+    "gpu_max": 1.51246799375,
+    "loop_ms_per_sample": 1.5303154375,
+    "loop_min": 1.527151,
+    "loop_max": 1.5305891875,
+    "phases": {
+      "intersection_ms": 0.30038199989375003,
+      "sort_ms": 0.0194879999075,
+      "shade_ms": 0.51505599994,
+      "compaction_ms": 0.0,
+      "count_ms": 0.09137400118375
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "compact-open",
+    "variant": "on",
+    "label": "compact-open / on",
+    "gpu_ms_per_sample": 1.46632400625,
+    "gpu_min": 1.439268,
+    "gpu_max": 1.5276020125,
+    "loop_ms_per_sample": 1.4846331875,
+    "loop_min": 1.4574463125,
+    "loop_max": 1.5461101875,
+    "phases": {
+      "intersection_ms": 0.25610400063125,
+      "sort_ms": 0.01897999995375,
+      "shade_ms": 0.420788001255625,
+      "compaction_ms": 0.28427200263125,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "compact-closed",
+    "variant": "off",
+    "label": "compact-closed / off",
+    "gpu_ms_per_sample": 2.444544,
+    "gpu_min": 2.37886199375,
+    "gpu_max": 2.44574199375,
+    "loop_ms_per_sample": 2.46277625,
+    "loop_min": 2.3970198125,
+    "loop_max": 2.4645138125,
+    "phases": {
+      "intersection_ms": 0.6748979993,
+      "sort_ms": 0.0190419999125,
+      "shade_ms": 1.05881200628125,
+      "compaction_ms": 0.0,
+      "count_ms": 0.098944000046875
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "compact-closed",
+    "variant": "on",
+    "label": "compact-closed / on",
+    "gpu_ms_per_sample": 2.562926025,
+    "gpu_min": 2.55131800625,
+    "gpu_max": 2.563524025,
+    "loop_ms_per_sample": 2.5810851875,
+    "loop_min": 2.5695724375,
+    "loop_max": 2.5816489375,
+    "phases": {
+      "intersection_ms": 0.6404319928375,
+      "sort_ms": 0.01903999990375,
+      "shade_ms": 1.00010000093125,
+      "compaction_ms": 0.40442399171875,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "sort-uniform",
+    "variant": "off",
+    "label": "sort-uniform / off",
+    "gpu_ms_per_sample": 11.264161875,
+    "gpu_min": 11.205650125,
+    "gpu_max": 11.2784279375,
+    "loop_ms_per_sample": 11.2825046875,
+    "loop_min": 11.225644625,
+    "loop_max": 11.2967824375,
+    "phases": {
+      "intersection_ms": 6.2644479903125,
+      "sort_ms": 0.019503999945,
+      "shade_ms": 4.16952001055625,
+      "compaction_ms": 0.32892600102499997,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "sort-uniform",
+    "variant": "on",
+    "label": "sort-uniform / on",
+    "gpu_ms_per_sample": 12.6071161875,
+    "gpu_min": 12.5244239375,
+    "gpu_max": 12.61293,
+    "loop_ms_per_sample": 12.6254946875,
+    "loop_min": 12.542729,
+    "loop_max": 12.6312585,
+    "phases": {
+      "intersection_ms": 6.2566220164375,
+      "sort_ms": 1.06821799795,
+      "shade_ms": 4.45860000973125,
+      "compaction_ms": 0.32734600199375,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "sort-mixed",
+    "variant": "off",
+    "label": "sort-mixed / off",
+    "gpu_ms_per_sample": 10.931367875,
+    "gpu_min": 10.917878,
+    "gpu_max": 10.944290125,
+    "loop_ms_per_sample": 10.9494865625,
+    "loop_min": 10.9367706875,
+    "loop_max": 10.962484375,
+    "phases": {
+      "intersection_ms": 6.201602004125,
+      "sort_ms": 0.018717999930625,
+      "shade_ms": 3.9019840052562498,
+      "compaction_ms": 0.3199020004125,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "sort-mixed",
+    "variant": "on",
+    "label": "sort-mixed / on",
+    "gpu_ms_per_sample": 12.9676080625,
+    "gpu_min": 12.943958,
+    "gpu_max": 12.971214,
+    "loop_ms_per_sample": 12.9858833125,
+    "loop_min": 12.9635965625,
+    "loop_max": 12.9898803125,
+    "phases": {
+      "intersection_ms": 6.6077259908125,
+      "sort_ms": 0.82564998820625,
+      "shade_ms": 4.711348008825,
+      "compaction_ms": 0.322134001875,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bvh-low",
+    "variant": "off",
+    "label": "bvh-low / off",
+    "gpu_ms_per_sample": 12.3311119125,
+    "gpu_min": 12.227280025,
+    "gpu_max": 12.344496125,
+    "loop_ms_per_sample": 12.3501295,
+    "loop_min": 12.246658375,
+    "loop_max": 12.36337725,
+    "phases": {
+      "intersection_ms": 6.364364034875,
+      "sort_ms": 0.01956799996875,
+      "shade_ms": 5.054963977025,
+      "compaction_ms": 0.311548000775,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bvh-low",
+    "variant": "on",
+    "label": "bvh-low / on",
+    "gpu_ms_per_sample": 5.5394360375,
+    "gpu_min": 5.5357160625,
+    "gpu_max": 5.5438600125,
+    "loop_ms_per_sample": 5.558229625,
+    "loop_min": 5.554878375,
+    "loop_max": 5.564433625,
+    "phases": {
+      "intersection_ms": 2.724459998875,
+      "sort_ms": 0.01891199992125,
+      "shade_ms": 1.91685998171625,
+      "compaction_ms": 0.2992520005625,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bvh-medium",
+    "variant": "off",
+    "label": "bvh-medium / off",
+    "gpu_ms_per_sample": 41.0667205,
+    "gpu_min": 41.040659875,
+    "gpu_max": 41.084772125,
+    "loop_ms_per_sample": 41.085941375,
+    "loop_min": 41.06154975,
+    "loop_max": 41.103899375,
+    "phases": {
+      "intersection_ms": 23.04163998625,
+      "sort_ms": 0.0211200000425,
+      "shade_ms": 17.08696000047875,
+      "compaction_ms": 0.332171999175,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bvh-medium",
+    "variant": "on",
+    "label": "bvh-medium / on",
+    "gpu_ms_per_sample": 6.566263975,
+    "gpu_min": 6.5600839875,
+    "gpu_max": 6.582615975,
+    "loop_ms_per_sample": 6.585134,
+    "loop_min": 6.579055,
+    "loop_max": 6.6016905,
+    "phases": {
+      "intersection_ms": 3.40518801525,
+      "sort_ms": 0.019551999915,
+      "shade_ms": 2.2705440004625,
+      "compaction_ms": 0.301444000075,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bvh-high",
+    "variant": "off",
+    "label": "bvh-high / off",
+    "gpu_ms_per_sample": 153.669825,
+    "gpu_min": 153.48016125,
+    "gpu_max": 153.7983575,
+    "loop_ms_per_sample": 153.69019375,
+    "loop_min": 153.49999,
+    "loop_max": 153.81824625,
+    "phases": {
+      "intersection_ms": 88.51875149875,
+      "sort_ms": 0.02393600014625,
+      "shade_ms": 64.2174758538375,
+      "compaction_ms": 0.356679996575,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bvh-high",
+    "variant": "on",
+    "label": "bvh-high / on",
+    "gpu_ms_per_sample": 7.716251975,
+    "gpu_min": 7.6044360375,
+    "gpu_max": 7.7305799125,
+    "loop_ms_per_sample": 7.736406,
+    "loop_min": 7.62296475,
+    "loop_max": 7.75331375,
+    "phases": {
+      "intersection_ms": 4.16971600575,
+      "sort_ms": 0.0187519999125,
+      "shade_ms": 2.66481997856625,
+      "compaction_ms": 0.30303200065,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "texture",
+    "variant": "file",
+    "label": "texture / file",
+    "gpu_ms_per_sample": 10.9103300625,
+    "gpu_min": 10.902605875,
+    "gpu_max": 10.925294,
+    "loop_ms_per_sample": 10.9288196875,
+    "loop_min": 10.921387,
+    "loop_max": 10.9434613125,
+    "phases": {
+      "intersection_ms": 6.200704012,
+      "sort_ms": 0.019611999929375,
+      "shade_ms": 3.884083995275,
+      "compaction_ms": 0.32109799846875,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "texture",
+    "variant": "procedural",
+    "label": "texture / procedural",
+    "gpu_ms_per_sample": 10.864462,
+    "gpu_min": 10.8134079375,
+    "gpu_max": 10.8789699375,
+    "loop_ms_per_sample": 10.8825999375,
+    "loop_min": 10.8319363125,
+    "loop_max": 10.8983034375,
+    "phases": {
+      "intersection_ms": 6.2031200040625,
+      "sort_ms": 0.01879599992,
+      "shade_ms": 3.84130599814375,
+      "compaction_ms": 0.32511399933125,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bump",
+    "variant": "off",
+    "label": "bump / off",
+    "gpu_ms_per_sample": 10.9255940625,
+    "gpu_min": 10.9075900625,
+    "gpu_max": 10.9290420625,
+    "loop_ms_per_sample": 10.9448413125,
+    "loop_min": 10.925789625,
+    "loop_max": 10.947886375,
+    "phases": {
+      "intersection_ms": 6.2090939859375,
+      "sort_ms": 0.018787999965,
+      "shade_ms": 3.8874000026375,
+      "compaction_ms": 0.326281999375,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "bump",
+    "variant": "on",
+    "label": "bump / on",
+    "gpu_ms_per_sample": 10.889422,
+    "gpu_min": 10.881327875,
+    "gpu_max": 10.9577120625,
+    "loop_ms_per_sample": 10.9091949375,
+    "loop_min": 10.8995959375,
+    "loop_max": 10.976033875,
+    "phases": {
+      "intersection_ms": 6.2121520114375,
+      "sort_ms": 0.01948599991,
+      "shade_ms": 3.8400879945875,
+      "compaction_ms": 0.32944600000625,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "refraction",
+    "variant": "mirror",
+    "label": "refraction / mirror",
+    "gpu_ms_per_sample": 11.0764140625,
+    "gpu_min": 11.0038180625,
+    "gpu_max": 11.0809099375,
+    "loop_ms_per_sample": 11.09462025,
+    "loop_min": 11.0223105,
+    "loop_max": 11.0990140625,
+    "phases": {
+      "intersection_ms": 6.2995200121875,
+      "sort_ms": 0.019439999954375,
+      "shade_ms": 3.938466003675,
+      "compaction_ms": 0.32452199923125,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "refraction",
+    "variant": "glass",
+    "label": "refraction / glass",
+    "gpu_ms_per_sample": 10.9516860625,
+    "gpu_min": 10.949537875,
+    "gpu_max": 10.955088,
+    "loop_ms_per_sample": 10.970047125,
+    "loop_min": 10.9677006875,
+    "loop_max": 10.9744584375,
+    "phases": {
+      "intersection_ms": 6.211451986375,
+      "sort_ms": 0.020005999915625,
+      "shade_ms": 3.907948000975,
+      "compaction_ms": 0.3262600004125,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "dof",
+    "variant": "off",
+    "label": "dof / off",
+    "gpu_ms_per_sample": 10.947504125,
+    "gpu_min": 10.939696,
+    "gpu_max": 10.9553780625,
+    "loop_ms_per_sample": 10.9658081875,
+    "loop_min": 10.9582310625,
+    "loop_max": 10.9738351875,
+    "phases": {
+      "intersection_ms": 6.213410000875,
+      "sort_ms": 0.0200039999475,
+      "shade_ms": 3.9055219879375,
+      "compaction_ms": 0.32519400040625,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "dof",
+    "variant": "on",
+    "label": "dof / on",
+    "gpu_ms_per_sample": 11.0054440625,
+    "gpu_min": 10.9627180625,
+    "gpu_max": 11.0201199375,
+    "loop_ms_per_sample": 11.025070125,
+    "loop_min": 10.981211,
+    "loop_max": 11.03922225,
+    "phases": {
+      "intersection_ms": 6.202284027,
+      "sort_ms": 0.019239999920625,
+      "shade_ms": 3.97181998255625,
+      "compaction_ms": 0.3267080005,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "nee",
+    "variant": "off",
+    "label": "nee / off",
+    "gpu_ms_per_sample": 7.557676,
+    "gpu_min": 7.503398,
+    "gpu_max": 7.572548,
+    "loop_ms_per_sample": 7.5757153125,
+    "loop_min": 7.521792875,
+    "loop_max": 7.5908375,
+    "phases": {
+      "intersection_ms": 6.2242480089375,
+      "sort_ms": 0.018791999916875,
+      "shade_ms": 0.53245800740625,
+      "compaction_ms": 0.3121480003375,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "nee",
+    "variant": "on",
+    "label": "nee / on",
+    "gpu_ms_per_sample": 10.949948125,
+    "gpu_min": 10.9231119375,
+    "gpu_max": 10.9516859375,
+    "loop_ms_per_sample": 10.9688244375,
+    "loop_min": 10.941417625,
+    "loop_max": 10.97000075,
+    "phases": {
+      "intersection_ms": 6.211171993625,
+      "sort_ms": 0.019039999919999998,
+      "shade_ms": 3.909032002425,
+      "compaction_ms": 0.3253000003625,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "checkpoint",
+    "variant": "off",
+    "label": "checkpoint / off",
+    "gpu_ms_per_sample": 10.9423259375,
+    "gpu_min": 10.9400999375,
+    "gpu_max": 10.944132,
+    "loop_ms_per_sample": 10.960856125,
+    "loop_min": 10.9583304375,
+    "loop_max": 10.9622980625,
+    "phases": {
+      "intersection_ms": 6.207081996,
+      "sort_ms": 0.0190319999175,
+      "shade_ms": 3.9090200081125,
+      "compaction_ms": 0.32131799904375,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  },
+  {
+    "experiment": "checkpoint",
+    "variant": "on",
+    "label": "checkpoint / on",
+    "gpu_ms_per_sample": 10.950516,
+    "gpu_min": 10.90659,
+    "gpu_max": 10.965128,
+    "loop_ms_per_sample": 11.1857130625,
+    "loop_min": 11.1309805625,
+    "loop_max": 11.196447625,
+    "phases": {
+      "intersection_ms": 6.2143000100625,
+      "sort_ms": 0.019029999900625,
+      "shade_ms": 3.9105439912875,
+      "compaction_ms": 0.32818400004375,
+      "count_ms": 0.0
+    },
+    "repeats": 3
+  }
+]
