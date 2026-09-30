@@ -4,7 +4,6 @@ CUDA Path Tracer
 **University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 3**
 
 * Walson Li
-  * [LinkedIn](https://www.linkedin.com/in/walsonli), [personal website](https://www.walsonli.com)
 * Tested on: Windows 11 Home, i5-10300H @ 2.50GHz, RTX 2060 6GB (Personal Laptop)
 
 The following CMakeLists changes have been made:
