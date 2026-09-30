@@ -15,6 +15,14 @@ enum GeomType
     CUBE
 };
 
+struct Triangle
+{
+    glm::vec3 v0, v1, v2;
+    glm::vec3 normal;
+    glm::vec2 uv0, uv1, uv2; // for mats
+    int materialid;
+};
+
 struct Ray
 {
     glm::vec3 origin;
@@ -45,6 +53,16 @@ struct Material
     float hasRefractive;
     float indexOfRefraction;
     float emittance;
+    int textureId; // see below
+};
+
+// texture with offset to find actual color in massive array
+struct Texture
+{
+    int offset;
+    int width;
+    int height;
+    int channels;
 };
 
 struct Camera
@@ -84,4 +102,19 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  glm::vec2 uv;
+};
+
+
+// hierarchical tree for performance
+struct node {
+    glm::vec3 minBound;
+    glm::vec3 maxBound;
+
+    int leftChild;
+    int rightChild;
+
+    // for leaf nodes
+    int triStart;
+    int triCount;
 };

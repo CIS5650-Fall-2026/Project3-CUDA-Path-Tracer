@@ -286,6 +286,15 @@ void RenderImGui()
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    // helpful for custom scene
+    glm::vec3 camPos = renderState->camera.position;
+    ImGui::Text("camPos: (%.2f, %.2f, %.2f)", camPos.x, camPos.y, camPos.z);
+    glm::vec3 camLookAt = renderState->camera.lookAt;
+    ImGui::Text("camLookAt: (%.2f, %.2f, %.2f)", camLookAt.x, camLookAt.y, camLookAt.z);
+    glm::vec3 camUp = renderState->camera.up;
+    ImGui::Text("camUp: (%.2f, %.2f, %.2f)", camUp.x, camUp.y, camUp.z);
+
     ImGui::End();
 
 
