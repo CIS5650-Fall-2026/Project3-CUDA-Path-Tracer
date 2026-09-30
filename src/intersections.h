@@ -71,3 +71,25 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ float triangleIntersectionTest(
+    Triangle tri,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    glm::vec2& uv,
+    bool& outside);
+
+__host__ __device__ bool meshBoundIntersectionTest(
+    Ray r,
+    glm::vec3 boundsMin,
+    glm::vec3 boundsMax);
+
+__host__ __device__ float betterMeshIntersectionTest(
+    node* nodes,
+    Triangle* triangles,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    glm::vec2& uv,
+    int& hitMaterialId);

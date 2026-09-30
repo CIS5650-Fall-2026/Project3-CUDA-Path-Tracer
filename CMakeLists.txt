@@ -48,6 +48,9 @@ set(GLM_ROOT_DIR "${CMAKE_SOURCE_DIR}/external")
 find_package(GLM REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
+include_directories("${CMAKE_SOURCE_DIR}/tinygltf")
+add_compile_definitions(TINYGLTF_NO_STB_IMAGE TINYGLTF_NO_STB_IMAGE_WRITE)
+
 set(headers
     src/image.h
     src/interactions.h
@@ -57,6 +60,8 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    tinygltf/tiny_gltf.h
+    tinygltf/tinygltf_json.h
 )
 
 set(sources
@@ -69,6 +74,7 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    tinygltf/tiny_gltf.cc
 )
 
 set(imgui_headers
@@ -119,3 +125,9 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
 
+# from ed discussion msvc issue with newer cuda versions
+if(MSVC)
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE 
+        "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+    )
+endif()
