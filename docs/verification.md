@@ -33,7 +33,7 @@ The validation script checks raw finite/nonnegative accumulation and exact sched
 
 ## Validation system
 
-GPU evidence uses an AWS g5.xlarge workstation with NVIDIA A10G (23,028 MiB reported memory), NVIDIA driver 580.178.04, CUDA 12.8.93, Ubuntu 24.04.4, GCC 13.3, and CMake 3.28.3. Release builds target CUDA architecture 86. The preview uses the NVIDIA OpenGL driver on the same GPU.
+GPU evidence uses an AWS g5.xlarge workstation with AMD EPYC 7R32 (4 vCPUs), 16 GiB provisioned host RAM (16,554,995,712 bytes visible to the OS), NVIDIA A10G (23,028 MiB reported GPU memory), NVIDIA driver 580.178.04, CUDA 12.8.93, Ubuntu 24.04.4, GCC 13.3, and CMake 3.28.3. Release builds target CUDA architecture 86. The preview uses the NVIDIA OpenGL driver on the same GPU. The measured CPU and host-memory report is retained in [system.log](../results/final-rebuild/system.log).
 
 The local host geometry pass uses Apple clang, C++17 and `-O2`: 18 test groups, all 17 scene files, 4,639,718 assertions, zero failures. This is a CPU correctness check; it is not GPU performance evidence.
 

@@ -71,7 +71,7 @@ The resumed 512-sample sums match the uninterrupted glass comparison byte for by
 
 ## Performance
 
-Measurements use an NVIDIA A10G on a g5.xlarge workstation, CUDA 12.8.93, GCC 13.3, and a Release build targeting architecture 86. Three warmup processes precede three measured repeats per variant. The tables report median GPU milliseconds per sample; plots include min–max whiskers. Camera, seed, resolution, depth, and sample count are fixed within each comparison. These short runs include their first iteration; they measure complete sample processing rather than isolated kernels. Complete process and render-loop timings are retained separately.
+Measurements use a g5.xlarge workstation with AMD EPYC 7R32 (4 vCPUs), 16 GiB host RAM, NVIDIA A10G (23,028 MiB reported GPU memory), Ubuntu 24.04.4, CUDA 12.8.93, GCC 13.3, and a Release build targeting architecture 86. Three warmup processes precede three measured repeats per variant. The tables report median GPU milliseconds per sample; plots include min–max whiskers. Camera, seed, resolution, depth, and sample count are fixed within each comparison. These short runs include their first iteration; they measure complete sample processing rather than isolated kernels. Complete process and render-loop timings are retained separately.
 
 ### BVH and mesh loading
 

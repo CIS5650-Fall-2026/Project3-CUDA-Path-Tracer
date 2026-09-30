@@ -51,7 +51,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "a829f0fbf4ae619f7bce3dea8c920fed611ff43c2723cc30de7975f20aa07d4d",
+      "sha256": "6a687afad3b3f5b0d293b5c713e6c17f935e3bc3a7a2459ded67e7fe1dce7e35",
       "category": "modified-starter",
       "origin": "8695a5af18ae6fc130d1d38713be82bbbff7f38f"
     },
@@ -93,7 +93,7 @@
     },
     {
       "path": "docs/verification.md",
-      "sha256": "d2e258e091e86dcabae28d5821a05aba57e39e417d22101f8bce1ffcc51186e4",
+      "sha256": "e6483f04f310a701db42ef084968506f309a7a018be0a8cc711baa6e1c619cca",
       "category": "new-original-project-content",
       "origin": "independently authored in this project"
     },
@@ -7544,8 +7544,50 @@
       "origin": "documented CUDA build and scripts"
     },
     {
+      "path": "results/final-host/geometry-tests.log",
+      "sha256": "17c208f27320af7bfa40c99f4096f8f6e63e3f6c5367f99245eb12c3e2912426",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/build.log",
+      "sha256": "b148963834f656a4f7b95526888b9d3e4f51c9e878746ace92c0efb595d9d233",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/configure.log",
+      "sha256": "82ab3a9aabae6139e79fcd48c85a06cdf427f19213e3196224b42d429b069a7b",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/ctest.log",
+      "sha256": "9fe11b247066f894ef40a12029935698470497733d326364415c19f06a21d749",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/experiments-driver.log",
+      "sha256": "bdb9e911c3e53fafd5d6e3ee29434e71940113720d9ee697328414664660a025",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/gallery-driver.log",
+      "sha256": "f7f595b04c38d7d1a73119b741abd1c7c7deebb6e882ad324d8cb9c2adb0c891",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
       "path": "results/final-rebuild/memcheck.json",
       "sha256": "c25ff2482aeb33dbe24afc5874e4bb34069295e196996b77301222949a3b3965",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/memcheck.log",
+      "sha256": "ca06725d20969cddf6085c32daffa8e7434fbb689aba37eccc5cbde9e21a2a0c",
       "category": "generated-validation-evidence",
       "origin": "documented CUDA build and scripts"
     },
@@ -7562,8 +7604,20 @@
       "origin": "documented CUDA build and scripts"
     },
     {
+      "path": "results/final-rebuild/preview-driver.log",
+      "sha256": "2a24cc26d9ff211c08946f93f3457e14583af2dc4128b2bb64d4d89c90452874",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
       "path": "results/final-rebuild/racecheck.json",
       "sha256": "2988bf4ebdd1f43e7d3a62d4ee90f3eceb96c7f71fe17fb994023eb0e7a077f1",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/racecheck.log",
+      "sha256": "15ada2d955c54bb1172e9387d18299802a2943ebd73ecbc9a5b8c78ba8c79f9d",
       "category": "generated-validation-evidence",
       "origin": "documented CUDA build and scripts"
     },
@@ -7576,6 +7630,18 @@
     {
       "path": "results/final-rebuild/racecheck.sum.bin",
       "sha256": "504753153d17e6c536117235b809ef0c79066f2b85039d519a6b860e86167abc",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/system.log",
+      "sha256": "3ce0595b14b17cefd6fa14f3abdae77e21cbb56f9268be4a270a0cd819db2c7e",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/final-rebuild/validation-driver.log",
+      "sha256": "99fa3f938d79cdd709b02e51273ebdf9f51a7b5a5086ff4570ea16c415c88c26",
       "category": "generated-validation-evidence",
       "origin": "documented CUDA build and scripts"
     },
@@ -8162,6 +8228,12 @@
       "origin": "documented CUDA build and scripts"
     },
     {
+      "path": "results/preview-20260930T235251Z/interactive/horizontal-orbit-original-reference.log",
+      "sha256": "73d1771e3a3f50a9d2c51f980246cab0bc2b781b7d0209cf5f368125d9d3d1b6",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
       "path": "results/preview-20260930T235251Z/interactive/horizontal-orbit-original-reference.png",
       "sha256": "f545fecc25bb0ab1c6754ac225a1b61ac16ff435d0c86e5ae4ee07cd4b9ec6f0",
       "category": "generated-validation-evidence",
@@ -8210,8 +8282,20 @@
       "origin": "documented CUDA build and scripts"
     },
     {
+      "path": "results/preview-20260930T235251Z/interactive/preview.log",
+      "sha256": "a9f67fe22ed21a92deb3086421d8e3d9e123b5e310589fa2ff4bef0202ed22fd",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
       "path": "results/preview-20260930T235251Z/interactive/reset-reference.json",
       "sha256": "54298db2105d687402df2f86384b9641793d7b9d71bbaebe65101dc9c9ed6230",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/preview-20260930T235251Z/interactive/reset-reference.log",
+      "sha256": "45321a89818f5569132f483353f5e3e63d03c9751271f69194cac8300f4f6d16",
       "category": "generated-validation-evidence",
       "origin": "documented CUDA build and scripts"
     },
@@ -8234,6 +8318,12 @@
       "origin": "documented CUDA build and scripts"
     },
     {
+      "path": "results/preview-20260930T235251Z/interactive/screen-plane-pan-original-reference.log",
+      "sha256": "f9a076627f1958f541ba7bbe6e5687dc720d283669c9607ffbf9afb2ac98e78b",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
       "path": "results/preview-20260930T235251Z/interactive/screen-plane-pan-original-reference.png",
       "sha256": "f545fecc25bb0ab1c6754ac225a1b61ac16ff435d0c86e5ae4ee07cd4b9ec6f0",
       "category": "generated-validation-evidence",
@@ -8248,6 +8338,12 @@
     {
       "path": "results/preview-20260930T235251Z/interactive/vertical-zoom-original-reference.json",
       "sha256": "3d12c57cb8433ef00a9ed13d3a47678e0606b75d8bc33d8d0dba2a8d161f7fac",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/preview-20260930T235251Z/interactive/vertical-zoom-original-reference.log",
+      "sha256": "53adff692bf3f317d914d453041d688298c8879ba7bd21b451944b472b5692a9",
       "category": "generated-validation-evidence",
       "origin": "documented CUDA build and scripts"
     },
@@ -8270,6 +8366,12 @@
       "origin": "documented CUDA build and scripts"
     },
     {
+      "path": "results/preview-20260930T235251Z/smoke/headless.log",
+      "sha256": "0715b84591e995ac8c0264613081f025056d7af8566a0adccf0fc1da77c1a574",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
       "path": "results/preview-20260930T235251Z/smoke/headless.png",
       "sha256": "a7f075ea72bfdb07cd2438eb776b865a45dfd062827161a7e0e1339831f3e105",
       "category": "generated-validation-evidence",
@@ -8284,6 +8386,12 @@
     {
       "path": "results/preview-20260930T235251Z/smoke/preview-smoke.2026-09-30_23-52-51z.16samp.save0.png",
       "sha256": "a7f075ea72bfdb07cd2438eb776b865a45dfd062827161a7e0e1339831f3e105",
+      "category": "generated-validation-evidence",
+      "origin": "documented CUDA build and scripts"
+    },
+    {
+      "path": "results/preview-20260930T235251Z/smoke/preview.log",
+      "sha256": "f6023e94553afefc345fae02028aa2386dfe4e9f5f1444849485f3f261770c77",
       "category": "generated-validation-evidence",
       "origin": "documented CUDA build and scripts"
     },

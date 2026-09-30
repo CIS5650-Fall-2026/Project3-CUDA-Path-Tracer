@@ -1,0 +1,36 @@
+[PASS] POD defaults
+[PASS] OBJ index forms and independent negative indices
+[PASS] OBJ convex quad fan, comments, and organizational records
+[PASS] OBJ invalid geometry and syntax
+[PASS] OBJ singular transform and missing file
+[PASS] OBJ mirrored transform
+[PASS] scene materials, camera, and view
+[PASS] camera lens and validation
+[PASS] scene unknown and malformed inputs
+[PASS] texture color/bump/orientation/assets
+[PASS] texture failures
+[PASS] primitive intersections and BVH agreement
+[PASS] triangle barycentrics/normals/derivatives
+[PASS] stable closest tie break
+[PASS] BVH construction/determinism/depth cap
+[PASS] empty geometry and invalid BVH fallback
+[PASS] BVH depth/stack overflow fallback
+[PASS] randomized transformed BVH equivalence
+[SCENE PASS] scenes/closed-benchmark.json
+[SCENE PASS] scenes/complexity-high.json
+[SCENE PASS] scenes/complexity-low.json
+[SCENE PASS] scenes/complexity-medium.json
+[SCENE PASS] scenes/cornell.json
+[SCENE PASS] scenes/light-test-cube.json
+[SCENE PASS] scenes/light-test-mesh.json
+[SCENE PASS] scenes/light-test-sphere.json
+[SCENE PASS] scenes/open-benchmark.json
+[SCENE PASS] scenes/optical-workbench.json
+[SCENE PASS] scenes/preview-smoke.json
+[SCENE PASS] scenes/sphere.json
+[SCENE PASS] scenes/uniform-benchmark.json
+[SCENE PASS] scenes/workbench-dof.json
+[SCENE PASS] scenes/workbench-mirror.json
+[SCENE PASS] scenes/workbench-no-bump.json
+[SCENE PASS] scenes/workbench-procedural.json
+Executed 18 test groups, 17 repository scene(s), and 4639718 assertions; 0 group(s) failed.
