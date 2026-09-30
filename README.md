@@ -146,9 +146,7 @@ The min/max bounding volume box was helpful for the frames, but I wanted to rend
 
 ![The_billiards_room mesh info](img/the_billiards_room_info.png)
 
-Therefore I decided to implement a hierarchical spatial data structure. The implementation basically sets up a binary search tree for the triangles. Each leaf node has 4 or less triangles, and the tree traversal supports up to 32 levels, which means the implementation would support (2^32)*4 triangles, which is way more than what the scenes I wanted to render contain.
-
-In the typical case, in a massive mesh, intersection testing can go through 32 layers and then iterate through 4 triangles to find the one that's closest, instead of iterating through a worst case of all (2^32)*4 triangles.
+Therefore I decided to implement a hierarchical spatial data structure. The implementation basically sets up a tree for the triangles. Each leaf node has 4 or less triangles, and the tree traversal supports up to 32 entries that can wait to be checked.
 
 Here are the average time (ms) per frame results for shiba, silent_ash, and the_billiards_room scenes using basic and hierarchical bounding volumes:
 
