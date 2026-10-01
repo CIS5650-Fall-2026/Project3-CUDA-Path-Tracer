@@ -1,0 +1,76 @@
+{
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 0.96, 0.9],
+            "EMITTANCE":30.0
+        },
+        "diffuse_white":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.9, 0.9, 0.9]
+        },
+        "brick":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+            "TEXTURE":"textures/red_brick_03_diff_1k.jpg",
+            "BUMP_MAP":"textures/red_brick_03_disp_1k.jpg",
+            "BUMP_SCALE":6.0,
+            "TEXTURE_SCALE":1.0
+        },
+        "cobblestone":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+            "TEXTURE":"textures/cobblestone_floor_08_diff_1k.jpg",
+            "BUMP_MAP":"textures/cobblestone_floor_08_disp_1k.jpg",
+            "BUMP_SCALE":6.0,
+            "TEXTURE_SCALE":2.0
+        }
+    },
+    "Camera":
+    {
+        "RES":[800,800],
+        "FOVY":22.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"bump",
+        "EYE":[0.0,4.5,9.0],
+        "LOOKAT":[0.0,2.2,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[-9.0,6.0,3.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[0.3,5.0,5.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"cobblestone",
+            "TRANS":[0.0,-0.1,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[12.0,0.2,12.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"brick",
+            "TRANS":[0.0,4.0,-3.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[8.0,8.0,0.2]
+        },
+        {
+            "TYPE":"sphere",
+            "MATERIAL":"brick",
+            "TRANS":[0.0,1.8,1.0],
+            "ROTAT":[0.0,25.0,0.0],
+            "SCALE":[3.6,3.6,3.6]
+        }
+    ]
+}
