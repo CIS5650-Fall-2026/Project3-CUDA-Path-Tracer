@@ -1,6 +1,7 @@
-# Optical Workbench — CUDA Path Tracing
-
-[Didrik Wiig Andersen](https://github.com/didrikwiigandersen)
+# CUDA Path Tracer
+**University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 3**
+* [Didrik Wiig Andersen](https://github.com/didrikwiigandersen)
+* Tested on: Ubuntu 24.04.4 LTS, AMD EPYC 7R32 (4 vCPUs), 16 GiB provisioned RAM, NVIDIA A10G 23,028 MiB (AWS EC2 g5.xlarge)
 
 ![Original fluted and knotted sculptures with a glass sphere](img/workbench.png)
 
