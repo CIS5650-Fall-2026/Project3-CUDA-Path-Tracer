@@ -1,0 +1,32 @@
+{
+  "command": [
+    "c++",
+    "-std=c++17",
+    "-O3",
+    "-DNDEBUG",
+    "-I/home/ubuntu/cis5650/project3/src",
+    "-I/home/ubuntu/cis5650/project3/external/include",
+    "/home/ubuntu/cis5650/project3/scripts/profile_scene_load.cpp",
+    "/home/ubuntu/cis5650/project3/build-final/lib/libcis565_core.a",
+    "-o",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-gltf/timing/cpu-profile/private-profile-scene-load"
+  ],
+  "completed_utc": "2026-10-01T20:45:48.920523Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "exit_code": 0,
+  "name": "compile",
+  "pid": 39747,
+  "process_elapsed_ms": 2958.602720000272,
+  "started_utc": "2026-10-01T20:45:45.958267Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "compile.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "compile.stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -18,6 +18,7 @@ struct Ray
 {
     glm::vec3 origin{0.0f};
     glm::vec3 direction{0.0f, 0.0f, -1.0f};
+    float time = 0.0f;
 };
 
 struct Geom
@@ -27,6 +28,7 @@ struct Geom
     glm::vec3 translation{0.0f};
     glm::vec3 rotation{0.0f};
     glm::vec3 scale{1.0f};
+    glm::vec3 motionTranslation{0.0f};
     glm::mat4 transform{1.0f};
     glm::mat4 inverseTransform{1.0f};
     glm::mat4 invTranspose{1.0f};
@@ -69,6 +71,8 @@ struct Camera
     glm::vec2 pixelLength{0.0f};
     float aperture = 0.0f;
     float focusDistance = 1.0f;
+    float shutterOpen = 0.0f;
+    float shutterClose = 1.0f;
 };
 
 struct RenderState

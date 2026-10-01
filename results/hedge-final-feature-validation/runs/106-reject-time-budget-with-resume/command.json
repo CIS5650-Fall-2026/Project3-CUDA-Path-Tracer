@@ -1,0 +1,37 @@
+{
+  "argv": [
+    "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/106-reject-time-budget-with-resume/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/041-partial-sampler-counter-motion-on-wavefront-on-rr-on/state.checkpoint",
+    "--time-budget-ms",
+    "20"
+  ],
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "input_files_before_invocation": [
+    {
+      "bytes": 6213112,
+      "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/041-partial-sampler-counter-motion-on-wavefront-on-rr-on/state.checkpoint",
+      "role": "resume",
+      "sha256": "314532837ad7b2d0402a5bf2004f582387f43b03e26175a1302cb4bda51460cc"
+    }
+  ],
+  "label": "reject-time-budget-with-resume",
+  "shell": false
+}

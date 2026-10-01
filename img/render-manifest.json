@@ -1,376 +1,2186 @@
 [
   {
     "image": "comparison-bump.png",
-    "source": "results/extension-gallery/comparison-bump.png",
+    "source": "results/hedge-final-gallery/comparison-bump.png",
     "sha256": "c351a1c255c9d9fb88f0e27fe2dff8c79affe58872ff79f24b7636836ce58b14",
-    "metadata": "results/extension-gallery/comparison-bump.json",
-    "metadata_sha256": "2a7b8ac508402a0369b6498d29964f8dd148d7879c88ce9c6d6b5e9504e0cca6",
-    "raw_sum": "results/extension-gallery/comparison-bump.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-bump.json",
+    "metadata_sha256": "16ef73ed1e3360954f4fe15bf1a07d86762a541828b8f7ea5a2d8d3a41eded3c",
+    "raw_sum": "results/hedge-final-gallery/comparison-bump.sum.bin",
     "raw_sum_sha256": "fc3fa296f37bc0ca8c9997756447d2209f45154c43b1c81a3e3a3dc0fc85df4d",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-no-bump.png",
-    "source": "results/extension-gallery/comparison-no-bump.png",
+    "source": "results/hedge-final-gallery/comparison-no-bump.png",
     "sha256": "19ffd59b794a4ff21158e9092a8da7847a228ab8aa500d3a1d0d860af26d61ad",
-    "metadata": "results/extension-gallery/comparison-no-bump.json",
-    "metadata_sha256": "c942bb26de738a57b3a1fc58b46633e4503dca883b826b09b26e595a3edc9fb2",
-    "raw_sum": "results/extension-gallery/comparison-no-bump.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-no-bump.json",
+    "metadata_sha256": "42d0c09d75680d4790fb8d70b1ab8f8530d75df38bdf55cb995e56db844ee5ac",
+    "raw_sum": "results/hedge-final-gallery/comparison-no-bump.sum.bin",
     "raw_sum_sha256": "c76e3105f736ab154a98a328ff4be0d64230d32a6ddf3a8bf4707ab043e9298d",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "workbench-no-bump"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/workbench-no-bump.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-procedural.png",
-    "source": "results/extension-gallery/comparison-procedural.png",
+    "source": "results/hedge-final-gallery/comparison-procedural.png",
     "sha256": "fb73fee75a5763e88eddb04b51fab820ded7a421f0ec2bd08810fc65e653f009",
-    "metadata": "results/extension-gallery/comparison-procedural.json",
-    "metadata_sha256": "eeff560ae1ad751534df82967483438ca9c4e72ca8c82adf35ef4c49bcf73d17",
-    "raw_sum": "results/extension-gallery/comparison-procedural.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-procedural.json",
+    "metadata_sha256": "3f162b5859f35dacefe46f550686d37abf3691b09bdf59c7aca84230f660bfc9",
+    "raw_sum": "results/hedge-final-gallery/comparison-procedural.sum.bin",
     "raw_sum_sha256": "169b1ae38c01bec52998fbe2a6f7b12b871c25d79021b5b53bceae4dcff84024",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "workbench-procedural"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/workbench-procedural.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-glass.png",
-    "source": "results/extension-gallery/comparison-glass.png",
+    "source": "results/hedge-final-gallery/comparison-glass.png",
     "sha256": "c351a1c255c9d9fb88f0e27fe2dff8c79affe58872ff79f24b7636836ce58b14",
-    "metadata": "results/extension-gallery/comparison-glass.json",
-    "metadata_sha256": "5606d3647fa94de902d93309f157b7b70e7d20a950cdcbdbd0fca06856830799",
-    "raw_sum": "results/extension-gallery/comparison-glass.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-glass.json",
+    "metadata_sha256": "aa866d5fee813a5cb135977f6939e2b2a8120aa9f53fa9c0b7c9a22b1be60f51",
+    "raw_sum": "results/hedge-final-gallery/comparison-glass.sum.bin",
     "raw_sum_sha256": "fc3fa296f37bc0ca8c9997756447d2209f45154c43b1c81a3e3a3dc0fc85df4d",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-mirror.png",
-    "source": "results/extension-gallery/comparison-mirror.png",
+    "source": "results/hedge-final-gallery/comparison-mirror.png",
     "sha256": "2d2a5fedb5ae95aa8d3952ef69541463a744304a2e50f94d354221bf0698dd4e",
-    "metadata": "results/extension-gallery/comparison-mirror.json",
-    "metadata_sha256": "0576335aa4e462bc0d2730e144d9fa9ef906d82232cb8aed92a4788389319d5f",
-    "raw_sum": "results/extension-gallery/comparison-mirror.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-mirror.json",
+    "metadata_sha256": "60d7fa6737fe880d3a45aa794f65c5a4c2d829aa85fae539c541cf3cc978bcc0",
+    "raw_sum": "results/hedge-final-gallery/comparison-mirror.sum.bin",
     "raw_sum_sha256": "68ccb23cf4cf22884ff891f7cc988d04c9d128e9787d587a92721029e12d9424",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "workbench-mirror"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/workbench-mirror.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-dof.png",
-    "source": "results/extension-gallery/comparison-dof.png",
+    "source": "results/hedge-final-gallery/comparison-dof.png",
     "sha256": "80847bb0bc6e21769be112dd9c309f294c601f8ca50ae7c739553f435145d2ff",
-    "metadata": "results/extension-gallery/comparison-dof.json",
-    "metadata_sha256": "225b4df15ecb369a582606d73e14fc49463ae2afe0dae4441faf9da1d177d7d8",
-    "raw_sum": "results/extension-gallery/comparison-dof.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-dof.json",
+    "metadata_sha256": "03e1ac2bfe6ecfe1eb99d7e2d2851501b6b7a66165c8fdcfc73c99aef6b02d39",
+    "raw_sum": "results/hedge-final-gallery/comparison-dof.sum.bin",
     "raw_sum_sha256": "8270b799da3a50569cf5f7b527ec0d780a93930968986a410fe2b46911b4fa87",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "workbench-dof"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/workbench-dof.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.2199999988079071,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-nee.png",
-    "source": "results/extension-gallery/comparison-nee.png",
+    "source": "results/hedge-final-gallery/comparison-nee.png",
     "sha256": "8bcbdd34d064836f26454adfc1f908730d875112f8d505500fc37def03461429",
-    "metadata": "results/extension-gallery/comparison-nee.json",
-    "metadata_sha256": "14845917e8b5eaa8356386365b312d789213dd5c7cf89074175321ecf08a96c0",
-    "raw_sum": "results/extension-gallery/comparison-nee.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-nee.json",
+    "metadata_sha256": "caf1569226f5767d15de2c61573f19e51a1a9c1af2966f9771190d3259884005",
+    "raw_sum": "results/hedge-final-gallery/comparison-nee.sum.bin",
     "raw_sum_sha256": "b81c434c0504246213c0e1d37faf14d482b9d1068fbe389b0e8894c5291fb5a2",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 64,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-no-nee.png",
-    "source": "results/extension-gallery/comparison-no-nee.png",
+    "source": "results/hedge-final-gallery/comparison-no-nee.png",
     "sha256": "f73cd28d087665cc2e6a4ce6d2a0300c86a4e4e4c2839315600b0904a1a2751d",
-    "metadata": "results/extension-gallery/comparison-no-nee.json",
-    "metadata_sha256": "085bbd9a06da381aac5f9276e5f4f5ebb25f552744c9ea5188c871a1064451f5",
-    "raw_sum": "results/extension-gallery/comparison-no-nee.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-no-nee.json",
+    "metadata_sha256": "c60aaa383f518f752cb50a63fd7ba776269a4fe3af9baac69d1b6a35516c6c55",
+    "raw_sum": "results/hedge-final-gallery/comparison-no-nee.sum.bin",
     "raw_sum_sha256": "cc706fd13ca5aa0ccd1d1ed1fee1a251c79fcb5f44e52f9d5e47341a62ceb97a",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 64,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": false,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-aa.png",
-    "source": "results/extension-gallery/comparison-aa.png",
+    "source": "results/hedge-final-gallery/comparison-aa.png",
     "sha256": "c351a1c255c9d9fb88f0e27fe2dff8c79affe58872ff79f24b7636836ce58b14",
-    "metadata": "results/extension-gallery/comparison-aa.json",
-    "metadata_sha256": "f1de2986dbe8dc20c9812368eb96e0dad17669b9cf4768000b790a7a5ea3383f",
-    "raw_sum": "results/extension-gallery/comparison-aa.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-aa.json",
+    "metadata_sha256": "4994dea70444734299fe6b2eb46fd7c23485fe900f4b45306da01ef87aa28f04",
+    "raw_sum": "results/hedge-final-gallery/comparison-aa.sum.bin",
     "raw_sum_sha256": "fc3fa296f37bc0ca8c9997756447d2209f45154c43b1c81a3e3a3dc0fc85df4d",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "comparison-no-aa.png",
-    "source": "results/extension-gallery/comparison-no-aa.png",
+    "source": "results/hedge-final-gallery/comparison-no-aa.png",
     "sha256": "b522c4d94642a42e663ef18f4de8667f3846d33d68be2fb91a13457557fa3544",
-    "metadata": "results/extension-gallery/comparison-no-aa.json",
-    "metadata_sha256": "56422d263d446f435d9661517f0e9e9a97163569a03c9556ca8432fe4795827d",
-    "raw_sum": "results/extension-gallery/comparison-no-aa.sum.bin",
+    "metadata": "results/hedge-final-gallery/comparison-no-aa.json",
+    "metadata_sha256": "0c981e3354ac589759d8d8e45594db827a5723ffec72f5d5b068d5eacd508353",
+    "raw_sum": "results/hedge-final-gallery/comparison-no-aa.sum.bin",
     "raw_sum_sha256": "a66df674f3888de33225ad059a0a465af8e52fa6d1fbdf206641785efcfd0673",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": false,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "restart-partial.png",
-    "source": "results/extension-gallery/restart-partial.png",
+    "source": "results/hedge-final-gallery/restart-partial.png",
     "sha256": "76e0a3052860665271332155b6e598b7cc73ab9571e26f20f53f32ac5d98dddc",
-    "metadata": "results/extension-gallery/restart-partial.json",
-    "metadata_sha256": "f9ce48b3f44c6b2b160f2327828e5bc399ff80ceb5d9fab94fa96a4fa9dc40e6",
-    "raw_sum": "results/extension-gallery/restart-partial.sum.bin",
+    "metadata": "results/hedge-final-gallery/restart-partial.json",
+    "metadata_sha256": "9d3d78a5faa01320837a1219d06992d05327d1cc3329a1ea1818df1488ae6355",
+    "raw_sum": "results/hedge-final-gallery/restart-partial.sum.bin",
     "raw_sum_sha256": "8850e154138327525eebcd2d523e01bb1477695e6ee305f2ff0e1f7b44435638",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 16,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "restart-resumed.png",
-    "source": "results/extension-gallery/restart-resumed.png",
+    "source": "results/hedge-final-gallery/restart-resumed.png",
     "sha256": "c351a1c255c9d9fb88f0e27fe2dff8c79affe58872ff79f24b7636836ce58b14",
-    "metadata": "results/extension-gallery/restart-resumed.json",
-    "metadata_sha256": "6229ebc517ac9b0db69e6eb717f1a58a3aebc4d17b68c45f2f86e08b2fd92bb0",
-    "raw_sum": "results/extension-gallery/restart-resumed.sum.bin",
+    "metadata": "results/hedge-final-gallery/restart-resumed.json",
+    "metadata_sha256": "cc39bd266b157d10794ba6f10404707b61da9dad262cf1756dca931d10eb9ccc",
+    "raw_sum": "results/hedge-final-gallery/restart-resumed.sum.bin",
     "raw_sum_sha256": "fc3fa296f37bc0ca8c9997756447d2209f45154c43b1c81a3e3a3dc0fc85df4d",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "debug-normals.png",
-    "source": "results/extension-gallery/debug-normals.png",
+    "source": "results/hedge-final-gallery/debug-normals.png",
     "sha256": "d6df54b6924e78379a4cb45e07c407ea5def2c7deb111c8e064a9da0458796a6",
-    "metadata": "results/extension-gallery/debug-normals.json",
-    "metadata_sha256": "adf67ba5a030ab92d1f4fab80215e00c0d39f2e1be47c4b427d5792786fb57fe",
-    "raw_sum": "results/extension-gallery/debug-normals.sum.bin",
+    "metadata": "results/hedge-final-gallery/debug-normals.json",
+    "metadata_sha256": "a15a147214278023f1edf6fed43881aecc9075eef9b25f399cabb7df59d64a2e",
+    "raw_sum": "results/hedge-final-gallery/debug-normals.sum.bin",
     "raw_sum_sha256": "b7ee569f34a67b2a159cf5e414e48828ab78de4949c2fd88ceff89693d20535d",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 1,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "normals",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "debug-uv.png",
-    "source": "results/extension-gallery/debug-uv.png",
+    "source": "results/hedge-final-gallery/debug-uv.png",
     "sha256": "ecb2cc22927cab6a7b6ec6fea10c087b2fa50fb7515cc3b8bfcc237d8e46b40a",
-    "metadata": "results/extension-gallery/debug-uv.json",
-    "metadata_sha256": "1f95aa9e74410aff8c5f49ad584a1cf055bdf0378fbac4240987ea899e9967b3",
-    "raw_sum": "results/extension-gallery/debug-uv.sum.bin",
+    "metadata": "results/hedge-final-gallery/debug-uv.json",
+    "metadata_sha256": "0086a7df4cebfe6dd12c704ebf8d38ebd9aab6728a88d5396e094b9de36fbe31",
+    "raw_sum": "results/hedge-final-gallery/debug-uv.sum.bin",
     "raw_sum_sha256": "2422b7a5e04a46096184e6e9d3681886d36cede416c9469071efda1218d1390b",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 1,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "uv",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "debug-depth.png",
-    "source": "results/extension-gallery/debug-depth.png",
+    "source": "results/hedge-final-gallery/debug-depth.png",
     "sha256": "71d80b03e36f981c328c46fdd35469ca6da254199e9526494f6237a6139297e5",
-    "metadata": "results/extension-gallery/debug-depth.json",
-    "metadata_sha256": "769655aa84d3ce383f5b48ec3033d351c0b135bbd7014e3c5b8573803c212757",
-    "raw_sum": "results/extension-gallery/debug-depth.sum.bin",
+    "metadata": "results/hedge-final-gallery/debug-depth.json",
+    "metadata_sha256": "51d83a4c2ec94b16611d76fa3a3193c34ef74f3edce85a00f69ec52c8e3e7feb",
+    "raw_sum": "results/hedge-final-gallery/debug-depth.sum.bin",
     "raw_sum_sha256": "730102172a603bcad53c5c045637b94d568253c7aef96b0321e3465fc37eb1f7",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 1,
     "seed": 947,
-    "scene": "optical-workbench"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "depth",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "procedural-fluted-body-plain.png",
-    "source": "results/extension-gallery/procedural-fluted-body-plain.png",
+    "source": "results/hedge-final-gallery/procedural-fluted-body-plain.png",
     "sha256": "7615a6af35a9924374e86897adf3aaf5da3030781e1fe7b56373e32b199c89ca",
-    "metadata": "results/extension-gallery/procedural-fluted-body-plain.json",
-    "metadata_sha256": "40ea07a43fc2b94f8e6d853eb74ec65796ed8c4013fbaac023f049a8aad73ec3",
-    "raw_sum": "results/extension-gallery/procedural-fluted-body-plain.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-fluted-body-plain.json",
+    "metadata_sha256": "6c08460314e552e17fe1838a2c6ecf013c06935d0859185b3f3b4a282339f395",
+    "raw_sum": "results/hedge-final-gallery/procedural-fluted-body-plain.sum.bin",
     "raw_sum_sha256": "34aa74ca280fbb933953f1880e9dfe28d7c8e41cbaf65999c10a56d0046f981b",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "procedural-fluted-body-plain"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-fluted-body-plain.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.350000023841858,
+        0.0
+      ],
+      "position": [
+        2.299999952316284,
+        1.899999976158142,
+        4.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "procedural-fluted-body-marble.png",
-    "source": "results/extension-gallery/procedural-fluted-body-marble.png",
+    "source": "results/hedge-final-gallery/procedural-fluted-body-marble.png",
     "sha256": "98c074a1c762c40e06976bc14db81328e792063a4aeac7e16a767212da9d6bd7",
-    "metadata": "results/extension-gallery/procedural-fluted-body-marble.json",
-    "metadata_sha256": "be2c3ea3b88a61c58d6bb4c768ef63391e4b96a33e876f10b96ec69796b2bb52",
-    "raw_sum": "results/extension-gallery/procedural-fluted-body-marble.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-fluted-body-marble.json",
+    "metadata_sha256": "e881ecc864b6dd7722b0f3715e7ffaacc1a61a177e7ab444c01d215ca3d1b9a8",
+    "raw_sum": "results/hedge-final-gallery/procedural-fluted-body-marble.sum.bin",
     "raw_sum_sha256": "2ddcb682198f88bcdc040f5b93c04b5772d30911240547edd2e961edc104ddbd",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "procedural-fluted-body-marble"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-fluted-body-marble.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.350000023841858,
+        0.0
+      ],
+      "position": [
+        2.299999952316284,
+        1.899999976158142,
+        4.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "procedural-fluted-body-cells.png",
-    "source": "results/extension-gallery/procedural-fluted-body-cells.png",
+    "source": "results/hedge-final-gallery/procedural-fluted-body-cells.png",
     "sha256": "5528791a670906cb9e2799ecc59703198fb692465d33d6a2f365285becc69044",
-    "metadata": "results/extension-gallery/procedural-fluted-body-cells.json",
-    "metadata_sha256": "7c9f89b966e6f5bb7a6d0afda0de95263f99b06cbbb3104b2369eecb7b2ce27c",
-    "raw_sum": "results/extension-gallery/procedural-fluted-body-cells.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-fluted-body-cells.json",
+    "metadata_sha256": "0ab32916a3c81c3c8ee73015eed025bc7acba90d2b45a3841b76a27704403e97",
+    "raw_sum": "results/hedge-final-gallery/procedural-fluted-body-cells.sum.bin",
     "raw_sum_sha256": "95613e3c40df0db98ec2de95392cb4f35c2deee7044563bab28ae79e64afccd4",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "procedural-fluted-body-cells"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-fluted-body-cells.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.350000023841858,
+        0.0
+      ],
+      "position": [
+        2.299999952316284,
+        1.899999976158142,
+        4.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "procedural-swept-knot-plain.png",
-    "source": "results/extension-gallery/procedural-swept-knot-plain.png",
+    "source": "results/hedge-final-gallery/procedural-swept-knot-plain.png",
     "sha256": "08829a952f3ec01d9a8d333722678bf8093da0684df033777f7e88d0c69db116",
-    "metadata": "results/extension-gallery/procedural-swept-knot-plain.json",
-    "metadata_sha256": "aee6e3a4e6d55f00cd6a5abe5d5397754bbf0852d67a759126fd17bf75fc0ad8",
-    "raw_sum": "results/extension-gallery/procedural-swept-knot-plain.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-swept-knot-plain.json",
+    "metadata_sha256": "ba98c0b957fa49ba617072a4d4a075f9438ed9e142cf04f0040da06131106609",
+    "raw_sum": "results/hedge-final-gallery/procedural-swept-knot-plain.sum.bin",
     "raw_sum_sha256": "c6061aa5ae296bc4525a438746d1026f6bb5359a31a4d31c859eb0938516edb1",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "procedural-swept-knot-plain"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-plain.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "position": [
+        2.799999952316284,
+        2.299999952316284,
+        5.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "procedural-swept-knot-marble.png",
-    "source": "results/extension-gallery/procedural-swept-knot-marble.png",
+    "source": "results/hedge-final-gallery/procedural-swept-knot-marble.png",
     "sha256": "e221f1cc0d34105042f5718daf9be307419032e42f61ba946f1262f2fce47659",
-    "metadata": "results/extension-gallery/procedural-swept-knot-marble.json",
-    "metadata_sha256": "edc8f0ec53a873a789bca139eec31c9eb872b850301ae956d2aa8558df717f52",
-    "raw_sum": "results/extension-gallery/procedural-swept-knot-marble.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-swept-knot-marble.json",
+    "metadata_sha256": "5ce93aadac0bcae467d0db30903dc498a51b9715b0224b200a04ce86b58c0225",
+    "raw_sum": "results/hedge-final-gallery/procedural-swept-knot-marble.sum.bin",
     "raw_sum_sha256": "aff24453637278286e773e48cdabd2c2a98e73bcda40c54b3dccaa4efedaeba5",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "procedural-swept-knot-marble"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-marble.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "position": [
+        2.799999952316284,
+        2.299999952316284,
+        5.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "procedural-swept-knot-cells.png",
-    "source": "results/extension-gallery/procedural-swept-knot-cells.png",
+    "source": "results/hedge-final-gallery/procedural-swept-knot-cells.png",
     "sha256": "479ae45501550e997bfc039d44d2c0963cc0f338f1514178cb6fb86e0105d1fb",
-    "metadata": "results/extension-gallery/procedural-swept-knot-cells.json",
-    "metadata_sha256": "1aff613f543d7717103fc7f2bf4b65dc7b32e2c1f106163de1364207a3413085",
-    "raw_sum": "results/extension-gallery/procedural-swept-knot-cells.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-swept-knot-cells.json",
+    "metadata_sha256": "67f20f4ed519e00a9d3e5dfc01827789e1fa562e2cbd4f4adfcfbf3614dc42cc",
+    "raw_sum": "results/hedge-final-gallery/procedural-swept-knot-cells.sum.bin",
     "raw_sum_sha256": "58414c032b285ec9cfdd7210e8c29af8206b4911c5b2673adec9ef9c2bdf3fee",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       640,
       424
     ],
     "completed_samples": 512,
     "seed": 947,
-    "scene": "procedural-swept-knot-cells"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-cells.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "position": [
+        2.799999952316284,
+        2.299999952316284,
+        5.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   },
   {
     "image": "workbench.png",
-    "source": "results/extension-gallery/procedural-cover.png",
+    "source": "results/hedge-final-gallery/procedural-cover.png",
     "sha256": "09c3d61847f6890c22ee935c20b0939659915d0f0a2a343a2afcdfc7306ff7e9",
-    "metadata": "results/extension-gallery/procedural-cover.json",
-    "metadata_sha256": "e96b4c4a882a5f6f0cf8044aae7bfc616bbb560aa813b128f77c7179c3ac2858",
-    "raw_sum": "results/extension-gallery/procedural-cover.sum.bin",
+    "metadata": "results/hedge-final-gallery/procedural-cover.json",
+    "metadata_sha256": "5dac25b998118657cd4ccd68c91bbad8ff6877a367759bf8620489116f49eace",
+    "raw_sum": "results/hedge-final-gallery/procedural-cover.sum.bin",
     "raw_sum_sha256": "521d9be86c9081c1bc4c39de0a124c244f4c2a8ea0dbc1a61ebae8ad12851648",
-    "renderer_build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
     "resolution": [
       960,
       640
     ],
     "completed_samples": 2048,
     "seed": 947,
-    "scene": "procedural-optical-stilllife"
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-sampling-diffuse-counter.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-diffuse-counter.png",
+    "sha256": "3e9d86e496408f37322ffbf8b7dbef8048e55510b5f15405631d1d8e94330cc9",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-diffuse-counter.json",
+    "metadata_sha256": "cc21fd47ac81c6e80d5a0844eda7c8ad55fb49f9c3a39d3b43712317c39dcc91",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-diffuse-counter.sum.bin",
+    "raw_sum_sha256": "5d04a66c348986e3ff9525141d079d6617259904bcd45560d735cdf05d5b0351",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 64,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 10.5,
+      "look_at": [
+        0.0,
+        5.0,
+        0.0
+      ],
+      "position": [
+        0.0,
+        5.0,
+        10.5
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-sampling-diffuse-halton.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-diffuse-halton.png",
+    "sha256": "f3a94c2c7524b5990618b1b97eeed2ad2df89ff5e5fc3451393bdec6610b12a3",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-diffuse-halton.json",
+    "metadata_sha256": "6a5ce2f0a6ac22fc3f47ed422fcf0de8c7dc9437619e068254ec60ce7e2ddb89",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-diffuse-halton.sum.bin",
+    "raw_sum_sha256": "18c4b1372c5a1ccfc9f88c6ac282adaac211d18072dcdc9c8c34fca5a21b65d8",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 64,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+    "sampler_version": 3,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 10.5,
+      "look_at": [
+        0.0,
+        5.0,
+        0.0
+      ],
+      "position": [
+        0.0,
+        5.0,
+        10.5
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-sampling-glass-counter.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-glass-dof-counter.png",
+    "sha256": "ed6a85acc7bf84600df2b43dc29a4f9b6b13efe55b2c376aafeca9d3c95c517e",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-glass-dof-counter.json",
+    "metadata_sha256": "f8b31bc859c5a0ab8f46b5ddf76d7bb8c335e0a897d3a7b97a7a6c791f21d195",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-glass-dof-counter.sum.bin",
+    "raw_sum_sha256": "0e92b98417a87d38397a94b819b2598360d6df0c1a49c6833528685b9cc497f1",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 64,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.05999999865889549,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-sampling-glass-halton.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-glass-dof-halton.png",
+    "sha256": "ca6aa1824568f75c106e91f8657af49626e26b9766a98aa54f34af28514dcc3c",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-glass-dof-halton.json",
+    "metadata_sha256": "e04fc4ae5b2a03ab6775d54a2597e98f9576196e303ec8a120bada35bb7df679",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-static-glass-dof-halton.sum.bin",
+    "raw_sum_sha256": "598c2f8d6dbfd16b0e2b76adda24cb020f06c3a3a3e4f3792e7cb455a2ceae99",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 64,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+    "sampler_version": 3,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.05999999865889549,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-motion-start.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-start-halton.png",
+    "sha256": "b1339ea0fcf1f0101831f63b907e2be2776bd1957172905ad62641fdb2bbcf0b",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-start-halton.json",
+    "metadata_sha256": "e1a8a8b909d86b9213cc705024b87a2fe9ad5c8a7ff2b2e0d59b16abb9f5043c",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-start-halton.sum.bin",
+    "raw_sum_sha256": "35e5360610a097e4a987a8c76d0b129f5f2ad8891f087b566a61593aa21cb7a4",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 512,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-frozen-start.json",
+    "sampler_version": 3,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-motion-midpoint.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-midpoint-halton.png",
+    "sha256": "6801d3cd62a11f10a83a49a13f43760d696158d3f6b61d3dafd25c0be610036a",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-midpoint-halton.json",
+    "metadata_sha256": "02eb051e4a69f234b42554ae27b9463881bbdb90516764ee644030183f73bbb3",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-midpoint-halton.sum.bin",
+    "raw_sum_sha256": "be46da0fa3a4d4d7fc142c368872244e631e21456223b34ca586c2afa5d5b5b7",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 512,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-frozen-midpoint.json",
+    "sampler_version": 3,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  {
+    "image": "comparison-motion-end.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-end-halton.png",
+    "sha256": "e4ab52a07dfb06dd355561ddc1a28a2737927c13454f2a2d3a8204bd85694dad",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-end-halton.json",
+    "metadata_sha256": "a0526ad62d7ee9ffe33ab3abec7ac2cba17f43b20bb5bb40aaaacd0f07aa878d",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-end-halton.sum.bin",
+    "raw_sum_sha256": "9ce11bce2be735aeb6e4182983a307ae40876c1b4c0627feb890fa5be2da97ac",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 512,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-frozen-end.json",
+    "sampler_version": 3,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-motion-blur.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-full-halton.png",
+    "sha256": "813127fca479dc16acb2d8fa847bae193be85db4e2193cd293a624bc98412934",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-full-halton.json",
+    "metadata_sha256": "f30a65e18bcabb81d40e2dfd8fd22b508948b249316d48ad1c70f8ef0a5aa3bb",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-motion-full-halton.sum.bin",
+    "raw_sum_sha256": "4dd9980f4773fc4ffa1074cc8c7b9ea57be866bb5f75a9985e72b64c790cdc14",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 512,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion.json",
+    "sampler_version": 3,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-obj-off.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-obj-capability-baseline-without-obj.png",
+    "sha256": "21578d98e052aa987667e3ff778fd6444fa864bf3a03a781b686b368ceff0c1f",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-obj-capability-baseline-without-obj.json",
+    "metadata_sha256": "ca050a1926d8afb4686470da2e88bba66a6ec5aab50d998ba241c8c55414f43b",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-obj-capability-baseline-without-obj.sum.bin",
+    "raw_sum_sha256": "42fe1850eea12cc774d1008b2356451d9ba1ed3cbee116718aa0d2354755ecd5",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-obj-baseline.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-obj-on.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-obj-capability-with-obj.png",
+    "sha256": "ab16e4000bc8d0e5358e2af6df176e4165d1e866755fe39d29e068b7c172c400",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-obj-capability-with-obj.json",
+    "metadata_sha256": "97a8036949ccd53d548d7ab26d88356aa7482e5850ccba490fdb5a2940077ca7",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-obj-capability-with-obj.sum.bin",
+    "raw_sum_sha256": "3037db14493ec159031e1f7a42165d3fee2553af7960cd70d37f328f9c160e87",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-bvh-off.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-bvh-schedule-bvh-off.png",
+    "sha256": "f24a4ec34b336974e0c1d2f142d2ad0389e2f99120248d8cabf1b703675caa61",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-bvh-schedule-bvh-off.json",
+    "metadata_sha256": "85860676739ef8fe3d921e6a048c1f5f18b412f79bce9a2dcbe82cb9b5e943a7",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-bvh-schedule-bvh-off.sum.bin",
+    "raw_sum_sha256": "5b4d4e2ab12673ae6491188275866fbf2cbb31b4ad7c9fe1b289ffb8b0319520",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      192,
+      128
+    ],
+    "completed_samples": 32,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": false,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-bvh-on.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-bvh-schedule-bvh-on.png",
+    "sha256": "f24a4ec34b336974e0c1d2f142d2ad0389e2f99120248d8cabf1b703675caa61",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-bvh-schedule-bvh-on.json",
+    "metadata_sha256": "e074658576cd40ebb4a5951c6b632f3cf98d8cd776a2d01626bd54b19bf8756a",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-bvh-schedule-bvh-on.sum.bin",
+    "raw_sum_sha256": "5b4d4e2ab12673ae6491188275866fbf2cbb31b4ad7c9fe1b289ffb8b0319520",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      192,
+      128
+    ],
+    "completed_samples": 32,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-wavefront-off.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-wavefront-schedule-wavefront-off.png",
+    "sha256": "a860f4f3223e40486d368e7cce60c1482b897f67041b1e5c30a9ab186877eac7",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-wavefront-schedule-wavefront-off.json",
+    "metadata_sha256": "e3f4eeb39575f402846422c30a79b650acdf700a3d572cb23d16ac99023be7d8",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-wavefront-schedule-wavefront-off.sum.bin",
+    "raw_sum_sha256": "c2b39572f7755cdf2a71a66d8940e95bb814dee158ce5d1513f308b248a8ddd1",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-wavefront-on.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-wavefront-schedule-wavefront-on.png",
+    "sha256": "a860f4f3223e40486d368e7cce60c1482b897f67041b1e5c30a9ab186877eac7",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-wavefront-schedule-wavefront-on.json",
+    "metadata_sha256": "dbc1701965d8bcc39c15bac7152e0d4c19c908d7362d2d0ab31fc260c1d7132e",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-wavefront-schedule-wavefront-on.sum.bin",
+    "raw_sum_sha256": "c2b39572f7755cdf2a71a66d8940e95bb814dee158ce5d1513f308b248a8ddd1",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-rr-off.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-rr-illustration-rr-off.png",
+    "sha256": "525afd1b0da1401160f34bf62f932fa72be618d4440ac2956c3906a52badb1dd",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-rr-illustration-rr-off.json",
+    "metadata_sha256": "5b6c5dcf9fdc85cb5b9fc044eed6bf7ce426ba91a3209de037342b8d70b139c8",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-rr-illustration-rr-off.sum.bin",
+    "raw_sum_sha256": "d41b86d8c1fe7b24370a89e138a4178378298a3096cde525e54621c1c23c8661",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": false,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-rr-on.png",
+    "source": "results/hedge-final-feature-gallery/gallery/renders/gallery-rr-illustration-rr-on.png",
+    "sha256": "a860f4f3223e40486d368e7cce60c1482b897f67041b1e5c30a9ab186877eac7",
+    "metadata": "results/hedge-final-feature-gallery/gallery/renders/gallery-rr-illustration-rr-on.json",
+    "metadata_sha256": "aec6206faa3ddb1540f7e958c3671c91dcbd784606c0f43e1e64213728d39e60",
+    "raw_sum": "results/hedge-final-feature-gallery/gallery/renders/gallery-rr-illustration-rr-on.sum.bin",
+    "raw_sum_sha256": "c2b39572f7755cdf2a71a66d8940e95bb814dee158ce5d1513f308b248a8ddd1",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-gltf-before.png",
+    "source": "results/hedge-final-gltf/gallery/renders/baseline.png",
+    "sha256": "4b4aa9fd8526fc204efb33fe9152e96ca54e58beaafc2231670f3e9912629d5f",
+    "metadata": "results/hedge-final-gltf/gallery/renders/baseline.json",
+    "metadata_sha256": "e48427d84425ff463875a91a983858dd13ef4be229695edaf6ec8b823a441bcd",
+    "raw_sum": "results/hedge-final-gltf/gallery/renders/baseline.sum.bin",
+    "raw_sum_sha256": "65464478f39f20e9692bc518682d23a705c284a7e470bf782af9db32b9b73124",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": false,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-gltf-after.png",
+    "source": "results/hedge-final-gltf/gallery/renders/showcase.png",
+    "sha256": "242cebe8e0fcb81d7d05e092c90a2fa5d1dd6924a135c873696e988dcd6262ac",
+    "metadata": "results/hedge-final-gltf/gallery/renders/showcase.json",
+    "metadata_sha256": "d97a9166c84e456e2a630486c1376c6fc0573ac8750ff1a199ce03f9d43b7b53",
+    "raw_sum": "results/hedge-final-gltf/gallery/renders/showcase.sum.bin",
+    "raw_sum_sha256": "29e404e01391df8143146cf7ea0df4fc35a6dd798f5ec3a2bf71ce9afca28be9",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      512,
+      336
+    ],
+    "completed_samples": 128,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": false,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-gltf-bvh-off.png",
+    "source": "results/hedge-final-gltf/gallery/renders/medium-bvh-off.png",
+    "sha256": "c27657153b97a80c7869c476474b619909febebd0e6f1ef86d9ce42e675010af",
+    "metadata": "results/hedge-final-gltf/gallery/renders/medium-bvh-off.json",
+    "metadata_sha256": "45f01def03bcb58ce8d15740669eb9a8d0c7d2a251aa6ed05ccb3a3052aa02d5",
+    "raw_sum": "results/hedge-final-gltf/gallery/renders/medium-bvh-off.sum.bin",
+    "raw_sum_sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      128,
+      84
+    ],
+    "completed_samples": 16,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": false,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": false,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  {
+    "image": "comparison-gltf-bvh-on.png",
+    "source": "results/hedge-final-gltf/gallery/renders/medium-bvh-on.png",
+    "sha256": "c27657153b97a80c7869c476474b619909febebd0e6f1ef86d9ce42e675010af",
+    "metadata": "results/hedge-final-gltf/gallery/renders/medium-bvh-on.json",
+    "metadata_sha256": "9ea7f03ee4864c9ebe8b1610d3779ebd90698d4b28384e25fe5b6a04e80f0cba",
+    "raw_sum": "results/hedge-final-gltf/gallery/renders/medium-bvh-on.sum.bin",
+    "raw_sum_sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf",
+    "renderer_build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "resolution": [
+      128,
+      84
+    ],
+    "completed_samples": 16,
+    "seed": 947,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+    "sampler_version": 2,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": false,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    }
   }
 ]

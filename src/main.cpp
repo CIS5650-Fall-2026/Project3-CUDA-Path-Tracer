@@ -81,6 +81,8 @@ struct PreviewOptions
     std::optional<bool> wavefront;
     std::optional<bool> rr;
     std::optional<int> rrStart;
+    std::optional<RendererSampler> sampler;
+    std::optional<bool> motion;
     bool help = false;
 };
 
@@ -92,6 +94,8 @@ std::string previewUsage(std::string_view program)
          << "  --wavefront on|off\n"
          << "  --rr on|off\n"
          << "  --rr-start N             Completed scattering events before roulette (1..4096)\n"
+         << "  --sampler counter|halton Sampling algorithm (default: counter)\n"
+         << "  --motion on|off          Rigid-translation motion blur (default: on)\n"
          << "  --help\n";
     return text.str();
 }
@@ -102,6 +106,14 @@ bool parsePreviewSwitch(std::string_view text, std::string_view option)
     if (text == "off") return false;
     throw std::invalid_argument(std::string(option)
         + " expects exactly 'on' or 'off'");
+}
+
+RendererSampler parsePreviewSampler(std::string_view text)
+{
+    if (text == "counter") return RendererSampler::Counter;
+    if (text == "halton") return RendererSampler::Halton;
+    throw std::invalid_argument(
+        "--sampler expects exactly 'counter' or 'halton'");
 }
 
 std::uint64_t parsePreviewUnsigned(std::string_view text,
@@ -190,6 +202,18 @@ PreviewOptions parsePreviewOptions(int argc, char** argv)
                 throw std::out_of_range("--rr-start must be in [1, 4096]");
             }
             options.rrStart = static_cast<int>(value);
+        }
+        else if (!positionalOnly && argument == "--sampler")
+        {
+            rejectDuplicate(options.sampler.has_value(), argument);
+            options.sampler = parsePreviewSampler(
+                requireValue(index, argument));
+        }
+        else if (!positionalOnly && argument == "--motion")
+        {
+            rejectDuplicate(options.motion.has_value(), argument);
+            options.motion = parsePreviewSwitch(
+                requireValue(index, argument), argument);
         }
         else if (!positionalOnly && argument.size() >= 2
                  && argument[0] == '-' && argument[1] == '-')
@@ -569,6 +593,8 @@ int main(int argc, char** argv)
     rendererConfig.wavefront = options.wavefront.value_or(rendererConfig.wavefront);
     rendererConfig.rr = options.rr.value_or(rendererConfig.rr);
     rendererConfig.rrStart = options.rrStart.value_or(rendererConfig.rrStart);
+    rendererConfig.sampler = options.sampler.value_or(rendererConfig.sampler);
+    rendererConfig.motion = options.motion.value_or(rendererConfig.motion);
     if (rendererConfig.wavefront && rendererConfig.sort)
     {
         std::cerr << "error: --sort on requires --wavefront off\n";

@@ -15,7 +15,7 @@
 // little-endian order.
 namespace checkpoint {
 
-inline constexpr std::uint32_t kFormatVersion = 2;
+inline constexpr std::uint32_t kFormatVersion = 3;
 inline constexpr std::uint64_t kFnv1aOffsetBasis = 14695981039346656037ull;
 inline constexpr std::uint64_t kFnv1aPrime = 1099511628211ull;
 
@@ -59,6 +59,7 @@ struct RenderConfig {
     bool wavefront = true;
     bool russianRoulette = true;
     std::uint32_t rrStart = 3;
+    bool motion = true;
 };
 
 struct CameraState {
@@ -71,6 +72,8 @@ struct CameraState {
     glm::vec2 pixelLength{0.0f};
     float aperture = 0.0f;
     float focusDistance = 1.0f;
+    float shutterOpen = 0.0f;
+    float shutterClose = 1.0f;
 };
 
 // Exact continuation can depend on the generated machine code and GPU/runtime.
@@ -113,6 +116,8 @@ struct CheckpointData {
     // sample index to use next.
     std::uint64_t completedSamples = 0;
     std::uint64_t seed = 0;
+    // Sampler algorithm ID (2 = counter, 3 = randomized Halton), independent
+    // of the checkpoint format version.
     std::uint32_t samplerVersion = 0;
     RenderConfig config;
     CameraState camera;

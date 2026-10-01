@@ -1,0 +1,185 @@
+--- a/scripts/record_interaction_video.py
++++ b/scripts/record_interaction_video.py
+@@ -28,7 +28,7 @@
+ CLIENT_WIDTH = 960
+ CLIENT_HEIGHT = 640
+ CLIENT_X = 160
+-CLIENT_Y = 48
++CLIENT_Y = 69
+ MIN_DURATION_SECONDS = 48.0
+ MAX_FPS = 240
+ MAX_EVENT_DRIFT_SECONDS = 0.75
+@@ -151,6 +151,48 @@
+             "xdotool getwindowgeometry --shell omitted required fields: "
+             + text.strip()
+         )
++    return values
++
++
++def parse_xwininfo_geometry(text: str) -> Dict[str, int]:
++    """Read root-relative client coordinates, never parent-relative coordinates."""
++    labels = {
++        "Absolute upper-left X": "x",
++        "Absolute upper-left Y": "y",
++        "Width": "width",
++        "Height": "height",
++    }
++    values: Dict[str, int] = {}
++    windows: List[int] = []
++    map_states: List[str] = []
++    for line in text.splitlines():
++        field = re.fullmatch(
++            r"\s*(Absolute upper-left X|Absolute upper-left Y|Width|Height)\s*:\s*(.*?)\s*",
++            line,
++        )
++        if field is not None:
++            key = labels[field.group(1)]
++            if key in values or re.fullmatch(r"[+-]?[0-9]+", field.group(2)) is None:
++                raise RecordingError(f"duplicate or invalid xwininfo field: {line!r}")
++            values[key] = int(field.group(2), 10)
++        window = re.fullmatch(
++            r"\s*xwininfo: Window id:\s*(0x[0-9a-fA-F]+|[0-9]+)(?:\s+.*)?",
++            line,
++        )
++        if window is not None:
++            windows.append(parse_window_id(window.group(1)))
++        mapped = re.fullmatch(r"\s*Map State:\s*(.*?)\s*", line)
++        if mapped is not None:
++            map_states.append(mapped.group(1))
++    if set(values) != {"x", "y", "width", "height"}:
++        raise RecordingError("xwininfo omitted required absolute client geometry")
++    if values["width"] <= 0 or values["height"] <= 0:
++        raise RecordingError("xwininfo reported nonpositive client dimensions")
++    if len(windows) != 1 or windows[0] <= 0:
++        raise RecordingError("xwininfo did not uniquely identify its client window")
++    if map_states != ["IsViewable"]:
++        raise RecordingError("xwininfo client must be uniquely reported as IsViewable")
++    values["window"] = windows[0]
+     return values
+ 
+ 
+@@ -539,7 +581,7 @@
+             "xauthority_contents_read": False,
+         }
+ 
+-        for name in ("xdotool", "ffmpeg", "ffprobe"):
++        for name in ("xdotool", "xwininfo", "ffmpeg", "ffprobe"):
+             self.tools[name] = self._resolve_tool(name)
+         self.summary["tools"] = {
+             name: str(path) for name, path in self.tools.items()
+@@ -731,17 +773,77 @@
+ 
+     def get_geometry(self, label: str) -> Dict[str, int]:
+         assert self.window_id is not None
+-        result = self.xdo(
+-            ["getwindowgeometry", "--shell", self.window_id],
+-            "read preview client geometry: " + label,
+-        )
+-        geometry = parse_geometry_shell(result["stdout"])
+-        observation = {"label": label, "observed": timestamp(), **geometry}
++        if "xwininfo" not in self.tools:
++            raise RecordingError("xwininfo was not resolved")
++        argv = [str(self.tools["xwininfo"]), "-id", self.window_id, "-stats"]
++        record: Dict[str, Any] = {
++            "purpose": "read absolute preview client geometry: " + label,
++            "argv": argv,
++            "start": timestamp(),
++            "exit_code": None,
++            "timed_out": False,
++            "stdout": "",
++            "stderr": "",
++        }
++        try:
++            result = subprocess.run(
++                argv,
++                env=self.environment,
++                capture_output=True,
++                text=True,
++                timeout=3.0,
++                check=False,
++                shell=False,
++            )
++            record.update({"exit_code": result.returncode, "stdout": result.stdout,
++                           "stderr": result.stderr})
++        except subprocess.TimeoutExpired as error:
++            record["timed_out"] = True
++            for field in ("stdout", "stderr"):
++                value = getattr(error, field, None)
++                record[field] = value.decode("utf-8", errors="replace") if isinstance(value, bytes) else value or ""
++        record["end"] = timestamp()
++        self._add_relative_time(record)
++        self.actions.setdefault("x11_geometry_commands", []).append(record)
++        self.flush_evidence()
++        if record["timed_out"] or record["exit_code"] != 0:
++            raise RecordingError(
++                f"xwininfo failed while reading {label}: timeout={record['timed_out']}; "
++                f"exit={record['exit_code']}; stderr={record['stderr'].strip()}"
++            )
++        geometry = parse_xwininfo_geometry(record["stdout"])
++        if geometry["window"] != parse_window_id(self.window_id):
++            raise RecordingError("xwininfo identified a different client window")
++        observation = {
++            "label": label,
++            "observed": timestamp(),
++            "coordinate_source": "xwininfo absolute upper-left client coordinates",
++            **geometry,
++        }
+         self.summary.setdefault("capture_geometry", {}).setdefault(
+             "window_geometry_history", []
+         ).append(observation)
+         self.flush_evidence()
+         return geometry
++
++    def wait_for_stable_geometry(self, label: str) -> Dict[str, int]:
++        # Placement happens before capture and before the interaction epoch.
++        # A plain move request avoids xdotool --sync waiting on its incorrect
++        # parent-relative geometry interpretation under this GNOME session.
++        time.sleep(0.15)
++        deadline = time.monotonic() + 2.0
++        previous: Optional[Tuple[int, int, int, int]] = None
++        stable_observations = 0
++        while time.monotonic() < deadline:
++            geometry = self.get_geometry(label)
++            self.require_native_geometry(geometry, label)
++            signature = tuple(geometry[key] for key in ("x", "y", "width", "height"))
++            stable_observations = stable_observations + 1 if signature == previous else 1
++            if stable_observations >= 2:
++                return geometry
++            previous = signature
++            time.sleep(0.05)
++        raise RecordingError("preview client geometry did not settle before capture")
+ 
+     def require_native_geometry(self, geometry: Dict[str, int], label: str) -> None:
+         if (geometry["width"], geometry["height"]) != (
+@@ -789,11 +891,13 @@
+                 "height": CLIENT_HEIGHT,
+             },
+             "window_was_resized_or_maximized": False,
++            "coordinate_authority": "xwininfo absolute upper-left client coordinates",
++            "placement_method": "plain xdotool windowmove with bounded stable absolute-coordinate verification",
+             "titlebar": {
+                 "inclusion_intended": True,
+                 "method": (
+-                    "native client placed with 48 pixels of top headroom; xdotool client "
+-                    "geometry does not prove decoration extents"
++                    "native client placed with 69 pixels of top headroom; xwininfo proves "
++                    "absolute client geometry; decoration extents require visual verification"
+                 ),
+                 "visual_verification_required": True,
+             },
+@@ -810,14 +914,13 @@
+                 self.xdo(
+                     [
+                         "windowmove",
+-                        "--sync",
+                         self.window_id,
+                         str(requested_x),
+                         str(requested_y),
+                     ],
+                     f"move preview without resizing (correction attempt {attempt})",
+                 )
+-                observed = self.get_geometry(f"after move attempt {attempt}")
++                observed = self.wait_for_stable_geometry(f"after move attempt {attempt}")
+                 self.require_native_geometry(observed, f"after move attempt {attempt}")
+                 final_geometry = observed
+                 if observed["x"] == CLIENT_X and observed["y"] == CLIENT_Y:

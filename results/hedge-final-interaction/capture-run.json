@@ -1,0 +1,92 @@
+{
+  "capture_after": "capture-provenance-after.json",
+  "capture_before": "capture-provenance-before.json",
+  "capture_inputs_unchanged": true,
+  "capture_summary": "capture/summary.json",
+  "completed": {
+    "monotonic_ns": 10845572690719,
+    "utc": "2026-10-01T21:51:39.414285Z"
+  },
+  "controller_source": {
+    "bytes": 18741,
+    "path": ".local/run_final_interaction_remote.py",
+    "sha256": "6f94c9df83cd751a9f0720ba9d5d2241be1ca60eeef3baec7031250376c4484d"
+  },
+  "display": ":0",
+  "final_media_conversion_performed": false,
+  "passed": true,
+  "public_final_summary_written": false,
+  "recorder_command": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py",
+      "--binary",
+      "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+      "--scene",
+      "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+      "--output",
+      "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on",
+      "--duration",
+      "48",
+      "--fps",
+      "30"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3",
+    "shell": false
+  },
+  "recorder_run": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py",
+      "--binary",
+      "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+      "--scene",
+      "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+      "--output",
+      "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on",
+      "--duration",
+      "48",
+      "--fps",
+      "30"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3",
+    "ended": {
+      "monotonic_ns": 10835053983069,
+      "utc": "2026-10-01T21:51:28.895569Z"
+    },
+    "exit_code": 0,
+    "shell": false,
+    "started": {
+      "monotonic_ns": 10779702412233,
+      "utc": "2026-10-01T21:50:33.544007Z"
+    },
+    "stderr_log": "recorder-controller.stderr.log",
+    "stdout_log": "recorder-controller.stdout.log"
+  },
+  "reference_command_receipt": "post-space-reference.command.json",
+  "reference_inputs_unchanged": true,
+  "root": "/home/ubuntu/cis5650/project3",
+  "scheduled_S_save": {
+    "bytes": 1291985,
+    "created_by": "scheduled-S-save",
+    "name": "gltf-showcase.2026-10-01_21-50-33z.125samp.save0.png",
+    "renderer_stdout_log": "renderer.stdout.log",
+    "samples": 125,
+    "sha256": "55040cd82c54350327f21900efe3bb0d10b987d32784780a2524e2e70dc6d34c"
+  },
+  "schema_version": 1,
+  "selected_scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+  "started": {
+    "monotonic_ns": 10779563821815,
+    "utc": "2026-10-01T21:50:33.405410Z"
+  },
+  "status": "succeeded"
+}

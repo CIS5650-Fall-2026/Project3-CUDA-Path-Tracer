@@ -1,0 +1,181 @@
+{
+  "binary_paths": {
+    "headless": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+    "preview": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer"
+  },
+  "binary_sha256_end": {
+    "headless": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1",
+    "preview": "49d21f230205231729b8aae5240508affb0c06594a9435682159fd92748c80e3"
+  },
+  "binary_sha256_start": {
+    "headless": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1",
+    "preview": "49d21f230205231729b8aae5240508affb0c06594a9435682159fd92748c80e3"
+  },
+  "build": "/home/ubuntu/cis5650/project3/build-final",
+  "elapsed_seconds": 17.56925639399924,
+  "ended_at_utc": "2026-10-01T21:42:25.537389Z",
+  "errors": [],
+  "exit_code": 0,
+  "output_paths": [
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/actions.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/summary.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/horizontal-orbit-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/horizontal-orbit-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/horizontal-orbit-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/horizontal-orbit-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/imgui.ini",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/optical-workbench.2026-10-01_21-42-09z.10samp.save5.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/optical-workbench.2026-10-01_21-42-09z.16samp.save1.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/optical-workbench.2026-10-01_21-42-09z.16samp.save3.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/optical-workbench.2026-10-01_21-42-09z.17samp.save2.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/optical-workbench.2026-10-01_21-42-09z.7samp.save0.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/optical-workbench.2026-10-01_21-42-09z.8samp.save4.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/preview.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/reset-reference.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/reset-reference.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/reset-reference.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/reset-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/screen-plane-pan-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/screen-plane-pan-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/screen-plane-pan-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/screen-plane-pan-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/vertical-zoom-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/vertical-zoom-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/vertical-zoom-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/vertical-zoom-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/smoke/headless.json",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/smoke/headless.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/smoke/headless.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/smoke/headless.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/smoke/preview-smoke.2026-10-01_21-42-08z.16samp.save0.png",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-preview/smoke/preview.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/logs/001-source-hash-start.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/logs/001-source-hash-start.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/logs/002-verify-preview.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/logs/002-verify-preview.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/logs/003-source-hash-end.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/logs/003-source-hash-end.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview/summary.json"
+  ],
+  "phase": "preview",
+  "prefix": "hedge-final",
+  "renderer_metadata": [
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 16,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 10,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/hedge-final-preview/interactive/horizontal-orbit-original-reference.json",
+      "resolution": [
+        960,
+        640
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "c69536aa29023ea521894dcdec4a17532cf901c37eaefa5c56e5a648f59fa2f1"
+    }
+  ],
+  "schema_version": 1,
+  "source_hash_script_sha256_end": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_hash_script_sha256_start": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_input_sha256_end": "a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86",
+  "source_input_sha256_start": "a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86",
+  "stages": [
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.0868794939997315,
+      "ended_at_utc": "2026-10-01T21:42:08.069111Z",
+      "name": "source-hash-start",
+      "returncode": 0,
+      "started_at_utc": "2026-10-01T21:42:07.982246Z",
+      "status": "passed",
+      "stderr_log": "logs/001-source-hash-start.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/001-source-hash-start.stdout.log",
+      "stdout_sha256": "7d73d19c9c7730a200c46e17b485485725909d6a155881894261b4502ad16a47"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/verify_preview.py",
+        "--preview-binary",
+        "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+        "--headless-binary",
+        "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/hedge-final-preview",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 17.3605032989999,
+      "ended_at_utc": "2026-10-01T21:42:25.429878Z",
+      "name": "verify-preview",
+      "returncode": 0,
+      "started_at_utc": "2026-10-01T21:42:08.069390Z",
+      "status": "passed",
+      "stderr_log": "logs/002-verify-preview.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/002-verify-preview.stdout.log",
+      "stdout_sha256": "83b069f965e00ce993826c10f15708c92e3d920b4279a768a445aedac388e6c6"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.09249514000111958,
+      "ended_at_utc": "2026-10-01T21:42:25.522604Z",
+      "name": "source-hash-end",
+      "returncode": 0,
+      "started_at_utc": "2026-10-01T21:42:25.430149Z",
+      "status": "passed",
+      "stderr_log": "logs/003-source-hash-end.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/003-source-hash-end.stdout.log",
+      "stdout_sha256": "7d73d19c9c7730a200c46e17b485485725909d6a155881894261b4502ad16a47"
+    }
+  ],
+  "started_at_utc": "2026-10-01T21:42:07.968132Z",
+  "status": "passed",
+  "suite_path": "/home/ubuntu/cis5650/project3/results/hedge-final-suite-preview"
+}

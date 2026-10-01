@@ -1,0 +1,688 @@
+{
+  "commands": [
+    {
+      "command": [
+        "c++",
+        "--version"
+      ],
+      "command_record": {
+        "bytes": 639,
+        "path": "compiler-version.command.json",
+        "sha256": "5ebd0afd73db2e77af6c17c7384b5b1984b7c71a7d190731004cb6b0bf6fefb7"
+      },
+      "completed_utc": "2026-10-01T20:45:45.949390Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "exit_code": 0,
+      "name": "compiler-version",
+      "pid": 39746,
+      "process_elapsed_ms": 4.390066000269144,
+      "started_utc": "2026-10-01T20:45:45.941147Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "compiler-version.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 246,
+        "path": "compiler-version.stdout.txt",
+        "sha256": "88b7c4b67564a146863224148116065fee418539f0a408f3636a68f3bde51805"
+      }
+    },
+    {
+      "command": [
+        "c++",
+        "-std=c++17",
+        "-O3",
+        "-DNDEBUG",
+        "-I/home/ubuntu/cis5650/project3/src",
+        "-I/home/ubuntu/cis5650/project3/external/include",
+        "/home/ubuntu/cis5650/project3/scripts/profile_scene_load.cpp",
+        "/home/ubuntu/cis5650/project3/build-final/lib/libcis565_core.a",
+        "-o",
+        "/home/ubuntu/cis5650/project3/results/hedge-final-gltf/timing/cpu-profile/private-profile-scene-load"
+      ],
+      "command_record": {
+        "bytes": 993,
+        "path": "compile.command.json",
+        "sha256": "059b45cdade4cdd822f257908e6e2ecc6e699db61e220094c9154d0964e90002"
+      },
+      "completed_utc": "2026-10-01T20:45:48.920523Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "exit_code": 0,
+      "name": "compile",
+      "pid": 39747,
+      "process_elapsed_ms": 2958.602720000272,
+      "started_utc": "2026-10-01T20:45:45.958267Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "compile.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 0,
+        "path": "compile.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "/home/ubuntu/cis5650/project3/results/hedge-final-gltf/timing/cpu-profile/private-profile-scene-load",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+        "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+        "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+        "/home/ubuntu/cis5650/project3/scenes/complexity-high.json"
+      ],
+      "command_record": {
+        "bytes": 1101,
+        "path": "measure.command.json",
+        "sha256": "d99b1889890b6064090c3f3c5748f837eb8745605f259383d6cddbb389670bd6"
+      },
+      "completed_utc": "2026-10-01T20:45:49.123175Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "exit_code": 0,
+      "name": "measure",
+      "pid": 39752,
+      "process_elapsed_ms": 188.74142699951335,
+      "started_utc": "2026-10-01T20:45:48.930875Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "measure.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 2415,
+        "path": "measure.stdout.txt",
+        "sha256": "a22caf97a6c490b31768592e38f31a02aee77d59ce01ae8415b82c567a55fbcb"
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "complexity": "low",
+      "gltf_scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+      "matched_counts": {
+        "bvh_nodes": 201,
+        "primitives": 293,
+        "triangles": 288
+      },
+      "obj_scene": "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+      "ratios": {
+        "gltf_over_obj_bvh_rebuild_median_ms": 1.080727058650379,
+        "gltf_over_obj_load_including_bvh_median_ms": 0.6343775424581978
+      }
+    },
+    {
+      "complexity": "medium",
+      "gltf_scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+      "matched_counts": {
+        "bvh_nodes": 649,
+        "primitives": 1093,
+        "triangles": 1088
+      },
+      "obj_scene": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+      "ratios": {
+        "gltf_over_obj_bvh_rebuild_median_ms": 1.0082033783189417,
+        "gltf_over_obj_load_including_bvh_median_ms": 0.5886182935991527
+      }
+    },
+    {
+      "complexity": "high",
+      "gltf_scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+      "matched_counts": {
+        "bvh_nodes": 2313,
+        "primitives": 4229,
+        "triangles": 4224
+      },
+      "obj_scene": "/home/ubuntu/cis5650/project3/scenes/complexity-high.json",
+      "ratios": {
+        "gltf_over_obj_bvh_rebuild_median_ms": 1.0089405302487235,
+        "gltf_over_obj_load_including_bvh_median_ms": 0.365194199980884
+      }
+    }
+  ],
+  "completed_utc": "2026-10-01T20:45:49.136831Z",
+  "core_archive_after": {
+    "bytes": 2103842,
+    "device": 66306,
+    "inode": 3683151,
+    "mtime_ns": 1790884157154541029,
+    "path": "/home/ubuntu/cis5650/project3/build-final/lib/libcis565_core.a",
+    "sha256": "1daaed8d9131dc8c900b839e2851bbaa1d33c0df0f16391aadb45f50fa534a74"
+  },
+  "core_archive_before": {
+    "bytes": 2103842,
+    "device": 66306,
+    "inode": 3683151,
+    "mtime_ns": 1790884157154541029,
+    "path": "/home/ubuntu/cis5650/project3/build-final/lib/libcis565_core.a",
+    "sha256": "1daaed8d9131dc8c900b839e2851bbaa1d33c0df0f16391aadb45f50fa534a74"
+  },
+  "core_archive_path": "/home/ubuntu/cis5650/project3/build-final/lib/libcis565_core.a",
+  "helper_source": {
+    "bytes": 2616,
+    "device": 66306,
+    "inode": 3675464,
+    "mtime_ns": 1790825190000000000,
+    "path": "/home/ubuntu/cis5650/project3/scripts/profile_scene_load.cpp",
+    "sha256": "fc1673f5a9f0771fef66d9dd3b7544e2c624c9019cfbc03454c0239f0d6cd3c1"
+  },
+  "helper_source_after": {
+    "bytes": 2616,
+    "device": 66306,
+    "inode": 3675464,
+    "mtime_ns": 1790825190000000000,
+    "path": "/home/ubuntu/cis5650/project3/scripts/profile_scene_load.cpp",
+    "sha256": "fc1673f5a9f0771fef66d9dd3b7544e2c624c9019cfbc03454c0239f0d6cd3c1"
+  },
+  "helper_source_path": "/home/ubuntu/cis5650/project3/scripts/profile_scene_load.cpp",
+  "measured_repeats": 3,
+  "note": "CPU scene load includes parsing, transforms, camera setup, and initial BVH. The separate BVH measurement rebuilds from already loaded primitives. These are distinct operations; no subtraction or GPU-work claim is made. The helper initializes no GPU. One warmup precedes three measured repeats.",
+  "private_platform_executable": {
+    "deleted": true,
+    "identity_before_measurement": {
+      "bytes": 1135232,
+      "device": 66306,
+      "inode": 3685059,
+      "mtime_ns": 1790887548916112600,
+      "path": "/home/ubuntu/cis5650/project3/results/hedge-final-gltf/timing/cpu-profile/private-profile-scene-load",
+      "sha256": "dadf06d8a81707ececa2bd76281f3215f4eb50212392d70814e478458bfa9265"
+    },
+    "path": "timing/cpu-profile/private-profile-scene-load",
+    "retained": false
+  },
+  "records_artifact": {
+    "bytes": 2415,
+    "path": "timing/cpu-profile/records.json",
+    "sha256": "a22caf97a6c490b31768592e38f31a02aee77d59ce01ae8415b82c567a55fbcb"
+  },
+  "scene_inputs_after": {
+    "complexity-high.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 387854,
+          "device": 66306,
+          "inode": 3675172,
+          "mtime_ns": 1790827307000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+          "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+        },
+        {
+          "bytes": 2863,
+          "device": 66306,
+          "inode": 3670257,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/complexity-high.json",
+          "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212"
+        }
+      ],
+      "manifest_sha256": "4a9be95277d90fcd3dbcf8c651e06f8606ec4d23783755b8f599eddbd3193f5e",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/complexity-high.json",
+      "scene_file": "complexity-high.json"
+    },
+    "complexity-low.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 24651,
+          "device": 66306,
+          "inode": 3675178,
+          "mtime_ns": 1790827307000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-low.obj",
+          "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543"
+        },
+        {
+          "bytes": 2861,
+          "device": 66306,
+          "inode": 3670267,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+          "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5"
+        }
+      ],
+      "manifest_sha256": "3d1d4623bb912125ffd087f291af4fa1241792c24b86d61dd3672579d72c993c",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+      "scene_file": "complexity-low.json"
+    },
+    "complexity-medium.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 94338,
+          "device": 66306,
+          "inode": 3675183,
+          "mtime_ns": 1790827307000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-medium.obj",
+          "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb"
+        },
+        {
+          "bytes": 2867,
+          "device": 66306,
+          "inode": 3670268,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+          "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f"
+        }
+      ],
+      "manifest_sha256": "1b1b4496fadbf8780bace9544b5252029870eacdc60da83dec0ac47bcad389f9",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+      "scene_file": "complexity-medium.json"
+    },
+    "gltf-complexity-high.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 124600,
+          "device": 66306,
+          "inode": 3682708,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-high.glb",
+          "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 2874,
+          "device": 66306,
+          "inode": 3682696,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+          "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+        }
+      ],
+      "manifest_sha256": "fee11fef8df9acbd49be77a8a570484348522557c387a9036800b7ea359db9c4",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+      "scene_file": "gltf-complexity-high.json"
+    },
+    "gltf-complexity-low.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 10540,
+          "device": 66306,
+          "inode": 3682711,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+          "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 2872,
+          "device": 66306,
+          "inode": 3682697,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+          "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+        }
+      ],
+      "manifest_sha256": "b6ac44140f13e78c0fa12fed176b1ea32b2d5bf142d2fb32143d58a598eed0e7",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+      "scene_file": "gltf-complexity-low.json"
+    },
+    "gltf-complexity-medium.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 34232,
+          "device": 66306,
+          "inode": 3682713,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-medium.glb",
+          "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 2878,
+          "device": 66306,
+          "inode": 3682698,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+          "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+        }
+      ],
+      "manifest_sha256": "93a0a8639be3f6ebf2d75fafa2561818ade91be16a5c148f0901dea9036da5ae",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+      "scene_file": "gltf-complexity-medium.json"
+    }
+  },
+  "scene_inputs_before": {
+    "complexity-high.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 387854,
+          "device": 66306,
+          "inode": 3675172,
+          "mtime_ns": 1790827307000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+          "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+        },
+        {
+          "bytes": 2863,
+          "device": 66306,
+          "inode": 3670257,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/complexity-high.json",
+          "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212"
+        }
+      ],
+      "manifest_sha256": "4a9be95277d90fcd3dbcf8c651e06f8606ec4d23783755b8f599eddbd3193f5e",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/complexity-high.json",
+      "scene_file": "complexity-high.json"
+    },
+    "complexity-low.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 24651,
+          "device": 66306,
+          "inode": 3675178,
+          "mtime_ns": 1790827307000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-low.obj",
+          "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543"
+        },
+        {
+          "bytes": 2861,
+          "device": 66306,
+          "inode": 3670267,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+          "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5"
+        }
+      ],
+      "manifest_sha256": "3d1d4623bb912125ffd087f291af4fa1241792c24b86d61dd3672579d72c993c",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+      "scene_file": "complexity-low.json"
+    },
+    "complexity-medium.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 94338,
+          "device": 66306,
+          "inode": 3675183,
+          "mtime_ns": 1790827307000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-medium.obj",
+          "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb"
+        },
+        {
+          "bytes": 2867,
+          "device": 66306,
+          "inode": 3670268,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+          "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f"
+        }
+      ],
+      "manifest_sha256": "1b1b4496fadbf8780bace9544b5252029870eacdc60da83dec0ac47bcad389f9",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+      "scene_file": "complexity-medium.json"
+    },
+    "gltf-complexity-high.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 124600,
+          "device": 66306,
+          "inode": 3682708,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-high.glb",
+          "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 2874,
+          "device": 66306,
+          "inode": 3682696,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+          "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+        }
+      ],
+      "manifest_sha256": "fee11fef8df9acbd49be77a8a570484348522557c387a9036800b7ea359db9c4",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+      "scene_file": "gltf-complexity-high.json"
+    },
+    "gltf-complexity-low.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 10540,
+          "device": 66306,
+          "inode": 3682711,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+          "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 2872,
+          "device": 66306,
+          "inode": 3682697,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+          "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+        }
+      ],
+      "manifest_sha256": "b6ac44140f13e78c0fa12fed176b1ea32b2d5bf142d2fb32143d58a598eed0e7",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+      "scene_file": "gltf-complexity-low.json"
+    },
+    "gltf-complexity-medium.json": {
+      "files": [
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673880,
+          "mtime_ns": 1790884476427656259,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 34232,
+          "device": 66306,
+          "inode": 3682713,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-medium.glb",
+          "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+        },
+        {
+          "bytes": 196662,
+          "device": 66306,
+          "inode": 3673881,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 2878,
+          "device": 66306,
+          "inode": 3682698,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+          "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+        }
+      ],
+      "manifest_sha256": "93a0a8639be3f6ebf2d75fafa2561818ade91be16a5c148f0901dea9036da5ae",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+      "scene_file": "gltf-complexity-medium.json"
+    }
+  },
+  "scene_paths": [
+    "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+    "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+    "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+    "/home/ubuntu/cis5650/project3/scenes/complexity-high.json"
+  ],
+  "schema_version": 1,
+  "started_utc": "2026-10-01T20:45:45.923008Z",
+  "status": "completed",
+  "units": "milliseconds",
+  "warmups": 1
+}

@@ -1,0 +1,85 @@
+{
+  "capture_after": "capture-provenance-after.json",
+  "capture_before": "capture-provenance-before.json",
+  "capture_summary": "capture/summary.json",
+  "completed": {
+    "monotonic_ns": 10425028262936,
+    "utc": "2026-10-01T21:44:38.869847Z"
+  },
+  "controller_source": {
+    "bytes": 18741,
+    "path": ".local/run_final_interaction_remote.py",
+    "sha256": "6f94c9df83cd751a9f0720ba9d5d2241be1ca60eeef3baec7031250376c4484d"
+  },
+  "display": ":0",
+  "failure": {
+    "message": "existing recorder returned a failure; see preserved logs",
+    "type": "ControllerError"
+  },
+  "final_media_conversion_performed": false,
+  "passed": false,
+  "public_final_summary_written": false,
+  "recorder_command": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py",
+      "--binary",
+      "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+      "--scene",
+      "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+      "--output",
+      "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on",
+      "--duration",
+      "48",
+      "--fps",
+      "30"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3",
+    "shell": false
+  },
+  "recorder_run": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py",
+      "--binary",
+      "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+      "--scene",
+      "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+      "--output",
+      "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on",
+      "--duration",
+      "48",
+      "--fps",
+      "30"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3",
+    "ended": {
+      "monotonic_ns": 10424889706621,
+      "utc": "2026-10-01T21:44:38.731287Z"
+    },
+    "exit_code": 1,
+    "shell": false,
+    "started": {
+      "monotonic_ns": 10418990563635,
+      "utc": "2026-10-01T21:44:32.832142Z"
+    },
+    "stderr_log": "recorder-controller.stderr.log",
+    "stdout_log": "recorder-controller.stdout.log"
+  },
+  "root": "/home/ubuntu/cis5650/project3",
+  "schema_version": 1,
+  "selected_scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+  "started": {
+    "monotonic_ns": 10418851493644,
+    "utc": "2026-10-01T21:44:32.693081Z"
+  },
+  "status": "failed"
+}

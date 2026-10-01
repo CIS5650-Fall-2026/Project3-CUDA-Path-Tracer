@@ -51,10 +51,13 @@ struct Options
     std::optional<bool> wavefront;
     std::optional<bool> rr;
     std::optional<int> rrStart;
+    std::optional<RendererSampler> sampler;
+    std::optional<bool> motion;
     std::optional<RendererDebugMode> debug;
     std::optional<fs::path> checkpointPath;
     std::optional<std::uint64_t> checkpointEvery;
     std::optional<fs::path> resumePath;
+    std::optional<std::uint64_t> timeBudgetMs;
     bool benchmark = false;
     bool validate = false;
     bool help = false;
@@ -152,12 +155,15 @@ std::string usage(std::string_view program)
         << "  --wavefront on|off\n"
         << "  --rr on|off\n"
         << "  --rr-start N             Completed scattering events before roulette (1..4096)\n"
+        << "  --sampler counter|halton Sampling algorithm (default: counter)\n"
+        << "  --motion on|off          Rigid-translation motion blur (default: on)\n"
         << "  --debug normals|uv|depth  Deterministic first-hit semantic view\n"
         << "\n"
         << "Checkpoint and diagnostics:\n"
         << "  --checkpoint PATH        Atomically save final checkpoint\n"
         << "  --checkpoint-every N     Also save every N completed samples\n"
         << "  --resume PATH            Resume a compatible checkpoint\n"
+        << "  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n"
         << "  --benchmark              Write PREFIX.benchmark.csv\n"
         << "  --validate               Run GPU equivalence/edge validation and exit\n"
         << "  --help\n";
@@ -207,6 +213,24 @@ RendererDebugMode parseDebugMode(std::string_view text)
     if (text == "depth") return RendererDebugMode::Depth;
     throw std::invalid_argument(
         "--debug expects exactly 'normals', 'uv', or 'depth'");
+}
+
+RendererSampler parseSampler(std::string_view text)
+{
+    if (text == "counter") return RendererSampler::Counter;
+    if (text == "halton") return RendererSampler::Halton;
+    throw std::invalid_argument(
+        "--sampler expects exactly 'counter' or 'halton'");
+}
+
+const char* samplerName(RendererSampler sampler)
+{
+    switch (sampler)
+    {
+        case RendererSampler::Counter: return "counter";
+        case RendererSampler::Halton: return "halton";
+    }
+    return "invalid";
 }
 
 const char* debugModeName(RendererDebugMode mode)
@@ -371,6 +395,16 @@ Options parseOptions(int argc, char** argv)
             }
             options.rrStart = static_cast<int>(value);
         }
+        else if (!positionalOnly && argument == "--sampler")
+        {
+            rejectDuplicate(options.sampler.has_value(), argument);
+            options.sampler = parseSampler(requireValue(i, argument));
+        }
+        else if (!positionalOnly && argument == "--motion")
+        {
+            rejectDuplicate(options.motion.has_value(), argument);
+            options.motion = parseSwitch(requireValue(i, argument), argument);
+        }
         else if (!positionalOnly && argument == "--debug")
         {
             rejectDuplicate(options.debug.has_value(), argument);
@@ -407,6 +441,18 @@ Options parseOptions(int argc, char** argv)
             }
             options.resumePath = fs::path(value);
         }
+        else if (!positionalOnly && argument == "--time-budget-ms")
+        {
+            rejectDuplicate(options.timeBudgetMs.has_value(), argument);
+            const std::uint64_t value = parseUnsigned<std::uint64_t>(
+                requireValue(i, argument), argument);
+            if (value == 0 || value > 0x7fffffffffffffffull)
+            {
+                throw std::out_of_range(
+                    "--time-budget-ms must be in [1, 2^63-1]");
+            }
+            options.timeBudgetMs = value;
+        }
         else if (!positionalOnly && argument == "--benchmark")
         {
             rejectDuplicate(options.benchmark, argument);
@@ -439,6 +485,22 @@ Options parseOptions(int argc, char** argv)
     if (options.scenePath.empty())
     {
         throw std::invalid_argument("a scene JSON path is required");
+    }
+    if (options.timeBudgetMs && !options.samples)
+    {
+        throw std::invalid_argument(
+            "--time-budget-ms requires an explicit --samples safety ceiling");
+    }
+    if (options.timeBudgetMs && (options.resumePath || options.checkpointPath
+                                 || options.checkpointEvery))
+    {
+        throw std::invalid_argument(
+            "--time-budget-ms cannot be combined with resume or checkpoint options");
+    }
+    if (options.timeBudgetMs && options.validate)
+    {
+        throw std::invalid_argument(
+            "--time-budget-ms is only valid for a fresh render");
     }
     if (options.checkpointEvery && !options.checkpointPath)
     {
@@ -637,6 +699,7 @@ checkpoint::RenderConfig checkpointConfig(const ResolvedRun& run)
     result.wavefront = run.renderer.wavefront;
     result.russianRoulette = run.renderer.rr;
     result.rrStart = static_cast<std::uint32_t>(run.renderer.rrStart);
+    result.motion = run.renderer.motion;
     return result;
 }
 
@@ -652,6 +715,8 @@ checkpoint::CameraState checkpointCamera(const Camera& camera)
     result.pixelLength = camera.pixelLength;
     result.aperture = camera.aperture;
     result.focusDistance = camera.focusDistance;
+    result.shutterOpen = camera.shutterOpen;
+    result.shutterClose = camera.shutterClose;
     return result;
 }
 
@@ -683,7 +748,8 @@ void addMatrix(checkpoint::FingerprintBuilder& builder, const glm::mat4& matrix)
 
 checkpoint::Fingerprints fingerprintsFor(const fs::path& scenePath,
                                           const Scene& scene,
-                                          const checkpoint::RenderConfig& config)
+                                          const checkpoint::RenderConfig& config,
+                                          std::uint32_t samplerId)
 {
     checkpoint::Fingerprints result;
     checkpoint::Status status = checkpoint::fingerprintFile(scenePath, result.sceneFile);
@@ -746,7 +812,8 @@ checkpoint::Fingerprints fingerprintsFor(const fs::path& scenePath,
             .addI32(geom.materialid)
             .addVec3(geom.translation)
             .addVec3(geom.rotation)
-            .addVec3(geom.scale);
+            .addVec3(geom.scale)
+            .addVec3(geom.motionTranslation);
         addMatrix(geometry, geom.transform);
         addMatrix(geometry, geom.inverseTransform);
         addMatrix(geometry, geom.invTranspose);
@@ -780,6 +847,10 @@ checkpoint::Fingerprints fingerprintsFor(const fs::path& scenePath,
     {
         geometry.addI32(primitive);
     }
+    // Shutter endpoints are camera state, but are also part of the canonical
+    // parsed scene identity because they change every moving-geometry sample.
+    geometry.addFloat(scene.state.camera.shutterOpen)
+        .addFloat(scene.state.camera.shutterClose);
     result.geometry = geometry.value();
 
     checkpoint::FingerprintBuilder renderConfig;
@@ -793,7 +864,9 @@ checkpoint::Fingerprints fingerprintsFor(const fs::path& scenePath,
         .addBool(config.materialSort)
         .addBool(config.wavefront)
         .addBool(config.russianRoulette)
-        .addU32(config.rrStart);
+        .addU32(config.rrStart)
+        .addU32(samplerId)
+        .addBool(config.motion);
     result.renderConfig = renderConfig.value();
     return result;
 }
@@ -866,11 +939,12 @@ checkpoint::ExpectedState expectedState(const ResolvedRun& run,
 {
     checkpoint::ExpectedState expected;
     expected.seed = run.renderer.seed;
-    expected.samplerVersion = kRendererSamplerVersion;
+    expected.samplerVersion = static_cast<std::uint32_t>(run.renderer.sampler);
     expected.config = checkpointConfig(run);
     expected.camera = checkpointCamera(scene.state.camera);
     expected.compatibility = checkpointCompatibility();
-    expected.fingerprints = fingerprintsFor(scenePath, scene, expected.config);
+    expected.fingerprints = fingerprintsFor(scenePath, scene, expected.config,
+        expected.samplerVersion);
     expected.requireSeedAndSampler = true;
     expected.requireCompatibility = true;
     return expected;
@@ -959,6 +1033,34 @@ ResolvedRun resolveRun(const Options& options,
         resumed ? resumed->config.russianRoulette : defaults.rr);
     run.renderer.rrStart = options.rrStart.value_or(
         resumed ? static_cast<int>(resumed->config.rrStart) : defaults.rrStart);
+    if (options.sampler)
+    {
+        run.renderer.sampler = *options.sampler;
+    }
+    else if (resumed)
+    {
+        if (resumed->samplerVersion ==
+                static_cast<std::uint32_t>(RendererSampler::Counter))
+        {
+            run.renderer.sampler = RendererSampler::Counter;
+        }
+        else if (resumed->samplerVersion ==
+                 static_cast<std::uint32_t>(RendererSampler::Halton))
+        {
+            run.renderer.sampler = RendererSampler::Halton;
+        }
+        else
+        {
+            throw std::runtime_error(
+                "checkpoint contains an unknown sampler ID");
+        }
+    }
+    else
+    {
+        run.renderer.sampler = defaults.sampler;
+    }
+    run.renderer.motion = options.motion.value_or(
+        resumed ? resumed->config.motion : defaults.motion);
     run.renderer.benchmark = options.benchmark;
     run.renderer.debug = options.debug.value_or(RendererDebugMode::None);
     if (run.renderer.maxDepth <= 0 || run.renderer.maxDepth > 4096)
@@ -1264,6 +1366,9 @@ json configJson(const ResolvedRun& run)
         {"wavefront", run.renderer.wavefront},
         {"rr", run.renderer.rr},
         {"rr_start", run.renderer.rrStart},
+        {"sampler", samplerName(run.renderer.sampler)},
+        {"sampler_id", static_cast<std::uint32_t>(run.renderer.sampler)},
+        {"motion", run.renderer.motion},
         {"debug", debugModeName(run.renderer.debug)},
         {"depth_semantics", "maximum surface intersections; final intersection is emission-only"}};
 }
@@ -1288,7 +1393,8 @@ void writeMetadata(const fs::path& path,
                    std::uint64_t sumChecksum,
                    const checkpoint::ExpectedState& expected,
                    const std::optional<RendererBenchmarkSummary>& benchmark,
-                   double renderLoopWallMs)
+                   double renderLoopWallMs,
+                   double lastSampleWallMs)
 {
     json metadata;
     metadata["format_version"] = 1;
@@ -1298,6 +1404,8 @@ void writeMetadata(const fs::path& path,
     metadata["completed_samples"] = completedSamples;
     metadata["seed"] = run.renderer.seed;
     metadata["sampler_version"] = expected.samplerVersion;
+    metadata["sampler"] = samplerName(run.renderer.sampler);
+    metadata["sampler_id"] = expected.samplerVersion;
     metadata["config"] = configJson(run);
     if (run.renderer.debug == RendererDebugMode::None)
     {
@@ -1319,7 +1427,9 @@ void writeMetadata(const fs::path& path,
         {"look_at", {scene.state.camera.lookAt.x, scene.state.camera.lookAt.y,
                      scene.state.camera.lookAt.z}},
         {"aperture", scene.state.camera.aperture},
-        {"focus_distance", scene.state.camera.focusDistance}};
+        {"focus_distance", scene.state.camera.focusDistance},
+        {"shutter", {scene.state.camera.shutterOpen,
+                     scene.state.camera.shutterClose}}};
     metadata["outputs"] = {
         {"png", suffixed(run.outputPrefix, ".png").string()},
         {"linear_sum", suffixed(run.outputPrefix, ".sum.bin").string()}};
@@ -1361,6 +1471,13 @@ void writeMetadata(const fs::path& path,
         ? json("shade_ms is aggregate shader time in both scheduling modes. diffuse_ms, mirror_ms, dielectric_ms, emission_ms, and terminal_ms are an alternative wavefront breakdown and must not be added to shade_ms. queue_host_ms is host queue bookkeeping/submission time, not GPU stage time. count_ms is the compact=off active-path count.")
         : json(nullptr);
     metadata["render_loop_wall_ms"] = renderLoopWallMs;
+    metadata["run_policy"] = {
+        {"time_budget_ms", options.timeBudgetMs
+            ? json(*options.timeBudgetMs) : json(nullptr)},
+        {"stop_reason", options.timeBudgetMs
+                && completedSamples < run.targetSamples
+            ? "time_budget" : "sample_target"},
+        {"last_sample_wall_ms", lastSampleWallMs}};
     if (benchmark)
     {
         metadata["benchmark"] = {
@@ -1461,10 +1578,15 @@ int runHeadless(const Options& options)
     std::vector<glm::vec3> accumulation;
     std::uint64_t cachedAtSample = std::numeric_limits<std::uint64_t>::max();
     std::uint64_t checkpointedAtSample = std::numeric_limits<std::uint64_t>::max();
+    double lastSampleWallMs = 0.0;
     const auto renderStarted = std::chrono::steady_clock::now();
     while (completed < run.targetSamples)
     {
+        const auto sampleStarted = std::chrono::steady_clock::now();
         pathtraceRunSample();
+        const auto sampleStopped = std::chrono::steady_clock::now();
+        lastSampleWallMs = std::chrono::duration<double, std::milli>(
+            sampleStopped - sampleStarted).count();
         const std::uint64_t next = pathtraceSampleCount();
         if (next != completed + 1)
         {
@@ -1481,6 +1603,19 @@ int runHeadless(const Options& options)
             saveCheckpoint(*options.checkpointPath, scene, expected,
                            accumulation, completed);
             checkpointedAtSample = completed;
+        }
+
+        // The budget is a diagnostic stopping policy, checked only between
+        // complete samples. It is deliberately absent from renderer identity,
+        // scene fingerprints, and checkpoint state.
+        if (options.timeBudgetMs && completed < run.targetSamples)
+        {
+            const double elapsedMs = std::chrono::duration<double, std::milli>(
+                std::chrono::steady_clock::now() - renderStarted).count();
+            if (elapsedMs >= static_cast<double>(*options.timeBudgetMs))
+            {
+                break;
+            }
         }
     }
     const auto renderStopped = std::chrono::steady_clock::now();
@@ -1518,7 +1653,7 @@ int runHeadless(const Options& options)
 
     writeMetadata(suffixed(run.outputPrefix, ".json"), options, run, scene,
                   completed, sumChecksum, expected, benchmarkSummary,
-                  renderLoopWallMs);
+                  renderLoopWallMs, lastSampleWallMs);
     renderer.shutdown();
     return 0;
 }

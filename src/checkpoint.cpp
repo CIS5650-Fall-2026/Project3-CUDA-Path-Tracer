@@ -31,6 +31,8 @@ constexpr std::uint64_t kHeaderBytes = 24;
 constexpr std::uint64_t kChecksumBytes = 8;
 constexpr std::size_t kIoBufferBytes = 64 * 1024;
 constexpr std::uint32_t kMaxRussianRouletteStart = 4096;
+constexpr std::uint32_t kCounterSamplerId = 2;
+constexpr std::uint32_t kHaltonSamplerId = 3;
 
 static_assert(sizeof(float) == 4, "checkpoint format requires 32-bit float");
 static_assert(std::numeric_limits<float>::is_iec559,
@@ -173,12 +175,19 @@ Status validateMetadata(const CheckpointData& data, const Limits& limits) {
         return failure(Error::LimitExceeded,
                        "checkpoint completed-sample count exceeds configured limit");
     }
+    if (data.samplerVersion != kCounterSamplerId &&
+        data.samplerVersion != kHaltonSamplerId) {
+        return failure(Error::Malformed,
+                       "checkpoint sampler ID must be 2 (counter) or 3 (Halton)");
+    }
 
     if (!finite(data.camera.position) || !finite(data.camera.lookAt) ||
         !finite(data.camera.view) || !finite(data.camera.up) ||
         !finite(data.camera.right) || !finite(data.camera.fov) ||
         !finite(data.camera.pixelLength) || !finite(data.camera.aperture) ||
-        !finite(data.camera.focusDistance)) {
+        !finite(data.camera.focusDistance) ||
+        !finite(data.camera.shutterOpen) ||
+        !finite(data.camera.shutterClose)) {
         return failure(Error::NonFinite,
                        "checkpoint camera contains a non-finite value");
     }
@@ -191,6 +200,12 @@ Status validateMetadata(const CheckpointData& data, const Limits& limits) {
         data.camera.pixelLength.y <= 0.0f) {
         return failure(Error::Malformed,
                        "checkpoint camera has invalid projection parameters");
+    }
+    if (data.camera.shutterOpen < 0.0f ||
+        data.camera.shutterOpen > data.camera.shutterClose ||
+        data.camera.shutterClose > 1.0f) {
+        return failure(Error::Malformed,
+                       "checkpoint camera shutter must satisfy 0 <= open <= close <= 1");
     }
 
     const auto stringWithinLimit = [&limits](const std::string& value) {
@@ -222,11 +237,11 @@ Status payloadSize(const CheckpointData& data,
     std::uint64_t total = 0;
     // completedSamples, seed, samplerVersion
     if (!addPayloadBytes(8 + 8 + 4, total) ||
-        // RenderConfig: the v1 three-u32/five-bool prefix followed by two
-        // canonical booleans and one u32.
-        !addPayloadBytes(3 * 4 + 5 + 2 + 4, total) ||
-        // CameraState: twenty-one floats.
-        !addPayloadBytes(21 * 4, total) ||
+        // RenderConfig: the v1 three-u32/five-bool prefix, two additional
+        // canonical booleans, one u32, then the v3 motion boolean.
+        !addPayloadBytes(3 * 4 + 5 + 2 + 4 + 1, total) ||
+        // CameraState: the v2 twenty-one-float prefix plus two shutter floats.
+        !addPayloadBytes(23 * 4, total) ||
         // CompatibilityInfo numeric fields.
         !addPayloadBytes(4 * 4, total)) {
         return failure(Error::Overflow,
@@ -537,7 +552,8 @@ bool writeConfig(BufferedWriter& writer, const RenderConfig& config) {
            writer.u8(config.materialSort ? 1u : 0u) &&
            writer.u8(config.wavefront ? 1u : 0u) &&
            writer.u8(config.russianRoulette ? 1u : 0u) &&
-           writer.u32(config.rrStart);
+           writer.u32(config.rrStart) &&
+           writer.u8(config.motion ? 1u : 0u);
 }
 
 bool writeCamera(BufferedWriter& writer, const CameraState& camera) {
@@ -545,7 +561,8 @@ bool writeCamera(BufferedWriter& writer, const CameraState& camera) {
            writer.vec3(camera.view) && writer.vec3(camera.up) &&
            writer.vec3(camera.right) && writer.vec2(camera.fov) &&
            writer.vec2(camera.pixelLength) && writer.f32(camera.aperture) &&
-           writer.f32(camera.focusDistance);
+           writer.f32(camera.focusDistance) &&
+           writer.f32(camera.shutterOpen) && writer.f32(camera.shutterClose);
 }
 
 bool writeCompatibility(BufferedWriter& writer,
@@ -587,7 +604,8 @@ bool readConfig(BufferedReader& reader, RenderConfig& config) {
            readCanonicalBool(reader, config.materialSort) &&
            readCanonicalBool(reader, config.wavefront) &&
            readCanonicalBool(reader, config.russianRoulette) &&
-           reader.u32(config.rrStart);
+           reader.u32(config.rrStart) &&
+           readCanonicalBool(reader, config.motion);
 }
 
 bool readCamera(BufferedReader& reader, CameraState& camera) {
@@ -595,7 +613,8 @@ bool readCamera(BufferedReader& reader, CameraState& camera) {
            reader.vec3(camera.view) && reader.vec3(camera.up) &&
            reader.vec3(camera.right) && reader.vec2(camera.fov) &&
            reader.vec2(camera.pixelLength) && reader.f32(camera.aperture) &&
-           reader.f32(camera.focusDistance);
+           reader.f32(camera.focusDistance) &&
+           reader.f32(camera.shutterOpen) && reader.f32(camera.shutterClose);
 }
 
 Status readCompatibility(BufferedReader& reader,
@@ -921,6 +940,7 @@ std::string configMismatch(const RenderConfig& actual,
     if (actual.rrStart != expected.rrStart) {
         return "Russian-roulette start depth";
     }
+    if (actual.motion != expected.motion) return "motion setting";
     return {};
 }
 
@@ -930,7 +950,9 @@ bool sameCamera(const CameraState& a, const CameraState& b) {
            sameVec3(a.right, b.right) && sameVec2(a.fov, b.fov) &&
            sameVec2(a.pixelLength, b.pixelLength) &&
            sameFloat(a.aperture, b.aperture) &&
-           sameFloat(a.focusDistance, b.focusDistance);
+           sameFloat(a.focusDistance, b.focusDistance) &&
+           sameFloat(a.shutterOpen, b.shutterOpen) &&
+           sameFloat(a.shutterClose, b.shutterClose);
 }
 
 bool sameCompatibility(const CompatibilityInfo& a,
@@ -1208,7 +1230,7 @@ Status validateForContinuation(const CheckpointData& data,
             if (data.samplerVersion != expected.samplerVersion) {
                 return failure(
                     Error::ContinuationMismatch,
-                    "checkpoint sampler version does not match this renderer");
+                    "checkpoint sampler ID does not match this renderer");
             }
         }
         const std::string mismatch = configMismatch(data.config, expected.config);

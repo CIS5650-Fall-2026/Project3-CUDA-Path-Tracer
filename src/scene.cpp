@@ -1,5 +1,6 @@
 #include "scene.h"
 
+#include "gltf_loader.h"
 #include "json.hpp"
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -12,6 +13,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <iterator>
 #include <limits>
 #include <memory>
 #include <sstream>
@@ -1228,6 +1230,11 @@ void Scene::loadFromJSON(const std::string& jsonName)
 
         Geom object{};
         object.materialid = material->second;
+        if (const auto motion = definition.find("MOTION_TRANSLATION");
+            motion != definition.end())
+        {
+            object.motionTranslation = readVec3(*motion, context + ".MOTION_TRANSLATION");
+        }
         initializeTransform(object,
                             readVec3(required(definition, "TRANS", context), context + ".TRANS"),
                             readVec3(required(definition, "ROTAT", context), context + ".ROTAT"),
@@ -1251,6 +1258,28 @@ void Scene::loadFromJSON(const std::string& jsonName)
                 baseDirectory, "OBJ mesh for " + context);
             recordAsset(assets, objPath);
             loadObj(objPath, object, geoms);
+        }
+        else if (type == "gltf")
+        {
+            const fs::path modelPath = canonicalFile(
+                fs::path(readString(required(definition, "FILE", context), context + ".FILE")),
+                baseDirectory, "glTF mesh for " + context);
+            recordAsset(assets, modelPath);
+            gltf::LoadResult loaded = gltf::load(modelPath, object);
+            for (const fs::path& asset : loaded.externalAssets)
+            {
+                recordAsset(assets, asset);
+            }
+            const std::size_t maximumPrimitiveCount = static_cast<std::size_t>(
+                std::numeric_limits<int>::max());
+            if (geoms.size() > maximumPrimitiveCount
+                || loaded.triangles.size() > maximumPrimitiveCount - geoms.size())
+            {
+                fail("Scene contains too many primitives");
+            }
+            geoms.insert(geoms.end(),
+                         std::make_move_iterator(loaded.triangles.begin()),
+                         std::make_move_iterator(loaded.triangles.end()));
         }
         else
         {
@@ -1287,6 +1316,27 @@ void Scene::loadFromJSON(const std::string& jsonName)
     camera.position = readVec3(required(cameraData, "EYE", "Camera"), "Camera.EYE");
     camera.lookAt = readVec3(required(cameraData, "LOOKAT", "Camera"), "Camera.LOOKAT");
     const glm::vec3 suppliedUp = readVec3(required(cameraData, "UP", "Camera"), "Camera.UP");
+    camera.shutterOpen = 0.0f;
+    camera.shutterClose = 1.0f;
+    if (const auto shutter = cameraData.find("SHUTTER"); shutter != cameraData.end())
+    {
+        if (!shutter->is_array() || shutter->size() != 2)
+        {
+            fail("Camera.SHUTTER must be an array of exactly two numbers");
+        }
+        camera.shutterOpen = readFloat((*shutter)[0], "Camera.SHUTTER[0]");
+        camera.shutterClose = readFloat((*shutter)[1], "Camera.SHUTTER[1]");
+        // Enforce the schema before narrowing to binary32 so a tiny negative,
+        // just-over-one, or narrowly reversed JSON value cannot round onto a
+        // valid float boundary.
+        const double shutterOpen = (*shutter)[0].get<double>();
+        const double shutterClose = (*shutter)[1].get<double>();
+        if (shutterOpen < 0.0 || shutterOpen > shutterClose ||
+            shutterClose > 1.0)
+        {
+            fail("Camera.SHUTTER must satisfy 0 <= open <= close <= 1");
+        }
+    }
 
     const glm::vec3 viewVector = camera.lookAt - camera.position;
     const float viewLengthSquared = glm::dot(viewVector, viewVector);

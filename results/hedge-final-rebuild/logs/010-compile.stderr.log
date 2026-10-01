@@ -1,0 +1,95 @@
+/home/ubuntu/cis5650/project3/src/scene.cpp: In member function ‘void Scene::loadFromJSON(const std::string&)’:
+/home/ubuntu/cis5650/project3/src/scene.cpp:1053:17: warning: possibly dangling reference to a temporary [-Wdangling-reference]
+ 1053 |     const json& materialsData = required(data, "Materials", "scene");
+      |                 ^~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/scene.cpp:1053:41: note: the temporary was destroyed at the end of the full expression ‘{anonymous}::required(data, ((const char*)"Materials"), std::__cxx11::basic_string<char>(((const char*)"scene"), std::allocator<char>()))’
+ 1053 |     const json& materialsData = required(data, "Materials", "scene");
+      |                                 ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/scene.cpp:1212:17: warning: possibly dangling reference to a temporary [-Wdangling-reference]
+ 1212 |     const json& objectsData = required(data, "Objects", "scene");
+      |                 ^~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/scene.cpp:1212:39: note: the temporary was destroyed at the end of the full expression ‘{anonymous}::required(data, ((const char*)"Objects"), std::__cxx11::basic_string<char>(((const char*)"scene"), std::allocator<char>()))’
+ 1212 |     const json& objectsData = required(data, "Objects", "scene");
+      |                               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/scene.cpp:1290:17: warning: possibly dangling reference to a temporary [-Wdangling-reference]
+ 1290 |     const json& cameraData = required(data, "Camera", "scene");
+      |                 ^~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/scene.cpp:1290:38: note: the temporary was destroyed at the end of the full expression ‘{anonymous}::required(data, ((const char*)"Camera"), std::__cxx11::basic_string<char>(((const char*)"scene"), std::allocator<char>()))’
+ 1290 |     const json& cameraData = required(data, "Camera", "scene");
+      |                              ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/gltf_loader.cpp: In function ‘void gltf::{anonymous}::validateRawModel(const ParsedDocument&, const std::filesystem::__cxx11::path&, std::vector<std::filesystem::__cxx11::path>*)’:
+/home/ubuntu/cis5650/project3/src/gltf_loader.cpp:565:17: warning: possibly dangling reference to a temporary [-Wdangling-reference]
+  565 |     const json& asset = requiredMember(root, "asset", path, "root");
+      |                 ^~~~~
+/home/ubuntu/cis5650/project3/src/gltf_loader.cpp:565:39: note: the temporary was destroyed at the end of the full expression ‘gltf::{anonymous}::requiredMember((* & root), ((const char*)"asset"), (* & path), std::__cxx11::basic_string<char>(((const char*)"root"), std::allocator<char>()))’
+  565 |     const json& asset = requiredMember(root, "asset", path, "root");
+      |                         ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/gltf_loader.cpp:566:17: warning: possibly dangling reference to a temporary [-Wdangling-reference]
+  566 |     const json& version = requiredMember(asset, "version", path, "asset");
+      |                 ^~~~~~~
+/home/ubuntu/cis5650/project3/src/gltf_loader.cpp:566:41: note: the temporary was destroyed at the end of the full expression ‘gltf::{anonymous}::requiredMember((* & asset), ((const char*)"version"), (* & path), std::__cxx11::basic_string<char>(((const char*)"asset"), std::allocator<char>()))’
+  566 |     const json& version = requiredMember(asset, "version", path, "asset");
+      |                           ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/ubuntu/cis5650/project3/src/stb.cpp:5:
+In function ‘void stbiw__linear_to_rgbe(unsigned char*, float*)’,
+    inlined from ‘void stbiw__write_hdr_scanline(FILE*, int, int, unsigned char*, const float*)’ at /home/ubuntu/cis5650/project3/external/include/stb_image_write.h:306:31:
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h:260:43: warning: ‘linear[0]’ may be used uninitialized [-Wmaybe-uninitialized]
+  260 |       rgbe[0] = (unsigned char)(linear[0] * normalize);
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h: In function ‘void stbiw__write_hdr_scanline(FILE*, int, int, unsigned char*, const float*)’:
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h:287:10: note: ‘linear[0]’ was declared here
+  287 |    float linear[3];
+      |          ^~~~~~
+In function ‘void stbiw__linear_to_rgbe(unsigned char*, float*)’,
+    inlined from ‘void stbiw__write_hdr_scanline(FILE*, int, int, unsigned char*, const float*)’ at /home/ubuntu/cis5650/project3/external/include/stb_image_write.h:306:31:
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h:261:43: warning: ‘linear[1]’ may be used uninitialized [-Wmaybe-uninitialized]
+  261 |       rgbe[1] = (unsigned char)(linear[1] * normalize);
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h: In function ‘void stbiw__write_hdr_scanline(FILE*, int, int, unsigned char*, const float*)’:
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h:287:10: note: ‘linear[1]’ was declared here
+  287 |    float linear[3];
+      |          ^~~~~~
+In function ‘void stbiw__linear_to_rgbe(unsigned char*, float*)’,
+    inlined from ‘void stbiw__write_hdr_scanline(FILE*, int, int, unsigned char*, const float*)’ at /home/ubuntu/cis5650/project3/external/include/stb_image_write.h:306:31:
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h:262:43: warning: ‘linear[2]’ may be used uninitialized [-Wmaybe-uninitialized]
+  262 |       rgbe[2] = (unsigned char)(linear[2] * normalize);
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h: In function ‘void stbiw__write_hdr_scanline(FILE*, int, int, unsigned char*, const float*)’:
+/home/ubuntu/cis5650/project3/external/include/stb_image_write.h:287:10: note: ‘linear[2]’ was declared here
+  287 |    float linear[3];
+      |          ^~~~~~
+/home/ubuntu/cis5650/project3/src/main.cpp: In function ‘void deletePBO(GLuint*)’:
+/home/ubuntu/cis5650/project3/src/main.cpp:374:37: warning: ‘cudaError_t cudaGLUnregisterBufferObject(GLuint)’ is deprecated [-Wdeprecated-declarations]
+  374 |         cudaGLUnregisterBufferObject(*pbo);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+In file included from /home/ubuntu/cis5650/project3/src/main.cpp:18:
+/usr/local/cuda-12.8/targets/x86_64-linux/include/cuda_gl_interop.h:410:57: note: declared here
+  410 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGLUnregisterBufferObject(GLuint bufObj);
+      |                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/main.cpp: In function ‘void initCuda()’:
+/home/ubuntu/cis5650/project3/src/main.cpp:403:22: warning: ‘cudaError_t cudaGLSetGLDevice(int)’ is deprecated [-Wdeprecated-declarations]
+  403 |     cudaGLSetGLDevice(0);
+      |     ~~~~~~~~~~~~~~~~~^~~
+/usr/local/cuda-12.8/targets/x86_64-linux/include/cuda_gl_interop.h:311:57: note: declared here
+  311 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGLSetGLDevice(int device);
+      |                                                         ^~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/main.cpp: In function ‘void initPBO()’:
+/home/ubuntu/cis5650/project3/src/main.cpp:424:31: warning: ‘cudaError_t cudaGLRegisterBufferObject(GLuint)’ is deprecated [-Wdeprecated-declarations]
+  424 |     cudaGLRegisterBufferObject(pbo);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/usr/local/cuda-12.8/targets/x86_64-linux/include/cuda_gl_interop.h:333:57: note: declared here
+  333 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGLRegisterBufferObject(GLuint bufObj);
+      |                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/main.cpp: In function ‘void runCuda()’:
+/home/ubuntu/cis5650/project3/src/main.cpp:752:30: warning: ‘cudaError_t cudaGLMapBufferObject(void**, GLuint)’ is deprecated [-Wdeprecated-declarations]
+  752 |         cudaGLMapBufferObject((void**)&pbo_dptr, pbo);
+      |         ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/cuda-12.8/targets/x86_64-linux/include/cuda_gl_interop.h:362:57: note: declared here
+  362 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGLMapBufferObject(void **devPtr, GLuint bufObj);
+      |                                                         ^~~~~~~~~~~~~~~~~~~~~
+/home/ubuntu/cis5650/project3/src/main.cpp:759:32: warning: ‘cudaError_t cudaGLUnmapBufferObject(GLuint)’ is deprecated [-Wdeprecated-declarations]
+  759 |         cudaGLUnmapBufferObject(pbo);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/usr/local/cuda-12.8/targets/x86_64-linux/include/cuda_gl_interop.h:388:57: note: declared here
+  388 | extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaGLUnmapBufferObject(GLuint bufObj);
+      |                                                         ^~~~~~~~~~~~~~~~~~~~~~~

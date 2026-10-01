@@ -53,6 +53,7 @@ CheckpointData makeCheckpoint() {
     // A start depth beyond maxDepth is valid and remains part of the exact
     // continuation configuration.
     data.config.rrStart = 11;
+    data.config.motion = false;
 
     data.camera.position = glm::vec3(1.0f, 2.0f, 3.0f);
     data.camera.lookAt = glm::vec3(0.0f, 0.5f, -1.0f);
@@ -63,6 +64,8 @@ CheckpointData makeCheckpoint() {
     data.camera.pixelLength = glm::vec2(0.004f, 0.005f);
     data.camera.aperture = 0.125f;
     data.camera.focusDistance = 4.25f;
+    data.camera.shutterOpen = 0.25f;
+    data.camera.shutterClose = 0.75f;
 
     data.compatibility.cudaRuntimeVersion = 12040;
     data.compatibility.cudaDriverVersion = 12050;
@@ -132,7 +135,8 @@ void requireEquivalent(const CheckpointData& a, const CheckpointData& b) {
                 a.config.materialSort == b.config.materialSort &&
                 a.config.wavefront == b.config.wavefront &&
                 a.config.russianRoulette == b.config.russianRoulette &&
-                a.config.rrStart == b.config.rrStart,
+                a.config.rrStart == b.config.rrStart &&
+                a.config.motion == b.config.motion,
             "render config changed");
     require(sameVec3(a.camera.position, b.camera.position) &&
                 sameVec3(a.camera.lookAt, b.camera.lookAt) &&
@@ -144,7 +148,9 @@ void requireEquivalent(const CheckpointData& a, const CheckpointData& b) {
                 sameFloat(a.camera.pixelLength.x, b.camera.pixelLength.x) &&
                 sameFloat(a.camera.pixelLength.y, b.camera.pixelLength.y) &&
                 sameFloat(a.camera.aperture, b.camera.aperture) &&
-                sameFloat(a.camera.focusDistance, b.camera.focusDistance),
+                sameFloat(a.camera.focusDistance, b.camera.focusDistance) &&
+                sameFloat(a.camera.shutterOpen, b.camera.shutterOpen) &&
+                sameFloat(a.camera.shutterClose, b.camera.shutterClose),
             "camera changed");
     require(a.compatibility.deviceIdentifier ==
                     b.compatibility.deviceIdentifier &&
@@ -223,6 +229,16 @@ void putU32(std::vector<std::uint8_t>& bytes,
     }
 }
 
+std::uint32_t getU32(const std::vector<std::uint8_t>& bytes,
+                     std::size_t offset) {
+    require(offset + 4 <= bytes.size(), "test read offset out of range");
+    std::uint32_t value = 0;
+    for (unsigned i = 0; i < 4; ++i) {
+        value |= static_cast<std::uint32_t>(bytes[offset + i]) << (i * 8u);
+    }
+    return value;
+}
+
 void putU64(std::vector<std::uint8_t>& bytes,
             std::size_t offset,
             std::uint64_t value) {
@@ -231,6 +247,16 @@ void putU64(std::vector<std::uint8_t>& bytes,
         bytes[offset + i] =
             static_cast<std::uint8_t>((value >> (i * 8u)) & 0xffu);
     }
+}
+
+std::uint64_t getU64(const std::vector<std::uint8_t>& bytes,
+                     std::size_t offset) {
+    require(offset + 8 <= bytes.size(), "test read offset out of range");
+    std::uint64_t value = 0;
+    for (unsigned i = 0; i < 8; ++i) {
+        value |= static_cast<std::uint64_t>(bytes[offset + i]) << (i * 8u);
+    }
+    return value;
 }
 
 void refreshChecksum(std::vector<std::uint8_t>& bytes) {
@@ -281,6 +307,11 @@ void testRoundTrip(const std::filesystem::path& directory) {
                 metadata.config.russianRoulette ==
                     original.config.russianRoulette &&
                 metadata.config.rrStart == original.config.rrStart &&
+                metadata.config.motion == original.config.motion &&
+                sameFloat(metadata.camera.shutterOpen,
+                          original.camera.shutterOpen) &&
+                sameFloat(metadata.camera.shutterClose,
+                          original.camera.shutterClose) &&
                 metadata.compatibility.buildIdentifier ==
                     original.compatibility.buildIdentifier &&
                 metadata.fingerprints.geometry ==
@@ -310,6 +341,92 @@ void testRoundTrip(const std::filesystem::path& directory) {
     status = checkpoint::load(first, replaced);
     require(status.ok() && replaced.completedSamples == 18,
             "atomic replacement did not publish the new checkpoint");
+}
+
+void testFormatLayoutAndSamplerIds(const std::filesystem::path& directory) {
+    const std::filesystem::path haltonPath = directory / "format-v3-halton.ckpt";
+    const CheckpointData halton = makeCheckpoint();
+    checkpoint::Status status = checkpoint::saveAtomic(haltonPath, halton);
+    require(status.ok(), "v3 Halton layout fixture could not be saved");
+    const std::vector<std::uint8_t> bytes = readBytes(haltonPath);
+    require(bytes.size() > 160, "v3 checkpoint is shorter than fixed metadata");
+    require(getU32(bytes, 8) == 3u, "checkpoint header is not format v3");
+    require(getU64(bytes, 16) == bytes.size() - 24u - 8u,
+            "v3 payload byte count is inconsistent with file length");
+    require(getU32(bytes, 40) == 3u,
+            "Halton sampler ID is not at absolute offset 40");
+    require(bytes[67] == 0u,
+            "motion boolean is not at absolute offset 67");
+    require(getU32(bytes, 152) == [] {
+                std::uint32_t bits = 0;
+                const float value = 0.25f;
+                std::memcpy(&bits, &value, sizeof(bits));
+                return bits;
+            }(),
+            "shutter-open float is not at absolute offset 152");
+    require(getU32(bytes, 156) == [] {
+                std::uint32_t bits = 0;
+                const float value = 0.75f;
+                std::memcpy(&bits, &value, sizeof(bits));
+                return bits;
+            }(),
+            "shutter-close float is not at absolute offset 156");
+
+    CheckpointData counter = makeCheckpoint();
+    counter.samplerVersion = 2;
+    counter.config.motion = true;
+    counter.camera.shutterOpen = 0.5f;
+    counter.camera.shutterClose = 0.5f;
+    const std::filesystem::path counterPath =
+        directory / "format-v3-counter.ckpt";
+    status = checkpoint::saveAtomic(counterPath, counter);
+    require(status.ok(), "v3 counter checkpoint could not be saved");
+
+    checkpoint::CheckpointMetadata metadata;
+    status = checkpoint::inspect(counterPath, metadata);
+    require(status.ok(), "v3 counter checkpoint inspection failed");
+    require(metadata.samplerVersion == 2u && metadata.config.motion &&
+                sameFloat(metadata.camera.shutterOpen, 0.5f) &&
+                sameFloat(metadata.camera.shutterClose, 0.5f),
+            "inspect did not expose sampler/motion/frozen-shutter inheritance data");
+
+    CheckpointData loaded;
+    const checkpoint::ExpectedState expected = expectedFrom(counter);
+    status = checkpoint::load(counterPath, loaded, &expected);
+    require(status.ok(), "v3 counter checkpoint load failed");
+    requireEquivalent(counter, loaded);
+    require(getU32(readBytes(counterPath), 40) == 2u,
+            "counter sampler ID was not serialized independently of format v3");
+}
+
+void testSamplerIdValidation(const std::filesystem::path& directory) {
+    CheckpointData invalid = makeCheckpoint();
+    invalid.samplerVersion = 4;
+    checkpoint::Status status = checkpoint::validate(invalid);
+    require(status.code == checkpoint::Error::Malformed,
+            "validation accepted an unknown sampler ID");
+    status = checkpoint::saveAtomic(directory / "unknown-sampler-save.ckpt",
+                                    invalid);
+    require(status.code == checkpoint::Error::Malformed,
+            "save accepted an unknown sampler ID");
+
+    const std::filesystem::path path =
+        directory / "unknown-sampler-encoded.ckpt";
+    status = checkpoint::saveAtomic(path, makeCheckpoint());
+    require(status.ok(), "unknown sampler load fixture could not be saved");
+    std::vector<std::uint8_t> bytes = readBytes(path);
+    putU32(bytes, 40, 99u);
+    refreshChecksum(bytes);
+    writeBytes(path, bytes);
+
+    checkpoint::CheckpointMetadata metadata;
+    status = checkpoint::inspect(path, metadata);
+    require(status.code == checkpoint::Error::Malformed,
+            "inspection accepted a checksummed unknown sampler ID");
+    CheckpointData loaded;
+    status = checkpoint::load(path, loaded);
+    require(status.code == checkpoint::Error::Malformed,
+            "load accepted a checksummed unknown sampler ID");
 }
 
 void testCorruption(const std::filesystem::path& directory) {
@@ -373,10 +490,40 @@ void testContinuationMismatch(const std::filesystem::path& directory) {
             "Russian-roulette start-depth mismatch was not rejected");
 
     expected = expectedFrom(data);
+    expected.config.motion = !expected.config.motion;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "motion mismatch was not rejected");
+
+    expected = expectedFrom(data);
+    expected.camera.shutterOpen = 0.125f;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "shutter-open mismatch was not rejected");
+
+    expected = expectedFrom(data);
+    expected.camera.shutterClose = 1.0f;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "shutter-close mismatch was not rejected");
+
+    expected = expectedFrom(data);
+    expected.samplerVersion = 2;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "sampler-ID mismatch was not rejected");
+
+    expected = expectedFrom(data);
     expected.fingerprints.assets ^= 1u;
     status = checkpoint::load(path, loaded, &expected);
     require(status.code == checkpoint::Error::ContinuationMismatch,
             "asset fingerprint mismatch was not rejected");
+
+    expected = expectedFrom(data);
+    expected.fingerprints.geometry ^= 1u;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "geometry fingerprint mismatch was not rejected");
 
     expected = expectedFrom(data);
     expected.compatibility.buildIdentifier += "-different";
@@ -429,9 +576,9 @@ void testNonFiniteValidation(const std::filesystem::path& directory) {
     status = checkpoint::saveAtomic(path, data);
     require(status.ok(), "NaN load test setup failed");
     std::vector<std::uint8_t> bytes = readBytes(path);
-    // Camera position.x starts after 20 bytes of sample metadata and 23 bytes
-    // of RenderConfig in the payload.
-    putU32(bytes, 24 + 20 + 23, 0x7fc00000u);
+    // Camera position.x starts after 20 bytes of sample metadata and the
+    // 24-byte v3 RenderConfig in the payload.
+    putU32(bytes, 24 + 20 + 24, 0x7fc00000u);
     refreshChecksum(bytes);
     writeBytes(path, bytes);
     CheckpointData loaded;
@@ -442,6 +589,89 @@ void testNonFiniteValidation(const std::filesystem::path& directory) {
     status = checkpoint::inspect(path, metadata);
     require(status.code == checkpoint::Error::NonFinite,
             "metadata inspection accepted a checksummed NaN camera value");
+}
+
+void testShutterValidation(const std::filesystem::path& directory) {
+    CheckpointData data = makeCheckpoint();
+    data.camera.shutterOpen = 0.6f;
+    data.camera.shutterClose = 0.6f;
+    checkpoint::Status status = checkpoint::validate(data);
+    require(status.ok(), "frozen shutter was rejected");
+
+    data.camera.shutterOpen = 0.8f;
+    data.camera.shutterClose = 0.7f;
+    status = checkpoint::validate(data);
+    require(status.code == checkpoint::Error::Malformed,
+            "reversed shutter interval was accepted");
+
+    data = makeCheckpoint();
+    data.camera.shutterOpen = -0.01f;
+    status = checkpoint::validate(data);
+    require(status.code == checkpoint::Error::Malformed,
+            "negative shutter-open value was accepted");
+
+    data = makeCheckpoint();
+    data.camera.shutterClose = 1.01f;
+    status = checkpoint::saveAtomic(directory / "shutter-out-of-range.ckpt",
+                                    data);
+    require(status.code == checkpoint::Error::Malformed,
+            "save accepted shutter-close above one");
+
+    data = makeCheckpoint();
+    data.camera.shutterOpen = std::numeric_limits<float>::quiet_NaN();
+    status = checkpoint::validate(data);
+    require(status.code == checkpoint::Error::NonFinite,
+            "NaN shutter-open value was accepted");
+
+    data = makeCheckpoint();
+    data.camera.shutterClose = std::numeric_limits<float>::infinity();
+    status = checkpoint::saveAtomic(directory / "shutter-infinite.ckpt", data);
+    require(status.code == checkpoint::Error::NonFinite,
+            "save accepted infinite shutter-close value");
+
+    struct Mutation {
+        const char* name;
+        std::size_t offset;
+        std::uint32_t bits;
+        checkpoint::Error expectedError;
+    };
+    std::uint32_t negativeBits = 0;
+    const float negative = -0.25f;
+    std::memcpy(&negativeBits, &negative, sizeof(negativeBits));
+    std::uint32_t reversedBits = 0;
+    const float reversed = 0.9f;
+    std::memcpy(&reversedBits, &reversed, sizeof(reversedBits));
+    std::uint32_t highBits = 0;
+    const float high = 1.25f;
+    std::memcpy(&highBits, &high, sizeof(highBits));
+    const Mutation mutations[] = {
+        {"negative", 152, negativeBits, checkpoint::Error::Malformed},
+        {"reversed", 152, reversedBits, checkpoint::Error::Malformed},
+        {"above-one", 156, highBits, checkpoint::Error::Malformed},
+        {"nonfinite", 156, 0x7fc00000u, checkpoint::Error::NonFinite},
+    };
+    for (const Mutation& mutation : mutations) {
+        const std::filesystem::path path =
+            directory / (std::string("shutter-corrupt-") + mutation.name +
+                         ".ckpt");
+        status = checkpoint::saveAtomic(path, makeCheckpoint());
+        require(status.ok(), "shutter corruption fixture could not be saved");
+        std::vector<std::uint8_t> bytes = readBytes(path);
+        putU32(bytes, mutation.offset, mutation.bits);
+        refreshChecksum(bytes);
+        writeBytes(path, bytes);
+
+        checkpoint::CheckpointMetadata metadata;
+        status = checkpoint::inspect(path, metadata);
+        require(status.code == mutation.expectedError,
+                std::string("inspection accepted checksummed ") +
+                    mutation.name + " shutter metadata");
+        CheckpointData loaded;
+        status = checkpoint::load(path, loaded);
+        require(status.code == mutation.expectedError,
+                std::string("load accepted checksummed ") + mutation.name +
+                    " shutter metadata");
+    }
 }
 
 void testRussianRouletteBounds() {
@@ -471,12 +701,15 @@ void testRussianRouletteBounds() {
 void testConfigEncodingRejection(const std::filesystem::path& directory) {
     const CheckpointData data = makeCheckpoint();
 
-    // The v2 fields are appended to the 17-byte v1 RenderConfig prefix.
+    // The scheduling fields follow the 17-byte v1 RenderConfig prefix, and
+    // v3 appends motion after rrStart.
     const std::size_t configOffset = 24 + 20;
     const std::size_t wavefrontOffset = configOffset + 17;
     const std::size_t russianRouletteOffset = configOffset + 18;
-    const std::size_t boolOffsets[] = {wavefrontOffset, russianRouletteOffset};
-    for (std::size_t i = 0; i < 2; ++i) {
+    const std::size_t motionOffset = configOffset + 23;
+    const std::size_t boolOffsets[] = {
+        wavefrontOffset, russianRouletteOffset, motionOffset};
+    for (std::size_t i = 0; i < 3; ++i) {
         const std::filesystem::path path =
             directory / ("noncanonical-config-" + std::to_string(i) + ".ckpt");
         checkpoint::Status status = checkpoint::saveAtomic(path, data);
@@ -491,11 +724,11 @@ void testConfigEncodingRejection(const std::filesystem::path& directory) {
         checkpoint::CheckpointMetadata metadata;
         status = checkpoint::inspect(path, metadata);
         require(status.code == checkpoint::Error::Malformed,
-                "inspection accepted a non-canonical v2 boolean");
+                "inspection accepted a non-canonical config boolean");
         CheckpointData loaded;
         status = checkpoint::load(path, loaded);
         require(status.code == checkpoint::Error::Malformed,
-                "load accepted a non-canonical v2 boolean");
+                "load accepted a non-canonical config boolean");
     }
 }
 
@@ -535,32 +768,35 @@ void testSchedulingConflictRejection(const std::filesystem::path& directory) {
             "load accepted wavefront scheduling with material sorting");
 }
 
-void testVersionOneRejection(const std::filesystem::path& directory) {
-    const std::filesystem::path path = directory / "version-one.ckpt";
-    const CheckpointData data = makeCheckpoint();
-    checkpoint::Status status = checkpoint::saveAtomic(path, data);
-    require(status.ok(), "version-one rejection test setup failed");
+void testOldVersionRejection(const std::filesystem::path& directory) {
+    for (const std::uint32_t version : {1u, 2u}) {
+        const std::filesystem::path path =
+            directory / ("old-version-" + std::to_string(version) + ".ckpt");
+        const CheckpointData data = makeCheckpoint();
+        checkpoint::Status status = checkpoint::saveAtomic(path, data);
+        require(status.ok(), "old-version rejection test setup failed");
 
-    std::vector<std::uint8_t> bytes = readBytes(path);
-    putU32(bytes, 8, 1u);
-    refreshChecksum(bytes);
-    writeBytes(path, bytes);
+        std::vector<std::uint8_t> bytes = readBytes(path);
+        putU32(bytes, 8, version);
+        refreshChecksum(bytes);
+        writeBytes(path, bytes);
 
-    checkpoint::CheckpointMetadata metadata;
-    metadata.completedSamples = 999;
-    status = checkpoint::inspect(path, metadata);
-    require(status.code == checkpoint::Error::UnsupportedVersion,
-            "inspection did not strictly reject checkpoint format v1");
-    require(metadata.completedSamples == 999,
-            "failed v1 inspection modified its output object");
+        checkpoint::CheckpointMetadata metadata;
+        metadata.completedSamples = 999;
+        status = checkpoint::inspect(path, metadata);
+        require(status.code == checkpoint::Error::UnsupportedVersion,
+                "inspection did not strictly reject old checkpoint format");
+        require(metadata.completedSamples == 999,
+                "failed old-format inspection modified its output object");
 
-    CheckpointData loaded;
-    loaded.completedSamples = 777;
-    status = checkpoint::load(path, loaded);
-    require(status.code == checkpoint::Error::UnsupportedVersion,
-            "load did not strictly reject checkpoint format v1");
-    require(loaded.completedSamples == 777,
-            "failed v1 load modified its output object");
+        CheckpointData loaded;
+        loaded.completedSamples = 777;
+        status = checkpoint::load(path, loaded);
+        require(status.code == checkpoint::Error::UnsupportedVersion,
+                "load did not strictly reject old checkpoint format");
+        require(loaded.completedSamples == 777,
+                "failed old-format load modified its output object");
+    }
 }
 
 void testFingerprinting(const std::filesystem::path& directory) {
@@ -701,14 +937,17 @@ int main() {
         DirectoryGuard cleanup(directory);
 
         testRoundTrip(directory);
+        testFormatLayoutAndSamplerIds(directory);
+        testSamplerIdValidation(directory);
         testCorruption(directory);
         testContinuationMismatch(directory);
         testSizeValidation(directory);
         testNonFiniteValidation(directory);
+        testShutterValidation(directory);
         testRussianRouletteBounds();
         testConfigEncodingRejection(directory);
         testSchedulingConflictRejection(directory);
-        testVersionOneRejection(directory);
+        testOldVersionRejection(directory);
         testFingerprinting(directory);
         testBufferedBoundaries(directory);
         testBvhValidation();

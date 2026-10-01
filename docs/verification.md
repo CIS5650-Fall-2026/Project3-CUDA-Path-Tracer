@@ -1,141 +1,101 @@
-# Validation and feature coverage
+# Verification and assignment coverage
 
-## Scope
+The current renderer source hash is `a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86`, computed by `scripts/source_hash.py` over CMake, renderer, compaction, external and CMake-helper inputs. The recorded Release build supplies this value explicitly as `PROJECT3_BUILD_ID`. Every current render identifies this build; older `results/extension-*` records are retained as historical evidence and are not the basis of the current README measurements.
 
-Core rendering includes diffuse and ideal specular transport, segmented intersection/shading kernels, stream compaction, toggleable material sorting, and stochastic antialiasing. The extension adds exact-material wavefront queues, roulette termination, two original procedural mesh families, and two original analytic textures.
+## Coverage and listed points
 
-| Implemented feature | Listed value | Evidence |
-|---|---:|---|
-| Original OBJ parser and triangle rendering | 2 | Original generated meshes; malformed-input and transform tests |
-| CPU-built BVH, iterative GPU traversal | 6 | Exact brute-force agreement; three mesh-complexity benchmarks |
-| Fresnel reflection and refraction | 2 | Dielectric edge checks; glass/mirror comparison |
-| File and procedural textures; mesh bump mapping | 6 | UV/normal diagnostics; texture and bump comparisons |
-| Restartable path tracing | 5 | Lossless sums and BVH state; fresh-process exact continuation |
-| Thin-lens depth of field | 2 | Zero-aperture identity; focused/defocused comparison |
-| Direct-light sampling | 2 | Cube, transformed-sphere and triangle light tests; MIS comparison |
-| Per-material wavefront queues and specialized kernels | 6 | Queue conservation and exact legacy equivalence; scheduling comparisons |
-| Two new complex procedural shapes and two new textures | 4 | Fluted body and swept knot; marble and staggered-cell renders |
-| Russian roulette | 1 | Survival compensation, statistical agreement and open/closed timing |
-| **Total listed feature value** | **36** | |
+The core requirements are ideal diffuse scattering, toggleable material sorting and stochastic antialiasing. The README describes each added implementation, provides before/after views and measured costs, and discusses acceleration, a hypothetical CPU renderer and future improvements.
 
-The assignment requires at least 10 feature points before additional work can earn a bonus, capped at +25/100 at the graders' discretion. This portfolio has 36 nominal listed points: 10 required and 26 additional, giving a one-point margin toward the cap. Listed values do not guarantee the awarded bonus; in particular the new procedural work must be assessed separately from the existing texture feature. Previous Project 2 scan work is reused with provenance and is not counted again.
+| Listed feature | Nominal points |
+|---|---:|
+| glTF mesh loading with toggleable bounding-volume culling | 4 |
+| Hierarchical GPU BVH traversal | 6 |
+| Fresnel reflection/refraction | 2 |
+| File/procedural texture and bump mapping with mesh loading | 6 |
+| Restartable path tracing | 5 |
+| Thin-lens depth of field | 2 |
+| Direct-light sampling | 2 |
+| Per-material wavefront scheduling | 6 |
+| Two complex procedural shapes and two procedural textures | 4 |
+| Russian roulette | 1 |
+| Scrambled Halton sampling | 3 |
+| Object motion and exposure averaging | 3 |
+| **Total included in the conservative portfolio** | **44** |
 
-## Reproduce the checks
+The first 10 feature points satisfy Part 2. The remaining 34 nominal points support a discretionary bonus capped at +25. This is an accounting of the listed implementation values, not a guaranteed award. OBJ is retained but its +2 tier is not stacked with glTF's +4 tier. No additional stream-compaction points are claimed for the authorized Project 2 reuse. Subsurface scattering, denoising, post-processing, Vulkan interop and non-perfect specular scattering are not claimed.
 
-```sh
-ctest --test-dir build --output-on-failure
-python3 scripts/validate_render.py --binary build/bin/cis565_path_tracer_headless --output results/extension-validation
-python3 scripts/generate_assets.py --profile results/extension-host/procedural-generation.json --profile-only
-python3 scripts/profile_mesh_load.py --build build --output results/extension-mesh-load
-python3 scripts/run_experiments.py --binary build/bin/cis565_path_tracer_headless --output results/extension-experiments
-python3 scripts/verify_experiments.py results/extension-experiments
-python3 scripts/plot_experiments.py results/extension-experiments --procedural-cpu-profile results/extension-mesh-load/summary.json
-python3 scripts/render_gallery.py --binary build/bin/cis565_path_tracer_headless --output results/extension-gallery
-python3 scripts/verify_preview.py --output results/extension-preview
-```
-
-The validation, experiment, scene-load, gallery and preview output directories must not already exist. Run GPU measurements sequentially with no competing GPU workload. The graphical check needs the preview executable and an active NVIDIA OpenGL display; its driver records the actual actions and saved images.
-
-The validation script checks raw finite/nonnegative accumulation and exact scheduling equivalence; separate-process checkpoint continuation; incompatible configuration, version, corruption and asset-change rejection; truncated-depth lighting behavior; agreement of independent NEE/BSDF lighting estimates; and roulette's paired statistical agreement. Output logs and metadata accompany every render.
-
-## Validation system
-
-GPU evidence uses an AWS g5.xlarge workstation with AMD EPYC 7R32 (4 vCPUs), 16 GiB provisioned host RAM (16,554,987,520 bytes visible to the OS), NVIDIA A10G (23,028 MiB reported GPU memory), NVIDIA driver 580.178.04, CUDA 12.8.93, Ubuntu 24.04.4, GCC 13.3, and CMake 3.28.3. Release builds target CUDA architecture 86. The preview uses the NVIDIA OpenGL driver on the same GPU. The measured CPU and host-memory report is retained in [system.log](../results/extension-rebuild/system.log).
-
-The local host geometry pass uses Apple M5, 24 GiB RAM, macOS 27.0.1, Apple clang 21.0.0, C++17 and `-O3 -DNDEBUG`: 21 test groups, all 24 scene files, 6,989,243 assertions, zero failures. The retained [geometry log](../results/extension-host/geometry-tests.log) and [host specifications](../results/extension-host/system.log) describe a CPU correctness check; they are separate from GPU performance evidence.
-
-## Recorded results
-
-Renderer build-input SHA-256: `d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa`. Local and remote input hashes agree. The compatibility identifier additionally records compiler/toolkit versions, Release configuration, architecture, and a compiler-flags fingerprint. Sampler version is **2**. The baseline revision field identifies the inherited starter; the content hash identifies this implementation.
+## Current evidence
 
 | Check | Result | Retained evidence |
 |---|---|---|
-| Release build and CTest | Both executables build; 3/3 tests pass | [Build, configuration and test logs](../results/extension-rebuild/) |
-| Local geometry and all repository scenes | 21 groups, 24 scenes, 6,989,243 assertions; zero failures | [Geometry log](../results/extension-host/geometry-tests.log) |
-| New procedural mesh geometry | All six tessellations pass serialized geometry, seam and topology checks | [Mesh validation](../results/extension-host/procedural-mesh-validation.json) |
-| Existing generated assets and scenes | All 22 are byte-identical to the previous completed revision | [Baseline comparison](../results/extension-host/old22-baseline-comparison.json) |
-| Device equivalence and edge checks | 34/34 pass, including 35 queue-conservation fixtures | [GPU report](../results/extension-validation/gpu-validation.stdout.txt) |
-| Actual renders, checkpoint rejection and estimator checks | All 55 checks pass | [Validation summary](../results/extension-validation/summary.json) |
-| Benchmark matrix and exact scheduling comparisons | All 48 variants and 288 processes verified; exact sums across 168 processes in 12 groups | [Exact comparison](../results/extension-experiments/exact-comparison.json) |
-| CUDA memory validation | Zero errors in both scenes and modes | [Four memcheck records](../results/extension-rebuild/sanitizer-summary.json) |
-| CUDA race validation | Zero hazards, errors, or warnings in both scenes and modes | [Four racecheck records](../results/extension-rebuild/sanitizer-summary.json) |
-| CPU procedural generation and scene loading | Six tessellations measured separately on AWS; all generated mesh validations pass | [Generation profile](../results/extension-host/procedural-generation.json), [load/BVH profile](../results/extension-mesh-load/summary.json) |
-| Gallery and continuation | All 23 gallery records retained; 16 → 512 continuation equals uninterrupted sums byte for byte | [Gallery settings](../results/extension-gallery/gallery.json), [resumed metadata](../results/extension-gallery/restart-resumed.json) |
-| Graphical preview integration | Preview/headless and Space restoration exact; six saves and all three independent camera checks pass | [Preview summary](../results/extension-preview/summary.json) |
+| Release CUDA and preview build; CTest | 4/4 tests pass | [Build and system records](../results/hedge-final-rebuild/) |
+| AWS host geometry, all scenes | 23 groups, 41 scenes, 10,537,291 assertions; zero failures | [Build-phase summary](../results/hedge-final-rebuild/summary.json) |
+| Mac host geometry, all scenes | 23 groups, 41 scenes, 10,536,220 assertions; zero failures | [Host report](../results/hedge-final-host-mac/test-summary.json) |
+| Host glTF and checkpoint checks | Optimized and ASan/UBSan pass; glTF 11 groups/351 assertions each | [Executed commands and logs](../results/hedge-final-host-mac/) |
+| Existing scene/asset preservation | All 37 files byte-identical to the previous local revision | [Hash comparison](../results/hedge-final-host-mac/existing-scenes-assets-comparison.json) |
+| Instructions restored | Byte-identical to the supplied INSTRUCTION (3).md | [Restoration record](../results/hedge-final-host-mac/instruction-restoration.json) |
+| Evidence-tool self-tests and deterministic glTF regeneration check | Seven commands pass; synthetic self-tests are separately labeled | [Tool report](../results/hedge-final-tools/summary.json) |
+| Device checks | 51/51 pass | [Device output](../results/hedge-final-validation/gpu-validation.stdout.txt) |
+| Core renders, rejection and statistical regression | 57 checks pass | [Validation](../results/hedge-final-validation/summary.json) |
+| Sampling/motion/format/runtime validation | 338 checks across 108 invocations; zero failures | [New-feature validator](../results/hedge-final-feature-validation/summary.json) |
+| CUDA memory and race validation | 16 runs pass, zero errors/hazards/warnings; exact per-scene/sampler sums | [Sanitizer records](../results/hedge-final-suite-sanitizers/summary.json) |
+| Baseline timing matrix | 48 variants, 288 processes; 168 outputs in 12 exact groups verified | [Matrix](../results/hedge-final-experiments/summary.json), [exact comparisons](../results/hedge-final-experiments/exact-comparison.json) |
+| Sampling convergence and equal-time study | 140 renders; qualified; 36.2% pooled MSE reduction, six of six improved means and all image-mean checks pass | [Complete quality report](../results/hedge-final-quality/quality/summary.json) |
+| Sampling and motion timing | 36 processes, three warmups/three repeats per setting | [Timing](../results/hedge-final-timing/timing/summary.json) |
+| glTF encodings, moving meshes, resume, culling and host loading | 62 renders; all checks pass | [glTF study](../results/hedge-final-gltf/summary.json) |
+| Current comparison galleries | 23 baseline +16 new-feature +8 glTF records | [Baseline settings](../results/hedge-final-gallery/gallery.json), [new settings](../results/hedge-final-feature-gallery/gallery/summary.json), [glTF settings](../results/hedge-final-gltf/gallery/summary.json) |
+| Interactive preview | camera controls, six unique saves, progress and reset pass; preview/headless PNG comparisons exact | [Preview check](../results/hedge-final-preview/summary.json) |
+| Actual interaction recording | 49.3-second actual MP4, complete controls; 125-spp independent comparison differs in five RGB8 channels by one level | [Recording and reset comparison](../results/hedge-final-interaction/) |
 
-The sequential [measurement driver](../results/extension-rebuild/measurement-driver-summary.json) records successful generation, scene-load, experiment, exact-comparison, plot, gallery and preview stages with their commands, elapsed times and logs. All rendering evidence identifies the source hash above.
+Host assertion counts include checks performed for observed hits and can vary between compiler/platform runs. They are CPU correctness checks, not measurements of a CPU path tracer.
 
-### Scheduling and continuation contract
+## Hardware and reproduction
 
-The actual-render fixture uses 17 × 13 pixels, 17 samples, seed 947 and depth 7. It exercises all four wavefront/roulette combinations. Every valid comparison disables compaction, selects brute-force traversal, enables sorting in unified mode, or combines those changes without changing the complete raw sum file. Wavefront and sorted unified mode are mutually exclusive; `--sort on requires --wavefront off` is rejected explicitly. Instrumented and uninstrumented runs must also retain identical sums, while recorded queue and roulette counters satisfy conservation checks.
+GPU evidence uses an AWS g5.xlarge workstation with AMD EPYC 7R32 (4 vCPUs), 16 GiB provisioned host RAM, NVIDIA A10G (23,028 MiB reported memory), Ubuntu 24.04.4, CUDA 12.8.93, GCC 13.3 and CMake 3.28.3. Release targets architecture 86. [System logs](../results/hedge-final-rebuild/system.log) retain the actual reports. The graphical preview uses NVIDIA OpenGL on the same GPU. Local host checks use Apple M5, 24 GiB RAM, macOS 27.0.1 and Apple clang 21.0.0; [host specifications](../results/hedge-final-host-mac/system.json) are separate.
 
-Each configuration has a separate-process 5 → 17 continuation. Resumption supplies only the scene, target samples, output prefix and checkpoint; seed, resolution and renderer configuration must be inherited exactly. One case retains `rr_start=11` above its depth of 7. The checkpoint format is **2**, with strict rejection of version 1; the raw accumulation format and JSON metadata format retain their independent version 1 identifiers.
+Run each suite phase with a new results prefix:
 
-Rejection cases change seed, resolution, NEE, wavefront, roulette or roulette start; supply conflicting sorting, invalid roulette bounds or noncanonical boolean bytes; corrupt the checkpoint; and change an asset byte. The altered asset is restored byte for byte before later work. Roulette start is ignored for rendering when roulette is off, and roulette on/off must be byte-identical when no eligible continuation depth is reached.
+```sh
+python3 scripts/run_hedge_suite.py --phase build --build build --prefix reproduction
+python3 scripts/run_hedge_suite.py --phase baseline-validation --build build --prefix reproduction
+python3 scripts/run_hedge_suite.py --phase new-validation --build build --prefix reproduction
+python3 scripts/run_hedge_suite.py --phase sanitizers --build build --prefix reproduction
+python3 scripts/run_hedge_suite.py --phase baseline-measurements --build build --prefix reproduction
+python3 scripts/run_hedge_suite.py --phase new-measurements --build build --prefix reproduction
+python3 scripts/run_hedge_suite.py --phase gallery --build build --prefix reproduction
+python3 scripts/measure_gltf.py --binary build/bin/cis565_path_tracer_headless --build build --output results/reproduction-gltf --phase all
+```
 
-The fixed benchmark design has 48 variants, each with three warmups and three measured processes: 288 invocations. Its original 26 variants explicitly disable wavefront and roulette. Twelve variants compare unsorted unified, sorted unified and wavefront schedules on uniform, mixed, closed and mesh-heavy workloads at 512 × 336, 32 samples and depth 16, with roulette off. Four compare roulette on/off in open and closed scenes at the same resolution and sample target and depth 32. Six compare the two new shapes with plain, marble and cell materials at 160 × 106, 16 samples and depth 10, with roulette on.
+The measurement driver used for the retained sampling study is archived byte-for-byte in [the supplemental tool check](../results/hedge-final-tools-exit-policy/summary.json). After that successful study, a small CLI return-code correction made completed negative/inconclusive studies return 2, as the suite expects; it changes neither the numerical methods nor the qualified-result path. Fresh synthetic branch checks and both current tool self-tests pass. The archived driver hash matches the actual study metadata.
 
-Verification confirms the full 48-variant matrix, all 288 invocation settings and common physical inputs within each scheduling comparison. Its 12 exact groups cover the eight original compaction, sorting, BVH and checkpoint groups plus the four new wavefront groups: 168 process outputs agree exactly within their groups. Roulette changes the sampling process, so its on/off comparisons use statistical evidence rather than byte identity. Raw files retain finite nonnegative float sums, sample counts and checksums.
+Phases record commands, UTC times, elapsed time, logs, binary hashes and source identity before/after. Output guards prevent overwriting an existing study. A completed negative or inconclusive sampling result has exit code 2 and remains evidence; execution failure has exit code 1. The design does not discard unfavorable seeds or trials.
 
-### Memory and race checks
+## Exactness, motion and restart
 
-Memory/race checks use 65 × 33 pixels, three samples and depth 8 with roulette enabled, in both sorted unified and wavefront modes. Each mode is checked on both the original workbench and the new procedural still life, covering mesh traversal, glass, file/procedural textures, bump, and direct lighting. All eight runs pass and their lossless sums match across modes and tools for each scene. The non-square, non-block-multiple size exercises multiple compaction blocks. The [exact sanitizer comparison](../results/extension-rebuild/sanitizer-exact-comparison.json) records the file hashes.
+Both samplers are indexed by original pixel and absolute sample number. Sorting, compaction, traversal and wavefront scheduling must preserve the complete raw accumulation at a fixed physical configuration. Fresh-process 5-to-17 continuations inherit omitted sampler/motion/camera/configuration. Explicit mismatches, altered assets, invalid fields and corrupted records are rejected. Checkpoint format 3, sampler identifiers 2/3 and raw accumulation format 1 are separate version contracts; checkpoint versions 1/2 are rejected.
 
-### Transport estimator checks
+A path samples one exposure time, preserved through every bounce and visibility ray. Moving sphere, cube, mesh and emissive geometry tests cover coherent intersections and light PDFs. Frozen shutters and motion-off runs have independent exact comparisons. Swept BVH bounds enclose the complete declared motion interval, so midpoint/full-shutter timing holds the hierarchy fixed. glTF validation checks external-buffer, data-URI and GLB equivalence, both samplers on genuinely moving loaded geometry, BVH on/off and minimal checkpoint continuation.
 
-Lighting tests use 8,192 samples at 48 × 32 and depth 4, with roulette off to isolate the estimators. Cube, nonuniformly transformed sphere and triangle emitters each require the NEE/BSDF image means to differ by less than 5%. Their measured relative differences are 0.073163% (cube), 0.093751% (sphere) and 0.285169% (mesh). All three separate depth-one tests agree exactly, ensuring direct lighting does not add an untraced transport vertex.
+Memory/race checks cover the original workbench and moving validation scene, counter/Halton sampling, sorted unified/wavefront schedules and both tools. The non-square 67-by-35 resolution exercises partial blocks; raw sums agree within each scene/sampler group. Host ASan/UBSan separately covers parsing, accessor range/overflow checks, hierarchy transforms and checkpoint storage.
 
-Roulette's acceptance test uses the fixed seeds 947, 104729, 130363, 155921, 196613, 262147, 314159 and 524287. Each seed produces both settings in a closed diffuse chamber and a glass workbench, at 64 × 48, 8,192 samples, depth 32 and roulette start 3. All 32 renders and all seed pairs are retained. For each scene, the absolute mean of the eight paired differences must satisfy `abs(mean(on-off)) <= max(4*SE, 1%*mean(off)) + 1e-6`, where `SE` is the paired sample standard error. The summary retains both sample variances, means, paired estimates and the computed threshold. No seed is selected or discarded after observation. Both scenes pass:
+## Statistical and timing methods
 
-| Scene | Mean, RR off | Mean, RR on | Relative mean error | Paired standard error | Absolute error / allowed error |
-|---|---:|---:|---:|---:|---:|
-| Closed diffuse chamber | 0.043943833 | 0.043944558 | 0.001651% | 1.304595e-6 | 7.254832e-7 / 4.404383e-4 |
-| Glass workbench | 0.286834067 | 0.286827642 | 0.002240% | 1.623656e-5 | 6.425238e-6 / 2.869341e-3 |
+The sampling study fixes two scenes, 128-by-84 resolution, depth 10, budgets 16/64/256 and all eight seeds: 947, 104729, 130363, 155921, 196613, 262147, 314159 and 524287. Independently seeded counter references use 2718281, 3141593, 1618033 and 1414213 at 8,192 samples each. Split-reference RMSE must be at most 25% of the smaller mean candidate RMSE at 256 samples. Exactly one retry at 16,384 samples is allowed for a failing scene, using all the same reference seeds. Both attempts remain in the record.
 
-### Procedural geometry and CPU setup
+Qualification requires adequate references, at least 10% pooled MSE reduction, improvement in at least four of six scene/budget means and all six paired image-mean criteria. The image-mean criterion is `abs(mean(halton-counter)) <= max(4*paired_SE, 1%*counter_mean)+1e-6`. A separate equal-time population uses a 4,000 ms render-loop budget and 65,536-sample ceiling, retaining actual samples, elapsed time, whole-sample overshoot and process overhead. Fixed-sample improvement does not imply improvement per unit time.
 
-The fluted body has 1,600, 6,272 and 24,832 triangles across its three tessellations; the swept knot has 1,024, 4,096 and 16,384. The serialized meshes have complete finite positions, normals and UVs; unit normals; positive, outward, noncollapsed triangles; canonical periodic seams with separate UV endpoints; and closed two-manifold edge incidence. The body preserves flat cap normals and radial cap UVs. Welded Euler characteristics are 2 for the body and 0 for the knot.
+The independent roulette regression uses the same eight paired candidate seeds, 8,192 samples, 64-by-48 resolution, depth 32 and roulette start 3 on closed/glass fixtures. It retains every seed and both variances, with the same paired-SE/1% image-mean criterion. NEE/BSDF checks cover cube, transformed-sphere and mesh lights; separate depth-one comparisons agree exactly. These are finite empirical checks, not a universal proof of unbiasedness.
 
-CPU generation profiling creates only temporary OBJ outputs, reads the canonical assets without rewriting them, and records both generated and canonical sizes and SHA-256 hashes. One warmup and three measured runs per mesh separately time construction/write and serialized validation. All six AWS-generated temporary files have different byte hashes from the canonical Mac-generated assets; both hashes and sizes are retained, all six generated meshes pass geometry validation, and the renderer uses the unchanged canonical assets. The profiler documents platform math-library formatting differences as a possible cause; cross-platform byte identity is not claimed.
+Baseline measurements fix 48 variants with three warmup and three measured processes each. Scheduling comparisons share camera, seed, resolution, depth and physical settings. CPU generation has one warmup/three repeats and uses temporary outputs without changing canonical assets. Load includes parsing, transforms, camera setup and initial BVH; a separate BVH rebuild is not added to load time. GPU timing does not claim GPU file parsing or geometry generation.
 
-Scene-load profiling separately measures OBJ parsing, transforms, camera setup and the initial BVH, then a BVH rebuild from loaded primitives. It also uses one warmup and three measured runs with files warm in the OS cache. The AWS medians below use the recorded EPYC host, CPython 3.12.3 for generation and GCC 13.3/C++17 Release code for loading. These are CPU setup measurements, not GPU geometry-generation timings.
+CUDA-event phase timing synchronizes the instrumented renderer. Overall GPU-event and render-loop times include those synchronization and host scheduling gaps; whole-process time additionally includes startup and output. Aggregate shading and its specialized shader breakdown are alternate views, and overlapping host queue time is not added to the GPU total. Graphs retain repeated-run ranges. Surface/material changes also change subsequent paths and roulette survival, so their costs are not isolated texture instruction timings.
 
-| Mesh | Triangles | Construction/write (ms) | Validation (ms) | Scene load including BVH (ms) | Separate BVH rebuild (ms) |
-|---|---:|---:|---:|---:|---:|
-| Fluted body, low | 1,600 | 17.329 | 28.982 | 7.196 | 0.911 |
-| Fluted body, medium | 6,272 | 65.624 | 114.702 | 28.513 | 4.484 |
-| Fluted body, high | 24,832 | 258.427 | 473.043 | 116.399 | 21.922 |
-| Swept knot, low | 1,024 | 38.105 | 18.726 | 4.182 | 0.527 |
-| Swept knot, medium | 4,096 | 141.692 | 73.305 | 16.789 | 2.657 |
-| Swept knot, high | 16,384 | 543.436 | 304.380 | 68.503 | 13.281 |
+## Images, interaction and provenance
 
-Generation and validation operate on temporary files; scene loading and BVH rebuilding operate on canonical assets. The separately measured rebuild is not added to the scene-load value, which already includes an initial BVH build.
-
-The retained Mac checks also verify profiler isolation, deterministic regeneration and controlled mismatch detection. Their original absolute paths are historical execution metadata. The [artifact index](../results/extension-host/procedural-artifact-index.json) maps every cross-report reference to its bundled copy with a byte size and SHA-256. Those Mac QA timings are separate from the AWS performance profile.
-
-## Images and measurements
-
-- [Gallery settings](../results/extension-gallery/gallery.json) and [copied-image hash manifest](../img/render-manifest.json).
-- [Every experiment invocation](../results/extension-experiments/runs.csv), [GPU/loop medians and ranges](../results/extension-experiments/timing-summary.json), and [single-iteration phase/count records](../results/extension-experiments/single-iteration.csv).
-- [AWS CPU generation profile](../results/extension-host/procedural-generation.json) and [CPU scene-load/BVH measurements](../results/extension-mesh-load/summary.json).
-- Each prefix retains PNG, lossless `.sum.bin`, `.json` settings/compatibility, stdout/stderr, and benchmark CSV where requested. Checkpoints used for continuation and cadence measurements are retained.
-
-The gallery retains 23 records: the original 16, six shape/texture comparisons, and the combined procedural cover. Covers use 960 × 640 and 2,048 samples; the six new individual comparisons use 640 × 424 and 512 samples. All use seed 947, depth 10, wavefront and roulette on, apart from explicit feature/debug overrides. `img/workbench.png` is copied from the new `procedural-cover.png`; the original workbench render remains in the gallery evidence. The copied-image manifest records the source render and hashes. The 16 → 512 restart comparison equals its uninterrupted 512-sample counterpart byte for byte; both raw files have SHA-256 `fc3fa296f37bc0ca8c9997756447d2209f45154c43b1c81a3e3a3dc0fc85df4d`.
-
-The graphical integration check passes with wavefront and roulette on, roulette start 3. The 16-sample preview PNG equals headless output byte for byte. Horizontal-only orbit, vertical zoom and screen-plane pan each change the camera image independently, compared with a fresh original-camera image at the same sample count. Space, S and Escape deliver successfully while frames advance; six unique saves are retained, Escape exits with code 0 and the post-Space image exactly equals a fresh 9-sample original-camera headless render. The [preview summary](../results/extension-preview/summary.json) and [action log](../results/extension-preview/actions.json) record the actual outcomes.
-
-## Evidence interpretation
-
-Each benchmark comparison holds seed, camera, depth, resolution and sample target fixed. Three warmups precede three measured processes per variant. Overall CUDA-event and render-loop elapsed times include the instrumented renderer's synchronization and CPU scheduling gaps; render-loop wall time additionally includes checkpoint serialization when enabled. Whole-process timings include setup and file output. These quantities are reported separately.
-
-The wavefront shading aggregate is retained for compatibility. Its diffuse, mirror, dielectric, emission and terminal timers are a breakdown of that aggregate, so they are not added to it a second time. Queue-host time includes count/offset/live-count downloads, validation and launch submission; it overlaps overall elapsed time and is shown separately from GPU phases. Procedural texture comparisons include changed albedo and roulette survival, so they describe whole-render costs rather than isolated texture evaluation.
-
-Feature-cost comparisons describe these scenes and settings; they are not general claims about all hardware or workloads. The README's CPU-renderer discussion is qualitative. Actual CPU generation, loading and BVH setup measurements are identified separately.
-
-## Integrity acceptance
+Current README illustrations are mapped to actual render artifacts and metadata by [the image manifest](../img/render-manifest.json). [The chart manifest](../img/chart-manifest.json) maps each displayed SVG to its retained measured data and source-bound suite. A [presentation-only chart regeneration](../results/hedge-final-hedge-plots-layout/layout-verification.json) fixes label overlap, retains the original plots and verifies identical numeric data. The baseline gallery retains both original and procedural covers, six plain/pattern sculpture comparisons, diagnostics, feature pairs and exact restart. New views add counter/Halton, four exposures, mesh-presence and scheduling comparisons. glTF adds its own presence/culling pairs. Capture settings and the post-Space saved-image/headless comparison are retained with the interaction evidence; capture frame rate is not renderer throughput. Pre-capture attempts that failed desktop size/placement guards are retained in `results/hedge-final-interaction-attempt1/` and `results/hedge-final-interaction-attempt2/` and are not successful recordings. The corrected recorder measures absolute client coordinates with `xwininfo`, avoiding the observed parent-offset double counting in `xdotool`; the native 960×640 image is placed at (160,69) inside the 1280×720 capture. Its geometry checks do not resize the renderer. The earlier recorder is archived with the interaction tools.
 
 > Using third-party code without its approval, including using another student's code, is an academic integrity violation, and will, at minimum, result in you receiving an F for the semester.
 
-This is a hard completion constraint. Never use another student's code. Never copy or adapt code from the internet. The sole explicitly authorized third-party baseline is the official starter and its unchanged existing dependencies, retaining their credits and licenses. Reuse from our own Project 1 and Project 2 is limited to our authored implementation and requires revision/path provenance. No new third-party implementation, downloaded model, noise library or dependency is permitted. The baseline, reuse and independently authored source/assets are documented in [provenance.md](provenance.md), `starter-manifest.json` and `change-manifest.json`.
+Never use another student's implementation or unapproved internet implementation. Only the authorized unchanged official starter/dependencies and specifically approved unchanged tinygltf header/license are third-party exceptions. The README credits Bryce Joseph's September 21 Special OH approval and Matthew Schwartz's October 1 Ed confirmation; [the package register](approved-third-party.json) records its exact revision/hashes/license. Our Project 1/2 source reuse has path/revision provenance. Integration, renderer, tests, asset generation and evidence tooling are independently authored.
 
-After all source, documentation, images and measurements are complete, a clean local commit is hashed as a whole deliverable. Two independent reviewers each conduct two full audits of that same snapshot. Reports are stored outside the repository; any change requires a new hash and all four reviews again. Preflight reviews do not count.
+The completed local bundle requires two independent reviewers to conduct two fresh full audits each on the same frozen whole-deliverable hash. Any deliverable edit resets all four reports. Reports and the acceptance index remain outside the repository, in `../project_3_reviews/<bundle-hash>/`. Older audits are historical and do not accept this version. No publication or submission is authorized before the student's inspection.

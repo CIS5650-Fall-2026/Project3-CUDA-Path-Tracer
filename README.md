@@ -9,7 +9,39 @@ A progressive CUDA path tracer built around an original optical still life. A tw
 
 The interactive preview and headless executable share the same CUDA implementation. The execution mode and feature controls support controlled comparisons.
 
-The cover uses 2,048 samples at 960 × 640. Surface, focus, and antialiasing comparisons use 512 samples at 640 × 424; the lighting comparison uses 64 samples at that resolution. All use seed 947 and depth 10. Render metadata and lossless sums are retained in `results/`.
+The cover uses 2,048 samples at 960 × 640. Surface, focus, and antialiasing comparisons use 512 samples at 640 × 424; the lighting comparison uses 64 samples at that resolution. These still-image groups use seed 947 and depth 10. Render metadata and lossless sums are retained in `results/`.
+
+
+## Interactive preview
+
+![Actual camera interaction and progressive convergence](img/interaction.gif)
+
+[Watch the 49.3-second MP4](img/interaction.mp4) · [Capture, controls and saved-image verification](results/hedge-final-interaction/summary.json)
+
+This actual desktop recording uses the glTF showcase, Halton sampling and translation motion blur on the A10G. The render stays at its native 960 × 640, depth 10, seed 1 and shutter [0,1], with antialiasing, direct-light estimation, BVH, compaction, wavefront dispatch and roulette (start 3) enabled. Material sorting is off. The 1280 × 720 recording captures at 30 fps; this capture clock is separate from renderer throughput. The GIF reproduces the same footage at 4 fps.
+
+Relative to the first camera reset: orbit at 12–15 s, zoom at 20–22 s, pan at 27–29 s, restore the original camera at 34 s, save at 44 s and save/exit at 46 s. Convergence continues between actions. The MP4 includes the genuine encoder lead-in; the interaction schedule lasts 48 s.
+
+The post-reset save completed 125 samples. A fresh headless render uses the same camera, sampler, physical settings and count. Five of 1,843,200 RGB channel values differ, each by one 8-bit level. This is consistent with preview division versus headless reciprocal multiplication during normalization, although the cause has not been independently reproduced. Exact image or raw-sum equality is not claimed for this comparison. The original successful recording, saved images, complete event logs, independent render and comparison are retained.
+
+## Implemented features
+
+Each entry links to its implementation overview and controlled comparisons. The performance sections report measured costs; the comparison table below discusses acceleration, a hypothetical CPU renderer, and further improvements.
+
+| Implementation | Overview and comparisons |
+|---|---|
+| Original OBJ loading and approved glTF loading | [Geometry and surface detail](#geometry-and-surface-detail), [glTF mesh loading](#gltf-mesh-loading) |
+| BVH acceleration | [BVH and mesh loading](#bvh-and-mesh-loading) |
+| Fresnel reflection and refraction | [Glass and transport](#glass-focus-and-direct-lighting) |
+| File/procedural texture and bump mapping | [Surface detail](#geometry-and-surface-detail) |
+| Restartable rendering | [Exact continuation](#restart-without-losing-samples) |
+| Thin-lens depth of field | [Pinhole and focus comparison](#glass-focus-and-direct-lighting) |
+| Direct-light sampling | [Lighting comparison](#glass-focus-and-direct-lighting) |
+| Per-material wavefront scheduling | [Scheduling comparison](#per-material-wavefront-scheduling) |
+| Two complex procedural shapes and two procedural textures | [Original sculptures and patterns](#procedural-sculptures-and-textures) |
+| Russian roulette | [Termination](#russian-roulette), [measured cost](#russian-roulette-cost) |
+| Scrambled Halton sampling | [Sampling and convergence](#sampling-and-convergence) |
+| Object motion and motion blur | [Motion and exposure](#object-motion-and-exposure) |
 
 ## Rendering pipeline
 
@@ -38,6 +70,12 @@ Random samples use the seed, original pixel, global sample number, bounce, and s
 
 The original OBJ parser supports independent position/normal/UV indices, positive and negative indices, triangles, and convex planar polygons. Invalid indices, degeneracy, concavity, and nonplanarity produce source-line diagnostics. Each mesh uses its scene-assigned material; an MTL importer is outside this implementation.
 
+| Scene without imported sculptures | Original OBJ sculptures loaded |
+|---|---|
+| ![Scene without the two OBJ sculptures](img/comparison-obj-off.png) | ![Scene with the two original OBJ sculptures](img/comparison-obj-on.png) |
+
+This pair illustrates mesh-loading capability by adding the sculptures. It is not an isolated timing comparison.
+
 Static transforms include inverse-transpose normals and mirrored winding. Analytic spheres and cubes remain supported. Geometric normals determine surface orientation and ray offsets; shading normals include interpolation and bump detail.
 
 The CPU builds a deterministic median-split BVH along the greatest centroid extent, targeting four primitives per leaf. A configurable depth cap retains larger leaves. GPU traversal uses a bounded iterative stack with explicit overflow handling. Toggleable brute-force traversal provides a comparison baseline.
@@ -48,11 +86,27 @@ Image colors are interpreted as sRGB, while height maps remain linear. Original 
 |---|---|---|
 | ![Bump mapping](img/comparison-bump.png) | ![No bump mapping](img/comparison-no-bump.png) | ![Procedural checker](img/comparison-procedural.png) |
 
-All new meshes and BMP maps are generated by [generate_assets.py](scripts/generate_assets.py). The closed ceramic profile and torus are original parametric assets.
+Our canonical OBJ meshes and BMP maps are generated by [generate_assets.py](scripts/generate_assets.py). The closed ceramic profile and torus are original parametric assets. [generate_gltf_assets.py](scripts/generate_gltf_assets.py) serializes our own geometry into the glTF test and showcase assets.
+
+## glTF mesh loading
+
+The glTF geometry importer uses the approved tinygltf package to read the file format. **TA Bryce Joseph said tinygltf was fine to use in class on September 21, 2026 (Special OH for Project 3).** Instructor Matthew Schwartz also explicitly approved it on October 1 in Ed post #78 (“tinygltf approved package?”). We recorded that approval and the unchanged package's exact revision, file hashes and license in the [provenance register](docs/provenance.md#approved-gltf-loader).
+
+The package handles format decoding; our integration converts the selected scene's static triangle meshes into the same geometry buffers used by the original OBJ loader. Node transforms and mesh instances are applied during CPU loading. Scene-assigned materials and textures control shading, as they do for OBJ. Native glTF PBR materials and image pixels are not imported; our wrapper disables native image decoding and keeps the starter dependencies unchanged. This is a static geometry importer rather than a complete glTF material or animation renderer. Unsupported geometry features are rejected explicitly. Referenced external files remain part of checkpoint identity.
+
+Imported triangles use our original GPU intersection code and toggleable BVH traversal. Loading and hierarchy construction happen once on the CPU. The performance comparison below holds the glTF asset and render settings fixed while toggling culling; it measures traversal rather than claiming GPU acceleration of file parsing. The test assets are our own generated geometry, with no downloaded models or upstream examples.
+
+| Scene without imported sculptures | Original sculptures imported through glTF |
+|---|---|
+| ![Scene without the glTF sculptures](img/comparison-gltf-before.png) | ![Our own sculptures loaded from glTF assets](img/comparison-gltf-after.png) |
+
+These 512 × 336, 128-sample images illustrate loading capability. The timed culling comparison uses the same complete glTF geometry in both traversal modes.
 
 ## Procedural sculptures and textures
 
 The fluted body varies its radius, seven-fold fluting, elliptical cross-section, and twist with height. Separate flat caps close the surface. The swept knot follows a periodic three-lobed centerline with a varying tube radius; an analytic Frenet frame orients each ring without accumulated frame drift. Both meshes use smooth outward normals, repeated UVs, and exact position/normal seams with separate UV endpoints.
+
+The scene-level comparison in [geometry and surface detail](#geometry-and-surface-detail) shows the addition of both generated sculptures. The rows below compare their plain surfaces with the two procedural patterns.
 
 | Shape | Low triangles | Medium triangles | High triangles |
 |---|---:|---:|---:|
@@ -72,15 +126,139 @@ Mesh generation and BVH construction run on the CPU once; ray traversal and proc
 
 Dielectric scattering handles Fresnel reflection, Snell refraction, entering/exiting surfaces, and total internal reflection. The thin-lens camera samples an aperture and focuses on a focal plane. Zero aperture recovers the pinhole camera.
 
-| Refraction | Mirror comparison | Thin-lens focus |
+| Fresnel refraction / pinhole baseline | Mirror comparison | Thin-lens focus |
 |---|---|---|
-| ![Glass](img/comparison-glass.png) | ![Mirror](img/comparison-mirror.png) | ![Depth of field](img/comparison-dof.png) |
+| ![Glass with a pinhole camera](img/comparison-glass.png) | ![Mirror](img/comparison-mirror.png) | ![The same glass scene with a thin-lens camera](img/comparison-dof.png) |
+
+The pinhole and thin-lens images use the same glass scene and camera framing; aperture is the image-forming change. The mirror comparison changes the sphere's material.
 
 Emissive cubes, transformed spheres, and mesh triangles are sampled with PDFs matching their actual transformed geometry. Power-heuristic MIS balances direct-light and BSDF estimators without double-counting. Camera-visible and specular-chain light hits retain full emission weight.
 
 | Direct-light sampling | BSDF sampling alone |
 |---|---|
 | ![NEE enabled](img/comparison-nee.png) | ![NEE disabled](img/comparison-no-nee.png) |
+
+## Sampling and convergence
+
+The original counter sampler remains the default. `--sampler halton` selects an independently written, scrambled and rotated Halton sequence. It addresses pixel jitter, lens position, exposure time, light-surface sampling, and diffuse directions with the original pixel and absolute sample index. Discrete light selection, dielectric decisions, and roulette retain their counter samples.
+
+We generate the prime bases ourselves. Each semantic coordinate has a fixed base; per-digit affine permutations and a separate rotation are keyed by seed, pixel, bounce, and dimension. An anchored radical inverse processes only the integer index's present digits. The resulting 23-bit midpoint sample stays strictly inside `(0,1)`. The prime table is persistent for Halton rendering. No sequence depends on the requested sample target, so restart can extend it exactly.
+
+[Steve Rotenberg's sampling notes](https://cseweb.ucsd.edu/classes/sp17/cse168-a/CSE168_07_Random.pdf), slides 16–18, explain the underlying prime-base radical inverse and the potential for visible sequence patterns. Our scrambling, coordinate allocation, implementation and test fixtures are independently authored.
+
+| Counter sampling | Scrambled Halton sampling |
+|---|---|
+| ![Diffuse scene with counter sampling](img/comparison-sampling-diffuse-counter.png) | ![Diffuse scene with Halton sampling](img/comparison-sampling-diffuse-halton.png) |
+| ![Glass and depth of field with counter sampling](img/comparison-sampling-glass-counter.png) | ![Glass and depth of field with Halton sampling](img/comparison-sampling-glass-halton.png) |
+
+The visual comparisons use 64 samples at 512 × 336, with the same scene, camera, seed and depth. Linear-image error is measured separately across a predeclared seed population and sample budgets against independently seeded high-sample references. Reference uncertainty, image-mean agreement, elapsed time, and all regressions are retained. A sequence's more uniform coverage does not guarantee improvement for every high-dimensional transport problem; scrambling arithmetic also has a measurable cost.
+
+### Measured sampling quality and cost
+
+The final-source study uses `a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86` on the NVIDIA A10G: 128 × 84 pixels, depth 10, two authored fixtures, eight paired seeds, and the six predeclared scene/sample comparisons below. Each MSE is the per-channel, per-pixel error of the linear RGB sample mean against independently seeded counter references; display tone mapping is excluded. The same BVH, wavefront, roulette, compaction, antialiasing, next-event estimation, and motion settings are held fixed. Evidence: [quality session](results/hedge-final-quality/summary.json), [quality analysis](results/hedge-final-quality/quality/summary.json), and [completed source/binary suite](results/hedge-final-suite-new-measurements/summary.json).
+
+| Fixture | Completed spp | Counter mean MSE | Halton mean MSE | Halton MSE reduction |
+| --- | --- | --- | --- | --- |
+| diffuse | 16 | 0.00324816 | 0.002538 | +21.86% |
+| diffuse | 64 | 0.000805566 | 0.000550414 | +31.67% |
+| diffuse | 256 | 0.00020532 | 0.000126637 | +38.32% |
+| glass-dof | 16 | 0.0279018 | 0.018125 | +35.04% |
+| glass-dof | 64 | 0.00714712 | 0.00401977 | +43.76% |
+| glass-dof | 256 | 0.00180747 | 0.000877179 | +51.47% |
+
+Positive reduction favors Halton; a negative value is a regression. Pooling all 48 matched seed/scene/budget pairs gives counter MSE **0.00685257**, Halton MSE **0.00437284**, and **+36.19%** reduction. Halton improves the mean in **6/6** comparisons. Qualification is **qualified**. The measured result passes the predeclared empirical quality gate. The gate requires adequate references, at least 10% pooled MSE reduction, at least four strict improvements, and all six image-mean checks.
+
+Reference precision compares the two independent two-seed averages. Its split RMSE must be at most 0.25 times the smaller sampler's mean candidate RMSE at 256 spp. All four reference seeds are averaged for the selected reference image. A failed initial 8,192-spp-per-seed attempt triggers exactly one 16,384-spp-per-seed retry using the same four reference seeds.
+
+| Fixture | Attempt | Reference spp/seed | Split RMSE | Allowed RMSE | Adequate |
+| --- | --- | --- | --- | --- | --- |
+| diffuse | initial | 8192 | 0.00252503 | 0.00281276 | yes |
+| glass-dof | initial | 8192 | 0.00757971 | 0.00742675 | no |
+| glass-dof | single retry | 16384 | 0.00545091 | 0.00740191 | yes |
+
+The glass/DOF fixture receives exactly that one retry; its selected reference is adequate. No further retry is used.
+
+The paired image-mean gate uses `abs(mean(Halton − counter)) ≤ max(4 × paired SE, 0.01 × counter mean) + 1e−6`. These finite-scene checks examine brightness agreement; passing them does not prove an unbiased estimator for arbitrary transport problems.
+
+| Fixture | spp | Absolute paired mean difference | Allowed difference | Gate |
+| --- | --- | --- | --- | --- |
+| diffuse | 16 | 0.000162075 | 0.00114971 | pass |
+| diffuse | 64 | 3.68246e-05 | 0.0011499 | pass |
+| diffuse | 256 | 2.0944e-05 | 0.00114958 | pass |
+| glass-dof | 16 | 0.000114687 | 0.00347212 | pass |
+| glass-dof | 64 | 0.000129843 | 0.00346625 | pass |
+| glass-dof | 256 | 5.12451e-05 | 0.00346493 | pass |
+
+All six gates: **6/6 pass**. All predeclared qualification criteria pass.
+
+![Paired fixed-sample convergence](img/sampler-convergence.svg)
+
+The separate equal-time experiment requests a **4,000 ms render-loop budget** for each of the same eight seeds. The budget is checked between whole samples, so the actual loop may overshoot; the measured sample counts and overshoot are retained below. MSE and sample counts are means over eight runs; times and overshoot are medians with full measured minimum–maximum ranges. GPU event time, renderer loop wall time, and complete process elapsed time measure different scopes. Process time includes loading and output.
+
+| Fixture | Sampler | Mean actual spp [min, max] | Mean MSE | GPU ms | Loop ms | Process ms | Loop overshoot ms |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| diffuse | counter | 892.4 [889, 895] | 6.10921e-05 | 3983.877 [3982.151, 3985.720] | 4002.419 [4000.663, 4004.397] | 4283.408 [4280.279, 4372.392] | 2.419 [0.663, 4.397] |
+| diffuse | halton | 794.1 [791, 796] | 3.81324e-05 | 3986.252 [3983.860, 3988.195] | 4003.188 [4000.491, 4004.689] | 4302.694 [4297.014, 4308.517] | 3.188 [0.491, 4.689] |
+| glass-dof | counter | 280.6 [280, 281] | 0.00163625 | 3996.765 [3994.427, 4002.485] | 4002.700 [4000.347, 4008.298] | 4300.344 [4290.478, 4304.362] | 2.700 [0.347, 8.298] |
+| glass-dof | halton | 274.1 [274, 275] | 0.000821466 | 4000.419 [3994.374, 4006.196] | 4006.278 [4000.183, 4011.941] | 4326.251 [4317.500, 4334.202] | 6.278 [0.183, 11.941] |
+
+At that loop budget, **diffuse** has +37.58% Halton MSE reduction against the selected reference. Its reference passes the precision gate.
+
+At that loop budget, **glass-dof** has +49.80% Halton MSE reduction against the selected reference. Its reference passes the precision gate.
+
+![Equal-time linear image error](img/equal-time-quality.svg)
+
+![Equal-time completed samples](img/equal-time-samples.svg)
+
+![Equal-time measured GPU time](img/equal-time-gpu.svg)
+
+Fixed-sample timing completes **256 spp** per run with seed 947. Each configuration has three excluded warmups followed by exactly three measured repeats. The table reports **milliseconds per actual completed sample**, as median [minimum, maximum]; multiplying by 256 gives the corresponding measured total milliseconds. Evidence: [timing session](results/hedge-final-timing/summary.json) and [timing analysis](results/hedge-final-timing/timing/summary.json).
+
+| Fixture | Sampler | GPU ms/spp | Loop ms/spp | Process ms/spp |
+| --- | --- | --- | --- | --- |
+| diffuse | counter | 4.467 [4.462, 4.489] | 4.488 [4.482, 4.510] | 5.468 [5.459, 5.480] |
+| diffuse | halton | 4.945 [4.934, 4.946] | 4.966 [4.954, 4.968] | 6.047 [6.031, 6.049] |
+| glass-dof | counter | 14.201 [14.167, 14.209] | 14.222 [14.188, 14.230] | 15.362 [15.347, 15.366] |
+| glass-dof | halton | 14.618 [14.616, 14.643] | 14.639 [14.637, 14.664] | 15.867 [15.860, 15.903] |
+
+For **diffuse**, Halton/counter median cost ratios are **1.107× GPU**, **1.107× loop**, and **1.106× process**. A ratio above one costs more per sample; the equal-time results show whether quality gains survive the resulting sample-rate change on this fixture.
+
+For **glass-dof**, Halton/counter median cost ratios are **1.029× GPU**, **1.029× loop**, and **1.033× process**. A ratio above one costs more per sample; the equal-time results show whether quality gains survive the resulting sample-rate change on this fixture.
+
+![Fixed-256-spp sampler GPU cost](img/fixed-spp-timing.svg)
+
+These observations describe this fixed seed population, scene set, resolution, depth, build, and GPU. More uniform sample coverage can improve some comparisons while scrambling and radical-inverse arithmetic cost time; scene-dependent path divergence can also change cost. Neither qualification nor a favorable MSE ordering guarantees improvement for every scene or sample budget.
+
+## Object motion and exposure
+
+Objects can translate linearly over a normalized animation interval. `MOTION_TRANSLATION` defines a world-space displacement from phase 0 to 1. Camera `SHUTTER` selects the exposure interval; a zero-width interval freezes one phase. Every primary path samples its exposure time once, and all of its bounces and shadow rays see the same scene instant.
+
+Translation keeps the phase-zero geometry, normals, and object-attached UVs. Intersection translates the ray origin into that geometry. One swept BVH encloses the full interval, avoiding per-sample refits and geometry uploads. The static fast path preserves the original arithmetic for objects with zero displacement. Moving light samples and emissive-hit PDFs use the same path time, including the transformed-sphere area correction.
+
+| Frozen at the exposure midpoint | Integrated over the full shutter |
+|---|---|
+| ![Motion scene frozen at phase one half](img/comparison-motion-midpoint.png) | ![Motion scene averaged over the shutter interval](img/comparison-motion-blur.png) |
+
+| Frozen start | Frozen end |
+|---|---|
+| ![Motion scene at phase zero](img/comparison-motion-start.png) | ![Motion scene at phase one](img/comparison-motion-end.png) |
+
+The 512-sample, 512 × 336 before/after comparison holds the swept BVH, sampler, seed, depth, and camera fixed. Both variants retain the declared displacement; only the shutter interval changes. This measures exposure sampling and changed path work rather than comparing a swept hierarchy with a tighter static hierarchy. Motion support is rigid translation; rotation, deformation, and time-dependent scaling are further extensions.
+
+### Measured exposure cost with the swept BVH fixed
+
+The midpoint exposure `[0.5, 0.5]` and full exposure `[0, 1]` retain the same authored displacement, camera, Halton sampler, seed 947, depth 10, 128 × 84 resolution, and swept BVH. The retained normalized scene hashes match after excluding only `Camera.FILE` and `Camera.SHUTTER`; all four start/midpoint/end/full scene variants are checked. Motion remains enabled in both timing configurations. The comparison therefore measures exposure sampling and changed path work with the same swept bounds, rather than the cost of building or refitting different hierarchies.
+
+Both configurations complete 256 spp, exclude three warmups, and retain three measured repeats. Values below are milliseconds per actual completed sample, as median [minimum, maximum].
+
+| Exposure | GPU ms/spp | Loop ms/spp | Process ms/spp |
+| --- | --- | --- | --- |
+| midpoint | 22.921 [22.920, 22.931] | 22.942 [22.941, 22.952] | 24.964 [24.941, 24.968] |
+| full shutter | 22.636 [22.636, 22.652] | 22.658 [22.657, 22.673] | 24.670 [24.669, 24.692] |
+
+Full/midpoint median ratios are **0.988× GPU**, **0.988× loop**, and **0.988× process**. These costs do not isolate exposure-coordinate arithmetic from the different intersections, visibility, and bounce work caused by temporal samples. [Timing evidence and swept-scene proof](results/hedge-final-timing/timing/summary.json) retain the ratios and variant hashes.
+
+![Midpoint and full-exposure GPU cost](img/motion-timing.svg)
 
 ## Russian roulette
 
@@ -90,7 +268,7 @@ Roulette uses a separate counter-sampler dimension, so queue order does not chan
 
 ## Restart without losing samples
 
-Version 2 checksummed checkpoints store completed samples, lossless linear RGB sums, seed/sampler/configuration, camera, scene/asset fingerprints, and indexed BVH data. Writes use atomic replacement. Resume permits a larger total sample target and rejects corrupted or incompatible state, including differing wavefront or roulette settings. Version 1 checkpoints are rejected because they do not record the new configuration; raw accumulation remains version 1.
+Version 3 checksummed checkpoints store completed samples, lossless linear RGB sums, seed/sampler/configuration, camera and shutter, scene/asset fingerprints, and indexed BVH data. Writes use atomic replacement. Resume permits a larger total sample target and rejects corrupted or incompatible state, including differing sampler, motion, wavefront, or roulette settings. Checkpoint versions 1 and 2 are rejected because they lack the complete current configuration; raw accumulation remains version 1.
 
 Exact continuation is checked in separate processes on the same GPU/build/configuration: uninterrupted rendering versus a partial render followed by resume, comparing raw accumulation bytes. Display conversion is separate from the stored linear sums. PNGs use the sample mean, Reinhard tone mapping `c/(1+c)`, and sRGB encoding; raw sums remain unmodified.
 
@@ -112,13 +290,50 @@ The same original OBJ loader feeds brute-force and BVH traversal. Three tessella
 
 | Mesh level | Brute force, ms/sample | BVH, ms/sample | Speedup |
 |---|---:|---:|---:|
-| Low | 12.606 | 5.923 | 2.13× |
-| Medium | 41.209 | 6.839 | 6.03× |
-| High | 153.125 | 8.160 | 18.77× |
+| Low | 14.535 | 6.275 | 2.32× |
+| Medium | 47.996 | 7.415 | 6.47× |
+| High | 179.529 | 8.804 | 20.39× |
 
 ![BVH performance across mesh complexity](img/performance-bvh.svg)
 
 Brute-force time grows with primitive count; the hierarchy prunes unrelated geometry while retaining divergent traversal, stack work, and memory reads. Exact traced-hit and accumulation comparisons confirm that culling preserves the result.
+
+| Brute-force traversal | BVH traversal |
+|---|---|
+| ![Medium mesh rendered without BVH culling](img/comparison-bvh-off.png) | ![The same medium mesh rendered with BVH culling](img/comparison-bvh-on.png) |
+
+The raw sums and PNGs in this pair must agree exactly; the optimization changes traversal work rather than the image.
+
+### glTF loading and culling
+
+The glTF culling measurements use the NVIDIA A10G at 96×64, 8 samples per pixel, depth 10 and seed 947 with Counter sampling. Wavefront dispatch, material sorting and Russian roulette are off; compaction, anti-aliasing and next-event estimation are on. Each of six configurations has three warmups followed by three measured fresh processes (36 renders total); warmups are excluded. The values below are whole-renderer GPU time divided by the eight completed samples. Brackets give the measured minimum and maximum, rather than a confidence interval. [Full glTF evidence](results/hedge-final-gltf/summary.json), [timing records](results/hedge-final-gltf/timing/summary.json).
+
+| glTF scene | Triangles | BVH off, GPU ms/sample [min, max] | BVH on, GPU ms/sample [min, max] | Median speedup |
+|---|---:|---:|---:|---:|
+| Low | 288 | 14.558 [14.453, 14.594] | 6.283 [6.279, 6.307] | 2.32× |
+| Medium | 1,088 | 48.006 [47.998, 48.008] | 7.413 [7.309, 7.457] | 6.48× |
+| High | 4,224 | 179.637 [179.586, 179.673] | 8.783 [8.694, 8.816] | 20.45× |
+
+The BVH rejects bounded subtrees before exact primitive intersections, reducing both primary/bounce-ray work and shadow-ray work. All twelve timing outputs at each complexity (six with culling off and six on, including warmups) have byte-identical linear sums and PNGs. The medium visual pair below is also byte-exact: 128×84, 16 samples per pixel, depth 10, Counter seed 947. The images demonstrate preserved output; the table measures the speed difference.
+
+| glTF bounding-volume culling off | glTF bounding-volume culling on |
+|---|---|
+| ![glTF medium mesh with bounding-volume culling off](img/comparison-gltf-bvh-off.png) | ![glTF medium mesh with bounding-volume culling on](img/comparison-gltf-bvh-on.png) |
+
+Loading is CPU setup performed before rendering. The following separate measurements use one warmup and three repeats per scene on the same EC2 host. Scene-load time includes parsing, transforms, camera setup and the initial BVH. The rebuild column times another BVH build from already loaded primitives; it is neither added to nor subtracted from load time. Every glTF/OBJ pair has matching triangle, total-primitive and BVH-node counts. [CPU profile records](results/hedge-final-gltf/timing/cpu-profile/records.json).
+
+| Scene | Format | Triangles / total primitives / BVH nodes | CPU load including initial BVH, ms [min, max] | Separate BVH rebuild, ms [min, max] |
+|---|---|---:|---:|---:|
+| Low | glTF (GLB) | 288 / 293 / 201 | 1.393 [1.335, 2.396] | 0.103 [0.101, 0.106] |
+| Low | OBJ | 288 / 293 / 201 | 2.195 [2.189, 2.221] | 0.095 [0.093, 0.104] |
+| Medium | glTF (GLB) | 1,088 / 1,093 / 649 | 3.056 [3.048, 3.057] | 0.493 [0.489, 0.493] |
+| Medium | OBJ | 1,088 / 1,093 / 649 | 5.192 [5.180, 5.201] | 0.489 [0.475, 0.495] |
+| High | glTF (GLB) | 4,224 / 4,229 / 2,313 | 7.233 [7.097, 7.249] | 2.386 [2.379, 2.390] |
+| High | OBJ | 4,224 / 4,229 / 2,313 | 19.805 [19.764, 19.824] | 2.365 [2.352, 2.366] |
+
+For these generated assets, binary GLB loads faster than the matched text OBJ scenes, while the separate BVH rebuild costs are close. Both formats feed the same flattened triangle representation and GPU traversal code, so these CPU loading results establish no format-specific GPU speedup. A hypothetical CPU path tracer would also benefit from bounding-volume rejection; the GPU adds parallel rays, while irregular traversal can still diverge and access scattered memory. These measurements cover one GPU, one camera/seed and three small scenes, and warm repeats do not establish cold-file performance. Further improvements could preserve mesh instances instead of flattening them, share mesh acceleration structures, improve BVH splitting and triangle layout, and cache parsed assets or built BVHs.
+
+The complete glTF study retained 62 successful renders: 18 validation, 36 timing and 8 gallery. GLB, external-buffer glTF and embedded-data glTF produce byte-identical validation images and raw sums under both culling modes. A translating loaded mesh also preserves byte-exact fresh/checkpoint-resumed output within each Counter and Halton configuration; Counter and Halton outputs are not expected to match one another. Every retained render identifies the final renderer source `a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86`. [Validation](results/hedge-final-gltf/validation/summary.json), [gallery exactness](results/hedge-final-gltf/gallery/summary.json).
 
 ### Compaction and material sorting
 
@@ -126,10 +341,10 @@ At 160 × 106, 16 samples, and depth 10, wavefront and roulette remain disabled:
 
 | Scene / scheduling choice | Disabled, ms/sample | Enabled, ms/sample | Effect |
 |---|---:|---:|---|
-| Open scene / compaction | 2.053 | 1.822 | 11.2% faster |
-| Closed scene / compaction | 3.261 | 3.357 | 3.0% slower |
-| Uniform diffuse materials / sorting | 11.811 | 13.078 | 10.7% slower |
-| Mixed materials / sorting | 11.482 | 13.480 | 17.4% slower |
+| Open scene / compaction | 2.165 | 1.922 | 11.3% faster |
+| Closed scene / compaction | 3.335 | 3.526 | 5.7% slower |
+| Uniform diffuse materials / sorting | 12.656 | 14.020 | 10.8% slower |
+| Mixed materials / sorting | 12.255 | 14.515 | 18.4% slower |
 
 ![Compaction and sorting measurements](img/performance-scheduling.svg)
 
@@ -137,7 +352,7 @@ Compaction removes escaping or terminated paths at the cost of scan/scatter. The
 
 ![Path counts in a single open and closed iteration](img/active-paths-iteration.svg)
 
-In the first measured sample, the open queue starts with 16,960 paths and retains 8,962 after bounce 0 and 1,337 after bounce 1. The closed queue retains 16,951 and 16,689. Per-bounce counts and phase timings are retained in `single-iteration.csv` and each benchmark CSV.
+In the first measured sample, the open queue starts with 16,960 paths and retains 8,962 after bounce 0 and 1,337 after bounce 1. The closed queue starts with 16,960 paths and retains 16,951 and 16,689, respectively. Per-bounce counts and phase timings are retained in `single-iteration.csv` and the selected benchmark CSVs.
 
 ### Per-material wavefront scheduling
 
@@ -145,14 +360,23 @@ At 512 × 336, 32 samples, and depth 16, all modes use identical sampling, compa
 
 | Workload | Unified unsorted, ms/sample | Unified sorted, ms/sample | Wavefront, ms/sample | Wavefront versus unsorted |
 |---|---:|---:|---:|---|
-| Uniform diffuse | 30.161 | 43.080 | 32.114 | 6.5% slower |
-| Mixed materials | 29.203 | 38.430 | 41.804 | 43.2% slower |
-| Closed chamber | 38.048 | 110.601 | 47.035 | 23.6% slower |
-| High-complexity mesh | 22.398 | 32.285 | 31.799 | 42.0% slower |
+| Uniform diffuse | 32.153 | 45.012 | 34.007 | 5.8% slower |
+| Mixed materials | 31.048 | 40.418 | 44.443 | 43.1% slower |
+| Closed chamber | 39.695 | 112.404 | 49.284 | 24.2% slower |
+| High-complexity mesh | 23.637 | 33.678 | 33.398 | 41.3% slower |
 
 ![Wavefront total sample time](img/performance-wavefront.svg)
 
-Exact-material queues remove material switching inside the specialized launches. Unsorted unified shading is fastest in all four total-time comparisons. Wavefront beats sorted unified shading in the uniform, closed, and mesh-heavy workloads, but trails it in the mixed scene. Histogram/scan/scatter, count readback, and multiple small launches outweigh the branching savings relative to unsorted shading here.
+Exact-material queues remove material switching inside the specialized launches. Fastest modes by workload: Uniform diffuse — Unified unsorted; Mixed materials — Unified unsorted; Closed chamber — Unified unsorted; High-complexity mesh — Unified unsorted.
+Wavefront trails unified unsorted shading in Uniform diffuse, Mixed materials, Closed chamber, and High-complexity mesh.
+Wavefront beats unified sorted shading in Uniform diffuse, Closed chamber, and High-complexity mesh; trails unified sorted shading in Mixed materials.
+Measured wavefront totals include queue construction, count readback, and multiple launches. These totals do not isolate any one component as the cause of a win or loss.
+
+| Unified shading | Per-material wavefront shading |
+|---|---|
+| ![Unified shader comparison](img/comparison-wavefront-off.png) | ![Wavefront shader comparison](img/comparison-wavefront-on.png) |
+
+Both images use the same counter samples and roulette setting. Their raw sums and PNGs must agree exactly.
 
 ![Wavefront GPU phase breakdown](img/performance-wavefront-phases.svg)
 
@@ -160,20 +384,28 @@ The phase stacks replace aggregate `shade_ms` with its diffuse, mirror, dielectr
 
 ![Queue construction and host scheduling overhead](img/performance-wavefront-overhead.svg)
 
-### Russian roulette
+Bars show measured medians; whiskers show the measured minimum and maximum across three repeats. GPU queue timing and overlapping CPU queue scheduling time are displayed separately.
+
+### Russian roulette cost
 
 Open and closed scenes run at 512 × 336, 32 samples, and depth 32 in wavefront mode. Roulette starts after three completed scattering events:
 
 | Workload | RR off, ms/sample | RR on, ms/sample | Effect | Terminated / tested |
 |---|---:|---:|---|---:|
-| Open | 6.442 | 5.750 | 10.7% faster | 51.6% |
-| Closed | 88.978 | 11.886 | 86.6% faster | 93.9% |
+| Open | 6.576 | 5.841 | 11.2% faster | 51.6% |
+| Closed | 92.972 | 12.451 | 86.6% faster | 93.9% |
 
 ![Roulette sample time](img/performance-russian-roulette.svg)
 
 ![Roulette termination rate](img/russian-roulette-termination.svg)
 
 Roulette saves future work while increasing estimator variance. Separate brightness checks use every one of eight fixed paired seeds, 8,192 samples per seed, 64 × 48 pixels, and depth 32. The criterion is `abs(mean(on-off)) <= max(4*paired_SE, 1%*mean(off)) + 1e-6`. It tests statistical agreement rather than byte identity:
+
+| Roulette disabled | Roulette enabled |
+|---|---|
+| ![Rendering without roulette](img/comparison-rr-off.png) | ![Rendering with roulette](img/comparison-rr-on.png) |
+
+The equal-sample images illustrate the changed noise realization. The statistical test and timing measurements assess brightness and cost separately.
 
 | Scene | RR-off mean | RR-on mean | Absolute paired mean error | Allowed error |
 |---|---:|---:|---:|---:|
@@ -184,16 +416,16 @@ These checks support brightness preservation on the tested scenes; they do not m
 
 ### Procedural setup and shading
 
-Python mesh construction/OBJ serialization and CPU scene loading are measured on the same EPYC workstation, separately from rendering. Each CPU operation has one warmup and three measured repeats. Generation writes temporary files, excludes subsequent validation/hashing, and measures OS-buffered writes without `fsync`. All six temporary Linux OBJ encodings differ from the canonical Mac asset bytes; the profile retains both hashes and all six geometry validations pass. Loading and rendering use the unchanged canonical assets. Scene load includes parsing, transforms, camera setup and its initial BVH; the separate BVH column rebuilds the hierarchy from loaded primitives and is not added to load time. Mesh files are warm in the OS cache.
+Python mesh construction/OBJ serialization and CPU scene loading are measured on the same EPYC workstation, separately from rendering. Each CPU operation has one warmup and three measured repeats. Generation writes temporary files, excludes subsequent validation/hashing, and measures OS-buffered writes without `fsync`. 6 of the six temporary Linux OBJ encodings differ from the canonical Mac asset bytes; the profile retains both hashes and 6 of six geometry validations pass. Loading and rendering use the unchanged canonical assets. Scene load includes parsing, transforms, camera setup and its initial BVH; the separate BVH column rebuilds the hierarchy from loaded primitives and is not added to load time. Mesh files are warm in the OS cache.
 
 | Mesh | Triangles | Canonical OBJ, KiB | CPU generation/write, ms | CPU load incl. BVH, ms | CPU BVH rebuild, ms |
 |---|---:|---:|---:|---:|---:|
-| fluted-body-low | 1,600 | 184.1 | 17.329 | 7.196 | 0.911 |
-| fluted-body-medium | 6,272 | 751.3 | 65.624 | 28.513 | 4.484 |
-| fluted-body-high | 24,832 | 3051.4 | 258.427 | 116.399 | 21.922 |
-| swept-knot-low | 1,024 | 118.4 | 38.105 | 4.182 | 0.527 |
-| swept-knot-medium | 4,096 | 481.9 | 141.692 | 16.789 | 2.657 |
-| swept-knot-high | 16,384 | 1957.3 | 543.436 | 68.503 | 13.281 |
+| fluted-body-low | 1,600 | 184.1 | 17.034 | 7.229 | 0.879 |
+| fluted-body-medium | 6,272 | 751.3 | 65.427 | 28.642 | 4.338 |
+| fluted-body-high | 24,832 | 3,051.4 | 260.451 | 117.462 | 21.372 |
+| swept-knot-low | 1,024 | 118.4 | 38.094 | 4.254 | 0.497 |
+| swept-knot-medium | 4,096 | 481.9 | 143.407 | 16.951 | 2.537 |
+| swept-knot-high | 16,384 | 1,957.3 | 558.830 | 68.641 | 12.850 |
 
 ![Procedural CPU loading and BVH costs](img/performance-procedural-cpu.svg)
 
@@ -201,14 +433,16 @@ GPU procedural comparisons run at 160 × 106, 16 samples and depth 10 with wavef
 
 | Shape / surface | GPU total, ms/sample | GPU shading, ms/sample |
 |---|---:|---:|
-| Fluted body / plain | 22.598 | 12.547 |
-| Fluted body / marble | 17.249 | 9.730 |
-| Fluted body / cells | 15.437 | 8.866 |
-| Swept knot / plain | 15.446 | 8.912 |
-| Swept knot / marble | 13.137 | 7.787 |
-| Swept knot / cells | 12.497 | 7.512 |
+| Fluted body / plain | 24.383 | 13.550 |
+| Fluted body / marble | 18.640 | 10.546 |
+| Fluted body / cells | 16.600 | 9.553 |
+| Swept knot / plain | 16.631 | 9.599 |
+| Swept knot / marble | 14.204 | 8.460 |
+| Swept knot / cells | 13.403 | 8.089 |
 
 ![Procedural GPU shading cost](img/performance-procedural-shading.svg)
+
+Bars show measured medians; whiskers show the measured minimum and maximum across three repeats.
 
 Plain, marble and cells change reflectance and hence roulette survival and subsequent path work. Their shading timings include those effects and are not isolated texture-ALU measurements. Geometry generation is CPU setup; no GPU generation time is claimed. More tessellation increases silhouette detail, file size and traversal work; caching, level of detail and footprint-aware texture filtering are useful future improvements.
 
@@ -218,38 +452,49 @@ The original feature comparisons run at 160 × 106, 16 samples and depth 10, wit
 
 | Comparison | First variant, ms/sample | Second variant, ms/sample |
 |---|---:|---:|
-| File / procedural checker | 11.463 | 11.442 |
-| Bump off / on | 11.421 | 11.463 |
-| Mirror / refractive sphere | 11.513 | 11.462 |
-| Pinhole / thin lens | 11.486 | 11.539 |
-| BSDF only / direct-light sampling | 8.013 | 11.483 |
+| File / procedural checker | 12.259 | 12.218 |
+| Bump off / on | 12.216 | 12.281 |
+| Mirror / refractive sphere | 12.448 | 12.319 |
+| Pinhole / thin lens | 12.284 | 12.357 |
+| BSDF only / direct-light sampling | 8.535 | 12.265 |
 
 ![Feature costs](img/performance-features.svg)
 
 Small rankings should not be generalized beyond their measured variation. Bump mapping, reflection/refraction and depth of field change ray trajectories, so timings include changed path work. Direct lighting traces additional visibility rays and can improve convergence at equal sample counts.
-At 8,192 samples, independent NEE and BSDF image means differ by 0.0732% (cube), 0.0938% (sphere), 0.2852% (mesh). Separate depth-one tests agree exactly.
+
+| Light geometry | NEE mean | BSDF mean | Relative difference | Samples |
+|---|---:|---:|---:|---:|
+| Cube | 0.26157697 | 0.26176849 | 0.0732% | 8,192 |
+| Sphere | 0.23266767 | 0.23288600 | 0.0938% | 8,192 |
+| Mesh | 0.16763733 | 0.16811674 | 0.2852% | 8,192 |
+
+At 8,192 samples, independent NEE and BSDF image means differ by 0.0732% (cube), 0.0938% (sphere), 0.2852% (mesh).
+Present depth-one exact checks pass for cube, sphere, and mesh.
+These brightness checks are not a variance or error-per-unit-time proof.
 
 ### Checkpoint overhead
 
-Saving every eight samples changes median render-loop time from 11.492 to 11.699 ms/sample (1.8% slower) in the 16-sample workbench run. GPU sample time is 11.471 versus 11.476 ms. The loop includes device download, serialization, checksum and atomic replacement; file size and storage affect this cost.
+Saving every 8 samples changes median render-loop time from 12.337 to 12.480 ms/sample (1.2% slower) in the 16-sample workbench run. GPU sample time is 12.315 versus 12.254 ms. The loop includes device download, serialization, checksum and atomic replacement; file size and storage affect this cost.
 
 ![Checkpoint render-loop cost](img/performance-checkpoint.svg)
 
 Full measurements, settings, raw files and system specifications are linked in [verification](docs/verification.md).
 
 
-| Feature | GPU versus a hypothetical CPU renderer | Further optimization |
-|---|---|---|
-| OBJ | Parsing is host work; independent ray/triangle tests exploit GPU concurrency. | Compact primitive layout; cache parsed assets. |
-| BVH | Fewer primitive tests help either processor; GPU traversal also faces divergence and scattered reads. | Better split heuristics and traversal ordering. |
-| Refraction | Independent dielectric calculations suit GPU throughput; reflection/transmission branches reduce coherence. | Reduce dispatch/readback overhead and improve dielectric path scheduling. |
-| Texture/bump | Parallel lookups suit GPUs; procedural arithmetic trades image fetches for computation on either processor. | Texture objects, mipmaps, and footprint-aware filtering. |
-| Restart | Host serialization adds a GPU download that a CPU renderer would not require. | Asynchronous staging and adjusted checkpoint cadence. |
-| Depth of field | Camera sampling is inexpensive; defocus requires more samples and decreases coherence. | Better sampling and adaptive convergence. |
-| Direct lighting | Extra shadow rays increase sample cost while reducing variance; GPUs process them concurrently. | Importance-weighted light selection and dedicated shadow queues. |
-| Wavefront queues | Specialized GPU kernels reduce material branching; a CPU also groups work, with lower launch overhead. Queue construction and host count readback can outweigh the savings. | Device-driven dispatch, concurrent shadow queues, and workload-dependent selection. |
-| Procedural sculptures | CPU mesh generation happens once; GPU rays amortize that setup across samples. Analytic textures trade memory reads for parallel arithmetic. | Adaptive tessellation, cached assets, and filtered patterns. |
-| Russian roulette | Either processor saves later work by terminating paths, at the cost of added variance and sampling overhead. GPU queues must compact the survivors. | Tune the start depth and evaluate error per unit time. |
+| Feature | Acceleration used and why | GPU versus a hypothetical CPU renderer | Further optimization |
+|---|---|---|---|
+| OBJ / glTF | Parse and apply transforms once on the host; reuse triangles and BVH during rendering. | File decoding is CPU setup in both versions; independent GPU ray/triangle tests amortize upload cost and exploit concurrency. | Cache parsed assets, compact primitive layout, and preserve shared mesh instances. |
+| BVH | Prune primitive tests with a CPU-built hierarchy and iterative GPU traversal. | Fewer tests help either processor; GPU traversal also faces divergence and scattered reads. | Better split heuristics and traversal ordering. |
+| Refraction | No dedicated dielectric acceleration; reuse the shared traversal and scheduling. | Independent dielectric calculations suit GPU throughput; reflection/transmission branches reduce coherence. | Reduce dispatch/readback overhead and improve dielectric path scheduling. |
+| Texture/bump | No dedicated filtering acceleration; evaluate the image or analytic pattern at each hit. | Parallel lookups suit GPUs; procedural arithmetic trades image fetches for computation on either processor. | Texture objects, mipmaps, and footprint-aware filtering. |
+| Restart | No asynchronous I/O acceleration; retain exact sums with checksummed atomic replacement. | Host serialization adds a GPU download that a CPU renderer would not require. | Asynchronous staging and adjusted checkpoint cadence. |
+| Depth of field | No dedicated camera acceleration; lens sampling runs in primary-ray generation. | A CPU can use the same lens estimator. GPU throughput helps evaluate independent paths, while defocus requires more samples and reduces path coherence. | Better sampling and adaptive convergence. |
+| Direct lighting | Explicit light sampling and MIS target convergence; they add visibility-ray work per sample. | GPUs process independent shadow rays concurrently; a CPU can use the same estimator. | Importance-weighted light selection and dedicated shadow queues. |
+| Wavefront queues | Histogram, scan, and index scatter replace sorting and feed specialized kernels. | A CPU can also group work, with lower launch overhead. GPU queue construction and host count readback can outweigh branching savings. | Device-driven dispatch, concurrent shadow queues, and workload-dependent selection. |
+| Procedural sculptures | Generate meshes once on the CPU; evaluate analytic textures on the GPU without image fetches. | CPU generation is setup; independent GPU rays amortize it. Pattern arithmetic benefits from GPU throughput. | Adaptive tessellation, cached assets, and filtered patterns. |
+| Russian roulette | Terminate compensated low-throughput paths and compact survivors to avoid later work. | Either processor saves later work at the cost of added variance; GPU queues also need compaction. | Tune start depth and evaluate error per unit time. |
+| Sampling | Cache the generated prime table; process only present index digits. | GPUs evaluate independent pixel/path sequences, but scrambling and integer division add work. A CPU can use the same sequence. | Cheaper arithmetic and sampling strategies tailored to transport dimensions. |
+| Motion blur | Reuse phase-zero geometry and one swept BVH; keep a zero-displacement fast path. | Both processors can sample exposure time; GPUs process paths concurrently but moving scenes can reduce coherence and broaden bounds. | Tighter time-binned bounds and motion-aware traversal. |
 
 Compaction saves later work by removing dead paths, at the cost of scan/scatter. Sorting groups material work but adds scheduling cost. Neither is assumed to improve every scene.
 
@@ -267,7 +512,7 @@ First-hit semantic views help inspect surface normals, UVs, and camera depth. Th
 
 ## Build and run
 
-Requires CMake 3.24+, C++17, and a compatible NVIDIA driver/CUDA toolkit. Preview additionally requires OpenGL, GLFW, and GLEW. GLM, JSON, STB, and ImGui are inherited starter dependencies already present.
+Requires CMake 3.24+, C++17, and a compatible NVIDIA driver/CUDA toolkit. Preview additionally requires OpenGL, GLFW, and GLEW. GLM, JSON, STB, and ImGui are inherited starter dependencies already present; the approved tinygltf header and license are bundled.
 
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_PREVIEW=OFF -DCMAKE_CUDA_ARCHITECTURES=86
@@ -276,7 +521,7 @@ ctest --test-dir build --output-on-failure
 build/bin/cis565_path_tracer_headless scenes/procedural-optical-stilllife.json --samples 2048 --seed 947 --output results/workbench
 ```
 
-Choose the architecture for your GPU; `86` is the A10G validation target. CMake preserves caller-selected architectures. `BUILD_PREVIEW` defaults to `ON`; `BUILD_RENDERER=OFF` enables host-only tests. Beyond the source list, CMake changes include a C++17 host core and tests, optional CUDA/preview targets, platform preview dependencies, separate CUDA device linking, and source-content/compiler-flag compatibility fingerprints.
+Choose the architecture for your GPU; `86` is the A10G validation target. CMake preserves caller-selected architectures. `BUILD_PREVIEW` defaults to `ON`; `BUILD_RENDERER=OFF` enables host-only tests. Beyond the source list, CMake changes include a C++17 host core and tests, optional CUDA/preview targets, platform preview dependencies, separate CUDA device linking, and source-content/compiler-flag compatibility fingerprints. The host core includes our glTF adapter and a separate glTF test target; the adapter reuses the existing JSON/STB include paths.
 
 ```sh
 build/bin/cis565_path_tracer_headless scenes/optical-workbench.json --samples 64 --checkpoint results/workbench.checkpoint --output results/partial
@@ -286,17 +531,25 @@ build/bin/cis565_path_tracer_headless scenes/optical-workbench.json --resolution
 python3 scripts/run_experiments.py --binary build/bin/cis565_path_tracer_headless
 ```
 
-Additional controls: `--resolution WxH`, `--depth`, `--aa`, `--nee`, `--bvh`, `--compact`, `--sort`, `--wavefront`, and `--rr`. `--rr-start N` sets the number of completed scattering events before roulette is eligible (1–4096); a value beyond the depth leaves roulette ineligible. Material sorting requires `--wavefront off`. Toggle values are `on` or `off`. `--samples` denotes the total target, including previously completed samples.
+Additional controls: `--resolution WxH`, `--depth`, `--aa`, `--nee`, `--bvh`, `--compact`, `--sort`, `--wavefront`, `--rr`, `--sampler counter|halton`, and `--motion on|off`. `--rr-start N` sets the number of completed scattering events before roulette is eligible (1–4096); a value beyond the depth leaves roulette ineligible. Material sorting requires `--wavefront off`. Toggle values are `on` or `off`. `--samples` denotes the total target, including previously completed samples.
 
-Preview accepts a scene path. Left drag orbits, right drag zooms, middle drag moves the look-at point, Space recenters, S saves, and Escape saves and exits.
+Preview accepts a scene path and the sampler/motion controls. Left drag orbits, right drag zooms, middle drag moves the look-at point, Space recenters, S saves, and Escape saves and exits.
+
+To inspect the glTF scene with exposure averaging and the additional sampler:
+
+```sh
+build/bin/cis565_path_tracer scenes/gltf-showcase.json --sampler halton --motion on
+build/bin/cis565_path_tracer_headless scenes/gltf-showcase.json --samples 2048 --sampler halton --motion on --seed 947 --output results/gltf-showcase
+```
 
 See [scene extensions](docs/scene-format.md), [validation and system specifications](docs/verification.md), and [source provenance](docs/provenance.md).
 
 ## References and provenance
 
 - [Official Fall 2026 starter](https://github.com/CIS5650-Fall-2026/Project3-CUDA-Path-Tracer), revision `8695a5af18ae6fc130d1d38713be82bbbff7f38f`, including existing dependencies and retained licenses.
+- [Approved tinygltf v2.9.7](https://github.com/syoyo/tinygltf/tree/v2.9.7), revision `488a70a3df62a4df1a736e9e56fb8836580c4888`, used unchanged for glTF format loading after Bryce Joseph's September 21 approval. Its MIT license is retained; integration and test assets are independently authored. [glTF 2.0 specification](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) supplies the format rules.
 - Our own [Project 2](https://github.com/didrikwiigandersen/Project2-Stream-Compaction), revision `6a13e6fbe3a998c67fdbbdbe6643a5b4c4233b31`, for device scan and the adapted workstation transfer helper. The sampler also retains the official starter's `utilhash`; its counter composition is original.
 - Conceptual references: [OBJ format](https://dirsig.cis.rit.edu/docs/new/obj.html), [BVH](https://pbr-book.org/4ed/Primitives_and_Intersection_Acceleration/Bounding_Volume_Hierarchies), [dielectrics](https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF), [thin lens](https://pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models#TheThinLensModelandDepthofField), [textures](https://pbr-book.org/4ed/Textures_and_Materials/Image_Texture), [bump mapping](https://www.pbr-book.org/3ed-2018/Materials/Bump_Mapping), [direct lighting/MIS](https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/A_Better_Path_Tracer), and [Paul Bourke's raytracing notes](https://paulbourke.net/miscellaneous/raytracing/) supplied as a PDF; [wavefront motivation](https://research.nvidia.com/index.php/publication/2013-07_megakernels-considered-harmful-wavefront-path-tracing-gpus); and [Russian roulette theory](https://pbr-book.org/4ed/Monte_Carlo_Integration/Improving_Efficiency).
 - [Patrick Cozzi's README guide](https://github.com/pjcozzi/Articles/blob/master/CIS565/GitHubRepo/README.md) informed presentation and performance reporting.
 
-All new implementation is independently written. No other student's code, copied/adapted internet implementations, or new third-party dependencies are used. The provenance register and change manifest distinguish inherited starter content, authorized own-code reuse, and original implementation.
+Our renderer and integration code are independently written. No other student's code or unapproved internet implementation is used. The provenance register and change manifest distinguish the approved starter, the specifically approved unchanged tinygltf package, authorized own-code reuse, original implementation and generated evidence.

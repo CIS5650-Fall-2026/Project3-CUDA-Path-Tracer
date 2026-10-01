@@ -1,0 +1,1465 @@
+{
+  "checks": [
+    {
+      "detail": 96,
+      "name": "candidate-count",
+      "passed": true
+    },
+    {
+      "detail": 8,
+      "name": "initial-reference-count",
+      "passed": true
+    },
+    {
+      "detail": 8,
+      "name": "maximum-reference-retry-count",
+      "passed": true
+    },
+    {
+      "detail": 32,
+      "name": "equal-time-count",
+      "passed": true
+    },
+    {
+      "detail": 136,
+      "name": "quality-base-count",
+      "passed": true
+    },
+    {
+      "detail": 144,
+      "name": "quality-maximum-count",
+      "passed": true
+    },
+    {
+      "detail": 36,
+      "name": "timing-count",
+      "passed": true
+    },
+    {
+      "detail": 16,
+      "name": "gallery-count",
+      "passed": true
+    },
+    {
+      "detail": 188,
+      "name": "all-base-count",
+      "passed": true
+    },
+    {
+      "detail": 196,
+      "name": "all-maximum-count",
+      "passed": true
+    },
+    {
+      "detail": 196,
+      "name": "all-labels-unique",
+      "passed": true
+    },
+    {
+      "detail": 196,
+      "name": "all-prefixes-unique",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "time-budget-only-equal-time",
+      "passed": true
+    },
+    {
+      "detail": 196,
+      "name": "all-fixed-scheduling-valid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "quality-timing-no-scheduling-overrides",
+      "passed": true
+    },
+    {
+      "detail": [
+        "bvh-schedule",
+        "obj-capability",
+        "rr-illustration",
+        "wavefront-schedule"
+      ],
+      "name": "gallery-pair-identifiers",
+      "passed": true
+    },
+    {
+      "detail": {
+        "bvh-off": [
+          "/synthetic/headless",
+          "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/complexity-medium.json",
+          "--samples",
+          "32",
+          "--seed",
+          "947",
+          "--output",
+          "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/gallery-bvh-schedule-bvh-off",
+          "--resolution",
+          "192x128",
+          "--depth",
+          "10",
+          "--benchmark",
+          "--wavefront",
+          "on",
+          "--rr",
+          "on",
+          "--rr-start",
+          "3",
+          "--compact",
+          "on",
+          "--bvh",
+          "off",
+          "--aa",
+          "on",
+          "--nee",
+          "on",
+          "--sort",
+          "off",
+          "--motion",
+          "on",
+          "--sampler",
+          "counter"
+        ],
+        "bvh-on": [
+          "/synthetic/headless",
+          "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/complexity-medium.json",
+          "--samples",
+          "32",
+          "--seed",
+          "947",
+          "--output",
+          "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/gallery-bvh-schedule-bvh-on",
+          "--resolution",
+          "192x128",
+          "--depth",
+          "10",
+          "--benchmark",
+          "--wavefront",
+          "on",
+          "--rr",
+          "on",
+          "--rr-start",
+          "3",
+          "--compact",
+          "on",
+          "--bvh",
+          "on",
+          "--aa",
+          "on",
+          "--nee",
+          "on",
+          "--sort",
+          "off",
+          "--motion",
+          "on",
+          "--sampler",
+          "counter"
+        ]
+      },
+      "name": "gallery-bvh-overrides",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "gallery-obj-capability-design",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "gallery-wavefront-design",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "gallery-rr-design",
+      "passed": true
+    },
+    {
+      "detail": [
+        "complexity-medium.json",
+        "hedge-motion-frozen-end.json",
+        "hedge-motion-frozen-midpoint.json",
+        "hedge-motion-frozen-start.json",
+        "hedge-motion.json",
+        "hedge-obj-baseline.json",
+        "hedge-sampling-diffuse.json",
+        "hedge-sampling-glass-dof.json",
+        "optical-workbench.json",
+        "procedural-optical-stilllife.json"
+      ],
+      "name": "gallery-scenes-and-assets-resolve",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-benchmark",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-wavefront",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-rr",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-rr-start",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-compact",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-bvh",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-aa",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-nee",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-sort",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-motion",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-sampler",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-time-budget",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "--samples",
+        "65536",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-hedge/synthetic",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--time-budget-ms",
+        "4000"
+      ],
+      "name": "command-target-samples",
+      "passed": true
+    },
+    {
+      "detail": 4,
+      "name": "authoritative-read-sum",
+      "passed": true
+    },
+    {
+      "detail": [
+        4.0,
+        8.0,
+        12.0,
+        0.0,
+        4.0,
+        8.0
+      ],
+      "name": "synthetic-linear-mean",
+      "passed": true
+    },
+    {
+      "detail": {
+        "bytes": 34640,
+        "device": 16777231,
+        "inode": 24918201,
+        "mtime_ns": 1784666392680849260,
+        "path": "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "sha256": "4f00ea2ad53d62437a6a3946b73c73614a97e8accdc5b96dc095ea1a0d9c6a56"
+      },
+      "name": "binary-identity-stable",
+      "passed": true
+    },
+    {
+      "detail": {
+        "assets": [],
+        "manifest_sha256": "9a2e928ea4896ec14dac4f6422ab048d1cd86d5168c8e9269a6a3823b781bda8",
+        "resolved_path": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+        "scene_bytes": 1887,
+        "scene_file": "hedge-sampling-diffuse.json",
+        "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+      },
+      "name": "scene-input-manifest-hash",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "synthetic-metadata-audit",
+      "passed": true
+    },
+    {
+      "detail": {
+        "benchmark_csv": {
+          "bounce_records": 1,
+          "measured_samples": 4,
+          "render_loop_wall_ms": 4005.0,
+          "renderer_gpu_ms": 2.0,
+          "renderer_host_ms": 3.0
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 10.5,
+          "look_at": [
+            0.0,
+            5.0,
+            0.0
+          ],
+          "position": [
+            0.0,
+            5.0,
+            10.5
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "completed_samples": 4,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        },
+        "identity": {
+          "binary_file_identity": {
+            "bytes": 34640,
+            "device": 16777231,
+            "inode": 24918201,
+            "mtime_ns": 1784666392680849260,
+            "path": "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+            "sha256": "4f00ea2ad53d62437a6a3946b73c73614a97e8accdc5b96dc095ea1a0d9c6a56"
+          },
+          "binary_sha256": "4f00ea2ad53d62437a6a3946b73c73614a97e8accdc5b96dc095ea1a0d9c6a56",
+          "compatibility": {
+            "baseline_starter_revision": "synthetic-self-test",
+            "build_identifier": "synthetic-self-test",
+            "device": "synthetic-self-test-device"
+          },
+          "fingerprints": {
+            "assets": 2,
+            "geometry": 4,
+            "materials": 3,
+            "render_config": 5,
+            "scene_file": 1
+          },
+          "metadata_scene": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+          "scene_file_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a",
+          "scene_input_identity": {
+            "assets": [],
+            "manifest_sha256": "9a2e928ea4896ec14dac4f6422ab048d1cd86d5168c8e9269a6a3823b781bda8",
+            "resolved_path": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+            "scene_bytes": 1887,
+            "scene_file": "hedge-sampling-diffuse.json",
+            "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+          }
+        },
+        "last_sample_wall_ms": 5.0,
+        "linear_rgb_mean": 1.5,
+        "non_render_process_overhead_ms": 5.0,
+        "process_elapsed_ms": 4010.0,
+        "process_elapsed_ms_per_completed_sample": 1002.5,
+        "raw_checksum_fnv1a64": 15126161980040613203,
+        "render_loop_minus_budget_ms": 5.0,
+        "render_loop_wall_ms": 4005.0,
+        "render_loop_wall_ms_per_completed_sample": 1001.25,
+        "renderer_gpu_ms": 2.0,
+        "renderer_gpu_ms_per_completed_sample": 0.5,
+        "renderer_host_ms": 3.0,
+        "resolution": [
+          2,
+          1
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 5.0,
+          "stop_reason": "time_budget",
+          "time_budget_ms": 4000
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 65536,
+        "time_budget_overshoot_ms": 5.0
+      },
+      "name": "synthetic-time-budget-range",
+      "passed": true
+    },
+    {
+      "detail": {
+        "last_sample_wall_ms": 5.0,
+        "stop_reason": "time_budget",
+        "time_budget_ms": 4000
+      },
+      "name": "synthetic-run-policy",
+      "passed": true
+    },
+    {
+      "detail": {
+        "last_sample_wall_ms": 5.0,
+        "stop_reason": "sample_target",
+        "time_budget_ms": null
+      },
+      "name": "synthetic-fixed-run-policy",
+      "passed": true
+    },
+    {
+      "detail": {
+        "last_sample_wall_ms": 5.0,
+        "stop_reason": "sample_target",
+        "time_budget_ms": 4000
+      },
+      "name": "synthetic-budget-target-stop-reason",
+      "passed": true
+    },
+    {
+      "detail": {
+        "cached_actual_matched": true,
+        "independently_reconstructed": true,
+        "verified_artifact_hashes": [
+          "benchmark_csv",
+          "metadata",
+          "png",
+          "raw"
+        ],
+        "verified_sidecar_hashes": [
+          "stdout",
+          "stderr",
+          "invocation_record"
+        ]
+      },
+      "name": "independent-artifact-reanalysis",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "zero-fingerprint-rejected",
+      "passed": true
+    },
+    {
+      "detail": {
+        "all_four_variants_equal": true,
+        "camera_files_unique": true,
+        "equal": true,
+        "excluded_variant_fields": [
+          "Camera.FILE",
+          "Camera.SHUTTER"
+        ],
+        "full_shutter_normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+        "full_shutter_scene": "hedge-motion.json",
+        "midpoint_normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+        "midpoint_scene": "hedge-motion-frozen-midpoint.json",
+        "normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+        "variants": {
+          "end": {
+            "camera_file": "hedge-motion-frozen-end",
+            "native_depth": 10,
+            "native_iterations": 2048,
+            "native_resolution": [
+              960,
+              640
+            ],
+            "normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+            "scene_file": "hedge-motion-frozen-end.json",
+            "shutter": [
+              1.0,
+              1.0
+            ]
+          },
+          "full": {
+            "camera_file": "hedge-motion",
+            "native_depth": 10,
+            "native_iterations": 2048,
+            "native_resolution": [
+              960,
+              640
+            ],
+            "normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+            "scene_file": "hedge-motion.json",
+            "shutter": [
+              0.0,
+              1.0
+            ]
+          },
+          "midpoint": {
+            "camera_file": "hedge-motion-frozen-midpoint",
+            "native_depth": 10,
+            "native_iterations": 2048,
+            "native_resolution": [
+              960,
+              640
+            ],
+            "normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+            "scene_file": "hedge-motion-frozen-midpoint.json",
+            "shutter": [
+              0.5,
+              0.5
+            ]
+          },
+          "start": {
+            "camera_file": "hedge-motion-frozen-start",
+            "native_depth": 10,
+            "native_iterations": 2048,
+            "native_resolution": [
+              960,
+              640
+            ],
+            "normalized_scene_sha256": "5f65e9b0479464c11f7598d700ce165b4c86cefc5f0060df9eb93439d9314c86",
+            "scene_file": "hedge-motion-frozen-start.json",
+            "shutter": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "name": "motion-four-variant-design",
+      "passed": true
+    },
+    {
+      "detail": {
+        "absolute_mean_difference": 0.0,
+        "counter_mean": 1.0,
+        "criterion": "abs(mean(halton_linear_mean - counter_linear_mean)) <= max(4 * paired_standard_error, 0.01 * counter_mean) + 1e-6",
+        "halton_mean": 1.0,
+        "maximum_allowed_difference": 0.010001,
+        "paired_differences_halton_minus_counter": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "paired_mean_difference": 0.0,
+        "paired_sample_variance": 0.0,
+        "paired_standard_error": 0.0,
+        "passed": true
+      },
+      "name": "paired-intensity-identical",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "paired-intensity-zero-difference",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "rmse",
+      "passed": true
+    },
+    {
+      "detail": {
+        "count": 3,
+        "max": 3.0,
+        "mean": 2.0,
+        "median": 2.0,
+        "min": 1.0,
+        "sample_standard_deviation": 1.0,
+        "sample_variance": 1.0,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "name": "describe-median",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fixed-sampler-ids",
+      "passed": true
+    }
+  ],
+  "completed_utc": "2026-10-01T20:11:50.252008Z",
+  "fixed_design": {
+    "counts": {
+      "all_base": 188,
+      "all_maximum_after_reference_retry": 196,
+      "gallery": 16,
+      "quality_base": 136,
+      "quality_maximum_after_reference_retry": 144,
+      "timing": 36
+    },
+    "gallery": {
+      "bvh_resolution": [
+        192,
+        128
+      ],
+      "bvh_samples": 32,
+      "comparison_pairs": [
+        "obj-capability",
+        "bvh-schedule",
+        "wavefront-schedule",
+        "rr-illustration"
+      ],
+      "comparison_runs": [
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "not-asserted",
+          "gallery_pair_id": "obj-capability",
+          "gallery_pair_semantics": "capability-illustration-not-performance-comparison",
+          "gallery_role": "baseline-without-obj",
+          "kind": "capability",
+          "label": "gallery-obj-capability-baseline-without-obj",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            512,
+            336
+          ],
+          "sample_target": 128,
+          "sampler": "counter",
+          "scene": "obj-baseline",
+          "scene_file": "hedge-obj-baseline.json",
+          "scheduling_overrides": {},
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "not-asserted",
+          "gallery_pair_id": "obj-capability",
+          "gallery_pair_semantics": "capability-illustration-not-performance-comparison",
+          "gallery_role": "with-obj",
+          "kind": "capability",
+          "label": "gallery-obj-capability-with-obj",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            512,
+            336
+          ],
+          "sample_target": 128,
+          "sampler": "counter",
+          "scene": "procedural-optical-stilllife",
+          "scene_file": "procedural-optical-stilllife.json",
+          "scheduling_overrides": {},
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "off",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "raw-and-png-required",
+          "gallery_pair_id": "bvh-schedule",
+          "gallery_pair_semantics": "exact-bvh-schedule-equivalence",
+          "gallery_role": "bvh-off",
+          "kind": "schedule-equivalence",
+          "label": "gallery-bvh-schedule-bvh-off",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            192,
+            128
+          ],
+          "sample_target": 32,
+          "sampler": "counter",
+          "scene": "complexity-medium",
+          "scene_file": "complexity-medium.json",
+          "scheduling_overrides": {
+            "bvh": "off"
+          },
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "raw-and-png-required",
+          "gallery_pair_id": "bvh-schedule",
+          "gallery_pair_semantics": "exact-bvh-schedule-equivalence",
+          "gallery_role": "bvh-on",
+          "kind": "schedule-equivalence",
+          "label": "gallery-bvh-schedule-bvh-on",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            192,
+            128
+          ],
+          "sample_target": 32,
+          "sampler": "counter",
+          "scene": "complexity-medium",
+          "scene_file": "complexity-medium.json",
+          "scheduling_overrides": {
+            "bvh": "on"
+          },
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "off"
+          },
+          "gallery_exactness_requirement": "raw-and-png-required",
+          "gallery_pair_id": "wavefront-schedule",
+          "gallery_pair_semantics": "exact-unified-wavefront-equivalence",
+          "gallery_role": "wavefront-off",
+          "kind": "schedule-equivalence",
+          "label": "gallery-wavefront-schedule-wavefront-off",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            512,
+            336
+          ],
+          "sample_target": 128,
+          "sampler": "counter",
+          "scene": "optical-workbench",
+          "scene_file": "optical-workbench.json",
+          "scheduling_overrides": {
+            "rr": "on",
+            "sort": "off",
+            "wavefront": "off"
+          },
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "raw-and-png-required",
+          "gallery_pair_id": "wavefront-schedule",
+          "gallery_pair_semantics": "exact-unified-wavefront-equivalence",
+          "gallery_role": "wavefront-on",
+          "kind": "schedule-equivalence",
+          "label": "gallery-wavefront-schedule-wavefront-on",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            512,
+            336
+          ],
+          "sample_target": 128,
+          "sampler": "counter",
+          "scene": "optical-workbench",
+          "scene_file": "optical-workbench.json",
+          "scheduling_overrides": {
+            "rr": "on",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "off",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "not-asserted",
+          "gallery_pair_id": "rr-illustration",
+          "gallery_pair_semantics": "single-image-illustration-not-statistical-validation",
+          "gallery_role": "rr-off",
+          "kind": "rr-illustration",
+          "label": "gallery-rr-illustration-rr-off",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            512,
+            336
+          ],
+          "sample_target": 128,
+          "sampler": "counter",
+          "scene": "optical-workbench",
+          "scene_file": "optical-workbench.json",
+          "scheduling_overrides": {
+            "rr": "off",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "seed": 947,
+          "time_budget_ms": null
+        },
+        {
+          "depth": 10,
+          "effective_scheduling": {
+            "aa": "on",
+            "bvh": "on",
+            "compact": "on",
+            "motion": "on",
+            "nee": "on",
+            "rr": "on",
+            "rr-start": "3",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "gallery_exactness_requirement": "not-asserted",
+          "gallery_pair_id": "rr-illustration",
+          "gallery_pair_semantics": "single-image-illustration-not-statistical-validation",
+          "gallery_role": "rr-on",
+          "kind": "rr-illustration",
+          "label": "gallery-rr-illustration-rr-on",
+          "phase": "gallery",
+          "purpose": "gallery",
+          "resolution": [
+            512,
+            336
+          ],
+          "sample_target": 128,
+          "sampler": "counter",
+          "scene": "optical-workbench",
+          "scene_file": "optical-workbench.json",
+          "scheduling_overrides": {
+            "rr": "on",
+            "sort": "off",
+            "wavefront": "on"
+          },
+          "seed": 947,
+          "time_budget_ms": null
+        }
+      ],
+      "comparison_samples": 128,
+      "motion_samples": 512,
+      "original_resolution": [
+        512,
+        336
+      ],
+      "render_count": 16,
+      "seed": 947,
+      "static_samples": 64
+    },
+    "quality": {
+      "base_render_count": 136,
+      "candidate_render_count": 96,
+      "candidate_samples": [
+        16,
+        64,
+        256
+      ],
+      "candidate_seeds": [
+        947,
+        104729,
+        130363,
+        155921,
+        196613,
+        262147,
+        314159,
+        524287
+      ],
+      "depth": 10,
+      "equal_time_budget_ms": 4000,
+      "equal_time_render_count": 32,
+      "equal_time_target_samples": 65536,
+      "fixtures": [
+        "diffuse",
+        "glass-dof"
+      ],
+      "maximum_adaptive_render_count": 144,
+      "reference_precision_criterion": "split_reference_rmse <= 0.25 * min(mean candidate RMSE at 256 spp for counter, mean candidate RMSE at 256 spp for halton)",
+      "reference_render_count": 8,
+      "reference_retry_policy": "exactly once, same four seeds, failed scenes only",
+      "reference_retry_samples_per_seed": 16384,
+      "reference_sampler": "counter",
+      "reference_samples_per_seed": 8192,
+      "reference_seeds": [
+        2718281,
+        3141593,
+        1618033,
+        1414213
+      ],
+      "resolution": [
+        128,
+        84
+      ],
+      "samplers": [
+        "counter",
+        "halton"
+      ]
+    },
+    "scheduling": {
+      "aa": "on",
+      "benchmark": true,
+      "bvh": "on",
+      "compact": "on",
+      "motion": "on",
+      "nee": "on",
+      "note": "fixed for quality and timing; gallery comparison members record explicit per-render overrides",
+      "rr": "on",
+      "rr-start": "3",
+      "sort": "off",
+      "wavefront": "on"
+    },
+    "timing": {
+      "configuration_count": 6,
+      "depth": 10,
+      "measured_repeats_per_configuration": 3,
+      "render_count": 36,
+      "resolution": [
+        128,
+        84
+      ],
+      "samples": 256,
+      "seed": 947,
+      "warmups_per_configuration": 3
+    }
+  },
+  "mode": "self-test",
+  "renderer_executed": false,
+  "schema_version": 1,
+  "status": "passed",
+  "tool": "scripts/measure_hedge.py"
+}

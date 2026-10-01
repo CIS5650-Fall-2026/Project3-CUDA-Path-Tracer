@@ -28,13 +28,15 @@ endif()
 
 add_library(cis565_dependencies INTERFACE)
 target_include_directories(cis565_dependencies SYSTEM INTERFACE
-    "${CMAKE_CURRENT_SOURCE_DIR}/external/include")
+    "${CMAKE_CURRENT_SOURCE_DIR}/external/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/external/tinygltf")
 target_include_directories(cis565_dependencies INTERFACE
     "${CMAKE_CURRENT_SOURCE_DIR}/src"
     "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(cis565_core_sources
     src/checkpoint.cpp
+    src/gltf_loader.cpp
     src/geometry.cpp
     src/image.cpp
     src/scene.cpp
@@ -81,6 +83,8 @@ if(BUILD_RENDERER)
         src/geometry.cpp
         src/geometry.cuh
         src/geometry.h
+        src/gltf_loader.cpp
+        src/gltf_loader.h
         src/headless.cpp
         src/image.cpp
         src/image.h
@@ -98,6 +102,7 @@ if(BUILD_RENDERER)
         src/stb.cpp
         src/utilities.cpp
         src/utilities.h
+        external/tinygltf/tiny_gltf.h
         stream_compaction/device_scan.cu
         stream_compaction/device_scan.cuh)
     # Every compiled renderer source is build-identity material, including any
@@ -282,6 +287,7 @@ if(BUILD_TESTING)
 
     cis565_add_host_test(geometry_tests tests/geometry_tests.cpp)
     cis565_add_host_test(checkpoint_tests tests/checkpoint_tests.cpp)
+    cis565_add_host_test(gltf_tests tests/gltf_tests.cpp)
 
     if(BUILD_RENDERER)
         add_executable(render_tests tests/render_tests.cpp)

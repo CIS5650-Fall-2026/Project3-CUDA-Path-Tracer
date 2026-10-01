@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "passed": true,
+  "synthetic": true,
+  "notice": "Original numeric/rendering design unchanged. These are mocked completion-policy integration and tool self-tests, not GPU/image measurements. Exact executed pre-policy driver is retained for all final sampling/motion studies.",
+  "executed_driver_snapshot": {
+    "path": "results/hedge-final-tools-exit-policy/measure_hedge.executed.py",
+    "bytes": 153480,
+    "sha256": "455515fbebf1abf110137bf9280a7b906dd41a6ca965bc642a83628d50be7501"
+  },
+  "current_driver_sha256": "17ede42a83b29255c8bd9babf24f46f4613412e0c92da5da74d62ae23fdbfa89",
+  "checks": [
+    {
+      "name": "measure-selftest",
+      "status": "passed",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/measure_hedge.py",
+        "--self-test",
+        "--output",
+        "results/hedge-final-tools-exit-policy/measure-selftest"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-01T21:33:25.488334+00:00",
+      "ended_utc": "2026-10-01T21:33:25.577542+00:00",
+      "stdout_log": "measure-selftest.stdout.log",
+      "stderr_log": "measure-selftest.stderr.log"
+    },
+    {
+      "name": "suite-selftest",
+      "status": "passed",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/run_hedge_suite.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-01T21:33:25.577561+00:00",
+      "ended_utc": "2026-10-01T21:33:25.655838+00:00",
+      "stdout_log": "suite-selftest.stdout.log",
+      "stderr_log": "suite-selftest.stderr.log"
+    },
+    {
+      "name": "actual-completion-branch-qualified",
+      "status": "passed",
+      "evidence": "synthetic-exit-policy-report.json",
+      "actual_returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "actual-completion-branch-not-qualified",
+      "status": "passed",
+      "evidence": "synthetic-exit-policy-report.json",
+      "actual_returncode": 2,
+      "expected_returncode": 2
+    },
+    {
+      "name": "actual-completion-branch-inconclusive",
+      "status": "passed",
+      "evidence": "synthetic-exit-policy-report.json",
+      "actual_returncode": 2,
+      "expected_returncode": 2
+    }
+  ],
+  "synthetic_integration_report": "synthetic-exit-policy-report.json",
+  "changed_scope": "Only run_measurement completion comment and return: completed negative/inconclusive ->2; completed passed ->0. No numerical methods, sample design or renderer arguments change."
+}

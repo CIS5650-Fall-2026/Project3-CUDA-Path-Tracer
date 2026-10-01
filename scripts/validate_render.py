@@ -18,6 +18,8 @@ CHECKPOINT_HEADER_BYTES = 24
 CHECKPOINT_SAMPLE_METADATA_BYTES = 20
 CHECKPOINT_V1_CONFIG_BYTES = 17
 CHECKPOINT_V2_CONFIG_BYTES = 23
+CHECKPOINT_V3_CONFIG_BYTES = 24
+CHECKPOINT_V2_CAMERA_BYTES = 84
 
 
 def positive_int(value):
@@ -38,6 +40,25 @@ def refresh_checkpoint_checksum(encoded):
     if len(encoded) < CHECKPOINT_HEADER_BYTES + 8:
         raise AssertionError('checkpoint is too short to contain a checksum')
     struct.pack_into('<Q', encoded, len(encoded) - 8, fnv1a(encoded[:-8]))
+
+
+def version_two_checkpoint(version_three):
+    """Remove the v3 motion/shutter fields to form a legacy-v2 encoding."""
+    encoded = bytearray(version_three)
+    assert encoded[:8] == b'C565CKPT'
+    assert struct.unpack_from('<I', encoded, 8)[0] == 3
+    config_start = CHECKPOINT_HEADER_BYTES + CHECKPOINT_SAMPLE_METADATA_BYTES
+    shutter_start = (config_start + CHECKPOINT_V3_CONFIG_BYTES
+                     + CHECKPOINT_V2_CAMERA_BYTES)
+    del encoded[shutter_start:shutter_start + 8]
+    del encoded[config_start + CHECKPOINT_V2_CONFIG_BYTES:
+                config_start + CHECKPOINT_V3_CONFIG_BYTES]
+    removed = 8 + CHECKPOINT_V3_CONFIG_BYTES - CHECKPOINT_V2_CONFIG_BYTES
+    struct.pack_into('<I', encoded, 8, 2)
+    payload_bytes = struct.unpack_from('<Q', encoded, 16)[0]
+    struct.pack_into('<Q', encoded, 16, payload_bytes - removed)
+    refresh_checkpoint_checksum(encoded)
+    return encoded
 
 
 def version_one_checkpoint(version_two):
@@ -363,14 +384,23 @@ def main():
         wavefront=True, rr=True, fail=True)
 
     legacy = output / 'version-1.checkpoint'
-    legacy.write_bytes(version_one_checkpoint(checkpoint.read_bytes()))
+    legacy.write_bytes(version_one_checkpoint(
+        version_two_checkpoint(checkpoint.read_bytes())))
     run('reject-checkpoint-version-1', ['--resume', legacy],
         wavefront=True, rr=True, fail=True,
         expected_error='unsupported checkpoint format version 1')
 
+    legacy_two = output / 'version-2.checkpoint'
+    legacy_two.write_bytes(version_two_checkpoint(checkpoint.read_bytes()))
+    run('reject-checkpoint-version-2', ['--resume', legacy_two],
+        wavefront=True, rr=True, fail=True,
+        expected_error='unsupported checkpoint format version 2')
+
     config_extension = (CHECKPOINT_HEADER_BYTES + CHECKPOINT_SAMPLE_METADATA_BYTES
                         + CHECKPOINT_V1_CONFIG_BYTES)
-    for setting, relative_offset in (('wavefront', 0), ('rr', 1)):
+    for setting, relative_offset in (('wavefront', 0), ('rr', 1),
+                                     ('motion', CHECKPOINT_V2_CONFIG_BYTES
+                                      - CHECKPOINT_V1_CONFIG_BYTES)):
         malformed = bytearray(checkpoint.read_bytes())
         bool_offset = config_extension + relative_offset
         assert malformed[bool_offset] in (0, 1)

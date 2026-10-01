@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "utc": "2026-10-01T21:43:50.640970+00:00",
+  "scope": "Presentation-only chart layout; all measured values and plot data coordinates unchanged. Original suite-generated plots retained.",
+  "original_plot_manifest": {
+    "path": "results/hedge-final-hedge-plots/plot-manifest.json",
+    "bytes": 68877,
+    "sha256": "6a8e561d48598997f2f644bd1ec42b1d89062cad42f504d7922dee920b052e15"
+  },
+  "current_plot_manifest": {
+    "path": "results/hedge-final-hedge-plots-layout/plot-manifest.json",
+    "bytes": 68981,
+    "sha256": "dbe6cab4458fbf6e3e6f58fd0a7172dd22c0d0fcb794a99a4e2591d1bfa7fdbc"
+  },
+  "plot_driver": {
+    "path": "scripts/plot_hedge.py",
+    "bytes": 56486,
+    "sha256": "1d3958709e7644193649ed6c07a68b4d6ad05f928bcbaab3f1845a2a1300bb62"
+  },
+  "derived_numeric_data_equal": true,
+  "selftest_command": [
+    "python3",
+    "scripts/plot_hedge.py",
+    "--self-test"
+  ],
+  "selftest_exit_code": 0,
+  "selftest_stdout": {
+    "path": "results/hedge-final-hedge-plots-layout/selftest.stdout.log",
+    "bytes": 436,
+    "sha256": "6eb12c8421ea45a64d5f4850e02601f2668663c4312c89a97b9d69b3c60e3373"
+  },
+  "selftest_stderr": {
+    "path": "results/hedge-final-hedge-plots-layout/selftest.stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -10,7 +10,17 @@
 #include <string>
 #include <vector>
 
-inline constexpr std::uint32_t kRendererSamplerVersion = 2;
+enum class RendererSampler : std::uint32_t
+{
+    Counter = 2,
+    Halton = 3
+};
+
+// Retained as the historical/default sampler identifier for callers that
+// still use the old name. Checkpoint format versions are independent of this
+// value; CheckpointData::samplerVersion remains the sole persisted sampler ID.
+inline constexpr std::uint32_t kRendererSamplerVersion =
+    static_cast<std::uint32_t>(RendererSampler::Counter);
 
 enum class RendererDebugMode : std::uint32_t
 {
@@ -32,6 +42,8 @@ struct RendererConfig
     bool wavefront = true;
     bool rr = true;
     int rrStart = 3;
+    RendererSampler sampler = RendererSampler::Counter;
+    bool motion = true;
     bool benchmark = false;
     RendererDebugMode debug = RendererDebugMode::None;
 };

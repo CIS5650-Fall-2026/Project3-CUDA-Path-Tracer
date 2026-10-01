@@ -1,0 +1,235 @@
+{
+  "arguments": {
+    "binary": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+    "capture_fps": 30,
+    "duration_seconds": 48.0,
+    "motion": "on",
+    "output": "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+    "sampler": "halton",
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json"
+  },
+  "cleanup": {
+    "actions": [
+      {
+        "end": {
+          "monotonic_ns": 10348794638755,
+          "relative_to_interaction_s": null,
+          "utc": "2026-10-01T21:43:22.636228Z"
+        },
+        "exit_code": -15,
+        "method": "terminate",
+        "process": "renderer",
+        "start": {
+          "monotonic_ns": 10348673274531,
+          "relative_to_interaction_s": null,
+          "utc": "2026-10-01T21:43:22.514860Z"
+        }
+      }
+    ],
+    "errors": []
+  },
+  "completed": {
+    "monotonic_ns": 10348810453440,
+    "relative_to_interaction_s": null,
+    "utc": "2026-10-01T21:43:22.652039Z"
+  },
+  "created": {
+    "monotonic_ns": 10348176833715,
+    "relative_to_interaction_s": null,
+    "utc": "2026-10-01T21:43:22.018424Z"
+  },
+  "desktop_capture_disclosure": {
+    "automated_private_information_detection_performed": false,
+    "crop_includes_surrounding_desktop_margins": true,
+    "root_visual_verification_required": true,
+    "statement": "xdotool cannot determine whether the surrounding desktop is clean or contains private information; root must verify captured desktop content visually before publication"
+  },
+  "display": {
+    "environment_inherited_without_overrides": true,
+    "ffmpeg_x11grab_display": ":0.0",
+    "inherited_DISPLAY": ":0",
+    "inherited_XAUTHORITY_path": "/run/user/1000/gdm/Xauthority",
+    "xauthority_contents_read": false
+  },
+  "failure": {
+    "message": "display is 1024x768; capture requires at least 1280x720",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py\", line 1847, in main\n    session.run()\n  File \"/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py\", line 1588, in run\n    self.configure_geometry()\n  File \"/home/ubuntu/cis5650/project3/scripts/record_interaction_video.py\", line 772, in configure_geometry\n    raise RecordingError(\nRecordingError: display is 1024x768; capture requires at least 1280x720\n",
+    "type": "RecordingError"
+  },
+  "inputs": {
+    "binary": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+    "binary_sha256": "49d21f230205231729b8aae5240508affb0c06594a9435682159fd92748c80e3",
+    "hashes_after_cleanup": {
+      "binary_sha256": "49d21f230205231729b8aae5240508affb0c06594a9435682159fd92748c80e3",
+      "scene_sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+    },
+    "renderer_options": [
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on"
+    ],
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+    "scene_camera": {
+      "depth": 10,
+      "image_name": "gltf-showcase",
+      "iterations": 2048,
+      "resolution": [
+        960,
+        640
+      ]
+    },
+    "scene_sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50",
+    "unchanged_after_cleanup": true
+  },
+  "passed": false,
+  "png_files": [],
+  "rate_semantics": {
+    "capture_clock_fps": 30,
+    "capture_clock_meaning": "ffmpeg x11grab screen-sampling rate; it is not renderer FPS",
+    "imgui_application_fps": "display-loop telemetry only; this script does not read or claim it",
+    "window_title_iteration_meaning": "renderer completed cover-sample iteration progress; it is not capture FPS and is not the ImGui application FPS"
+  },
+  "renderer": {
+    "command": [
+      "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer",
+      "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+    "exit": {
+      "monotonic_ns": 10348787152949,
+      "relative_to_interaction_s": null,
+      "utc": "2026-10-01T21:43:22.628730Z"
+    },
+    "exit_code": -15,
+    "launch_complete": {
+      "monotonic_ns": 10348334299247,
+      "relative_to_interaction_s": null,
+      "utc": "2026-10-01T21:43:22.175892Z"
+    },
+    "launch_start": {
+      "monotonic_ns": 10348327123859,
+      "relative_to_interaction_s": null,
+      "utc": "2026-10-01T21:43:22.168718Z"
+    },
+    "pid": 47183,
+    "stderr_log": "renderer.stderr.log",
+    "stdout_log": "renderer.stdout.log"
+  },
+  "renderer_provenance": {
+    "fixed_options": [
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3"
+    ],
+    "full_renderer_options": [
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on"
+    ],
+    "options_forwarded_as_discrete_argv": true,
+    "selected_motion": "on",
+    "selected_sampler": "halton"
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "subprocess_policy": {
+    "argv_arrays_only": true,
+    "renderer_cwd": "/home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture",
+    "shell": false
+  },
+  "timing": {
+    "clock": "time.monotonic_ns",
+    "interaction_epoch": null,
+    "maximum_allowed_event_start_drift_seconds": 0.75
+  },
+  "tool_versions": {
+    "ffmpeg": {
+      "argv": [
+        "/usr/bin/ffmpeg",
+        "-version"
+      ],
+      "end": {
+        "monotonic_ns": 10348249395149,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:43:22.090982Z"
+      },
+      "exit_code": 0,
+      "start": {
+        "monotonic_ns": 10348192245500,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:43:22.033839Z"
+      },
+      "stderr": "",
+      "stdout": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers\nbuilt with gcc 13 (Ubuntu 13.2.0-23ubuntu3)\nconfiguration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared\nlibavutil      58. 29.100 / 58. 29.100\nlibavcodec     60. 31.102 / 60. 31.102\nlibavformat    60. 16.100 / 60. 16.100\nlibavdevice    60.  3.100 / 60.  3.100\nlibavfilter     9. 12.100 /  9. 12.100\nlibswscale      7.  5.100 /  7.  5.100\nlibswresample   4. 12.100 /  4. 12.100\nlibpostproc    57.  3.100 / 57.  3.100\n",
+      "timed_out": false,
+      "version_string": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+    },
+    "ffprobe": {
+      "argv": [
+        "/usr/bin/ffprobe",
+        "-version"
+      ],
+      "end": {
+        "monotonic_ns": 10348313327237,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:43:22.154913Z"
+      },
+      "exit_code": 0,
+      "start": {
+        "monotonic_ns": 10348256136866,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:43:22.097731Z"
+      },
+      "stderr": "",
+      "stdout": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers\nbuilt with gcc 13 (Ubuntu 13.2.0-23ubuntu3)\nconfiguration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared\nlibavutil      58. 29.100 / 58. 29.100\nlibavcodec     60. 31.102 / 60. 31.102\nlibavformat    60. 16.100 / 60. 16.100\nlibavdevice    60.  3.100 / 60.  3.100\nlibavfilter     9. 12.100 /  9. 12.100\nlibswscale      7.  5.100 /  7.  5.100\nlibswresample   4. 12.100 /  4. 12.100\nlibpostproc    57.  3.100 / 57.  3.100\n",
+      "timed_out": false,
+      "version_string": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers"
+    }
+  },
+  "tools": {
+    "ffmpeg": "/usr/bin/ffmpeg",
+    "ffprobe": "/usr/bin/ffprobe",
+    "xdotool": "/usr/bin/xdotool"
+  },
+  "window": {
+    "id": "41943047",
+    "search_constrained_to_renderer_pid": 47183,
+    "search_pattern": "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$",
+    "search_requires_all_predicates": true
+  }
+}

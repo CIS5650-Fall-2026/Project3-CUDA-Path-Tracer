@@ -63,6 +63,12 @@ int main()
     const RendererConfig defaults;
     expect(defaults.wavefront && defaults.rr && defaults.rrStart == 3,
         "new renderer defaults must enable wavefront and Russian roulette");
+    expect(defaults.sampler == RendererSampler::Counter && defaults.motion,
+        "renderer defaults must use counter sampling with motion enabled");
+    expect(static_cast<std::uint32_t>(RendererSampler::Counter) == 2U
+            && static_cast<std::uint32_t>(RendererSampler::Halton) == 3U
+            && kRendererSamplerVersion == 2U,
+        "sampler identifiers must remain canonical and checkpoint-stable");
 
     RendererConfig config;
     config.seed = 0x0123456789abcdefULL;
@@ -75,6 +81,8 @@ int main()
     config.wavefront = false;
     config.rr = false;
     config.rrStart = 19;
+    config.sampler = RendererSampler::Halton;
+    config.motion = false;
     config.benchmark = true;
     config.debug = RendererDebugMode::Uv;
     pathtraceSetConfig(config);
@@ -84,6 +92,7 @@ int main()
         && read.useBvh == config.useBvh && read.compact == config.compact
         && read.sort == config.sort && read.wavefront == config.wavefront
         && read.rr == config.rr && read.rrStart == config.rrStart
+        && read.sampler == config.sampler && read.motion == config.motion
         && read.benchmark == config.benchmark
         && read.debug == config.debug,
         "renderer configuration round trip");
@@ -122,6 +131,12 @@ int main()
     invalid.debug = static_cast<RendererDebugMode>(99);
     expectThrows<std::invalid_argument>([&]() { pathtraceSetConfig(invalid); },
         "invalid debug mode must be rejected");
+    invalid = config;
+    invalid.sampler = static_cast<RendererSampler>(0);
+    expectThrowsMessage<std::invalid_argument>(
+        [&]() { pathtraceSetConfig(invalid); },
+        "renderer sampler is invalid",
+        "unknown sampler identifiers must be rejected exactly");
     expectThrows<std::logic_error>([]() { (void)pathtraceSampleCount(); },
         "sample count before initialization must be rejected");
 

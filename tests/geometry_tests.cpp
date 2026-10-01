@@ -400,9 +400,13 @@ TreeSummary inspectTree(const std::vector<BvhNode>& nodes, const std::vector<int
 }
 
 void testPodDefaults() {
+    Ray ray{};
+    CHECK_NEAR(ray.time, 0.0f, 0.0f);
+
     Geom geom{};
     CHECK(geom.materialid == -1);
     CHECK_VEC3_NEAR(geom.scale, glm::vec3(1.0f), 0.0f);
+    CHECK_VEC3_NEAR(geom.motionTranslation, glm::vec3(0.0f), 0.0f);
     CHECK(!geom.hasNormals);
     CHECK(!geom.hasUVs);
 
@@ -416,6 +420,8 @@ void testPodDefaults() {
     Camera camera{};
     CHECK_NEAR(camera.aperture, 0.0f, 0.0f);
     CHECK_NEAR(camera.focusDistance, 1.0f, 0.0f);
+    CHECK_NEAR(camera.shutterOpen, 0.0f, 0.0f);
+    CHECK_NEAR(camera.shutterClose, 1.0f, 0.0f);
 
     BvhNode node{};
     CHECK(node.left == -1);
@@ -792,6 +798,103 @@ void testCameraExplicitLensAndValidationErrors() {
     }
 }
 
+void testMotionAndShutterSceneParsing() {
+    TemporaryDirectory temporary;
+    const fs::path objectPath = temporary.path() / "moving-triangle.obj";
+    writeText(objectPath, "v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n");
+
+    const std::string materials =
+        "{\"diff\":{\"TYPE\":\"Diffuse\",\"RGB\":[1,1,1]},"
+        "\"emit\":{\"TYPE\":\"Emitting\",\"RGB\":[1,0.5,0.25],"
+        "\"EMITTANCE\":3}}";
+    const std::string objects =
+        std::string("[") +
+        "{\"TYPE\":\"sphere\",\"MATERIAL\":\"diff\",\"TRANS\":[-2,0,0],"
+        "\"ROTAT\":[0,0,0],\"SCALE\":[1,1,1],"
+        "\"MOTION_TRANSLATION\":[1,-2,3]},"
+        "{\"TYPE\":\"cube\",\"MATERIAL\":\"emit\",\"TRANS\":[2,0,0],"
+        "\"ROTAT\":[0,0,0],\"SCALE\":[1,1,1],"
+        "\"MOTION_TRANSLATION\":[-4,5,-6]},"
+        "{\"TYPE\":\"obj\",\"FILE\":" +
+        jsonQuote(objectPath.filename().generic_string()) +
+        ",\"MATERIAL\":\"emit\",\"TRANS\":[0,0,0],\"ROTAT\":[0,0,0],"
+        "\"SCALE\":[1,1,1],\"MOTION_TRANSLATION\":[0,0,2]}]";
+    const fs::path scenePath = temporary.path() / "motion-and-shutter.json";
+    writeText(scenePath,
+              basicSceneJson(materials, objects,
+                             defaultCamera(",\"SHUTTER\":[0.37,0.37]")));
+    Scene moving(scenePath.string());
+    CHECK(moving.geoms.size() == 3);
+    CHECK(moving.geoms[0].type == SPHERE);
+    CHECK_VEC3_NEAR(moving.geoms[0].motionTranslation, glm::vec3(1.0f, -2.0f, 3.0f),
+                    0.0f);
+    CHECK(moving.geoms[1].type == CUBE);
+    CHECK_VEC3_NEAR(moving.geoms[1].motionTranslation, glm::vec3(-4.0f, 5.0f, -6.0f),
+                    0.0f);
+    CHECK(moving.materials[moving.geoms[1].materialid].emittance > 0.0f);
+    CHECK(moving.geoms[2].type == TRIANGLE);
+    CHECK_VEC3_NEAR(moving.geoms[2].motionTranslation, glm::vec3(0.0f, 0.0f, 2.0f),
+                    0.0f);
+    CHECK(moving.materials[moving.geoms[2].materialid].emittance > 0.0f);
+    CHECK_NEAR(moving.state.camera.shutterOpen, 0.37f, 0.0f);
+    CHECK_NEAR(moving.state.camera.shutterClose, 0.37f, 0.0f);
+
+    Ray movedObjRay{glm::vec3(0.25f, 0.25f, 3.0f),
+                    glm::vec3(0.0f, 0.0f, -1.0f), 1.0f};
+    Hit movedObjHit{};
+    CHECK(closestHit(moving.view(), movedObjRay, 0.0f, 10.0f, true, movedObjHit));
+    CHECK(movedObjHit.primitiveId == 2);
+    CHECK_VEC3_NEAR(movedObjHit.position, glm::vec3(0.25f, 0.25f, 2.0f), 1.0e-6f);
+
+    const std::string plainObject =
+        "[{\"TYPE\":\"sphere\",\"MATERIAL\":\"mat\",\"TRANS\":[0,0,0],"
+        "\"ROTAT\":[0,0,0],\"SCALE\":[1,1,1]}]";
+    const fs::path defaultsPath = temporary.path() / "motion-defaults.json";
+    writeText(defaultsPath, basicSceneJson(kDiffuseMaterial, plainObject));
+    Scene defaults(defaultsPath.string());
+    CHECK_VEC3_NEAR(defaults.geoms[0].motionTranslation, glm::vec3(0.0f), 0.0f);
+    CHECK_NEAR(defaults.state.camera.shutterOpen, 0.0f, 0.0f);
+    CHECK_NEAR(defaults.state.camera.shutterClose, 1.0f, 0.0f);
+
+    const std::vector<std::pair<std::string, std::string>> invalidMotions = {
+        {"scalar", "1"},
+        {"short", "[1,2]"},
+        {"long", "[1,2,3,4]"},
+        {"nonnumeric", "[1,\"two\",3]"},
+        {"overflow", "[1e100,0,0]"},
+    };
+    for (const auto& fixture : invalidMotions) {
+        const std::string object =
+            "[{\"TYPE\":\"sphere\",\"MATERIAL\":\"mat\",\"TRANS\":[0,0,0],"
+            "\"ROTAT\":[0,0,0],\"SCALE\":[1,1,1],\"MOTION_TRANSLATION\":" +
+            fixture.second + "}]";
+        const fs::path invalidPath = temporary.path() / ("motion-" + fixture.first + ".json");
+        writeText(invalidPath, basicSceneJson(kDiffuseMaterial, object));
+        requireRuntimeError([&] { Scene scene(invalidPath.string()); });
+    }
+
+    const std::vector<std::pair<std::string, std::string>> invalidShutters = {
+        {"scalar", "0.5"},
+        {"short", "[0]"},
+        {"long", "[0,0.5,1]"},
+        {"nonnumeric", "[0,\"one\"]"},
+        {"negative-open", "[-0.01,0.5]"},
+        {"tiny-negative-open", "[-1e-100,0]"},
+        {"reversed", "[0.75,0.25]"},
+        {"narrowly-reversed", "[0.50000001,0.5]"},
+        {"large-close", "[0,1.01]"},
+        {"just-above-one", "[0,1.00000001]"},
+        {"overflow", "[0,1e100]"},
+    };
+    for (const auto& fixture : invalidShutters) {
+        const fs::path invalidPath = temporary.path() / ("shutter-" + fixture.first + ".json");
+        writeText(invalidPath,
+                  basicSceneJson(kDiffuseMaterial, plainObject,
+                                 defaultCamera(",\"SHUTTER\":" + fixture.second)));
+        requireRuntimeError([&] { Scene scene(invalidPath.string()); });
+    }
+}
+
 void testSceneUnknownAndMalformedInputs() {
     TemporaryDirectory temporary;
     const std::string sphere =
@@ -1099,6 +1202,176 @@ void testPrimitiveIntersectionsAndBvhAgreement() {
     CHECK(closestHit(view, tinyTriangleRay, 0.0f, FLT_MAX, true, tinyTriangleHit));
     CHECK(tinyTriangleHit.primitiveId == 2);
     CHECK_NEAR(tinyTriangleHit.t / 2.0e30f, 1.0f, 1.0e-5f);
+}
+
+void testRigidTranslationIntersectionsAndSweptBounds() {
+    std::vector<Material> materials(3);
+
+    Geom sphere = analyticGeom(SPHERE, 0, glm::vec3(0.0f));
+    sphere.motionTranslation = glm::vec3(2.0f, 0.0f, 0.0f);
+    std::vector<Geom> sphereGeoms{sphere};
+    std::vector<BvhNode> sphereNodes;
+    std::vector<int> sphereIndices;
+    buildBvh(sphereGeoms, sphereNodes, sphereIndices);
+    const SceneView sphereView = makeView(sphereGeoms, materials, sphereNodes, sphereIndices);
+    const Ray sphereRay{glm::vec3(1.0f, 0.0f, -2.0f),
+                        glm::vec3(0.0f, 0.0f, 1.0f), 0.5f};
+    compareBvhAndBrute(sphereView, sphereRay, 0.0f, 10.0f, true, 0);
+    Hit sphereHit{};
+    CHECK(closestHit(sphereView, sphereRay, 0.0f, 10.0f, true, sphereHit));
+    CHECK_NEAR(sphereHit.t, 1.5f, 1.0e-6f);
+    CHECK_VEC3_NEAR(sphereHit.position, glm::vec3(1.0f, 0.0f, -0.5f), 1.0e-6f);
+    CHECK_VEC3_NEAR(sphereHit.geometricNormal, glm::vec3(0.0f, 0.0f, -1.0f), 1.0e-6f);
+    Ray phaseZeroSphereRay = sphereRay;
+    phaseZeroSphereRay.time = 0.0f;
+    compareBvhAndBrute(sphereView, phaseZeroSphereRay, 0.0f, 10.0f, false);
+
+    Geom phaseZeroSphere = sphere;
+    phaseZeroSphere.motionTranslation = glm::vec3(0.0f);
+    std::vector<Geom> phaseZeroSphereGeoms{phaseZeroSphere};
+    std::vector<BvhNode> phaseZeroSphereNodes;
+    std::vector<int> phaseZeroSphereIndices;
+    buildBvh(phaseZeroSphereGeoms, phaseZeroSphereNodes, phaseZeroSphereIndices);
+    const SceneView phaseZeroSphereView = makeView(
+        phaseZeroSphereGeoms, materials, phaseZeroSphereNodes, phaseZeroSphereIndices);
+    const Ray motionOffRay{glm::vec3(0.0f, 0.0f, -2.0f),
+                           glm::vec3(0.0f, 0.0f, 1.0f), 0.0f};
+    Hit movingAtPhaseZero{};
+    Hit staticAtPhaseZero{};
+    CHECK(closestHit(sphereView, motionOffRay, 0.0f, 10.0f, true, movingAtPhaseZero));
+    CHECK(closestHit(phaseZeroSphereView, motionOffRay, 0.0f, 10.0f, true,
+                     staticAtPhaseZero));
+    compareHits(movingAtPhaseZero, staticAtPhaseZero, 0.0f);
+
+    Geom cube = analyticGeom(CUBE, 1, glm::vec3(0.0f));
+    cube.motionTranslation = glm::vec3(0.0f, 2.0f, 0.0f);
+    std::vector<Geom> cubeGeoms{cube};
+    std::vector<BvhNode> cubeNodes;
+    std::vector<int> cubeIndices;
+    buildBvh(cubeGeoms, cubeNodes, cubeIndices);
+    const SceneView cubeView = makeView(cubeGeoms, materials, cubeNodes, cubeIndices);
+    const Ray cubeRay{glm::vec3(0.0f, 2.0f, -2.0f),
+                      glm::vec3(0.0f, 0.0f, 1.0f), 1.0f};
+    compareBvhAndBrute(cubeView, cubeRay, 0.0f, 10.0f, true, 0);
+    Hit cubeHit{};
+    CHECK(closestHit(cubeView, cubeRay, 0.0f, 10.0f, true, cubeHit));
+    CHECK_NEAR(cubeHit.t, 1.5f, 1.0e-6f);
+    CHECK_VEC3_NEAR(cubeHit.position, glm::vec3(0.0f, 2.0f, -0.5f), 1.0e-6f);
+    CHECK_VEC3_NEAR(cubeHit.geometricNormal, glm::vec3(0.0f, 0.0f, -1.0f), 1.0e-6f);
+
+    Geom plane = triangleGeom(glm::vec3(0.0f, 0.0f, 0.0f),
+                              glm::vec3(1.0f, 0.0f, 0.0f),
+                              glm::vec3(0.0f, 1.0f, 0.0f), 2);
+    plane.motionTranslation = glm::vec3(2.0f, 0.0f, 1.0f);
+    std::vector<Geom> planeGeoms{plane};
+    std::vector<BvhNode> planeNodes;
+    std::vector<int> planeIndices;
+    buildBvh(planeGeoms, planeNodes, planeIndices);
+    const SceneView planeView = makeView(planeGeoms, materials, planeNodes, planeIndices);
+    const Ray planeRay{glm::vec3(1.25f, 0.25f, -1.0f),
+                       glm::vec3(0.0f, 0.0f, 1.0f), 0.5f};
+    compareBvhAndBrute(planeView, planeRay, 0.0f, 10.0f, true, 0);
+    Hit planeHit{};
+    CHECK(closestHit(planeView, planeRay, 0.0f, 10.0f, true, planeHit));
+    CHECK_NEAR(planeHit.t, 1.5f, 1.0e-6f);
+    CHECK_VEC3_NEAR(planeHit.position, glm::vec3(1.25f, 0.25f, 0.5f), 1.0e-6f);
+    CHECK_VEC3_NEAR(planeHit.geometricNormal, glm::vec3(0.0f, 0.0f, 1.0f), 1.0e-6f);
+    CHECK(!anyHit(planeView, planeRay, 0.0f, 1.49f, true));
+    CHECK(anyHit(planeView, planeRay, 0.0f, 1.5f, true));
+
+    // A zero displacement must not perturb any phase-zero intersection arithmetic,
+    // even when the ray carries a nonzero time.
+    Geom staticSphere = analyticGeom(SPHERE, 0, glm::vec3(-3.0f, 1.0f, 2.0f));
+    std::vector<Geom> staticGeoms{staticSphere};
+    std::vector<BvhNode> staticNodes;
+    std::vector<int> staticIndices;
+    buildBvh(staticGeoms, staticNodes, staticIndices);
+    const SceneView staticView = makeView(staticGeoms, materials, staticNodes, staticIndices);
+    Ray staticRay{glm::vec3(-3.0f, 1.0f, 0.0f),
+                  glm::vec3(0.0f, 0.0f, 1.0f), 0.0f};
+    Hit phaseZeroHit{};
+    CHECK(closestHit(staticView, staticRay, 0.0f, 10.0f, true, phaseZeroHit));
+    staticRay.time = 0.875f;
+    Hit timedStaticHit{};
+    CHECK(closestHit(staticView, staticRay, 0.0f, 10.0f, true, timedStaticHit));
+    compareHits(timedStaticHit, phaseZeroHit, 0.0f);
+
+    Geom signedZeroSphere = staticSphere;
+    signedZeroSphere.motionTranslation = glm::vec3(-0.0f, 0.0f, -0.0f);
+    std::vector<BvhNode> signedZeroNodes;
+    std::vector<int> signedZeroIndices;
+    buildBvh(std::vector<Geom>{signedZeroSphere}, signedZeroNodes, signedZeroIndices);
+    CHECK(staticIndices == signedZeroIndices);
+    CHECK(staticNodes.size() == signedZeroNodes.size());
+    CHECK_VEC3_NEAR(staticNodes[0].boundsMin, signedZeroNodes[0].boundsMin, 0.0f);
+    CHECK_VEC3_NEAR(staticNodes[0].boundsMax, signedZeroNodes[0].boundsMax, 0.0f);
+
+    Ray invalidTimeRay = staticRay;
+    invalidTimeRay.time = std::numeric_limits<float>::quiet_NaN();
+    Hit invalidTimeHit{};
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, false, invalidTimeHit));
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, true, invalidTimeHit));
+    CHECK(!anyHit(staticView, invalidTimeRay, 0.0f, 10.0f, false));
+    CHECK(!anyHit(staticView, invalidTimeRay, 0.0f, 10.0f, true));
+    invalidTimeRay.time = std::numeric_limits<float>::infinity();
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, true, invalidTimeHit));
+    invalidTimeRay.time = -std::numeric_limits<float>::epsilon();
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, false,
+                      invalidTimeHit));
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, true,
+                      invalidTimeHit));
+    CHECK(!anyHit(staticView, invalidTimeRay, 0.0f, 10.0f, false));
+    CHECK(!anyHit(staticView, invalidTimeRay, 0.0f, 10.0f, true));
+    invalidTimeRay.time = 1.0f + std::numeric_limits<float>::epsilon();
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, false,
+                      invalidTimeHit));
+    CHECK(!closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, true,
+                      invalidTimeHit));
+    CHECK(!anyHit(staticView, invalidTimeRay, 0.0f, 10.0f, false));
+    CHECK(!anyHit(staticView, invalidTimeRay, 0.0f, 10.0f, true));
+
+    // Both swept endpoints are valid, and the original phase-zero static hit
+    // remains unchanged at the lower endpoint.
+    invalidTimeRay.time = 1.0f;
+    CHECK(closestHit(staticView, invalidTimeRay, 0.0f, 10.0f, true,
+                     invalidTimeHit));
+    compareHits(invalidTimeHit, phaseZeroHit, 0.0f);
+
+    Geom sweptSphere = analyticGeom(SPHERE, 0, glm::vec3(3.0f, -2.0f, 1.0f));
+    sweptSphere.motionTranslation = glm::vec3(-8.0f, 6.0f, 3.0f);
+    std::vector<Geom> sweptGeoms{sweptSphere};
+    std::vector<BvhNode> sweptNodes;
+    std::vector<int> sweptIndices;
+    buildBvh(sweptGeoms, sweptNodes, sweptIndices);
+    CHECK(sweptNodes.size() == 1);
+    const BvhNode& sweptRoot = sweptNodes[0];
+    const glm::vec3 endpointMinimum(-5.5f, -2.5f, 0.5f);
+    const glm::vec3 endpointMaximum(3.5f, 4.5f, 4.5f);
+    for (int axis = 0; axis < 3; ++axis) {
+        CHECK(sweptRoot.boundsMin[axis] <= endpointMinimum[axis]);
+        CHECK(sweptRoot.boundsMax[axis] >= endpointMaximum[axis]);
+    }
+    const SceneView sweptView = makeView(sweptGeoms, materials, sweptNodes, sweptIndices);
+    const glm::vec3 midpoint = sweptSphere.translation + 0.5f * sweptSphere.motionTranslation;
+    const Ray midpointRay{midpoint + glm::vec3(0.0f, 0.0f, -2.0f),
+                          glm::vec3(0.0f, 0.0f, 1.0f), 0.5f};
+    compareBvhAndBrute(sweptView, midpointRay, 0.0f, 10.0f, true, 0);
+
+    Geom nonfiniteMotion = staticSphere;
+    nonfiniteMotion.motionTranslation.x = std::numeric_limits<float>::quiet_NaN();
+    requireRuntimeError([&] {
+        std::vector<BvhNode> nodes;
+        std::vector<int> indices;
+        buildBvh(std::vector<Geom>{nonfiniteMotion}, nodes, indices);
+    });
+
+    Geom overflowingMotion = analyticGeom(SPHERE, 0, glm::vec3(1.0e38f, 0.0f, 0.0f));
+    overflowingMotion.motionTranslation = glm::vec3(3.0e38f, 0.0f, 0.0f);
+    requireRuntimeError([&] {
+        std::vector<BvhNode> nodes;
+        std::vector<int> indices;
+        buildBvh(std::vector<Geom>{overflowingMotion}, nodes, indices);
+    });
 }
 
 void testTriangleBarycentricsNormalsAndDerivatives() {
@@ -1993,6 +2266,7 @@ int main(int argc, char** argv) {
         {"OBJ mirrored transform", testObjMirroredTransformPreservesWindingNormalsAndAttributes},
         {"scene materials, camera, and view", testSceneMaterialsCameraAndView},
         {"camera lens and validation", testCameraExplicitLensAndValidationErrors},
+        {"motion and shutter scene parsing", testMotionAndShutterSceneParsing},
         {"scene unknown and malformed inputs", testSceneUnknownAndMalformedInputs},
         {"texture color/bump/orientation/assets", testTextureLoadingColorBumpOrientationAndAssets},
         {"texture failures", testTextureFailures},
@@ -2000,6 +2274,8 @@ int main(int argc, char** argv) {
         {"procedural parser aliases and validation", testProceduralParserAliasesAndValidation},
         {"generated procedural mesh assets", testGeneratedProceduralMeshAssets},
         {"primitive intersections and BVH agreement", testPrimitiveIntersectionsAndBvhAgreement},
+        {"rigid translation intersections and swept bounds",
+         testRigidTranslationIntersectionsAndSweptBounds},
         {"triangle barycentrics/normals/derivatives", testTriangleBarycentricsNormalsAndDerivatives},
         {"stable closest tie break", testStableClosestTieBreak},
         {"BVH construction/determinism/depth cap", testBvhConstructionDeterminismMedianAndDepthCap},

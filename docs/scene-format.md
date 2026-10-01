@@ -48,9 +48,19 @@ evaluation:
 
 ## Objects
 
-`TYPE` accepts `cube`, `sphere`, and `obj`. An OBJ object additionally requires `FILE`. `TRANS`, `ROTAT`, and `SCALE` retain the starter's translation, degree rotation, and scaling convention. Spheres have local radius 0.5 and cubes have local extent [-0.5, 0.5]. Singular transforms are rejected.
+`TYPE` accepts `cube`, `sphere`, `obj`, and `gltf`. Mesh objects additionally require `FILE`. `TRANS`, `ROTAT`, and `SCALE` retain the starter's translation, degree rotation, and scaling convention. Spheres have local radius 0.5 and cubes have local extent [-0.5, 0.5]. Singular transforms are rejected.
 
 OBJ supports `v`, `vt`, `vn`, and `f`, including independently indexed positive/negative face attributes. Faces may omit normals or UVs. Convex planar polygons are triangulated; concave, nonplanar, malformed, or degenerate faces are rejected with line diagnostics. Organizational OBJ records do not change the scene-assigned material.
+
+glTF supports static glTF 2.0 `.gltf` files with external local buffers or base64 data URIs, and GLB version 2 files. `POSITION` and optional `NORMAL` use non-normalized float `VEC3`; `TEXCOORD_0` uses float or normalized unsigned 8/16-bit `VEC2`. Indices use unsigned 8/16/32-bit `SCALAR`, or an unindexed primitive supplies triangle triples. Contiguous and interleaved storage is supported. Every buffer view and accessor is checked for bounds, alignment, count, stride and arithmetic overflow before use.
+
+The importer selects the default scene, the first scene if none is selected, or parentless nodes if scenes are absent. Object, parent and node transforms compose in that order. Nodes accept TRS or a column-major affine matrix. Mesh instances become independent triangle buffers; inverse-transpose normals and mirrored winding preserve orientation. glTF UVs `[u,v]` become renderer UVs `[u,1-v]`. Missing attributes use the existing native normal/UV fallback.
+
+The JSON object's `MATERIAL` controls shading, including its file/procedural textures. Native glTF PBR materials and image pixels are not imported. Sparse accessors, required extensions, animations, skinning, morph targets/weights and non-triangle primitive modes are rejected, as are invalid hierarchy references and non-finite or singular transforms. This is a geometry importer, not a complete glTF renderer.
+
+The model and deduplicated canonical external buffer/image files participate in checkpoint identity. Embedded data participates through the model's bytes. External URIs must refer to local relative files; parent paths are permitted and canonicalized. Schemes, absolute/remote/file URIs, control bytes, malformed escapes, query/fragment components and missing or empty files are rejected.
+
+`MOTION_TRANSLATION` is an optional finite three-component world-space displacement from normalized animation phase 0 to 1. The existing transform is the phase-zero pose. Omitting the property means zero displacement. It applies to cubes, spheres, and every triangle of an OBJ or glTF instance, including emissive geometry. This increment supports translation only; normals, UVs, and surface area remain attached to the original geometry. Bounds enclose the full interval independently of the camera shutter.
 
 Top-level `BVH_MAX_DEPTH` controls CPU construction depth, bounded to the supported iterative traversal capacity. The leaf target is four primitives; depth-capped leaves may contain more. `--bvh off` selects brute-force traversal over the same primitives.
 
@@ -58,7 +68,13 @@ Top-level `BVH_MAX_DEPTH` controls CPU construction depth, bounded to the suppor
 
 `APERTURE` is the thin-lens aperture radius; zero uses the pinhole camera. `FOCUS` is distance to the focal plane along the viewing direction. The starter's `FOVY` convention is a vertical **half-angle** in degrees. Existing `RES`, `EYE`, `LOOKAT`, `UP`, `ITERATIONS`, `DEPTH`, and `FILE` remain supported.
 
+`SHUTTER` is an optional `[open, close]` pair of finite normalized animation phases with `0 <= open <= close <= 1`; its default is `[0,1]`. Equal endpoints freeze that phase. `--motion off` pins geometry to phase zero; `--motion on` samples the configured exposure once per complete light path. All secondary and shadow rays preserve that time. Scene changes and camera controls reset accumulation rather than mixing exposures.
+
+`--sampler counter|halton` selects the unchanged counter sampler (identifier 2, default) or independently authored scrambled Halton sampler (identifier 3). Both use original pixel and global sample identity. A minimal checkpoint resume inherits omitted sampling and motion settings; explicit disagreements are rejected. Checkpoint format 3 stores motion, shutter, and sampler identity; raw accumulation retains format 1.
+
 Headless `--resolution`, `--depth`, and `--samples` override scene rendering settings. Seed and feature toggles are explicit CLI settings. A checkpoint stores the actual camera/configuration used, independent of its extendable target sample count.
+
+`--time-budget-ms N` is an optional positive integer diagnostic budget for a fresh headless run with an explicit `--samples` ceiling. It stops after a complete sample reaches the elapsed budget or the sample ceiling. It cannot be combined with validation, resume, checkpoint output or checkpoint cadence. Metadata records the requested budget, actual completed samples, last-sample wall time and stop reason; the budget does not change sampling identity. This supports equal-time convergence measurements rather than guaranteeing an exact wall-clock deadline.
 
 ## Original procedural geometry
 

@@ -1,0 +1,1 @@
+run_hedge_suite.py self-test passed

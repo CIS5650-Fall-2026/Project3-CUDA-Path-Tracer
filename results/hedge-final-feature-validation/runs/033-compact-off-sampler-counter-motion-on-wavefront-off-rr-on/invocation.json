@@ -1,0 +1,753 @@
+{
+  "artifacts": {
+    "benchmark_csv": {
+      "bytes": 12893,
+      "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.benchmark.csv",
+      "sha256": "d76a36703cce58d6baf72333fe5276291291bc2785f1497094c5ad6dc0388028"
+    },
+    "metadata": {
+      "bytes": 3794,
+      "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.json",
+      "sha256": "dd9fa5959670f4d3f48795b290a49c7bf441806f9e856a6dd6176930dddef752"
+    },
+    "png": {
+      "bytes": 572,
+      "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.png",
+      "sha256": "d210c479eb8a4480a64fc1840d2b4a2319c949d4049928fc6d62d6e910262b11"
+    },
+    "raw_sum": {
+      "bytes": 2692,
+      "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.sum.bin",
+      "sha256": "40b2934c6a7a5bc37ca94409634e9e6d6b2f9ba2ec80ff2c9ed7357516d1a388"
+    }
+  },
+  "audits": [
+    {
+      "name": "raw-sum-parsed-by-validate-render",
+      "passed": true
+    },
+    {
+      "name": "metadata-json-readable",
+      "passed": true
+    },
+    {
+      "actual": {
+        "bytes": 572,
+        "sha256": "d210c479eb8a4480a64fc1840d2b4a2319c949d4049928fc6d62d6e910262b11"
+      },
+      "name": "png-present-and-signature-valid",
+      "passed": true
+    },
+    {
+      "name": "metadata-is-object",
+      "passed": true
+    },
+    {
+      "name": "metadata-json-floats-finite",
+      "passed": true
+    },
+    {
+      "actual": 17,
+      "expected": 17,
+      "name": "target-samples",
+      "passed": true
+    },
+    {
+      "actual": 17,
+      "expected": 17,
+      "name": "completed-samples",
+      "passed": true
+    },
+    {
+      "actual": [
+        17,
+        13
+      ],
+      "expected": [
+        17,
+        13
+      ],
+      "name": "metadata-resolution",
+      "passed": true
+    },
+    {
+      "actual": [
+        17,
+        13
+      ],
+      "expected": [
+        17,
+        13
+      ],
+      "name": "raw-resolution-matches-metadata",
+      "passed": true
+    },
+    {
+      "actual": 17,
+      "expected": 17,
+      "name": "raw-samples-match-metadata",
+      "passed": true
+    },
+    {
+      "actual": {
+        "value_count": 663
+      },
+      "name": "raw-values-finite-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": 9733635734536270380,
+      "expected": 9733635734536270380,
+      "name": "raw-checksum-matches-metadata",
+      "passed": true
+    },
+    {
+      "actual": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "expected": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "name": "scene-path",
+      "passed": true
+    },
+    {
+      "actual": 947,
+      "expected": 947,
+      "name": "seed",
+      "passed": true
+    },
+    {
+      "name": "metadata-checkpoint",
+      "passed": true
+    },
+    {
+      "name": "metadata-resumed-from",
+      "passed": true
+    },
+    {
+      "actual": "counter",
+      "expected": "counter",
+      "name": "metadata-sampler",
+      "passed": true
+    },
+    {
+      "actual": 2,
+      "expected": 2,
+      "name": "metadata-sampler-id",
+      "passed": true
+    },
+    {
+      "actual": 2,
+      "expected": 2,
+      "name": "metadata-sampler-version",
+      "passed": true
+    },
+    {
+      "name": "config-is-object",
+      "passed": true
+    },
+    {
+      "actual": [
+        "aa",
+        "bvh",
+        "compact",
+        "debug",
+        "depth_semantics",
+        "max_depth",
+        "motion",
+        "nee",
+        "rr",
+        "rr_start",
+        "sampler",
+        "sampler_id",
+        "sort",
+        "wavefront"
+      ],
+      "expected": [
+        "aa",
+        "bvh",
+        "compact",
+        "debug",
+        "depth_semantics",
+        "max_depth",
+        "motion",
+        "nee",
+        "rr",
+        "rr_start",
+        "sampler",
+        "sampler_id",
+        "sort",
+        "wavefront"
+      ],
+      "name": "config-exact-fields",
+      "passed": true
+    },
+    {
+      "actual": 7,
+      "expected": 7,
+      "name": "config-max-depth",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-aa",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-nee",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-bvh",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "config-compact",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "config-sort",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "config-wavefront",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-rr",
+      "passed": true
+    },
+    {
+      "actual": 3,
+      "expected": 3,
+      "name": "config-rr-start",
+      "passed": true
+    },
+    {
+      "actual": "counter",
+      "expected": "counter",
+      "name": "config-sampler",
+      "passed": true
+    },
+    {
+      "actual": 2,
+      "expected": 2,
+      "name": "config-sampler-id",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-motion",
+      "passed": true
+    },
+    {
+      "actual": "none",
+      "expected": "none",
+      "name": "config-debug",
+      "passed": true
+    },
+    {
+      "actual": "maximum surface intersections; final intersection is emission-only",
+      "expected": "maximum surface intersections; final intersection is emission-only",
+      "name": "config-depth-semantics",
+      "passed": true
+    },
+    {
+      "name": "camera-is-object",
+      "passed": true
+    },
+    {
+      "actual": [
+        "aperture",
+        "focus_distance",
+        "look_at",
+        "position",
+        "shutter"
+      ],
+      "expected": [
+        "aperture",
+        "focus_distance",
+        "look_at",
+        "position",
+        "shutter"
+      ],
+      "name": "camera-exact-fields",
+      "passed": true
+    },
+    {
+      "actual": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "expected": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "name": "camera-position",
+      "passed": true
+    },
+    {
+      "actual": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "expected": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "name": "camera-look-at",
+      "passed": true
+    },
+    {
+      "actual": 0.0,
+      "expected": 0.0,
+      "name": "camera-aperture",
+      "passed": true
+    },
+    {
+      "actual": 11.0,
+      "expected": 11.0,
+      "name": "camera-focus-distance",
+      "passed": true
+    },
+    {
+      "actual": [
+        0.0,
+        1.0
+      ],
+      "expected": [
+        0.0,
+        1.0
+      ],
+      "name": "camera-shutter",
+      "passed": true
+    },
+    {
+      "actual": [
+        0.0,
+        1.0
+      ],
+      "name": "camera-shutter-range",
+      "passed": true
+    },
+    {
+      "actual": 0.0,
+      "name": "camera-aperture-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": 11.0,
+      "name": "camera-focus-distance-positive",
+      "passed": true
+    },
+    {
+      "actual": {
+        "assets": 7600896668236057885,
+        "geometry": 7316588533633355303,
+        "materials": 11884046144069487820,
+        "render_config": 1158960655300284612,
+        "scene_file": 10188050214372398967
+      },
+      "expected": [
+        "scene_file",
+        "assets",
+        "materials",
+        "geometry",
+        "render_config"
+      ],
+      "name": "scene-asset-and-render-fingerprints-retained",
+      "passed": true
+    },
+    {
+      "actual": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+      "name": "build-identifier-retained",
+      "passed": true
+    },
+    {
+      "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+      "name": "source-identifier-retained",
+      "passed": true
+    },
+    {
+      "actual": 65.563525,
+      "name": "render-loop-wall-ms-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": {
+        "process_elapsed_ms": 299.44882499967207,
+        "render_loop_wall_ms": 65.563525,
+        "timer_tolerance_ms": 100.0
+      },
+      "name": "render-loop-contained-in-process-elapsed",
+      "passed": true
+    },
+    {
+      "name": "run-policy-is-object",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "obsolete-policy-alias-absent",
+      "passed": true
+    },
+    {
+      "actual": [
+        "last_sample_wall_ms",
+        "stop_reason",
+        "time_budget_ms"
+      ],
+      "expected": [
+        "last_sample_wall_ms",
+        "stop_reason",
+        "time_budget_ms"
+      ],
+      "name": "run-policy-exact-fields",
+      "passed": true
+    },
+    {
+      "expected": "null",
+      "name": "time-budget-type",
+      "passed": true
+    },
+    {
+      "name": "time-budget-request-recorded",
+      "passed": true
+    },
+    {
+      "actual": 3.481832,
+      "name": "last-sample-wall-ms-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": 3.481832,
+      "expected": {
+        "at_most_render_loop_wall_ms": 65.563525
+      },
+      "name": "last-sample-contained-in-render-loop",
+      "passed": true
+    },
+    {
+      "actual": "sample_target",
+      "expected": "sample_target",
+      "name": "stop-reason-consistent",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "benchmark-enabled-flag",
+      "passed": true
+    },
+    {
+      "name": "benchmark-metadata-is-object",
+      "passed": true
+    },
+    {
+      "actual": 17,
+      "expected": 17,
+      "name": "benchmark-measured-samples",
+      "passed": true
+    },
+    {
+      "actual": 65.557214,
+      "name": "benchmark-renderer-host-ms",
+      "passed": true
+    },
+    {
+      "actual": 65.26041650772095,
+      "name": "benchmark-renderer-gpu-ms",
+      "passed": true
+    },
+    {
+      "name": "benchmark-csv-readable",
+      "passed": true
+    },
+    {
+      "actual": 119,
+      "name": "benchmark-has-bounce-rows",
+      "passed": true
+    },
+    {
+      "actual": 1,
+      "name": "benchmark-has-one-overall-row",
+      "passed": true
+    },
+    {
+      "actual": [],
+      "name": "benchmark-per-bounce-invariants",
+      "passed": true
+    },
+    {
+      "actual": 580,
+      "name": "benchmark-rr-enabled-observed-tests",
+      "passed": true
+    },
+    {
+      "actual": 17,
+      "expected": 17,
+      "name": "benchmark-overall-measured-samples",
+      "passed": true
+    },
+    {
+      "actual": 65.557214,
+      "name": "benchmark-overall-host-ms",
+      "passed": true
+    },
+    {
+      "actual": 65.2604165,
+      "name": "benchmark-overall-gpu-ms",
+      "passed": true
+    },
+    {
+      "actual": 65.563525,
+      "name": "benchmark-overall-render-loop-wall-ms",
+      "passed": true
+    },
+    {
+      "actual": 17,
+      "expected": 17,
+      "name": "benchmark-csv-measured-samples-match-metadata",
+      "passed": true
+    },
+    {
+      "actual": 65.557214,
+      "detail": "CSV uses nine significant digits; compared with rel_tol=1e-7 and abs_tol=1e-6.",
+      "expected": 65.557214,
+      "name": "benchmark-csv-host-ms-match-metadata",
+      "passed": true
+    },
+    {
+      "actual": 65.2604165,
+      "detail": "CSV uses nine significant digits; compared with rel_tol=1e-7 and abs_tol=1e-6.",
+      "expected": 65.26041650772095,
+      "name": "benchmark-csv-gpu-ms-match-metadata",
+      "passed": true
+    },
+    {
+      "actual": 65.563525,
+      "detail": "CSV uses nine significant digits; compared with rel_tol=1e-7 and abs_tol=1e-6.",
+      "expected": 65.563525,
+      "name": "benchmark-csv-render-loop-ms-match-metadata",
+      "passed": true
+    }
+  ],
+  "benchmark_counter_totals": {
+    "active_before": 7460,
+    "bounce_records": 119,
+    "kernel_dispatches": 0,
+    "overall_gpu_ms": 65.2604165,
+    "overall_host_ms": 65.557214,
+    "overall_measured_samples": 17,
+    "overall_render_loop_wall_ms": 65.563525,
+    "queued_paths": 0,
+    "rr_terminated": 524,
+    "rr_tested": 580
+  },
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "17",
+    "--seed",
+    "947",
+    "--resolution",
+    "17x13",
+    "--depth",
+    "7",
+    "--compact",
+    "off",
+    "--sort",
+    "off",
+    "--bvh",
+    "on",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--wavefront",
+    "off",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--sampler",
+    "counter",
+    "--motion",
+    "on",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render",
+    "--benchmark"
+  ],
+  "command_json": {
+    "bytes": 1356,
+    "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/command.json",
+    "sha256": "60745b79413020c6ee4aa611e48720ed831319af19ac162d48a344b725774cad"
+  },
+  "elapsed_seconds": 0.29944882499967207,
+  "exit_code": 0,
+  "expectation_met": true,
+  "expected_exit": "zero",
+  "expected_rejection_terms": [],
+  "finished_utc": "2026-10-01T19:50:44.963659Z",
+  "index": 33,
+  "inputs": [
+    {
+      "bytes": 6213112,
+      "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    }
+  ],
+  "label": "compact-off-sampler-counter-motion-on-wavefront-off-rr-on",
+  "launch_exception": null,
+  "metadata": {
+    "benchmark": {
+      "csv": "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.benchmark.csv",
+      "measured_samples": 17,
+      "renderer_gpu_ms": 65.26041650772095,
+      "renderer_host_ms": 65.557214
+    },
+    "benchmark_enabled": true,
+    "benchmark_instrumentation": "shade_ms is aggregate shader time in both scheduling modes. diffuse_ms, mirror_ms, dielectric_ms, emission_ms, and terminal_ms are an alternative wavefront breakdown and must not be added to shade_ms. queue_host_ms is host queue bookkeeping/submission time, not GPU stage time. count_ms is the compact=off active-path count.",
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 11.0,
+      "look_at": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "position": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    },
+    "checkpoint": null,
+    "checkpoint_every": null,
+    "compatibility": {
+      "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+      "build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+      "compute_capability": "8.6",
+      "cuda_driver_version": 13000,
+      "cuda_runtime_version": 12080,
+      "device": "NVIDIA A10G"
+    },
+    "completed_samples": 17,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": false,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 7,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "debug_view": null,
+    "display_transform": {
+      "normalization": "divide accumulated RGB sums by completed_samples",
+      "orientation": "horizontal flip matching the starter preview camera convention",
+      "tone_mapping": "Reinhard c/(1+c)",
+      "transfer": "IEC 61966-2-1 sRGB"
+    },
+    "fingerprints": {
+      "assets": 7600896668236057885,
+      "geometry": 7316588533633355303,
+      "materials": 11884046144069487820,
+      "render_config": 1158960655300284612,
+      "scene_file": 10188050214372398967
+    },
+    "format_version": 1,
+    "linear_sum_format": {
+      "checksum": 9733635734536270380,
+      "checksum_security": "change/corruption detection only; not cryptographic",
+      "checksum_trailer_bytes": 8,
+      "endianness": "little",
+      "header_bytes": 32,
+      "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+      "magic": "C565SUM\\0",
+      "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+      "payload_offset_bytes": 32,
+      "png_orientation": "horizontal flip of renderer-order pixels",
+      "trailer": "little-endian FNV-1a-64 over header and payload",
+      "version": 1
+    },
+    "outputs": {
+      "linear_sum": "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.sum.bin",
+      "png": "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render.png"
+    },
+    "render_loop_wall_ms": 65.563525,
+    "resolution": [
+      17,
+      13
+    ],
+    "resumed_from": null,
+    "run_policy": {
+      "last_sample_wall_ms": 3.481832,
+      "stop_reason": "sample_target",
+      "time_budget_ms": null
+    },
+    "sampler": "counter",
+    "sampler_id": 2,
+    "sampler_version": 2,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "seed": 947,
+    "target_samples": 17
+  },
+  "output_prefix": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render",
+  "raw_summary": {
+    "height": 13,
+    "maximum": 29.59527015686035,
+    "minimum": 0.0,
+    "samples": 17,
+    "sha256": "40b2934c6a7a5bc37ca94409634e9e6d6b2f9ba2ec80ff2c9ed7357516d1a388",
+    "value_count": 663,
+    "width": 17
+  },
+  "run_directory": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on",
+  "started_utc": "2026-10-01T19:50:44.664191Z",
+  "stderr": {
+    "bytes": 0,
+    "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 154,
+    "path": "runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/stdout.txt",
+    "sha256": "4576ec93681f53b8b5e8678003b553dc6f5a655eb30bbbe0b20f9d544376fb69"
+  }
+}

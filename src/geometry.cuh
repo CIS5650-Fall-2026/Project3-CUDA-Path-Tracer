@@ -144,7 +144,8 @@ GEOMETRY_HD GEOMETRY_INLINE void validateTangents(const glm::vec3& normal,
 
 GEOMETRY_HD GEOMETRY_INLINE bool validRay(const Ray& ray)
 {
-    if (!finiteVec3(ray.origin) || !finiteVec3(ray.direction))
+    if (!finiteVec3(ray.origin) || !finiteVec3(ray.direction)
+        || !finiteFloat(ray.time) || ray.time < 0.0f || ray.time > 1.0f)
     {
         return false;
     }
@@ -722,19 +723,65 @@ static GEOMETRY_HD GEOMETRY_NOINLINE bool intersectPrimitive(const Geom& geom,
                                                               float tMax,
                                                               Hit& hit)
 {
+    const bool staticGeometry = geom.motionTranslation.x == 0.0f &&
+                                geom.motionTranslation.y == 0.0f &&
+                                geom.motionTranslation.z == 0.0f;
+    if (!staticGeometry && !finiteVec3(geom.motionTranslation))
+    {
+        return false;
+    }
+
+    // Keep static geometry and the phase-zero motion-off path byte-for-byte
+    // equivalent in geometric arithmetic: do not subtract or add a zero offset.
+    if (staticGeometry || ray.time == 0.0f)
+    {
+        if (geom.type == TRIANGLE)
+        {
+            return intersectTriangle(geom, primitiveId, ray, tMin, tMax, hit);
+        }
+        if (geom.type == SPHERE)
+        {
+            return intersectSphere(geom, primitiveId, ray, tMin, tMax, hit);
+        }
+        if (geom.type == CUBE)
+        {
+            return intersectCube(geom, primitiveId, ray, tMin, tMax, hit);
+        }
+        return false;
+    }
+
+    const glm::vec3 motionOffset = geom.motionTranslation * ray.time;
+    if (!finiteVec3(motionOffset))
+    {
+        return false;
+    }
+    Ray phaseZeroRay = ray;
+    phaseZeroRay.origin = ray.origin - motionOffset;
+    if (!finiteVec3(phaseZeroRay.origin))
+    {
+        return false;
+    }
+
+    bool found = false;
     if (geom.type == TRIANGLE)
     {
-        return intersectTriangle(geom, primitiveId, ray, tMin, tMax, hit);
+        found = intersectTriangle(geom, primitiveId, phaseZeroRay, tMin, tMax, hit);
     }
-    if (geom.type == SPHERE)
+    else if (geom.type == SPHERE)
     {
-        return intersectSphere(geom, primitiveId, ray, tMin, tMax, hit);
+        found = intersectSphere(geom, primitiveId, phaseZeroRay, tMin, tMax, hit);
     }
-    if (geom.type == CUBE)
+    else if (geom.type == CUBE)
     {
-        return intersectCube(geom, primitiveId, ray, tMin, tMax, hit);
+        found = intersectCube(geom, primitiveId, phaseZeroRay, tMin, tMax, hit);
     }
-    return false;
+    if (!found)
+    {
+        return false;
+    }
+
+    hit.position += motionOffset;
+    return finiteVec3(hit.position);
 }
 
 GEOMETRY_HD GEOMETRY_INLINE bool isBetterHit(const Hit& candidate,

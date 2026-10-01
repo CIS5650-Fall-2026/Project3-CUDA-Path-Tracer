@@ -29,6 +29,9 @@ constexpr int kThreads = 256;
 constexpr float kPi = 3.14159265358979323846f;
 constexpr float kRayMinimum = 1.0e-4f;
 constexpr int kRussianRouletteDimension = 32;
+constexpr int kHaltonPrimeCount = 32773;
+constexpr int kHaltonMaximumBounce = 4095;
+constexpr std::uint32_t kHaltonGridSize = 1U << 23U;
 constexpr unsigned int kQueueErrorBit = 1U << 6U;
 #ifndef CIS565_RENDERER_BUILD_ID
 #define CIS565_RENDERER_BUILD_ID \
@@ -68,6 +71,9 @@ struct DeviceConfig
 {
     unsigned long long seed = 1;
     unsigned long long sample = 0;
+    int sampler = static_cast<int>(RendererSampler::Counter);
+    const std::uint32_t* haltonPrimes = nullptr;
+    int motion = 1;
     int maxDepth = 1;
     int aa = 0;
     int nee = 0;
@@ -119,6 +125,7 @@ struct RendererState
     glm::vec3* texels = nullptr;
     int* lightIndices = nullptr;
     int lightCount = 0;
+    std::uint32_t* haltonPrimes = nullptr;
 
     RenderPath* paths[2] = {nullptr, nullptr};
     Hit* hits[2] = {nullptr, nullptr};
@@ -205,6 +212,61 @@ void copyVectorToDevice(T* destination, const std::vector<T>& source,
     }
 }
 
+std::vector<std::uint32_t> generateHaltonPrimes()
+{
+    std::vector<std::uint32_t> primes;
+    primes.reserve(kHaltonPrimeCount);
+    for (std::uint32_t candidate = 2;
+            primes.size() < static_cast<std::size_t>(kHaltonPrimeCount);
+            candidate = candidate == 2 ? 3 : candidate + 2)
+    {
+        bool prime = true;
+        for (const std::uint32_t divisor : primes)
+        {
+            if (static_cast<std::uint64_t>(divisor) * divisor > candidate)
+            {
+                break;
+            }
+            if (candidate % divisor == 0)
+            {
+                prime = false;
+                break;
+            }
+        }
+        if (prime)
+        {
+            primes.push_back(candidate);
+        }
+    }
+    if (primes.size() != static_cast<std::size_t>(kHaltonPrimeCount)
+            || primes.front() != 2U || primes.back() != 386143U)
+    {
+        throw std::logic_error("Halton prime generation invariant failed");
+    }
+    return primes;
+}
+
+void ensureHaltonPrimeTable()
+{
+    if (g_state.haltonPrimes != nullptr)
+    {
+        return;
+    }
+    const std::vector<std::uint32_t> primes = generateHaltonPrimes();
+    std::uint32_t* uploaded = nullptr;
+    allocateDevice(&uploaded, primes.size(), "allocate Halton prime table");
+    try
+    {
+        copyVectorToDevice(uploaded, primes, "upload Halton prime table");
+    }
+    catch (...)
+    {
+        cudaFree(uploaded);
+        throw;
+    }
+    g_state.haltonPrimes = uploaded;
+}
+
 template<typename T>
 class DeviceBuffer
 {
@@ -280,6 +342,9 @@ DeviceConfig deviceConfig()
     DeviceConfig result;
     result.seed = static_cast<unsigned long long>(g_config.seed);
     result.sample = static_cast<unsigned long long>(g_state.completedSamples);
+    result.sampler = static_cast<int>(g_config.sampler);
+    result.haltonPrimes = g_state.haltonPrimes;
+    result.motion = g_config.motion ? 1 : 0;
     result.maxDepth = g_config.maxDepth;
     result.aa = g_config.aa ? 1 : 0;
     result.nee = g_config.nee ? 1 : 0;
@@ -295,6 +360,122 @@ DeviceConfig deviceConfig()
     result.diagnosticMinimum = g_state.diagnosticMinimum;
     result.diagnosticRecord = g_state.diagnosticRecord;
     return result;
+}
+
+__host__ __device__ int haltonCoordinate(int bounce, int dimension)
+{
+    if (bounce == -1)
+    {
+        return dimension >= 0 && dimension <= 4 ? dimension : -1;
+    }
+    if (bounce < 0 || bounce > kHaltonMaximumBounce)
+    {
+        return -1;
+    }
+    int slot = -1;
+    switch (dimension)
+    {
+        case 8: slot = 0; break;
+        case 9: slot = 1; break;
+        case 10: slot = 2; break;
+        case 11: slot = 3; break;
+        case 16: slot = 4; break;
+        case 17: slot = 5; break;
+        case 24: slot = 6; break;
+        case 32: slot = 7; break;
+        default: return -1;
+    }
+    return 5 + 8 * bounce + slot;
+}
+
+__host__ __device__ bool continuousHaltonDimension(int bounce, int dimension)
+{
+    if (bounce == -1)
+    {
+        return dimension >= 0 && dimension <= 4;
+    }
+    if (bounce < 0 || bounce > kHaltonMaximumBounce)
+    {
+        return false;
+    }
+    return (dimension >= 9 && dimension <= 11)
+        || dimension == 16 || dimension == 17;
+}
+
+__device__ float randomizedHaltonFloat(const DeviceConfig& config, int pixel,
+    int bounce, int dimension, int coordinate)
+{
+    // The host rejects launching sample UINT64_MAX, so n=sample+1 cannot
+    // wrap. Every present base-p digit is processed, including interior zero
+    // digits; omitted leading zeros have an exactly zero anchored term.
+    std::uint64_t n = static_cast<std::uint64_t>(config.sample) + 1ULL;
+    const std::uint32_t base = config.haltonPrimes[coordinate];
+    double inversePower = 1.0 / static_cast<double>(base);
+    double anchored = 0.0;
+    std::uint64_t digitIndex = 0;
+    while (n != 0ULL)
+    {
+        const std::uint32_t digit = static_cast<std::uint32_t>(n % base);
+        n /= base;
+        const std::uint32_t multiplier = 1U
+            + renderer::counterRandomWord(config.seed, pixel, digitIndex,
+                bounce, dimension + 128) % (base - 1U);
+        const std::uint32_t offset = renderer::counterRandomWord(config.seed,
+            pixel, digitIndex, bounce, dimension + 192) % base;
+        const std::uint32_t permuted = static_cast<std::uint32_t>(
+            (static_cast<std::uint64_t>(multiplier) * digit + offset) % base);
+        const std::int64_t difference = static_cast<std::int64_t>(permuted)
+            - static_cast<std::int64_t>(offset);
+        anchored += static_cast<double>(difference) * inversePower;
+        inversePower /= static_cast<double>(base);
+        ++digitIndex;
+    }
+    const double unit = anchored - floor(anchored);
+    const double scaled = static_cast<double>(kHaltonGridSize) * unit;
+    const double floored = floor(scaled);
+    const std::uint32_t quantized = static_cast<std::uint32_t>(
+        floored < static_cast<double>(kHaltonGridSize - 1U)
+            ? floored : static_cast<double>(kHaltonGridSize - 1U));
+    const std::uint32_t rotation = renderer::counterRandomWord(config.seed,
+        pixel, 0ULL, bounce, dimension + 64) >> 9U;
+    const std::uint32_t rotated = (quantized + rotation)
+        & (kHaltonGridSize - 1U);
+
+    // Conditional on an ideal uniform 23-bit rotation, modular addition gives
+    // an exact uniform marginal on the finite grid. counterRandomWord supplies
+    // a keyed pseudorandom rotation; this is not a proof of uniform or
+    // independent distributions over seed space. Digit permutations remain
+    // progressive, but finite float resolution and high-dimensional
+    // projections still limit quality; in particular, no claim is made that
+    // every high-bit identity change must change the final 23 output bits.
+    return static_cast<float>((static_cast<double>(rotated) + 0.5)
+        / static_cast<double>(kHaltonGridSize));
+}
+
+__device__ float sampleDimension(const DeviceConfig& config, int pixel,
+    int bounce, int dimension)
+{
+    if (config.sampler != static_cast<int>(RendererSampler::Halton))
+    {
+        return renderer::randomFloat(config.seed, pixel, config.sample,
+            bounce, dimension);
+    }
+    // Slots for selector, dielectric, and RR dimensions are deliberately
+    // reserved by haltonCoordinate, but these discrete choices retain the
+    // original counter sampler. Unknown/unmapped dimensions do too.
+    if (!continuousHaltonDimension(bounce, dimension))
+    {
+        return renderer::randomFloat(config.seed, pixel, config.sample,
+            bounce, dimension);
+    }
+    const int coordinate = haltonCoordinate(bounce, dimension);
+    if (coordinate < 0 || config.haltonPrimes == nullptr)
+    {
+        return renderer::randomFloat(config.seed, pixel, config.sample,
+            bounce, dimension);
+    }
+    return randomizedHaltonFloat(config, pixel, bounce, dimension,
+        coordinate);
 }
 
 __host__ __device__ bool finiteScalar(float value)
@@ -348,10 +529,10 @@ __device__ Ray makeCameraRay(const Camera& camera, const DeviceConfig& config,
     const int x = pixel % camera.resolution.x;
     const int y = pixel / camera.resolution.x;
     const float jitterX = config.aa != 0
-        ? renderer::randomFloat(config.seed, pixel, config.sample, -1, 0)
+        ? sampleDimension(config, pixel, -1, 0)
         : 0.5f;
     const float jitterY = config.aa != 0
-        ? renderer::randomFloat(config.seed, pixel, config.sample, -1, 1)
+        ? sampleDimension(config, pixel, -1, 1)
         : 0.5f;
     const float imageX = static_cast<float>(x) + jitterX
         - 0.5f * static_cast<float>(camera.resolution.x);
@@ -364,16 +545,19 @@ __device__ Ray makeCameraRay(const Camera& camera, const DeviceConfig& config,
     Ray ray;
     ray.origin = camera.position;
     ray.direction = pinholeDirection;
+    ray.time = config.motion != 0
+        ? camera.shutterOpen
+            + (camera.shutterClose - camera.shutterOpen)
+                * sampleDimension(config, pixel, -1, 4)
+        : 0.0f;
     // This exact branch makes aperture zero bit-identical to a pinhole camera.
     if (!(camera.aperture > 0.0f))
     {
         return ray;
     }
 
-    const float u0 = renderer::randomFloat(config.seed, pixel, config.sample,
-        -1, 2);
-    const float u1 = renderer::randomFloat(config.seed, pixel, config.sample,
-        -1, 3);
+    const float u0 = sampleDimension(config, pixel, -1, 2);
+    const float u1 = sampleDimension(config, pixel, -1, 3);
     const float radius = camera.aperture * sqrtf(u0);
     const float angle = 2.0f * kPi * u1;
     const glm::vec2 lens(radius * cosf(angle), radius * sinf(angle));
@@ -407,6 +591,7 @@ __global__ void generatePaths(Camera camera, DeviceConfig config,
     path.previousDelta = 1;
     path.etaScale = 1.0;
     if (!finiteVector(path.ray.origin) || !finiteVector(path.ray.direction)
+            || !finiteScalar(path.ray.time)
             || !(glm::dot(path.ray.direction, path.ray.direction) > 0.0f))
     {
         reportDeviceError(deviceError, 1U << 0U);
@@ -715,7 +900,7 @@ __device__ void cubeUvAndTangents(const glm::vec3& localPosition,
 }
 
 __device__ float primitiveAreaPdf(const Geom& geometry,
-    const glm::vec3& worldPosition)
+    const glm::vec3& worldPosition, float time)
 {
     if (geometry.type == TRIANGLE)
     {
@@ -736,8 +921,15 @@ __device__ float primitiveAreaPdf(const Geom& geometry,
     }
     if (geometry.type == SPHERE)
     {
+        glm::vec3 phaseZeroPosition = worldPosition;
+        if (time != 0.0f && (geometry.motionTranslation.x != 0.0f
+                || geometry.motionTranslation.y != 0.0f
+                || geometry.motionTranslation.z != 0.0f))
+        {
+            phaseZeroPosition -= geometry.motionTranslation * time;
+        }
         const glm::vec3 localPosition = transformPoint(
-            geometry.inverseTransform, worldPosition);
+            geometry.inverseTransform, phaseZeroPosition);
         const glm::vec3 objectNormal = renderer::safeNormalize(localPosition,
             glm::vec3(0.0f, 1.0f, 0.0f));
         const float determinant = fabsf(linearDeterminant(geometry.transform));
@@ -749,8 +941,28 @@ __device__ float primitiveAreaPdf(const Geom& geometry,
     return 0.0f;
 }
 
+__device__ void translateLightSample(const Geom& geometry, float time,
+    LightSample* sample)
+{
+    if (sample->valid == 0 || time == 0.0f
+            || (geometry.motionTranslation.x == 0.0f
+                && geometry.motionTranslation.y == 0.0f
+                && geometry.motionTranslation.z == 0.0f))
+    {
+        return;
+    }
+    const glm::vec3 translated = sample->position
+        + geometry.motionTranslation * time;
+    if (!finiteVector(translated))
+    {
+        sample->valid = 0;
+        return;
+    }
+    sample->position = translated;
+}
+
 __device__ LightSample sampleLightSurface(const Geom& geometry,
-    int primitiveId, float u0, float u1, float u2)
+    int primitiveId, float u0, float u1, float u2, float time)
 {
     LightSample sample;
     sample.primitiveId = primitiveId;
@@ -782,6 +994,7 @@ __device__ LightSample sampleLightSurface(const Geom& geometry,
         sample.dpdv = edge2;
         sample.conditionalAreaPdf = 2.0f / twiceArea;
         sample.valid = 1;
+        translateLightSample(geometry, time, &sample);
         return sample;
     }
     if (geometry.type == CUBE)
@@ -831,6 +1044,7 @@ __device__ LightSample sampleLightSurface(const Geom& geometry,
         sample.dpdv = transformVector(geometry.transform, localDpdv);
         sample.conditionalAreaPdf = 1.0f / totalArea;
         sample.valid = 1;
+        translateLightSample(geometry, time, &sample);
         return sample;
     }
     if (geometry.type == SPHERE)
@@ -858,7 +1072,14 @@ __device__ LightSample sampleLightSurface(const Geom& geometry,
         bitangent = glm::cross(sample.normal, tangent);
         sample.dpdu = tangent;
         sample.dpdv = bitangent;
-        sample.conditionalAreaPdf = primitiveAreaPdf(geometry, sample.position);
+        sample.valid = 1;
+        translateLightSample(geometry, time, &sample);
+        if (sample.valid == 0)
+        {
+            return sample;
+        }
+        sample.conditionalAreaPdf = primitiveAreaPdf(geometry,
+            sample.position, time);
         sample.valid = sample.conditionalAreaPdf > 0.0f ? 1 : 0;
         return sample;
     }
@@ -910,8 +1131,7 @@ __device__ void addDirectLighting(const SceneView& scene,
     {
         return;
     }
-    const float choose = renderer::randomFloat(config.seed, path->pixelIndex,
-        config.sample, bounce, 8);
+    const float choose = sampleDimension(config, path->pixelIndex, bounce, 8);
     int slot = static_cast<int>(choose * config.lightCount);
     slot = slot < config.lightCount ? slot : config.lightCount - 1;
     const int primitive = lightIndices[slot];
@@ -919,14 +1139,11 @@ __device__ void addDirectLighting(const SceneView& scene,
     {
         return;
     }
-    const float u0 = renderer::randomFloat(config.seed, path->pixelIndex,
-        config.sample, bounce, 9);
-    const float u1 = renderer::randomFloat(config.seed, path->pixelIndex,
-        config.sample, bounce, 10);
-    const float u2 = renderer::randomFloat(config.seed, path->pixelIndex,
-        config.sample, bounce, 11);
+    const float u0 = sampleDimension(config, path->pixelIndex, bounce, 9);
+    const float u1 = sampleDimension(config, path->pixelIndex, bounce, 10);
+    const float u2 = sampleDimension(config, path->pixelIndex, bounce, 11);
     const LightSample light = sampleLightSurface(scene.geoms[primitive],
-        primitive, u0, u1, u2);
+        primitive, u0, u1, u2, path->ray.time);
     const int lightMaterialId = scene.geoms[primitive].materialid;
     if (light.valid == 0 || lightMaterialId < 0
             || lightMaterialId >= materialCount)
@@ -970,6 +1187,7 @@ __device__ void addDirectLighting(const SceneView& scene,
     Ray shadow;
     shadow.origin = renderer::offsetRayOrigin(hit.position,
         hit.geometricNormal, direction);
+    shadow.time = path->ray.time;
     const glm::vec3 shiftedDisplacement = light.position - shadow.origin;
     const float shiftedDistance = glm::length(shiftedDisplacement);
     if (!(shiftedDistance > kRayMinimum))
@@ -1037,7 +1255,7 @@ __device__ float lightPdfForHit(const SceneView& scene,
         return 0.0f;
     }
     const float areaPdf = primitiveAreaPdf(scene.geoms[hit.primitiveId],
-        hit.position);
+        hit.position, path.ray.time);
     const glm::vec3 displacement = hit.position - path.previousPosition;
     const float distanceSquared = glm::dot(displacement, displacement);
     const float cosine = fabsf(glm::dot(hit.geometricNormal,
@@ -1191,8 +1409,7 @@ __device__ __noinline__ bool shadeDielectricBody(const Material& material,
     bool totalInternalReflection = false;
     const float fresnel = renderer::dielectricFresnel(cosine,
         etaIncident, etaTransmitted, &totalInternalReflection);
-    const float choose = renderer::randomFloat(config.seed,
-        path->pixelIndex, config.sample, bounce, 24);
+    const float choose = sampleDimension(config, path->pixelIndex, bounce, 24);
     if (totalInternalReflection || choose < fresnel)
     {
         *outgoing = renderer::safeNormalize(path->ray.direction
@@ -1276,10 +1493,8 @@ __device__ __noinline__ bool shadeDiffuseBody(const SceneView& scene,
             config, bounce, hit, surface, path, deviceError);
     }
     const glm::vec3 geometric = renderer::orientedGeometricNormal(hit);
-    const float u0 = renderer::randomFloat(config.seed, path->pixelIndex,
-        config.sample, bounce, 16);
-    const float u1 = renderer::randomFloat(config.seed, path->pixelIndex,
-        config.sample, bounce, 17);
+    const float u0 = sampleDimension(config, path->pixelIndex, bounce, 16);
+    const float u1 = sampleDimension(config, path->pixelIndex, bounce, 17);
     *outgoing = renderer::cosineHemisphere(surface.shadingNormal, u0, u1);
     if (!(glm::dot(*outgoing, geometric) > 0.0f))
     {
@@ -1322,8 +1537,7 @@ __device__ __noinline__ bool applyRussianRoulette(
         reportDeviceError(deviceError, 1U << 4U);
         return false;
     }
-    const float choose = renderer::randomFloat(config.seed,
-        path->pixelIndex, config.sample, bounce,
+    const float choose = sampleDimension(config, path->pixelIndex, bounce,
         kRussianRouletteDimension);
     if (config.rrCounters != nullptr)
     {
@@ -1984,6 +2198,171 @@ __global__ void rendererUnitValidation(int* failures)
     *failures = result;
 }
 
+__device__ std::uint32_t haltonGridIndex(float value)
+{
+    return static_cast<std::uint32_t>(
+        static_cast<double>(value) * static_cast<double>(kHaltonGridSize));
+}
+
+__global__ void haltonUnitValidation(const std::uint32_t* primes,
+    int* failures)
+{
+    if (blockIdx.x != 0 || threadIdx.x != 0)
+    {
+        return;
+    }
+    int result = 0;
+    if (primes == nullptr)
+    {
+        *failures = 0x7fffffff;
+        return;
+    }
+
+    const int dimensions[8] = {8, 9, 10, 11, 16, 17, 24, 32};
+    bool mappingMatches = haltonCoordinate(-1, 0) == 0
+        && haltonCoordinate(-1, 4) == 4
+        && haltonCoordinate(-1, 5) == -1
+        && haltonCoordinate(0, 7) == -1
+        && haltonCoordinate(4096, 9) == -1;
+    for (int slot = 0; slot < 8; ++slot)
+    {
+        mappingMatches = mappingMatches
+            && haltonCoordinate(0, dimensions[slot]) == 5 + slot
+            && haltonCoordinate(1, dimensions[slot]) == 13 + slot;
+    }
+    mappingMatches = mappingMatches
+        && haltonCoordinate(kHaltonMaximumBounce, 32)
+            == kHaltonPrimeCount - 1
+        && primes[0] == 2U && primes[1] == 3U && primes[2] == 5U
+        && primes[3] == 7U && primes[4] == 11U
+        && primes[kHaltonPrimeCount - 1] == 386143U;
+    if (!mappingMatches)
+    {
+        result |= 1 << 0;
+    }
+
+    DeviceConfig config;
+    config.sampler = static_cast<int>(RendererSampler::Halton);
+    config.haltonPrimes = primes;
+
+    // Immutable expected grid indices independently pin anchoring, digit
+    // permutations, coordinate bases, keyed rotation, and signed arithmetic.
+    config.seed = 0ULL;
+    config.sample = 0ULL;
+    bool knownValues = haltonGridIndex(sampleDimension(config, 0, -1, 0))
+        == 5965178U;
+    config.seed = 7ULL;
+    config.sample = 11ULL;
+    knownValues = knownValues
+        && haltonGridIndex(sampleDimension(config, 3, -1, 4)) == 6853728U
+        && haltonGridIndex(sampleDimension(config, 3, 0, 9)) == 2555171U;
+    // n=125 has present base-5 digits [0,0,0,1]. All three zero digits must
+    // remain in the progressive digit positions even though their anchored
+    // contribution is exactly zero.
+    config.seed = 42ULL;
+    config.sample = 124ULL;
+    knownValues = knownValues
+        && haltonGridIndex(sampleDimension(config, 17, -1, 2)) == 5260290U;
+    if (!knownValues)
+    {
+        result |= 1 << 1;
+    }
+
+    bool rangeMatches = true;
+    const int continuousDimensions[10] = {0, 1, 2, 3, 4,
+        9, 10, 11, 16, 17};
+    config.seed = 0xd6e8feb86659fd93ULL;
+    for (std::uint64_t sample = 0; sample < 1024; ++sample)
+    {
+        config.sample = sample * 0x9e3779b97f4a7c15ULL;
+        for (int slot = 0; slot < 10; ++slot)
+        {
+            const int bounce = slot < 5 ? -1 : static_cast<int>(sample % 32);
+            const float value = sampleDimension(config, 7919, bounce,
+                continuousDimensions[slot]);
+            const double gridValue = static_cast<double>(value)
+                * static_cast<double>(kHaltonGridSize) - 0.5;
+            rangeMatches = rangeMatches && value > 0.0f && value < 1.0f
+                && gridValue == floor(gridValue);
+        }
+    }
+    if (!rangeMatches)
+    {
+        result |= 1 << 2;
+    }
+
+    config.seed = 0x0123456789abcdefULL;
+    config.sample = 0xfedcba9876543210ULL;
+    bool fallbackMatches = true;
+    for (const int dimension : dimensions)
+    {
+        if (dimension == 9 || dimension == 10 || dimension == 11
+                || dimension == 16 || dimension == 17)
+        {
+            continue;
+        }
+        fallbackMatches = fallbackMatches
+            && sampleDimension(config, 12345, 23, dimension)
+                == renderer::randomFloat(config.seed, 12345, config.sample,
+                    23, dimension);
+    }
+    const int unknownDimensions[6] = {5, 6, 7, 12, 18, 99};
+    for (const int dimension : unknownDimensions)
+    {
+        fallbackMatches = fallbackMatches
+            && sampleDimension(config, 12345, 23, dimension)
+                == renderer::randomFloat(config.seed, 12345, config.sample,
+                    23, dimension);
+    }
+    fallbackMatches = fallbackMatches
+        && sampleDimension(config, 12345, -1, 8)
+            == renderer::randomFloat(config.seed, 12345, config.sample, -1, 8)
+        && sampleDimension(config, 12345, 4096, 9)
+            == renderer::randomFloat(config.seed, 12345, config.sample,
+                4096, 9);
+    config.sampler = static_cast<int>(RendererSampler::Counter);
+    fallbackMatches = fallbackMatches
+        && sampleDimension(config, 12345, 23, 9)
+            == renderer::randomFloat(config.seed, 12345, config.sample, 23, 9);
+    if (!fallbackMatches)
+    {
+        result |= 1 << 3;
+    }
+
+    config.sampler = static_cast<int>(RendererSampler::Halton);
+    config.seed = 0xfedcba9876543210ULL;
+    config.sample = 0xfffffffffffffffeULL;
+    const float largeA = sampleDimension(config, 2147483647,
+        kHaltonMaximumBounce, 11);
+    const float largeB = sampleDimension(config, 2147483647,
+        kHaltonMaximumBounce, 11);
+    config.seed = 0x0000000100000001ULL;
+    config.sample = 0x0000000100000001ULL;
+    const float highHalves = sampleDimension(config, 3, 2, 16);
+    if (largeA != largeB || haltonGridIndex(largeA) != 7588400U
+            || haltonGridIndex(highHalves) != 6862999U)
+    {
+        result |= 1 << 4;
+    }
+
+    config.seed = 0xa0761d6478bd642fULL;
+    config.sample = 257ULL;
+    const float targetBefore = sampleDimension(config, 31, 7, 17);
+    for (std::uint64_t prefix = 0; prefix < 257ULL; ++prefix)
+    {
+        config.sample = prefix;
+        (void)sampleDimension(config, 31, 7, 17);
+    }
+    config.sample = 257ULL;
+    const float targetAfter = sampleDimension(config, 31, 7, 17);
+    if (targetBefore != targetAfter)
+    {
+        result |= 1 << 5;
+    }
+
+    *failures = result;
+}
+
 __device__ bool validationVectorNear(const glm::vec3& actual,
     const glm::vec3& expected, float tolerance)
 {
@@ -1997,6 +2376,316 @@ __device__ bool validationUnitColor(const glm::vec3& value)
     return finiteVector(value) && value.x >= 0.0f && value.x <= 1.0f
         && value.y >= 0.0f && value.y <= 1.0f
         && value.z >= 0.0f && value.z <= 1.0f;
+}
+
+__global__ void motionUnitValidation(int* failures)
+{
+    if (blockIdx.x != 0 || threadIdx.x != 0)
+    {
+        return;
+    }
+    int result = 0;
+    constexpr float tolerance = 2.0e-5f;
+
+    Camera camera;
+    camera.resolution = glm::ivec2(4, 4);
+    camera.position = glm::vec3(0.0f, 0.0f, 2.0f);
+    camera.view = glm::vec3(0.0f, 0.0f, -1.0f);
+    camera.right = glm::vec3(1.0f, 0.0f, 0.0f);
+    camera.up = glm::vec3(0.0f, 1.0f, 0.0f);
+    camera.pixelLength = glm::vec2(0.5f);
+    camera.aperture = 0.0f;
+    camera.focusDistance = 2.0f;
+    camera.shutterOpen = 0.25f;
+    camera.shutterClose = 0.75f;
+    DeviceConfig cameraConfig;
+    cameraConfig.seed = 0x123456789abcdef0ULL;
+    cameraConfig.sample = 0xfedcba9876543210ULL;
+    cameraConfig.aa = 0;
+    cameraConfig.motion = 1;
+    const int cameraPixel = 5;
+    const float shutterSample = renderer::randomFloat(cameraConfig.seed,
+        cameraPixel, cameraConfig.sample, -1, 4);
+    const Ray movingCameraRay = makeCameraRay(camera, cameraConfig,
+        cameraPixel);
+    const float expectedTime = camera.shutterOpen
+        + (camera.shutterClose - camera.shutterOpen) * shutterSample;
+    camera.shutterOpen = 0.37f;
+    camera.shutterClose = 0.37f;
+    const Ray frozenCameraRay = makeCameraRay(camera, cameraConfig,
+        cameraPixel);
+    cameraConfig.motion = 0;
+    const Ray motionOffCameraRay = makeCameraRay(camera, cameraConfig,
+        cameraPixel);
+    if (movingCameraRay.time != expectedTime
+            || frozenCameraRay.time != 0.37f
+            || motionOffCameraRay.time != 0.0f)
+    {
+        result |= 1 << 0;
+    }
+
+    Geom movingPlane;
+    movingPlane.type = TRIANGLE;
+    movingPlane.materialid = 0;
+    movingPlane.vertices[0] = glm::vec3(-0.5f, -0.5f, 0.0f);
+    movingPlane.vertices[1] = glm::vec3(0.5f, -0.5f, 0.0f);
+    movingPlane.vertices[2] = glm::vec3(0.0f, 0.5f, 0.0f);
+    movingPlane.motionTranslation = glm::vec3(2.0f, 0.0f, 0.0f);
+    BvhNode sweptNode;
+    sweptNode.boundsMin = glm::vec3(-0.51f, -0.51f, -0.01f);
+    sweptNode.boundsMax = glm::vec3(2.51f, 0.51f, 0.01f);
+    sweptNode.left = -1;
+    sweptNode.right = -1;
+    sweptNode.first = 0;
+    sweptNode.count = 1;
+    int sweptIndex = 0;
+    SceneView movingPlaneScene;
+    movingPlaneScene.geoms = &movingPlane;
+    movingPlaneScene.geomCount = 1;
+    movingPlaneScene.nodes = &sweptNode;
+    movingPlaneScene.nodeCount = 1;
+    movingPlaneScene.primitiveIndices = &sweptIndex;
+    Ray planeRay;
+    planeRay.origin = glm::vec3(1.0f, -0.1f, -1.0f);
+    planeRay.direction = glm::vec3(0.0f, 0.0f, 1.0f);
+    planeRay.time = 0.5f;
+    Hit movingBrute;
+    Hit movingBvh;
+    const bool foundMovingBrute = closestHit(movingPlaneScene, planeRay,
+        0.0f, 2.0f, false, movingBrute);
+    const bool foundMovingBvh = closestHit(movingPlaneScene, planeRay,
+        0.0f, 2.0f, true, movingBvh);
+    const bool movingOccludes = anyHit(movingPlaneScene, planeRay, 0.0f,
+        2.0f, true);
+    planeRay.time = 0.0f;
+    const bool phaseZeroOccludes = anyHit(movingPlaneScene, planeRay, 0.0f,
+        2.0f, true);
+    if (!foundMovingBrute || !foundMovingBvh || !movingOccludes
+            || phaseZeroOccludes || movingBrute.t != movingBvh.t
+            || !validationVectorNear(movingBvh.position,
+                glm::vec3(1.0f, -0.1f, 0.0f), tolerance))
+    {
+        result |= 1 << 1;
+    }
+
+    Geom movingTriangle = movingPlane;
+    movingTriangle.motionTranslation = glm::vec3(1.0f, -2.0f, 0.5f);
+    const float lightTime = 0.75f;
+    const LightSample triangleAtZero = sampleLightSurface(movingTriangle, 0,
+        0.36f, 0.25f, 0.75f, 0.0f);
+    const LightSample triangleMoved = sampleLightSurface(movingTriangle, 0,
+        0.36f, 0.25f, 0.75f, lightTime);
+
+    Geom movingCube;
+    movingCube.type = CUBE;
+    movingCube.materialid = 0;
+    movingCube.motionTranslation = glm::vec3(-0.5f, 1.25f, 2.0f);
+    const LightSample cubeAtZero = sampleLightSurface(movingCube, 1,
+        0.2f, 0.3f, 0.7f, 0.0f);
+    const LightSample cubeMoved = sampleLightSurface(movingCube, 1,
+        0.2f, 0.3f, 0.7f, lightTime);
+
+    Geom movingSphere;
+    movingSphere.type = SPHERE;
+    movingSphere.materialid = 0;
+    movingSphere.transform = glm::mat4(1.0f);
+    movingSphere.transform[0][0] = 2.0f;
+    movingSphere.transform[1][1] = 1.0f;
+    movingSphere.transform[2][2] = 0.5f;
+    movingSphere.inverseTransform = glm::mat4(1.0f);
+    movingSphere.inverseTransform[0][0] = 0.5f;
+    movingSphere.inverseTransform[1][1] = 1.0f;
+    movingSphere.inverseTransform[2][2] = 2.0f;
+    movingSphere.invTranspose = glm::mat4(1.0f);
+    movingSphere.invTranspose[0][0] = 0.5f;
+    movingSphere.invTranspose[1][1] = 1.0f;
+    movingSphere.invTranspose[2][2] = 2.0f;
+    movingSphere.motionTranslation = glm::vec3(1.25f, -0.75f, 0.5f);
+    const LightSample sphereAtZero = sampleLightSurface(movingSphere, 2,
+        0.2f, 0.125f, 0.0f, 0.0f);
+    const LightSample sphereMoved = sampleLightSurface(movingSphere, 2,
+        0.2f, 0.125f, 0.0f, lightTime);
+
+    Geom staticCube = movingCube;
+    staticCube.motionTranslation = glm::vec3(0.0f);
+    const LightSample staticCubeAtZero = sampleLightSurface(staticCube, 3,
+        0.8f, 0.1f, 0.9f, 0.0f);
+    const LightSample staticCubeTimed = sampleLightSurface(staticCube, 3,
+        0.8f, 0.1f, 0.9f, 0.9f);
+    const float triangleMovedAreaPdf = primitiveAreaPdf(movingTriangle,
+        triangleMoved.position, lightTime);
+    const float cubeMovedAreaPdf = primitiveAreaPdf(movingCube,
+        cubeMoved.position, lightTime);
+    const glm::vec3 sphereMovedPhaseZero = sphereMoved.position
+        - movingSphere.motionTranslation * lightTime;
+    const glm::vec3 sphereMovedLocal = transformPoint(
+        movingSphere.inverseTransform, sphereMovedPhaseZero);
+    const glm::vec3 sphereStaticLocal = transformPoint(
+        movingSphere.inverseTransform, sphereAtZero.position);
+    const glm::vec3 expectedSphereLocal(0.2828427f, 0.3f, 0.2828427f);
+    const bool allLightTranslations = triangleAtZero.valid != 0
+        && triangleMoved.valid != 0 && cubeAtZero.valid != 0
+        && cubeMoved.valid != 0 && sphereAtZero.valid != 0
+        && sphereMoved.valid != 0 && staticCubeAtZero.valid != 0
+        && staticCubeTimed.valid != 0
+        && validationVectorNear(triangleMoved.position
+                - triangleAtZero.position,
+            movingTriangle.motionTranslation * lightTime, tolerance)
+        && validationVectorNear(cubeMoved.position - cubeAtZero.position,
+            movingCube.motionTranslation * lightTime, tolerance)
+        && validationVectorNear(sphereMoved.position - sphereAtZero.position,
+            movingSphere.motionTranslation * lightTime, tolerance)
+        && triangleMoved.normal == triangleAtZero.normal
+        && cubeMoved.normal == cubeAtZero.normal
+        && sphereMoved.normal == sphereAtZero.normal
+        && triangleMoved.conditionalAreaPdf
+            == triangleAtZero.conditionalAreaPdf
+        && cubeMoved.conditionalAreaPdf == cubeAtZero.conditionalAreaPdf
+        && triangleMovedAreaPdf == triangleMoved.conditionalAreaPdf
+        && cubeMovedAreaPdf == cubeMoved.conditionalAreaPdf
+        && fabsf(triangleMovedAreaPdf - 2.0f) <= tolerance
+        && fabsf(cubeMovedAreaPdf - (1.0f / 6.0f)) <= tolerance
+        && fabsf(sphereMoved.conditionalAreaPdf
+            - sphereAtZero.conditionalAreaPdf) <= tolerance
+        && validationVectorNear(sphereMovedLocal, sphereStaticLocal,
+            tolerance)
+        && validationVectorNear(sphereMovedLocal, expectedSphereLocal,
+            tolerance)
+        && staticCubeTimed.position == staticCubeAtZero.position
+        && staticCubeTimed.conditionalAreaPdf
+            == staticCubeAtZero.conditionalAreaPdf;
+    if (!allLightTranslations)
+    {
+        result |= 1 << 2;
+    }
+
+    const float movedSpherePdf = primitiveAreaPdf(movingSphere,
+        sphereMoved.position, lightTime);
+    const float wrongPhaseSpherePdf = primitiveAreaPdf(movingSphere,
+        sphereMoved.position, 0.0f);
+    Hit sphereHit;
+    sphereHit.primitiveId = 0;
+    sphereHit.position = sphereMoved.position;
+    sphereHit.geometricNormal = sphereMoved.normal;
+    RenderPath spherePath;
+    spherePath.previousPosition = sphereHit.position
+        - 4.0f * sphereHit.geometricNormal;
+    spherePath.ray.direction = sphereHit.geometricNormal;
+    spherePath.ray.time = lightTime;
+    SceneView sphereScene;
+    sphereScene.geoms = &movingSphere;
+    sphereScene.geomCount = 1;
+    DeviceConfig sphereConfig;
+    sphereConfig.lightCount = 1;
+    const float sphereMisPdf = lightPdfForHit(sphereScene, sphereConfig,
+        spherePath, sphereHit);
+    const float sphereDistanceSquared = glm::dot(
+        sphereHit.position - spherePath.previousPosition,
+        sphereHit.position - spherePath.previousPosition);
+    const float sphereCosine = fabsf(glm::dot(sphereHit.geometricNormal,
+        -spherePath.ray.direction));
+    const float expectedSphereMisPdf = movedSpherePdf
+        * sphereDistanceSquared / sphereCosine;
+    if (!(movedSpherePdf > 0.0f)
+            || fabsf(movedSpherePdf - sphereMoved.conditionalAreaPdf)
+                > tolerance
+            || fabsf(movedSpherePdf - 0.24270901f) > tolerance
+            || fabsf(wrongPhaseSpherePdf - movedSpherePdf) <= tolerance
+            || fabsf(sphereMisPdf - expectedSphereMisPdf) > tolerance)
+    {
+        result |= 1 << 3;
+    }
+
+    Geom neeGeometries[2];
+    neeGeometries[0] = Geom{};
+    neeGeometries[0].type = TRIANGLE;
+    neeGeometries[0].materialid = 0;
+    neeGeometries[0].vertices[0] = glm::vec3(-1.0f, -1.0f, 3.0f);
+    neeGeometries[0].vertices[1] = glm::vec3(1.0f, -1.0f, 3.0f);
+    neeGeometries[0].vertices[2] = glm::vec3(0.0f, 1.0f, 3.0f);
+    neeGeometries[0].motionTranslation = glm::vec3(0.6f, -0.4f, 0.8f);
+    DeviceConfig neeConfig;
+    neeConfig.seed = 0xabcddcba12344321ULL;
+    neeConfig.sample = 37ULL;
+    neeConfig.lightCount = 1;
+    neeConfig.useBvh = 0;
+    const int neePixel = 7;
+    const int neeBounce = 0;
+    const LightSample neeLight = sampleLightSurface(neeGeometries[0], 0,
+        sampleDimension(neeConfig, neePixel, neeBounce, 9),
+        sampleDimension(neeConfig, neePixel, neeBounce, 10),
+        sampleDimension(neeConfig, neePixel, neeBounce, 11), 0.5f);
+    const glm::vec3 phaseZeroOccluderCenter(8.0f, 8.0f, 0.0f);
+    const glm::vec3 shadowMidpoint = 0.5f * neeLight.position;
+    neeGeometries[1] = Geom{};
+    neeGeometries[1].type = SPHERE;
+    neeGeometries[1].materialid = 1;
+    neeGeometries[1].transform[3] = glm::vec4(
+        phaseZeroOccluderCenter, 1.0f);
+    neeGeometries[1].inverseTransform[3] = glm::vec4(
+        -phaseZeroOccluderCenter, 1.0f);
+    neeGeometries[1].motionTranslation = 2.0f
+        * (shadowMidpoint - phaseZeroOccluderCenter);
+    Material neeMaterials[2];
+    neeMaterials[0].color = glm::vec3(1.0f);
+    neeMaterials[0].emittance = 4.0f;
+    neeMaterials[1].color = glm::vec3(0.5f);
+    int neeLightIndex = 0;
+    SceneView neeScene;
+    neeScene.geoms = neeGeometries;
+    neeScene.geomCount = 2;
+    neeScene.materials = neeMaterials;
+    neeScene.materialCount = 2;
+    Hit neeHit;
+    neeHit.position = glm::vec3(0.0f);
+    neeHit.geometricNormal = glm::vec3(0.0f, 0.0f, 1.0f);
+    neeHit.shadingNormal = neeHit.geometricNormal;
+    neeHit.frontFace = true;
+    renderer::SurfaceEvaluation neeSurface;
+    neeSurface.baseColor = glm::vec3(1.0f);
+    neeSurface.shadingNormal = neeHit.shadingNormal;
+    RenderPath obscuredPath;
+    obscuredPath.pixelIndex = neePixel;
+    obscuredPath.ray.time = 0.5f;
+    addDirectLighting(neeScene, neeMaterials, 2, &neeLightIndex, neeConfig,
+        neeBounce, neeHit, neeSurface, &obscuredPath, nullptr);
+    RenderPath clearPath = obscuredPath;
+    clearPath.radiance = glm::vec3(0.0f);
+    clearPath.ray.time = 0.0f;
+    addDirectLighting(neeScene, neeMaterials, 2, &neeLightIndex, neeConfig,
+        neeBounce, neeHit, neeSurface, &clearPath, nullptr);
+    if (obscuredPath.radiance != glm::vec3(0.0f)
+            || !(clearPath.radiance.x > 0.0f)
+            || !(clearPath.radiance.y > 0.0f)
+            || !(clearPath.radiance.z > 0.0f))
+    {
+        result |= 1 << 4;
+    }
+
+    RenderPath storedPaths[1];
+    int aliveFlags[1] = {0};
+    glm::vec3 accumulation[1] = {glm::vec3(0.0f)};
+    RenderPath continuation;
+    continuation.pixelIndex = 0;
+    continuation.alive = 1;
+    continuation.ray.time = 0.4375f;
+    Hit continuationHit;
+    continuationHit.position = glm::vec3(0.0f);
+    continuationHit.geometricNormal = glm::vec3(0.0f, 1.0f, 0.0f);
+    continuationHit.frontFace = true;
+    DeviceConfig continuationConfig;
+    continuationConfig.rr = 0;
+    completeScatteredPath(0, 0, continuationConfig, continuationHit,
+        glm::vec3(0.0f, 1.0f, 0.0f), storedPaths, aliveFlags,
+        accumulation, &continuation, nullptr);
+    if (aliveFlags[0] != 1 || storedPaths[0].alive != 1
+            || storedPaths[0].ray.time != 0.4375f
+            || continuation.ray.time != 0.4375f)
+    {
+        result |= 1 << 5;
+    }
+
+    *failures = result;
 }
 
 __global__ void proceduralTextureUnitValidation(int* failures)
@@ -2349,6 +3038,11 @@ void validateConfig(const RendererConfig& config)
     {
         throw std::invalid_argument("renderer debug mode is invalid");
     }
+    if (config.sampler != RendererSampler::Counter
+            && config.sampler != RendererSampler::Halton)
+    {
+        throw std::invalid_argument("renderer sampler is invalid");
+    }
 }
 
 struct MaterialQueueBuffers
@@ -2528,6 +3222,8 @@ QueueSelfCheckResult validateMaterialQueueConstruction()
                 RenderPath path;
                 path.pixelIndex = index;
                 path.alive = 1;
+                path.ray.time = 0.125f
+                    + 0.75f * static_cast<float>(index % 17) / 16.0f;
                 path.throughput = glm::vec3(1.0f + 0.001f * index);
                 path.radiance = glm::vec3(0.002f * index);
                 path.etaScale = 1.0 + 0.0001 * index;
@@ -2851,6 +3547,7 @@ bool sameConfig(const RendererConfig& a, const RendererConfig& b)
         && a.compact == b.compact && a.sort == b.sort
         && a.wavefront == b.wavefront && a.rr == b.rr
         && a.rrStart == b.rrStart
+        && a.sampler == b.sampler && a.motion == b.motion
         && a.benchmark == b.benchmark && a.debug == b.debug;
 }
 
@@ -3074,6 +3771,10 @@ void pathtraceSetConfig(const RendererConfig& config)
         throw std::logic_error(
             "cannot change renderer configuration after sampling has begun");
     }
+    if (g_state.initialized && config.sampler == RendererSampler::Halton)
+    {
+        ensureHaltonPrimeTable();
+    }
     g_config = config;
     g_configExplicit = true;
 }
@@ -3121,6 +3822,11 @@ void pathtraceInit(Scene* scene)
         {
             throw std::invalid_argument("geometry has an invalid material id");
         }
+        if (!finiteVector(geometry.motionTranslation))
+        {
+            throw std::invalid_argument(
+                "geometry has a non-finite motion translation");
+        }
     }
 
     try
@@ -3143,6 +3849,20 @@ void pathtraceInit(Scene* scene)
                 || g_state.camera.aperture < 0.0f)
         {
             throw std::invalid_argument("camera aperture/focus distance is invalid");
+        }
+        if (!finiteScalar(g_state.camera.shutterOpen)
+                || !finiteScalar(g_state.camera.shutterClose)
+                || g_state.camera.shutterOpen < 0.0f
+                || g_state.camera.shutterOpen > g_state.camera.shutterClose
+                || g_state.camera.shutterClose > 1.0f)
+        {
+            throw std::invalid_argument(
+                "camera shutter must satisfy finite 0 <= open <= close <= 1");
+        }
+
+        if (g_config.sampler == RendererSampler::Halton)
+        {
+            ensureHaltonPrimeTable();
         }
 
         allocateDevice(&g_state.accumulation, pixels,
@@ -3305,6 +4025,7 @@ void pathtraceFree()
     cudaFree(g_state.textures);
     cudaFree(g_state.texels);
     cudaFree(g_state.lightIndices);
+    cudaFree(g_state.haltonPrimes);
     cudaFree(g_state.paths[0]);
     cudaFree(g_state.paths[1]);
     cudaFree(g_state.hits[0]);
@@ -3342,9 +4063,16 @@ void pathtraceResetAccumulation()
 void pathtraceRunSample()
 {
     requireInitialized();
+    // UINT64_MAX is intentionally not a supported global sample index. This
+    // explicit host guard keeps Halton's n=sample+1 from wrapping silently.
     if (g_state.completedSamples == std::numeric_limits<std::uint64_t>::max())
     {
         throw std::overflow_error("renderer sample counter overflow");
+    }
+    if (g_config.sampler == RendererSampler::Halton
+            && g_state.haltonPrimes == nullptr)
+    {
+        throw std::logic_error("Halton prime table is not initialized");
     }
     const auto hostStart = std::chrono::steady_clock::now();
     if (g_config.benchmark)
@@ -3966,6 +4694,38 @@ RendererValidationReport pathtraceValidate()
         addCheck("wavefront_sort_rejection", waveSortRejected,
             "wavefront plus material sort returns the actionable CLI error");
 
+        bool samplerConfigValidated = true;
+        for (const RendererSampler sampler : {RendererSampler::Counter,
+                RendererSampler::Halton})
+        {
+            RendererConfig validSampler = savedConfig;
+            validSampler.sort = false;
+            validSampler.sampler = sampler;
+            try
+            {
+                validateConfig(validSampler);
+            }
+            catch (...)
+            {
+                samplerConfigValidated = false;
+            }
+        }
+        RendererConfig invalidSampler = savedConfig;
+        invalidSampler.sort = false;
+        invalidSampler.sampler = static_cast<RendererSampler>(99);
+        try
+        {
+            validateConfig(invalidSampler);
+            samplerConfigValidated = false;
+        }
+        catch (const std::invalid_argument& error)
+        {
+            samplerConfigValidated = samplerConfigValidated
+                && std::string(error.what()) == "renderer sampler is invalid";
+        }
+        addCheck("sampler_config_ids", samplerConfigValidated,
+            "only canonical counter ID 2 and Halton ID 3 are accepted");
+
         RendererConfig referenceConfig = savedConfig;
         referenceConfig.benchmark = false;
         referenceConfig.compact = true;
@@ -3974,10 +4734,15 @@ RendererValidationReport pathtraceValidate()
         referenceConfig.rr = false;
         referenceConfig.rrStart = 3;
         referenceConfig.useBvh = false;
+        referenceConfig.motion = true;
         referenceConfig.debug = RendererDebugMode::None;
 
         const auto renderOne = [&](const RendererConfig& config)
         {
+            if (config.sampler == RendererSampler::Halton)
+            {
+                ensureHaltonPrimeTable();
+            }
             g_config = config;
             pathtraceResetAccumulation();
             pathtraceRunSample();
@@ -3987,6 +4752,40 @@ RendererValidationReport pathtraceValidate()
         };
 
         const std::vector<glm::vec3> reference = renderOne(referenceConfig);
+        RendererConfig changedSampler = referenceConfig;
+        changedSampler.sampler = referenceConfig.sampler
+            == RendererSampler::Counter ? RendererSampler::Halton
+                                        : RendererSampler::Counter;
+        bool accumulatedSamplerChangeRejected = false;
+        try
+        {
+            pathtraceSetConfig(changedSampler);
+        }
+        catch (const std::logic_error& error)
+        {
+            accumulatedSamplerChangeRejected = std::string(error.what())
+                == "cannot change renderer configuration after sampling has begun";
+        }
+        addCheck("sampler_accumulation_change_rejection",
+            accumulatedSamplerChangeRejected,
+            "changing sampler after a completed sample requires reset");
+
+        RendererConfig changedMotion = referenceConfig;
+        changedMotion.motion = !referenceConfig.motion;
+        bool accumulatedMotionChangeRejected = false;
+        try
+        {
+            pathtraceSetConfig(changedMotion);
+        }
+        catch (const std::logic_error& error)
+        {
+            accumulatedMotionChangeRejected = std::string(error.what())
+                == "cannot change renderer configuration after sampling has begun";
+        }
+        addCheck("motion_accumulation_change_rejection",
+            accumulatedMotionChangeRejected,
+            "changing motion mode after a completed sample requires reset");
+
         RendererConfig candidateConfig = referenceConfig;
         candidateConfig.compact = false;
         const std::vector<glm::vec3> uncompacted = renderOne(candidateConfig);
@@ -4012,6 +4811,13 @@ RendererValidationReport pathtraceValidate()
         addCheck("wavefront_uncompacted_equivalence",
             exactAccumulation(reference, wavefrontUncompacted),
             "queue scheduling preserves raw sums without path compaction");
+        addCheck("motion_scheduler_identity",
+            referenceConfig.motion
+                && exactAccumulation(reference, uncompacted)
+                && exactAccumulation(reference, sorted)
+                && exactAccumulation(reference, wavefront)
+                && exactAccumulation(reference, wavefrontUncompacted),
+            "motion-on path times preserve exact raw sums across sorting, compaction, and schedulers");
 
         RendererConfig depthOneLegacy = referenceConfig;
         depthOneLegacy.maxDepth = 1;
@@ -4076,6 +4882,36 @@ RendererValidationReport pathtraceValidate()
             exactAccumulation(uninstrumentedResult, instrumentedResult),
             "benchmark counters and timing do not change sampled transport");
 
+        RendererConfig haltonReferenceConfig = referenceConfig;
+        haltonReferenceConfig.sampler = RendererSampler::Halton;
+        haltonReferenceConfig.compact = true;
+        haltonReferenceConfig.sort = false;
+        haltonReferenceConfig.wavefront = false;
+        const std::vector<glm::vec3> haltonReference = renderOne(
+            haltonReferenceConfig);
+        RendererConfig haltonCandidateConfig = haltonReferenceConfig;
+        haltonCandidateConfig.compact = false;
+        const std::vector<glm::vec3> haltonUncompacted = renderOne(
+            haltonCandidateConfig);
+        haltonCandidateConfig = haltonReferenceConfig;
+        haltonCandidateConfig.sort = true;
+        const std::vector<glm::vec3> haltonSorted = renderOne(
+            haltonCandidateConfig);
+        haltonCandidateConfig = haltonReferenceConfig;
+        haltonCandidateConfig.wavefront = true;
+        const std::vector<glm::vec3> haltonWavefront = renderOne(
+            haltonCandidateConfig);
+        haltonCandidateConfig.compact = false;
+        const std::vector<glm::vec3> haltonWavefrontUncompacted = renderOne(
+            haltonCandidateConfig);
+        addCheck("halton_scheduler_identity",
+            exactAccumulation(haltonReference, haltonUncompacted)
+                && exactAccumulation(haltonReference, haltonSorted)
+                && exactAccumulation(haltonReference, haltonWavefront)
+                && exactAccumulation(haltonReference,
+                    haltonWavefrontUncompacted),
+            "same Halton identities produce exact raw sums across sorting, compaction, and schedulers");
+
         candidateConfig = referenceConfig;
         candidateConfig.useBvh = true;
         const std::vector<glm::vec3> accelerated = renderOne(candidateConfig);
@@ -4134,6 +4970,62 @@ RendererValidationReport pathtraceValidate()
             validateMaterialQueueConstruction();
         addCheck("wavefront_queue_conservation", queueSelfCheck.passed,
             queueSelfCheck.detail);
+
+        ensureHaltonPrimeTable();
+        DeviceBuffer<int> haltonFailuresDevice(1,
+            "allocate Halton validation result");
+        haltonUnitValidation<<<1, 1>>>(g_state.haltonPrimes,
+            haltonFailuresDevice.get());
+        launchCheck("run Halton GPU unit validation");
+        int haltonFailures = 0;
+        cudaCheck(cudaMemcpy(&haltonFailures, haltonFailuresDevice.get(),
+            sizeof(haltonFailures), cudaMemcpyDeviceToHost),
+            "download Halton GPU validation result");
+        addCheck("halton_coordinates_and_primes",
+            (haltonFailures & 0x1) == 0,
+            "camera/bounce slot mapping reaches coordinate 32772 in the generated 32773-prime table");
+        addCheck("halton_anchored_known_values",
+            (haltonFailures & 0x2) == 0,
+            "hard expected grid indices cover signed anchoring and present interior zero digits");
+        addCheck("halton_open_finite_grid_range",
+            (haltonFailures & 0x4) == 0,
+            "sampled outputs are strict open-interval midpoints on the 23-bit grid");
+        addCheck("halton_counter_dimension_fallback",
+            (haltonFailures & 0x8) == 0,
+            "discrete, counter-mode, and unmapped dimensions call the original counter sampler exactly");
+        addCheck("halton_64_bit_identity",
+            (haltonFailures & 0x10) == 0,
+            "hard values preserve full seed/sample identities through UINT64_MAX-1");
+        addCheck("halton_prefix_independence",
+            (haltonFailures & 0x20) == 0,
+            "a target global sample is unchanged by evaluating any earlier prefix");
+
+        DeviceBuffer<int> motionFailuresDevice(1,
+            "allocate motion validation result");
+        motionUnitValidation<<<1, 1>>>(motionFailuresDevice.get());
+        launchCheck("run motion GPU unit validation");
+        int motionFailures = 0;
+        cudaCheck(cudaMemcpy(&motionFailures, motionFailuresDevice.get(),
+            sizeof(motionFailures), cudaMemcpyDeviceToHost),
+            "download motion GPU validation result");
+        addCheck("motion_camera_shutter_time",
+            (motionFailures & 0x1) == 0,
+            "camera dimension 4 produces one shutter time; frozen and motion-off modes are exact");
+        addCheck("motion_plane_occluder_and_swept_bvh",
+            (motionFailures & 0x2) == 0,
+            "an analytical translated triangle hits through brute force and swept BVH only at its path time");
+        addCheck("motion_all_emissive_geometries",
+            (motionFailures & 0x4) == 0,
+            "triangle/OBJ, cube, and sphere light samples translate at path time while static samples remain exact");
+        addCheck("motion_sphere_pdf_and_bsdf_mis_time",
+            (motionFailures & 0x8) == 0,
+            "nonuniform moving-sphere area PDF and BSDF-hit MIS subtract the matching motion phase");
+        addCheck("motion_shadow_time",
+            (motionFailures & 0x10) == 0,
+            "NEE samples a moving emitter and translated occluder at the originating path time");
+        addCheck("motion_secondary_time_preservation",
+            (motionFailures & 0x20) == 0,
+            "the shared diffuse/mirror/dielectric continuation preserves ray time exactly");
 
         DeviceBuffer<int> deviceFailures(1, "allocate validation result");
         int failures = 0;

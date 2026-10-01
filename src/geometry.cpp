@@ -115,6 +115,26 @@ PrimitiveBounds boundsForGeom(const Geom& geom)
         throw std::runtime_error("cannot build BVH for invalid primitive bounds");
     }
 
+    // A linearly translated rigid primitive is contained by the union of its
+    // phase-zero and phase-one bounds. Preserve the original static arithmetic
+    // exactly when no displacement was supplied.
+    if (geom.motionTranslation.x != 0.0f || geom.motionTranslation.y != 0.0f ||
+        geom.motionTranslation.z != 0.0f)
+    {
+        if (!finiteVector(geom.motionTranslation))
+        {
+            throw std::runtime_error("cannot build BVH for non-finite motion translation");
+        }
+        const glm::vec3 movedMinimum = minimum + geom.motionTranslation;
+        const glm::vec3 movedMaximum = maximum + geom.motionTranslation;
+        if (!finiteVector(movedMinimum) || !finiteVector(movedMaximum))
+        {
+            throw std::runtime_error("cannot build BVH for overflowing motion bounds");
+        }
+        minimum = glm::min(minimum, movedMinimum);
+        maximum = glm::max(maximum, movedMaximum);
+    }
+
     // Forward-transformed bounds and inverse-transformed intersection math can
     // differ by several float operations (and by FMA contraction on CUDA).
     // Add a small scale-aware guard band, then step outward four ULPs. This is
