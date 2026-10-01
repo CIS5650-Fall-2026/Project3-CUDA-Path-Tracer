@@ -20,6 +20,22 @@ class GuiDataContainer
 public:
     GuiDataContainer() : TracedDepth(0) {}
     int TracedDepth;
+    bool sortByMaterial = false;
+    bool streamCompaction = true;
+    bool antialiasing = true;
+    bool russianRoulette = false;
+    bool directLighting = false;
+    bool halton = false;
+    bool useBvh = true;
+    bool cullBounds = true;
+    bool denoise = false;
+    float msTotal = 0.0f;
+    float msIntersect = 0.0f;
+    float msSort = 0.0f;
+    float msShade = 0.0f;
+    float msCompact = 0.0f;
+    float msDenoise = 0.0f;
+    std::vector<int> pathCounts;
 };
 
 namespace utilityCore

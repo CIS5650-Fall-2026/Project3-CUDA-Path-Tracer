@@ -6,14 +6,27 @@
 
 #include <thrust/random.h>
 
+struct Sampler
+{
+    thrust::default_random_engine rng;
+    int index;
+    int pixel;
+    int dimension;
+    bool halton;
+};
+
+__host__ __device__ float nextSample(Sampler& sampler);
+
+__host__ __device__ glm::vec3 calculateRandomDirectionInSphere(Sampler& sampler);
+
 // CHECKITOUT
 /**
  * Computes a cosine-weighted random direction in a hemisphere.
  * Used for diffuse lighting.
  */
 __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
-    glm::vec3 normal, 
-    thrust::default_random_engine& rng);
+    glm::vec3 normal,
+    Sampler& sampler);
 
 /**
  * Scatter a ray with some probabilities according to the material properties.
@@ -44,5 +57,28 @@ __host__ __device__ void scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    bool outside,
     const Material& m,
-    thrust::default_random_engine& rng);
+    Sampler& sampler);
+
+__host__ __device__ float proceduralTexture(const Material& m, glm::vec3 point);
+
+__host__ __device__ glm::vec3 sampleTexture(const Texture& texture, const glm::vec3* texels, glm::vec2 uv);
+
+__host__ __device__ glm::vec3 bumpNormal(
+    const Material& m,
+    const Texture& texture,
+    const glm::vec3* texels,
+    glm::vec2 uv,
+    glm::vec3 normal,
+    glm::vec3 tangent);
+
+__host__ __device__ void scatterRayToLight(
+    PathSegment& pathSegment,
+    glm::vec3 intersect,
+    glm::vec3 normal,
+    const Material& m,
+    const Geom* geoms,
+    const int* lights,
+    int lightCount,
+    Sampler& sampler);

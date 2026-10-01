@@ -1,3 +1,4 @@
+#include "denoise.h"
 #include "glslUtility.hpp"
 #include "image.h"
 #include "pathtrace.h"
@@ -45,6 +46,8 @@ Scene* scene;
 GuiDataContainer* guiData;
 RenderState* renderState;
 int iteration;
+static int resumeIteration = 0;
+static int firstIteration = 0;
 
 int width;
 int height;
@@ -285,6 +288,25 @@ void RenderImGui()
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    bool changed = ImGui::Checkbox("Sort by material", &imguiData->sortByMaterial);
+    changed |= ImGui::Checkbox("Stream compaction", &imguiData->streamCompaction);
+    changed |= ImGui::Checkbox("Antialiasing", &imguiData->antialiasing);
+    changed |= ImGui::Checkbox("Russian roulette", &imguiData->russianRoulette);
+    changed |= ImGui::Checkbox("Direct lighting", &imguiData->directLighting);
+    changed |= ImGui::Checkbox("Halton sampling", &imguiData->halton);
+    changed |= ImGui::Checkbox("BVH", &imguiData->useBvh);
+    changed |= ImGui::Checkbox("Bounding box culling", &imguiData->cullBounds);
+    changed |= ImGui::Checkbox("Denoise", &imguiData->denoise);
+    changed |= ImGui::SliderFloat("Lens radius", &renderState->camera.lensRadius, 0.0f, 1.0f);
+    changed |= ImGui::SliderFloat("Focal distance", &renderState->camera.focalDistance, 0.1f, 30.0f);
+    if (changed)
+    {
+        camchanged = true;
+    }
+    float samples = iteration > firstIteration ? iteration - firstIteration : 1;
+    ImGui::Text("Per iteration (ms): total %.2f, intersect %.2f, sort %.2f, shade %.2f, compact %.2f, denoise %.2f",
+        imguiData->msTotal / samples, imguiData->msIntersect / samples, imguiData->msSort / samples,
+        imguiData->msShade / samples, imguiData->msCompact / samples, imguiData->msDenoise / samples);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
@@ -334,6 +356,51 @@ void mainLoop()
     glfwTerminate();
 }
 
+struct CheckpointHeader
+{
+    int width;
+    int height;
+    int iteration;
+    float zoom;
+    float theta;
+    float phi;
+    glm::vec3 lookAt;
+};
+
+void saveCheckpoint(const std::string& filename)
+{
+    pathtraceDownload();
+    CheckpointHeader header = { width, height, iteration, zoom, theta, phi, renderState->camera.lookAt };
+    std::ofstream file(filename, std::ios::binary);
+    file.write((const char*)&header, sizeof(header));
+    for (const std::vector<glm::vec3>* buffer : { &renderState->image, &renderState->albedo, &renderState->normal })
+    {
+        file.write((const char*)buffer->data(), buffer->size() * sizeof(glm::vec3));
+    }
+    std::cout << "Saved " << filename << "." << std::endl;
+}
+
+void loadCheckpoint(const std::string& filename)
+{
+    CheckpointHeader header;
+    std::ifstream file(filename, std::ios::binary);
+    file.read((char*)&header, sizeof(header));
+    if (!file || header.width != width || header.height != height)
+    {
+        printf("Couldn't resume from %s\n", filename.c_str());
+        exit(EXIT_FAILURE);
+    }
+    for (std::vector<glm::vec3>* buffer : { &renderState->image, &renderState->albedo, &renderState->normal })
+    {
+        file.read((char*)buffer->data(), buffer->size() * sizeof(glm::vec3));
+    }
+    resumeIteration = header.iteration;
+    zoom = header.zoom;
+    theta = header.theta;
+    phi = header.phi;
+    renderState->camera.lookAt = header.lookAt;
+}
+
 //-------------------------------
 //-------------MAIN--------------
 //-------------------------------
@@ -344,7 +411,7 @@ int main(int argc, char** argv)
 
     if (argc < 2)
     {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+        printf("Usage: %s SCENEFILE.json [CHECKPOINT.ckpt] [options]\n", argv[0]);
         return 1;
     }
 
@@ -355,6 +422,51 @@ int main(int argc, char** argv)
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
+    std::string checkpointFile;
+    for (int i = 2; i < argc; i++)
+    {
+        std::string arg = argv[i];
+        if (arg[0] != '-')
+        {
+            checkpointFile = arg;
+        }
+        else if (arg == "-denoise")
+        {
+            guiData->denoise = true;
+        }
+        else if (arg == "-sort")
+        {
+            guiData->sortByMaterial = true;
+        }
+        else if (arg == "-nocompact")
+        {
+            guiData->streamCompaction = false;
+        }
+        else if (arg == "-noaa")
+        {
+            guiData->antialiasing = false;
+        }
+        else if (arg == "-rr")
+        {
+            guiData->russianRoulette = true;
+        }
+        else if (arg == "-direct")
+        {
+            guiData->directLighting = true;
+        }
+        else if (arg == "-halton")
+        {
+            guiData->halton = true;
+        }
+        else if (arg == "-nobvh")
+        {
+            guiData->useBvh = false;
+        }
+        else if (arg == "-nocull")
+        {
+            guiData->cullBounds = false;
+        }
+    }
 
     // Set up camera stuff from loaded path tracer settings
     iteration = 0;
@@ -372,12 +484,15 @@ int main(int argc, char** argv)
 
     // compute phi (horizontal) and theta (vertical) relative 3D axis
     // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    glm::vec3 offset = cam.position - cam.lookAt;
+    phi = atan2(offset.x, offset.z);
+    theta = glm::acos(offset.y / glm::length(offset));
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
+    if (!checkpointFile.empty())
+    {
+        loadCheckpoint(checkpointFile);
+    }
 
     // Initialize CUDA and GL components
     init();
@@ -395,6 +510,12 @@ int main(int argc, char** argv)
 void saveImage()
 {
     float samples = iteration;
+    if (guiData->denoise)
+    {
+        pathtraceDownload();
+        denoise(*renderState, iteration);
+    }
+
     // output image file
     Image img(width, height);
 
@@ -403,8 +524,8 @@ void saveImage()
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::vec3 pix = guiData->denoise ? renderState->denoised[index] : renderState->image[index] / samples;
+            img.setPixel(width - 1 - x, y, pix);
         }
     }
 
@@ -416,13 +537,34 @@ void saveImage()
     // CHECKITOUT
     img.savePNG(filename);
     //img.saveHDR(filename);  // Save a Radiance HDR file
+    saveCheckpoint(filename + ".ckpt");
+
+    float timed = iteration > firstIteration ? iteration - firstIteration : 1;
+    printf("ms per iteration: total %.3f, intersect %.3f, sort %.3f, shade %.3f, compact %.3f, denoise %.3f\n",
+        guiData->msTotal / timed, guiData->msIntersect / timed, guiData->msSort / timed,
+        guiData->msShade / timed, guiData->msCompact / timed, guiData->msDenoise / timed);
+    printf("paths per bounce:");
+    for (int count : guiData->pathCounts)
+    {
+        printf(" %d", count);
+    }
+    printf("\n");
 }
 
 void runCuda()
 {
     if (camchanged)
     {
-        iteration = 0;
+        iteration = resumeIteration;
+        firstIteration = resumeIteration;
+        if (resumeIteration == 0)
+        {
+            std::fill(renderState->image.begin(), renderState->image.end(), glm::vec3());
+            std::fill(renderState->albedo.begin(), renderState->albedo.end(), glm::vec3());
+            std::fill(renderState->normal.begin(), renderState->normal.end(), glm::vec3());
+        }
+        resumeIteration = 0;
+
         Camera& cam = renderState->camera;
         cameraPosition.x = zoom * sin(phi) * sin(theta);
         cameraPosition.y = zoom * cos(theta);
@@ -439,16 +581,13 @@ void runCuda()
         cameraPosition += cam.lookAt;
         cam.position = cameraPosition;
         camchanged = false;
+
+        pathtraceFree();
+        pathtraceInit(scene);
     }
 
     // Map OpenGL buffer object for writing from CUDA on a single GPU
     // No data is moved (Win & Linux). When mapped to CUDA, OpenGL should not use this buffer
-
-    if (iteration == 0)
-    {
-        pathtraceFree();
-        pathtraceInit(scene);
-    }
 
     if (iteration < renderState->iterations)
     {

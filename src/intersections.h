@@ -71,3 +71,21 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ float distanceFieldIntersectionTest(
+    Geom geom,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+__host__ __device__ float meshIntersectionTest(
+    Geom mesh,
+    Ray r,
+    const Triangle* triangles,
+    const BVHNode* nodes,
+    bool useBvh,
+    bool cullBounds,
+    ShadeableIntersection& hit);
+
+__host__ __device__ void primitiveUV(const Geom& geom, glm::vec3 point, glm::vec2& uv, glm::vec3& tangent);
