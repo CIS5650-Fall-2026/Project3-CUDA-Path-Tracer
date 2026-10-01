@@ -29,6 +29,9 @@ struct RendererConfig
     bool useBvh = true;
     bool compact = true;
     bool sort = false;
+    bool wavefront = true;
+    bool rr = true;
+    int rrStart = 3;
     bool benchmark = false;
     RendererDebugMode debug = RendererDebugMode::None;
 };
@@ -44,6 +47,23 @@ struct RendererBenchmarkRow
     float shadeMs = 0.0f;
     float compactionMs = 0.0f;
     float countMs = 0.0f;
+    float queueMs = 0.0f;
+    // Host wall time for queue count/offset/live-total downloads and
+    // validation, plus CPU consumer-submission time; timing waits are excluded.
+    double queueHostMs = 0.0;
+    float diffuseMs = 0.0f;
+    float mirrorMs = 0.0f;
+    float dielectricMs = 0.0f;
+    float emissionMs = 0.0f;
+    float terminalMs = 0.0f;
+    int queuedDiffuse = 0;
+    int queuedMirror = 0;
+    int queuedDielectric = 0;
+    int queuedEmission = 0;
+    int queuedTerminal = 0;
+    int kernelDispatches = 0;
+    std::uint64_t rrTested = 0;
+    std::uint64_t rrTerminated = 0;
 };
 
 struct RendererBenchmarkSummary

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="538" viewBox="0 0 1000 538">
+<rect width="1000" height="538" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Material-queue scheduling overhead</text>
+<text x="28" y="67" font-size="14">Median ms/sample; GPU queue and host submission shown independently, without summing them.</text>
+<path d="M310.00 92 V493" stroke="#dce2ec"/>
+<text x="310.00" y="514" text-anchor="middle" font-size="13">0.00</text>
+<path d="M428.00 92 V493" stroke="#dce2ec"/>
+<text x="428.00" y="514" text-anchor="middle" font-size="13">1.05</text>
+<path d="M546.00 92 V493" stroke="#dce2ec"/>
+<text x="546.00" y="514" text-anchor="middle" font-size="13">2.10</text>
+<path d="M664.00 92 V493" stroke="#dce2ec"/>
+<text x="664.00" y="514" text-anchor="middle" font-size="13">3.15</text>
+<path d="M782.00 92 V493" stroke="#dce2ec"/>
+<text x="782.00" y="514" text-anchor="middle" font-size="13">4.19</text>
+<path d="M900.00 92 V493" stroke="#dce2ec"/>
+<text x="900.00" y="514" text-anchor="middle" font-size="13">5.24</text>
+<text x="296" y="121" text-anchor="end" font-size="14">wave-uniform / queue GPU</text>
+<rect x="310" y="100" width="122.22" height="29" rx="3" fill="#2166ac"/>
+<path d="M431.97 114 H432.33 M431.97 108 V120 M432.33 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="440.22" y="121" font-size="13">1.086</text>
+<text x="296" y="167" text-anchor="end" font-size="14">wave-uniform / queue host</text>
+<rect x="310" y="146" width="84.66" height="29" rx="3" fill="#ca6e22"/>
+<path d="M391.28 160 H394.81 M391.28 154 V166 M394.81 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="402.66" y="167" font-size="13">0.752</text>
+<text x="296" y="213" text-anchor="end" font-size="14">wave-mixed / queue GPU</text>
+<rect x="310" y="192" width="109.31" height="29" rx="3" fill="#318f68"/>
+<path d="M419.11 206 H419.60 M419.11 200 V212 M419.60 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="427.31" y="213" font-size="13">0.971</text>
+<text x="296" y="259" text-anchor="end" font-size="14">wave-mixed / queue host</text>
+<rect x="310" y="238" width="104.42" height="29" rx="3" fill="#2166ac"/>
+<path d="M411.33 252 H415.66 M411.33 246 V258 M415.66 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="422.42" y="259" font-size="13">0.928</text>
+<text x="296" y="305" text-anchor="end" font-size="14">wave-closed / queue GPU</text>
+<rect x="310" y="284" width="525.48" height="29" rx="3" fill="#ca6e22"/>
+<path d="M835.32 298 H836.79 M835.32 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="843.48" y="305" font-size="13">4.669</text>
+<text x="296" y="351" text-anchor="end" font-size="14">wave-closed / queue host</text>
+<rect x="310" y="330" width="84.75" height="29" rx="3" fill="#318f68"/>
+<path d="M390.87 344 H394.95 M390.87 338 V350 M394.95 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="402.75" y="351" font-size="13">0.753</text>
+<text x="296" y="397" text-anchor="end" font-size="14">wave-mesh-heavy / queue GPU</text>
+<rect x="310" y="376" width="109.49" height="29" rx="3" fill="#2166ac"/>
+<path d="M419.32 390 H419.72 M419.32 384 V396 M419.72 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="427.49" y="397" font-size="13">0.973</text>
+<text x="296" y="443" text-anchor="end" font-size="14">wave-mesh-heavy / queue host</text>
+<rect x="310" y="422" width="99.50" height="29" rx="3" fill="#ca6e22"/>
+<path d="M409.16 436 H409.74 M409.16 430 V442 M409.74 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="417.50" y="443" font-size="13">0.884</text>
+</g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="354" viewBox="0 0 1000 354">
+<rect width="1000" height="354" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Russian roulette: open and closed scenes</text>
+<text x="28" y="67" font-size="14">Median GPU ms/sample; whiskers min–max; paired off/on timings shown for both workloads.</text>
+<path d="M310.00 92 V309" stroke="#dce2ec"/>
+<text x="310.00" y="330" text-anchor="middle" font-size="13">0.00</text>
+<path d="M428.00 92 V309" stroke="#dce2ec"/>
+<text x="428.00" y="330" text-anchor="middle" font-size="13">19.95</text>
+<path d="M546.00 92 V309" stroke="#dce2ec"/>
+<text x="546.00" y="330" text-anchor="middle" font-size="13">39.89</text>
+<path d="M664.00 92 V309" stroke="#dce2ec"/>
+<text x="664.00" y="330" text-anchor="middle" font-size="13">59.84</text>
+<path d="M782.00 92 V309" stroke="#dce2ec"/>
+<text x="782.00" y="330" text-anchor="middle" font-size="13">79.78</text>
+<path d="M900.00 92 V309" stroke="#dce2ec"/>
+<text x="900.00" y="330" text-anchor="middle" font-size="13">99.73</text>
+<text x="296" y="121" text-anchor="end" font-size="14">rr-open / off</text>
+<rect x="310" y="100" width="38.11" height="29" rx="3" fill="#2166ac"/>
+<path d="M348.02 114 H348.32 M348.02 108 V120 M348.32 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="356.11" y="121" font-size="13">6.442</text>
+<text x="296" y="167" text-anchor="end" font-size="14">rr-open / on</text>
+<rect x="310" y="146" width="34.02" height="29" rx="3" fill="#ca6e22"/>
+<path d="M343.92 160 H344.18 M343.92 154 V166 M344.18 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="352.02" y="167" font-size="13">5.750</text>
+<text x="296" y="213" text-anchor="end" font-size="14">rr-closed / off</text>
+<rect x="310" y="192" width="526.39" height="29" rx="3" fill="#318f68"/>
+<path d="M836.33 206 H836.79 M836.33 200 V212 M836.79 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="844.39" y="213" font-size="13">88.978</text>
+<text x="296" y="259" text-anchor="end" font-size="14">rr-closed / on</text>
+<rect x="310" y="238" width="70.32" height="29" rx="3" fill="#2166ac"/>
+<path d="M380.21 252 H380.47 M380.21 246 V258 M380.47 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="388.32" y="259" font-size="13">11.886</text>
+</g>
+</svg>

@@ -48,6 +48,11 @@ CheckpointData makeCheckpoint() {
     data.config.useBvh = true;
     data.config.compact = false;
     data.config.materialSort = true;
+    data.config.wavefront = false;
+    data.config.russianRoulette = true;
+    // A start depth beyond maxDepth is valid and remains part of the exact
+    // continuation configuration.
+    data.config.rrStart = 11;
 
     data.camera.position = glm::vec3(1.0f, 2.0f, 3.0f);
     data.camera.lookAt = glm::vec3(0.0f, 0.5f, -1.0f);
@@ -124,7 +129,10 @@ void requireEquivalent(const CheckpointData& a, const CheckpointData& b) {
                 a.config.nextEventEstimation == b.config.nextEventEstimation &&
                 a.config.useBvh == b.config.useBvh &&
                 a.config.compact == b.config.compact &&
-                a.config.materialSort == b.config.materialSort,
+                a.config.materialSort == b.config.materialSort &&
+                a.config.wavefront == b.config.wavefront &&
+                a.config.russianRoulette == b.config.russianRoulette &&
+                a.config.rrStart == b.config.rrStart,
             "render config changed");
     require(sameVec3(a.camera.position, b.camera.position) &&
                 sameVec3(a.camera.lookAt, b.camera.lookAt) &&
@@ -261,6 +269,18 @@ void testRoundTrip(const std::filesystem::path& directory) {
                 metadata.samplerVersion == original.samplerVersion &&
                 metadata.config.width == original.config.width &&
                 metadata.config.height == original.config.height &&
+                metadata.config.maxDepth == original.config.maxDepth &&
+                metadata.config.antialias == original.config.antialias &&
+                metadata.config.nextEventEstimation ==
+                    original.config.nextEventEstimation &&
+                metadata.config.useBvh == original.config.useBvh &&
+                metadata.config.compact == original.config.compact &&
+                metadata.config.materialSort ==
+                    original.config.materialSort &&
+                metadata.config.wavefront == original.config.wavefront &&
+                metadata.config.russianRoulette ==
+                    original.config.russianRoulette &&
+                metadata.config.rrStart == original.config.rrStart &&
                 metadata.compatibility.buildIdentifier ==
                     original.compatibility.buildIdentifier &&
                 metadata.fingerprints.geometry ==
@@ -335,6 +355,24 @@ void testContinuationMismatch(const std::filesystem::path& directory) {
             "config mismatch was not rejected");
 
     expected = expectedFrom(data);
+    expected.config.wavefront = !expected.config.wavefront;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "wavefront mismatch was not rejected");
+
+    expected = expectedFrom(data);
+    expected.config.russianRoulette = !expected.config.russianRoulette;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "Russian-roulette mismatch was not rejected");
+
+    expected = expectedFrom(data);
+    ++expected.config.rrStart;
+    status = checkpoint::load(path, loaded, &expected);
+    require(status.code == checkpoint::Error::ContinuationMismatch,
+            "Russian-roulette start-depth mismatch was not rejected");
+
+    expected = expectedFrom(data);
     expected.fingerprints.assets ^= 1u;
     status = checkpoint::load(path, loaded, &expected);
     require(status.code == checkpoint::Error::ContinuationMismatch,
@@ -391,9 +429,9 @@ void testNonFiniteValidation(const std::filesystem::path& directory) {
     status = checkpoint::saveAtomic(path, data);
     require(status.ok(), "NaN load test setup failed");
     std::vector<std::uint8_t> bytes = readBytes(path);
-    // Camera position.x starts after 20 bytes of sample metadata and 17 bytes
+    // Camera position.x starts after 20 bytes of sample metadata and 23 bytes
     // of RenderConfig in the payload.
-    putU32(bytes, 24 + 20 + 17, 0x7fc00000u);
+    putU32(bytes, 24 + 20 + 23, 0x7fc00000u);
     refreshChecksum(bytes);
     writeBytes(path, bytes);
     CheckpointData loaded;
@@ -404,6 +442,125 @@ void testNonFiniteValidation(const std::filesystem::path& directory) {
     status = checkpoint::inspect(path, metadata);
     require(status.code == checkpoint::Error::NonFinite,
             "metadata inspection accepted a checksummed NaN camera value");
+}
+
+void testRussianRouletteBounds() {
+    CheckpointData data = makeCheckpoint();
+    data.config.russianRoulette = false;
+
+    data.config.rrStart = 0;
+    checkpoint::Status status = checkpoint::validate(data);
+    require(status.code == checkpoint::Error::Malformed,
+            "zero Russian-roulette start depth was accepted while RR was off");
+
+    data.config.rrStart = 1;
+    status = checkpoint::validate(data);
+    require(status.ok(), "minimum Russian-roulette start depth was rejected");
+
+    data.config.rrStart = 4096;
+    status = checkpoint::validate(data);
+    require(status.ok(),
+            "maximum Russian-roulette start depth was rejected when beyond maxDepth");
+
+    data.config.rrStart = 4097;
+    status = checkpoint::validate(data);
+    require(status.code == checkpoint::Error::LimitExceeded,
+            "Russian-roulette start depth above 4096 was accepted while RR was off");
+}
+
+void testConfigEncodingRejection(const std::filesystem::path& directory) {
+    const CheckpointData data = makeCheckpoint();
+
+    // The v2 fields are appended to the 17-byte v1 RenderConfig prefix.
+    const std::size_t configOffset = 24 + 20;
+    const std::size_t wavefrontOffset = configOffset + 17;
+    const std::size_t russianRouletteOffset = configOffset + 18;
+    const std::size_t boolOffsets[] = {wavefrontOffset, russianRouletteOffset};
+    for (std::size_t i = 0; i < 2; ++i) {
+        const std::filesystem::path path =
+            directory / ("noncanonical-config-" + std::to_string(i) + ".ckpt");
+        checkpoint::Status status = checkpoint::saveAtomic(path, data);
+        require(status.ok(), "non-canonical boolean test setup failed");
+        std::vector<std::uint8_t> bytes = readBytes(path);
+        require(boolOffsets[i] < bytes.size(),
+                "non-canonical boolean mutation offset is out of range");
+        bytes[boolOffsets[i]] = 2u;
+        refreshChecksum(bytes);
+        writeBytes(path, bytes);
+
+        checkpoint::CheckpointMetadata metadata;
+        status = checkpoint::inspect(path, metadata);
+        require(status.code == checkpoint::Error::Malformed,
+                "inspection accepted a non-canonical v2 boolean");
+        CheckpointData loaded;
+        status = checkpoint::load(path, loaded);
+        require(status.code == checkpoint::Error::Malformed,
+                "load accepted a non-canonical v2 boolean");
+    }
+}
+
+void testSchedulingConflictRejection(const std::filesystem::path& directory) {
+    CheckpointData invalid = makeCheckpoint();
+    invalid.config.wavefront = true;
+    require(invalid.config.materialSort,
+            "scheduling-conflict fixture must enable material sorting");
+
+    checkpoint::Status status = checkpoint::validate(invalid);
+    require(status.code == checkpoint::Error::Malformed,
+            "validation accepted wavefront scheduling with material sorting");
+    const std::filesystem::path rejected = directory / "conflict-save.ckpt";
+    status = checkpoint::saveAtomic(rejected, invalid);
+    require(status.code == checkpoint::Error::Malformed,
+            "save accepted wavefront scheduling with material sorting");
+
+    const std::filesystem::path encoded = directory / "conflict-encoded.ckpt";
+    CheckpointData valid = makeCheckpoint();
+    status = checkpoint::saveAtomic(encoded, valid);
+    require(status.ok(), "scheduling-conflict load fixture could not be saved");
+    std::vector<std::uint8_t> bytes = readBytes(encoded);
+    const std::size_t wavefrontOffset = 24 + 20 + 17;
+    require(bytes[wavefrontOffset] == 0u,
+            "scheduling-conflict fixture unexpectedly enables wavefront mode");
+    bytes[wavefrontOffset] = 1u;
+    refreshChecksum(bytes);
+    writeBytes(encoded, bytes);
+
+    checkpoint::CheckpointMetadata metadata;
+    status = checkpoint::inspect(encoded, metadata);
+    require(status.code == checkpoint::Error::Malformed,
+            "inspection accepted wavefront scheduling with material sorting");
+    CheckpointData loaded;
+    status = checkpoint::load(encoded, loaded);
+    require(status.code == checkpoint::Error::Malformed,
+            "load accepted wavefront scheduling with material sorting");
+}
+
+void testVersionOneRejection(const std::filesystem::path& directory) {
+    const std::filesystem::path path = directory / "version-one.ckpt";
+    const CheckpointData data = makeCheckpoint();
+    checkpoint::Status status = checkpoint::saveAtomic(path, data);
+    require(status.ok(), "version-one rejection test setup failed");
+
+    std::vector<std::uint8_t> bytes = readBytes(path);
+    putU32(bytes, 8, 1u);
+    refreshChecksum(bytes);
+    writeBytes(path, bytes);
+
+    checkpoint::CheckpointMetadata metadata;
+    metadata.completedSamples = 999;
+    status = checkpoint::inspect(path, metadata);
+    require(status.code == checkpoint::Error::UnsupportedVersion,
+            "inspection did not strictly reject checkpoint format v1");
+    require(metadata.completedSamples == 999,
+            "failed v1 inspection modified its output object");
+
+    CheckpointData loaded;
+    loaded.completedSamples = 777;
+    status = checkpoint::load(path, loaded);
+    require(status.code == checkpoint::Error::UnsupportedVersion,
+            "load did not strictly reject checkpoint format v1");
+    require(loaded.completedSamples == 777,
+            "failed v1 load modified its output object");
 }
 
 void testFingerprinting(const std::filesystem::path& directory) {
@@ -548,6 +705,10 @@ int main() {
         testContinuationMismatch(directory);
         testSizeValidation(directory);
         testNonFiniteValidation(directory);
+        testRussianRouletteBounds();
+        testConfigEncodingRejection(directory);
+        testSchedulingConflictRejection(directory);
+        testVersionOneRejection(directory);
         testFingerprinting(directory);
         testBufferedBoundaries(directory);
         testBvhValidation();

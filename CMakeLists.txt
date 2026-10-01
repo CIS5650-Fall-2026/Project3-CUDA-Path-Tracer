@@ -69,6 +69,7 @@ if(BUILD_RENDERER)
 
     set(cis565_renderer_sources
         src/pathtrace.cu
+        src/procedural_texture.cuh
         src/interactions.cu
         src/intersections.cu
         stream_compaction/device_scan.cu)
@@ -90,6 +91,7 @@ if(BUILD_RENDERER)
         src/main.cpp
         src/pathtrace.cu
         src/pathtrace.h
+        src/procedural_texture.cuh
         src/scene.cpp
         src/scene.h
         src/sceneStructs.h
@@ -98,6 +100,10 @@ if(BUILD_RENDERER)
         src/utilities.h
         stream_compaction/device_scan.cu
         stream_compaction/device_scan.cuh)
+    # Every compiled renderer source is build-identity material, including any
+    # source added to the target by this extension.
+    list(APPEND cis565_build_fingerprint_sources ${cis565_renderer_sources})
+    list(REMOVE_DUPLICATES cis565_build_fingerprint_sources)
     set(cis565_source_hash_material "")
     foreach(cis565_source IN LISTS cis565_build_fingerprint_sources)
         set(cis565_source_path "${CMAKE_CURRENT_SOURCE_DIR}/${cis565_source}")

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "purpose": "Chart caption units polish preserves numerical evidence",
+  "svg_charts_reviewed": 13,
+  "plot_script_sha256": "4c30da9dd8c70122c4e25b32ea1a765976732908bf894cfe911adf196ed4511e",
+  "records": [
+    {
+      "path": "results/extension-experiments/timing-summary.json",
+      "before_sha256": "f6d9462e093e47087d5eb2a2bb4f06438b55289f742df87e562b1a44e169cf8b",
+      "after_sha256": "f6d9462e093e47087d5eb2a2bb4f06438b55289f742df87e562b1a44e169cf8b",
+      "byte_unchanged": true
+    },
+    {
+      "path": "results/extension-experiments/performance-comparisons.json",
+      "before_sha256": "95ae1b70df36d95f3a4762c1d7e88fc742ddc886e557c372ba58067cec9d03e8",
+      "after_sha256": "95ae1b70df36d95f3a4762c1d7e88fc742ddc886e557c372ba58067cec9d03e8",
+      "byte_unchanged": true
+    },
+    {
+      "path": "results/extension-experiments/single-iteration.csv",
+      "before_sha256": "a1c04cf7381f9fd457793dfef26407d1233d8c650ba86013874bc8c4e27f8d88",
+      "after_sha256": "a1c04cf7381f9fd457793dfef26407d1233d8c650ba86013874bc8c4e27f8d88",
+      "byte_unchanged": true
+    }
+  ]
+}

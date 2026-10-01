@@ -1,0 +1,33 @@
+{
+  "renderer_build_input_sha256": "d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa",
+  "local_remote_source_hash_match": true,
+  "configuration": "Release",
+  "cuda_architecture": 86,
+  "commands": [
+    [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_PREVIEW=ON",
+      "-DCMAKE_CUDA_ARCHITECTURES=86",
+      "-DPROJECT3_BUILD_ID=sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa"
+    ],
+    [
+      "cmake",
+      "--build",
+      "build",
+      "-j4"
+    ],
+    [
+      "ctest",
+      "--test-dir",
+      "build",
+      "--output-on-failure"
+    ]
+  ],
+  "build_passed": true,
+  "ctest_passed": true
+}

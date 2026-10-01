@@ -7,6 +7,39 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
+PROCEDURAL_SCENES = tuple(
+    f'procedural-{shape}-{surface}'
+    for shape in ('fluted-body', 'swept-knot')
+    for surface in ('plain', 'marble', 'cells'))
+PROCEDURAL_SHOWCASE_SCENE = 'procedural-optical-stilllife'
+
+
+def gallery_configurations(cover_samples, comparison_samples):
+    configurations = [
+        ('workbench', 'optical-workbench', cover_samples, '960x640', {}),
+        ('comparison-bump', 'optical-workbench', comparison_samples, '640x424', {}),
+        ('comparison-no-bump', 'workbench-no-bump', comparison_samples, '640x424', {}),
+        ('comparison-procedural', 'workbench-procedural', comparison_samples, '640x424', {}),
+        ('comparison-glass', 'optical-workbench', comparison_samples, '640x424', {}),
+        ('comparison-mirror', 'workbench-mirror', comparison_samples, '640x424', {}),
+        ('comparison-dof', 'workbench-dof', comparison_samples, '640x424', {}),
+        ('comparison-nee', 'optical-workbench', 64, '640x424', {}),
+        ('comparison-no-nee', 'optical-workbench', 64, '640x424', {'nee': 'off'}),
+        ('comparison-aa', 'optical-workbench', comparison_samples, '640x424', {}),
+        ('comparison-no-aa', 'optical-workbench', comparison_samples, '640x424', {'aa': 'off'}),
+        ('restart-partial', 'optical-workbench', 16, '640x424', {}),
+        ('restart-resumed', 'optical-workbench', comparison_samples, '640x424', {}),
+        ('debug-normals', 'optical-workbench', 1, '640x424', {'debug': 'normals'}),
+        ('debug-uv', 'optical-workbench', 1, '640x424', {'debug': 'uv'}),
+        ('debug-depth', 'optical-workbench', 1, '640x424', {'debug': 'depth'}),
+    ]
+    configurations.extend(
+        (scene, scene, comparison_samples, '640x424', {})
+        for scene in PROCEDURAL_SCENES)
+    configurations.append(
+        ('procedural-cover', PROCEDURAL_SHOWCASE_SCENE,
+         cover_samples, '960x640', {}))
+    return configurations
 
 
 def main():
@@ -19,33 +52,19 @@ def main():
     stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     output = args.output or ROOT / 'results' / ('gallery-' + stamp)
     output.mkdir(parents=True, exist_ok=False)
-    configurations = [
-        ('workbench', 'optical-workbench', args.cover_samples, '960x640', {}),
-        ('comparison-bump', 'optical-workbench', args.comparison_samples, '640x424', {}),
-        ('comparison-no-bump', 'workbench-no-bump', args.comparison_samples, '640x424', {}),
-        ('comparison-procedural', 'workbench-procedural', args.comparison_samples, '640x424', {}),
-        ('comparison-glass', 'optical-workbench', args.comparison_samples, '640x424', {}),
-        ('comparison-mirror', 'workbench-mirror', args.comparison_samples, '640x424', {}),
-        ('comparison-dof', 'workbench-dof', args.comparison_samples, '640x424', {}),
-        ('comparison-nee', 'optical-workbench', 64, '640x424', {}),
-        ('comparison-no-nee', 'optical-workbench', 64, '640x424', {'nee': 'off'}),
-        ('comparison-aa', 'optical-workbench', args.comparison_samples, '640x424', {}),
-        ('comparison-no-aa', 'optical-workbench', args.comparison_samples, '640x424', {'aa': 'off'}),
-        ('restart-partial', 'optical-workbench', 16, '640x424', {}),
-        ('restart-resumed', 'optical-workbench', args.comparison_samples, '640x424', {}),
-        ('debug-normals', 'optical-workbench', 1, '640x424', {'debug': 'normals'}),
-        ('debug-uv', 'optical-workbench', 1, '640x424', {'debug': 'uv'}),
-        ('debug-depth', 'optical-workbench', 1, '640x424', {'debug': 'depth'}),
-    ]
+    configurations = gallery_configurations(
+        args.cover_samples, args.comparison_samples)
     records = []
     for name, scene, samples, resolution, overrides in configurations:
-        toggles = dict(aa='on', nee='on', bvh='on', compact='on', sort='off')
+        toggles = dict(aa='on', nee='on', bvh='on', compact='on', sort='off',
+                       wavefront='on', rr='on', rr_start='3')
         toggles.update(overrides)
         prefix = output / name
         command = [str(args.binary.resolve()), str(ROOT / 'scenes' / (scene + '.json')),
                    '--samples', str(samples), '--resolution', resolution, '--seed', '947',
                    '--depth', '10', '--output', str(prefix),
-                   *[x for key, value in toggles.items() for x in ('--' + key, value)]]
+                   *[x for key, value in toggles.items()
+                     for x in ('--' + key.replace('_', '-'), value)]]
         if 'debug' not in toggles:
             command.append('--benchmark')
         if name == 'restart-partial':

@@ -1140,14 +1140,23 @@ void Scene::loadFromJSON(const std::string& jsonName)
             {
                 material.procedural = 1;
             }
+            else if (value == "marble" || value == "Marble" || value == "MARBLE")
+            {
+                material.procedural = 2;
+            }
+            else if (value == "cells" || value == "Cells" || value == "CELLS")
+            {
+                material.procedural = 3;
+            }
             else
             {
-                fail(context + ".PROCEDURAL supports only 'none' or 'checker'");
+                fail(context +
+                     ".PROCEDURAL supports only 'none', 'checker', 'marble', or 'cells'");
             }
         }
         if (const auto scale = definition.find("CHECKER_SCALE"); scale != definition.end())
         {
-            if (material.procedural == 0)
+            if (material.procedural != 1)
             {
                 fail(context + ".CHECKER_SCALE requires PROCEDURAL 'checker'");
             }

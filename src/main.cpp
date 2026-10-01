@@ -18,6 +18,7 @@
 #include <cuda_gl_interop.h>
 
 #include <algorithm>
+#include <charconv>
 #include <cmath>
 #include <cstdint>
 #include <cstdlib>
@@ -25,9 +26,12 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+#include <optional>
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <string_view>
+#include <system_error>
 #include <vector>
 
 static std::string startTimeString;
@@ -66,6 +70,150 @@ GLFWwindow* window;
 GuiDataContainer* imguiData = NULL;
 ImGuiIO* io = nullptr;
 bool mouseOverImGuiWinow = false;
+
+namespace
+{
+
+struct PreviewOptions
+{
+    std::string sceneFile;
+    std::optional<bool> sort;
+    std::optional<bool> wavefront;
+    std::optional<bool> rr;
+    std::optional<int> rrStart;
+    bool help = false;
+};
+
+std::string previewUsage(std::string_view program)
+{
+    std::ostringstream text;
+    text << "Usage: " << program << " SCENEFILE.json [options]\n"
+         << "  --sort on|off\n"
+         << "  --wavefront on|off\n"
+         << "  --rr on|off\n"
+         << "  --rr-start N             Completed scattering events before roulette (1..4096)\n"
+         << "  --help\n";
+    return text.str();
+}
+
+bool parsePreviewSwitch(std::string_view text, std::string_view option)
+{
+    if (text == "on") return true;
+    if (text == "off") return false;
+    throw std::invalid_argument(std::string(option)
+        + " expects exactly 'on' or 'off'");
+}
+
+std::uint64_t parsePreviewUnsigned(std::string_view text,
+                                   std::string_view option)
+{
+    if (text.empty() || text.front() == '+' || text.front() == '-')
+    {
+        throw std::invalid_argument(std::string(option)
+            + " expects an unsigned integer");
+    }
+    std::uint64_t result = 0;
+    const char* begin = text.data();
+    const char* end = begin + text.size();
+    const auto conversion = std::from_chars(begin, end, result, 10);
+    if (conversion.ec == std::errc::result_out_of_range)
+    {
+        throw std::out_of_range(std::string(option) + " is out of range");
+    }
+    if (conversion.ec != std::errc() || conversion.ptr != end)
+    {
+        throw std::invalid_argument(std::string(option)
+            + " expects an unsigned integer");
+    }
+    return result;
+}
+
+PreviewOptions parsePreviewOptions(int argc, char** argv)
+{
+    PreviewOptions options;
+    bool positionalOnly = false;
+    const auto requireValue = [&](int& index,
+                                  std::string_view option) -> std::string_view
+    {
+        if (index + 1 >= argc)
+        {
+            throw std::invalid_argument(std::string(option) + " requires a value");
+        }
+        return argv[++index];
+    };
+    const auto rejectDuplicate = [](bool duplicate, std::string_view option)
+    {
+        if (duplicate)
+        {
+            throw std::invalid_argument(std::string(option)
+                + " was specified more than once");
+        }
+    };
+
+    for (int index = 1; index < argc; ++index)
+    {
+        const std::string_view argument(argv[index]);
+        if (!positionalOnly && argument == "--")
+        {
+            positionalOnly = true;
+        }
+        else if (!positionalOnly && argument == "--help")
+        {
+            rejectDuplicate(options.help, argument);
+            options.help = true;
+        }
+        else if (!positionalOnly && argument == "--wavefront")
+        {
+            rejectDuplicate(options.wavefront.has_value(), argument);
+            options.wavefront = parsePreviewSwitch(
+                requireValue(index, argument), argument);
+        }
+        else if (!positionalOnly && argument == "--sort")
+        {
+            rejectDuplicate(options.sort.has_value(), argument);
+            options.sort = parsePreviewSwitch(
+                requireValue(index, argument), argument);
+        }
+        else if (!positionalOnly && argument == "--rr")
+        {
+            rejectDuplicate(options.rr.has_value(), argument);
+            options.rr = parsePreviewSwitch(
+                requireValue(index, argument), argument);
+        }
+        else if (!positionalOnly && argument == "--rr-start")
+        {
+            rejectDuplicate(options.rrStart.has_value(), argument);
+            const std::uint64_t value = parsePreviewUnsigned(
+                requireValue(index, argument), argument);
+            if (value == 0 || value > 4096)
+            {
+                throw std::out_of_range("--rr-start must be in [1, 4096]");
+            }
+            options.rrStart = static_cast<int>(value);
+        }
+        else if (!positionalOnly && argument.size() >= 2
+                 && argument[0] == '-' && argument[1] == '-')
+        {
+            throw std::invalid_argument("unknown option: " + std::string(argument));
+        }
+        else
+        {
+            if (!options.sceneFile.empty())
+            {
+                throw std::invalid_argument("more than one scene path was supplied");
+            }
+            options.sceneFile = argument;
+        }
+    }
+
+    if (!options.help && options.sceneFile.empty())
+    {
+        throw std::invalid_argument("a scene JSON path is required");
+    }
+    return options;
+}
+
+} // namespace
 
 // Forward declarations for window loop and interactivity
 void runCuda();
@@ -399,16 +547,51 @@ int main(int argc, char** argv)
 {
     startTimeString = currentTimeString();
 
-    if (argc < 2)
+    PreviewOptions options;
+    try
     {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+        options = parsePreviewOptions(argc, argv);
+    }
+    catch (const std::exception& error)
+    {
+        std::cerr << "error: " << error.what() << '\n'
+                  << previewUsage(argc > 0 ? argv[0] : "cis565_path_tracer");
+        return 1;
+    }
+    if (options.help)
+    {
+        std::cout << previewUsage(argc > 0 ? argv[0] : "cis565_path_tracer");
+        return 0;
+    }
+
+    RendererConfig rendererConfig;
+    rendererConfig.sort = options.sort.value_or(rendererConfig.sort);
+    rendererConfig.wavefront = options.wavefront.value_or(rendererConfig.wavefront);
+    rendererConfig.rr = options.rr.value_or(rendererConfig.rr);
+    rendererConfig.rrStart = options.rrStart.value_or(rendererConfig.rrStart);
+    if (rendererConfig.wavefront && rendererConfig.sort)
+    {
+        std::cerr << "error: --sort on requires --wavefront off\n";
         return 1;
     }
 
-    const char* sceneFile = argv[1];
+    const char* sceneFile = options.sceneFile.c_str();
 
-    // Load scene file
+    // Load the scene only after rejecting incompatible CLI scheduling flags.
     scene = new Scene(sceneFile);
+    rendererConfig.maxDepth = scene->state.traceDepth > 0
+        ? scene->state.traceDepth : rendererConfig.maxDepth;
+    try
+    {
+        pathtraceSetConfig(rendererConfig);
+    }
+    catch (const std::exception& error)
+    {
+        std::cerr << "error: " << error.what() << '\n';
+        delete scene;
+        scene = nullptr;
+        return 1;
+    }
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();

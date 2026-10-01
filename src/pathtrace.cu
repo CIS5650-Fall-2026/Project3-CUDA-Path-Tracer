@@ -3,11 +3,13 @@
 #include "device_scan.cuh"
 #include "geometry.cuh"
 #include "interactions.h"
+#include "procedural_texture.cuh"
 
 #include <cuda_runtime.h>
 
 #include <algorithm>
 #include <chrono>
+#include <cfloat>
 #include <cmath>
 #include <cstdint>
 #include <cstring>
@@ -26,6 +28,8 @@ namespace
 constexpr int kThreads = 256;
 constexpr float kPi = 3.14159265358979323846f;
 constexpr float kRayMinimum = 1.0e-4f;
+constexpr int kRussianRouletteDimension = 32;
+constexpr unsigned int kQueueErrorBit = 1U << 6U;
 #ifndef CIS565_RENDERER_BUILD_ID
 #define CIS565_RENDERER_BUILD_ID \
     "cis565-project3-renderer-v1_source-manual-unspecified-build"
@@ -42,6 +46,7 @@ struct RenderPath
     int pixelIndex = -1;
     int alive = 0;
     int previousDelta = 1;
+    double etaScale = 1.0;
 };
 
 struct BvhDiagnostic
@@ -69,6 +74,9 @@ struct DeviceConfig
     int useBvh = 0;
     int lightCount = 0;
     int debugMode = 0;
+    int rr = 0;
+    int rrStart = 3;
+    unsigned long long* rrCounters = nullptr;
     int diagnosticMode = 0;
     int pixelCount = 0;
     unsigned long long diagnosticTarget = ~0ULL;
@@ -117,6 +125,15 @@ struct RendererState
     int* flags = nullptr;
     int* offsets = nullptr;
     int* deviceCount = nullptr;
+    int* queueKeys = nullptr;
+    int* queueIndices = nullptr;
+    int* queueCounts = nullptr;
+    int* queueOffsets = nullptr;
+    int* queueCursors = nullptr;
+    int queueKeyCount = 0;
+    std::vector<int> queueHostCounts;
+    std::vector<int> queueHostOffsets;
+    unsigned long long* rrCounters = nullptr;
     unsigned int* deviceError = nullptr;
     unsigned long long* diagnosticMinimum = nullptr;
     BvhDiagnostic* diagnosticRecord = nullptr;
@@ -129,6 +146,12 @@ struct RendererState
     EventPair shadeEvents{};
     EventPair compactionEvents{};
     EventPair countEvents{};
+    EventPair queueEvents{};
+    EventPair diffuseEvents{};
+    EventPair mirrorEvents{};
+    EventPair dielectricEvents{};
+    EventPair emissionEvents{};
+    EventPair terminalEvents{};
     EventPair overallEvents{};
 
     std::vector<RendererBenchmarkRow> benchmarkRows;
@@ -181,6 +204,32 @@ void copyVectorToDevice(T* destination, const std::vector<T>& source,
             cudaMemcpyHostToDevice), operation);
     }
 }
+
+template<typename T>
+class DeviceBuffer
+{
+public:
+    DeviceBuffer(std::size_t count, const char* operation)
+    {
+        allocateDevice(&pointer_, count, operation);
+    }
+
+    ~DeviceBuffer()
+    {
+        cudaFree(pointer_);
+    }
+
+    DeviceBuffer(const DeviceBuffer&) = delete;
+    DeviceBuffer& operator=(const DeviceBuffer&) = delete;
+
+    T* get() const noexcept
+    {
+        return pointer_;
+    }
+
+private:
+    T* pointer_ = nullptr;
+};
 
 void createEventPair(EventPair* pair)
 {
@@ -237,6 +286,9 @@ DeviceConfig deviceConfig()
     result.useBvh = g_config.useBvh ? 1 : 0;
     result.lightCount = g_state.lightCount;
     result.debugMode = static_cast<int>(g_config.debug);
+    result.rr = g_config.rr ? 1 : 0;
+    result.rrStart = g_config.rrStart;
+    result.rrCounters = g_config.benchmark ? g_state.rrCounters : nullptr;
     result.diagnosticMode = g_state.diagnosticMode;
     result.pixelCount = g_state.pixelCount;
     result.diagnosticTarget = g_state.diagnosticTarget;
@@ -353,6 +405,7 @@ __global__ void generatePaths(Camera camera, DeviceConfig config,
     path.pixelIndex = index;
     path.alive = 1;
     path.previousDelta = 1;
+    path.etaScale = 1.0;
     if (!finiteVector(path.ray.origin) || !finiteVector(path.ray.direction)
             || !(glm::dot(path.ray.direction, path.ray.direction) > 0.0f))
     {
@@ -502,6 +555,121 @@ __global__ void scatterRadixPairs(const RenderPath* inputPaths,
         : *totalZeros + index - zeroOffsets[index];
     outputPaths[destination] = inputPaths[index];
     outputHits[destination] = inputHits[index];
+}
+
+__global__ void classifyMaterialQueues(const RenderPath* paths,
+    const Hit* hits, int count, int materialCount, int queueCapacity,
+    int* queueKeys, int* queueCounts, int* liveInputCount, int* aliveFlags,
+    unsigned int* deviceError)
+{
+    const int index = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    if (index >= count)
+    {
+        return;
+    }
+
+    // Classification owns the complete flag reset.  In particular, dead
+    // uncompacted slots never reach a terminal queue on a later bounce.
+    aliveFlags[index] = 0;
+    queueKeys[index] = -1;
+    if (paths[index].alive == 0)
+    {
+        return;
+    }
+    const int priorLive = atomicAdd(liveInputCount, 1);
+    if (priorLive < 0 || priorLive >= queueCapacity)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+    }
+
+    const Hit hit = hits[index];
+    int key = materialCount;
+    if (hit.t < 0.0f)
+    {
+        key = materialCount;
+    }
+    else if (finiteScalar(hit.t) && hit.materialId >= 0
+            && hit.materialId < materialCount && finiteVector(hit.position)
+            && finiteVector(hit.geometricNormal)
+            && finiteVector(hit.shadingNormal))
+    {
+        key = hit.materialId;
+    }
+    else
+    {
+        // Match the unified shader's invalid-hit semantics while routing the
+        // live input to the terminal consumer exactly once.
+        reportDeviceError(deviceError, 1U << 3U);
+    }
+
+    if (key < 0 || key > materialCount)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        return;
+    }
+    queueKeys[index] = key;
+    const int prior = atomicAdd(queueCounts + key, 1);
+    if (prior < 0 || prior >= queueCapacity)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+    }
+}
+
+__global__ void validateMaterialQueuePrefix(const int* queueCounts,
+    const int* queueOffsets, int queueKeyCount, int queueCapacity,
+    unsigned int* deviceError)
+{
+    const int key = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    if (key >= queueKeyCount)
+    {
+        return;
+    }
+    const int count = queueCounts[key];
+    const int offset = queueOffsets[key];
+    const long long end = static_cast<long long>(offset) + count;
+    const long long previousEnd = key == 0 ? 0LL
+        : static_cast<long long>(queueOffsets[key - 1])
+            + queueCounts[key - 1];
+    const bool prefixMatches = key == 0 ? offset == 0
+        : static_cast<long long>(offset) == previousEnd;
+    if (count < 0 || count > queueCapacity || offset < 0
+            || offset > queueCapacity || end < 0 || end > queueCapacity
+            || !prefixMatches)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+    }
+}
+
+__global__ void scatterMaterialQueueIndices(const int* queueKeys,
+    int count, int materialCount, int queueCapacity, const int* queueCounts,
+    const int* queueOffsets, int* queueCursors, int* queueIndices,
+    unsigned int* deviceError)
+{
+    const int index = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    if (index >= count)
+    {
+        return;
+    }
+    const int key = queueKeys[index];
+    if (key == -1)
+    {
+        return;
+    }
+    if (key < 0 || key > materialCount)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        return;
+    }
+    const int slot = atomicAdd(queueCursors + key, 1);
+    const long long destination = static_cast<long long>(queueOffsets[key])
+        + slot;
+    if (slot < 0 || slot >= queueCounts[key] || destination < 0
+            || destination >= queueCapacity)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        return;
+    }
+    queueIndices[static_cast<int>(destination)] = index;
 }
 
 __device__ void cubeUvAndTangents(const glm::vec3& localPosition,
@@ -881,6 +1049,395 @@ __device__ float lightPdfForHit(const SceneView& scene,
     return (1.0f / config.lightCount) * areaPdf * distanceSquared / cosine;
 }
 
+enum class SurfacePreparation : int
+{
+    Finished = 0,
+    Ready = 1
+};
+
+__device__ __noinline__ void finishStoredPath(int index, RenderPath* paths,
+    int* aliveFlags, glm::vec3* accumulation, RenderPath* path,
+    unsigned int* deviceError)
+{
+    finishPath(path, accumulation, deviceError);
+    paths[index] = *path;
+    aliveFlags[index] = 0;
+}
+
+__device__ __noinline__ SurfacePreparation prepareSurfacePath(
+    const SceneView& scene, const Material* materials, int materialCount,
+    const DeviceConfig& config, int index, RenderPath* paths,
+    const Hit* hits, int* aliveFlags, glm::vec3* accumulation,
+    unsigned int* deviceError, RenderPath* path, Hit* hit,
+    Material* material, renderer::SurfaceEvaluation* surface)
+{
+    *path = paths[index];
+    if (path->alive == 0)
+    {
+        aliveFlags[index] = 0;
+        return SurfacePreparation::Finished;
+    }
+    *hit = hits[index];
+    if (hit->t < 0.0f)
+    {
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return SurfacePreparation::Finished;
+    }
+    if (!finiteScalar(hit->t) || hit->materialId < 0
+            || hit->materialId >= materialCount
+            || !finiteVector(hit->position)
+            || !finiteVector(hit->geometricNormal)
+            || !finiteVector(hit->shadingNormal))
+    {
+        reportDeviceError(deviceError, 1U << 3U);
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return SurfacePreparation::Finished;
+    }
+
+    *material = materials[hit->materialId];
+    *surface = renderer::evaluateSurface(scene, *material, *hit);
+    if (!validContribution(surface->baseColor)
+            || !validContribution(surface->emission)
+            || !finiteVector(surface->shadingNormal)
+            || !(glm::dot(surface->shadingNormal,
+                    surface->shadingNormal) > 0.0f))
+    {
+        reportDeviceError(deviceError, 1U << 3U);
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return SurfacePreparation::Finished;
+    }
+
+    if (config.debugMode != static_cast<int>(RendererDebugMode::None))
+    {
+        if (config.debugMode == static_cast<int>(RendererDebugMode::Normals))
+        {
+            path->radiance = 0.5f * surface->shadingNormal + glm::vec3(0.5f);
+        }
+        else if (config.debugMode == static_cast<int>(RendererDebugMode::Uv))
+        {
+            path->radiance = glm::vec3(hit->uv.x - floorf(hit->uv.x),
+                hit->uv.y - floorf(hit->uv.y), 0.0f);
+        }
+        else
+        {
+            const float mappedDepth = hit->t / (1.0f + hit->t);
+            path->radiance = glm::vec3(mappedDepth);
+        }
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return SurfacePreparation::Finished;
+    }
+    return SurfacePreparation::Ready;
+}
+
+__device__ __noinline__ void shadeEmissionBody(const SceneView& scene,
+    const DeviceConfig& config, const Hit& hit,
+    const renderer::SurfaceEvaluation& surface, RenderPath* path,
+    unsigned int* deviceError)
+{
+    float weight = 1.0f;
+    if (config.nee != 0 && path->previousDelta == 0)
+    {
+        const float lightPdf = lightPdfForHit(scene, config, *path, hit);
+        weight = renderer::powerHeuristic(path->previousBsdfPdf, lightPdf);
+    }
+    const glm::vec3 emission = path->throughput * surface.emission * weight;
+    if (validContribution(emission))
+    {
+        path->radiance += emission;
+    }
+    else
+    {
+        reportDeviceError(deviceError, 1U << 1U);
+    }
+}
+
+__device__ bool updateEtaScale(double etaIncident, double etaTransmitted,
+    RenderPath* path)
+{
+    if (!(etaIncident > 0.0) || !(etaTransmitted > 0.0)
+            || etaIncident > DBL_MAX || etaTransmitted > DBL_MAX
+            || !(path->etaScale > 0.0) || path->etaScale > DBL_MAX)
+    {
+        return false;
+    }
+    const double ratio = etaTransmitted / etaIncident;
+    if (!(ratio > 0.0) || ratio > DBL_MAX)
+    {
+        return false;
+    }
+    const double factor = ratio > DBL_MAX / ratio
+        ? DBL_MAX : ratio * ratio;
+    path->etaScale = factor > DBL_MAX / path->etaScale
+        ? DBL_MAX : path->etaScale * factor;
+    return path->etaScale > 0.0 && path->etaScale <= DBL_MAX;
+}
+
+__device__ __noinline__ bool shadeDielectricBody(const Material& material,
+    const renderer::SurfaceEvaluation& surface, const DeviceConfig& config,
+    int bounce, const Hit& hit, RenderPath* path, glm::vec3* outgoing,
+    unsigned int* deviceError)
+{
+    const glm::vec3 geometric = renderer::orientedGeometricNormal(hit);
+    const float etaIncident = hit.frontFace ? 1.0f
+        : fmaxf(material.indexOfRefraction, 1.0e-4f);
+    const float etaTransmitted = hit.frontFace
+        ? fmaxf(material.indexOfRefraction, 1.0e-4f) : 1.0f;
+    const float cosine = fmaxf(0.0f,
+        glm::dot(-path->ray.direction, geometric));
+    bool totalInternalReflection = false;
+    const float fresnel = renderer::dielectricFresnel(cosine,
+        etaIncident, etaTransmitted, &totalInternalReflection);
+    const float choose = renderer::randomFloat(config.seed,
+        path->pixelIndex, config.sample, bounce, 24);
+    if (totalInternalReflection || choose < fresnel)
+    {
+        *outgoing = renderer::safeNormalize(path->ray.direction
+            - 2.0f * glm::dot(path->ray.direction, geometric) * geometric,
+            geometric);
+    }
+    else
+    {
+        if (!renderer::refractDirection(path->ray.direction, geometric,
+                etaIncident, etaTransmitted, outgoing))
+        {
+            *outgoing = renderer::safeNormalize(path->ray.direction
+                - 2.0f * glm::dot(path->ray.direction, geometric) * geometric,
+                geometric);
+        }
+        else
+        {
+            const float eta = etaIncident / etaTransmitted;
+            if (config.rr != 0)
+            {
+                const double etaSquared = static_cast<double>(eta)
+                    * static_cast<double>(eta);
+                if (!finiteScalar(eta) || !(etaSquared >= 0.0)
+                        || etaSquared > FLT_MAX
+                        || static_cast<double>(path->throughput.x)
+                            * etaSquared > FLT_MAX
+                        || static_cast<double>(path->throughput.y)
+                            * etaSquared > FLT_MAX
+                        || static_cast<double>(path->throughput.z)
+                            * etaSquared > FLT_MAX)
+                {
+                    reportDeviceError(deviceError, 1U << 4U);
+                    return false;
+                }
+            }
+            path->throughput *= eta * eta;
+            if (config.rr != 0 && !updateEtaScale(
+                    static_cast<double>(etaIncident),
+                    static_cast<double>(etaTransmitted), path))
+            {
+                reportDeviceError(deviceError, 1U << 4U);
+                return false;
+            }
+        }
+    }
+    path->throughput *= surface.baseColor;
+    path->previousDelta = 1;
+    path->previousBsdfPdf = 0.0f;
+    return true;
+}
+
+__device__ __noinline__ bool shadeMirrorBody(
+    const renderer::SurfaceEvaluation& surface, const Hit& hit,
+    RenderPath* path, glm::vec3* outgoing)
+{
+    const glm::vec3 geometric = renderer::orientedGeometricNormal(hit);
+    *outgoing = renderer::safeNormalize(path->ray.direction
+        - 2.0f * glm::dot(path->ray.direction, surface.shadingNormal)
+            * surface.shadingNormal, geometric);
+    if (glm::dot(*outgoing, geometric) <= 0.0f)
+    {
+        *outgoing = renderer::safeNormalize(path->ray.direction
+            - 2.0f * glm::dot(path->ray.direction, geometric) * geometric,
+            geometric);
+    }
+    path->throughput *= surface.baseColor;
+    path->previousDelta = 1;
+    path->previousBsdfPdf = 0.0f;
+    return true;
+}
+
+__device__ __noinline__ bool shadeDiffuseBody(const SceneView& scene,
+    const Material* materials, int materialCount, const int* lightIndices,
+    const DeviceConfig& config, int bounce, const Hit& hit,
+    const renderer::SurfaceEvaluation& surface, RenderPath* path,
+    glm::vec3* outgoing, unsigned int* deviceError)
+{
+    if (config.nee != 0)
+    {
+        addDirectLighting(scene, materials, materialCount, lightIndices,
+            config, bounce, hit, surface, path, deviceError);
+    }
+    const glm::vec3 geometric = renderer::orientedGeometricNormal(hit);
+    const float u0 = renderer::randomFloat(config.seed, path->pixelIndex,
+        config.sample, bounce, 16);
+    const float u1 = renderer::randomFloat(config.seed, path->pixelIndex,
+        config.sample, bounce, 17);
+    *outgoing = renderer::cosineHemisphere(surface.shadingNormal, u0, u1);
+    if (!(glm::dot(*outgoing, geometric) > 0.0f))
+    {
+        return false;
+    }
+    path->throughput *= surface.baseColor;
+    path->previousDelta = 0;
+    path->previousBsdfPdf = renderer::cosineHemispherePdf(
+        surface.shadingNormal, *outgoing);
+    return true;
+}
+
+__device__ double russianRouletteProbability(const RenderPath& path)
+{
+    const double maximum = fmax(static_cast<double>(path.throughput.x),
+        fmax(static_cast<double>(path.throughput.y),
+            static_cast<double>(path.throughput.z)));
+    if (!(maximum >= 0.0) || maximum > DBL_MAX
+            || !(path.etaScale > 0.0) || path.etaScale > DBL_MAX)
+    {
+        return -1.0;
+    }
+    const double corrected = maximum == 0.0 ? 0.0
+        : path.etaScale > DBL_MAX / maximum
+            ? DBL_MAX : maximum * path.etaScale;
+    return fmin(0.95, fmax(0.05, corrected));
+}
+
+__device__ __noinline__ bool applyRussianRoulette(
+    const DeviceConfig& config, int bounce, RenderPath* path,
+    unsigned int* deviceError)
+{
+    if (config.rr == 0 || bounce + 1 < config.rrStart)
+    {
+        return true;
+    }
+    const double probability = russianRouletteProbability(*path);
+    if (!(probability > 0.0) || probability > 1.0)
+    {
+        reportDeviceError(deviceError, 1U << 4U);
+        return false;
+    }
+    const float choose = renderer::randomFloat(config.seed,
+        path->pixelIndex, config.sample, bounce,
+        kRussianRouletteDimension);
+    if (config.rrCounters != nullptr)
+    {
+        atomicAdd(config.rrCounters, 1ULL);
+    }
+    if (static_cast<double>(choose) >= probability)
+    {
+        if (config.rrCounters != nullptr)
+        {
+            atomicAdd(config.rrCounters + 1, 1ULL);
+        }
+        return false;
+    }
+
+    if (static_cast<double>(path->throughput.x) / probability > FLT_MAX
+            || static_cast<double>(path->throughput.y) / probability > FLT_MAX
+            || static_cast<double>(path->throughput.z) / probability > FLT_MAX)
+    {
+        reportDeviceError(deviceError, 1U << 4U);
+        return false;
+    }
+    path->throughput = glm::vec3(
+        static_cast<float>(static_cast<double>(path->throughput.x)
+            / probability),
+        static_cast<float>(static_cast<double>(path->throughput.y)
+            / probability),
+        static_cast<float>(static_cast<double>(path->throughput.z)
+            / probability));
+    return true;
+}
+
+__device__ __noinline__ void completeScatteredPath(int index, int bounce,
+    const DeviceConfig& config, const Hit& hit, const glm::vec3& outgoing,
+    RenderPath* paths, int* aliveFlags, glm::vec3* accumulation,
+    RenderPath* path, unsigned int* deviceError)
+{
+    if (!validContribution(path->throughput) || !finiteVector(outgoing)
+            || !(glm::dot(outgoing, outgoing) > 0.0f)
+            || !finiteScalar(path->previousBsdfPdf)
+            || path->previousBsdfPdf < 0.0f)
+    {
+        reportDeviceError(deviceError, 1U << 4U);
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return;
+    }
+    if (path->throughput.x == 0.0f && path->throughput.y == 0.0f
+            && path->throughput.z == 0.0f)
+    {
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return;
+    }
+    if (!applyRussianRoulette(config, bounce, path, deviceError))
+    {
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return;
+    }
+    if (!validContribution(path->throughput))
+    {
+        reportDeviceError(deviceError, 1U << 4U);
+        finishStoredPath(index, paths, aliveFlags, accumulation, path,
+            deviceError);
+        return;
+    }
+    path->previousPosition = hit.position;
+    path->ray.origin = renderer::offsetRayOrigin(hit.position,
+        hit.geometricNormal, outgoing);
+    path->ray.direction = outgoing;
+    path->alive = 1;
+    paths[index] = *path;
+    aliveFlags[index] = 1;
+}
+
+__device__ bool finalDepthTerminates(int index, int bounce,
+    const DeviceConfig& config, RenderPath* paths, int* aliveFlags,
+    glm::vec3* accumulation, RenderPath* path, unsigned int* deviceError)
+{
+    if (bounce + 1 < config.maxDepth)
+    {
+        return false;
+    }
+    // maxDepth counts intersections. Omitting NEE at the last one makes NEE
+    // and BSDF-only modes estimate the same finite path set.
+    finishStoredPath(index, paths, aliveFlags, accumulation, path,
+        deviceError);
+    return true;
+}
+
+__device__ bool validQueueIndex(const int* queueIndices, int queueOffset,
+    int queueCount, int lane, int pathCount, int* index,
+    unsigned int* deviceError)
+{
+    if (lane >= queueCount)
+    {
+        return false;
+    }
+    const long long queuePosition = static_cast<long long>(queueOffset) + lane;
+    if (queueOffset < 0 || queueCount < 0 || queuePosition < 0
+            || queuePosition >= pathCount)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        return false;
+    }
+    *index = queueIndices[static_cast<int>(queuePosition)];
+    if (*index < 0 || *index >= pathCount)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        return false;
+    }
+    return true;
+}
+
 __global__ void shadePaths(SceneView scene, const Material* materials,
     int materialCount, const int* lightIndices, DeviceConfig config,
     int bounce, RenderPath* paths, const Hit* hits, int* aliveFlags,
@@ -891,211 +1448,265 @@ __global__ void shadePaths(SceneView scene, const Material* materials,
     {
         return;
     }
+    RenderPath path;
+    Hit hit;
+    Material material;
+    renderer::SurfaceEvaluation surface;
+    if (prepareSurfacePath(scene, materials, materialCount, config, index,
+            paths, hits, aliveFlags, accumulation, deviceError, &path, &hit,
+            &material, &surface) != SurfacePreparation::Ready)
+    {
+        return;
+    }
+    if (material.emittance > 0.0f)
+    {
+        shadeEmissionBody(scene, config, hit, surface, &path, deviceError);
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    if (finalDepthTerminates(index, bounce, config, paths, aliveFlags,
+            accumulation, &path, deviceError))
+    {
+        return;
+    }
+
+    glm::vec3 outgoing(0.0f);
+    bool scattered = false;
+    if (material.hasRefractive > 0.0f)
+    {
+        scattered = shadeDielectricBody(material, surface, config, bounce,
+            hit, &path, &outgoing, deviceError);
+    }
+    else if (material.hasReflective > 0.0f)
+    {
+        scattered = shadeMirrorBody(surface, hit, &path, &outgoing);
+    }
+    else
+    {
+        scattered = shadeDiffuseBody(scene, materials, materialCount,
+            lightIndices, config, bounce, hit, surface, &path, &outgoing,
+            deviceError);
+    }
+    if (!scattered)
+    {
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    completeScatteredPath(index, bounce, config, hit, outgoing, paths,
+        aliveFlags, accumulation, &path, deviceError);
+}
+
+__global__ void shadeDiffuseQueue(SceneView scene, const Material* materials,
+    int materialCount, const int* lightIndices, DeviceConfig config,
+    int bounce, RenderPath* paths, const Hit* hits, int* aliveFlags,
+    glm::vec3* accumulation, const int* queueIndices, int queueOffset,
+    int queueCount, int pathCount, unsigned int* deviceError)
+{
+    const int lane = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    int index = -1;
+    if (!validQueueIndex(queueIndices, queueOffset, queueCount, lane,
+            pathCount, &index, deviceError))
+    {
+        return;
+    }
+    RenderPath path;
+    Hit hit;
+    Material material;
+    renderer::SurfaceEvaluation surface;
+    if (prepareSurfacePath(scene, materials, materialCount, config, index,
+            paths, hits, aliveFlags, accumulation, deviceError, &path, &hit,
+            &material, &surface) != SurfacePreparation::Ready)
+    {
+        return;
+    }
+    if (material.emittance > 0.0f || material.hasRefractive > 0.0f
+            || material.hasReflective > 0.0f)
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    if (finalDepthTerminates(index, bounce, config, paths, aliveFlags,
+            accumulation, &path, deviceError))
+    {
+        return;
+    }
+    glm::vec3 outgoing(0.0f);
+    if (!shadeDiffuseBody(scene, materials, materialCount, lightIndices,
+            config, bounce, hit, surface, &path, &outgoing, deviceError))
+    {
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    completeScatteredPath(index, bounce, config, hit, outgoing, paths,
+        aliveFlags, accumulation, &path, deviceError);
+}
+
+__global__ void shadeMirrorQueue(SceneView scene, const Material* materials,
+    int materialCount, DeviceConfig config, int bounce, RenderPath* paths,
+    const Hit* hits, int* aliveFlags, glm::vec3* accumulation,
+    const int* queueIndices, int queueOffset, int queueCount, int pathCount,
+    unsigned int* deviceError)
+{
+    const int lane = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    int index = -1;
+    if (!validQueueIndex(queueIndices, queueOffset, queueCount, lane,
+            pathCount, &index, deviceError))
+    {
+        return;
+    }
+    RenderPath path;
+    Hit hit;
+    Material material;
+    renderer::SurfaceEvaluation surface;
+    if (prepareSurfacePath(scene, materials, materialCount, config, index,
+            paths, hits, aliveFlags, accumulation, deviceError, &path, &hit,
+            &material, &surface) != SurfacePreparation::Ready)
+    {
+        return;
+    }
+    if (material.emittance > 0.0f || material.hasRefractive > 0.0f
+            || !(material.hasReflective > 0.0f))
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    if (finalDepthTerminates(index, bounce, config, paths, aliveFlags,
+            accumulation, &path, deviceError))
+    {
+        return;
+    }
+    glm::vec3 outgoing(0.0f);
+    shadeMirrorBody(surface, hit, &path, &outgoing);
+    completeScatteredPath(index, bounce, config, hit, outgoing, paths,
+        aliveFlags, accumulation, &path, deviceError);
+}
+
+__global__ void shadeDielectricQueue(SceneView scene,
+    const Material* materials, int materialCount, DeviceConfig config,
+    int bounce, RenderPath* paths, const Hit* hits, int* aliveFlags,
+    glm::vec3* accumulation, const int* queueIndices, int queueOffset,
+    int queueCount, int pathCount, unsigned int* deviceError)
+{
+    const int lane = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    int index = -1;
+    if (!validQueueIndex(queueIndices, queueOffset, queueCount, lane,
+            pathCount, &index, deviceError))
+    {
+        return;
+    }
+    RenderPath path;
+    Hit hit;
+    Material material;
+    renderer::SurfaceEvaluation surface;
+    if (prepareSurfacePath(scene, materials, materialCount, config, index,
+            paths, hits, aliveFlags, accumulation, deviceError, &path, &hit,
+            &material, &surface) != SurfacePreparation::Ready)
+    {
+        return;
+    }
+    if (material.emittance > 0.0f || !(material.hasRefractive > 0.0f))
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    if (finalDepthTerminates(index, bounce, config, paths, aliveFlags,
+            accumulation, &path, deviceError))
+    {
+        return;
+    }
+    glm::vec3 outgoing(0.0f);
+    if (!shadeDielectricBody(material, surface, config, bounce, hit, &path,
+            &outgoing, deviceError))
+    {
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    completeScatteredPath(index, bounce, config, hit, outgoing, paths,
+        aliveFlags, accumulation, &path, deviceError);
+}
+
+__global__ void shadeEmissionQueue(SceneView scene, const Material* materials,
+    int materialCount, DeviceConfig config, RenderPath* paths,
+    const Hit* hits, int* aliveFlags, glm::vec3* accumulation,
+    const int* queueIndices, int queueOffset, int queueCount, int pathCount,
+    unsigned int* deviceError)
+{
+    const int lane = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    int index = -1;
+    if (!validQueueIndex(queueIndices, queueOffset, queueCount, lane,
+            pathCount, &index, deviceError))
+    {
+        return;
+    }
+    RenderPath path;
+    Hit hit;
+    Material material;
+    renderer::SurfaceEvaluation surface;
+    if (prepareSurfacePath(scene, materials, materialCount, config, index,
+            paths, hits, aliveFlags, accumulation, deviceError, &path, &hit,
+            &material, &surface) != SurfacePreparation::Ready)
+    {
+        return;
+    }
+    if (!(material.emittance > 0.0f))
+    {
+        reportDeviceError(deviceError, kQueueErrorBit);
+        finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+            deviceError);
+        return;
+    }
+    shadeEmissionBody(scene, config, hit, surface, &path, deviceError);
+    finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+        deviceError);
+}
+
+__global__ void shadeTerminalQueue(int materialCount, RenderPath* paths,
+    const Hit* hits, int* aliveFlags, glm::vec3* accumulation,
+    const int* queueIndices, int queueOffset, int queueCount, int pathCount,
+    unsigned int* deviceError)
+{
+    const int lane = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    int index = -1;
+    if (!validQueueIndex(queueIndices, queueOffset, queueCount, lane,
+            pathCount, &index, deviceError))
+    {
+        return;
+    }
     RenderPath path = paths[index];
     if (path.alive == 0)
     {
+        reportDeviceError(deviceError, kQueueErrorBit);
         aliveFlags[index] = 0;
         return;
     }
     const Hit hit = hits[index];
-    if (hit.t < 0.0f)
+    if (!(hit.t < 0.0f))
     {
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-    if (!finiteScalar(hit.t) || hit.materialId < 0
-            || hit.materialId >= materialCount || !finiteVector(hit.position)
-            || !finiteVector(hit.geometricNormal)
-            || !finiteVector(hit.shadingNormal))
-    {
-        reportDeviceError(deviceError, 1U << 3U);
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-
-    const Material material = materials[hit.materialId];
-    const renderer::SurfaceEvaluation surface = renderer::evaluateSurface(
-        scene, material, hit);
-    if (!validContribution(surface.baseColor)
-            || !validContribution(surface.emission)
-            || !finiteVector(surface.shadingNormal)
-            || !(glm::dot(surface.shadingNormal, surface.shadingNormal) > 0.0f))
-    {
-        reportDeviceError(deviceError, 1U << 3U);
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-
-    if (config.debugMode != static_cast<int>(RendererDebugMode::None))
-    {
-        if (config.debugMode == static_cast<int>(RendererDebugMode::Normals))
+        if (finiteScalar(hit.t) && hit.materialId >= 0
+                && hit.materialId < materialCount
+                && finiteVector(hit.position)
+                && finiteVector(hit.geometricNormal)
+                && finiteVector(hit.shadingNormal))
         {
-            path.radiance = 0.5f * surface.shadingNormal + glm::vec3(0.5f);
-        }
-        else if (config.debugMode == static_cast<int>(RendererDebugMode::Uv))
-        {
-            path.radiance = glm::vec3(hit.uv.x - floorf(hit.uv.x),
-                hit.uv.y - floorf(hit.uv.y), 0.0f);
+            reportDeviceError(deviceError, kQueueErrorBit);
         }
         else
         {
-            const float mappedDepth = hit.t / (1.0f + hit.t);
-            path.radiance = glm::vec3(mappedDepth);
+            reportDeviceError(deviceError, 1U << 3U);
         }
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
     }
-
-    if (material.emittance > 0.0f)
-    {
-        float weight = 1.0f;
-        if (config.nee != 0 && path.previousDelta == 0)
-        {
-            const float lightPdf = lightPdfForHit(scene, config, path, hit);
-            weight = renderer::powerHeuristic(path.previousBsdfPdf, lightPdf);
-        }
-        const glm::vec3 emission = path.throughput * surface.emission * weight;
-        if (validContribution(emission))
-        {
-            path.radiance += emission;
-        }
-        else
-        {
-            reportDeviceError(deviceError, 1U << 1U);
-        }
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-
-    const bool dielectric = material.hasRefractive > 0.0f;
-    const bool mirror = !dielectric && material.hasReflective > 0.0f;
-    if (bounce + 1 >= config.maxDepth)
-    {
-        // maxDepth counts intersections. Omitting NEE at the last one makes
-        // NEE and BSDF-only modes estimate the same finite path set.
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-
-    if (!dielectric && !mirror && config.nee != 0)
-    {
-        addDirectLighting(scene, materials, materialCount, lightIndices,
-            config, bounce, hit, surface, &path, deviceError);
-    }
-
-    const glm::vec3 geometric = renderer::orientedGeometricNormal(hit);
-    glm::vec3 outgoing(0.0f);
-    if (dielectric)
-    {
-        const float etaIncident = hit.frontFace ? 1.0f
-            : fmaxf(material.indexOfRefraction, 1.0e-4f);
-        const float etaTransmitted = hit.frontFace
-            ? fmaxf(material.indexOfRefraction, 1.0e-4f) : 1.0f;
-        const float cosine = fmaxf(0.0f,
-            glm::dot(-path.ray.direction, geometric));
-        bool totalInternalReflection = false;
-        const float fresnel = renderer::dielectricFresnel(cosine,
-            etaIncident, etaTransmitted, &totalInternalReflection);
-        const float choose = renderer::randomFloat(config.seed,
-            path.pixelIndex, config.sample, bounce, 24);
-        if (totalInternalReflection || choose < fresnel)
-        {
-            outgoing = renderer::safeNormalize(path.ray.direction
-                - 2.0f * glm::dot(path.ray.direction, geometric) * geometric,
-                geometric);
-        }
-        else
-        {
-            if (!renderer::refractDirection(path.ray.direction, geometric,
-                    etaIncident, etaTransmitted, &outgoing))
-            {
-                outgoing = renderer::safeNormalize(path.ray.direction
-                    - 2.0f * glm::dot(path.ray.direction, geometric) * geometric,
-                    geometric);
-            }
-            else
-            {
-                const float eta = etaIncident / etaTransmitted;
-                path.throughput *= eta * eta;
-            }
-        }
-        path.throughput *= surface.baseColor;
-        path.previousDelta = 1;
-        path.previousBsdfPdf = 0.0f;
-    }
-    else if (mirror)
-    {
-        outgoing = renderer::safeNormalize(path.ray.direction
-            - 2.0f * glm::dot(path.ray.direction, surface.shadingNormal)
-                * surface.shadingNormal, geometric);
-        if (glm::dot(outgoing, geometric) <= 0.0f)
-        {
-            outgoing = renderer::safeNormalize(path.ray.direction
-                - 2.0f * glm::dot(path.ray.direction, geometric) * geometric,
-                geometric);
-        }
-        path.throughput *= surface.baseColor;
-        path.previousDelta = 1;
-        path.previousBsdfPdf = 0.0f;
-    }
-    else
-    {
-        const float u0 = renderer::randomFloat(config.seed, path.pixelIndex,
-            config.sample, bounce, 16);
-        const float u1 = renderer::randomFloat(config.seed, path.pixelIndex,
-            config.sample, bounce, 17);
-        outgoing = renderer::cosineHemisphere(surface.shadingNormal, u0, u1);
-        if (!(glm::dot(outgoing, geometric) > 0.0f))
-        {
-            finishPath(&path, accumulation, deviceError);
-            paths[index] = path;
-            aliveFlags[index] = 0;
-            return;
-        }
-        path.throughput *= surface.baseColor;
-        path.previousDelta = 0;
-        path.previousBsdfPdf = renderer::cosineHemispherePdf(
-            surface.shadingNormal, outgoing);
-    }
-
-    if (!validContribution(path.throughput) || !finiteVector(outgoing)
-            || !(glm::dot(outgoing, outgoing) > 0.0f)
-            || !finiteScalar(path.previousBsdfPdf)
-            || path.previousBsdfPdf < 0.0f)
-    {
-        reportDeviceError(deviceError, 1U << 4U);
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-    if (path.throughput.x == 0.0f && path.throughput.y == 0.0f
-            && path.throughput.z == 0.0f)
-    {
-        finishPath(&path, accumulation, deviceError);
-        paths[index] = path;
-        aliveFlags[index] = 0;
-        return;
-    }
-    path.previousPosition = hit.position;
-    path.ray.origin = renderer::offsetRayOrigin(hit.position,
-        hit.geometricNormal, outgoing);
-    path.ray.direction = outgoing;
-    path.alive = 1;
-    paths[index] = path;
-    aliveFlags[index] = 1;
+    finishStoredPath(index, paths, aliveFlags, accumulation, &path,
+        deviceError);
 }
 
 __global__ void scatterAlivePaths(const RenderPath* input,
@@ -1373,9 +1984,342 @@ __global__ void rendererUnitValidation(int* failures)
     *failures = result;
 }
 
+__device__ bool validationVectorNear(const glm::vec3& actual,
+    const glm::vec3& expected, float tolerance)
+{
+    return fabsf(actual.x - expected.x) <= tolerance
+        && fabsf(actual.y - expected.y) <= tolerance
+        && fabsf(actual.z - expected.z) <= tolerance;
+}
+
+__device__ bool validationUnitColor(const glm::vec3& value)
+{
+    return finiteVector(value) && value.x >= 0.0f && value.x <= 1.0f
+        && value.y >= 0.0f && value.y <= 1.0f
+        && value.z >= 0.0f && value.z <= 1.0f;
+}
+
+__global__ void proceduralTextureUnitValidation(int* failures)
+{
+    if (blockIdx.x != 0 || threadIdx.x != 0)
+    {
+        return;
+    }
+    int result = 0;
+    constexpr float tolerance = 2.0e-6f;
+
+    const glm::vec3 marbleOrigin = renderer::evaluateProceduralColor(2,
+        glm::vec2(0.0f));
+    if (!validationVectorNear(marbleOrigin,
+            glm::vec3(0.7715625f, 0.6825f, 0.481875f), tolerance))
+    {
+        result |= 1 << 0;
+    }
+
+    const glm::vec3 cellsOrigin = renderer::evaluateProceduralColor(3,
+        glm::vec2(0.0f));
+    const glm::vec3 cellsCenter = renderer::evaluateProceduralColor(3,
+        glm::vec2(0.0625f, 0.0625f));
+    if (!validationVectorNear(cellsOrigin,
+            glm::vec3(0.025f, 0.035f, 0.05f), tolerance)
+            || !validationVectorNear(cellsCenter,
+                glm::vec3(0.86f, 0.57f, 0.14f), tolerance))
+    {
+        result |= 1 << 1;
+    }
+
+    bool distinct = false;
+    for (int y = -32; y <= 32; ++y)
+    {
+        for (int x = -32; x <= 32; ++x)
+        {
+            const glm::vec2 variedUv(
+                static_cast<float>(17 * x + 5 * y) / 37.0f,
+                static_cast<float>(19 * y - 3 * x) / 41.0f);
+            const glm::vec3 marble = renderer::evaluateProceduralColor(2,
+                variedUv);
+            const glm::vec3 cells = renderer::evaluateProceduralColor(3,
+                variedUv);
+            if (!validationUnitColor(marble) || !validationUnitColor(cells))
+            {
+                result |= 1 << 2;
+            }
+            const glm::vec3 difference = marble - cells;
+            distinct = distinct || glm::dot(difference, difference) > 1.0e-8f;
+        }
+    }
+    if (!distinct)
+    {
+        result |= 1 << 2;
+    }
+
+    for (int j = -16; j <= 16; ++j)
+    {
+        for (int i = -16; i <= 16; ++i)
+        {
+            const glm::vec2 dyadicUv(static_cast<float>(i) / 32.0f,
+                static_cast<float>(j) / 32.0f);
+            const glm::vec2 shiftedUv = dyadicUv + glm::vec2(-2.0f, 3.0f);
+            if (renderer::evaluateProceduralColor(2, dyadicUv)
+                        != renderer::evaluateProceduralColor(2, shiftedUv)
+                    || renderer::evaluateProceduralColor(3, dyadicUv)
+                        != renderer::evaluateProceduralColor(3, shiftedUv))
+            {
+                result |= 1 << 3;
+            }
+        }
+    }
+
+    SceneView emptyScene;
+    Hit hit;
+    hit.t = 1.0f;
+    hit.materialId = 0;
+    hit.position = glm::vec3(0.0f);
+    hit.geometricNormal = glm::vec3(0.0f, 1.0f, 0.0f);
+    hit.shadingNormal = hit.geometricNormal;
+    hit.dpdu = glm::vec3(1.0f, 0.0f, 0.0f);
+    hit.dpdv = glm::vec3(0.0f, 0.0f, 1.0f);
+    hit.uv = glm::vec2(0.75f, 0.0f);
+    hit.frontFace = true;
+    Material material;
+    material.color = glm::vec3(0.2f, 0.4f, 0.8f);
+    material.checkerScale = 2.0f;
+    bool surfaceMatches = true;
+    for (int proceduralId = 2; proceduralId <= 3; ++proceduralId)
+    {
+        material.procedural = proceduralId;
+        const renderer::SurfaceEvaluation surface = renderer::evaluateSurface(
+            emptyScene, material, hit);
+        const glm::vec3 expected = material.color
+            * renderer::evaluateProceduralColor(proceduralId, hit.uv);
+        surfaceMatches = surfaceMatches
+            && validationVectorNear(surface.baseColor, expected, tolerance);
+    }
+    if (!surfaceMatches)
+    {
+        // At this UV and scale the checker branch would multiply by 0.18, so
+        // this also proves IDs 2/3 are consumed only by their own evaluator.
+        result |= 1 << 4;
+    }
+    *failures = result;
+}
+
+__global__ void russianRouletteUnitValidation(int* failures,
+    unsigned long long* diagnostics)
+{
+    if (blockIdx.x != 0 || threadIdx.x != 0)
+    {
+        return;
+    }
+    int result = 0;
+
+    RenderPath low;
+    low.throughput = glm::vec3(1.0e-4f, 2.0e-4f, 3.0e-4f);
+    low.etaScale = 1.0;
+    RenderPath high;
+    high.throughput = glm::vec3(20.0f, 1.0f, 0.5f);
+    high.etaScale = 1.0;
+    if (russianRouletteProbability(low) != 0.05
+            || russianRouletteProbability(high) != 0.95)
+    {
+        result |= 1 << 0;
+    }
+
+    RenderPath compensated;
+    compensated.throughput = glm::vec3(0.8f);
+    compensated.throughput *= 4.0f;
+    compensated.etaScale = 1.0;
+    RenderPath wideCompensation;
+    wideCompensation.throughput = glm::vec3(1.0f);
+    wideCompensation.etaScale = DBL_MAX * 0.5;
+    if (!updateEtaScale(2.0, 1.0, &compensated)
+            || fabs(russianRouletteProbability(compensated) - 0.8)
+                > 1.0e-6
+            || !updateEtaScale(1.0, static_cast<double>(FLT_MAX),
+                &wideCompensation)
+            || wideCompensation.etaScale != DBL_MAX
+            || russianRouletteProbability(wideCompensation) != 0.95)
+    {
+        result |= 1 << 1;
+    }
+
+    diagnostics[0] = 0ULL;
+    diagnostics[1] = 0ULL;
+    DeviceConfig config;
+    config.rr = 1;
+    config.rrStart = 1;
+    config.sample = 29;
+    config.rrCounters = diagnostics;
+    RenderPath templatePath;
+    templatePath.throughput = glm::vec3(0.5f, 0.25f, 0.125f);
+    templatePath.radiance = glm::vec3(0.125f, 0.25f, 0.5f);
+    templatePath.pixelIndex = 17;
+    templatePath.previousBsdfPdf = 0.375f;
+    templatePath.etaScale = 1.0;
+
+    unsigned long long surviveSeed = 0ULL;
+    unsigned long long killSeed = 0ULL;
+    for (unsigned long long seed = 1ULL;
+            seed < 100000ULL && (surviveSeed == 0ULL || killSeed == 0ULL);
+            ++seed)
+    {
+        const float choose = renderer::randomFloat(seed,
+            templatePath.pixelIndex, config.sample, 0,
+            kRussianRouletteDimension);
+        if (choose < 0.5f && surviveSeed == 0ULL)
+        {
+            surviveSeed = seed;
+        }
+        if (choose >= 0.5f && killSeed == 0ULL)
+        {
+            killSeed = seed;
+        }
+    }
+    RenderPath survived = templatePath;
+    config.seed = surviveSeed;
+    const bool didSurvive = surviveSeed != 0ULL
+        && applyRussianRoulette(config, 0, &survived, nullptr);
+    RenderPath killed = templatePath;
+    config.seed = killSeed;
+    const bool didKill = killSeed != 0ULL
+        && !applyRussianRoulette(config, 0, &killed, nullptr);
+    if (!didSurvive || !didKill || diagnostics[0] != 2ULL
+            || diagnostics[1] != 1ULL)
+    {
+        result |= 1 << 2;
+    }
+    const glm::vec3 expectedRadiance = templatePath.radiance;
+    const glm::vec3 expectedMean = 0.5f * survived.throughput;
+    RenderPath fractional = templatePath;
+    fractional.throughput = glm::vec3(0.3f, 0.1f, 0.05f);
+    fractional.etaScale = 1.1;
+    const glm::vec3 fractionalOriginal = fractional.throughput;
+    const double fractionalProbability = russianRouletteProbability(fractional);
+    config.rrCounters = nullptr;
+    unsigned long long fractionalSeed = 0ULL;
+    for (unsigned long long seed = 1ULL; seed < 100000ULL; ++seed)
+    {
+        if (static_cast<double>(renderer::randomFloat(seed,
+                fractional.pixelIndex, config.sample, 0,
+                kRussianRouletteDimension)) < fractionalProbability)
+        {
+            fractionalSeed = seed;
+            break;
+        }
+    }
+    config.seed = fractionalSeed;
+    const bool fractionalSurvived = fractionalSeed != 0ULL
+        && applyRussianRoulette(config, 0, &fractional, nullptr);
+    const double fractionalError = fmax(fabs(
+        fractionalProbability * static_cast<double>(fractional.throughput.x)
+            - static_cast<double>(fractionalOriginal.x)), fmax(fabs(
+        fractionalProbability * static_cast<double>(fractional.throughput.y)
+            - static_cast<double>(fractionalOriginal.y)), fabs(
+        fractionalProbability * static_cast<double>(fractional.throughput.z)
+            - static_cast<double>(fractionalOriginal.z))));
+    if (survived.radiance != expectedRadiance
+            || killed.radiance != expectedRadiance
+            || survived.previousBsdfPdf != templatePath.previousBsdfPdf
+            || killed.previousBsdfPdf != templatePath.previousBsdfPdf
+            || glm::length(expectedMean - templatePath.throughput) > 1.0e-6f
+            || !fractionalSurvived
+            || fractional.radiance != expectedRadiance
+            || fractionalError > 1.0e-6)
+    {
+        result |= 1 << 3;
+    }
+
+    const unsigned long long testedBefore = diagnostics[0];
+    RenderPath ineligible = templatePath;
+    config.rrStart = 2;
+    config.rrCounters = diagnostics;
+    if (!applyRussianRoulette(config, 0, &ineligible, nullptr)
+            || ineligible.throughput != templatePath.throughput
+            || ineligible.radiance != templatePath.radiance
+            || diagnostics[0] != testedBefore)
+    {
+        result |= 1 << 4;
+    }
+
+    diagnostics[0] = 0ULL;
+    diagnostics[1] = 0ULL;
+    config.rr = 1;
+    config.rrStart = 1;
+    config.rrCounters = diagnostics;
+    config.debugMode = static_cast<int>(RendererDebugMode::None);
+    config.maxDepth = 1;
+    SceneView exclusionScene;
+    Material exclusionMaterials[1];
+    RenderPath exclusionPaths[1];
+    Hit exclusionHits[1];
+    int exclusionFlags[1] = {1};
+    glm::vec3 exclusionAccumulation[1] = {glm::vec3(0.0f)};
+
+    exclusionPaths[0] = RenderPath{};
+    exclusionPaths[0].pixelIndex = 0;
+    exclusionPaths[0].alive = 1;
+    finishStoredPath(0, exclusionPaths, exclusionFlags,
+        exclusionAccumulation, &exclusionPaths[0], nullptr);
+    bool exclusionsPassed = exclusionPaths[0].alive == 0
+        && exclusionFlags[0] == 0 && diagnostics[0] == 0ULL
+        && diagnostics[1] == 0ULL;
+
+    exclusionPaths[0] = RenderPath{};
+    exclusionPaths[0].pixelIndex = 0;
+    exclusionPaths[0].alive = 1;
+    exclusionHits[0] = Hit{};
+    exclusionHits[0].t = 1.0f;
+    exclusionHits[0].materialId = 0;
+    exclusionHits[0].position = glm::vec3(0.0f);
+    exclusionHits[0].geometricNormal = glm::vec3(0.0f, 1.0f, 0.0f);
+    exclusionHits[0].shadingNormal = exclusionHits[0].geometricNormal;
+    exclusionHits[0].frontFace = true;
+    exclusionFlags[0] = 1;
+    exclusionAccumulation[0] = glm::vec3(0.0f);
+    config.debugMode = static_cast<int>(RendererDebugMode::Normals);
+    RenderPath debugPath;
+    Hit debugHit;
+    Material debugMaterial;
+    renderer::SurfaceEvaluation debugSurface;
+    exclusionsPassed = exclusionsPassed
+        && prepareSurfacePath(exclusionScene, exclusionMaterials, 1, config,
+            0, exclusionPaths, exclusionHits, exclusionFlags,
+            exclusionAccumulation, nullptr, &debugPath, &debugHit,
+            &debugMaterial, &debugSurface) == SurfacePreparation::Finished
+        && exclusionPaths[0].alive == 0 && exclusionFlags[0] == 0
+        && diagnostics[0] == 0ULL && diagnostics[1] == 0ULL;
+
+    exclusionPaths[0] = RenderPath{};
+    exclusionPaths[0].pixelIndex = 0;
+    exclusionPaths[0].alive = 1;
+    exclusionFlags[0] = 1;
+    exclusionAccumulation[0] = glm::vec3(0.0f);
+    config.debugMode = static_cast<int>(RendererDebugMode::None);
+    RenderPath finalPath;
+    Hit finalHit;
+    Material finalMaterial;
+    renderer::SurfaceEvaluation finalSurface;
+    const bool finalPrepared = prepareSurfacePath(exclusionScene,
+        exclusionMaterials, 1, config, 0, exclusionPaths, exclusionHits,
+        exclusionFlags, exclusionAccumulation, nullptr, &finalPath,
+        &finalHit, &finalMaterial, &finalSurface)
+        == SurfacePreparation::Ready;
+    const bool finalTerminated = finalPrepared && finalDepthTerminates(0, 0,
+        config, exclusionPaths, exclusionFlags, exclusionAccumulation,
+        &finalPath, nullptr);
+    exclusionsPassed = exclusionsPassed && finalTerminated
+        && exclusionPaths[0].alive == 0 && exclusionFlags[0] == 0
+        && diagnostics[0] == 0ULL && diagnostics[1] == 0ULL;
+    if (!exclusionsPassed)
+    {
+        result |= 1 << 5;
+    }
+    *failures = result;
+}
+
 int blockCount(int count)
 {
-    return (count + kThreads - 1) / kThreads;
+    return count / kThreads + (count % kThreads != 0 ? 1 : 0);
 }
 
 void requireInitialized()
@@ -1392,11 +2336,422 @@ void validateConfig(const RendererConfig& config)
     {
         throw std::invalid_argument("renderer maxDepth must be in [1, 4096]");
     }
+    if (config.rrStart < 1 || config.rrStart > 4096)
+    {
+        throw std::invalid_argument("renderer rrStart must be in [1, 4096]");
+    }
+    if (config.wavefront && config.sort)
+    {
+        throw std::invalid_argument("--sort on requires --wavefront off");
+    }
     if (static_cast<std::uint32_t>(config.debug)
             > static_cast<std::uint32_t>(RendererDebugMode::Depth))
     {
         throw std::invalid_argument("renderer debug mode is invalid");
     }
+}
+
+struct MaterialQueueBuffers
+{
+    int* keys = nullptr;
+    int* indices = nullptr;
+    int* counts = nullptr;
+    int* offsets = nullptr;
+    int* cursors = nullptr;
+    int* liveCount = nullptr;
+    int capacity = 0;
+};
+
+void enqueueMaterialQueues(const RenderPath* paths, const Hit* hits,
+    int count, int materialCount, int* aliveFlags,
+    const MaterialQueueBuffers& buffers, unsigned int* deviceError,
+    cis565::scan::ScanWorkspace& scanWorkspace)
+{
+    if (count < 0 || materialCount < 0 || buffers.capacity < count
+            || materialCount == std::numeric_limits<int>::max())
+    {
+        throw std::invalid_argument("invalid material queue dimensions");
+    }
+    const int keyCount = materialCount + 1;
+    if (buffers.counts == nullptr || buffers.offsets == nullptr
+            || buffers.cursors == nullptr || buffers.liveCount == nullptr
+            || aliveFlags == nullptr
+            || deviceError == nullptr
+            || (count > 0 && (paths == nullptr || hits == nullptr
+                || buffers.keys == nullptr || buffers.indices == nullptr)))
+    {
+        throw std::invalid_argument("material queue buffers are incomplete");
+    }
+    if (static_cast<std::size_t>(keyCount) > scanWorkspace.capacity())
+    {
+        throw std::invalid_argument("material queue scan workspace is too small");
+    }
+
+    const std::size_t queueBytes = static_cast<std::size_t>(keyCount)
+        * sizeof(int);
+    cudaCheck(cudaMemset(buffers.counts, 0, queueBytes),
+        "clear material queue counts");
+    cudaCheck(cudaMemset(buffers.cursors, 0, queueBytes),
+        "clear material queue cursors");
+    cudaCheck(cudaMemset(buffers.liveCount, 0, sizeof(int)),
+        "clear material queue live-input counter");
+    if (count > 0)
+    {
+        classifyMaterialQueues<<<blockCount(count), kThreads>>>(paths, hits,
+            count, materialCount, buffers.capacity, buffers.keys,
+            buffers.counts, buffers.liveCount, aliveFlags, deviceError);
+        launchCheck("classify material queues");
+    }
+    const cis565::scan::Config scanConfig{};
+    cis565::scan::scanDevice(static_cast<std::size_t>(keyCount),
+        buffers.offsets, buffers.counts, scanConfig, scanWorkspace);
+    validateMaterialQueuePrefix<<<blockCount(keyCount), kThreads>>>(
+        buffers.counts, buffers.offsets, keyCount, buffers.capacity,
+        deviceError);
+    launchCheck("validate material queue prefix");
+    if (count > 0)
+    {
+        scatterMaterialQueueIndices<<<blockCount(count), kThreads>>>(
+            buffers.keys, count, materialCount, buffers.capacity,
+            buffers.counts, buffers.offsets, buffers.cursors,
+            buffers.indices, deviceError);
+        launchCheck("scatter material queue indices");
+    }
+}
+
+int downloadAndValidateMaterialQueues(const MaterialQueueBuffers& buffers,
+    int materialCount, int incomingCount, std::vector<int>* hostCounts,
+    std::vector<int>* hostOffsets)
+{
+    if (materialCount < 0 || materialCount == std::numeric_limits<int>::max()
+            || incomingCount < 0 || hostCounts == nullptr
+            || hostOffsets == nullptr)
+    {
+        throw std::invalid_argument("invalid material queue download request");
+    }
+    const int keyCount = materialCount + 1;
+    hostCounts->resize(static_cast<std::size_t>(keyCount));
+    hostOffsets->resize(static_cast<std::size_t>(keyCount));
+    const std::size_t bytes = static_cast<std::size_t>(keyCount) * sizeof(int);
+    cudaCheck(cudaMemcpy(hostCounts->data(), buffers.counts, bytes,
+        cudaMemcpyDeviceToHost), "download material queue counts");
+    cudaCheck(cudaMemcpy(hostOffsets->data(), buffers.offsets, bytes,
+        cudaMemcpyDeviceToHost), "download material queue offsets");
+    int logicalLiveCount = 0;
+    cudaCheck(cudaMemcpy(&logicalLiveCount, buffers.liveCount, sizeof(int),
+        cudaMemcpyDeviceToHost),
+        "download material queue logical live-input count");
+    if (logicalLiveCount < 0 || logicalLiveCount > incomingCount)
+    {
+        throw std::runtime_error(
+            "GPU returned an invalid logical live-input count");
+    }
+
+    long long prefix = 0;
+    for (int key = 0; key < keyCount; ++key)
+    {
+        const int count = (*hostCounts)[static_cast<std::size_t>(key)];
+        const int offset = (*hostOffsets)[static_cast<std::size_t>(key)];
+        if (count < 0 || count > buffers.capacity || offset < 0
+                || offset > buffers.capacity || offset != prefix)
+        {
+            throw std::runtime_error(
+                "GPU returned an invalid material queue prefix");
+        }
+        prefix += count;
+        if (prefix > buffers.capacity || prefix > incomingCount)
+        {
+            throw std::runtime_error(
+                "GPU returned an overflowing material queue total");
+        }
+    }
+    if (prefix != logicalLiveCount)
+    {
+        throw std::runtime_error(
+            "material queue total does not match logical live inputs");
+    }
+    return static_cast<int>(prefix);
+}
+
+struct QueueSelfCheckResult
+{
+    bool passed = false;
+    std::string detail;
+};
+
+QueueSelfCheckResult validateMaterialQueueConstruction()
+{
+    constexpr int kMaximumPaths = 2145;
+    constexpr int kMaximumKeys = kMaximumPaths + 1;
+    const int sizes[] = {0, 1, 255, 256, 257, 513, 2145};
+    const char* scenarios[] = {"dead", "miss", "uniform", "mixed",
+        "unused"};
+
+    DeviceBuffer<RenderPath> paths(kMaximumPaths,
+        "allocate queue validation paths");
+    DeviceBuffer<Hit> hits(kMaximumPaths,
+        "allocate queue validation hits");
+    DeviceBuffer<int> flags(kMaximumPaths,
+        "allocate queue validation flags");
+    DeviceBuffer<int> keys(kMaximumPaths,
+        "allocate queue validation keys");
+    DeviceBuffer<int> indices(kMaximumPaths,
+        "allocate queue validation indices");
+    DeviceBuffer<int> counts(kMaximumKeys,
+        "allocate queue validation counts");
+    DeviceBuffer<int> offsets(kMaximumKeys,
+        "allocate queue validation offsets");
+    DeviceBuffer<int> cursors(kMaximumKeys,
+        "allocate queue validation cursors");
+    DeviceBuffer<int> liveCount(1,
+        "allocate queue validation live-input count");
+    DeviceBuffer<unsigned int> error(1,
+        "allocate queue validation error");
+    cis565::scan::ScanWorkspace workspace(kMaximumKeys,
+        cis565::scan::Config{});
+
+    int completedCases = 0;
+    for (const int size : sizes)
+    {
+        const int materialCount = std::max(7, size);
+        const int keyCount = materialCount + 1;
+        for (int scenario = 0; scenario < 5; ++scenario)
+        {
+            std::vector<RenderPath> hostPaths(static_cast<std::size_t>(size));
+            std::vector<Hit> hostHits(static_cast<std::size_t>(size));
+            std::vector<int> expectedKeys(static_cast<std::size_t>(size), -1);
+            std::vector<int> expectedCounts(
+                static_cast<std::size_t>(keyCount), 0);
+            bool expectsInvalidHit = false;
+            for (int index = 0; index < size; ++index)
+            {
+                RenderPath path;
+                path.pixelIndex = index;
+                path.alive = 1;
+                path.throughput = glm::vec3(1.0f + 0.001f * index);
+                path.radiance = glm::vec3(0.002f * index);
+                path.etaScale = 1.0 + 0.0001 * index;
+                hostPaths[static_cast<std::size_t>(index)] = path;
+
+                Hit hit;
+                hit.t = 1.0f + 0.001f * index;
+                hit.materialId = 0;
+                hit.position = glm::vec3(static_cast<float>(index), 0.0f,
+                    -1.0f);
+                hit.geometricNormal = glm::vec3(0.0f, 1.0f, 0.0f);
+                hit.shadingNormal = hit.geometricNormal;
+                hostHits[static_cast<std::size_t>(index)] = hit;
+
+                int expected = 0;
+                if (scenario == 0)
+                {
+                    hostPaths[static_cast<std::size_t>(index)].alive = 0;
+                    expected = -1;
+                }
+                else if (scenario == 1)
+                {
+                    hostHits[static_cast<std::size_t>(index)].t = -1.0f;
+                    expected = materialCount;
+                }
+                else if (scenario == 2)
+                {
+                    hostHits[static_cast<std::size_t>(index)].materialId = 2;
+                    expected = 2;
+                }
+                else if (scenario == 3)
+                {
+                    switch (index % 6)
+                    {
+                    case 0:
+                        hostPaths[static_cast<std::size_t>(index)].alive = 0;
+                        expected = -1;
+                        break;
+                    case 1:
+                        hostHits[static_cast<std::size_t>(index)].t = -1.0f;
+                        expected = materialCount;
+                        break;
+                    case 2:
+                        expected = 0;
+                        break;
+                    case 3:
+                        hostHits[static_cast<std::size_t>(index)].materialId = 2;
+                        expected = 2;
+                        break;
+                    case 4:
+                        hostHits[static_cast<std::size_t>(index)].materialId =
+                            materialCount - 1;
+                        expected = materialCount - 1;
+                        break;
+                    default:
+                        hostHits[static_cast<std::size_t>(index)].materialId =
+                            materialCount + 4;
+                        expected = materialCount;
+                        expectsInvalidHit = true;
+                        break;
+                    }
+                }
+                else
+                {
+                    const int materialId = index % 2 == 0
+                        ? 0 : materialCount - 1;
+                    hostHits[static_cast<std::size_t>(index)].materialId =
+                        materialId;
+                    expected = materialId;
+                }
+                expectedKeys[static_cast<std::size_t>(index)] = expected;
+                if (expected >= 0)
+                {
+                    ++expectedCounts[static_cast<std::size_t>(expected)];
+                }
+            }
+
+            if (size > 0)
+            {
+                cudaCheck(cudaMemcpy(paths.get(), hostPaths.data(),
+                    static_cast<std::size_t>(size) * sizeof(RenderPath),
+                    cudaMemcpyHostToDevice),
+                    "upload queue validation paths");
+                cudaCheck(cudaMemcpy(hits.get(), hostHits.data(),
+                    static_cast<std::size_t>(size) * sizeof(Hit),
+                    cudaMemcpyHostToDevice),
+                    "upload queue validation hits");
+                cudaCheck(cudaMemset(flags.get(), 0x7f,
+                    static_cast<std::size_t>(size) * sizeof(int)),
+                    "poison queue validation flags");
+                cudaCheck(cudaMemset(indices.get(), 0xff,
+                    static_cast<std::size_t>(size) * sizeof(int)),
+                    "poison queue validation indices");
+            }
+            cudaCheck(cudaMemset(error.get(), 0, sizeof(unsigned int)),
+                "clear queue validation error");
+
+            const MaterialQueueBuffers buffers{keys.get(), indices.get(),
+                counts.get(), offsets.get(), cursors.get(), liveCount.get(),
+                size};
+            enqueueMaterialQueues(paths.get(), hits.get(), size,
+                materialCount, flags.get(), buffers, error.get(), workspace);
+            std::vector<int> hostCounts;
+            std::vector<int> hostOffsets;
+            const int total = downloadAndValidateMaterialQueues(buffers,
+                materialCount, size, &hostCounts, &hostOffsets);
+
+            unsigned int errorBits = 0;
+            cudaCheck(cudaMemcpy(&errorBits, error.get(), sizeof(errorBits),
+                cudaMemcpyDeviceToHost),
+                "download queue validation error");
+            const unsigned int expectedError = expectsInvalidHit
+                ? (1U << 3U) : 0U;
+            if ((errorBits & kQueueErrorBit) != 0U
+                    || (errorBits & ~kQueueErrorBit) != expectedError)
+            {
+                std::ostringstream detail;
+                detail << "size " << size << ' ' << scenarios[scenario]
+                    << " produced error bits 0x" << std::hex << errorBits;
+                return {false, detail.str()};
+            }
+            if (hostCounts != expectedCounts)
+            {
+                return {false, "queue histogram mismatch at size "
+                    + std::to_string(size) + " " + scenarios[scenario]};
+            }
+            int expectedTotal = 0;
+            for (const int expected : expectedKeys)
+            {
+                expectedTotal += expected >= 0 ? 1 : 0;
+            }
+            if (total != expectedTotal)
+            {
+                return {false, "queue live-total mismatch at size "
+                    + std::to_string(size) + " " + scenarios[scenario]};
+            }
+
+            std::vector<int> hostFlags(static_cast<std::size_t>(size));
+            std::vector<int> hostKeys(static_cast<std::size_t>(size));
+            std::vector<int> hostIndices(static_cast<std::size_t>(size));
+            std::vector<int> hostCursors(static_cast<std::size_t>(keyCount));
+            std::vector<RenderPath> roundTripPaths(
+                static_cast<std::size_t>(size));
+            if (size > 0)
+            {
+                cudaCheck(cudaMemcpy(hostFlags.data(), flags.get(),
+                    static_cast<std::size_t>(size) * sizeof(int),
+                    cudaMemcpyDeviceToHost),
+                    "download queue validation flags");
+                cudaCheck(cudaMemcpy(hostKeys.data(), keys.get(),
+                    static_cast<std::size_t>(size) * sizeof(int),
+                    cudaMemcpyDeviceToHost),
+                    "download queue validation keys");
+                cudaCheck(cudaMemcpy(hostIndices.data(), indices.get(),
+                    static_cast<std::size_t>(size) * sizeof(int),
+                    cudaMemcpyDeviceToHost),
+                    "download queue validation indices");
+                cudaCheck(cudaMemcpy(roundTripPaths.data(), paths.get(),
+                    static_cast<std::size_t>(size) * sizeof(RenderPath),
+                    cudaMemcpyDeviceToHost),
+                    "download queue validation paths");
+            }
+            cudaCheck(cudaMemcpy(hostCursors.data(), cursors.get(),
+                static_cast<std::size_t>(keyCount) * sizeof(int),
+                cudaMemcpyDeviceToHost),
+                "download queue validation cursors");
+            if (hostKeys != expectedKeys || hostCursors != expectedCounts)
+            {
+                return {false, "queue classification/cursor mismatch at size "
+                    + std::to_string(size) + " " + scenarios[scenario]};
+            }
+            for (const int flag : hostFlags)
+            {
+                if (flag != 0)
+                {
+                    return {false, "queue classification left a live flag set"};
+                }
+            }
+            if (size > 0 && std::memcmp(roundTripPaths.data(),
+                    hostPaths.data(), static_cast<std::size_t>(size)
+                        * sizeof(RenderPath)) != 0)
+            {
+                return {false, "queue classification modified a path record"};
+            }
+
+            std::vector<int> seen(static_cast<std::size_t>(size), 0);
+            for (int key = 0; key < keyCount; ++key)
+            {
+                const int begin = hostOffsets[static_cast<std::size_t>(key)];
+                const int end = begin + hostCounts[static_cast<std::size_t>(key)];
+                for (int position = begin; position < end; ++position)
+                {
+                    const int original = hostIndices[
+                        static_cast<std::size_t>(position)];
+                    if (original < 0 || original >= size
+                            || expectedKeys[static_cast<std::size_t>(original)]
+                                != key
+                            || ++seen[static_cast<std::size_t>(original)] != 1)
+                    {
+                        return {false, "queue membership is not unique/exact"};
+                    }
+                }
+            }
+            for (int index = 0; index < size; ++index)
+            {
+                const int expectedSeen = expectedKeys[
+                    static_cast<std::size_t>(index)] >= 0 ? 1 : 0;
+                if (seen[static_cast<std::size_t>(index)] != expectedSeen)
+                {
+                    return {false, "queue omitted or duplicated a live input"};
+                }
+            }
+            for (int position = total; position < size; ++position)
+            {
+                if (hostIndices[static_cast<std::size_t>(position)] != -1)
+                {
+                    return {false, "queue scatter wrote beyond its live total"};
+                }
+            }
+            ++completedCases;
+        }
+    }
+    return {true, std::to_string(completedCases)
+        + " GPU queue cases conserved exact live membership"};
 }
 
 void radixSortPairs(RenderPath*& paths, RenderPath*& scratchPaths,
@@ -1494,6 +2849,8 @@ bool sameConfig(const RendererConfig& a, const RendererConfig& b)
     return a.seed == b.seed && a.maxDepth == b.maxDepth && a.aa == b.aa
         && a.nee == b.nee && a.useBvh == b.useBvh
         && a.compact == b.compact && a.sort == b.sort
+        && a.wavefront == b.wavefront && a.rr == b.rr
+        && a.rrStart == b.rrStart
         && a.benchmark == b.benchmark && a.debug == b.debug;
 }
 
@@ -1752,6 +3109,11 @@ void pathtraceInit(Scene* scene)
     {
         throw std::overflow_error("camera resolution exceeds renderer limits");
     }
+    if (scene->materials.size() > static_cast<std::size_t>(
+            std::numeric_limits<int>::max() - 1))
+    {
+        throw std::overflow_error("scene material count exceeds renderer limits");
+    }
     for (const Geom& geometry : scene->geoms)
     {
         if (geometry.materialid < 0
@@ -1792,6 +3154,23 @@ void pathtraceInit(Scene* scene)
         allocateDevice(&g_state.flags, pixels, "allocate compaction flags");
         allocateDevice(&g_state.offsets, pixels, "allocate compaction offsets");
         allocateDevice(&g_state.deviceCount, 1, "allocate device path count");
+        allocateDevice(&g_state.queueKeys, pixels,
+            "allocate material queue keys");
+        allocateDevice(&g_state.queueIndices, pixels,
+            "allocate material queue indices");
+        g_state.queueKeyCount = static_cast<int>(scene->materials.size()) + 1;
+        allocateDevice(&g_state.queueCounts, g_state.queueKeyCount,
+            "allocate material queue counts");
+        allocateDevice(&g_state.queueOffsets, g_state.queueKeyCount,
+            "allocate material queue offsets");
+        allocateDevice(&g_state.queueCursors, g_state.queueKeyCount,
+            "allocate material queue cursors");
+        g_state.queueHostCounts.assign(
+            static_cast<std::size_t>(g_state.queueKeyCount), 0);
+        g_state.queueHostOffsets.assign(
+            static_cast<std::size_t>(g_state.queueKeyCount), 0);
+        allocateDevice(&g_state.rrCounters, 2,
+            "allocate Russian roulette counters");
         allocateDevice(&g_state.deviceError, 1, "allocate device error flag");
         allocateDevice(&g_state.diagnosticMinimum, 1,
             "allocate BVH diagnostic minimum");
@@ -1800,6 +3179,29 @@ void pathtraceInit(Scene* scene)
         cudaCheck(cudaMemset(g_state.accumulation, 0,
             static_cast<std::size_t>(pixels) * sizeof(glm::vec3)),
             "clear accumulation image");
+        cudaCheck(cudaMemset(g_state.deviceCount, 0, sizeof(int)),
+            "initialize device path count");
+        const std::size_t queueStateBytes = static_cast<std::size_t>(
+            g_state.queueKeyCount) * sizeof(int);
+        cudaCheck(cudaMemset(g_state.queueCounts, 0, queueStateBytes),
+            "initialize material queue counts");
+        cudaCheck(cudaMemset(g_state.queueOffsets, 0, queueStateBytes),
+            "initialize material queue offsets");
+        cudaCheck(cudaMemset(g_state.queueCursors, 0, queueStateBytes),
+            "initialize material queue cursors");
+        cudaCheck(cudaMemset(g_state.rrCounters, 0,
+            2 * sizeof(unsigned long long)),
+            "initialize Russian roulette counters");
+        cudaCheck(cudaMemset(g_state.deviceError, 0, sizeof(unsigned int)),
+            "initialize renderer device error");
+        const unsigned long long initialDiagnosticMinimum = ~0ULL;
+        const BvhDiagnostic initialDiagnosticRecord{};
+        cudaCheck(cudaMemcpy(g_state.diagnosticMinimum,
+            &initialDiagnosticMinimum, sizeof(initialDiagnosticMinimum),
+            cudaMemcpyHostToDevice), "initialize BVH diagnostic minimum");
+        cudaCheck(cudaMemcpy(g_state.diagnosticRecord,
+            &initialDiagnosticRecord, sizeof(initialDiagnosticRecord),
+            cudaMemcpyHostToDevice), "initialize BVH diagnostic record");
 
         allocateDevice(&g_state.geoms, scene->geoms.size(),
             "allocate geometry");
@@ -1853,13 +3255,22 @@ void pathtraceInit(Scene* scene)
         g_state.deviceView.texels = g_state.texels;
         g_state.deviceView.texelCount = static_cast<int>(scene->texels.size());
 
+        const std::size_t scanCapacity = std::max<std::size_t>(
+            static_cast<std::size_t>(pixels),
+            static_cast<std::size_t>(g_state.queueKeyCount));
         g_state.scanWorkspace = std::make_unique<cis565::scan::ScanWorkspace>(
-            pixels, cis565::scan::Config{});
+            scanCapacity, cis565::scan::Config{});
         createEventPair(&g_state.intersectionEvents);
         createEventPair(&g_state.sortEvents);
         createEventPair(&g_state.shadeEvents);
         createEventPair(&g_state.compactionEvents);
         createEventPair(&g_state.countEvents);
+        createEventPair(&g_state.queueEvents);
+        createEventPair(&g_state.diffuseEvents);
+        createEventPair(&g_state.mirrorEvents);
+        createEventPair(&g_state.dielectricEvents);
+        createEventPair(&g_state.emissionEvents);
+        createEventPair(&g_state.terminalEvents);
         createEventPair(&g_state.overallEvents);
         g_state.initialized = true;
         cudaCheck(cudaDeviceSynchronize(), "finish path tracer initialization");
@@ -1878,6 +3289,12 @@ void pathtraceFree()
     destroyEventPair(&g_state.shadeEvents);
     destroyEventPair(&g_state.compactionEvents);
     destroyEventPair(&g_state.countEvents);
+    destroyEventPair(&g_state.queueEvents);
+    destroyEventPair(&g_state.diffuseEvents);
+    destroyEventPair(&g_state.mirrorEvents);
+    destroyEventPair(&g_state.dielectricEvents);
+    destroyEventPair(&g_state.emissionEvents);
+    destroyEventPair(&g_state.terminalEvents);
     destroyEventPair(&g_state.overallEvents);
     g_state.scanWorkspace.reset();
     cudaFree(g_state.accumulation);
@@ -1895,6 +3312,12 @@ void pathtraceFree()
     cudaFree(g_state.flags);
     cudaFree(g_state.offsets);
     cudaFree(g_state.deviceCount);
+    cudaFree(g_state.queueKeys);
+    cudaFree(g_state.queueIndices);
+    cudaFree(g_state.queueCounts);
+    cudaFree(g_state.queueOffsets);
+    cudaFree(g_state.queueCursors);
+    cudaFree(g_state.rrCounters);
     cudaFree(g_state.deviceError);
     cudaFree(g_state.diagnosticMinimum);
     cudaFree(g_state.diagnosticRecord);
@@ -1911,6 +3334,9 @@ void pathtraceResetAccumulation()
     g_state.completedSamples = 0;
     g_state.benchmarkRows.clear();
     g_state.benchmarkSummary = RendererBenchmarkSummary{};
+    cudaCheck(cudaMemset(g_state.rrCounters, 0,
+        2 * sizeof(unsigned long long)),
+        "reset Russian roulette counters");
 }
 
 void pathtraceRunSample()
@@ -1966,35 +3392,253 @@ void pathtraceRunSample()
             row.intersectionMs = endTimedStage(g_state.intersectionEvents);
         }
 
-        if (g_config.benchmark)
+        const int materialCount = static_cast<int>(
+            g_state.scene->materials.size());
+        if (!g_config.wavefront)
         {
-            beginTimedStage(g_state.sortEvents);
-        }
-        if (g_config.sort)
-        {
-            radixSortPairs(currentPaths, scratchPaths, currentHits,
-                scratchHits, launchedPaths,
-                static_cast<int>(g_state.scene->materials.size()));
-        }
-        if (g_config.benchmark)
-        {
-            row.sortMs = endTimedStage(g_state.sortEvents);
+            if (g_config.benchmark)
+            {
+                beginTimedStage(g_state.sortEvents);
+            }
+            if (g_config.sort)
+            {
+                radixSortPairs(currentPaths, scratchPaths, currentHits,
+                    scratchHits, launchedPaths, materialCount);
+            }
+            if (g_config.benchmark)
+            {
+                row.sortMs = endTimedStage(g_state.sortEvents);
+            }
         }
 
         if (g_config.benchmark)
         {
-            beginTimedStage(g_state.shadeEvents);
+            cudaCheck(cudaMemset(g_state.rrCounters, 0,
+                2 * sizeof(unsigned long long)),
+                "clear bounce Russian roulette counters");
         }
-        shadePaths<<<blocks, kThreads>>>(g_state.deviceView,
-            g_state.materials,
-            static_cast<int>(g_state.scene->materials.size()),
-            g_state.lightIndices, config, bounce, currentPaths, currentHits,
-            g_state.flags, g_state.accumulation, launchedPaths,
-            g_state.deviceError);
-        launchCheck("shade path bounce");
+
+        if (!g_config.wavefront)
+        {
+            if (g_config.benchmark)
+            {
+                beginTimedStage(g_state.shadeEvents);
+            }
+            shadePaths<<<blocks, kThreads>>>(g_state.deviceView,
+                g_state.materials, materialCount, g_state.lightIndices,
+                config, bounce, currentPaths, currentHits, g_state.flags,
+                g_state.accumulation, launchedPaths, g_state.deviceError);
+            launchCheck("shade path bounce");
+            if (g_config.benchmark)
+            {
+                row.shadeMs = endTimedStage(g_state.shadeEvents);
+            }
+        }
+        else
+        {
+            const MaterialQueueBuffers queueBuffers{
+                g_state.queueKeys, g_state.queueIndices,
+                g_state.queueCounts, g_state.queueOffsets,
+                g_state.queueCursors, g_state.deviceCount,
+                g_state.pixelCount};
+            if (g_config.benchmark)
+            {
+                beginTimedStage(g_state.queueEvents);
+            }
+            enqueueMaterialQueues(currentPaths, currentHits, launchedPaths,
+                materialCount, g_state.flags, queueBuffers,
+                g_state.deviceError, *g_state.scanWorkspace);
+            if (g_config.benchmark)
+            {
+                row.queueMs = endTimedStage(g_state.queueEvents);
+            }
+
+            const auto downloadStart = std::chrono::steady_clock::now();
+            const int liveInputCount = downloadAndValidateMaterialQueues(
+                queueBuffers, materialCount, launchedPaths,
+                &g_state.queueHostCounts, &g_state.queueHostOffsets);
+            const auto downloadEnd = std::chrono::steady_clock::now();
+            if ((g_config.compact || g_config.benchmark || bounce == 0)
+                    && liveInputCount != logicalActive)
+            {
+                throw std::runtime_error(
+                    "material queues do not conserve the logical live input");
+            }
+            logicalActive = liveInputCount;
+            row.activeBefore = liveInputCount;
+            if (g_config.benchmark)
+            {
+                row.queueHostMs += std::chrono::duration<double, std::milli>(
+                    downloadEnd - downloadStart).count();
+            }
+
+            for (int materialId = 0; materialId < materialCount;
+                    ++materialId)
+            {
+                const int queueCount = g_state.queueHostCounts[
+                    static_cast<std::size_t>(materialId)];
+                if (queueCount == 0)
+                {
+                    continue;
+                }
+                const int queueOffset = g_state.queueHostOffsets[
+                    static_cast<std::size_t>(materialId)];
+                const int queueBlocks = blockCount(queueCount);
+                const Material& material = g_state.scene->materials[
+                    static_cast<std::size_t>(materialId)];
+                ++row.kernelDispatches;
+
+                if (material.emittance > 0.0f)
+                {
+                    row.queuedEmission += queueCount;
+                    if (g_config.benchmark)
+                    {
+                        beginTimedStage(g_state.emissionEvents);
+                    }
+                    const auto dispatchStart = std::chrono::steady_clock::now();
+                    shadeEmissionQueue<<<queueBlocks, kThreads>>>(
+                        g_state.deviceView, g_state.materials, materialCount,
+                        config, currentPaths, currentHits, g_state.flags,
+                        g_state.accumulation, g_state.queueIndices,
+                        queueOffset, queueCount, launchedPaths,
+                        g_state.deviceError);
+                    launchCheck("shade emission material queue");
+                    const auto dispatchEnd = std::chrono::steady_clock::now();
+                    if (g_config.benchmark)
+                    {
+                        row.queueHostMs += std::chrono::duration<double,
+                            std::milli>(dispatchEnd - dispatchStart).count();
+                        row.emissionMs += endTimedStage(
+                            g_state.emissionEvents);
+                    }
+                }
+                else if (material.hasRefractive > 0.0f)
+                {
+                    row.queuedDielectric += queueCount;
+                    if (g_config.benchmark)
+                    {
+                        beginTimedStage(g_state.dielectricEvents);
+                    }
+                    const auto dispatchStart = std::chrono::steady_clock::now();
+                    shadeDielectricQueue<<<queueBlocks, kThreads>>>(
+                        g_state.deviceView, g_state.materials, materialCount,
+                        config, bounce, currentPaths, currentHits,
+                        g_state.flags, g_state.accumulation,
+                        g_state.queueIndices, queueOffset, queueCount,
+                        launchedPaths, g_state.deviceError);
+                    launchCheck("shade dielectric material queue");
+                    const auto dispatchEnd = std::chrono::steady_clock::now();
+                    if (g_config.benchmark)
+                    {
+                        row.queueHostMs += std::chrono::duration<double,
+                            std::milli>(dispatchEnd - dispatchStart).count();
+                        row.dielectricMs += endTimedStage(
+                            g_state.dielectricEvents);
+                    }
+                }
+                else if (material.hasReflective > 0.0f)
+                {
+                    row.queuedMirror += queueCount;
+                    if (g_config.benchmark)
+                    {
+                        beginTimedStage(g_state.mirrorEvents);
+                    }
+                    const auto dispatchStart = std::chrono::steady_clock::now();
+                    shadeMirrorQueue<<<queueBlocks, kThreads>>>(
+                        g_state.deviceView, g_state.materials, materialCount,
+                        config, bounce, currentPaths, currentHits,
+                        g_state.flags, g_state.accumulation,
+                        g_state.queueIndices, queueOffset, queueCount,
+                        launchedPaths, g_state.deviceError);
+                    launchCheck("shade mirror material queue");
+                    const auto dispatchEnd = std::chrono::steady_clock::now();
+                    if (g_config.benchmark)
+                    {
+                        row.queueHostMs += std::chrono::duration<double,
+                            std::milli>(dispatchEnd - dispatchStart).count();
+                        row.mirrorMs += endTimedStage(g_state.mirrorEvents);
+                    }
+                }
+                else
+                {
+                    row.queuedDiffuse += queueCount;
+                    if (g_config.benchmark)
+                    {
+                        beginTimedStage(g_state.diffuseEvents);
+                    }
+                    const auto dispatchStart = std::chrono::steady_clock::now();
+                    shadeDiffuseQueue<<<queueBlocks, kThreads>>>(
+                        g_state.deviceView, g_state.materials, materialCount,
+                        g_state.lightIndices, config, bounce, currentPaths,
+                        currentHits, g_state.flags, g_state.accumulation,
+                        g_state.queueIndices, queueOffset, queueCount,
+                        launchedPaths, g_state.deviceError);
+                    launchCheck("shade diffuse material queue");
+                    const auto dispatchEnd = std::chrono::steady_clock::now();
+                    if (g_config.benchmark)
+                    {
+                        row.queueHostMs += std::chrono::duration<double,
+                            std::milli>(dispatchEnd - dispatchStart).count();
+                        row.diffuseMs += endTimedStage(g_state.diffuseEvents);
+                    }
+                }
+            }
+
+            const int terminalCount = g_state.queueHostCounts[
+                static_cast<std::size_t>(materialCount)];
+            if (terminalCount > 0)
+            {
+                const int terminalOffset = g_state.queueHostOffsets[
+                    static_cast<std::size_t>(materialCount)];
+                row.queuedTerminal = terminalCount;
+                ++row.kernelDispatches;
+                if (g_config.benchmark)
+                {
+                    beginTimedStage(g_state.terminalEvents);
+                }
+                const auto dispatchStart = std::chrono::steady_clock::now();
+                shadeTerminalQueue<<<blockCount(terminalCount), kThreads>>>(
+                    materialCount, currentPaths, currentHits, g_state.flags,
+                    g_state.accumulation, g_state.queueIndices,
+                    terminalOffset, terminalCount, launchedPaths,
+                    g_state.deviceError);
+                launchCheck("shade terminal material queue");
+                const auto dispatchEnd = std::chrono::steady_clock::now();
+                if (g_config.benchmark)
+                {
+                    row.queueHostMs += std::chrono::duration<double,
+                        std::milli>(dispatchEnd - dispatchStart).count();
+                    row.terminalMs += endTimedStage(g_state.terminalEvents);
+                }
+            }
+            const long long scheduled = static_cast<long long>(
+                row.queuedDiffuse) + row.queuedMirror
+                + row.queuedDielectric + row.queuedEmission
+                + row.queuedTerminal;
+            if (scheduled != liveInputCount)
+            {
+                throw std::runtime_error(
+                    "material queue dispatch does not conserve live inputs");
+            }
+            row.shadeMs = row.diffuseMs + row.mirrorMs + row.dielectricMs
+                + row.emissionMs + row.terminalMs;
+        }
+
         if (g_config.benchmark)
         {
-            row.shadeMs = endTimedStage(g_state.shadeEvents);
+            unsigned long long rrCounts[2] = {0ULL, 0ULL};
+            cudaCheck(cudaMemcpy(rrCounts, g_state.rrCounters,
+                sizeof(rrCounts), cudaMemcpyDeviceToHost),
+                "download Russian roulette diagnostics");
+            if (rrCounts[1] > rrCounts[0]
+                    || rrCounts[0] > static_cast<unsigned long long>(
+                        launchedPaths))
+            {
+                throw std::runtime_error(
+                    "GPU returned invalid Russian roulette diagnostics");
+            }
+            row.rrTested = rrCounts[0];
+            row.rrTerminated = rrCounts[1];
         }
 
         if (g_config.compact)
@@ -2183,6 +3827,48 @@ RendererValidationReport pathtraceValidate()
     const std::uint64_t savedSamples = g_state.completedSamples;
     const std::vector<RendererBenchmarkRow> savedRows = g_state.benchmarkRows;
     const RendererBenchmarkSummary savedSummary = g_state.benchmarkSummary;
+    const std::vector<int> savedQueueHostCounts = g_state.queueHostCounts;
+    const std::vector<int> savedQueueHostOffsets = g_state.queueHostOffsets;
+    const int savedGuiTracedDepth = g_guiData != nullptr
+        ? g_guiData->TracedDepth : 0;
+    const int savedDiagnosticMode = g_state.diagnosticMode;
+    const unsigned long long savedDiagnosticTarget = g_state.diagnosticTarget;
+    unsigned long long savedDiagnosticMinimum = ~0ULL;
+    BvhDiagnostic savedDiagnosticRecord;
+    unsigned long long savedRrCounters[2] = {0ULL, 0ULL};
+    unsigned int savedDeviceError = 0U;
+    int savedDeviceCount = 0;
+    std::vector<int> savedQueueCounts(
+        static_cast<std::size_t>(g_state.queueKeyCount));
+    std::vector<int> savedQueueOffsets(
+        static_cast<std::size_t>(g_state.queueKeyCount));
+    std::vector<int> savedQueueCursors(
+        static_cast<std::size_t>(g_state.queueKeyCount));
+    cudaCheck(cudaMemcpy(&savedDiagnosticMinimum, g_state.diagnosticMinimum,
+        sizeof(savedDiagnosticMinimum), cudaMemcpyDeviceToHost),
+        "save BVH diagnostic minimum");
+    cudaCheck(cudaMemcpy(&savedDiagnosticRecord, g_state.diagnosticRecord,
+        sizeof(savedDiagnosticRecord), cudaMemcpyDeviceToHost),
+        "save BVH diagnostic record");
+    cudaCheck(cudaMemcpy(savedRrCounters, g_state.rrCounters,
+        sizeof(savedRrCounters), cudaMemcpyDeviceToHost),
+        "save Russian roulette counters");
+    cudaCheck(cudaMemcpy(&savedDeviceError, g_state.deviceError,
+        sizeof(savedDeviceError), cudaMemcpyDeviceToHost),
+        "save renderer device error");
+    cudaCheck(cudaMemcpy(&savedDeviceCount, g_state.deviceCount,
+        sizeof(savedDeviceCount), cudaMemcpyDeviceToHost),
+        "save renderer device count");
+    const std::size_t savedQueueBytes = savedQueueCounts.size() * sizeof(int);
+    cudaCheck(cudaMemcpy(savedQueueCounts.data(), g_state.queueCounts,
+        savedQueueBytes, cudaMemcpyDeviceToHost),
+        "save material queue counts");
+    cudaCheck(cudaMemcpy(savedQueueOffsets.data(), g_state.queueOffsets,
+        savedQueueBytes, cudaMemcpyDeviceToHost),
+        "save material queue offsets");
+    cudaCheck(cudaMemcpy(savedQueueCursors.data(), g_state.queueCursors,
+        savedQueueBytes, cudaMemcpyDeviceToHost),
+        "save material queue cursors");
     std::vector<glm::vec3> savedAccumulation;
     pathtraceDownloadAccumulation(savedAccumulation);
 
@@ -2193,20 +3879,100 @@ RendererValidationReport pathtraceValidate()
     };
     const auto restore = [&]()
     {
-        g_state.diagnosticMode = 0;
-        g_state.diagnosticTarget = ~0ULL;
+        cudaCheck(cudaMemcpy(g_state.diagnosticMinimum,
+            &savedDiagnosticMinimum, sizeof(savedDiagnosticMinimum),
+            cudaMemcpyHostToDevice), "restore BVH diagnostic minimum");
+        cudaCheck(cudaMemcpy(g_state.diagnosticRecord, &savedDiagnosticRecord,
+            sizeof(savedDiagnosticRecord), cudaMemcpyHostToDevice),
+            "restore BVH diagnostic record");
+        cudaCheck(cudaMemcpy(g_state.rrCounters, savedRrCounters,
+            sizeof(savedRrCounters), cudaMemcpyHostToDevice),
+            "restore Russian roulette counters");
+        cudaCheck(cudaMemcpy(g_state.deviceError, &savedDeviceError,
+            sizeof(savedDeviceError), cudaMemcpyHostToDevice),
+            "restore renderer device error");
+        cudaCheck(cudaMemcpy(g_state.deviceCount, &savedDeviceCount,
+            sizeof(savedDeviceCount), cudaMemcpyHostToDevice),
+            "restore renderer device count");
+        cudaCheck(cudaMemcpy(g_state.queueCounts, savedQueueCounts.data(),
+            savedQueueBytes, cudaMemcpyHostToDevice),
+            "restore material queue counts");
+        cudaCheck(cudaMemcpy(g_state.queueOffsets, savedQueueOffsets.data(),
+            savedQueueBytes, cudaMemcpyHostToDevice),
+            "restore material queue offsets");
+        cudaCheck(cudaMemcpy(g_state.queueCursors, savedQueueCursors.data(),
+            savedQueueBytes, cudaMemcpyHostToDevice),
+            "restore material queue cursors");
+        g_state.diagnosticMode = savedDiagnosticMode;
+        g_state.diagnosticTarget = savedDiagnosticTarget;
         g_config = savedConfig;
         pathtraceUploadAccumulation(savedAccumulation, savedSamples);
         g_state.benchmarkRows = savedRows;
         g_state.benchmarkSummary = savedSummary;
+        g_state.queueHostCounts = savedQueueHostCounts;
+        g_state.queueHostOffsets = savedQueueHostOffsets;
+        if (g_guiData != nullptr)
+        {
+            g_guiData->TracedDepth = savedGuiTracedDepth;
+        }
     };
 
     try
     {
+        bool rrBoundsValidated = true;
+        for (const int invalidStart : {0, 4097})
+        {
+            RendererConfig invalid = savedConfig;
+            invalid.rr = false;
+            invalid.rrStart = invalidStart;
+            try
+            {
+                validateConfig(invalid);
+                rrBoundsValidated = false;
+            }
+            catch (const std::invalid_argument&)
+            {
+            }
+        }
+        RendererConfig validLargeStart = savedConfig;
+        validLargeStart.sort = false;
+        validLargeStart.rr = false;
+        validLargeStart.maxDepth = 1;
+        validLargeStart.rrStart = 4096;
+        try
+        {
+            validateConfig(validLargeStart);
+        }
+        catch (...)
+        {
+            rrBoundsValidated = false;
+        }
+        addCheck("rr_config_bounds", rrBoundsValidated,
+            "rrStart is always validated in [1,4096] and may exceed maxDepth");
+
+        bool waveSortRejected = false;
+        RendererConfig invalidWaveSort = savedConfig;
+        invalidWaveSort.wavefront = true;
+        invalidWaveSort.sort = true;
+        try
+        {
+            validateConfig(invalidWaveSort);
+        }
+        catch (const std::invalid_argument& error)
+        {
+            waveSortRejected = std::string(error.what())
+                == "--sort on requires --wavefront off";
+        }
+        addCheck("wavefront_sort_rejection", waveSortRejected,
+            "wavefront plus material sort returns the actionable CLI error");
+
         RendererConfig referenceConfig = savedConfig;
         referenceConfig.benchmark = false;
         referenceConfig.compact = true;
         referenceConfig.sort = false;
+        referenceConfig.wavefront = false;
+        referenceConfig.rr = false;
+        referenceConfig.rrStart = 3;
         referenceConfig.useBvh = false;
         referenceConfig.debug = RendererDebugMode::None;
 
@@ -2232,6 +3998,83 @@ RendererValidationReport pathtraceValidate()
         const std::vector<glm::vec3> sorted = renderOne(candidateConfig);
         addCheck("material_sort_equivalence", exactAccumulation(reference, sorted),
             "raw float sums for material sort on/off");
+
+        candidateConfig = referenceConfig;
+        candidateConfig.wavefront = true;
+        const std::vector<glm::vec3> wavefront = renderOne(candidateConfig);
+        addCheck("wavefront_equivalence",
+            exactAccumulation(reference, wavefront),
+            "raw float sums for unified and exact-material queue scheduling");
+
+        candidateConfig.compact = false;
+        const std::vector<glm::vec3> wavefrontUncompacted = renderOne(
+            candidateConfig);
+        addCheck("wavefront_uncompacted_equivalence",
+            exactAccumulation(reference, wavefrontUncompacted),
+            "queue scheduling preserves raw sums without path compaction");
+
+        RendererConfig depthOneLegacy = referenceConfig;
+        depthOneLegacy.maxDepth = 1;
+        depthOneLegacy.rr = false;
+        const std::vector<glm::vec3> depthOneReference = renderOne(
+            depthOneLegacy);
+        RendererConfig depthOneWavefront = depthOneLegacy;
+        depthOneWavefront.wavefront = true;
+        const std::vector<glm::vec3> depthOneCandidate = renderOne(
+            depthOneWavefront);
+        addCheck("wavefront_depth_one_equivalence",
+            exactAccumulation(depthOneReference, depthOneCandidate),
+            "emission-before-depth-cutoff raw equality at depth one");
+
+        RendererConfig depthOneRrLegacy = depthOneLegacy;
+        depthOneRrLegacy.rr = true;
+        depthOneRrLegacy.rrStart = 1;
+        const std::vector<glm::vec3> depthOneRrLegacyResult = renderOne(
+            depthOneRrLegacy);
+        RendererConfig depthOneRrWavefront = depthOneRrLegacy;
+        depthOneRrWavefront.wavefront = true;
+        const std::vector<glm::vec3> depthOneRrWavefrontResult = renderOne(
+            depthOneRrWavefront);
+        addCheck("rr_ineligible_scene_equivalence",
+            exactAccumulation(depthOneReference, depthOneRrLegacyResult)
+                && exactAccumulation(depthOneCandidate,
+                    depthOneRrWavefrontResult),
+            "RR on/off is raw-identical in both schedulers when depth <= rrStart");
+
+        RendererConfig debugLegacy = referenceConfig;
+        debugLegacy.debug = RendererDebugMode::Normals;
+        debugLegacy.rr = false;
+        const std::vector<glm::vec3> debugReference = renderOne(debugLegacy);
+        RendererConfig debugWavefront = debugLegacy;
+        debugWavefront.wavefront = true;
+        const std::vector<glm::vec3> debugCandidate = renderOne(debugWavefront);
+        addCheck("wavefront_debug_equivalence",
+            exactAccumulation(debugReference, debugCandidate),
+            "first-hit debug mode is raw-identical across schedulers");
+
+        RendererConfig rrLegacy = referenceConfig;
+        rrLegacy.rr = true;
+        rrLegacy.rrStart = 1;
+        rrLegacy.maxDepth = std::max(2, rrLegacy.maxDepth);
+        const std::vector<glm::vec3> rrReference = renderOne(rrLegacy);
+        RendererConfig rrWavefront = rrLegacy;
+        rrWavefront.wavefront = true;
+        const std::vector<glm::vec3> rrCandidate = renderOne(rrWavefront);
+        addCheck("wavefront_rr_equivalence",
+            exactAccumulation(rrReference, rrCandidate),
+            "raw float sums use identical RR and original-pixel RNG keys");
+
+        RendererConfig uninstrumented = rrWavefront;
+        uninstrumented.benchmark = false;
+        const std::vector<glm::vec3> uninstrumentedResult = renderOne(
+            uninstrumented);
+        RendererConfig instrumented = uninstrumented;
+        instrumented.benchmark = true;
+        const std::vector<glm::vec3> instrumentedResult = renderOne(
+            instrumented);
+        addCheck("instrumentation_equivalence",
+            exactAccumulation(uninstrumentedResult, instrumentedResult),
+            "benchmark counters and timing do not change sampled transport");
 
         candidateConfig = referenceConfig;
         candidateConfig.useBvh = true;
@@ -2287,22 +4130,17 @@ RendererValidationReport pathtraceValidate()
         addCheck("finite_nonnegative_radiance", finiteAndNonnegative,
             "all reference accumulation components are finite and nonnegative");
 
-        int* deviceFailures = nullptr;
-        allocateDevice(&deviceFailures, 1, "allocate validation result");
+        const QueueSelfCheckResult queueSelfCheck =
+            validateMaterialQueueConstruction();
+        addCheck("wavefront_queue_conservation", queueSelfCheck.passed,
+            queueSelfCheck.detail);
+
+        DeviceBuffer<int> deviceFailures(1, "allocate validation result");
         int failures = 0;
-        try
-        {
-            rendererUnitValidation<<<1, 1>>>(deviceFailures);
-            launchCheck("run renderer GPU unit validation");
-            cudaCheck(cudaMemcpy(&failures, deviceFailures, sizeof(failures),
-                cudaMemcpyDeviceToHost), "download GPU validation result");
-            cudaFree(deviceFailures);
-        }
-        catch (...)
-        {
-            cudaFree(deviceFailures);
-            throw;
-        }
+        rendererUnitValidation<<<1, 1>>>(deviceFailures.get());
+        launchCheck("run renderer GPU unit validation");
+        cudaCheck(cudaMemcpy(&failures, deviceFailures.get(), sizeof(failures),
+            cudaMemcpyDeviceToHost), "download GPU validation result");
         addCheck("fixed_scene_bvh", (failures & 0x3) == 0,
             "hard-coded sphere/triangle brute and BVH closest/any hit");
         addCheck("dielectric_edges", (failures & 0x4c) == 0,
@@ -2322,6 +4160,56 @@ RendererValidationReport pathtraceValidate()
             "constant height retains the normalized interpolated shading normal exactly");
         addCheck("bump_scaled_derivatives", (failures & 0x200) == 0,
             "scaled mesh derivatives produce a finite nontrivial bump normal in the geometric hemisphere");
+
+        DeviceBuffer<int> proceduralFailuresDevice(1,
+            "allocate procedural texture validation result");
+        proceduralTextureUnitValidation<<<1, 1>>>(
+            proceduralFailuresDevice.get());
+        launchCheck("run procedural texture GPU unit validation");
+        int proceduralFailures = 0;
+        cudaCheck(cudaMemcpy(&proceduralFailures,
+            proceduralFailuresDevice.get(), sizeof(proceduralFailures),
+            cudaMemcpyDeviceToHost),
+            "download procedural texture validation result");
+        addCheck("procedural_marble_known_sample",
+            (proceduralFailures & 0x1) == 0,
+            "marble ID 2 matches the authored UV(0,0) RGB sample");
+        addCheck("procedural_cells_known_samples",
+            (proceduralFailures & 0x2) == 0,
+            "cells ID 3 matches authored grout and gold-center RGB samples");
+        addCheck("procedural_dense_range_distinct",
+            (proceduralFailures & 0x4) == 0,
+            "dense varied-UV samples are finite, unit-range, and distinguish both IDs");
+        addCheck("procedural_exact_integer_periodicity",
+            (proceduralFailures & 0x8) == 0,
+            "dyadic UV samples repeat bit-exactly after integer (-2,+3) offsets");
+        addCheck("procedural_surface_multiplication",
+            (proceduralFailures & 0x10) == 0,
+            "evaluateSurface multiplies linear RGB by IDs 2/3 without checker consumption");
+
+        DeviceBuffer<int> rrFailuresDevice(1,
+            "allocate Russian roulette validation result");
+        DeviceBuffer<unsigned long long> rrDiagnosticsDevice(2,
+            "allocate Russian roulette validation diagnostics");
+        russianRouletteUnitValidation<<<1, 1>>>(rrFailuresDevice.get(),
+            rrDiagnosticsDevice.get());
+        launchCheck("run Russian roulette GPU unit validation");
+        int rrFailures = 0;
+        cudaCheck(cudaMemcpy(&rrFailures, rrFailuresDevice.get(),
+            sizeof(rrFailures), cudaMemcpyDeviceToHost),
+            "download Russian roulette validation result");
+        addCheck("rr_probability_clamps", (rrFailures & 0x1) == 0,
+            "actual guarded probability helper clamps corrected beta to [.05,.95]");
+        addCheck("rr_eta_compensation", (rrFailures & 0x2) == 0,
+            "successful refraction beta and inverse eta scale cancel for RR probability");
+        addCheck("rr_deterministic_outcomes", (rrFailures & 0x4) == 0,
+            "dimension-32 tuples deterministically exercise survival and termination counters");
+        addCheck("rr_future_throughput_only", (rrFailures & 0x8) == 0,
+            "survival rescales only future throughput and preserves expected beta");
+        addCheck("rr_eligibility", (rrFailures & 0x10) == 0,
+            "roulette leaves paths and diagnostics untouched before rrStart");
+        addCheck("rr_terminal_exclusions", (rrFailures & 0x20) == 0,
+            "terminal, debug, and final-depth completion leave RR counters at zero");
         restore();
     }
     catch (const std::exception& error)

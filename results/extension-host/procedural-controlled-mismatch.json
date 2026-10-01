@@ -1,0 +1,90 @@
+{
+  "all_checks_passed": true,
+  "comparison_override_was_external_temporary_directory": true,
+  "false_comparison_count": 1,
+  "false_comparison_paths": [
+    "scenes/assets/fluted-body-low.obj"
+  ],
+  "profile_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/cpu-procedural-generation-profile-controlled-mismatch.json",
+  "records": [
+    {
+      "all_checks_passed": true,
+      "checks": {
+        "canonical_sha256_uses_override": true,
+        "canonical_size_uses_override": true,
+        "comparison_boolean_expected": true,
+        "generated_bytes_still_match_tracked_asset": true,
+        "validation_still_passed": true
+      },
+      "expected_byte_identical": false,
+      "relative_path": "scenes/assets/fluted-body-low.obj",
+      "reported_byte_identical": false
+    },
+    {
+      "all_checks_passed": true,
+      "checks": {
+        "canonical_sha256_uses_override": true,
+        "canonical_size_uses_override": true,
+        "comparison_boolean_expected": true,
+        "generated_bytes_still_match_tracked_asset": true,
+        "validation_still_passed": true
+      },
+      "expected_byte_identical": true,
+      "relative_path": "scenes/assets/fluted-body-medium.obj",
+      "reported_byte_identical": true
+    },
+    {
+      "all_checks_passed": true,
+      "checks": {
+        "canonical_sha256_uses_override": true,
+        "canonical_size_uses_override": true,
+        "comparison_boolean_expected": true,
+        "generated_bytes_still_match_tracked_asset": true,
+        "validation_still_passed": true
+      },
+      "expected_byte_identical": true,
+      "relative_path": "scenes/assets/fluted-body-high.obj",
+      "reported_byte_identical": true
+    },
+    {
+      "all_checks_passed": true,
+      "checks": {
+        "canonical_sha256_uses_override": true,
+        "canonical_size_uses_override": true,
+        "comparison_boolean_expected": true,
+        "generated_bytes_still_match_tracked_asset": true,
+        "validation_still_passed": true
+      },
+      "expected_byte_identical": true,
+      "relative_path": "scenes/assets/swept-knot-low.obj",
+      "reported_byte_identical": true
+    },
+    {
+      "all_checks_passed": true,
+      "checks": {
+        "canonical_sha256_uses_override": true,
+        "canonical_size_uses_override": true,
+        "comparison_boolean_expected": true,
+        "generated_bytes_still_match_tracked_asset": true,
+        "validation_still_passed": true
+      },
+      "expected_byte_identical": true,
+      "relative_path": "scenes/assets/swept-knot-medium.obj",
+      "reported_byte_identical": true
+    },
+    {
+      "all_checks_passed": true,
+      "checks": {
+        "canonical_sha256_uses_override": true,
+        "canonical_size_uses_override": true,
+        "comparison_boolean_expected": true,
+        "generated_bytes_still_match_tracked_asset": true,
+        "validation_still_passed": true
+      },
+      "expected_byte_identical": true,
+      "relative_path": "scenes/assets/swept-knot-high.obj",
+      "reported_byte_identical": true
+    }
+  ],
+  "tracked_assets_exactly_unchanged": true
+}

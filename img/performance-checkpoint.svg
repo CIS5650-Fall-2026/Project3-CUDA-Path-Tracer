@@ -3,25 +3,25 @@
 <g font-family="system-ui, sans-serif" fill="#1a2538">
 <text x="28" y="38" font-size="24" font-weight="600">Checkpointing during rendering</text>
 <text x="28" y="67" font-size="14">Three measured repeats; bars show median render-loop ms per sample, whiskers min–max. Lower is faster.</text>
-<path d="M240.00 92 V217" stroke="#dce2ec"/>
-<text x="240.00" y="238" text-anchor="middle" font-size="13">0.00</text>
-<path d="M374.00 92 V217" stroke="#dce2ec"/>
-<text x="374.00" y="238" text-anchor="middle" font-size="13">2.51</text>
-<path d="M508.00 92 V217" stroke="#dce2ec"/>
-<text x="508.00" y="238" text-anchor="middle" font-size="13">5.02</text>
-<path d="M642.00 92 V217" stroke="#dce2ec"/>
-<text x="642.00" y="238" text-anchor="middle" font-size="13">7.52</text>
-<path d="M776.00 92 V217" stroke="#dce2ec"/>
-<text x="776.00" y="238" text-anchor="middle" font-size="13">10.03</text>
-<path d="M910.00 92 V217" stroke="#dce2ec"/>
-<text x="910.00" y="238" text-anchor="middle" font-size="13">12.54</text>
-<text x="226" y="121" text-anchor="end" font-size="14">checkpoint / off</text>
-<rect x="240" y="100" width="585.63" height="29" rx="3" fill="#2166ac"/>
-<path d="M825.49 114 H825.70 M825.49 108 V120 M825.70 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="833.63" y="121" font-size="13">10.961</text>
-<text x="226" y="167" text-anchor="end" font-size="14">checkpoint / on</text>
-<rect x="240" y="146" width="597.64" height="29" rx="3" fill="#ca6e22"/>
-<path d="M834.72 160 H838.21 M834.72 154 V166 M838.21 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="845.64" y="167" font-size="13">11.186</text>
+<path d="M310.00 92 V217" stroke="#dce2ec"/>
+<text x="310.00" y="238" text-anchor="middle" font-size="13">0.00</text>
+<path d="M428.00 92 V217" stroke="#dce2ec"/>
+<text x="428.00" y="238" text-anchor="middle" font-size="13">2.62</text>
+<path d="M546.00 92 V217" stroke="#dce2ec"/>
+<text x="546.00" y="238" text-anchor="middle" font-size="13">5.25</text>
+<path d="M664.00 92 V217" stroke="#dce2ec"/>
+<text x="664.00" y="238" text-anchor="middle" font-size="13">7.87</text>
+<path d="M782.00 92 V217" stroke="#dce2ec"/>
+<text x="782.00" y="238" text-anchor="middle" font-size="13">10.49</text>
+<path d="M900.00 92 V217" stroke="#dce2ec"/>
+<text x="900.00" y="238" text-anchor="middle" font-size="13">13.11</text>
+<text x="296" y="121" text-anchor="end" font-size="14">checkpoint / off</text>
+<rect x="310" y="100" width="517.01" height="29" rx="3" fill="#2166ac"/>
+<path d="M826.33 114 H827.21 M826.33 108 V120 M827.21 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="835.01" y="121" font-size="13">11.492</text>
+<text x="296" y="167" text-anchor="end" font-size="14">checkpoint / on</text>
+<rect x="310" y="146" width="526.31" height="29" rx="3" fill="#ca6e22"/>
+<path d="M832.50 160 H836.79 M832.50 154 V166 M836.79 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="844.31" y="167" font-size="13">11.699</text>
 </g>
 </svg>

@@ -1,0 +1,111 @@
+{
+  "renderer_source_hash": "d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa",
+  "stages": [
+    {
+      "name": "cpu-generation",
+      "command": [
+        "python3",
+        "scripts/generate_assets.py",
+        "--profile",
+        "results/extension-host/procedural-generation.json",
+        "--profile-only"
+      ],
+      "started_utc": "2026-10-01T04:35:39.457161+00:00",
+      "finished_utc": "2026-10-01T04:35:47.921770+00:00",
+      "elapsed_seconds": 8.464578864000032,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/cpu-generation-driver.log"
+    },
+    {
+      "name": "cpu-mesh-load",
+      "command": [
+        "python3",
+        "scripts/profile_mesh_load.py",
+        "--build",
+        "build",
+        "--output",
+        "results/extension-mesh-load"
+      ],
+      "started_utc": "2026-10-01T04:35:47.922133+00:00",
+      "finished_utc": "2026-10-01T04:35:52.066791+00:00",
+      "elapsed_seconds": 4.144646736999675,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/cpu-mesh-load-driver.log"
+    },
+    {
+      "name": "experiments",
+      "command": [
+        "python3",
+        "scripts/run_experiments.py",
+        "--binary",
+        "build/bin/cis565_path_tracer_headless",
+        "--output",
+        "results/extension-experiments"
+      ],
+      "started_utc": "2026-10-01T04:35:52.067134+00:00",
+      "finished_utc": "2026-10-01T04:39:42.542595+00:00",
+      "elapsed_seconds": 230.47545150000042,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/experiments-driver.log"
+    },
+    {
+      "name": "experiment-equivalence",
+      "command": [
+        "python3",
+        "scripts/verify_experiments.py",
+        "results/extension-experiments"
+      ],
+      "started_utc": "2026-10-01T04:39:42.543024+00:00",
+      "finished_utc": "2026-10-01T04:40:10.361543+00:00",
+      "elapsed_seconds": 27.818508370000018,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/experiment-equivalence-driver.log"
+    },
+    {
+      "name": "plots",
+      "command": [
+        "python3",
+        "scripts/plot_experiments.py",
+        "results/extension-experiments",
+        "--procedural-cpu-profile",
+        "results/extension-mesh-load/summary.json"
+      ],
+      "started_utc": "2026-10-01T04:40:10.361986+00:00",
+      "finished_utc": "2026-10-01T04:40:10.897852+00:00",
+      "elapsed_seconds": 0.5358565249998719,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/plots-driver.log"
+    },
+    {
+      "name": "gallery",
+      "command": [
+        "python3",
+        "scripts/render_gallery.py",
+        "--binary",
+        "build/bin/cis565_path_tracer_headless",
+        "--output",
+        "results/extension-gallery"
+      ],
+      "started_utc": "2026-10-01T04:40:10.898215+00:00",
+      "finished_utc": "2026-10-01T04:50:25.747605+00:00",
+      "elapsed_seconds": 614.8493815679994,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/gallery-driver.log"
+    },
+    {
+      "name": "preview",
+      "command": [
+        "python3",
+        "scripts/verify_preview.py",
+        "--output",
+        "results/extension-preview"
+      ],
+      "started_utc": "2026-10-01T04:50:25.748031+00:00",
+      "finished_utc": "2026-10-01T04:50:43.165939+00:00",
+      "elapsed_seconds": 17.41789622899978,
+      "exit_code": 0,
+      "log": "results/extension-rebuild/preview-driver.log"
+    }
+  ],
+  "passed": true
+}

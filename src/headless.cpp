@@ -48,6 +48,9 @@ struct Options
     std::optional<bool> bvh;
     std::optional<bool> compact;
     std::optional<bool> sort;
+    std::optional<bool> wavefront;
+    std::optional<bool> rr;
+    std::optional<int> rrStart;
     std::optional<RendererDebugMode> debug;
     std::optional<fs::path> checkpointPath;
     std::optional<std::uint64_t> checkpointEvery;
@@ -146,6 +149,9 @@ std::string usage(std::string_view program)
         << "  --bvh on|off\n"
         << "  --compact on|off\n"
         << "  --sort on|off\n"
+        << "  --wavefront on|off\n"
+        << "  --rr on|off\n"
+        << "  --rr-start N             Completed scattering events before roulette (1..4096)\n"
         << "  --debug normals|uv|depth  Deterministic first-hit semantic view\n"
         << "\n"
         << "Checkpoint and diagnostics:\n"
@@ -343,6 +349,27 @@ Options parseOptions(int argc, char** argv)
         {
             rejectDuplicate(options.sort.has_value(), argument);
             options.sort = parseSwitch(requireValue(i, argument), argument);
+        }
+        else if (!positionalOnly && argument == "--wavefront")
+        {
+            rejectDuplicate(options.wavefront.has_value(), argument);
+            options.wavefront = parseSwitch(requireValue(i, argument), argument);
+        }
+        else if (!positionalOnly && argument == "--rr")
+        {
+            rejectDuplicate(options.rr.has_value(), argument);
+            options.rr = parseSwitch(requireValue(i, argument), argument);
+        }
+        else if (!positionalOnly && argument == "--rr-start")
+        {
+            rejectDuplicate(options.rrStart.has_value(), argument);
+            const std::uint64_t value = parseUnsigned<std::uint64_t>(
+                requireValue(i, argument), argument);
+            if (value == 0 || value > 4096)
+            {
+                throw std::out_of_range("--rr-start must be in [1, 4096]");
+            }
+            options.rrStart = static_cast<int>(value);
         }
         else if (!positionalOnly && argument == "--debug")
         {
@@ -607,6 +634,9 @@ checkpoint::RenderConfig checkpointConfig(const ResolvedRun& run)
     result.useBvh = run.renderer.useBvh;
     result.compact = run.renderer.compact;
     result.materialSort = run.renderer.sort;
+    result.wavefront = run.renderer.wavefront;
+    result.russianRoulette = run.renderer.rr;
+    result.rrStart = static_cast<std::uint32_t>(run.renderer.rrStart);
     return result;
 }
 
@@ -760,7 +790,10 @@ checkpoint::Fingerprints fingerprintsFor(const fs::path& scenePath,
         .addBool(config.nextEventEstimation)
         .addBool(config.useBvh)
         .addBool(config.compact)
-        .addBool(config.materialSort);
+        .addBool(config.materialSort)
+        .addBool(config.wavefront)
+        .addBool(config.russianRoulette)
+        .addU32(config.rrStart);
     result.renderConfig = renderConfig.value();
     return result;
 }
@@ -920,11 +953,25 @@ ResolvedRun resolveRun(const Options& options,
         resumed ? resumed->config.compact : defaults.compact);
     run.renderer.sort = options.sort.value_or(
         resumed ? resumed->config.materialSort : defaults.sort);
+    run.renderer.wavefront = options.wavefront.value_or(
+        resumed ? resumed->config.wavefront : defaults.wavefront);
+    run.renderer.rr = options.rr.value_or(
+        resumed ? resumed->config.russianRoulette : defaults.rr);
+    run.renderer.rrStart = options.rrStart.value_or(
+        resumed ? static_cast<int>(resumed->config.rrStart) : defaults.rrStart);
     run.renderer.benchmark = options.benchmark;
     run.renderer.debug = options.debug.value_or(RendererDebugMode::None);
     if (run.renderer.maxDepth <= 0 || run.renderer.maxDepth > 4096)
     {
         throw std::runtime_error("resolved trace depth is outside [1, 4096]");
+    }
+    if (run.renderer.rrStart < 1 || run.renderer.rrStart > 4096)
+    {
+        throw std::runtime_error("resolved Russian roulette start is outside [1, 4096]");
+    }
+    if (run.renderer.wavefront && run.renderer.sort)
+    {
+        throw std::invalid_argument("--sort on requires --wavefront off");
     }
 
     run.targetSamples = options.samples.value_or(scene.state.iterations);
@@ -1178,7 +1225,11 @@ void writeBenchmark(const fs::path& path,
     {
         output << "record_type,sample,bounce,active_before,active_after,"
                   "intersection_ms,sort_ms,shade_ms,compaction_ms,"
-                  "count_ms,host_ms,gpu_ms,measured_samples,render_loop_wall_ms\n";
+                  "count_ms,host_ms,gpu_ms,measured_samples,render_loop_wall_ms,"
+                  "queue_ms,queue_host_ms,diffuse_ms,mirror_ms,dielectric_ms,"
+                  "emission_ms,terminal_ms,queued_diffuse,queued_mirror,"
+                  "queued_dielectric,queued_emission,queued_terminal,"
+                  "kernel_dispatches,rr_tested,rr_terminated\n";
         output << std::setprecision(9);
         for (const RendererBenchmarkRow& row : rows)
         {
@@ -1186,11 +1237,18 @@ void writeBenchmark(const fs::path& path,
                    << row.activeBefore << ',' << row.activeAfter << ','
                    << row.intersectionMs << ',' << row.sortMs << ','
                    << row.shadeMs << ',' << row.compactionMs << ','
-                   << row.countMs << ",,,,\n";
+                   << row.countMs << ",,,,," << row.queueMs << ','
+                   << row.queueHostMs << ',' << row.diffuseMs << ','
+                   << row.mirrorMs << ',' << row.dielectricMs << ','
+                   << row.emissionMs << ',' << row.terminalMs << ','
+                   << row.queuedDiffuse << ',' << row.queuedMirror << ','
+                   << row.queuedDielectric << ',' << row.queuedEmission << ','
+                   << row.queuedTerminal << ',' << row.kernelDispatches << ','
+                   << row.rrTested << ',' << row.rrTerminated << '\n';
         }
         output << "overall,,,,,,,,,," << summary.hostMilliseconds << ','
                << summary.gpuMilliseconds << ',' << summary.measuredSamples << ','
-               << renderLoopWallMs << '\n';
+               << renderLoopWallMs << ",,,,,,,,,,,,,,,\n";
     });
 }
 
@@ -1203,6 +1261,9 @@ json configJson(const ResolvedRun& run)
         {"bvh", run.renderer.useBvh},
         {"compact", run.renderer.compact},
         {"sort", run.renderer.sort},
+        {"wavefront", run.renderer.wavefront},
+        {"rr", run.renderer.rr},
+        {"rr_start", run.renderer.rrStart},
         {"debug", debugModeName(run.renderer.debug)},
         {"depth_semantics", "maximum surface intersections; final intersection is emission-only"}};
 }
@@ -1297,7 +1358,7 @@ void writeMetadata(const fs::path& path,
         ? json(*options.checkpointEvery) : json(nullptr);
     metadata["benchmark_enabled"] = options.benchmark;
     metadata["benchmark_instrumentation"] = options.benchmark
-        ? json("count_ms is a separate atomic active-path count used only for compact=off; it does not change fixed-depth launch termination")
+        ? json("shade_ms is aggregate shader time in both scheduling modes. diffuse_ms, mirror_ms, dielectric_ms, emission_ms, and terminal_ms are an alternative wavefront breakdown and must not be added to shade_ms. queue_host_ms is host queue bookkeeping/submission time, not GPU stage time. count_ms is the compact=off active-path count.")
         : json(nullptr);
     metadata["render_loop_wall_ms"] = renderLoopWallMs;
     if (benchmark)

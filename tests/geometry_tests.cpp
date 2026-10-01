@@ -1,10 +1,12 @@
 #include "geometry.cuh"
+#include "procedural_texture.cuh"
 #include "scene.h"
 
 #include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <algorithm>
+#include <array>
 #include <chrono>
 #include <cmath>
 #include <cstddef>
@@ -15,6 +17,7 @@
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <map>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -890,7 +893,7 @@ void testTextureLoadingColorBumpOrientationAndAssets() {
     CHECK(material.textureId >= 0);
     CHECK(material.bumpTextureId >= 0);
     CHECK(material.textureId == material.bumpTextureId);
-    CHECK(material.procedural != 0);
+    CHECK(material.procedural == 1);
     CHECK_NEAR(material.bumpStrength, 2.5f, 1.0e-6f);
     CHECK_NEAR(material.checkerScale, 12.0f, 1.0e-6f);
     CHECK(scene.textures.size() == 1);
@@ -1544,6 +1547,333 @@ void compareSceneRayExactly(const SceneView& view, const Ray& ray, float tMin, f
     }
 }
 
+void testProceduralTextureHostContract() {
+    const glm::vec3 white(1.0f);
+    for (int id : {-17, 0, 1, 4, 99}) {
+        CHECK_VEC3_NEAR(renderer::evaluateProceduralColor(id, glm::vec2(0.37f, -0.61f)),
+                        white, 0.0f);
+    }
+
+    CHECK_VEC3_NEAR(renderer::evaluateProceduralColor(2, glm::vec2(0.0f)),
+                    glm::vec3(0.7715625f, 0.6825f, 0.481875f), 2.0e-6f);
+    CHECK_VEC3_NEAR(renderer::evaluateProceduralColor(3, glm::vec2(0.0f)),
+                    glm::vec3(0.025f, 0.035f, 0.05f), 2.0e-6f);
+    CHECK_VEC3_NEAR(renderer::evaluateProceduralColor(3, glm::vec2(0.0625f)),
+                    glm::vec3(0.86f, 0.57f, 0.14f), 2.0e-6f);
+
+    for (int id : {2, 3}) {
+        for (int y = -24; y <= 24; ++y) {
+            for (int x = -24; x <= 24; ++x) {
+                const glm::vec2 uv(0.137f * static_cast<float>(x) - 0.031f,
+                                   0.113f * static_cast<float>(y) + 0.047f);
+                const glm::vec3 color = renderer::evaluateProceduralColor(id, uv);
+                CHECK(finite(color));
+                CHECK(color.r >= 0.0f && color.r <= 1.0f);
+                CHECK(color.g >= 0.0f && color.g <= 1.0f);
+                CHECK(color.b >= 0.0f && color.b <= 1.0f);
+            }
+        }
+
+        const glm::vec2 base(-0.37125f, 1.23875f);
+        const glm::vec3 reference = renderer::evaluateProceduralColor(id, base);
+        const std::array<glm::vec2, 5> integerShifts = {
+            glm::vec2(1.0f, 0.0f),
+            glm::vec2(-1.0f, 0.0f),
+            glm::vec2(0.0f, 2.0f),
+            glm::vec2(3.0f, -4.0f),
+            glm::vec2(-5.0f, -3.0f),
+        };
+        for (const glm::vec2& shift : integerShifts) {
+            CHECK_VEC3_NEAR(renderer::evaluateProceduralColor(id, base + shift), reference,
+                            3.0e-5f);
+        }
+
+        const glm::vec3 negativelyWrapped =
+            renderer::evaluateProceduralColor(id, glm::vec2(-0.2f, -0.7f));
+        const glm::vec3 positivelyWrapped =
+            renderer::evaluateProceduralColor(id, glm::vec2(0.8f, 0.3f));
+        CHECK_VEC3_NEAR(negativelyWrapped, positivelyWrapped, 3.0e-5f);
+    }
+
+    const glm::vec3 marbleAtOrigin =
+        renderer::evaluateProceduralColor(2, glm::vec2(0.0f));
+    const glm::vec3 cellsAtOrigin =
+        renderer::evaluateProceduralColor(3, glm::vec2(0.0f));
+    CHECK(glm::length(marbleAtOrigin - cellsAtOrigin) > 0.5f);
+    CHECK(glm::length(marbleAtOrigin - white) > 0.1f);
+    CHECK(glm::length(cellsAtOrigin - white) > 0.1f);
+}
+
+void testProceduralParserAliasesAndValidation() {
+    TemporaryDirectory temporary;
+    const std::string sphere =
+        "[{\"TYPE\":\"sphere\",\"MATERIAL\":\"mat\",\"TRANS\":[0,0,0],"
+        "\"ROTAT\":[0,0,0],\"SCALE\":[1,1,1]}]";
+    const auto scenePathFor = [&](const std::string& stem, const std::string& material) {
+        const fs::path path = temporary.path() / (stem + ".json");
+        writeText(path, basicSceneJson(material, sphere));
+        return path;
+    };
+    const auto materialWith = [](const std::string& fields) {
+        return std::string("{\"mat\":{\"TYPE\":\"Diffuse\",\"RGB\":[1,1,1]") +
+               fields + "}}";
+    };
+
+    struct AliasCase {
+        const char* spelling;
+        int expectedId;
+    };
+    const std::array<AliasCase, 12> aliases = {{
+        {"none", 0}, {"None", 0}, {"NONE", 0},
+        {"checker", 1}, {"Checker", 1}, {"CHECKER", 1},
+        {"marble", 2}, {"Marble", 2}, {"MARBLE", 2},
+        {"cells", 3}, {"Cells", 3}, {"CELLS", 3},
+    }};
+    for (std::size_t index = 0; index < aliases.size(); ++index) {
+        const AliasCase& alias = aliases[index];
+        const fs::path path = scenePathFor(
+            "procedural-alias-" + std::to_string(index),
+            materialWith(",\"PROCEDURAL\":" + jsonQuote(alias.spelling)));
+        Scene scene(path.string());
+        CHECK(scene.materials.size() == 1);
+        CHECK(scene.materials[0].procedural == alias.expectedId);
+    }
+
+    const fs::path scaledCheckerPath = scenePathFor(
+        "scaled-checker",
+        materialWith(",\"PROCEDURAL\":\"Checker\",\"CHECKER_SCALE\":3.25"));
+    Scene scaledChecker(scaledCheckerPath.string());
+    CHECK(scaledChecker.materials[0].procedural == 1);
+    CHECK_NEAR(scaledChecker.materials[0].checkerScale, 3.25f, 0.0f);
+
+    const std::array<const char*, 4> invalidScaleModes = {
+        nullptr, "none", "marble", "cells",
+    };
+    for (std::size_t index = 0; index < invalidScaleModes.size(); ++index) {
+        std::string fields;
+        if (invalidScaleModes[index] != nullptr) {
+            fields = ",\"PROCEDURAL\":" + jsonQuote(invalidScaleModes[index]);
+        }
+        fields += ",\"CHECKER_SCALE\":4";
+        const fs::path path = scenePathFor("invalid-checker-scale-" + std::to_string(index),
+                                           materialWith(fields));
+        const std::string message =
+            requireRuntimeError([&] { Scene scene(path.string()); });
+        CHECK(message.find("CHECKER_SCALE") != std::string::npos);
+        CHECK(message.find("checker") != std::string::npos);
+    }
+
+    const fs::path unknownPath = scenePathFor(
+        "unknown-procedural", materialWith(",\"PROCEDURAL\":\"woodgrain\""));
+    const std::string unknownMessage =
+        requireRuntimeError([&] { Scene scene(unknownPath.string()); });
+    CHECK(unknownMessage.find("PROCEDURAL") != std::string::npos);
+    CHECK(unknownMessage.find("none") != std::string::npos);
+    CHECK(unknownMessage.find("checker") != std::string::npos);
+    CHECK(unknownMessage.find("marble") != std::string::npos);
+    CHECK(unknownMessage.find("cells") != std::string::npos);
+}
+
+bool isRepositoryRoot(const fs::path& candidate) {
+    std::error_code error;
+    return fs::is_regular_file(candidate / "tests" / "geometry_tests.cpp", error) &&
+           fs::is_regular_file(candidate / "scripts" / "generate_assets.py", error) &&
+           fs::is_directory(candidate / "scenes" / "assets", error);
+}
+
+fs::path findRepositoryRoot() {
+    std::vector<fs::path> starts;
+    const fs::path compiledSource(__FILE__);
+    if (compiledSource.is_absolute()) {
+        starts.push_back(compiledSource.parent_path());
+    } else {
+        starts.push_back(fs::absolute(compiledSource).parent_path());
+    }
+    starts.push_back(fs::current_path());
+
+    for (fs::path start : starts) {
+        std::error_code error;
+        if (fs::is_regular_file(start, error)) {
+            start = start.parent_path();
+        }
+        for (fs::path candidate = start; !candidate.empty();) {
+            if (isRepositoryRoot(candidate)) {
+                return fs::weakly_canonical(candidate);
+            }
+            const fs::path parent = candidate.parent_path();
+            if (parent == candidate) {
+                break;
+            }
+            candidate = parent;
+        }
+    }
+    throw std::runtime_error(
+        "could not locate the repository root from __FILE__ or the current directory");
+}
+
+using WeldedPosition = std::array<float, 3>;
+using WeldedEdge = std::pair<int, int>;
+
+WeldedPosition weldedPosition(const glm::vec3& position) {
+    return {position.x, position.y, position.z};
+}
+
+void validateGeneratedMeshGeometry(const Scene& scene, std::size_t expectedTriangles,
+                                   long long expectedEulerCharacteristic) {
+    CHECK(scene.geoms.size() == expectedTriangles);
+    CHECK(!scene.bvhNodes.empty());
+    CHECK(scene.bvhPrimitiveIndices.size() == scene.geoms.size());
+
+    std::map<WeldedPosition, int> weldedVertices;
+    std::vector<std::array<int, 3>> weldedTriangles;
+    weldedTriangles.reserve(scene.geoms.size());
+    std::map<WeldedEdge, int> edgeIncidence;
+    double signedVolume = 0.0;
+
+    for (const Geom& triangle : scene.geoms) {
+        CHECK(triangle.type == TRIANGLE);
+        CHECK(triangle.hasNormals);
+        CHECK(triangle.hasUVs);
+
+        std::array<int, 3> vertexIds{};
+        for (int corner = 0; corner < 3; ++corner) {
+            const glm::vec3& position = triangle.vertices[corner];
+            const glm::vec3& normal = triangle.normals[corner];
+            const glm::vec2& uv = triangle.uvs[corner];
+            CHECK(finite(position));
+            CHECK(finite(normal));
+            CHECK(finite(uv));
+            CHECK_NEAR(glm::length(normal), 1.0f, 2.0e-5f);
+            CHECK(uv.x >= -1.0e-6f && uv.x <= 1.0f + 1.0e-6f);
+            CHECK(uv.y >= -1.0e-6f && uv.y <= 1.0f + 1.0e-6f);
+
+            const WeldedPosition key = weldedPosition(position);
+            const auto inserted = weldedVertices.emplace(
+                key, static_cast<int>(weldedVertices.size()));
+            vertexIds[corner] = inserted.first->second;
+        }
+        CHECK(vertexIds[0] != vertexIds[1]);
+        CHECK(vertexIds[1] != vertexIds[2]);
+        CHECK(vertexIds[2] != vertexIds[0]);
+
+        const glm::vec3 edge1 = triangle.vertices[1] - triangle.vertices[0];
+        const glm::vec3 edge2 = triangle.vertices[2] - triangle.vertices[0];
+        const glm::vec3 cross = glm::cross(edge1, edge2);
+        const float twiceArea = glm::length(cross);
+        CHECK(std::isfinite(twiceArea));
+        CHECK(twiceArea > 1.0e-8f);
+        for (const glm::vec3& normal : triangle.normals) {
+            CHECK(glm::dot(cross, normal) > 0.0f);
+        }
+
+        const glm::dvec3 a(triangle.vertices[0]);
+        const glm::dvec3 b(triangle.vertices[1]);
+        const glm::dvec3 c(triangle.vertices[2]);
+        signedVolume += glm::dot(a, glm::cross(b, c)) / 6.0;
+
+        for (int edge = 0; edge < 3; ++edge) {
+            int first = vertexIds[edge];
+            int second = vertexIds[(edge + 1) % 3];
+            if (second < first) {
+                std::swap(first, second);
+            }
+            ++edgeIncidence[{first, second}];
+        }
+        weldedTriangles.push_back(vertexIds);
+    }
+
+    CHECK(signedVolume > 0.0);
+    for (const auto& edge : edgeIncidence) {
+        CHECK(edge.second == 2);
+    }
+    const long long vertexCount = static_cast<long long>(weldedVertices.size());
+    const long long edgeCount = static_cast<long long>(edgeIncidence.size());
+    const long long faceCount = static_cast<long long>(weldedTriangles.size());
+    CHECK(vertexCount - edgeCount + faceCount == expectedEulerCharacteristic);
+
+    std::vector<std::vector<int>> adjacency(weldedVertices.size());
+    for (const auto& edge : edgeIncidence) {
+        adjacency[static_cast<std::size_t>(edge.first.first)].push_back(edge.first.second);
+        adjacency[static_cast<std::size_t>(edge.first.second)].push_back(edge.first.first);
+    }
+    CHECK(!adjacency.empty());
+    std::vector<bool> visited(adjacency.size(), false);
+    std::vector<int> pending{0};
+    visited[0] = true;
+    while (!pending.empty()) {
+        const int vertex = pending.back();
+        pending.pop_back();
+        for (int neighbor : adjacency[static_cast<std::size_t>(vertex)]) {
+            if (!visited[static_cast<std::size_t>(neighbor)]) {
+                visited[static_cast<std::size_t>(neighbor)] = true;
+                pending.push_back(neighbor);
+            }
+        }
+    }
+    CHECK(std::all_of(visited.begin(), visited.end(), [](bool value) { return value; }));
+}
+
+void checkGeneratedMeshRays(const Scene& scene, bool flutedBody) {
+    const SceneView view = scene.view();
+    if (flutedBody) {
+        const std::array<Ray, 3> hits = {{
+            {glm::vec3(0.13f, 1.31f, 3.5f), glm::vec3(0.0f, 0.0f, -1.0f)},
+            {glm::vec3(3.5f, 1.71f, -0.08f), glm::vec3(-1.0f, 0.0f, 0.0f)},
+            {glm::vec3(0.12f, 4.0f, 0.15f), glm::vec3(0.0f, -1.0f, 0.0f)},
+        }};
+        for (const Ray& ray : hits) {
+            compareBvhAndBrute(view, ray, 0.0f, 100.0f, true);
+        }
+        compareBvhAndBrute(
+            view, Ray{glm::vec3(3.0f, 1.3f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f)},
+            0.0f, 100.0f, false);
+    } else {
+        const std::array<Ray, 3> hits = {{
+            {glm::vec3(3.0f, 0.031f, 0.019f), glm::vec3(-1.0f, 0.0f, 0.0f)},
+            {glm::vec3(1.34f, 0.04f, 3.0f), glm::vec3(0.0f, 0.0f, -1.0f)},
+            {glm::vec3(0.02f, 3.0f, 0.24f), glm::vec3(0.0f, -1.0f, 0.0f)},
+        }};
+        for (const Ray& ray : hits) {
+            compareBvhAndBrute(view, ray, 0.0f, 100.0f, true);
+        }
+        compareBvhAndBrute(
+            view, Ray{glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, -1.0f)},
+            0.0f, 100.0f, false);
+    }
+}
+
+void testGeneratedProceduralMeshAssets() {
+    struct MeshCase {
+        const char* filename;
+        std::size_t expectedTriangles;
+        long long expectedEulerCharacteristic;
+        bool flutedBody;
+    };
+    const std::array<MeshCase, 6> meshes = {{
+        {"fluted-body-low.obj", 1600, 2, true},
+        {"fluted-body-medium.obj", 6272, 2, true},
+        {"fluted-body-high.obj", 24832, 2, true},
+        {"swept-knot-low.obj", 1024, 0, false},
+        {"swept-knot-medium.obj", 4096, 0, false},
+        {"swept-knot-high.obj", 16384, 0, false},
+    }};
+
+    const fs::path assetDirectory = findRepositoryRoot() / "scenes" / "assets";
+    TemporaryDirectory temporary;
+    for (const MeshCase& mesh : meshes) {
+        const fs::path assetPath = assetDirectory / mesh.filename;
+        CHECK(fs::is_regular_file(assetPath));
+        const fs::path scenePath = temporary.path() /
+                                   (fs::path(mesh.filename).stem().string() + ".json");
+        writeText(scenePath,
+                  basicSceneJson(kDiffuseMaterial, objObject(assetPath.generic_string())));
+        Scene scene(scenePath.string());
+        validateGeneratedMeshGeometry(scene, mesh.expectedTriangles,
+                                      mesh.expectedEulerCharacteristic);
+        checkGeneratedMeshRays(scene, mesh.flutedBody);
+    }
+}
+
 void validateRepositoryScene(const fs::path& path) {
     Scene scene(path.string());
     const SceneView view = scene.view();
@@ -1576,7 +1906,7 @@ void validateRepositoryScene(const fs::path& path) {
     }
 
     for (const Material& material : scene.materials) {
-        CHECK(material.procedural == 0 || material.procedural == 1);
+        CHECK(material.procedural >= 0 && material.procedural <= 3);
         if (material.bumpTextureId >= 0) {
             CHECK_NEAR(material.bumpStrength, 0.025f, 1.0e-7f);
         }
@@ -1666,6 +1996,9 @@ int main(int argc, char** argv) {
         {"scene unknown and malformed inputs", testSceneUnknownAndMalformedInputs},
         {"texture color/bump/orientation/assets", testTextureLoadingColorBumpOrientationAndAssets},
         {"texture failures", testTextureFailures},
+        {"procedural texture host contract", testProceduralTextureHostContract},
+        {"procedural parser aliases and validation", testProceduralParserAliasesAndValidation},
+        {"generated procedural mesh assets", testGeneratedProceduralMeshAssets},
         {"primitive intersections and BVH agreement", testPrimitiveIntersectionsAndBvhAgreement},
         {"triangle barycentrics/normals/derivatives", testTriangleBarycentricsNormalsAndDerivatives},
         {"stable closest tie break", testStableClosestTieBreak},

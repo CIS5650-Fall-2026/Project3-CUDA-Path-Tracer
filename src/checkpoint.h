@@ -15,7 +15,7 @@
 // little-endian order.
 namespace checkpoint {
 
-inline constexpr std::uint32_t kFormatVersion = 1;
+inline constexpr std::uint32_t kFormatVersion = 2;
 inline constexpr std::uint64_t kFnv1aOffsetBasis = 14695981039346656037ull;
 inline constexpr std::uint64_t kFnv1aPrime = 1099511628211ull;
 
@@ -56,6 +56,9 @@ struct RenderConfig {
     bool useBvh = false;
     bool compact = false;
     bool materialSort = false;
+    bool wavefront = true;
+    bool russianRoulette = true;
+    std::uint32_t rrStart = 3;
 };
 
 struct CameraState {

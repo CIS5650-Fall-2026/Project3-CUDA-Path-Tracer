@@ -13,17 +13,32 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def rr_start(value):
+    result = int(value)
+    if not 1 <= result <= 4096:
+        raise argparse.ArgumentTypeError('must be in [1, 4096]')
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--preview-binary', type=Path, default=ROOT / 'build/bin/cis565_path_tracer')
     parser.add_argument('--headless-binary', type=Path, default=ROOT / 'build/bin/cis565_path_tracer_headless')
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--wavefront', choices=('on', 'off'), default='on')
+    parser.add_argument('--rr', choices=('on', 'off'), default='on')
+    parser.add_argument('--rr-start', type=rr_start, default=3)
     args = parser.parse_args()
     stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     output = args.output or ROOT / 'results' / ('preview-' + stamp)
     output.mkdir(parents=True, exist_ok=False)
     environment = dict(os.environ, DISPLAY=':0', XAUTHORITY='/run/user/1000/gdm/Xauthority')
     actions = []
+    renderer_options = [
+        '--wavefront', args.wavefront,
+        '--rr', args.rr,
+        '--rr-start', str(args.rr_start),
+    ]
 
     def command(argv, cwd, log, timeout=45):
         with log.open('w') as stream:
@@ -33,12 +48,14 @@ def main():
 
     def headless(scene, samples, prefix):
         command([args.headless_binary.resolve(), ROOT / 'scenes' / scene,
-                 '--samples', samples, '--seed', '1', '--output', prefix],
+                 '--samples', samples, '--seed', '1', '--output', prefix,
+                 *renderer_options],
                 ROOT, prefix.with_suffix('.log'))
 
     smoke = output / 'smoke'
     smoke.mkdir()
-    command([args.preview_binary.resolve(), ROOT / 'scenes/preview-smoke.json'],
+    command([args.preview_binary.resolve(), ROOT / 'scenes/preview-smoke.json',
+             *renderer_options],
             smoke, smoke / 'preview.log')
     saved = list(smoke.glob('*.png'))
     assert len(saved) == 1 and '.16samp.' in saved[0].name, 'smoke did not complete exactly 16 samples'
@@ -55,7 +72,8 @@ def main():
     with log_path.open('w') as log:
         try:
             process = subprocess.Popen([str(args.preview_binary.resolve()),
-                str(ROOT / 'scenes/optical-workbench.json')], cwd=interactive,
+                str(ROOT / 'scenes/optical-workbench.json'),
+                *renderer_options], cwd=interactive,
                 env=environment, stdout=log, stderr=subprocess.STDOUT)
 
             def xdo(*arguments, allow_failure=False):
@@ -164,6 +182,8 @@ def main():
                    interaction_saves=6, frame_progress=True, escape_exit_code=0,
                    space_restore_png_exact=True, restored_samples=samples,
                    independent_camera_motion_checks=list(moved_images),
+                   renderer_config=dict(wavefront=args.wavefront, rr=args.rr,
+                                        rr_start=args.rr_start),
                    compatibility=json.loads(prefix.with_suffix('.json').read_text())['compatibility'])
     (output / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary, indent=2))

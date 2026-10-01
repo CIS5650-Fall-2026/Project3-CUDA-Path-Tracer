@@ -30,6 +30,7 @@ constexpr std::uint32_t kEndianMarker = 0x01020304u;
 constexpr std::uint64_t kHeaderBytes = 24;
 constexpr std::uint64_t kChecksumBytes = 8;
 constexpr std::size_t kIoBufferBytes = 64 * 1024;
+constexpr std::uint32_t kMaxRussianRouletteStart = 4096;
 
 static_assert(sizeof(float) == 4, "checkpoint format requires 32-bit float");
 static_assert(std::numeric_limits<float>::is_iec559,
@@ -156,6 +157,18 @@ Status validateMetadata(const CheckpointData& data, const Limits& limits) {
         return failure(Error::LimitExceeded,
                        "checkpoint trace depth exceeds configured limit");
     }
+    if (data.config.rrStart == 0) {
+        return failure(Error::Malformed,
+                       "checkpoint Russian-roulette start depth must be at least one");
+    }
+    if (data.config.rrStart > kMaxRussianRouletteStart) {
+        return failure(Error::LimitExceeded,
+                       "checkpoint Russian-roulette start depth exceeds 4096");
+    }
+    if (data.config.wavefront && data.config.materialSort) {
+        return failure(Error::Malformed,
+                       "checkpoint material sorting requires wavefront scheduling to be disabled");
+    }
     if (data.completedSamples > limits.maxCompletedSamples) {
         return failure(Error::LimitExceeded,
                        "checkpoint completed-sample count exceeds configured limit");
@@ -209,8 +222,9 @@ Status payloadSize(const CheckpointData& data,
     std::uint64_t total = 0;
     // completedSamples, seed, samplerVersion
     if (!addPayloadBytes(8 + 8 + 4, total) ||
-        // RenderConfig: three u32 values and five canonical booleans.
-        !addPayloadBytes(3 * 4 + 5, total) ||
+        // RenderConfig: the v1 three-u32/five-bool prefix followed by two
+        // canonical booleans and one u32.
+        !addPayloadBytes(3 * 4 + 5 + 2 + 4, total) ||
         // CameraState: twenty-one floats.
         !addPayloadBytes(21 * 4, total) ||
         // CompatibilityInfo numeric fields.
@@ -520,7 +534,10 @@ bool writeConfig(BufferedWriter& writer, const RenderConfig& config) {
            writer.u8(config.nextEventEstimation ? 1u : 0u) &&
            writer.u8(config.useBvh ? 1u : 0u) &&
            writer.u8(config.compact ? 1u : 0u) &&
-           writer.u8(config.materialSort ? 1u : 0u);
+           writer.u8(config.materialSort ? 1u : 0u) &&
+           writer.u8(config.wavefront ? 1u : 0u) &&
+           writer.u8(config.russianRoulette ? 1u : 0u) &&
+           writer.u32(config.rrStart);
 }
 
 bool writeCamera(BufferedWriter& writer, const CameraState& camera) {
@@ -567,7 +584,10 @@ bool readConfig(BufferedReader& reader, RenderConfig& config) {
            readCanonicalBool(reader, config.nextEventEstimation) &&
            readCanonicalBool(reader, config.useBvh) &&
            readCanonicalBool(reader, config.compact) &&
-           readCanonicalBool(reader, config.materialSort);
+           readCanonicalBool(reader, config.materialSort) &&
+           readCanonicalBool(reader, config.wavefront) &&
+           readCanonicalBool(reader, config.russianRoulette) &&
+           reader.u32(config.rrStart);
 }
 
 bool readCamera(BufferedReader& reader, CameraState& camera) {
@@ -891,6 +911,15 @@ std::string configMismatch(const RenderConfig& actual,
     if (actual.compact != expected.compact) return "compaction setting";
     if (actual.materialSort != expected.materialSort) {
         return "material-sort setting";
+    }
+    if (actual.wavefront != expected.wavefront) {
+        return "wavefront setting";
+    }
+    if (actual.russianRoulette != expected.russianRoulette) {
+        return "Russian-roulette setting";
+    }
+    if (actual.rrStart != expected.rrStart) {
+        return "Russian-roulette start depth";
     }
     return {};
 }

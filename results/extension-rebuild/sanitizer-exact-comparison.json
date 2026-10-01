@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "scene": "procedural-optical-stilllife",
+      "exact": true,
+      "files": [
+        "sorted-memcheck.sum.bin",
+        "sorted-racecheck.sum.bin",
+        "wavefront-memcheck.sum.bin",
+        "wavefront-racecheck.sum.bin"
+      ],
+      "raw_sha256": "08dc0f539b850e9ac19ff069eb56fbc3cc1ef22a23385a50051bcd1218fa4338"
+    },
+    {
+      "scene": "optical-workbench",
+      "exact": true,
+      "files": [
+        "workbench-sorted-memcheck.sum.bin",
+        "workbench-sorted-racecheck.sum.bin",
+        "workbench-wavefront-memcheck.sum.bin",
+        "workbench-wavefront-racecheck.sum.bin"
+      ],
+      "raw_sha256": "af9eb8b60adf6dd2c645ef3fb79fe6e92795129d1f04e1149f47b183cb6ca629"
+    }
+  ]
+}
