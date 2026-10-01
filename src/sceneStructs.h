@@ -12,13 +12,16 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    TORUS,
+    MENGER
 };
 
 struct Ray
 {
     glm::vec3 origin;
     glm::vec3 direction;
+    float time;
 };
 
 struct Geom
@@ -28,9 +31,25 @@ struct Geom
     glm::vec3 translation;
     glm::vec3 rotation;
     glm::vec3 scale;
+    glm::vec3 motion;
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+};
+
+enum ProceduralTextureType
+{
+    TEXTURE_NONE = 0,
+    TEXTURE_CHECKER = 1,
+    TEXTURE_STRIPES = 2,
+    TEXTURE_FILE = 3
+};
+
+struct TextureData
+{
+    int width;
+    int height;
+    std::vector<glm::vec3> pixels;
 };
 
 struct Material
@@ -45,6 +64,19 @@ struct Material
     float hasRefractive;
     float indexOfRefraction;
     float emittance;
+    int textureType;
+    glm::vec3 textureColor;
+    float textureScale;
+
+    int textureWidth;
+    int textureHeight;
+    int textureIndex;
+    int textureOffset;
+
+    int bumpWidth;
+    int bumpHeight;
+    int bumpOffset;
+    float bumpStrength;
 };
 
 struct Camera
@@ -74,6 +106,7 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+    bool allowEmission;
 };
 
 // Use with a corresponding PathSegment to do:
@@ -84,4 +117,28 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  bool outside;
+};
+
+struct Triangle
+{
+    glm::vec3 v0;
+    glm::vec3 v1;
+    glm::vec3 v2;
+
+    glm::vec3 normal;
+
+    int materialId;
+};
+
+struct BVHNode
+{
+    glm::vec3 minBounds;
+    glm::vec3 maxBounds;
+
+    int leftChild;
+    int rightChild;
+
+    int triangleStart;
+    int triangleCount;
 };

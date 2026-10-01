@@ -1,0 +1,117 @@
+{
+  "Materials": {
+    "white": {
+      "TYPE": "Diffuse",
+      "RGB": [0.85, 0.85, 0.85]
+    },
+
+    "red": {
+      "TYPE": "Diffuse",
+      "RGB": [0.85, 0.15, 0.15]
+    },
+
+    "green": {
+      "TYPE": "Diffuse",
+      "RGB": [0.15, 0.85, 0.15]
+    },
+
+    "light": {
+      "TYPE": "Emitting",
+      "RGB": [1.0, 1.0, 1.0],
+      "EMITTANCE": 6.0
+    },
+
+    "checker": {
+      "TYPE": "Diffuse",
+      "RGB": [0.95, 0.95, 0.95],
+      "TEXTURE": "checker",
+      "TEXTURE_RGB": [0.20, 0.20, 0.20],
+      "TEXTURE_SCALE": 5.0
+    },
+
+    "stripes": {
+      "TYPE": "Diffuse",
+      "RGB": [0.90, 0.15, 0.15],
+      "TEXTURE": "stripes",
+      "TEXTURE_RGB": [0.95, 0.95, 0.95],
+      "TEXTURE_SCALE": 6.0
+    }
+  },
+
+  "Camera": {
+    "RES": [800, 800],
+    "FOVY": 45.0,
+    "ITERATIONS": 5000,
+    "DEPTH": 8,
+    "FILE": "procedural_texture_test",
+    "EYE": [0.0, 4.0, 10.5],
+    "LOOKAT": [0.0, 4.0, 0.0],
+    "UP": [0.0, 1.0, 0.0]
+  },
+
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [0.0, 0.0, 0.0],
+      "ROTAT": [0.0, 0.0, 0.0],
+      "SCALE": [12.0, 0.01, 16.0]
+    },
+
+    {
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [0.0, 8.0, 0.0],
+      "ROTAT": [0.0, 0.0, 0.0],
+      "SCALE": [12.0, 0.01, 16.0]
+    },
+
+    {
+      "TYPE": "cube",
+      "MATERIAL": "red",
+      "TRANS": [-6.0, 4.0, 0.0],
+      "ROTAT": [0.0, 0.0, 0.0],
+      "SCALE": [0.01, 8.0, 16.0]
+    },
+
+    {
+      "TYPE": "cube",
+      "MATERIAL": "green",
+      "TRANS": [6.0, 4.0, 0.0],
+      "ROTAT": [0.0, 0.0, 0.0],
+      "SCALE": [0.01, 8.0, 16.0]
+    },
+
+    {
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [0.0, 4.0, -8.0],
+      "ROTAT": [0.0, 0.0, 0.0],
+      "SCALE": [12.0, 8.0, 0.01]
+    },
+
+    {
+      "TYPE": "cube",
+      "MATERIAL": "light",
+      "TRANS": [0.0, 7.8, 0.0],
+      "ROTAT": [0.0, 0.0, 0.0],
+      "SCALE": [4.0, 0.2, 3.0]
+    },
+
+    {
+      "TYPE": "torus",
+      "MATERIAL": "stripes",
+      "TRANS": [-2.2, 4.0, 0.5],
+      "ROTAT": [90.0, 0.0, 0.0],
+      "SCALE": [2.8, 2.8, 2.8]
+    },
+
+    {
+      "TYPE": "menger",
+      "MATERIAL": "checker",
+      "TRANS": [1.5, 4.0, 0.5],
+      "ROTAT": [25.0, 40.0, 10.0],
+      "SCALE": [2.8, 2.8, 2.8]
+    }
+  ]
+}

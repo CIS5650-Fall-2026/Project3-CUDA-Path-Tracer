@@ -1,0 +1,165 @@
+{
+  "Materials": {
+    "IvoryHorse": {"TYPE": "Diffuse", "RGB": [0.78, 0.77, 0.74]},
+    "Charcoal": {"TYPE": "Diffuse", "RGB": [0.035, 0.042, 0.055]},
+    "Floor": {"TYPE": "Diffuse", "RGB": [0.075, 0.085, 0.105]},
+    "Backdrop": {"TYPE": "Diffuse", "RGB": [0.025, 0.033, 0.05]},
+    "Inlay": {"TYPE": "Diffuse", "RGB": [0.4, 0.32, 0.19]},
+    "HaloLight": {"TYPE": "Emitting", "RGB": [1.0, 0.50, 0.18],"EMITTANCE": 0.7},
+    "BaseLight": {"TYPE": "Emitting", "RGB": [1.0, 0.35, 0.08], "EMITTANCE": 0.65},
+    "KeyLight": {"TYPE": "Emitting", "RGB": [1.0, 0.87, 0.72], "EMITTANCE": 4.5},
+    "FillLight": {"TYPE": "Emitting", "RGB": [0.68, 0.8, 1.0], "EMITTANCE": 2.0},
+    "RimLight": {"TYPE": "Emitting", "RGB": [0.25, 0.52, 1.0], "EMITTANCE": 4.5},
+    "Glass": {"TYPE": "Refractive", "RGB": [1, 1, 1], "IOR": 1.5}
+  },
+  "Objects": [
+    {
+      "NAME": "Pegasus",
+      "TYPE": "obj",
+      "MATERIAL": "IvoryHorse",
+      "FILE": "./models/pegasus.obj",
+      "TRANS": [-0.12327129, 0.46652637, -0.0432905],
+      "ROTAT": [0, 130, 0],
+      "SCALE": [0.0156524556, 0.0156524556, 0.0156524556]
+    },
+    {
+      "NAME": "Plinth top",
+      "TYPE": "cube",
+      "MATERIAL": "Charcoal",
+      "TRANS": [0.15, 0.305, 0],
+      "ROTAT": [0, 0, 0],
+      "SCALE": [3.65, 0.35, 2.85]
+    },
+    {
+      "NAME": "Plinth light seam",
+      "TYPE": "cube",
+      "MATERIAL": "BaseLight",
+      "TRANS": [0.15, 0.12, 0],
+      "ROTAT": [0, 0, 0],
+      "SCALE": [3.66, 0.02, 2.86]
+    },
+    {
+      "NAME": "Plinth foot",
+      "TYPE": "cube",
+      "MATERIAL": "Charcoal",
+      "TRANS": [0.15, 0.055, 0],
+      "ROTAT": [0, 0, 0],
+      "SCALE": [3.85, 0.11, 3.05]
+    },
+    {
+      "NAME": "Floor",
+      "TYPE": "cube",
+      "MATERIAL": "Floor",
+      "TRANS": [0, -0.1, 0],
+      "ROTAT": [0, 0, 0],
+      "SCALE": [24, 0.2, 26]
+    },
+    {
+      "NAME": "Backdrop",
+      "TYPE": "cube",
+      "MATERIAL": "Backdrop",
+      "TRANS": [0, 4, -3.3],
+      "ROTAT": [0, 0, 0],
+      "SCALE": [24, 8, 0.25]
+    },
+    {
+      "NAME": "Glass sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "Glass",
+      "TRANS": [1.95, 0.475, 1.9],
+      "ROTAT": [0, 0, 0],
+      "SCALE": [0.95, 0.95, 0.95]
+    },
+    {
+      "NAME": "Floor inlay 1",
+      "TYPE": "cube",
+      "MATERIAL": "Inlay",
+      "TRANS": [1.15, 0.002, 2.2],
+      "ROTAT": [0, -15, 0],
+      "SCALE": [0.025, 0.003, 8]
+    },
+    {
+      "NAME": "Floor inlay 2",
+      "TYPE": "cube",
+      "MATERIAL": "Inlay",
+      "TRANS": [1.7, 0.002, 2.2],
+      "ROTAT": [0, -15, 0],
+      "SCALE": [0.025, 0.003, 8]
+    },
+    {
+      "NAME": "Floor inlay 3",
+      "TYPE": "cube",
+      "MATERIAL": "Inlay",
+      "TRANS": [2.25, 0.002, 2.2],
+      "ROTAT": [0, -15, 0],
+      "SCALE": [0.025, 0.003, 8]
+    },
+    {
+      "NAME": "Warm key softbox",
+      "TYPE": "cube",
+      "MATERIAL": "KeyLight",
+      "TRANS": [-4.8, 4.8, 3.5],
+      "ROTAT": [-29.7449, 130.0242, 0],
+      "SCALE": [3.6, 4.8, 0.06]
+    },
+    {
+      "NAME": "Soft cool fill",
+      "TYPE": "cube",
+      "MATERIAL": "FillLight",
+      "TRANS": [4.8, 3.8, 4.5],
+      "ROTAT": [-14.9314, -134.1352, 0],
+      "SCALE": [2.8, 3.8, 0.06]
+    },
+    {
+      "NAME": "Blue rim softbox",
+      "TYPE": "cube",
+      "MATERIAL": "RimLight",
+      "TRANS": [4.7, 4.1, -1.0],
+      "ROTAT": [47.7263, -72.4479, 0],
+      "SCALE": [1.8, 3.5, 0.06]
+    },
+
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.773099, 3.273126, -2.25], "ROTAT": [0, 0, 95.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.666531, 3.808883, -2.25], "ROTAT": [0, 0, 106.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.457489, 4.313555, -2.25], "ROTAT": [0, 0, 118.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.154007, 4.767748, -2.25], "ROTAT": [0, 0, 129.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [1.767748, 5.154007, -2.25], "ROTAT": [0, 0, 140.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [1.313555, 5.457489, -2.25], "ROTAT": [0, 0, 151.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [0.808883, 5.666531, -2.25], "ROTAT": [0, 0, 163.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [0.273126, 5.773099, -2.25], "ROTAT": [0, 0, 174.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-0.273126, 5.773099, -2.25], "ROTAT": [0, 0, 185.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-0.808883, 5.666531, -2.25], "ROTAT": [0, 0, 196.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-1.313555, 5.457489, -2.25], "ROTAT": [0, 0, 208.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-1.767748, 5.154007, -2.25], "ROTAT": [0, 0, 219.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.154007, 4.767748, -2.25], "ROTAT": [0, 0, 230.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.457489, 4.313555, -2.25], "ROTAT": [0, 0, 241.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.666531, 3.808883, -2.25], "ROTAT": [0, 0, 253.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.773099, 3.273126, -2.25], "ROTAT": [0, 0, 264.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.773099, 2.726874, -2.25], "ROTAT": [0, 0, 275.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.666531, 2.191117, -2.25], "ROTAT": [0, 0, 286.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.457489, 1.686445, -2.25], "ROTAT": [0, 0, 298.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-2.154007, 1.232252, -2.25], "ROTAT": [0, 0, 309.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-1.767748, 0.845993, -2.25], "ROTAT": [0, 0, 320.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-1.313555, 0.542511, -2.25], "ROTAT": [0, 0, 331.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-0.808883, 0.333469, -2.25], "ROTAT": [0, 0, 343.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [-0.273126, 0.226901, -2.25], "ROTAT": [0, 0, 354.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [0.273126, 0.226901, -2.25], "ROTAT": [0, 0, 365.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [0.808883, 0.333469, -2.25], "ROTAT": [0, 0, 376.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [1.313555, 0.542511, -2.25], "ROTAT": [0, 0, 388.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [1.767748, 0.845993, -2.25], "ROTAT": [0, 0, 399.375], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.154007, 1.232252, -2.25], "ROTAT": [0, 0, 410.625], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.457489, 1.686445, -2.25], "ROTAT": [0, 0, 421.875], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.666531, 2.191117, -2.25], "ROTAT": [0, 0, 433.125], "SCALE": [0.556896, 0.045, 0.06]},
+    {"TYPE": "cube", "MATERIAL": "HaloLight", "TRANS": [2.773099, 2.726874, -2.25], "ROTAT": [0, 0, 444.375], "SCALE": [0.556896, 0.045, 0.06]}
+  ],
+  "Camera": {
+    "RES": [800, 800],
+    "FOVY": 14,
+    "ITERATIONS": 16384,
+    "DEPTH": 12,
+    "FILE": "pegasus_halo",
+    "EYE": [0, 2.65, 13.8],
+    "LOOKAT": [0, 2.65, 0],
+    "UP": [0, 1, 0]
+  }
+}

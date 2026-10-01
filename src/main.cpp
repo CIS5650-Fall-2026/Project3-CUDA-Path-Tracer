@@ -49,6 +49,13 @@ int iteration;
 int width;
 int height;
 
+struct CheckpointHeader
+{
+    int width;
+    int height;
+    int iteration;
+};
+
 GLuint positionLocation = 0;
 GLuint texcoordsLocation = 1;
 GLuint pbo;
@@ -418,6 +425,66 @@ void saveImage()
     //img.saveHDR(filename);  // Save a Radiance HDR file
 }
 
+void saveCheckpoint()
+{
+    CheckpointHeader header;
+    header.width = width;
+    header.height = height;
+    header.iteration = iteration;
+
+    std::ofstream file("render_checkpoint.bin", std::ios::binary);
+
+    if (!file)
+    {
+        std::cerr << "Failed to create checkpoint file." << std::endl;
+        return;
+    }
+
+    file.write(reinterpret_cast<const char*>(&header), sizeof(header));
+    file.write(reinterpret_cast<const char*>(renderState->image.data()), renderState->image.size() * sizeof(glm::vec3));
+
+    file.close();
+
+    std::cout << "Checkpoint saved at iteration " << iteration << std::endl;
+}
+
+void loadCheckpoint()
+{
+    std::ifstream file("render_checkpoint.bin", std::ios::binary);
+
+    if (!file)
+    {
+        std::cerr << "Failed to open checkpoint file." << std::endl;
+        return;
+    }
+
+    CheckpointHeader header;
+    file.read(reinterpret_cast<char*>(&header), sizeof(header));
+
+    if (header.width != width || header.height != height)
+    {
+        std::cerr << "Checkpoint resolution does not match current scene." << std::endl;
+        return;
+    }
+
+    renderState->image.resize(width * height);
+    file.read(reinterpret_cast<char*>(renderState->image.data()), renderState->image.size() * sizeof(glm::vec3));
+
+    if (!file)
+    {
+        std::cerr << "Failed to read checkpoint image." << std::endl;
+        return;
+    }
+
+    file.close();
+
+    iteration = header.iteration;
+    pathtraceRestoreImage(renderState->image.data(), width * height);
+    camchanged = false;
+
+    std::cout << "Checkpoint loaded at iteration " << iteration << std::endl;
+}
+
 void runCuda()
 {
     if (camchanged)
@@ -490,10 +557,18 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
                 saveImage();
                 break;
             case GLFW_KEY_SPACE:
+            {
                 camchanged = true;
                 renderState = &scene->state;
                 Camera& cam = renderState->camera;
                 cam.lookAt = ogLookAt;
+                break;
+            }
+            case GLFW_KEY_C:
+                saveCheckpoint();
+                break;
+            case GLFW_KEY_L:
+                loadCheckpoint();
                 break;
         }
     }

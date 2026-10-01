@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
 
 Image::Image(int x, int y)
     : xSize(x), ySize(y), pixels(new glm::vec3[x * y]) 
@@ -28,7 +29,15 @@ void Image::savePNG(const std::string &baseFilename)
         for (int x = 0; x < xSize; x++)
         {
             int i = y * xSize + x;
-            glm::vec3 pix = glm::clamp(pixels[i], glm::vec3(), glm::vec3(1)) * 255.f;
+            glm::vec3 pix = glm::clamp(pixels[i], glm::vec3(0.0f), glm::vec3(1.0f));
+
+            for (int channel = 0; channel < 3; ++channel)
+            {
+                float linear = pix[channel];
+                pix[channel] = linear <= 0.0031308f ? 12.92f * linear : 1.055f * std::pow(linear, 1.0f / 2.4f) - 0.055f;
+            }
+
+            pix = glm::clamp(pix * 255.0f + glm::vec3(0.5f), glm::vec3(0.0f), glm::vec3(255.0f));
             bytes[3 * i + 0] = (unsigned char) pix.x;
             bytes[3 * i + 1] = (unsigned char) pix.y;
             bytes[3 * i + 2] = (unsigned char) pix.z;

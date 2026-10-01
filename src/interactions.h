@@ -6,6 +6,45 @@
 
 #include <thrust/random.h>
 
+__host__ __device__ inline unsigned int sampleHash(unsigned int x)
+{
+    x = (x ^ 61u) ^ (x >> 16);
+    x *= 9u;
+    x = x ^ (x >> 4);
+    x *= 0x27d4eb2du;
+    x = x ^ (x >> 15);
+    return x;
+}
+
+__host__ __device__ inline float hashToUnitFloat(unsigned int x)
+{
+    return (sampleHash(x) & 0x00FFFFFFu) / 16777216.0f;
+}
+
+__host__ __device__ inline float radicalInverse(unsigned int index, unsigned int base)
+{
+    float result = 0.0f;
+    float inverseBase = 1.0f / (float)base;
+    float fraction = inverseBase;
+
+    while (index > 0)
+    {
+        unsigned int digit = index % base;
+        result += (float)digit * fraction;
+        index /= base;
+        fraction *= inverseBase;
+    }
+
+    return result;
+}
+
+__host__ __device__ inline glm::vec2 halton2D(unsigned int index, unsigned int baseX, unsigned int baseY)
+{
+    float x = radicalInverse(index, baseX);
+    float y = radicalInverse(index, baseY);
+    return glm::vec2(x, y);
+}
+
 // CHECKITOUT
 /**
  * Computes a cosine-weighted random direction in a hemisphere.
@@ -15,6 +54,8 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
     glm::vec3 normal, 
     thrust::default_random_engine& rng);
 
+
+__host__ __device__ glm::vec3 calculateSampledDirectionInHemisphere(glm::vec3 normal, float sample1, float sample2);
 /**
  * Scatter a ray with some probabilities according to the material properties.
  * For example, a diffuse surface scatters in a cosine-weighted hemisphere.
@@ -45,4 +86,16 @@ __host__ __device__ void scatterRay(
     glm::vec3 intersect,
     glm::vec3 normal,
     const Material& m,
+    bool outside,
+    bool enableRefraction,
+    bool useLowDiscrepancy, 
+    int iter, 
+    int depth,
     thrust::default_random_engine& rng);
+
+
+__device__ bool rayAABBIntersection(
+    const Ray& ray, 
+    const glm::vec3& minBounds, 
+    const glm::vec3& maxBounds, 
+    float maxT);
