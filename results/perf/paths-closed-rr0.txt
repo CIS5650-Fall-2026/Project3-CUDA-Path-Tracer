@@ -1,0 +1,17 @@
+Paths after bounce 0: 147456
+Paths after bounce 1: 143496
+Paths after bounce 2: 141058
+Paths after bounce 3: 138711
+Paths after bounce 4: 136310
+Paths after bounce 5: 133940
+Paths after bounce 6: 131689
+Paths after bounce 7: 129514
+Paths after bounce 8: 127310
+Paths after bounce 9: 125157
+Paths after bounce 10: 123033
+Paths after bounce 11: 120908
+Paths after bounce 12: 118853
+Paths after bounce 13: 116830
+Paths after bounce 14: 114872
+Paths after bounce 15: 112939
+Paths after bounce 16: 0

@@ -1,0 +1,248 @@
+{
+    "Materials": {
+        "light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.95,
+                0.85
+            ],
+            "EMITTANCE": 9.0
+        },
+        "light_blue": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.5,
+                0.7,
+                1.0
+            ],
+            "EMITTANCE": 6.0
+        },
+        "floor": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.8,
+                0.8,
+                0.78
+            ],
+            "TEXTURE": "checker",
+            "RGB2": [
+                0.18,
+                0.18,
+                0.2
+            ],
+            "TEXTURE_SCALE": 0.5
+        },
+        "wall": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.85,
+                0.83,
+                0.8
+            ],
+            "TEXTURE": "marble",
+            "RGB2": [
+                0.35,
+                0.3,
+                0.28
+            ],
+            "TEXTURE_SCALE": 0.35
+        },
+        "sponge": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.9,
+                0.9,
+                0.88
+            ],
+            "TEXTURE": "marble",
+            "RGB2": [
+                0.2,
+                0.3,
+                0.45
+            ],
+            "TEXTURE_SCALE": 1.2
+        },
+        "gold": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.95,
+                0.75,
+                0.35
+            ],
+            "ROUGHNESS": 0.0
+        },
+        "glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.95,
+                0.97,
+                1.0
+            ],
+            "IOR": 1.5
+        }
+    },
+    "Camera": {
+        "RES": [
+            1000,
+            640
+        ],
+        "FOVY": 42.0,
+        "ITERATIONS": 3000,
+        "DEPTH": 10,
+        "FILE": "cover",
+        "EYE": [
+            0.0,
+            3.2,
+            9.5
+        ],
+        "LOOKAT": [
+            0.0,
+            2.0,
+            -0.5
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ],
+        "APERTURE_RADIUS": 0.1,
+        "FOCAL_DISTANCE": 10.0
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "floor",
+            "TRANS": [
+                0.0,
+                -0.05,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                40.0,
+                0.1,
+                40.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                0.0,
+                10.0,
+                -7.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                40.0,
+                20.0,
+                0.1
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "light",
+            "TRANS": [
+                -1.0,
+                12.0,
+                4.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                8.0,
+                0.2,
+                6.0
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "light_blue",
+            "TRANS": [
+                8.0,
+                4.5,
+                -4.5
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.2,
+                1.2,
+                1.2
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "scenes/models/bunny-hires.obj",
+            "MATERIAL": "glass",
+            "TRANS": [
+                0.5,
+                -0.99,
+                0.5
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                30.0,
+                30.0,
+                30.0
+            ]
+        },
+        {
+            "TYPE": "menger",
+            "MATERIAL": "sponge",
+            "TRANS": [
+                -5.3,
+                1.5,
+                -0.8
+            ],
+            "ROTAT": [
+                0.0,
+                25.0,
+                0.0
+            ],
+            "SCALE": [
+                1.5,
+                1.5,
+                1.5
+            ]
+        },
+        {
+            "TYPE": "mandelbulb",
+            "MATERIAL": "gold",
+            "TRANS": [
+                5.0,
+                1.9,
+                -0.5
+            ],
+            "ROTAT": [
+                -90.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.9,
+                1.9,
+                1.9
+            ]
+        }
+    ]
+}

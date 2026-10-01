@@ -12,8 +12,13 @@
  * Used for diffuse lighting.
  */
 __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
-    glm::vec3 normal, 
+    glm::vec3 normal,
     thrust::default_random_engine& rng);
+
+// Same as above, but with a given 2D sample
+__host__ __device__ glm::vec3 cosineSampleHemisphere(
+    glm::vec3 normal,
+    glm::vec2 u);
 
 /**
  * Scatter a ray with some probabilities according to the material properties.
@@ -45,4 +50,5 @@ __host__ __device__ void scatterRay(
     glm::vec3 intersect,
     glm::vec3 normal,
     const Material& m,
-    thrust::default_random_engine& rng);
+    thrust::default_random_engine& rng,
+    const glm::vec2* diffuseSample = nullptr);

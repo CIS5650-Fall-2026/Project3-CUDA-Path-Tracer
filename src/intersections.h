@@ -71,3 +71,33 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ bool rayHitsBounds(
+    const Ray& r,
+    glm::vec3 boundsMin,
+    glm::vec3 boundsMax);
+
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& tri,
+    const Ray& r);
+
+/**
+ * Ray vs OBJ mesh. Uses the BVH or bounding box culling if turned on.
+ */
+__host__ __device__ float meshIntersectionTest(
+    Geom mesh,
+    MeshData meshData,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+/**
+ * Ray vs Mandelbulb / Menger sponge (sphere tracing).
+ */
+__host__ __device__ float fractalIntersectionTest(
+    Geom geom,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);

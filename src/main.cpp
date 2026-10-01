@@ -17,6 +17,9 @@
 #include <cuda_runtime.h>
 #include <cuda_gl_interop.h>
 
+#include <algorithm>
+#include <csignal>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -49,6 +52,10 @@ int iteration;
 int width;
 int height;
 
+const char* checkpointFile = nullptr;
+static bool resumePending = false;
+static volatile std::sig_atomic_t stopRequested = 0;
+
 GLuint positionLocation = 0;
 GLuint texcoordsLocation = 1;
 GLuint pbo;
@@ -61,6 +68,7 @@ bool mouseOverImGuiWinow = false;
 
 // Forward declarations for window loop and interactivity
 void runCuda();
+void saveImage();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos);
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
@@ -72,6 +80,91 @@ std::string currentTimeString()
     char buf[sizeof "0000-00-00_00-00-00z"];
     strftime(buf, sizeof buf, "%Y-%m-%d_%H-%M-%Sz", gmtime(&now));
     return std::string(buf);
+}
+
+//-------------------------------
+//----------CHECKPOINTS----------
+//-------------------------------
+
+static const char CHECKPOINT_TAG[4] = { 'P', '3', 'C', 'K' };
+
+void handleInterrupt(int)
+{
+    stopRequested = 1;
+}
+
+// Save image, iteration and camera so the render can be resumed
+bool saveCheckpoint(const char* path)
+{
+    const std::string tmpPath = std::string(path) + ".tmp";
+    std::ofstream out(tmpPath, std::ios::binary);
+    if (!out)
+    {
+        return false;
+    }
+
+    const Camera& cam = renderState->camera;
+    out.write(CHECKPOINT_TAG, sizeof(CHECKPOINT_TAG));
+    out.write(reinterpret_cast<const char*>(&width), sizeof(width));
+    out.write(reinterpret_cast<const char*>(&height), sizeof(height));
+    out.write(reinterpret_cast<const char*>(&iteration), sizeof(iteration));
+    out.write(reinterpret_cast<const char*>(&cam), sizeof(Camera));
+    out.write(reinterpret_cast<const char*>(&zoom), sizeof(zoom));
+    out.write(reinterpret_cast<const char*>(&theta), sizeof(theta));
+    out.write(reinterpret_cast<const char*>(&phi), sizeof(phi));
+    out.write(reinterpret_cast<const char*>(renderState->image.data()),
+        renderState->image.size() * sizeof(glm::vec3));
+    out.close();
+
+    return out && std::rename(tmpPath.c_str(), path) == 0;
+}
+
+bool loadCheckpoint(const char* path)
+{
+    std::ifstream in(path, std::ios::binary);
+    if (!in)
+    {
+        return false;
+    }
+
+    char tag[4];
+    int savedWidth = 0;
+    int savedHeight = 0;
+    int savedIteration = 0;
+    Camera savedCam;
+    float savedZoom, savedTheta, savedPhi;
+
+    in.read(tag, sizeof(tag));
+    in.read(reinterpret_cast<char*>(&savedWidth), sizeof(savedWidth));
+    in.read(reinterpret_cast<char*>(&savedHeight), sizeof(savedHeight));
+    in.read(reinterpret_cast<char*>(&savedIteration), sizeof(savedIteration));
+    in.read(reinterpret_cast<char*>(&savedCam), sizeof(Camera));
+    in.read(reinterpret_cast<char*>(&savedZoom), sizeof(savedZoom));
+    in.read(reinterpret_cast<char*>(&savedTheta), sizeof(savedTheta));
+    in.read(reinterpret_cast<char*>(&savedPhi), sizeof(savedPhi));
+
+    if (!in || std::memcmp(tag, CHECKPOINT_TAG, sizeof(tag)) != 0 ||
+        savedWidth != width || savedHeight != height)
+    {
+        fprintf(stderr, "Checkpoint %s does not match this scene, starting over.\n", path);
+        return false;
+    }
+
+    std::vector<glm::vec3> savedImage(width * height);
+    in.read(reinterpret_cast<char*>(savedImage.data()), savedImage.size() * sizeof(glm::vec3));
+    if (!in)
+    {
+        fprintf(stderr, "Checkpoint %s is incomplete, starting over.\n", path);
+        return false;
+    }
+
+    iteration = savedIteration;
+    renderState->camera = savedCam;
+    renderState->image = savedImage;
+    zoom = savedZoom;
+    theta = savedTheta;
+    phi = savedPhi;
+    return true;
 }
 
 //-------------------------------
@@ -349,6 +442,8 @@ int main(int argc, char** argv)
     }
 
     const char* sceneFile = argv[1];
+    checkpointFile = std::getenv("PROJECT3_CHECKPOINT");
+    resumePending = checkpointFile != nullptr;
 
     // Load scene file
     scene = new Scene(sceneFile);
@@ -378,6 +473,108 @@ int main(int argc, char** argv)
     theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
+
+    
+    const char* headless = std::getenv("PROJECT3_HEADLESS");
+    if (headless && std::strcmp(headless, "1") == 0)
+    {
+        uchar4* output = nullptr;
+        cudaError_t error = cudaSetDevice(0);
+        if (error == cudaSuccess)
+        {
+            error = cudaMalloc(&output, width * height * sizeof(uchar4));
+        }
+        if (error != cudaSuccess)
+        {
+            fprintf(stderr, "CUDA initialization failed: %s\n", cudaGetErrorString(error));
+            return EXIT_FAILURE;
+        }
+        // Initialize the camera basis normally prepared by the window loop.
+        cam.view = glm::normalize(cam.lookAt - cam.position);
+        cam.right = glm::normalize(glm::cross(cam.view, cam.up));
+        cam.up = glm::normalize(glm::cross(cam.right, cam.view));
+        InitDataContainer(guiData);
+        pathtraceInit(scene);
+
+        int firstIteration = 1;
+        if (checkpointFile != nullptr && loadCheckpoint(checkpointFile))
+        {
+            pathtraceSetImage(renderState->image.data());
+            firstIteration = iteration + 1;
+            printf("Resuming from iteration %d\n", iteration);
+        }
+
+        int lastIteration = renderState->iterations;
+        const char* stopAfter = std::getenv("PROJECT3_STOP_AFTER");
+        if (stopAfter != nullptr)
+        {
+            lastIteration = std::min(lastIteration, firstIteration - 1 + std::atoi(stopAfter));
+        }
+
+        std::signal(SIGINT, handleInterrupt);
+
+        cudaEvent_t renderStart;
+        cudaEvent_t renderStop;
+        cudaEventCreate(&renderStart);
+        cudaEventCreate(&renderStop);
+        cudaEventRecord(renderStart);
+
+        for (iteration = firstIteration;
+             iteration <= lastIteration && !stopRequested;
+             ++iteration)
+        {
+            pathtrace(output, 0, iteration);
+
+            if (checkpointFile != nullptr && iteration % 64 == 0)
+            {
+                saveCheckpoint(checkpointFile);
+            }
+        }
+        --iteration;
+
+        cudaEventRecord(renderStop);
+        cudaEventSynchronize(renderStop);
+        float renderMs = 0.0f;
+        cudaEventElapsedTime(&renderMs, renderStart, renderStop);
+        cudaEventDestroy(renderStart);
+        cudaEventDestroy(renderStop);
+
+        const int renderedIterations = iteration - firstIteration + 1;
+        if (renderedIterations > 0)
+        {
+            printf("Average time per iteration: %.3f ms\n", renderMs / renderedIterations);
+        }
+
+        if (iteration < static_cast<int>(renderState->iterations))
+        {
+            if (checkpointFile != nullptr && saveCheckpoint(checkpointFile))
+            {
+                printf("Stopped at iteration %d, checkpoint saved to %s\n", iteration, checkpointFile);
+            }
+            else
+            {
+                printf("Stopped at iteration %d without a checkpoint\n", iteration);
+            }
+            pathtraceFree();
+            cudaFree(output);
+            return EXIT_SUCCESS;
+        }
+
+        glm::dvec3 meanRadiance(0.0);
+        for (const glm::vec3& pixel : renderState->image)
+        {
+            meanRadiance += glm::dvec3(pixel);
+        }
+        meanRadiance /= static_cast<double>(renderState->image.size()) * iteration;
+        printf("Mean radiance: %.5f %.5f %.5f\n",
+            meanRadiance.r, meanRadiance.g, meanRadiance.b);
+
+        saveImage();
+        pathtraceFree();
+        cudaFree(output);
+        printf("Headless render complete: %d samples\n", iteration);
+        return EXIT_SUCCESS;
+    }
 
     // Initialize CUDA and GL components
     init();
@@ -448,6 +645,13 @@ void runCuda()
     {
         pathtraceFree();
         pathtraceInit(scene);
+
+        if (resumePending && loadCheckpoint(checkpointFile))
+        {
+            pathtraceSetImage(renderState->image.data());
+            printf("Resuming from iteration %d\n", iteration);
+        }
+        resumePending = false;
     }
 
     if (iteration < renderState->iterations)
@@ -484,10 +688,20 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         {
             case GLFW_KEY_ESCAPE:
                 saveImage();
+                if (checkpointFile != nullptr)
+                {
+                    saveCheckpoint(checkpointFile);
+                }
                 glfwSetWindowShouldClose(window, GL_TRUE);
                 break;
             case GLFW_KEY_S:
                 saveImage();
+                break;
+            case GLFW_KEY_C:
+                if (checkpointFile != nullptr && saveCheckpoint(checkpointFile))
+                {
+                    printf("Checkpoint saved at iteration %d\n", iteration);
+                }
                 break;
             case GLFW_KEY_SPACE:
                 camchanged = true;
