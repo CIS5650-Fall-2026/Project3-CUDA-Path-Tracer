@@ -1,38 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1181" height="376" viewBox="0 0 1181 376" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="376" viewBox="0 0 1180 376" role="img" aria-labelledby="title desc">
 <title id="title">Equal-time completed samples</title>
 <desc id="desc">Each run requested 4000 ms with a fixed safety ceiling; bars show medians and whiskers the full retained fixed-seed range.</desc>
-<rect width="1181" height="376" fill="#f8fafc"/>
+<rect width="1180" height="376" fill="#f8fafc"/>
 <g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#182433">
 <text x="34" y="39" font-size="24" font-weight="650">Equal-time completed samples</text>
 <text x="34" y="66" font-size="13">Each run requested 4000 ms with a fixed safety ceiling; bars show medians and whiskers the full retained fixed-seed range.</text>
 <path d="M365.00 90 V328" stroke="#dde3ea"/>
 <text x="365.00" y="351" text-anchor="middle" font-size="12">0</text>
 <path d="M506.00 90 V328" stroke="#dde3ea"/>
-<text x="506.00" y="351" text-anchor="middle" font-size="12">201.4</text>
+<text x="506.00" y="351" text-anchor="middle" font-size="12">201.8</text>
 <path d="M647.00 90 V328" stroke="#dde3ea"/>
-<text x="647.00" y="351" text-anchor="middle" font-size="12">402.8</text>
+<text x="647.00" y="351" text-anchor="middle" font-size="12">403.6</text>
 <path d="M788.00 90 V328" stroke="#dde3ea"/>
-<text x="788.00" y="351" text-anchor="middle" font-size="12">604.1</text>
+<text x="788.00" y="351" text-anchor="middle" font-size="12">605.5</text>
 <path d="M929.00 90 V328" stroke="#dde3ea"/>
-<text x="929.00" y="351" text-anchor="middle" font-size="12">805.5</text>
+<text x="929.00" y="351" text-anchor="middle" font-size="12">807.3</text>
 <path d="M1070.00 90 V328" stroke="#dde3ea"/>
-<text x="1070.00" y="351" text-anchor="middle" font-size="12">1007</text>
+<text x="1070.00" y="351" text-anchor="middle" font-size="12">1009</text>
 <text x="717.50" y="371" text-anchor="middle" font-size="12">actual whole completed samples</text>
 <text x="351" y="122" text-anchor="end" font-size="12">diffuse · counter (n=8)</text>
-<rect x="365" y="102" width="628.41" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>completed_samples by fixed seed — 947:898.0; 104729:899.0; 130363:896.0; 155921:895.0; 196613:898.0; 262147:893.0; 314159:897.0; 524287:898.0</title></rect>
-<path d="M990.26 116 H994.46 M990.26 110 V122 M994.46 110 V122" stroke="#172331" stroke-width="1.5"/>
-<text x="1002.46" y="122" font-size="12">897.5 [893, 899]</text>
+<rect x="365" y="102" width="627.37" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>completed_samples by fixed seed — 947:896.0; 104729:895.0; 130363:899.0; 155921:897.0; 196613:898.0; 262147:898.0; 314159:901.0; 524287:900.0</title></rect>
+<path d="M990.27 116 H994.46 M990.27 110 V122 M994.46 110 V122" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.46" y="122" font-size="12">898 [895, 901]</text>
 <text x="351" y="173" text-anchor="end" font-size="12">diffuse · halton (n=8)</text>
-<rect x="365" y="153" width="557.35" height="28" rx="3" fill="#d06531" opacity="0.9"><title>completed_samples by fixed seed — 947:796.0; 104729:797.0; 130363:796.0; 155921:795.0; 196613:796.0; 262147:796.0; 314159:796.0; 524287:797.0</title></rect>
-<path d="M921.65 167 H923.05 M921.65 161 V173 M923.05 161 V173" stroke="#172331" stroke-width="1.5"/>
-<text x="931.05" y="173" font-size="12">796 [795, 797]</text>
+<rect x="365" y="153" width="556.81" height="28" rx="3" fill="#d06531" opacity="0.9"><title>completed_samples by fixed seed — 947:799.0; 104729:797.0; 130363:798.0; 155921:796.0; 196613:796.0; 262147:798.0; 314159:797.0; 524287:795.0</title></rect>
+<path d="M920.41 167 H923.20 M920.41 161 V173 M923.20 161 V173" stroke="#172331" stroke-width="1.5"/>
+<text x="931.20" y="173" font-size="12">797 [795, 799]</text>
 <text x="351" y="224" text-anchor="end" font-size="12">glass-dof · counter (n=8)</text>
-<rect x="365" y="204" width="196.75" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>completed_samples by fixed seed — 947:282.0; 104729:282.0; 130363:280.0; 155921:282.0; 196613:281.0; 262147:281.0; 314159:281.0; 524287:281.0</title></rect>
-<path d="M561.05 218 H562.45 M561.05 212 V224 M562.45 212 V224" stroke="#172331" stroke-width="1.5"/>
-<text x="570.45" y="224" font-size="12">281 [280, 282]</text>
+<rect x="365" y="204" width="196.31" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>completed_samples by fixed seed — 947:282.0; 104729:282.0; 130363:281.0; 155921:282.0; 196613:281.0; 262147:281.0; 314159:281.0; 524287:281.0</title></rect>
+<path d="M561.31 218 H562.01 M561.31 212 V224 M562.01 212 V224" stroke="#172331" stroke-width="1.5"/>
+<text x="570.01" y="224" font-size="12">281 [281, 282]</text>
 <text x="351" y="275" text-anchor="end" font-size="12">glass-dof · halton (n=8)</text>
-<rect x="365" y="255" width="191.85" height="28" rx="3" fill="#d06531" opacity="0.9"><title>completed_samples by fixed seed — 947:274.0; 104729:274.0; 130363:275.0; 155921:274.0; 196613:274.0; 262147:275.0; 314159:274.0; 524287:275.0</title></rect>
-<path d="M556.85 269 H557.55 M556.85 263 V275 M557.55 263 V275" stroke="#172331" stroke-width="1.5"/>
-<text x="565.55" y="275" font-size="12">274 [274, 275]</text>
+<rect x="365" y="255" width="191.42" height="28" rx="3" fill="#d06531" opacity="0.9"><title>completed_samples by fixed seed — 947:274.0; 104729:274.0; 130363:274.0; 155921:275.0; 196613:275.0; 262147:274.0; 314159:274.0; 524287:275.0</title></rect>
+<path d="M556.42 269 H557.12 M556.42 263 V275 M557.12 263 V275" stroke="#172331" stroke-width="1.5"/>
+<text x="565.12" y="275" font-size="12">274 [274, 275]</text>
 </g>
 </svg>

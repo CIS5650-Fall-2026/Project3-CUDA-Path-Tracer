@@ -39,6 +39,7 @@ set(cis565_core_sources
     src/gltf_loader.cpp
     src/geometry.cpp
     src/image.cpp
+    src/output_path.cpp
     src/scene.cpp
     src/stb.cpp
     src/utilities.cpp)
@@ -94,6 +95,8 @@ if(BUILD_RENDERER)
         src/intersections.cu
         src/intersections.h
         src/main.cpp
+        src/output_path.cpp
+        src/output_path.h
         src/pathtrace.cu
         src/pathtrace.h
         src/procedural_texture.cuh
@@ -108,7 +111,8 @@ if(BUILD_RENDERER)
         stream_compaction/device_scan.cuh)
     # Every compiled renderer source is build-identity material, including any
     # source added to the target by this extension.
-    list(APPEND cis565_build_fingerprint_sources ${cis565_renderer_sources})
+    list(APPEND cis565_build_fingerprint_sources
+        ${cis565_core_sources} ${cis565_renderer_sources})
     list(REMOVE_DUPLICATES cis565_build_fingerprint_sources)
     set(cis565_source_hash_material "")
     foreach(cis565_source IN LISTS cis565_build_fingerprint_sources)
@@ -288,6 +292,7 @@ if(BUILD_TESTING)
 
     cis565_add_host_test(geometry_tests tests/geometry_tests.cpp)
     cis565_add_host_test(checkpoint_tests tests/checkpoint_tests.cpp)
+    cis565_add_host_test(output_path_tests tests/output_path_tests.cpp)
     cis565_add_host_test(gltf_tests tests/gltf_tests.cpp)
 
     if(BUILD_RENDERER)

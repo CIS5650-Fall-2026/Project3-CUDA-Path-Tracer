@@ -1,0 +1,64 @@
+{
+  "artifacts": {},
+  "audits": [],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/temporary-scene-mutations/active-scene.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/098-reject-scene-shutter-change/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/097-scene-mutation-shutter-baseline/state.checkpoint"
+  ],
+  "command_json": {
+    "bytes": 1557,
+    "path": "runs/098-reject-scene-shutter-change/command.json",
+    "sha256": "e86c325ba27f3c58ef524075ab979d82d9929db495248d42f682a7dc9e380a9e"
+  },
+  "elapsed_seconds": 0.07462773400015976,
+  "exit_code": 1,
+  "expectation_met": true,
+  "expected_exit": "nonzero",
+  "expected_rejection_terms": [
+    "checkpoint camera does not exactly match"
+  ],
+  "finished_utc": "2026-10-02T01:04:28.381543Z",
+  "index": 98,
+  "inputs": [
+    {
+      "bytes": 6372424,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    {
+      "bytes": 5126,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/temporary-scene-mutations/active-scene.json",
+      "role": "scene",
+      "sha256": "48fb9b4b880a40ff5c893fde3aa764c7ecde541da0d43b1c891c63e57d02ec7b"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/097-scene-mutation-shutter-baseline/state.checkpoint",
+      "role": "resume",
+      "sha256": "24912823f9098b0d59f5cc58bccef1c619c7cc33fcd355e46dd4c35aff4a17dc"
+    }
+  ],
+  "label": "reject-scene-shutter-change",
+  "launch_exception": null,
+  "output_prefix": "runs/098-reject-scene-shutter-change/render",
+  "rejection_text": "error: checkpoint continuation rejected: checkpoint camera does not exactly match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help",
+  "run_directory": "runs/098-reject-scene-shutter-change",
+  "started_utc": "2026-10-02T01:04:28.306897Z",
+  "stderr": {
+    "bytes": 1385,
+    "path": "runs/098-reject-scene-shutter-change/stderr.txt",
+    "sha256": "d177425c6eb23d82d29bb3e62733b991eebe0236acc46a5c3d8866fbf86911c5"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "runs/098-reject-scene-shutter-change/stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

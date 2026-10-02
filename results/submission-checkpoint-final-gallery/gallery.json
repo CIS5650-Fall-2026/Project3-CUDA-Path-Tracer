@@ -1,0 +1,419 @@
+[
+  {
+    "name": "workbench",
+    "scene": "optical-workbench",
+    "samples": 2048,
+    "resolution": "960x640",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "workbench.json"
+  },
+  {
+    "name": "comparison-bump",
+    "scene": "optical-workbench",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-bump.json"
+  },
+  {
+    "name": "comparison-no-bump",
+    "scene": "workbench-no-bump",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-no-bump.json"
+  },
+  {
+    "name": "comparison-procedural",
+    "scene": "workbench-procedural",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-procedural.json"
+  },
+  {
+    "name": "comparison-glass",
+    "scene": "optical-workbench",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-glass.json"
+  },
+  {
+    "name": "comparison-mirror",
+    "scene": "workbench-mirror",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-mirror.json"
+  },
+  {
+    "name": "comparison-dof",
+    "scene": "workbench-dof",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-dof.json"
+  },
+  {
+    "name": "comparison-nee",
+    "scene": "optical-workbench",
+    "samples": 64,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-nee.json"
+  },
+  {
+    "name": "comparison-no-nee",
+    "scene": "optical-workbench",
+    "samples": 64,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "off",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-no-nee.json"
+  },
+  {
+    "name": "comparison-aa",
+    "scene": "optical-workbench",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-aa.json"
+  },
+  {
+    "name": "comparison-no-aa",
+    "scene": "optical-workbench",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "off",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "comparison-no-aa.json"
+  },
+  {
+    "name": "restart-partial",
+    "scene": "optical-workbench",
+    "samples": 16,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "restart-partial.json"
+  },
+  {
+    "name": "restart-resumed",
+    "scene": "optical-workbench",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "restart-resumed.json"
+  },
+  {
+    "name": "debug-normals",
+    "scene": "optical-workbench",
+    "samples": 1,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3",
+      "debug": "normals"
+    },
+    "metadata": "debug-normals.json"
+  },
+  {
+    "name": "debug-uv",
+    "scene": "optical-workbench",
+    "samples": 1,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3",
+      "debug": "uv"
+    },
+    "metadata": "debug-uv.json"
+  },
+  {
+    "name": "debug-depth",
+    "scene": "optical-workbench",
+    "samples": 1,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3",
+      "debug": "depth"
+    },
+    "metadata": "debug-depth.json"
+  },
+  {
+    "name": "procedural-fluted-body-plain",
+    "scene": "procedural-fluted-body-plain",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-fluted-body-plain.json"
+  },
+  {
+    "name": "procedural-fluted-body-marble",
+    "scene": "procedural-fluted-body-marble",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-fluted-body-marble.json"
+  },
+  {
+    "name": "procedural-fluted-body-cells",
+    "scene": "procedural-fluted-body-cells",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-fluted-body-cells.json"
+  },
+  {
+    "name": "procedural-swept-knot-plain",
+    "scene": "procedural-swept-knot-plain",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-swept-knot-plain.json"
+  },
+  {
+    "name": "procedural-swept-knot-marble",
+    "scene": "procedural-swept-knot-marble",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-swept-knot-marble.json"
+  },
+  {
+    "name": "procedural-swept-knot-cells",
+    "scene": "procedural-swept-knot-cells",
+    "samples": 512,
+    "resolution": "640x424",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-swept-knot-cells.json"
+  },
+  {
+    "name": "procedural-cover",
+    "scene": "procedural-optical-stilllife",
+    "samples": 2048,
+    "resolution": "960x640",
+    "seed": 947,
+    "settings": {
+      "aa": "on",
+      "nee": "on",
+      "bvh": "on",
+      "compact": "on",
+      "sort": "off",
+      "wavefront": "on",
+      "rr": "on",
+      "rr_start": "3"
+    },
+    "metadata": "procedural-cover.json"
+  }
+]

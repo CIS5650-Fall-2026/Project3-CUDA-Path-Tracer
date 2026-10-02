@@ -1,0 +1,26 @@
+{
+  "archived_utc": "2026-10-02T00:43:49.611229+00:00",
+  "scope": "Exact preceding source 07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703 media and illustration manifests; historical evidence, not acceptance of the forthcoming checkpoint-corrected bundle.",
+  "copies": [
+    {
+      "original_path": "img/interaction.gif",
+      "archived_path": "results/submission-final-interaction/historical-media/interaction.gif",
+      "sha256": "86346687849636b59306c926251fd2842074b92f3f5160be9386ac3f7a83b166",
+      "bytes": 9447847
+    },
+    {
+      "original_path": "img/render-manifest.json",
+      "archived_path": "results/submission-final-interaction/historical-media/render-manifest.json",
+      "sha256": "27679b97e1178b0de2ce61d524267911b7f6355fcfd03e4961e713c22533e405",
+      "bytes": 74633
+    },
+    {
+      "original_path": "img/chart-manifest.json",
+      "archived_path": "results/submission-final-interaction/historical-media/chart-manifest.json",
+      "sha256": "863db9a86965c91343ccf15c102c4ee208809637f9277886122d230254342413",
+      "bytes": 278118
+    }
+  ],
+  "preceding_MP4_retained_at": "results/submission-final-interaction/capture/interaction.mp4",
+  "preceding_MP4_sha256": "5ce5d0aadd2f7915903f87941bac494c05cd76dfebcd18bedb423a21141aae9c"
+}

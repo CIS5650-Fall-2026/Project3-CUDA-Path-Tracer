@@ -1,0 +1,361 @@
+{
+  "Materials": {
+    "floor": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.58,
+        0.61,
+        0.68
+      ],
+      "PROCEDURAL": "checker"
+    },
+    "wall": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.16,
+        0.19,
+        0.25
+      ]
+    },
+    "red": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.78,
+        0.24,
+        0.16
+      ]
+    },
+    "blue": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.18,
+        0.38,
+        0.78
+      ]
+    },
+    "blocker": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.32,
+        0.34,
+        0.38
+      ]
+    },
+    "glass": {
+      "TYPE": "Glass",
+      "RGB": [
+        0.98,
+        0.995,
+        1.0
+      ],
+      "IOR": 1.5
+    },
+    "warm_light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1.0,
+        0.72,
+        0.46
+      ],
+      "EMITTANCE": 10.0
+    },
+    "cool_light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.48,
+        0.7,
+        1.0
+      ],
+      "EMITTANCE": 9.0
+    },
+    "white_light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "EMITTANCE": 11.0
+    }
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "SCALE": [
+        12.0,
+        0.4,
+        12.0
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        0.0,
+        3.0,
+        -3.5
+      ],
+      "SCALE": [
+        12.0,
+        6.0,
+        0.2
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        -4.8,
+        3.0,
+        0.0
+      ],
+      "SCALE": [
+        0.2,
+        6.0,
+        7.0
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        4.8,
+        3.0,
+        0.0
+      ],
+      "SCALE": [
+        0.2,
+        6.0,
+        7.0
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "glass",
+      "TRANS": [
+        -2.4,
+        0.8,
+        0.4
+      ],
+      "SCALE": [
+        1.2,
+        1.2,
+        1.2
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "MOTION_TRANSLATION": [
+        1.0,
+        0.15,
+        -0.35
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "blue",
+      "TRANS": [
+        0.25,
+        0.75,
+        0.8
+      ],
+      "SCALE": [
+        0.9,
+        1.4,
+        0.7
+      ],
+      "ROTAT": [
+        10.0,
+        32.0,
+        8.0
+      ],
+      "MOTION_TRANSLATION": [
+        -0.8,
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "TYPE": "obj",
+      "MATERIAL": "red",
+      "TRANS": [
+        2.0,
+        0.0,
+        -0.3
+      ],
+      "SCALE": [
+        0.65,
+        1.1,
+        0.8
+      ],
+      "ROTAT": [
+        0.0,
+        -20.0,
+        5.0
+      ],
+      "MOTION_TRANSLATION": [
+        -0.7,
+        0.1,
+        0.45
+      ],
+      "FILE": "/home/ubuntu/cis5650/project3/scenes/assets/vase-low.obj"
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "blocker",
+      "TRANS": [
+        -0.35,
+        2.0,
+        0.15
+      ],
+      "SCALE": [
+        0.45,
+        2.3,
+        0.4
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "MOTION_TRANSLATION": [
+        1.2,
+        -0.1,
+        -0.3
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "warm_light",
+      "TRANS": [
+        -2.8,
+        4.0,
+        1.4
+      ],
+      "SCALE": [
+        1.1,
+        0.6,
+        0.8
+      ],
+      "ROTAT": [
+        0.0,
+        24.0,
+        0.0
+      ],
+      "MOTION_TRANSLATION": [
+        0.55,
+        0.05,
+        -0.35
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "cool_light",
+      "TRANS": [
+        2.5,
+        3.8,
+        0.2
+      ],
+      "SCALE": [
+        1.0,
+        0.18,
+        0.8
+      ],
+      "ROTAT": [
+        0.0,
+        20.0,
+        12.0
+      ],
+      "MOTION_TRANSLATION": [
+        -0.45,
+        -0.1,
+        0.3
+      ]
+    },
+    {
+      "TYPE": "obj",
+      "MATERIAL": "white_light",
+      "TRANS": [
+        0.0,
+        4.7,
+        -0.3
+      ],
+      "SCALE": [
+        1.4,
+        1.0,
+        1.1
+      ],
+      "ROTAT": [
+        0.0,
+        10.0,
+        0.0
+      ],
+      "MOTION_TRANSLATION": [
+        0.4,
+        -0.15,
+        0.2
+      ],
+      "FILE": "/home/ubuntu/cis5650/project3/scenes/assets/area-light.obj"
+    }
+  ],
+  "Camera": {
+    "RES": [
+      17,
+      13
+    ],
+    "FOVY": 30.0,
+    "ITERATIONS": 17,
+    "DEPTH": 7,
+    "FILE": "hedge-motion-validation",
+    "EYE": [
+      6.0,
+      3.6,
+      9.0
+    ],
+    "LOOKAT": [
+      0.0,
+      1.5,
+      0.0
+    ],
+    "UP": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "APERTURE": 0.0,
+    "FOCUS": 11.0,
+    "SHUTTER": [
+      0.25,
+      0.75
+    ]
+  },
+  "BVH_MAX_DEPTH": 32
+}

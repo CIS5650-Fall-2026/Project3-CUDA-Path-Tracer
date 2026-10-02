@@ -6,62 +6,62 @@
 <path d="M310.00 92 V677" stroke="#dce2ec"/>
 <text x="310.00" y="698" text-anchor="middle" font-size="13">0.00</text>
 <path d="M428.00 92 V677" stroke="#dce2ec"/>
-<text x="428.00" y="698" text-anchor="middle" font-size="13">25.26</text>
+<text x="428.00" y="698" text-anchor="middle" font-size="13">25.25</text>
 <path d="M546.00 92 V677" stroke="#dce2ec"/>
-<text x="546.00" y="698" text-anchor="middle" font-size="13">50.52</text>
+<text x="546.00" y="698" text-anchor="middle" font-size="13">50.50</text>
 <path d="M664.00 92 V677" stroke="#dce2ec"/>
-<text x="664.00" y="698" text-anchor="middle" font-size="13">75.77</text>
+<text x="664.00" y="698" text-anchor="middle" font-size="13">75.74</text>
 <path d="M782.00 92 V677" stroke="#dce2ec"/>
-<text x="782.00" y="698" text-anchor="middle" font-size="13">101.03</text>
+<text x="782.00" y="698" text-anchor="middle" font-size="13">100.99</text>
 <path d="M900.00 92 V677" stroke="#dce2ec"/>
-<text x="900.00" y="698" text-anchor="middle" font-size="13">126.29</text>
+<text x="900.00" y="698" text-anchor="middle" font-size="13">126.24</text>
 <text x="296" y="121" text-anchor="end" font-size="14">wave-uniform / legacy-unsorted</text>
-<rect x="310" y="100" width="150.07" height="29" rx="3" fill="#2166ac"/>
-<path d="M460.04 114 H460.99 M460.04 108 V120 M460.99 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="468.07" y="121" font-size="13">32.121</text>
+<rect x="310" y="100" width="150.20" height="29" rx="3" fill="#2166ac"/>
+<path d="M460.15 114 H460.48 M460.15 108 V120 M460.48 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="468.20" y="121" font-size="13">32.138</text>
 <text x="296" y="167" text-anchor="end" font-size="14">wave-uniform / legacy-sorted</text>
-<rect x="310" y="146" width="210.29" height="29" rx="3" fill="#ca6e22"/>
-<path d="M520.24 160 H520.35 M520.24 154 V166 M520.35 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="528.29" y="167" font-size="13">45.012</text>
+<rect x="310" y="146" width="210.18" height="29" rx="3" fill="#ca6e22"/>
+<path d="M520.14 160 H520.19 M520.14 154 V166 M520.19 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="528.18" y="167" font-size="13">44.972</text>
 <text x="296" y="213" text-anchor="end" font-size="14">wave-uniform / wavefront</text>
-<rect x="310" y="192" width="158.67" height="29" rx="3" fill="#318f68"/>
-<path d="M468.61 206 H468.73 M468.61 200 V212 M468.73 200 V212" stroke="#172235" stroke-width="2"/>
-<text x="476.67" y="213" font-size="13">33.963</text>
+<rect x="310" y="192" width="158.77" height="29" rx="3" fill="#318f68"/>
+<path d="M468.64 206 H468.85 M468.64 200 V212 M468.85 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="476.77" y="213" font-size="13">33.971</text>
 <text x="296" y="259" text-anchor="end" font-size="14">wave-mixed / legacy-unsorted</text>
-<rect x="310" y="238" width="145.18" height="29" rx="3" fill="#2166ac"/>
-<path d="M455.09 252 H455.21 M455.09 246 V258 M455.21 246 V258" stroke="#172235" stroke-width="2"/>
-<text x="463.18" y="259" font-size="13">31.076</text>
+<rect x="310" y="238" width="145.25" height="29" rx="3" fill="#2166ac"/>
+<path d="M455.24 252 H455.26 M455.24 246 V258 M455.26 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="463.25" y="259" font-size="13">31.079</text>
 <text x="296" y="305" text-anchor="end" font-size="14">wave-mixed / legacy-sorted</text>
-<rect x="310" y="284" width="188.72" height="29" rx="3" fill="#ca6e22"/>
-<path d="M498.62 298 H498.78 M498.62 292 V304 M498.78 292 V304" stroke="#172235" stroke-width="2"/>
-<text x="506.72" y="305" font-size="13">40.395</text>
+<rect x="310" y="284" width="188.73" height="29" rx="3" fill="#ca6e22"/>
+<path d="M498.56 298 H498.80 M498.56 292 V304 M498.80 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="506.73" y="305" font-size="13">40.381</text>
 <text x="296" y="351" text-anchor="end" font-size="14">wave-mixed / wavefront</text>
-<rect x="310" y="330" width="207.62" height="29" rx="3" fill="#318f68"/>
-<path d="M517.42 344 H517.69 M517.42 338 V350 M517.69 338 V350" stroke="#172235" stroke-width="2"/>
-<text x="525.62" y="351" font-size="13">44.442</text>
+<rect x="310" y="330" width="207.66" height="29" rx="3" fill="#318f68"/>
+<path d="M517.54 344 H517.76 M517.54 338 V350 M517.76 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="525.66" y="351" font-size="13">44.433</text>
 <text x="296" y="397" text-anchor="end" font-size="14">wave-closed / legacy-unsorted</text>
-<rect x="310" y="376" width="185.23" height="29" rx="3" fill="#2166ac"/>
-<path d="M495.15 390 H495.39 M495.15 384 V396 M495.39 384 V396" stroke="#172235" stroke-width="2"/>
-<text x="503.23" y="397" font-size="13">39.649</text>
+<rect x="310" y="376" width="185.22" height="29" rx="3" fill="#2166ac"/>
+<path d="M495.13 390 H495.28 M495.13 384 V396 M495.28 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="503.22" y="397" font-size="13">39.630</text>
 <text x="296" y="443" text-anchor="end" font-size="14">wave-closed / legacy-sorted</text>
-<rect x="310" y="422" width="526.63" height="29" rx="3" fill="#ca6e22"/>
-<path d="M836.30 436 H836.79 M836.30 430 V442 M836.79 430 V442" stroke="#172235" stroke-width="2"/>
-<text x="844.63" y="443" font-size="13">112.726</text>
+<rect x="310" y="422" width="526.58" height="29" rx="3" fill="#ca6e22"/>
+<path d="M836.52 436 H836.79 M836.52 430 V442 M836.79 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="844.58" y="443" font-size="13">112.671</text>
 <text x="296" y="489" text-anchor="end" font-size="14">wave-closed / wavefront</text>
-<rect x="310" y="468" width="229.87" height="29" rx="3" fill="#318f68"/>
+<rect x="310" y="468" width="229.84" height="29" rx="3" fill="#318f68"/>
 <path d="M539.76 482 H539.91 M539.76 476 V488 M539.91 476 V488" stroke="#172235" stroke-width="2"/>
-<text x="547.87" y="489" font-size="13">49.205</text>
+<text x="547.84" y="489" font-size="13">49.177</text>
 <text x="296" y="535" text-anchor="end" font-size="14">wave-mesh-heavy / legacy-unsorted</text>
-<rect x="310" y="514" width="110.44" height="29" rx="3" fill="#2166ac"/>
-<path d="M420.26 528 H420.47 M420.26 522 V534 M420.47 522 V534" stroke="#172235" stroke-width="2"/>
-<text x="428.44" y="535" font-size="13">23.640</text>
+<rect x="310" y="514" width="110.31" height="29" rx="3" fill="#2166ac"/>
+<path d="M420.30 528 H420.32 M420.30 522 V534 M420.32 522 V534" stroke="#172235" stroke-width="2"/>
+<text x="428.31" y="535" font-size="13">23.604</text>
 <text x="296" y="581" text-anchor="end" font-size="14">wave-mesh-heavy / legacy-sorted</text>
-<rect x="310" y="560" width="157.44" height="29" rx="3" fill="#ca6e22"/>
-<path d="M467.36 574 H467.50 M467.36 568 V580 M467.50 568 V580" stroke="#172235" stroke-width="2"/>
-<text x="475.44" y="581" font-size="13">33.699</text>
+<rect x="310" y="560" width="157.33" height="29" rx="3" fill="#ca6e22"/>
+<path d="M467.31 574 H467.73 M467.31 568 V580 M467.73 568 V580" stroke="#172235" stroke-width="2"/>
+<text x="475.33" y="581" font-size="13">33.664</text>
 <text x="296" y="627" text-anchor="end" font-size="14">wave-mesh-heavy / wavefront</text>
-<rect x="310" y="606" width="156.30" height="29" rx="3" fill="#318f68"/>
-<path d="M466.15 620 H466.31 M466.15 614 V626 M466.31 614 V626" stroke="#172235" stroke-width="2"/>
-<text x="474.30" y="627" font-size="13">33.456</text>
+<rect x="310" y="606" width="156.20" height="29" rx="3" fill="#318f68"/>
+<path d="M466.04 620 H466.29 M466.04 614 V626 M466.29 614 V626" stroke="#172235" stroke-width="2"/>
+<text x="474.20" y="627" font-size="13">33.423</text>
 </g>
 </svg>

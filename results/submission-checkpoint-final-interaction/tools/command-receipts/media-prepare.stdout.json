@@ -1,0 +1,47 @@
+{
+  "status": "awaiting_root_visual_verification",
+  "evidence_prefix": "submission-checkpoint-final",
+  "published": false,
+  "frame_artifacts": [
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-01-t2.png",
+      "bytes": 1261978,
+      "sha256": "728dc01c15d2dfc5194abe5d3e0179bdcf596ac80b0c09632374f78667f69127"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-02-t12.png",
+      "bytes": 848900,
+      "sha256": "a6230330ea32ba001c8551505721ea39e2f3d02d4a3f906c0a619917c795e077"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-03-t16.png",
+      "bytes": 1438414,
+      "sha256": "f84623186b84a3ab288d6047f08b8bdf8515030ec1f9aaa2cf5a3dc4cb753112"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-04-t23.png",
+      "bytes": 1489017,
+      "sha256": "a390a6eb80a3873153052523bf293cd3f23eecfbcc1152d8f3f9f989d51c5a49"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-05-t30.png",
+      "bytes": 1526644,
+      "sha256": "ebfe3d64f5c02bb01ed6d1888697308119ff5a527022e0c78afc45b60cf3ad33"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-06-t36.png",
+      "bytes": 1281019,
+      "sha256": "6c216be5f57bc790bdc19ccb3a87abe6b8f8354efa516486a44e5f3e53806294"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-07-t44.5.png",
+      "bytes": 850629,
+      "sha256": "1b90e4cc26f9c040dbd04c4815d57b98666af321f45e52e0ab85c2a616f51ec5"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/inspected-frames/frame-08-t46.5.png",
+      "bytes": 847819,
+      "sha256": "4b2711eff4586ed44e8c642b5bf40420a314cd34751a621ff50c34170392c96b"
+    }
+  ]
+}

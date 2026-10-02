@@ -8,23 +8,23 @@
 <path d="M365.00 90 V226" stroke="#dde3ea"/>
 <text x="365.00" y="249" text-anchor="middle" font-size="12">0</text>
 <path d="M506.00 90 V226" stroke="#dde3ea"/>
-<text x="506.00" y="249" text-anchor="middle" font-size="12">5.145</text>
+<text x="506.00" y="249" text-anchor="middle" font-size="12">5.142</text>
 <path d="M647.00 90 V226" stroke="#dde3ea"/>
-<text x="647.00" y="249" text-anchor="middle" font-size="12">10.29</text>
+<text x="647.00" y="249" text-anchor="middle" font-size="12">10.28</text>
 <path d="M788.00 90 V226" stroke="#dde3ea"/>
 <text x="788.00" y="249" text-anchor="middle" font-size="12">15.43</text>
 <path d="M929.00 90 V226" stroke="#dde3ea"/>
-<text x="929.00" y="249" text-anchor="middle" font-size="12">20.58</text>
+<text x="929.00" y="249" text-anchor="middle" font-size="12">20.57</text>
 <path d="M1070.00 90 V226" stroke="#dde3ea"/>
-<text x="1070.00" y="249" text-anchor="middle" font-size="12">25.72</text>
+<text x="1070.00" y="249" text-anchor="middle" font-size="12">25.71</text>
 <text x="717.50" y="269" text-anchor="middle" font-size="12">renderer GPU milliseconds per completed sample</text>
 <text x="351" y="122" text-anchor="end" font-size="12">full-shutter · motion-full (n=3)</text>
-<rect x="365" y="102" width="620.67" height="28" rx="3" fill="#d06531" opacity="0.9"></rect>
-<path d="M985.20 116 H985.79 M985.20 110 V122 M985.79 110 V122" stroke="#172331" stroke-width="1.5"/>
-<text x="993.79" y="122" font-size="12">22.647 [22.63, 22.652]</text>
+<rect x="365" y="102" width="620.26" height="28" rx="3" fill="#d06531" opacity="0.9"></rect>
+<path d="M985.20 116 H985.30 M985.20 110 V122 M985.30 110 V122" stroke="#172331" stroke-width="1.5"/>
+<text x="993.30" y="122" font-size="12">22.62 [22.618, 22.622]</text>
 <text x="351" y="173" text-anchor="end" font-size="12">midpoint · motion-midpoint (n=3)</text>
-<rect x="365" y="153" width="628.54" height="28" rx="3" fill="#d06531" opacity="0.9"></rect>
-<path d="M992.93 167 H994.46 M992.93 161 V173 M994.46 161 V173" stroke="#172331" stroke-width="1.5"/>
-<text x="1002.46" y="173" font-size="12">22.935 [22.912, 22.968]</text>
+<rect x="365" y="153" width="627.55" height="28" rx="3" fill="#d06531" opacity="0.9"></rect>
+<path d="M992.43 167 H994.46 M992.43 161 V173 M994.46 161 V173" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.46" y="173" font-size="12">22.886 [22.882, 22.956]</text>
 </g>
 </svg>

@@ -28,6 +28,20 @@ Our earlier extension added original histogram/scan/scatter material queues, spe
 
 The shared checker-parity helper and its host/CUDA boundary regressions are independently authored. They correct the accepted-input overflow found during final review without importing a checker implementation or changing ordinary float-first cell boundaries. All current rendering evidence is refreshed after that fix.
 
+## Original checkpoint boundary corrections
+
+`src/output_path.cpp` and `src/output_path.h` are original project implementation, shared by the headless preflight and host tests. They compare physical filesystem identities before output is written. Resolution follows existing and dangling symbolic links, respects parent traversal after a symbolic link, and detects existing hardlinks. For absent components, exclusive empty-directory reservations let the destination filesystem itself determine case and Unicode collation; no external path-normalization implementation or table is imported.
+
+Reservation ownership and path buffers are allocated before the first creation. Each successful exclusive creation immediately records its cleanup obligation. Normal cleanup removes only our own empty reservations and reports inspection, creation, comparison or cleanup errors to the caller, which rejects the operation. Native empty-directory removal provides an allocation-safe fallback during exception unwinding. Existing files are not overwritten to perform the identity check. The original tests cover physical aliases, ordinary distinct paths, native collation, invalid parents, symbolic-link cycles and reservation cleanup.
+
+The scene parser already accepts `FOVY = 0`. The original checkpoint correction in `src/checkpoint.cpp` now permits its finite zero field-of-view and pixel-length components, while retaining rejection of negative and nonfinite projection values. `tests/checkpoint_tests.cpp` constructs this accepted camera, saves its checkpoint and checks the exact state after reload. This fixes persistence of a supported camera rather than changing the renderer's camera model.
+
+The corrected source identity is `a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639`. Fresh optimized and ASan/UBSan/float-cast-overflow host evidence in `results/submission-checkpoint-final-host-mac/` binds this source: eight actual test invocations after 32 fresh compile/link commands, including 16 checkpoint groups/318 checks and eight output-path groups/80 checks per configuration on APFS. The output-path logs retain the observed case and Unicode collation; counts on a filesystem with distinct forms can differ. Test executables and private connection metadata are not part of the deliverable.
+
+Only completed records identifying this corrected source are current validation, render, measurement or media evidence. Earlier `results/extension-*`, `results/hedge-final-*` and `results/submission-final-*` records, including source `07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703`, remain historical. Their original source identities must be preserved; they do not accept the corrected bundle. Focused checks and this documentation preflight do not count toward the four final whole-bundle audits.
+
+The credited Project 1 workstation helpers are `project_1/scripts/aws-workstation.py` and `project_1/scripts/aws-with-display.py` at revision `d0df4d4e1f5985ef936c5ddc11a95331df27908b`. Their local session-management use is separate from the submitted renderer. Project 2 reuse retains the paths and revision listed above. No private credential or connection file is imported into the deliverable, and no additional external dependency is authorized by either project's reuse.
+
 ## Completion acceptance
 
 > Using third-party code without its approval, including using another student's code, is an academic integrity violation, and will, at minimum, result in you receiving an F for the semester.

@@ -8,36 +8,36 @@
 <path d="M428.00 92 V401" stroke="#dce2ec"/>
 <text x="428.00" y="422" text-anchor="middle" font-size="13">3.04</text>
 <path d="M546.00 92 V401" stroke="#dce2ec"/>
-<text x="546.00" y="422" text-anchor="middle" font-size="13">6.08</text>
+<text x="546.00" y="422" text-anchor="middle" font-size="13">6.07</text>
 <path d="M664.00 92 V401" stroke="#dce2ec"/>
-<text x="664.00" y="422" text-anchor="middle" font-size="13">9.12</text>
+<text x="664.00" y="422" text-anchor="middle" font-size="13">9.11</text>
 <path d="M782.00 92 V401" stroke="#dce2ec"/>
-<text x="782.00" y="422" text-anchor="middle" font-size="13">12.16</text>
+<text x="782.00" y="422" text-anchor="middle" font-size="13">12.14</text>
 <path d="M900.00 92 V401" stroke="#dce2ec"/>
-<text x="900.00" y="422" text-anchor="middle" font-size="13">15.20</text>
+<text x="900.00" y="422" text-anchor="middle" font-size="13">15.18</text>
 <text x="296" y="121" text-anchor="end" font-size="14">procedural-body / plain</text>
-<rect x="310" y="100" width="526.30" height="29" rx="3" fill="#2166ac"/>
-<path d="M834.66 114 H836.79 M834.66 108 V120 M836.79 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="844.30" y="121" font-size="13">13.557</text>
+<rect x="310" y="100" width="524.27" height="29" rx="3" fill="#2166ac"/>
+<path d="M834.10 114 H836.79 M834.10 108 V120 M836.79 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="842.27" y="121" font-size="13">13.490</text>
 <text x="296" y="167" text-anchor="end" font-size="14">procedural-body / marble</text>
-<rect x="310" y="146" width="409.26" height="29" rx="3" fill="#ca6e22"/>
-<path d="M718.74 160 H720.11 M718.74 154 V166 M720.11 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="727.26" y="167" font-size="13">10.542</text>
+<rect x="310" y="146" width="410.95" height="29" rx="3" fill="#ca6e22"/>
+<path d="M719.23 160 H722.33 M719.23 154 V166 M722.33 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="728.95" y="167" font-size="13">10.574</text>
 <text x="296" y="213" text-anchor="end" font-size="14">procedural-body / cells</text>
-<rect x="310" y="192" width="371.42" height="29" rx="3" fill="#318f68"/>
-<path d="M681.03 206 H681.53 M681.03 200 V212 M681.53 200 V212" stroke="#172235" stroke-width="2"/>
-<text x="689.42" y="213" font-size="13">9.568</text>
+<rect x="310" y="192" width="370.38" height="29" rx="3" fill="#318f68"/>
+<path d="M678.75 206 H681.00 M678.75 200 V212 M681.00 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="688.38" y="213" font-size="13">9.530</text>
 <text x="296" y="259" text-anchor="end" font-size="14">procedural-knot / plain</text>
-<rect x="310" y="238" width="374.68" height="29" rx="3" fill="#2166ac"/>
-<path d="M683.79 252 H684.90 M683.79 246 V258 M684.90 246 V258" stroke="#172235" stroke-width="2"/>
-<text x="692.68" y="259" font-size="13">9.652</text>
+<rect x="310" y="238" width="373.74" height="29" rx="3" fill="#2166ac"/>
+<path d="M683.68 252 H684.85 M683.68 246 V258 M684.85 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="691.74" y="259" font-size="13">9.617</text>
 <text x="296" y="305" text-anchor="end" font-size="14">procedural-knot / marble</text>
-<rect x="310" y="284" width="326.89" height="29" rx="3" fill="#ca6e22"/>
-<path d="M636.03 298 H639.31 M636.03 292 V304 M639.31 292 V304" stroke="#172235" stroke-width="2"/>
-<text x="644.89" y="305" font-size="13">8.421</text>
+<rect x="310" y="284" width="327.42" height="29" rx="3" fill="#ca6e22"/>
+<path d="M635.87 298 H639.25 M635.87 292 V304 M639.25 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="645.42" y="305" font-size="13">8.425</text>
 <text x="296" y="351" text-anchor="end" font-size="14">procedural-knot / cells</text>
-<rect x="310" y="330" width="316.00" height="29" rx="3" fill="#318f68"/>
-<path d="M625.15 344 H627.04 M625.15 338 V350 M627.04 338 V350" stroke="#172235" stroke-width="2"/>
-<text x="634.00" y="351" font-size="13">8.140</text>
+<rect x="310" y="330" width="315.90" height="29" rx="3" fill="#318f68"/>
+<path d="M624.78 344 H626.26 M624.78 338 V350 M626.26 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="633.90" y="351" font-size="13">8.128</text>
 </g>
 </svg>

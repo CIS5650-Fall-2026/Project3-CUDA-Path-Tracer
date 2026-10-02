@@ -12,40 +12,40 @@
 <path d="M664.00 92 V493" stroke="#dce2ec"/>
 <text x="664.00" y="514" text-anchor="middle" font-size="13">3.10</text>
 <path d="M782.00 92 V493" stroke="#dce2ec"/>
-<text x="782.00" y="514" text-anchor="middle" font-size="13">4.14</text>
+<text x="782.00" y="514" text-anchor="middle" font-size="13">4.13</text>
 <path d="M900.00 92 V493" stroke="#dce2ec"/>
 <text x="900.00" y="514" text-anchor="middle" font-size="13">5.17</text>
 <text x="296" y="121" text-anchor="end" font-size="14">wave-uniform / queue GPU</text>
-<rect x="310" y="100" width="122.49" height="29" rx="3" fill="#2166ac"/>
-<path d="M432.46 114 H432.70 M432.46 108 V120 M432.70 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="440.49" y="121" font-size="13">1.073</text>
+<rect x="310" y="100" width="122.33" height="29" rx="3" fill="#2166ac"/>
+<path d="M432.16 114 H432.42 M432.16 108 V120 M432.42 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="440.33" y="121" font-size="13">1.072</text>
 <text x="296" y="167" text-anchor="end" font-size="14">wave-uniform / queue host</text>
-<rect x="310" y="146" width="78.97" height="29" rx="3" fill="#ca6e22"/>
-<path d="M388.97 160 H389.98 M388.97 154 V166 M389.98 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="396.97" y="167" font-size="13">0.692</text>
+<rect x="310" y="146" width="79.34" height="29" rx="3" fill="#ca6e22"/>
+<path d="M389.31 160 H392.63 M389.31 154 V166 M392.63 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="397.34" y="167" font-size="13">0.695</text>
 <text x="296" y="213" text-anchor="end" font-size="14">wave-mixed / queue GPU</text>
-<rect x="310" y="192" width="110.19" height="29" rx="3" fill="#318f68"/>
-<path d="M420.00 206 H420.29 M420.00 200 V212 M420.29 200 V212" stroke="#172235" stroke-width="2"/>
-<text x="428.19" y="213" font-size="13">0.966</text>
+<rect x="310" y="192" width="110.10" height="29" rx="3" fill="#318f68"/>
+<path d="M419.96 206 H420.26 M419.96 200 V212 M420.26 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="428.10" y="213" font-size="13">0.965</text>
 <text x="296" y="259" text-anchor="end" font-size="14">wave-mixed / queue host</text>
-<rect x="310" y="238" width="100.19" height="29" rx="3" fill="#2166ac"/>
-<path d="M409.93 252 H415.13 M409.93 246 V258 M415.13 246 V258" stroke="#172235" stroke-width="2"/>
-<text x="418.19" y="259" font-size="13">0.878</text>
+<rect x="310" y="238" width="100.40" height="29" rx="3" fill="#2166ac"/>
+<path d="M410.08 252 H414.09 M410.08 246 V258 M414.09 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="418.40" y="259" font-size="13">0.880</text>
 <text x="296" y="305" text-anchor="end" font-size="14">wave-closed / queue GPU</text>
-<rect x="310" y="284" width="526.67" height="29" rx="3" fill="#ca6e22"/>
-<path d="M836.12 298 H836.79 M836.12 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
-<text x="844.67" y="305" font-size="13">4.615</text>
+<rect x="310" y="284" width="526.39" height="29" rx="3" fill="#ca6e22"/>
+<path d="M836.15 298 H836.79 M836.15 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="844.39" y="305" font-size="13">4.611</text>
 <text x="296" y="351" text-anchor="end" font-size="14">wave-closed / queue host</text>
-<rect x="310" y="330" width="83.01" height="29" rx="3" fill="#318f68"/>
-<path d="M389.81 344 H393.32 M389.81 338 V350 M393.32 338 V350" stroke="#172235" stroke-width="2"/>
-<text x="401.01" y="351" font-size="13">0.727</text>
+<rect x="310" y="330" width="79.52" height="29" rx="3" fill="#318f68"/>
+<path d="M389.18 344 H390.07 M389.18 338 V350 M390.07 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="397.52" y="351" font-size="13">0.697</text>
 <text x="296" y="397" text-anchor="end" font-size="14">wave-mesh-heavy / queue GPU</text>
-<rect x="310" y="376" width="110.35" height="29" rx="3" fill="#2166ac"/>
-<path d="M420.27 390 H420.43 M420.27 384 V396 M420.43 384 V396" stroke="#172235" stroke-width="2"/>
-<text x="428.35" y="397" font-size="13">0.967</text>
+<rect x="310" y="376" width="110.23" height="29" rx="3" fill="#2166ac"/>
+<path d="M419.85 390 H420.37 M419.85 384 V396 M420.37 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="428.23" y="397" font-size="13">0.966</text>
 <text x="296" y="443" text-anchor="end" font-size="14">wave-mesh-heavy / queue host</text>
-<rect x="310" y="422" width="98.37" height="29" rx="3" fill="#ca6e22"/>
-<path d="M405.09 436 H408.71 M405.09 430 V442 M408.71 430 V442" stroke="#172235" stroke-width="2"/>
-<text x="416.37" y="443" font-size="13">0.862</text>
+<rect x="310" y="422" width="93.57" height="29" rx="3" fill="#ca6e22"/>
+<path d="M403.32 436 H407.03 M403.32 430 V442 M407.03 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="411.57" y="443" font-size="13">0.820</text>
 </g>
 </svg>

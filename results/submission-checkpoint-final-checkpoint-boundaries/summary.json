@@ -1,0 +1,521 @@
+{
+  "status": "passed",
+  "started_utc": "2026-10-02T01:03:27.253559+00:00",
+  "renderer_source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "driver_sha256": "41b946266a7de48f9d9bb29862b6ca0fe521d9a9396a5e59f32e287405085c27",
+  "executed_driver": "executed-driver.py",
+  "inputs_before": {
+    "source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+    "binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+    "scene_sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b"
+  },
+  "commands": [
+    {
+      "label": "reject-parent-symlink",
+      "argv": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/cornell.json",
+        "--seed",
+        "1",
+        "--resolution",
+        "32x24",
+        "--depth",
+        "4",
+        "--sampler",
+        "counter",
+        "--motion",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--rr",
+        "off",
+        "--samples",
+        "1",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/real/parent-case",
+        "--checkpoint",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/alias/parent-case.json"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:27.253906+00:00",
+      "stdout": {
+        "path": "reject-parent-symlink.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "reject-parent-symlink.stderr.log",
+        "sha256": "ad7d7ff3dfc8e1fbe5bea4751e65f147b109c4388ae74bc788c573fdc92fad01",
+        "bytes": 1447
+      },
+      "returncode": 1,
+      "elapsed_seconds": 0.00785546100019019,
+      "finished_utc": "2026-10-02T01:03:27.261770+00:00"
+    },
+    {
+      "label": "reject-final-symlink",
+      "argv": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/cornell.json",
+        "--seed",
+        "1",
+        "--resolution",
+        "32x24",
+        "--depth",
+        "4",
+        "--sampler",
+        "counter",
+        "--motion",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--rr",
+        "off",
+        "--samples",
+        "1",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/real/final-case",
+        "--checkpoint",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/final-alias.json"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:27.262105+00:00",
+      "stdout": {
+        "path": "reject-final-symlink.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "reject-final-symlink.stderr.log",
+        "sha256": "762bdf92ec91dd98d5d18358908235427d2d1641f73604ee4b9dfdef651651c7",
+        "bytes": 1446
+      },
+      "returncode": 1,
+      "elapsed_seconds": 0.007701687999997375,
+      "finished_utc": "2026-10-02T01:03:27.269813+00:00"
+    },
+    {
+      "label": "reject-hardlink",
+      "argv": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/cornell.json",
+        "--seed",
+        "1",
+        "--resolution",
+        "32x24",
+        "--depth",
+        "4",
+        "--sampler",
+        "counter",
+        "--motion",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--rr",
+        "off",
+        "--samples",
+        "1",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/real/hardlink-case",
+        "--checkpoint",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/hardlink-checkpoint"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:27.270199+00:00",
+      "stdout": {
+        "path": "reject-hardlink.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "reject-hardlink.stderr.log",
+        "sha256": "f2517ebd64bbc91c45ed4f0c20f4acdfda72873a0f51dcbd0eb5c806e35e727f",
+        "bytes": 1449
+      },
+      "returncode": 1,
+      "elapsed_seconds": 0.007283297999947536,
+      "finished_utc": "2026-10-02T01:03:27.277488+00:00"
+    },
+    {
+      "label": "zero-fov-save",
+      "argv": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-scene.json",
+        "--seed",
+        "1",
+        "--resolution",
+        "32x24",
+        "--depth",
+        "4",
+        "--sampler",
+        "counter",
+        "--motion",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--rr",
+        "off",
+        "--samples",
+        "3",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-split",
+        "--checkpoint",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov.checkpoint"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:27.278181+00:00",
+      "stdout": {
+        "path": "zero-fov-save.stdout.log",
+        "sha256": "a635aefa6e00d4eaa9ea0f23ad930f43c5301852d7902276080bef8916b40953",
+        "bytes": 114
+      },
+      "stderr": {
+        "path": "zero-fov-save.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "returncode": 0,
+      "elapsed_seconds": 0.3922334939998109,
+      "finished_utc": "2026-10-02T01:03:27.670423+00:00"
+    },
+    {
+      "label": "zero-fov-resume",
+      "argv": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-scene.json",
+        "--seed",
+        "1",
+        "--resolution",
+        "32x24",
+        "--depth",
+        "4",
+        "--sampler",
+        "counter",
+        "--motion",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--rr",
+        "off",
+        "--samples",
+        "8",
+        "--resume",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov.checkpoint",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-resumed"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:27.670803+00:00",
+      "stdout": {
+        "path": "zero-fov-resume.stdout.log",
+        "sha256": "aa3fe7eb5b6f04beef469bc414e01d30f9f5efdd61d482db01fdf2af383fd864",
+        "bytes": 116
+      },
+      "stderr": {
+        "path": "zero-fov-resume.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "returncode": 0,
+      "elapsed_seconds": 0.24332017599999745,
+      "finished_utc": "2026-10-02T01:03:27.914131+00:00"
+    },
+    {
+      "label": "zero-fov-direct",
+      "argv": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-scene.json",
+        "--seed",
+        "1",
+        "--resolution",
+        "32x24",
+        "--depth",
+        "4",
+        "--sampler",
+        "counter",
+        "--motion",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--rr",
+        "off",
+        "--samples",
+        "8",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-direct"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:27.914557+00:00",
+      "stdout": {
+        "path": "zero-fov-direct.stdout.log",
+        "sha256": "0d3970b691dd2ab13bab17b7363a40ad5623cc3f8791f6fea7af81eda13f8ed2",
+        "bytes": 115
+      },
+      "stderr": {
+        "path": "zero-fov-direct.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "returncode": 0,
+      "elapsed_seconds": 0.2521020110000336,
+      "finished_utc": "2026-10-02T01:03:28.166669+00:00"
+    },
+    {
+      "label": "zero-fov-exact-sums",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/compare_sums.py",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-resumed.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-checkpoint-boundaries/zero-fov-direct.sum.bin",
+        "--exact"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "shell": false,
+      "started_utc": "2026-10-02T01:03:28.167091+00:00",
+      "stdout": {
+        "path": "zero-fov-exact-sums.stdout.log",
+        "sha256": "26f58ca8c81db84ce60e97b539ddbbc764bd63a258d57405a774bf9d832d23c6",
+        "bytes": 103
+      },
+      "stderr": {
+        "path": "zero-fov-exact-sums.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "returncode": 0,
+      "elapsed_seconds": 0.04692641699989508,
+      "finished_utc": "2026-10-02T01:03:28.214024+00:00"
+    }
+  ],
+  "checks": [
+    {
+      "label": "reject-parent-symlink: rejected overlapping output",
+      "passed": true
+    },
+    {
+      "label": "parent alias creates no render or checkpoint",
+      "passed": true
+    },
+    {
+      "label": "reject-final-symlink: rejected overlapping output",
+      "passed": true
+    },
+    {
+      "label": "final alias creates no render output",
+      "passed": true
+    },
+    {
+      "label": "reject-hardlink: rejected overlapping output",
+      "passed": true
+    },
+    {
+      "label": "existing hardlinked files remain byte-identical",
+      "passed": true
+    },
+    {
+      "label": "hardlink rejection creates no new outputs",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-save: actual command succeeded",
+      "passed": true
+    },
+    {
+      "label": "zero-FOV valid checkpoint actually saved",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-resume: actual command succeeded",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-direct: actual command succeeded",
+      "passed": true
+    },
+    {
+      "label": "resuming preserves source checkpoint",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-exact-sums: actual command succeeded",
+      "passed": true
+    },
+    {
+      "label": "zero-FOV direct and resumed PNGs are byte-identical",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-split: actual final source identity",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-resumed: actual final source identity",
+      "passed": true
+    },
+    {
+      "label": "zero-fov-direct: actual final source identity",
+      "passed": true
+    },
+    {
+      "label": "renderer, binary and canonical scene unchanged",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "inputs_after": {
+    "source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+    "binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+    "scene_sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b"
+  },
+  "finished_utc": "2026-10-02T01:03:28.308352+00:00",
+  "artifacts": [
+    {
+      "path": "executed-driver.py",
+      "bytes": 7292,
+      "sha256": "41b946266a7de48f9d9bb29862b6ca0fe521d9a9396a5e59f32e287405085c27"
+    },
+    {
+      "path": "reject-final-symlink.stderr.log",
+      "bytes": 1446,
+      "sha256": "762bdf92ec91dd98d5d18358908235427d2d1641f73604ee4b9dfdef651651c7"
+    },
+    {
+      "path": "reject-final-symlink.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reject-hardlink.stderr.log",
+      "bytes": 1449,
+      "sha256": "f2517ebd64bbc91c45ed4f0c20f4acdfda72873a0f51dcbd0eb5c806e35e727f"
+    },
+    {
+      "path": "reject-hardlink.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reject-parent-symlink.stderr.log",
+      "bytes": 1447,
+      "sha256": "ad7d7ff3dfc8e1fbe5bea4751e65f147b109c4388ae74bc788c573fdc92fad01"
+    },
+    {
+      "path": "reject-parent-symlink.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zero-fov-direct.json",
+      "bytes": 3122,
+      "sha256": "af25517d5cbc3f05fcad9f53349720a4b3649b3b9608ade83d80c227fe94bb20"
+    },
+    {
+      "path": "zero-fov-direct.png",
+      "bytes": 2492,
+      "sha256": "04f38b3d219dbb1ab20948ebf22c0a6300586cb406966b27046bdd9e1397dabe"
+    },
+    {
+      "path": "zero-fov-direct.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zero-fov-direct.stdout.log",
+      "bytes": 115,
+      "sha256": "0d3970b691dd2ab13bab17b7363a40ad5623cc3f8791f6fea7af81eda13f8ed2"
+    },
+    {
+      "path": "zero-fov-direct.sum.bin",
+      "bytes": 9256,
+      "sha256": "dd9cfd2234099dfb1e2bbc6db0ee62a8894577e1f978be971f5c0f4bb1311540"
+    },
+    {
+      "path": "zero-fov-exact-sums.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zero-fov-exact-sums.stdout.log",
+      "bytes": 103,
+      "sha256": "26f58ca8c81db84ce60e97b539ddbbc764bd63a258d57405a774bf9d832d23c6"
+    },
+    {
+      "path": "zero-fov-resume.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zero-fov-resume.stdout.log",
+      "bytes": 116,
+      "sha256": "aa3fe7eb5b6f04beef469bc414e01d30f9f5efdd61d482db01fdf2af383fd864"
+    },
+    {
+      "path": "zero-fov-resumed.json",
+      "bytes": 3229,
+      "sha256": "59f1caaaa5faeb89029595e09c52f2e3fba524928b30ec06503f7c47dc01791b"
+    },
+    {
+      "path": "zero-fov-resumed.png",
+      "bytes": 2492,
+      "sha256": "04f38b3d219dbb1ab20948ebf22c0a6300586cb406966b27046bdd9e1397dabe"
+    },
+    {
+      "path": "zero-fov-resumed.sum.bin",
+      "bytes": 9256,
+      "sha256": "dd9cfd2234099dfb1e2bbc6db0ee62a8894577e1f978be971f5c0f4bb1311540"
+    },
+    {
+      "path": "zero-fov-save.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zero-fov-save.stdout.log",
+      "bytes": 114,
+      "sha256": "a635aefa6e00d4eaa9ea0f23ad930f43c5301852d7902276080bef8916b40953"
+    },
+    {
+      "path": "zero-fov-scene.json",
+      "bytes": 2817,
+      "sha256": "c46a63a88ade10b4462fce33c8295bded6e35df19b7b43f0535e87cbf5cabd6e"
+    },
+    {
+      "path": "zero-fov-split.json",
+      "bytes": 3223,
+      "sha256": "cf33f1a1a377e8c9ff627544b269d4c81a27436069fc69b77a4ab7f0aa28f514"
+    },
+    {
+      "path": "zero-fov-split.png",
+      "bytes": 2447,
+      "sha256": "5cadc1f7b39bd7b84a49e9e7c7b2ee706f1605e7f78b73fa502b89806ad8cfc0"
+    },
+    {
+      "path": "zero-fov-split.sum.bin",
+      "bytes": 9256,
+      "sha256": "cf98c31243a9321486af3f3862cb8307e7e4b2a904ddb945d261da321fd3a5a4"
+    },
+    {
+      "path": "zero-fov.checkpoint",
+      "bytes": 9922,
+      "sha256": "e1209cc7480df8e37c3854a912c7dd69042b903dfa9392cacb39fba8396100b0"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "comparison": {
+    "details": {
+      "acceptance_maximum_absolute_channel_difference": 1,
+      "channels": 3,
+      "differing_channels": 1,
+      "differing_pixels": 1,
+      "disclosure": "PNG bytes and some RGB8 channels differ. Every channel differs by at most 1 of 255 levels; this is consistent with the known preview division versus headless reciprocal multiplication normalization difference. The cause has not been independently reproduced, and neither exact image equality nor raw accumulation equality is claimed.",
+      "first_differences": [
+        {
+          "channel": 0,
+          "preview": 71,
+          "reference": 70,
+          "x": 753,
+          "y": 77
+        }
+      ],
+      "height": 640,
+      "maximum_absolute_channel_difference": 1,
+      "passed": true,
+      "png_bytes_equal": false,
+      "raw_sum_equality_claimed": false,
+      "rgb8_equal": false,
+      "sum_absolute_channel_differences": 1,
+      "total_pixels": 614400,
+      "width": 960
+    },
+    "method": "PNG bytes first, then independently authored RGB8 decoder wrapper",
+    "outcome": "bounded RGB8 differences",
+    "passed": true
+  },
+  "helper_build": {
+    "command": [
+      "/usr/bin/c++",
+      "-std=c++17",
+      "-O2",
+      "-I",
+      "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/external/include",
+      "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-checkpoint-final-interaction/tools/interaction_pixel_compare.cpp",
+      "-o",
+      "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/.local/interaction-helper-build/checkpoint-current/interaction_pixel_compare"
+    ],
+    "decoder_header_sha256": "8e820815011447b44e0d3100b002b2279954fa2479371c14ec61218ef505a4e0",
+    "executable_delivery_required": false,
+    "exit_code": 0,
+    "external_decoder_implementation_copied": false,
+    "source_sha256": "667e38d90ff7d199789669e394b2ccdc05e3320b50dae766391d8f3655e5ab98",
+    "temporary_executable": {
+      "bytes": 92168,
+      "delivery_required": false,
+      "path": ".local/interaction-helper-build/checkpoint-current/interaction_pixel_compare",
+      "purpose": "temporary local verification only",
+      "sha256": "86b528b2cb68c968bfe183b1dc5f1aff83f25ec69978324439068ed9168c833a"
+    }
+  },
+  "helper_source": {
+    "bytes": 3226,
+    "path": "results/submission-checkpoint-final-interaction/tools/interaction_pixel_compare.cpp",
+    "sha256": "667e38d90ff7d199789669e394b2ccdc05e3320b50dae766391d8f3655e5ab98"
+  },
+  "reference_image": {
+    "bytes": 1292709,
+    "path": "results/submission-checkpoint-final-interaction/post-space-reference.png",
+    "sha256": "7ad2215c88f9d16f358f8d806cdeb05abdf9af3881cf30439d6ecf8b94f4232d"
+  },
+  "saved_image": {
+    "bytes": 1293043,
+    "path": "results/submission-checkpoint-final-interaction/capture/gltf-showcase.2026-10-02_02-44-49z.124samp.save0.png",
+    "sha256": "3aecb4806ed0832d2802032523ae3f752ceeefead2394ffa13fd3661a3e54429"
+  }
+}

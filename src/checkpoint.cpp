@@ -195,9 +195,9 @@ Status validateMetadata(const CheckpointData& data, const Limits& limits) {
         return failure(Error::Malformed,
                        "checkpoint camera has an invalid aperture or focus distance");
     }
-    if (data.camera.fov.x <= 0.0f || data.camera.fov.y <= 0.0f ||
-        data.camera.pixelLength.x <= 0.0f ||
-        data.camera.pixelLength.y <= 0.0f) {
+    if (data.camera.fov.x < 0.0f || data.camera.fov.y < 0.0f ||
+        data.camera.pixelLength.x < 0.0f ||
+        data.camera.pixelLength.y < 0.0f) {
         return failure(Error::Malformed,
                        "checkpoint camera has invalid projection parameters");
     }

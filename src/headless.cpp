@@ -1,5 +1,6 @@
 #include "checkpoint.h"
 #include "image.h"
+#include "output_path.h"
 #include "pathtrace.h"
 #include "scene.h"
 #include "utilities.h"
@@ -602,11 +603,6 @@ fs::path suffixed(const fs::path& prefix, std::string_view suffix)
     return fs::path(prefix.string() + std::string(suffix));
 }
 
-fs::path normalizedAbsolute(const fs::path& path)
-{
-    return fs::absolute(path).lexically_normal();
-}
-
 void validateUniqueOutputs(const fs::path& prefix,
                            bool benchmark,
                            const std::optional<fs::path>& checkpointPath)
@@ -627,10 +623,19 @@ void validateUniqueOutputs(const fs::path& prefix,
 
     if (checkpointPath)
     {
-        const fs::path normalizedCheckpoint = normalizedAbsolute(*checkpointPath);
         for (const fs::path& output : outputs)
         {
-            if (normalizedAbsolute(output) == normalizedCheckpoint)
+            std::error_code comparisonError;
+            const bool collision = output_path::aliases(
+                *checkpointPath, output, comparisonError);
+            if (comparisonError)
+            {
+                throw std::runtime_error(
+                    "cannot compare checkpoint path '" + checkpointPath->string()
+                    + "' with render output '" + output.string()
+                    + "': " + comparisonError.message());
+            }
+            if (collision)
             {
                 throw std::invalid_argument(
                     "checkpoint path must not overlap a render output: "

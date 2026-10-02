@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1244" height="376" viewBox="0 0 1244 376" role="img" aria-labelledby="title desc">
+<title id="title">Equal-time measured renderer GPU time</title>
+<desc id="desc">GPU measurements are renderer benchmark values, not the process wall clock.</desc>
+<rect width="1244" height="376" fill="#f8fafc"/>
+<g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#182433">
+<text x="34" y="39" font-size="24" font-weight="650">Equal-time measured renderer GPU time</text>
+<text x="34" y="66" font-size="13">GPU measurements are renderer benchmark values, not the process wall clock.</text>
+<path d="M365.00 90 V328" stroke="#dde3ea"/>
+<text x="365.00" y="351" text-anchor="middle" font-size="12">0</text>
+<path d="M506.00 90 V328" stroke="#dde3ea"/>
+<text x="506.00" y="351" text-anchor="middle" font-size="12">897.6</text>
+<path d="M647.00 90 V328" stroke="#dde3ea"/>
+<text x="647.00" y="351" text-anchor="middle" font-size="12">1795</text>
+<path d="M788.00 90 V328" stroke="#dde3ea"/>
+<text x="788.00" y="351" text-anchor="middle" font-size="12">2693</text>
+<path d="M929.00 90 V328" stroke="#dde3ea"/>
+<text x="929.00" y="351" text-anchor="middle" font-size="12">3591</text>
+<path d="M1070.00 90 V328" stroke="#dde3ea"/>
+<text x="1070.00" y="351" text-anchor="middle" font-size="12">4488</text>
+<text x="717.50" y="371" text-anchor="middle" font-size="12">actual renderer GPU milliseconds</text>
+<text x="351" y="122" text-anchor="end" font-size="12">diffuse · counter (n=8)</text>
+<rect x="365" y="102" width="625.71" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3983.608895301819; 104729:3982.894335746765; 130363:3983.2030143737793; 155921:3982.906464099884; 196613:3982.3041348457336; 262147:3984.5440974235535; 314159:3985.6944665908813; 524287:3986.1457295417786</title></rect>
+<path d="M990.53 116 H991.14 M990.53 110 V122 M991.14 110 V122" stroke="#172331" stroke-width="1.5"/>
+<text x="999.14" y="122" font-size="12">3983.4 [3982.3, 3986.1]</text>
+<text x="351" y="173" text-anchor="end" font-size="12">diffuse · halton (n=8)</text>
+<rect x="365" y="153" width="626.04" height="28" rx="3" fill="#d06531" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3985.832832336426; 104729:3984.6869101524353; 130363:3986.7839679718018; 155921:3988.047839164734; 196613:3984.050494670868; 262147:3983.882622241974; 314159:3986.60905790329; 524287:3985.187168598175</title></rect>
+<path d="M990.78 167 H991.44 M990.78 161 V173 M991.44 161 V173" stroke="#172331" stroke-width="1.5"/>
+<text x="999.44" y="173" font-size="12">3985.5 [3983.9, 3988]</text>
+<text x="351" y="224" text-anchor="end" font-size="12">glass-dof · counter (n=8)</text>
+<rect x="365" y="204" width="628.60" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:4001.873224258423; 104729:4002.2397422790527; 130363:4006.343225479126; 155921:3999.245283126831; 196613:4001.8211526870728; 262147:3996.230528831482; 314159:4002.0695371627808; 524287:3996.3184604644775</title></rect>
+<path d="M992.72 218 H994.31 M992.72 212 V224 M994.31 212 V224" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.31" y="224" font-size="12">4001.8 [3996.2, 4006.3]</text>
+<text x="351" y="275" text-anchor="end" font-size="12">glass-dof · halton (n=8)</text>
+<rect x="365" y="255" width="628.60" height="28" rx="3" fill="#d06531" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3999.0636491775513; 104729:4001.277705192566; 130363:3996.2231006622314; 155921:4007.323844909668; 196613:4004.1991662979126; 262147:4000.178081512451; 314159:4006.8730249404907; 524287:4002.389757156372</title></rect>
+<path d="M992.72 269 H994.46 M992.72 263 V275 M994.46 263 V275" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.46" y="275" font-size="12">4001.8 [3996.2, 4007.3]</text>
+</g>
+</svg>

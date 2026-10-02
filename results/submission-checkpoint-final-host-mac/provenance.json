@@ -1,0 +1,13 @@
+{
+  "renderer_source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "helper_authorship": "Independently authored in Project 3; no Internet or other student implementation was used.",
+  "helper_snapshot": {
+    "bytes": 21143,
+    "sha256": "1a1b78251d99bafe8c4ef4989674967b8488e9617d22ea76db2dc70bcc814a77",
+    "path": "tools/run_checkpoint_host_evidence.py"
+  },
+  "actual_repository_core_and_tests_compiled": true,
+  "approved_dependencies": "Existing unchanged course starter dependencies and the previously approved pinned tinygltf header/license only.",
+  "no_new_third_party_source": true,
+  "no_gpu_claim": true
+}

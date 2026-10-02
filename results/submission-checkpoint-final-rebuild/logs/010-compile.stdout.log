@@ -1,0 +1,28 @@
+[  2%] Building CXX object CMakeFiles/cis565_core.dir/src/checkpoint.cpp.o
+[  5%] Building CXX object CMakeFiles/cis565_core.dir/src/output_path.cpp.o
+[  8%] Linking CXX static library lib/libcis565_core.a
+[ 24%] Built target cis565_core
+[ 27%] Building CXX object CMakeFiles/output_path_tests.dir/tests/output_path_tests.cpp.o
+[ 32%] Building CXX object CMakeFiles/checkpoint_tests.dir/tests/checkpoint_tests.cpp.o
+[ 32%] Linking CXX executable bin/geometry_tests
+[ 35%] Building CUDA object CMakeFiles/cis565_renderer.dir/src/pathtrace.cu.o
+[ 37%] Built target geometry_tests
+[ 40%] Linking CXX executable bin/gltf_tests
+[ 43%] Built target gltf_tests
+[ 45%] Building CUDA object CMakeFiles/cis565_renderer.dir/src/interactions.cu.o
+[ 48%] Linking CXX executable bin/output_path_tests
+[ 48%] Built target output_path_tests
+[ 51%] Building CUDA object CMakeFiles/cis565_renderer.dir/src/intersections.cu.o
+[ 54%] Linking CXX executable bin/checkpoint_tests
+[ 54%] Built target checkpoint_tests
+[ 56%] Building CUDA object CMakeFiles/cis565_renderer.dir/stream_compaction/device_scan.cu.o
+[ 59%] Linking CUDA device code CMakeFiles/cis565_renderer.dir/cmake_device_link.o
+[ 62%] Linking CXX static library lib/libcis565_renderer.a
+[ 62%] Built target cis565_renderer
+[ 64%] Linking CXX executable bin/render_tests
+[ 67%] Building CXX object CMakeFiles/cis565_path_tracer_headless.dir/src/headless.cpp.o
+[ 70%] Linking CXX executable bin/cis565_path_tracer
+[ 72%] Built target render_tests
+[ 97%] Built target cis565_path_tracer
+[100%] Linking CXX executable bin/cis565_path_tracer_headless
+[100%] Built target cis565_path_tracer_headless

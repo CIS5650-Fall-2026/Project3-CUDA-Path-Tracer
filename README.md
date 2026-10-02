@@ -16,7 +16,7 @@ The cover uses 2,048 samples at 960 × 640. Surface, focus, and antialiasing com
 
 ![Actual camera interaction and progressive convergence](img/interaction.gif)
 
-[Watch the 49.3-second MP4](img/interaction.mp4) · [Capture, controls and saved-image verification](results/submission-final-interaction/summary.json)
+[Watch the 49.3-second MP4](img/interaction.mp4) · [Capture, controls and saved-image verification](results/submission-checkpoint-final-interaction/summary.json)
 
 This actual desktop recording uses the glTF showcase, Halton sampling and translation motion blur on the A10G. The render stays at its native 960 × 640, depth 10, seed 1 and shutter [0,1], with antialiasing, direct-light estimation, BVH, compaction, wavefront dispatch and roulette (start 3) enabled. Material sorting is off. The 1280 × 720 recording captures at 30 fps; this capture clock is separate from renderer throughput. The GIF reproduces the same footage at 4 fps.
 
@@ -155,7 +155,7 @@ The visual comparisons use 64 samples at 512 × 336, with the same scene, camera
 
 ### Measured sampling quality and cost
 
-The final-source study uses `07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703` on the NVIDIA A10G: 128 × 84 pixels, depth 10, two authored fixtures, eight paired seeds, and the six predeclared scene/sample comparisons below. Each MSE is the per-channel, per-pixel error of the linear RGB sample mean against independently seeded counter references; display tone mapping is excluded. The same BVH, wavefront, roulette, compaction, antialiasing, next-event estimation, and motion settings are held fixed. Evidence: [quality session](results/submission-final-quality/summary.json), [quality analysis](results/submission-final-quality/quality/summary.json), and [completed source/binary suite](results/submission-final-suite-new-measurements/summary.json).
+The final-source study uses `a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639` on the NVIDIA A10G: 128 × 84 pixels, depth 10, two authored fixtures, eight paired seeds, and the six predeclared scene/sample comparisons below. Each MSE is the per-channel, per-pixel error of the linear RGB sample mean against independently seeded counter references; display tone mapping is excluded. The same BVH, wavefront, roulette, compaction, antialiasing, next-event estimation, and motion settings are held fixed. Evidence: [quality session](results/submission-checkpoint-final-quality/summary.json), [quality analysis](results/submission-checkpoint-final-quality/quality/summary.json), and [completed source/binary suite](results/submission-checkpoint-final-suite-new-measurements/summary.json).
 
 | Fixture | Completed spp | Counter mean MSE | Halton mean MSE | Halton MSE reduction |
 | --- | --- | --- | --- | --- |
@@ -197,14 +197,14 @@ The separate equal-time experiment requests a **4,000 ms render-loop budget** fo
 
 | Fixture | Sampler | Mean actual spp [min, max] | Mean MSE | GPU ms | Loop ms | Process ms | Loop overshoot ms |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| diffuse | counter | 896.8 [893, 899] | 6.06053e-05 | 3983.217 [3981.844, 3985.655] | 4001.617 [4000.138, 4004.038] | 4278.625 [4277.369, 4373.198] | 1.617 [0.138, 4.038] |
-| diffuse | halton | 796.1 [795, 797] | 3.79758e-05 | 3985.628 [3984.433, 3987.986] | 4001.928 [4000.587, 4004.184] | 4300.362 [4297.978, 4304.444] | 1.928 [0.587, 4.184] |
-| glass-dof | counter | 281.2 [280, 282] | 0.00163517 | 4002.652 [3997.894, 4008.220] | 4008.455 [4003.755, 4013.977] | 4301.319 [4297.018, 4306.034] | 8.455 [3.755, 13.977] |
-| glass-dof | halton | 274.4 [274, 275] | 0.000821395 | 4001.685 [3994.616, 4007.267] | 4007.308 [4000.234, 4012.826] | 4324.378 [4317.856, 4329.323] | 7.308 [0.234, 12.826] |
+| diffuse | counter | 898.0 [895, 901] | 6.06846e-05 | 3983.406 [3982.304, 3986.146] | 4001.554 [4000.645, 4004.347] | 4279.080 [4274.976, 4368.883] | 1.554 [0.645, 4.347] |
+| diffuse | halton | 797.0 [795, 799] | 3.78766e-05 | 3985.510 [3983.883, 3988.048] | 4001.776 [4000.242, 4004.382] | 4297.605 [4295.308, 4299.786] | 1.776 [0.242, 4.382] |
+| glass-dof | counter | 281.4 [281, 282] | 0.00163544 | 4001.847 [3996.231, 4006.343] | 4007.661 [4002.033, 4012.114] | 4298.409 [4293.178, 4303.704] | 7.661 [2.033, 12.114] |
+| glass-dof | halton | 274.4 [274, 275] | 0.000821347 | 4001.834 [3996.223, 4007.324] | 4007.439 [4001.753, 4012.932] | 4325.064 [4316.339, 4332.016] | 7.439 [1.753, 12.932] |
 
-At that loop budget, **diffuse** has +37.34% Halton MSE reduction against the selected reference. Its reference passes the precision gate.
+At that loop budget, **diffuse** has +37.58% Halton MSE reduction against the selected reference. Its reference passes the precision gate.
 
-At that loop budget, **glass-dof** has +49.77% Halton MSE reduction against the selected reference. Its reference passes the precision gate.
+At that loop budget, **glass-dof** has +49.78% Halton MSE reduction against the selected reference. Its reference passes the precision gate.
 
 ![Equal-time linear image error](img/equal-time-quality.svg)
 
@@ -212,18 +212,18 @@ At that loop budget, **glass-dof** has +49.77% Halton MSE reduction against the 
 
 ![Equal-time measured GPU time](img/equal-time-gpu.svg)
 
-Fixed-sample timing completes **256 spp** per run with seed 947. Each configuration has three excluded warmups followed by exactly three measured repeats. The table reports **milliseconds per actual completed sample**, as median [minimum, maximum]; multiplying by 256 gives the corresponding measured total milliseconds. Evidence: [timing session](results/submission-final-timing/summary.json) and [timing analysis](results/submission-final-timing/timing/summary.json).
+Fixed-sample timing completes **256 spp** per run with seed 947. Each configuration has three excluded warmups followed by exactly three measured repeats. The table reports **milliseconds per actual completed sample**, as median [minimum, maximum]; multiplying by 256 gives the corresponding measured total milliseconds. Evidence: [timing session](results/submission-checkpoint-final-timing/summary.json) and [timing analysis](results/submission-checkpoint-final-timing/timing/summary.json).
 
 | Fixture | Sampler | GPU ms/spp | Loop ms/spp | Process ms/spp |
 | --- | --- | --- | --- | --- |
-| diffuse | counter | 4.463 [4.462, 4.476] | 4.484 [4.482, 4.496] | 5.449 [5.443, 5.463] |
-| diffuse | halton | 4.919 [4.914, 4.935] | 4.939 [4.934, 4.955] | 6.000 [5.998, 6.031] |
-| glass-dof | counter | 14.187 [14.176, 14.201] | 14.207 [14.197, 14.222] | 15.341 [15.329, 15.358] |
-| glass-dof | halton | 14.607 [14.588, 14.616] | 14.628 [14.609, 14.636] | 15.865 [15.836, 15.878] |
+| diffuse | counter | 4.459 [4.452, 4.464] | 4.479 [4.472, 4.484] | 5.438 [5.430, 5.444] |
+| diffuse | halton | 4.917 [4.906, 4.920] | 4.937 [4.927, 4.940] | 6.001 [5.994, 6.005] |
+| glass-dof | counter | 14.172 [14.165, 14.183] | 14.193 [14.185, 14.203] | 15.332 [15.320, 15.337] |
+| glass-dof | halton | 14.614 [14.608, 14.630] | 14.634 [14.628, 14.651] | 15.874 [15.861, 15.886] |
 
-For **diffuse**, Halton/counter median cost ratios are **1.102× GPU**, **1.102× loop**, and **1.101× process**. A ratio above one costs more per sample; the equal-time results show whether quality gains survive the resulting sample-rate change on this fixture.
+For **diffuse**, Halton/counter median cost ratios are **1.103× GPU**, **1.102× loop**, and **1.103× process**. A ratio above one costs more per sample; the equal-time results show whether quality gains survive the resulting sample-rate change on this fixture.
 
-For **glass-dof**, Halton/counter median cost ratios are **1.030× GPU**, **1.030× loop**, and **1.034× process**. A ratio above one costs more per sample; the equal-time results show whether quality gains survive the resulting sample-rate change on this fixture.
+For **glass-dof**, Halton/counter median cost ratios are **1.031× GPU**, **1.031× loop**, and **1.035× process**. A ratio above one costs more per sample; the equal-time results show whether quality gains survive the resulting sample-rate change on this fixture.
 
 ![Fixed-256-spp sampler GPU cost](img/fixed-spp-timing.svg)
 
@@ -253,10 +253,10 @@ Both configurations complete 256 spp, exclude three warmups, and retain three me
 
 | Exposure | GPU ms/spp | Loop ms/spp | Process ms/spp |
 | --- | --- | --- | --- |
-| midpoint | 22.935 [22.912, 22.968] | 22.955 [22.933, 22.989] | 24.956 [24.937, 24.998] |
-| full shutter | 22.647 [22.630, 22.652] | 22.668 [22.651, 22.673] | 24.677 [24.646, 24.683] |
+| midpoint | 22.886 [22.882, 22.956] | 22.907 [22.902, 22.976] | 24.914 [24.905, 24.981] |
+| full shutter | 22.620 [22.618, 22.622] | 22.641 [22.639, 22.642] | 24.660 [24.645, 24.662] |
 
-Full/midpoint median ratios are **0.987× GPU**, **0.987× loop**, and **0.989× process**. These costs do not isolate exposure-coordinate arithmetic from the different intersections, visibility, and bounce work caused by temporal samples. [Timing evidence and swept-scene proof](results/submission-final-timing/timing/summary.json) retain the ratios and variant hashes.
+Full/midpoint median ratios are **0.988× GPU**, **0.988× loop**, and **0.990× process**. These costs do not isolate exposure-coordinate arithmetic from the different intersections, visibility, and bounce work caused by temporal samples. [Timing evidence and swept-scene proof](results/submission-checkpoint-final-timing/timing/summary.json) retain the ratios and variant hashes.
 
 ![Midpoint and full-exposure GPU cost](img/motion-timing.svg)
 
@@ -290,9 +290,9 @@ The same original OBJ loader feeds brute-force and BVH traversal. Three tessella
 
 | Mesh level | Brute force, ms/sample | BVH, ms/sample | Speedup |
 |---|---:|---:|---:|
-| Low | 14.579 | 6.303 | 2.31× |
-| Medium | 48.048 | 7.440 | 6.46× |
-| High | 179.522 | 8.766 | 20.48× |
+| Low | 14.572 | 6.300 | 2.31× |
+| Medium | 48.051 | 7.429 | 6.47× |
+| High | 179.535 | 8.774 | 20.46× |
 
 ![BVH performance across mesh complexity](img/performance-bvh.svg)
 
@@ -306,13 +306,13 @@ The raw sums and PNGs in this pair must agree exactly; the optimization changes 
 
 ### glTF loading and culling
 
-The glTF culling measurements use the NVIDIA A10G at 96×64, 8 samples per pixel, depth 10 and seed 947 with Counter sampling. Wavefront dispatch, material sorting and Russian roulette are off; compaction, anti-aliasing and next-event estimation are on. Each of six configurations has 3 warmups followed by 3 measured fresh processes (36 renders total); warmups are excluded. The values below are whole-renderer GPU time divided by the 8 completed samples. Brackets give the measured minimum and maximum, rather than a confidence interval. [Full glTF evidence](results/submission-final-gltf/summary.json), [timing records](results/submission-final-gltf/timing/summary.json).
+The glTF culling measurements use the NVIDIA A10G at 96×64, 8 samples per pixel, depth 10 and seed 947 with Counter sampling. Wavefront dispatch, material sorting and Russian roulette are off; compaction, anti-aliasing and next-event estimation are on. Each of six configurations has 3 warmups followed by 3 measured fresh processes (36 renders total); warmups are excluded. The values below are whole-renderer GPU time divided by the 8 completed samples. Brackets give the measured minimum and maximum, rather than a confidence interval. [Full glTF evidence](results/submission-checkpoint-final-gltf/summary.json), [timing records](results/submission-checkpoint-final-gltf/timing/summary.json).
 
 | glTF scene | Triangles | BVH off, GPU ms/sample [min, max] | BVH on, GPU ms/sample [min, max] | Median speedup |
 |---|---:|---:|---:|---:|
-| Low | 288 | 14.429 [14.420, 14.431] | 6.296 [6.292, 6.298] | 2.29× |
-| Medium | 1,088 | 48.030 [48.024, 48.035] | 7.439 [7.297, 7.440] | 6.46× |
-| High | 4,224 | 179.567 [179.353, 179.594] | 8.780 [8.771, 8.783] | 20.45× |
+| Low | 288 | 14.450 [14.448, 14.568] | 6.313 [6.294, 6.324] | 2.29× |
+| Medium | 1,088 | 48.036 [47.927, 48.049] | 7.423 [7.419, 7.432] | 6.47× |
+| High | 4,224 | 179.396 [179.373, 179.538] | 8.781 [8.773, 8.797] | 20.43× |
 
 The BVH rejects bounded subtrees before exact primitive intersections, reducing both primary/bounce-ray work and shadow-ray work. All twelve timing outputs at each complexity (six with culling off and six on, including warmups) have byte-identical linear sums and PNGs. The medium visual pair below is also byte-exact: 128 × 84, 16 samples per pixel, depth 10, Counter seed 947. The images demonstrate preserved output; the table measures the speed difference.
 
@@ -320,20 +320,20 @@ The BVH rejects bounded subtrees before exact primitive intersections, reducing 
 |---|---|
 | ![glTF medium mesh with bounding-volume culling off](img/comparison-gltf-bvh-off.png) | ![glTF medium mesh with bounding-volume culling on](img/comparison-gltf-bvh-on.png) |
 
-Loading is CPU setup performed before rendering. The following separate measurements use one warmup and three repeats per scene on the same EC2 host. Scene-load time includes parsing, transforms, camera setup and the initial BVH. The rebuild column times another BVH build from already loaded primitives; it is neither added to nor subtracted from load time. Every glTF/OBJ pair has matching triangle, total-primitive and BVH-node counts. [CPU profile records](results/submission-final-gltf/timing/cpu-profile/records.json).
+Loading is CPU setup performed before rendering. The following separate measurements use one warmup and three repeats per scene on the same EC2 host. Scene-load time includes parsing, transforms, camera setup and the initial BVH. The rebuild column times another BVH build from already loaded primitives; it is neither added to nor subtracted from load time. Every glTF/OBJ pair has matching triangle, total-primitive and BVH-node counts. [CPU profile records](results/submission-checkpoint-final-gltf/timing/cpu-profile/records.json).
 
 | Scene | Format | Triangles / total primitives / BVH nodes | CPU load including initial BVH, ms [min, max] | Separate BVH rebuild, ms [min, max] |
 |---|---|---:|---:|---:|
-| Low | glTF (GLB) | 288 / 293 / 201 | 1.352 [1.347, 2.300] | 0.103 [0.101, 0.106] |
-| Low | OBJ | 288 / 293 / 201 | 2.214 [2.193, 2.224] | 0.097 [0.095, 0.099] |
-| Medium | glTF (GLB) | 1,088 / 1,093 / 649 | 3.027 [3.022, 3.034] | 0.484 [0.477, 0.493] |
-| Medium | OBJ | 1,088 / 1,093 / 649 | 5.246 [5.218, 5.299] | 0.486 [0.470, 0.488] |
-| High | glTF (GLB) | 4,224 / 4,229 / 2,313 | 7.148 [6.912, 7.174] | 2.397 [2.389, 2.398] |
-| High | OBJ | 4,224 / 4,229 / 2,313 | 19.933 [19.920, 19.970] | 2.347 [2.345, 2.362] |
+| Low | glTF (GLB) | 288 / 293 / 201 | 1.379 [1.337, 2.372] | 0.103 [0.102, 0.105] |
+| Low | OBJ | 288 / 293 / 201 | 2.189 [2.176, 2.198] | 0.097 [0.096, 0.098] |
+| Medium | glTF (GLB) | 1,088 / 1,093 / 649 | 3.072 [3.023, 3.096] | 0.488 [0.479, 0.496] |
+| Medium | OBJ | 1,088 / 1,093 / 649 | 5.221 [5.193, 5.228] | 0.485 [0.479, 0.490] |
+| High | glTF (GLB) | 4,224 / 4,229 / 2,313 | 7.119 [6.898, 7.186] | 2.388 [2.387, 2.393] |
+| High | OBJ | 4,224 / 4,229 / 2,313 | 19.862 [19.781, 19.901] | 2.363 [2.358, 2.383] |
 
-For these generated assets, the glTF/OBJ median CPU loading ratios are 0.611× (low), 0.577× (medium), 0.359× (high). A ratio below one favors glTF. Both formats feed the same flattened triangle representation and GPU traversal code, so these CPU loading results establish no format-specific GPU speedup. A hypothetical CPU path tracer would also benefit from bounding-volume rejection; the GPU adds parallel rays, while irregular traversal can still diverge and access scattered memory. These measurements cover one GPU, one camera/seed and three small scenes, and warm repeats do not establish cold-file performance. Further improvements could preserve mesh instances instead of flattening them, share mesh acceleration structures, improve BVH splitting and triangle layout, and cache parsed assets or built BVHs.
+For these generated assets, the glTF/OBJ median CPU loading ratios are 0.630× (low), 0.588× (medium), 0.358× (high). A ratio below one favors glTF. Both formats feed the same flattened triangle representation and GPU traversal code, so these CPU loading results establish no format-specific GPU speedup. A hypothetical CPU path tracer would also benefit from bounding-volume rejection; the GPU adds parallel rays, while irregular traversal can still diverge and access scattered memory. These measurements cover one GPU, one camera/seed and three small scenes, and warm repeats do not establish cold-file performance. Further improvements could preserve mesh instances instead of flattening them, share mesh acceleration structures, improve BVH splitting and triangle layout, and cache parsed assets or built BVHs.
 
-The complete glTF study retained 62 successful renders: 18 validation, 36 timing and 8 gallery. GLB, external-buffer glTF and embedded-data glTF produce byte-identical validation images and raw sums under both culling modes. A translating loaded mesh also preserves byte-exact fresh/checkpoint-resumed output within each Counter and Halton configuration; Counter and Halton outputs are not expected to match one another. Every retained render identifies the final renderer source `07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703`. [Validation](results/submission-final-gltf/validation/summary.json), [gallery exactness](results/submission-final-gltf/gallery/summary.json).
+The complete glTF study retained 62 successful renders: 18 validation, 36 timing and 8 gallery. GLB, external-buffer glTF and embedded-data glTF produce byte-identical validation images and raw sums under both culling modes. A translating loaded mesh also preserves byte-exact fresh/checkpoint-resumed output within each Counter and Halton configuration; Counter and Halton outputs are not expected to match one another. Every retained render identifies the final renderer source `a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639`. [Validation](results/submission-checkpoint-final-gltf/validation/summary.json), [gallery exactness](results/submission-checkpoint-final-gltf/gallery/summary.json).
 
 ### Compaction and material sorting
 
@@ -341,10 +341,10 @@ At 160 × 106, 16 samples, and depth 10, wavefront and roulette remain disabled:
 
 | Scene / scheduling choice | Disabled, ms/sample | Enabled, ms/sample | Effect |
 |---|---:|---:|---|
-| Open scene / compaction | 2.153 | 1.913 | 11.1% faster |
-| Closed scene / compaction | 3.395 | 3.527 | 3.9% slower |
-| Uniform diffuse materials / sorting | 12.636 | 13.912 | 10.1% slower |
-| Mixed materials / sorting | 12.315 | 14.519 | 17.9% slower |
+| Open scene / compaction | 2.146 | 1.870 | 12.9% faster |
+| Closed scene / compaction | 3.392 | 3.504 | 3.3% slower |
+| Uniform diffuse materials / sorting | 12.634 | 14.005 | 10.9% slower |
+| Mixed materials / sorting | 12.229 | 14.576 | 19.2% slower |
 
 ![Compaction and sorting measurements](img/performance-scheduling.svg)
 
@@ -360,10 +360,10 @@ At 512 × 336, 32 samples, and depth 16, all modes use identical sampling, compa
 
 | Workload | Unified unsorted, ms/sample | Unified sorted, ms/sample | Wavefront, ms/sample | Wavefront versus unsorted |
 |---|---:|---:|---:|---|
-| Uniform diffuse | 32.121 | 45.012 | 33.963 | 5.7% slower |
-| Mixed materials | 31.076 | 40.395 | 44.442 | 43.0% slower |
-| Closed chamber | 39.649 | 112.726 | 49.205 | 24.1% slower |
-| High-complexity mesh | 23.640 | 33.699 | 33.456 | 41.5% slower |
+| Uniform diffuse | 32.138 | 44.972 | 33.971 | 5.7% slower |
+| Mixed materials | 31.079 | 40.381 | 44.433 | 43.0% slower |
+| Closed chamber | 39.630 | 112.671 | 49.177 | 24.1% slower |
+| High-complexity mesh | 23.604 | 33.664 | 33.423 | 41.6% slower |
 
 ![Wavefront total sample time](img/performance-wavefront.svg)
 
@@ -392,8 +392,8 @@ Open and closed scenes run at 512 × 336, 32 samples, and depth 32 in wavefront 
 
 | Workload | RR off, ms/sample | RR on, ms/sample | Effect | Terminated / tested |
 |---|---:|---:|---|---:|
-| Open | 6.540 | 5.865 | 10.3% faster | 51.6% |
-| Closed | 92.829 | 12.419 | 86.6% faster | 93.9% |
+| Open | 6.562 | 5.865 | 10.6% faster | 51.6% |
+| Closed | 92.790 | 12.442 | 86.6% faster | 93.9% |
 
 ![Roulette sample time](img/performance-russian-roulette.svg)
 
@@ -416,16 +416,16 @@ These checks support brightness preservation on the tested scenes; they do not m
 
 ### Procedural setup and shading
 
-Python mesh construction/OBJ serialization and CPU scene loading are measured on the same EPYC workstation, separately from rendering. Each CPU operation has one warmup and three measured repeats. Generation writes temporary files, excludes subsequent validation/hashing, and measures OS-buffered writes without `fsync`. All six temporary Linux OBJ encodings differ from the canonical Mac asset bytes; the profile retains both hashes and all six geometry validations pass. Loading and rendering use the unchanged canonical assets. Scene load includes parsing, transforms, camera setup and its initial BVH; the separate BVH column rebuilds the hierarchy from loaded primitives and is not added to load time. Mesh files are warm in the OS cache.
+Python mesh construction/OBJ serialization and CPU scene loading are measured on the same EPYC workstation, separately from rendering. Each CPU operation has one warmup and three measured repeats. Generation writes temporary files, excludes subsequent validation/hashing, and measures OS-buffered writes without `fsync`. 6 of the six temporary Linux OBJ encodings differ from the canonical Mac asset bytes; the profile retains both hashes and 6 of six geometry validations pass. Loading and rendering use the unchanged canonical assets. Scene load includes parsing, transforms, camera setup and its initial BVH; the separate BVH column rebuilds the hierarchy from loaded primitives and is not added to load time. Mesh files are warm in the OS cache.
 
 | Mesh | Triangles | Canonical OBJ, KiB | CPU generation/write, ms | CPU load incl. BVH, ms | CPU BVH rebuild, ms |
 |---|---:|---:|---:|---:|---:|
-| fluted-body-low | 1,600 | 184.1 | 17.166 | 7.290 | 0.886 |
-| fluted-body-medium | 6,272 | 751.3 | 65.443 | 28.794 | 4.380 |
-| fluted-body-high | 24,832 | 3,051.4 | 258.313 | 116.953 | 21.428 |
-| swept-knot-low | 1,024 | 118.4 | 38.542 | 4.221 | 0.494 |
-| swept-knot-medium | 4,096 | 481.9 | 143.550 | 16.797 | 2.561 |
-| swept-knot-high | 16,384 | 1,957.3 | 557.102 | 68.291 | 12.847 |
+| fluted-body-low | 1,600 | 184.1 | 16.812 | 7.264 | 0.888 |
+| fluted-body-medium | 6,272 | 751.3 | 64.097 | 28.536 | 4.339 |
+| fluted-body-high | 24,832 | 3,051.4 | 255.538 | 115.968 | 21.407 |
+| swept-knot-low | 1,024 | 118.4 | 37.713 | 4.197 | 0.498 |
+| swept-knot-medium | 4,096 | 481.9 | 141.209 | 16.746 | 2.550 |
+| swept-knot-high | 16,384 | 1,957.3 | 538.362 | 68.000 | 12.832 |
 
 ![Procedural CPU loading and BVH costs](img/performance-procedural-cpu.svg)
 
@@ -433,12 +433,12 @@ GPU procedural comparisons run at 160 × 106, 16 samples and depth 10 with wavef
 
 | Shape / surface | GPU total, ms/sample | GPU shading, ms/sample |
 |---|---:|---:|
-| Fluted body / plain | 24.381 | 13.557 |
-| Fluted body / marble | 18.611 | 10.542 |
-| Fluted body / cells | 16.617 | 9.568 |
-| Swept knot / plain | 16.654 | 9.652 |
-| Swept knot / marble | 14.162 | 8.421 |
-| Swept knot / cells | 13.451 | 8.140 |
+| Fluted body / plain | 24.311 | 13.490 |
+| Fluted body / marble | 18.646 | 10.574 |
+| Fluted body / cells | 16.560 | 9.530 |
+| Swept knot / plain | 16.626 | 9.617 |
+| Swept knot / marble | 14.153 | 8.425 |
+| Swept knot / cells | 13.442 | 8.128 |
 
 ![Procedural GPU shading cost](img/performance-procedural-shading.svg)
 
@@ -452,11 +452,11 @@ The original feature comparisons run at 160 × 106, 16 samples and depth 10, wit
 
 | Comparison | First variant, ms/sample | Second variant, ms/sample |
 |---|---:|---:|
-| File / procedural checker | 12.246 | 12.207 |
-| Bump off / on | 12.267 | 12.290 |
-| Mirror / refractive sphere | 12.403 | 12.266 |
-| Pinhole / thin lens | 12.306 | 12.358 |
-| BSDF only / direct-light sampling | 8.560 | 12.283 |
+| File / procedural checker | 12.245 | 12.137 |
+| Bump off / on | 12.279 | 12.266 |
+| Mirror / refractive sphere | 12.449 | 12.301 |
+| Pinhole / thin lens | 12.259 | 12.379 |
+| BSDF only / direct-light sampling | 8.536 | 12.279 |
 
 ![Feature costs](img/performance-features.svg)
 
@@ -474,7 +474,7 @@ These brightness checks are not a variance or error-per-unit-time proof.
 
 ### Checkpoint overhead
 
-Saving every 8 samples changes median render-loop time from 12.302 to 12.540 ms/sample (1.9% slower) in the 16-sample workbench run. GPU sample time is 12.280 versus 12.317 ms. The loop includes device download, serialization, checksum and atomic replacement; file size and storage affect this cost.
+Saving every 8 samples changes median render-loop time from 12.333 to 12.512 ms/sample (1.4% slower) in the 16-sample workbench run. GPU sample time is 12.312 versus 12.286 ms. The loop includes device download, serialization, checksum and atomic replacement; file size and storage affect this cost.
 
 ![Checkpoint render-loop cost](img/performance-checkpoint.svg)
 

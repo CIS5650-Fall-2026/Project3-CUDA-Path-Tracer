@@ -1,0 +1,76 @@
+Screen 0: minimum 8 x 8, current 1920 x 1080, maximum 30720 x 17280
+DVI-D-0 connected primary 1920x1080+0+0 (normal left inverted right x axis y axis) 700mm x 400mm
+   1024x768      85.00 +  86.96    75.05    60.04    85.00    75.03    70.07    60.00  
+   1920x1080     60.01    59.97    59.96*   59.93  
+   1680x1050     59.95    59.88  
+   1600x900      59.99    59.94    59.95    59.82  
+   1440x810      60.00    59.97  
+   1400x1050     74.76    59.98  
+   1400x900      59.96    59.88  
+   1368x768      59.88    59.85  
+   1280x1024     85.02    75.02    60.02  
+   1280x960      85.00    60.00  
+   1280x800      59.99    59.97    59.91    59.81  
+   1280x720      60.00    59.99    59.86    59.74  
+   1152x864      75.00  
+   1024x576      59.96    59.95    59.90    59.82  
+   960x720       85.00    75.00    60.00  
+   960x600       60.00    59.93  
+   960x540       59.99    59.96    59.82    59.63  
+   928x696       75.00    60.05  
+   896x672       75.05    60.01  
+   864x486       59.92    59.57  
+   840x525       60.01    59.88  
+   832x624       74.55  
+   800x600       85.00    70.00    65.00    60.00    85.14    75.00    72.19    60.32    56.25  
+   800x450       59.95    59.82  
+   720x405       59.51    58.99  
+   720x400       85.04  
+   700x525       74.76    59.98  
+   700x450       59.96    59.88  
+   684x384       59.88    59.85  
+   640x512       85.02    75.02    60.02  
+   640x480       85.09    60.00    85.01    75.00    72.81    59.94  
+   640x400       59.98    59.88    85.08  
+   640x360       59.86    59.83    59.84    59.32  
+   640x350       85.08  
+   576x432       75.00  
+   512x384       85.00    87.06    75.03    70.07    60.00  
+   512x288       60.00    59.92  
+   480x270       59.82    59.63  
+   432x243       59.92    59.57  
+   416x312       74.66  
+   400x300       85.27    75.12    72.19    60.32    56.34  
+   360x202       59.51    59.13  
+   360x200       85.04  
+   320x240       85.18    75.00    72.81    60.05  
+   320x200       85.27  
+   320x180       59.84    59.32  
+   320x175       85.27  
+DVI-D-1 disconnected (normal left inverted right x axis y axis)
+DVI-D-2 disconnected (normal left inverted right x axis y axis)
+DVI-D-3 disconnected (normal left inverted right x axis y axis)
+
+name of display: :0
+display: :0  screen: 0
+direct rendering: Yes
+Memory info (GL_NVX_gpu_memory_info):
+    Dedicated video memory: 23028 MB
+    Total available memory: 23028 MB
+    Currently available dedicated video memory: 21772 MB
+OpenGL vendor string: NVIDIA Corporation
+OpenGL renderer string: NVIDIA A10G/PCIe/SSE2
+OpenGL core profile version string: 4.6.0 NVIDIA 580.178.04
+OpenGL core profile shading language version string: 4.60 NVIDIA
+OpenGL core profile context flags: (none)
+OpenGL core profile profile mask: core profile
+
+OpenGL version string: 4.6.0 NVIDIA 580.178.04
+OpenGL shading language version string: 4.60 NVIDIA
+OpenGL context flags: (none)
+OpenGL profile mask: (none)
+
+OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 580.178.04
+OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.20
+
+

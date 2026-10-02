@@ -1,0 +1,181 @@
+{
+  "binary_paths": {
+    "headless": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "preview": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer"
+  },
+  "binary_sha256_end": {
+    "headless": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+    "preview": "cd947651707e7e06fd40a6314afa0716e735a9af0aa9f4a0deead066d9c42142"
+  },
+  "binary_sha256_start": {
+    "headless": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+    "preview": "cd947651707e7e06fd40a6314afa0716e735a9af0aa9f4a0deead066d9c42142"
+  },
+  "build": "/home/ubuntu/cis5650/project3/build-submission",
+  "elapsed_seconds": 17.511487425999803,
+  "ended_at_utc": "2026-10-02T02:44:19.205615Z",
+  "errors": [],
+  "exit_code": 0,
+  "output_paths": [
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/actions.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/summary.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/horizontal-orbit-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/horizontal-orbit-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/horizontal-orbit-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/horizontal-orbit-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/imgui.ini",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/optical-workbench.2026-10-02_02-44-03z.10samp.save5.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/optical-workbench.2026-10-02_02-44-03z.16samp.save1.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/optical-workbench.2026-10-02_02-44-03z.16samp.save3.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/optical-workbench.2026-10-02_02-44-03z.17samp.save2.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/optical-workbench.2026-10-02_02-44-03z.7samp.save0.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/optical-workbench.2026-10-02_02-44-03z.8samp.save4.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/preview.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/reset-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/reset-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/reset-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/reset-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/screen-plane-pan-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/screen-plane-pan-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/screen-plane-pan-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/screen-plane-pan-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/vertical-zoom-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/vertical-zoom-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/vertical-zoom-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/vertical-zoom-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/smoke/headless.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/smoke/headless.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/smoke/headless.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/smoke/headless.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/smoke/preview-smoke.2026-10-02_02-44-01z.16samp.save0.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/smoke/preview.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/logs/001-source-hash-start.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/logs/001-source-hash-start.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/logs/002-verify-preview.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/logs/002-verify-preview.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/logs/003-source-hash-end.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/logs/003-source-hash-end.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview/summary.json"
+  ],
+  "phase": "preview",
+  "prefix": "submission-checkpoint-final",
+  "renderer_metadata": [
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 16,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 10,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview/interactive/horizontal-orbit-original-reference.json",
+      "resolution": [
+        960,
+        640
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "577083134aad8528c71d1ad4b68e7dfc6ae3dab8fb255ab20db3a0d34e4fadfb"
+    }
+  ],
+  "schema_version": 1,
+  "source_hash_script_sha256_end": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_hash_script_sha256_start": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_input_sha256_end": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "source_input_sha256_start": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "stages": [
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.08737988199936808,
+      "ended_at_utc": "2026-10-02T02:44:01.795767Z",
+      "name": "source-hash-start",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T02:44:01.708401Z",
+      "status": "passed",
+      "stderr_log": "logs/001-source-hash-start.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/001-source-hash-start.stdout.log",
+      "stdout_sha256": "5512e5154d54d23408830bd22ab8357727899510247e15b040a5bf634ec99d0c"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/verify_preview.py",
+        "--preview-binary",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer",
+        "--headless-binary",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 17.307884998999725,
+      "ended_at_utc": "2026-10-02T02:44:19.103900Z",
+      "name": "verify-preview",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T02:44:01.796026Z",
+      "status": "passed",
+      "stderr_log": "logs/002-verify-preview.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/002-verify-preview.stdout.log",
+      "stdout_sha256": "ab5fc0abf073a97084e1296221d825fc8005c67a185baadee9d6e93bff42a1d5"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.08717888600040169,
+      "ended_at_utc": "2026-10-02T02:44:19.191287Z",
+      "name": "source-hash-end",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T02:44:19.104118Z",
+      "status": "passed",
+      "stderr_log": "logs/003-source-hash-end.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/003-source-hash-end.stdout.log",
+      "stdout_sha256": "5512e5154d54d23408830bd22ab8357727899510247e15b040a5bf634ec99d0c"
+    }
+  ],
+  "started_at_utc": "2026-10-02T02:44:01.694123Z",
+  "status": "passed",
+  "suite_path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-preview"
+}

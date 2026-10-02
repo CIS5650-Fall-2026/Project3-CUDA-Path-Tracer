@@ -1,0 +1,1 @@
+{"passed":true,"width":960,"height":640,"channels":3,"total_pixels":614400,"differing_pixels":1,"differing_channels":1,"maximum_absolute_channel_difference":1,"sum_absolute_channel_differences":1,"rgb8_equal":false,"acceptance_maximum_absolute_channel_difference":1,"first_differences":[{"x":753,"y":77,"channel":0,"preview":71,"reference":70}]}

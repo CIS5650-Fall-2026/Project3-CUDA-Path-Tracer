@@ -6,38 +6,38 @@
 <path d="M310.00 92 V401" stroke="#dce2ec"/>
 <text x="310.00" y="422" text-anchor="middle" font-size="13">0.00</text>
 <path d="M428.00 92 V401" stroke="#dce2ec"/>
-<text x="428.00" y="422" text-anchor="middle" font-size="13">40.22</text>
+<text x="428.00" y="422" text-anchor="middle" font-size="13">40.23</text>
 <path d="M546.00 92 V401" stroke="#dce2ec"/>
-<text x="546.00" y="422" text-anchor="middle" font-size="13">80.45</text>
+<text x="546.00" y="422" text-anchor="middle" font-size="13">80.47</text>
 <path d="M664.00 92 V401" stroke="#dce2ec"/>
-<text x="664.00" y="422" text-anchor="middle" font-size="13">120.67</text>
+<text x="664.00" y="422" text-anchor="middle" font-size="13">120.70</text>
 <path d="M782.00 92 V401" stroke="#dce2ec"/>
-<text x="782.00" y="422" text-anchor="middle" font-size="13">160.90</text>
+<text x="782.00" y="422" text-anchor="middle" font-size="13">160.93</text>
 <path d="M900.00 92 V401" stroke="#dce2ec"/>
-<text x="900.00" y="422" text-anchor="middle" font-size="13">201.12</text>
+<text x="900.00" y="422" text-anchor="middle" font-size="13">201.17</text>
 <text x="296" y="121" text-anchor="end" font-size="14">bvh-low / off</text>
-<rect x="310" y="100" width="42.77" height="29" rx="3" fill="#2166ac"/>
-<path d="M352.38 114 H352.79 M352.38 108 V120 M352.79 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="360.77" y="121" font-size="13">14.579</text>
+<rect x="310" y="100" width="42.74" height="29" rx="3" fill="#2166ac"/>
+<path d="M352.74 114 H352.75 M352.74 108 V120 M352.75 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="360.74" y="121" font-size="13">14.572</text>
 <text x="296" y="167" text-anchor="end" font-size="14">bvh-low / on</text>
-<rect x="310" y="146" width="18.49" height="29" rx="3" fill="#ca6e22"/>
-<path d="M328.47 160 H328.51 M328.47 154 V166 M328.51 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="336.49" y="167" font-size="13">6.303</text>
+<rect x="310" y="146" width="18.48" height="29" rx="3" fill="#ca6e22"/>
+<path d="M328.46 160 H328.53 M328.46 154 V166 M328.53 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="336.48" y="167" font-size="13">6.300</text>
 <text x="296" y="213" text-anchor="end" font-size="14">bvh-medium / off</text>
-<rect x="310" y="192" width="140.95" height="29" rx="3" fill="#318f68"/>
-<path d="M450.63 206 H450.96 M450.63 200 V212 M450.96 200 V212" stroke="#172235" stroke-width="2"/>
-<text x="458.95" y="213" font-size="13">48.048</text>
+<rect x="310" y="192" width="140.93" height="29" rx="3" fill="#318f68"/>
+<path d="M450.88 206 H451.01 M450.88 200 V212 M451.01 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="458.93" y="213" font-size="13">48.051</text>
 <text x="296" y="259" text-anchor="end" font-size="14">bvh-medium / on</text>
-<rect x="310" y="238" width="21.83" height="29" rx="3" fill="#2166ac"/>
-<path d="M331.45 252 H331.87 M331.45 246 V258 M331.87 246 V258" stroke="#172235" stroke-width="2"/>
-<text x="339.83" y="259" font-size="13">7.440</text>
+<rect x="310" y="238" width="21.79" height="29" rx="3" fill="#2166ac"/>
+<path d="M331.47 252 H331.82 M331.47 246 V258 M331.82 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="339.79" y="259" font-size="13">7.429</text>
 <text x="296" y="305" text-anchor="end" font-size="14">bvh-high / off</text>
-<rect x="310" y="284" width="526.64" height="29" rx="3" fill="#ca6e22"/>
-<path d="M836.62 298 H836.79 M836.62 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
-<text x="844.64" y="305" font-size="13">179.522</text>
+<rect x="310" y="284" width="526.56" height="29" rx="3" fill="#ca6e22"/>
+<path d="M836.53 298 H836.79 M836.53 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="844.56" y="305" font-size="13">179.535</text>
 <text x="296" y="351" text-anchor="end" font-size="14">bvh-high / on</text>
-<rect x="310" y="330" width="25.72" height="29" rx="3" fill="#318f68"/>
-<path d="M335.36 344 H335.73 M335.36 338 V350 M335.73 338 V350" stroke="#172235" stroke-width="2"/>
-<text x="343.72" y="351" font-size="13">8.766</text>
+<rect x="310" y="330" width="25.73" height="29" rx="3" fill="#318f68"/>
+<path d="M335.73 344 H335.76 M335.73 338 V350 M335.76 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="343.73" y="351" font-size="13">8.774</text>
 </g>
 </svg>

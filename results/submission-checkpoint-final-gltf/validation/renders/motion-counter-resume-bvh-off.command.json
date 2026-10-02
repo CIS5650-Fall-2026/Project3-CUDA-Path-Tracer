@@ -1,0 +1,608 @@
+{
+  "actual": {
+    "benchmark_csv": null,
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 11.0,
+      "look_at": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "position": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    },
+    "compatibility": {
+      "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+      "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+      "compute_capability": "8.6",
+      "cuda_driver_version": 13000,
+      "cuda_runtime_version": 12080,
+      "device": "NVIDIA A10G"
+    },
+    "completed_samples": 17,
+    "config": {
+      "aa": true,
+      "bvh": false,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 7,
+      "motion": true,
+      "nee": true,
+      "rr": false,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": false
+    },
+    "fingerprints": {
+      "assets": 529777393543111628,
+      "geometry": 10224720237609530159,
+      "materials": 11884046144069487820,
+      "render_config": 10404940793569236919,
+      "scene_file": 15709604105381857473
+    },
+    "process_elapsed_ms": 343.38996999986193,
+    "raw_checksum_fnv1a64": 5870706667770348398,
+    "raw_sha256": "ce38121de0918f0bc78b7af3ae191e551a056ca6d5518f26c7b5b585d884399c",
+    "render_loop_wall_ms": 113.665267,
+    "renderer_gpu_ms": null,
+    "renderer_host_ms": null,
+    "resolution": [
+      17,
+      13
+    ],
+    "run_policy": {
+      "last_sample_wall_ms": 9.086972,
+      "stop_reason": "sample_target",
+      "time_budget_ms": null
+    },
+    "sampler": "counter",
+    "sampler_id": 2,
+    "sampler_version": 2,
+    "seed": 947,
+    "target_samples": 17
+  },
+  "artifacts": {
+    "metadata": {
+      "bytes": 3257,
+      "path": "validation/renders/motion-counter-resume-bvh-off.json",
+      "sha256": "2a1fc4ebd7fc19ec04d0a00a23e0c85629e997cecf2a398df2f5bdad52b17769"
+    },
+    "png": {
+      "bytes": 578,
+      "path": "validation/renders/motion-counter-resume-bvh-off.png",
+      "sha256": "27a052c017fc336517fbb10f06a39b0f5d224525a2c4d30466b1a6f791c87aa7"
+    },
+    "raw": {
+      "bytes": 2692,
+      "path": "validation/renders/motion-counter-resume-bvh-off.sum.bin",
+      "sha256": "ce38121de0918f0bc78b7af3ae191e551a056ca6d5518f26c7b5b585d884399c"
+    }
+  },
+  "audit": {
+    "checks": [
+      {
+        "actual": 1,
+        "name": "metadata-format-version",
+        "passed": true
+      },
+      {
+        "actual": 17,
+        "name": "target-samples",
+        "passed": true
+      },
+      {
+        "actual": 17,
+        "name": "completed-samples",
+        "passed": true
+      },
+      {
+        "actual": 17,
+        "name": "raw-samples",
+        "passed": true
+      },
+      {
+        "actual": [
+          17,
+          13
+        ],
+        "name": "raw-resolution",
+        "passed": true
+      },
+      {
+        "actual": [
+          17,
+          13
+        ],
+        "name": "metadata-resolution",
+        "passed": true
+      },
+      {
+        "actual": 947,
+        "name": "seed",
+        "passed": true
+      },
+      {
+        "actual": "counter",
+        "name": "sampler",
+        "passed": true
+      },
+      {
+        "actual": 2,
+        "name": "sampler-id",
+        "passed": true
+      },
+      {
+        "actual": 2,
+        "name": "sampler-version",
+        "passed": true
+      },
+      {
+        "actual": {
+          "aa": true,
+          "bvh": false,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 7,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "name": "config",
+        "passed": true
+      },
+      {
+        "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+        "name": "scene",
+        "passed": true
+      },
+      {
+        "actual": {
+          "aperture": 0.0,
+          "focus_distance": 11.0,
+          "look_at": [
+            0.0,
+            1.5,
+            0.0
+          ],
+          "position": [
+            6.0,
+            3.5999999046325684,
+            9.0
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-object",
+        "passed": true
+      },
+      {
+        "actual": [
+          0.0,
+          1.0
+        ],
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "actual": {
+          "checksum": 5870706667770348398,
+          "checksum_security": "change/corruption detection only; not cryptographic",
+          "checksum_trailer_bytes": 8,
+          "endianness": "little",
+          "header_bytes": 32,
+          "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+          "magic": "C565SUM\\0",
+          "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+          "payload_offset_bytes": 32,
+          "png_orientation": "horizontal flip of renderer-order pixels",
+          "trailer": "little-endian FNV-1a-64 over header and payload",
+          "version": 1
+        },
+        "name": "linear-sum-metadata",
+        "passed": true
+      },
+      {
+        "actual": 1,
+        "name": "linear-sum-version",
+        "passed": true
+      },
+      {
+        "actual": 5870706667770348398,
+        "name": "raw-checksum",
+        "passed": true
+      },
+      {
+        "actual": {
+          "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/renders/motion-counter-resume-bvh-off.sum.bin",
+          "png": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/renders/motion-counter-resume-bvh-off.png"
+        },
+        "name": "outputs-object",
+        "passed": true
+      },
+      {
+        "actual": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/renders/motion-counter-resume-bvh-off.png",
+        "name": "output-png",
+        "passed": true
+      },
+      {
+        "actual": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/renders/motion-counter-resume-bvh-off.sum.bin",
+        "name": "output-raw",
+        "passed": true
+      },
+      {
+        "actual": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/checkpoints/motion-counter-bvh-off.checkpoint",
+        "name": "resume-metadata",
+        "passed": true
+      },
+      {
+        "actual": null,
+        "name": "checkpoint-metadata",
+        "passed": true
+      },
+      {
+        "actual": null,
+        "name": "checkpoint-every",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assets": 529777393543111628,
+          "geometry": 10224720237609530159,
+          "materials": 11884046144069487820,
+          "render_config": 10404940793569236919,
+          "scene_file": 15709604105381857473
+        },
+        "name": "fingerprints-object",
+        "passed": true
+      },
+      {
+        "actual": 15709604105381857473,
+        "name": "fingerprint-scene_file",
+        "passed": true
+      },
+      {
+        "actual": 529777393543111628,
+        "name": "fingerprint-assets",
+        "passed": true
+      },
+      {
+        "actual": 11884046144069487820,
+        "name": "fingerprint-materials",
+        "passed": true
+      },
+      {
+        "actual": 10224720237609530159,
+        "name": "fingerprint-geometry",
+        "passed": true
+      },
+      {
+        "actual": 10404940793569236919,
+        "name": "fingerprint-render_config",
+        "passed": true
+      },
+      {
+        "actual": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "name": "compatibility-object",
+        "passed": true
+      },
+      {
+        "actual": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "name": "build-identifier",
+        "passed": true
+      },
+      {
+        "actual": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "name": "build-source-hash",
+        "passed": true
+      },
+      {
+        "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "name": "starter-revision",
+        "passed": true
+      },
+      {
+        "actual": "NVIDIA A10G",
+        "name": "device",
+        "passed": true
+      },
+      {
+        "actual": {
+          "last_sample_wall_ms": 9.086972,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "run-policy-object",
+        "passed": true
+      },
+      {
+        "actual": [
+          "last_sample_wall_ms",
+          "stop_reason",
+          "time_budget_ms"
+        ],
+        "name": "run-policy-fields",
+        "passed": true
+      },
+      {
+        "actual": {
+          "last_sample_wall_ms": 9.086972,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "run-policy-budget",
+        "passed": true
+      },
+      {
+        "actual": {
+          "last_sample_wall_ms": 9.086972,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "run-policy-stop",
+        "passed": true
+      },
+      {
+        "actual": {
+          "last_sample_wall_ms": 9.086972,
+          "render_loop_wall_ms": 113.665267
+        },
+        "name": "last-sample-within-loop",
+        "passed": true
+      },
+      {
+        "actual": false,
+        "name": "benchmark-disabled",
+        "passed": true
+      },
+      {
+        "actual": null,
+        "name": "benchmark-absent",
+        "passed": true
+      },
+      {
+        "actual": {
+          "process_elapsed_ms": 343.38996999986193,
+          "render_loop_wall_ms": 113.665267
+        },
+        "name": "process-covers-render-loop",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "raw_parser": "validate_render.read_sum",
+    "raw_values_finite_nonnegative": true
+  },
+  "binary_identity": {
+    "after": {
+      "bytes": 6372424,
+      "device": 66306,
+      "inode": 3689093,
+      "mtime_ns": 1790902996799140226,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    "before": {
+      "bytes": 6372424,
+      "device": 66306,
+      "inode": 3689093,
+      "mtime_ns": 1790902996799140226,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    "unchanged": true
+  },
+  "binary_identity_before": {
+    "bytes": 6372424,
+    "device": 66306,
+    "inode": 3689093,
+    "mtime_ns": 1790902996799140226,
+    "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+  },
+  "checkpoint": {
+    "after": {
+      "bytes": 12842,
+      "checksum_fnv1a64": 10885965661856557166,
+      "format_version": 3,
+      "path": "validation/checkpoints/motion-counter-bvh-off.checkpoint",
+      "payload_bytes": 12810,
+      "sha256": "af448a50f275c81e04d5b2fef2dd4595f7244685c519fa6415e18c831391adcc"
+    },
+    "before": {
+      "bytes": 12842,
+      "checksum_fnv1a64": 10885965661856557166,
+      "format_version": 3,
+      "path": "validation/checkpoints/motion-counter-bvh-off.checkpoint",
+      "payload_bytes": 12810,
+      "sha256": "af448a50f275c81e04d5b2fef2dd4595f7244685c519fa6415e18c831391adcc"
+    },
+    "mode": "resume",
+    "path": "validation/checkpoints/motion-counter-bvh-off.checkpoint"
+  },
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/renders/motion-counter-resume-bvh-off",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-gltf/validation/checkpoints/motion-counter-bvh-off.checkpoint"
+  ],
+  "completed_utc": "2026-10-02T01:05:00.751502Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "design": {
+    "benchmark": false,
+    "bvh": false,
+    "checkpoint_mode": "resume",
+    "checkpoint_relative": "validation/checkpoints/motion-counter-bvh-off.checkpoint",
+    "depth": 7,
+    "label": "motion-counter-resume-bvh-off",
+    "measurement_phase": null,
+    "motion_group": "counter-bvh-off",
+    "phase": "validation",
+    "purpose": "motion-resume",
+    "repeat": null,
+    "resolution": [
+      17,
+      13
+    ],
+    "rr": false,
+    "sample_target": 17,
+    "sampler": "counter",
+    "sampler_id": 2,
+    "scene_file": "gltf-motion-validation.json",
+    "seed": 947
+  },
+  "exit_code": 0,
+  "label": "motion-counter-resume-bvh-off",
+  "phase": "validation",
+  "pid": 5258,
+  "process_elapsed_ms": 343.38996999986193,
+  "purpose": "motion-resume",
+  "resume_checkpoint_before": {
+    "bytes": 12842,
+    "checksum_fnv1a64": 10885965661856557166,
+    "format_version": 3,
+    "path": "validation/checkpoints/motion-counter-bvh-off.checkpoint",
+    "payload_bytes": 12810,
+    "sha256": "af448a50f275c81e04d5b2fef2dd4595f7244685c519fa6415e18c831391adcc"
+  },
+  "run_id": 9,
+  "scene_identity_before": {
+    "files": [
+      {
+        "bytes": 122,
+        "device": 66306,
+        "inode": 3673876,
+        "mtime_ns": 1790827308000000000,
+        "path": "/home/ubuntu/cis5650/project3/scenes/assets/area-light.obj",
+        "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635"
+      },
+      {
+        "bytes": 10540,
+        "device": 66306,
+        "inode": 3682711,
+        "mtime_ns": 1790883305000000000,
+        "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+        "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+      },
+      {
+        "bytes": 5055,
+        "device": 66306,
+        "inode": 3682702,
+        "mtime_ns": 1790883305000000000,
+        "path": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+        "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9"
+      }
+    ],
+    "manifest_sha256": "26c0cf094253a8fb95cab8b1e84aff87d1d05cb02d8ea9b56fe23bf56ca26017",
+    "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+    "scene_file": "gltf-motion-validation.json"
+  },
+  "scene_input_identity": {
+    "after": {
+      "files": [
+        {
+          "bytes": 122,
+          "device": 66306,
+          "inode": 3673876,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/area-light.obj",
+          "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635"
+        },
+        {
+          "bytes": 10540,
+          "device": 66306,
+          "inode": 3682711,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+          "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+        },
+        {
+          "bytes": 5055,
+          "device": 66306,
+          "inode": 3682702,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+          "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9"
+        }
+      ],
+      "manifest_sha256": "26c0cf094253a8fb95cab8b1e84aff87d1d05cb02d8ea9b56fe23bf56ca26017",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+      "scene_file": "gltf-motion-validation.json"
+    },
+    "before": {
+      "files": [
+        {
+          "bytes": 122,
+          "device": 66306,
+          "inode": 3673876,
+          "mtime_ns": 1790827308000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/area-light.obj",
+          "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635"
+        },
+        {
+          "bytes": 10540,
+          "device": 66306,
+          "inode": 3682711,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+          "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+        },
+        {
+          "bytes": 5055,
+          "device": 66306,
+          "inode": 3682702,
+          "mtime_ns": 1790883305000000000,
+          "path": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+          "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9"
+        }
+      ],
+      "manifest_sha256": "26c0cf094253a8fb95cab8b1e84aff87d1d05cb02d8ea9b56fe23bf56ca26017",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json",
+      "scene_file": "gltf-motion-validation.json"
+    },
+    "unchanged": true
+  },
+  "schema_version": 1,
+  "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "started_utc": "2026-10-02T01:05:00.385992Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "validation/renders/motion-counter-resume-bvh-off.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 131,
+    "path": "validation/renders/motion-counter-resume-bvh-off.stdout.txt",
+    "sha256": "486e4058ae09d4772d6965021b9747033e3fd16889c379f837e15620f7bea560"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "benchmark": {
+    "csv": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/005-compact-off-sampler-counter-motion-off-wavefront-off-rr-off/render.benchmark.csv",
+    "measured_samples": 17,
+    "renderer_gpu_ms": 91.95001697540283,
+    "renderer_host_ms": 92.25259399999999
+  },
+  "benchmark_enabled": true,
+  "benchmark_instrumentation": "shade_ms is aggregate shader time in both scheduling modes. diffuse_ms, mirror_ms, dielectric_ms, emission_ms, and terminal_ms are an alternative wavefront breakdown and must not be added to shade_ms. queue_host_ms is host queue bookkeeping/submission time, not GPU stage time. count_ms is the compact=off active-path count.",
+  "camera": {
+    "aperture": 0.0,
+    "focus_distance": 11.0,
+    "look_at": [
+      0.0,
+      1.5,
+      0.0
+    ],
+    "position": [
+      6.0,
+      3.5999999046325684,
+      9.0
+    ],
+    "shutter": [
+      0.0,
+      1.0
+    ]
+  },
+  "checkpoint": null,
+  "checkpoint_every": null,
+  "compatibility": {
+    "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+    "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "compute_capability": "8.6",
+    "cuda_driver_version": 13000,
+    "cuda_runtime_version": 12080,
+    "device": "NVIDIA A10G"
+  },
+  "completed_samples": 17,
+  "config": {
+    "aa": true,
+    "bvh": true,
+    "compact": false,
+    "debug": "none",
+    "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+    "max_depth": 7,
+    "motion": false,
+    "nee": true,
+    "rr": false,
+    "rr_start": 3,
+    "sampler": "counter",
+    "sampler_id": 2,
+    "sort": false,
+    "wavefront": false
+  },
+  "debug_view": null,
+  "display_transform": {
+    "normalization": "divide accumulated RGB sums by completed_samples",
+    "orientation": "horizontal flip matching the starter preview camera convention",
+    "tone_mapping": "Reinhard c/(1+c)",
+    "transfer": "IEC 61966-2-1 sRGB"
+  },
+  "fingerprints": {
+    "assets": 7600896668236057885,
+    "geometry": 7316588533633355303,
+    "materials": 11884046144069487820,
+    "render_config": 16643090971701008858,
+    "scene_file": 10188050214372398967
+  },
+  "format_version": 1,
+  "linear_sum_format": {
+    "checksum": 1420024735019838669,
+    "checksum_security": "change/corruption detection only; not cryptographic",
+    "checksum_trailer_bytes": 8,
+    "endianness": "little",
+    "header_bytes": 32,
+    "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+    "magic": "C565SUM\\0",
+    "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+    "payload_offset_bytes": 32,
+    "png_orientation": "horizontal flip of renderer-order pixels",
+    "trailer": "little-endian FNV-1a-64 over header and payload",
+    "version": 1
+  },
+  "outputs": {
+    "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/005-compact-off-sampler-counter-motion-off-wavefront-off-rr-off/render.sum.bin",
+    "png": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/005-compact-off-sampler-counter-motion-off-wavefront-off-rr-off/render.png"
+  },
+  "render_loop_wall_ms": 92.258624,
+  "resolution": [
+    17,
+    13
+  ],
+  "resumed_from": null,
+  "run_policy": {
+    "last_sample_wall_ms": 4.805787,
+    "stop_reason": "sample_target",
+    "time_budget_ms": null
+  },
+  "sampler": "counter",
+  "sampler_id": 2,
+  "sampler_version": 2,
+  "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+  "seed": 947,
+  "target_samples": 17
+}

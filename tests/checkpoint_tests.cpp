@@ -1,4 +1,5 @@
 #include "checkpoint.h"
+#include "scene.h"
 
 #include <chrono>
 #include <cmath>
@@ -16,7 +17,10 @@ namespace {
 
 using checkpoint::CheckpointData;
 
+std::size_t gChecks = 0;
+
 void require(bool condition, const std::string& message) {
+    ++gChecks;
     if (!condition) {
         throw std::runtime_error(message);
     }
@@ -217,6 +221,14 @@ void writeBytes(const std::filesystem::path& path,
     }
     stream.close();
     require(!stream.fail(), "could not write test file");
+}
+
+void writeText(const std::filesystem::path& path, const std::string& contents) {
+    std::ofstream stream(path, std::ios::binary | std::ios::trunc);
+    require(stream.is_open(), "could not create scene fixture");
+    stream.write(contents.data(), static_cast<std::streamsize>(contents.size()));
+    stream.close();
+    require(!stream.fail(), "could not write scene fixture");
 }
 
 void putU32(std::vector<std::uint8_t>& bytes,
@@ -591,6 +603,91 @@ void testNonFiniteValidation(const std::filesystem::path& directory) {
             "metadata inspection accepted a checksummed NaN camera value");
 }
 
+void testProjectionValidation(const std::filesystem::path& directory) {
+    const std::filesystem::path scenePath = directory / "zero-fov-scene.json";
+    writeText(
+        scenePath,
+        R"({"Materials":{"mat":{"TYPE":"Diffuse","RGB":[1,1,1]}},)"
+        R"("Objects":[{"TYPE":"sphere","MATERIAL":"mat","TRANS":[0,0,0],)"
+        R"("ROTAT":[0,0,0],"SCALE":[1,1,1]}],)"
+        R"("Camera":{"RES":[2,2],"FOVY":0,"ITERATIONS":1,"DEPTH":1,)"
+        R"("FILE":"unused","EYE":[0,0,1],"LOOKAT":[0,0,0],"UP":[0,1,0]}})"
+    );
+    const Scene scene(scenePath.string());
+    const Camera& accepted = scene.state.camera;
+    require(sameFloat(accepted.fov.x, 0.0f),
+            "zero-FOV scene did not produce zero horizontal FOV");
+    require(sameFloat(accepted.fov.y, 0.0f),
+            "zero-FOV scene did not preserve zero vertical FOV");
+    require(sameFloat(accepted.pixelLength.x, 0.0f),
+            "zero-FOV scene did not produce zero horizontal pixel length");
+    require(sameFloat(accepted.pixelLength.y, 0.0f),
+            "zero-FOV scene did not produce zero vertical pixel length");
+
+    CheckpointData zeroProjection = makeCheckpoint();
+    zeroProjection.camera.position = accepted.position;
+    zeroProjection.camera.lookAt = accepted.lookAt;
+    zeroProjection.camera.view = accepted.view;
+    zeroProjection.camera.up = accepted.up;
+    zeroProjection.camera.right = accepted.right;
+    zeroProjection.camera.fov = accepted.fov;
+    zeroProjection.camera.pixelLength = accepted.pixelLength;
+    zeroProjection.camera.aperture = accepted.aperture;
+    zeroProjection.camera.focusDistance = accepted.focusDistance;
+    zeroProjection.camera.shutterOpen = accepted.shutterOpen;
+    zeroProjection.camera.shutterClose = accepted.shutterClose;
+
+    const std::filesystem::path checkpointPath =
+        directory / "zero-fov-round-trip.ckpt";
+    checkpoint::Status status =
+        checkpoint::saveAtomic(checkpointPath, zeroProjection);
+    require(status.ok(), "zero-FOV checkpoint save failed: " + status.message);
+    CheckpointData loaded;
+    const checkpoint::ExpectedState expected = expectedFrom(zeroProjection);
+    status = checkpoint::load(checkpointPath, loaded, &expected);
+    require(status.ok(), "zero-FOV checkpoint load failed: " + status.message);
+    requireEquivalent(zeroProjection, loaded);
+
+    const char* componentNames[] = {
+        "fov.x", "fov.y", "pixelLength.x", "pixelLength.y"};
+    const auto setComponent = [](checkpoint::CameraState& camera,
+                                 std::size_t component,
+                                 float value) {
+        switch (component) {
+        case 0: camera.fov.x = value; break;
+        case 1: camera.fov.y = value; break;
+        case 2: camera.pixelLength.x = value; break;
+        case 3: camera.pixelLength.y = value; break;
+        default: throw std::logic_error("unknown projection component");
+        }
+    };
+
+    for (std::size_t component = 0; component < 4; ++component) {
+        CheckpointData invalid = makeCheckpoint();
+        setComponent(invalid.camera, component, -0.25f);
+        status = checkpoint::validate(invalid);
+        require(status.code == checkpoint::Error::Malformed,
+                std::string("negative ") + componentNames[component] +
+                    " was accepted");
+
+        invalid = makeCheckpoint();
+        setComponent(invalid.camera, component,
+                     std::numeric_limits<float>::quiet_NaN());
+        status = checkpoint::validate(invalid);
+        require(status.code == checkpoint::Error::NonFinite,
+                std::string("NaN ") + componentNames[component] +
+                    " was accepted");
+
+        invalid = makeCheckpoint();
+        setComponent(invalid.camera, component,
+                     std::numeric_limits<float>::infinity());
+        status = checkpoint::validate(invalid);
+        require(status.code == checkpoint::Error::NonFinite,
+                std::string("infinite ") + componentNames[component] +
+                    " was accepted");
+    }
+}
+
 void testShutterValidation(const std::filesystem::path& directory) {
     CheckpointData data = makeCheckpoint();
     data.camera.shutterOpen = 0.6f;
@@ -936,25 +1033,45 @@ int main() {
         std::filesystem::create_directories(directory);
         DirectoryGuard cleanup(directory);
 
+        std::size_t groups = 0;
         testRoundTrip(directory);
+        ++groups;
         testFormatLayoutAndSamplerIds(directory);
+        ++groups;
         testSamplerIdValidation(directory);
+        ++groups;
         testCorruption(directory);
+        ++groups;
         testContinuationMismatch(directory);
+        ++groups;
         testSizeValidation(directory);
+        ++groups;
         testNonFiniteValidation(directory);
+        ++groups;
+        testProjectionValidation(directory);
+        ++groups;
         testShutterValidation(directory);
+        ++groups;
         testRussianRouletteBounds();
+        ++groups;
         testConfigEncodingRejection(directory);
+        ++groups;
         testSchedulingConflictRejection(directory);
+        ++groups;
         testOldVersionRejection(directory);
+        ++groups;
         testFingerprinting(directory);
+        ++groups;
         testBufferedBoundaries(directory);
+        ++groups;
         testBvhValidation();
-        std::cout << "checkpoint_tests: PASS\n";
+        ++groups;
+        std::cout << "checkpoint_tests: PASS (" << groups << " groups, "
+                  << gChecks << " checks)\n";
         return 0;
     } catch (const std::exception& error) {
-        std::cerr << "checkpoint_tests: FAIL: " << error.what() << '\n';
+        std::cerr << "checkpoint_tests: FAIL after " << gChecks
+                  << " checks: " << error.what() << '\n';
         return 1;
     }
 }

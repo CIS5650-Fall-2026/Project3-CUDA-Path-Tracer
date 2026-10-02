@@ -6,62 +6,62 @@
 <path d="M310.00 92 V677" stroke="#dce2ec"/>
 <text x="310.00" y="698" text-anchor="middle" font-size="13">0.00</text>
 <path d="M428.00 92 V677" stroke="#dce2ec"/>
-<text x="428.00" y="698" text-anchor="middle" font-size="13">26.21</text>
+<text x="428.00" y="698" text-anchor="middle" font-size="13">25.98</text>
 <path d="M546.00 92 V677" stroke="#dce2ec"/>
-<text x="546.00" y="698" text-anchor="middle" font-size="13">52.41</text>
+<text x="546.00" y="698" text-anchor="middle" font-size="13">51.96</text>
 <path d="M664.00 92 V677" stroke="#dce2ec"/>
-<text x="664.00" y="698" text-anchor="middle" font-size="13">78.62</text>
+<text x="664.00" y="698" text-anchor="middle" font-size="13">77.94</text>
 <path d="M782.00 92 V677" stroke="#dce2ec"/>
-<text x="782.00" y="698" text-anchor="middle" font-size="13">104.83</text>
+<text x="782.00" y="698" text-anchor="middle" font-size="13">103.92</text>
 <path d="M900.00 92 V677" stroke="#dce2ec"/>
-<text x="900.00" y="698" text-anchor="middle" font-size="13">131.03</text>
+<text x="900.00" y="698" text-anchor="middle" font-size="13">129.90</text>
 <text x="296" y="121" text-anchor="end" font-size="14">fluted-body-low / load incl. BVH</text>
-<rect x="310" y="100" width="32.83" height="29" rx="3" fill="#2166ac"/>
-<path d="M342.68 114 H342.89 M342.68 108 V120 M342.89 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="350.83" y="121" font-size="13">7.290</text>
+<rect x="310" y="100" width="32.99" height="29" rx="3" fill="#2166ac"/>
+<path d="M342.73 114 H343.08 M342.73 108 V120 M343.08 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="350.99" y="121" font-size="13">7.264</text>
 <text x="296" y="167" text-anchor="end" font-size="14">fluted-body-low / BVH rebuild</text>
-<rect x="310" y="146" width="3.99" height="29" rx="3" fill="#ca6e22"/>
-<path d="M313.98 160 H314.04 M313.98 154 V166 M314.04 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="321.99" y="167" font-size="13">0.886</text>
+<rect x="310" y="146" width="4.03" height="29" rx="3" fill="#ca6e22"/>
+<path d="M313.99 160 H314.04 M313.99 154 V166 M314.04 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="322.03" y="167" font-size="13">0.888</text>
 <text x="296" y="213" text-anchor="end" font-size="14">fluted-body-medium / load incl. BVH</text>
-<rect x="310" y="192" width="129.65" height="29" rx="3" fill="#318f68"/>
-<path d="M438.41 206 H439.96 M438.41 200 V212 M439.96 200 V212" stroke="#172235" stroke-width="2"/>
-<text x="447.65" y="213" font-size="13">28.794</text>
+<rect x="310" y="192" width="129.61" height="29" rx="3" fill="#318f68"/>
+<path d="M439.38 206 H439.77 M439.38 200 V212 M439.77 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="447.61" y="213" font-size="13">28.536</text>
 <text x="296" y="259" text-anchor="end" font-size="14">fluted-body-medium / BVH rebuild</text>
-<rect x="310" y="238" width="19.72" height="29" rx="3" fill="#2166ac"/>
-<path d="M329.57 252 H329.77 M329.57 246 V258 M329.77 246 V258" stroke="#172235" stroke-width="2"/>
-<text x="337.72" y="259" font-size="13">4.380</text>
+<rect x="310" y="238" width="19.71" height="29" rx="3" fill="#2166ac"/>
+<path d="M329.68 252 H329.78 M329.68 246 V258 M329.78 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="337.71" y="259" font-size="13">4.339</text>
 <text x="296" y="305" text-anchor="end" font-size="14">fluted-body-high / load incl. BVH</text>
-<rect x="310" y="284" width="526.60" height="29" rx="3" fill="#ca6e22"/>
-<path d="M823.36 298 H836.79 M823.36 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
-<text x="844.60" y="305" font-size="13">116.953</text>
+<rect x="310" y="284" width="526.70" height="29" rx="3" fill="#ca6e22"/>
+<path d="M824.25 298 H836.79 M824.25 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="844.70" y="305" font-size="13">115.968</text>
 <text x="296" y="351" text-anchor="end" font-size="14">fluted-body-high / BVH rebuild</text>
-<rect x="310" y="330" width="96.48" height="29" rx="3" fill="#318f68"/>
-<path d="M406.21 344 H406.62 M406.21 338 V350 M406.62 338 V350" stroke="#172235" stroke-width="2"/>
-<text x="414.48" y="351" font-size="13">21.428</text>
+<rect x="310" y="330" width="97.23" height="29" rx="3" fill="#318f68"/>
+<path d="M407.22 344 H407.67 M407.22 338 V350 M407.67 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="415.23" y="351" font-size="13">21.407</text>
 <text x="296" y="397" text-anchor="end" font-size="14">swept-knot-low / load incl. BVH</text>
-<rect x="310" y="376" width="19.01" height="29" rx="3" fill="#2166ac"/>
-<path d="M329.01 390 H329.05 M329.01 384 V396 M329.05 384 V396" stroke="#172235" stroke-width="2"/>
-<text x="337.01" y="397" font-size="13">4.221</text>
+<rect x="310" y="376" width="19.06" height="29" rx="3" fill="#2166ac"/>
+<path d="M329.00 390 H329.08 M329.00 384 V396 M329.08 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="337.06" y="397" font-size="13">4.197</text>
 <text x="296" y="443" text-anchor="end" font-size="14">swept-knot-low / BVH rebuild</text>
-<rect x="310" y="422" width="2.23" height="29" rx="3" fill="#ca6e22"/>
-<path d="M312.19 436 H312.28 M312.19 430 V442 M312.28 430 V442" stroke="#172235" stroke-width="2"/>
-<text x="320.23" y="443" font-size="13">0.494</text>
+<rect x="310" y="422" width="2.26" height="29" rx="3" fill="#ca6e22"/>
+<path d="M312.21 436 H312.27 M312.21 430 V442 M312.27 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="320.26" y="443" font-size="13">0.498</text>
 <text x="296" y="489" text-anchor="end" font-size="14">swept-knot-medium / load incl. BVH</text>
-<rect x="310" y="468" width="75.63" height="29" rx="3" fill="#318f68"/>
-<path d="M385.45 482 H385.82 M385.45 476 V488 M385.82 476 V488" stroke="#172235" stroke-width="2"/>
-<text x="393.63" y="489" font-size="13">16.797</text>
+<rect x="310" y="468" width="76.06" height="29" rx="3" fill="#318f68"/>
+<path d="M385.73 482 H386.07 M385.73 476 V488 M386.07 476 V488" stroke="#172235" stroke-width="2"/>
+<text x="394.06" y="489" font-size="13">16.746</text>
 <text x="296" y="535" text-anchor="end" font-size="14">swept-knot-medium / BVH rebuild</text>
-<rect x="310" y="514" width="11.53" height="29" rx="3" fill="#2166ac"/>
-<path d="M321.43 528 H321.97 M321.43 522 V534 M321.97 522 V534" stroke="#172235" stroke-width="2"/>
-<text x="329.53" y="535" font-size="13">2.561</text>
+<rect x="310" y="514" width="11.58" height="29" rx="3" fill="#2166ac"/>
+<path d="M321.55 528 H321.59 M321.55 522 V534 M321.59 522 V534" stroke="#172235" stroke-width="2"/>
+<text x="329.58" y="535" font-size="13">2.550</text>
 <text x="296" y="581" text-anchor="end" font-size="14">swept-knot-high / load incl. BVH</text>
-<rect x="310" y="560" width="307.49" height="29" rx="3" fill="#ca6e22"/>
-<path d="M616.92 574 H618.18 M616.92 568 V580 M618.18 568 V580" stroke="#172235" stroke-width="2"/>
-<text x="625.49" y="581" font-size="13">68.291</text>
+<rect x="310" y="560" width="308.84" height="29" rx="3" fill="#ca6e22"/>
+<path d="M618.72 574 H619.61 M618.72 568 V580 M619.61 568 V580" stroke="#172235" stroke-width="2"/>
+<text x="626.84" y="581" font-size="13">68.000</text>
 <text x="296" y="627" text-anchor="end" font-size="14">swept-knot-high / BVH rebuild</text>
-<rect x="310" y="606" width="57.85" height="29" rx="3" fill="#318f68"/>
-<path d="M367.63 620 H368.03 M367.63 614 V626 M368.03 614 V626" stroke="#172235" stroke-width="2"/>
-<text x="375.85" y="627" font-size="13">12.847</text>
+<rect x="310" y="606" width="58.28" height="29" rx="3" fill="#318f68"/>
+<path d="M368.14 620 H368.49 M368.14 614 V626 M368.49 614 V626" stroke="#172235" stroke-width="2"/>
+<text x="376.28" y="627" font-size="13">12.832</text>
 </g>
 </svg>
