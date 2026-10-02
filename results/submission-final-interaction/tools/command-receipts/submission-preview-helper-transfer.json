@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-01T22:28:46.958314+00:00",
+  "helpers": [
+    {
+      "local_source": ".local/setup_final_display_remote.py",
+      "remote_path": "/home/ubuntu/cis5650/project3/.local/setup_final_display_remote.py",
+      "bytes": 2246,
+      "sha256": "747ed64117703f644649645c4c55088b84c2cbcbef63c07a617f5ac8dfd1904f",
+      "transfer_method": "shlex-quoted Python write_text; exact bytes verified",
+      "remote_command_sha256": "ff7d57d5297084dc239e2e7c26b8e1e9ef406b551c1fe16d4bec7dd95cd0b6a9",
+      "exit_code": 0,
+      "executed": false
+    },
+    {
+      "local_source": ".local/run_final_interaction_remote.py",
+      "remote_path": "/home/ubuntu/cis5650/project3/.local/run_final_interaction_remote.py",
+      "bytes": 19713,
+      "sha256": "e1b709e6a756c403dd6c9e0c39e7e76007bb33f1af31b427479adf5887ddd1ee",
+      "transfer_method": "shlex-quoted Python write_text; exact bytes verified",
+      "remote_command_sha256": "4bf15d0e022fba20767c34cedebeaffc72a14357607187c276de3fbc35aecb3c",
+      "exit_code": 0,
+      "executed": false
+    }
+  ],
+  "graphical_work_started": false
+}

@@ -1,0 +1,18 @@
+diff --git a/scripts/measure_hedge.py b/scripts/measure_hedge.py
+--- a/scripts/measure_hedge.py
++++ b/scripts/measure_hedge.py
+@@ -3073,10 +3073,10 @@ def run_measurement(args: argparse.Namespace, output: Path) -> int:
+         session.state["completed_utc"] = utc_now()
+         session.persist()
+         print(output)
+-        # A negative or inconclusive statistical result is still a successfully
+-        # completed measurement.  Its structured status is the scientific gate;
+-        # process failure codes are reserved for execution/evidence failures.
+-        return 0
++        # Code 2 reports a completed negative or inconclusive scientific outcome,
++        # not an execution failure; the retained execution_status stays completed.
++        # A passed outcome returns 0; execution/evidence failures use the branch below.
++        return 2 if session.state["status"] in ("not-qualified", "inconclusive") else 0
+     except BaseException as error:
+         session.state["status"] = "failed"
+         session.state["execution_status"] = "failed"

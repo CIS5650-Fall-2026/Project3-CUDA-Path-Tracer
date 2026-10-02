@@ -1,0 +1,4890 @@
+{
+  "convergence_phases": [
+    {
+      "end": {
+        "monotonic_ns": 10793882904443,
+        "relative_to_interaction_s": 12.000510479,
+        "utc": "2026-10-01T21:50:47.724487Z"
+      },
+      "label": "original-camera-convergence",
+      "observed_iterations": [
+        21,
+        21,
+        13,
+        25,
+        38,
+        50,
+        63,
+        75,
+        88,
+        100,
+        113,
+        125,
+        138
+      ],
+      "observed_sequential_growth": true,
+      "parseable_sample_count": 13,
+      "scheduled_end_s": 12.0,
+      "scheduled_start_s": 0.0,
+      "start": {
+        "monotonic_ns": 10782013755648,
+        "relative_to_interaction_s": 0.131361684,
+        "utc": "2026-10-01T21:50:35.855350Z"
+      },
+      "status": "passed",
+      "title_sample_end_index": 16,
+      "title_sample_start_index": 3
+    },
+    {
+      "end": {
+        "monotonic_ns": 10801882559522,
+        "relative_to_interaction_s": 20.000165558,
+        "utc": "2026-10-01T21:50:55.724140Z"
+      },
+      "label": "left-drag-convergence",
+      "observed_iterations": [
+        3,
+        3,
+        12,
+        25,
+        37,
+        49
+      ],
+      "observed_sequential_growth": true,
+      "parseable_sample_count": 6,
+      "scheduled_end_s": 20.0,
+      "scheduled_start_s": 15.0,
+      "start": {
+        "monotonic_ns": 10796973374721,
+        "relative_to_interaction_s": 15.090980757,
+        "utc": "2026-10-01T21:50:50.814970Z"
+      },
+      "status": "passed",
+      "title_sample_end_index": 24,
+      "title_sample_start_index": 18
+    },
+    {
+      "end": {
+        "monotonic_ns": 10808882556269,
+        "relative_to_interaction_s": 27.000162305,
+        "utc": "2026-10-01T21:51:02.724137Z"
+      },
+      "label": "right-drag-convergence",
+      "observed_iterations": [
+        1,
+        1,
+        12,
+        24,
+        36,
+        48
+      ],
+      "observed_sequential_growth": true,
+      "parseable_sample_count": 6,
+      "scheduled_end_s": 27.0,
+      "scheduled_start_s": 22.0,
+      "start": {
+        "monotonic_ns": 10803968601018,
+        "relative_to_interaction_s": 22.086207054,
+        "utc": "2026-10-01T21:50:57.810195Z"
+      },
+      "status": "passed",
+      "title_sample_end_index": 32,
+      "title_sample_start_index": 26
+    },
+    {
+      "end": {
+        "monotonic_ns": 10815882548196,
+        "relative_to_interaction_s": 34.000154232,
+        "utc": "2026-10-01T21:51:09.724123Z"
+      },
+      "label": "middle-drag-convergence",
+      "observed_iterations": [
+        1,
+        1,
+        12,
+        24,
+        36,
+        48
+      ],
+      "observed_sequential_growth": true,
+      "parseable_sample_count": 6,
+      "scheduled_end_s": 34.0,
+      "scheduled_start_s": 29.0,
+      "start": {
+        "monotonic_ns": 10810961517733,
+        "relative_to_interaction_s": 29.079123769,
+        "utc": "2026-10-01T21:51:04.803105Z"
+      },
+      "status": "passed",
+      "title_sample_end_index": 40,
+      "title_sample_start_index": 34
+    },
+    {
+      "end": {
+        "monotonic_ns": 10825882552417,
+        "relative_to_interaction_s": 44.000158453,
+        "utc": "2026-10-01T21:51:19.724129Z"
+      },
+      "label": "restored-camera-convergence",
+      "observed_iterations": [
+        62,
+        62,
+        13,
+        25,
+        38,
+        50,
+        63,
+        75,
+        88,
+        100,
+        113
+      ],
+      "observed_sequential_growth": true,
+      "parseable_sample_count": 11,
+      "scheduled_end_s": 44.0,
+      "scheduled_start_s": 34.0,
+      "start": {
+        "monotonic_ns": 10816190926818,
+        "relative_to_interaction_s": 34.308532854,
+        "utc": "2026-10-01T21:51:10.032508Z"
+      },
+      "status": "passed",
+      "title_sample_end_index": 53,
+      "title_sample_start_index": 42
+    }
+  ],
+  "events": [
+    {
+      "end": {
+        "monotonic_ns": 10781984918206,
+        "relative_to_interaction_s": 0.102524242,
+        "utc": "2026-10-01T21:50:35.826498Z"
+      },
+      "label": "initial-release-and-reset",
+      "scheduled_relative_s": 0.0,
+      "start": {
+        "monotonic_ns": 10781891048790,
+        "relative_to_interaction_s": 0.008654826,
+        "utc": "2026-10-01T21:50:35.732634Z"
+      },
+      "start_drift_s": 0.008654826,
+      "status": "completed"
+    },
+    {
+      "details": {
+        "button": 1,
+        "client_relative_end": [
+          810,
+          410
+        ],
+        "client_relative_start": [
+          700,
+          400
+        ],
+        "scheduled_end_s": 15.0,
+        "steps": 12
+      },
+      "end": {
+        "monotonic_ns": 10796940140735,
+        "relative_to_interaction_s": 15.057746771,
+        "utc": "2026-10-01T21:50:50.781733Z"
+      },
+      "label": "left-orbit-drag",
+      "scheduled_relative_s": 12.0,
+      "start": {
+        "monotonic_ns": 10794031354746,
+        "relative_to_interaction_s": 12.148960782,
+        "utc": "2026-10-01T21:50:47.872949Z"
+      },
+      "start_drift_s": 0.14896078199999963,
+      "status": "completed"
+    },
+    {
+      "details": {
+        "button": 3,
+        "client_relative_end": [
+          700,
+          350
+        ],
+        "client_relative_start": [
+          700,
+          400
+        ],
+        "scheduled_end_s": 22.0,
+        "steps": 12
+      },
+      "end": {
+        "monotonic_ns": 10803923592586,
+        "relative_to_interaction_s": 22.041198622,
+        "utc": "2026-10-01T21:50:57.765176Z"
+      },
+      "label": "right-zoom-drag",
+      "scheduled_relative_s": 20.0,
+      "start": {
+        "monotonic_ns": 10802035027546,
+        "relative_to_interaction_s": 20.152633582,
+        "utc": "2026-10-01T21:50:55.876597Z"
+      },
+      "start_drift_s": 0.152633582,
+      "status": "completed"
+    },
+    {
+      "details": {
+        "button": 2,
+        "client_relative_end": [
+          740,
+          425
+        ],
+        "client_relative_start": [
+          700,
+          400
+        ],
+        "scheduled_end_s": 29.0,
+        "steps": 12
+      },
+      "end": {
+        "monotonic_ns": 10810919300955,
+        "relative_to_interaction_s": 29.036906991,
+        "utc": "2026-10-01T21:51:04.760892Z"
+      },
+      "label": "middle-pan-drag",
+      "scheduled_relative_s": 27.0,
+      "start": {
+        "monotonic_ns": 10809038888511,
+        "relative_to_interaction_s": 27.156494547,
+        "utc": "2026-10-01T21:51:02.880477Z"
+      },
+      "start_drift_s": 0.1564945470000012,
+      "status": "completed"
+    },
+    {
+      "end": {
+        "monotonic_ns": 10816145348312,
+        "relative_to_interaction_s": 34.262954348,
+        "utc": "2026-10-01T21:51:09.986927Z"
+      },
+      "label": "restore-original-camera",
+      "scheduled_relative_s": 34.0,
+      "start": {
+        "monotonic_ns": 10816024717309,
+        "relative_to_interaction_s": 34.142323345,
+        "utc": "2026-10-01T21:51:09.866294Z"
+      },
+      "start_drift_s": 0.1423233450000012,
+      "status": "completed"
+    },
+    {
+      "end": {
+        "monotonic_ns": 10826155096102,
+        "relative_to_interaction_s": 44.272702138,
+        "utc": "2026-10-01T21:51:19.996674Z"
+      },
+      "label": "scheduled-S-save",
+      "scheduled_relative_s": 44.0,
+      "start": {
+        "monotonic_ns": 10826077094180,
+        "relative_to_interaction_s": 44.194700216,
+        "utc": "2026-10-01T21:51:19.918677Z"
+      },
+      "start_drift_s": 0.1947002160000011,
+      "status": "completed"
+    },
+    {
+      "end": {
+        "monotonic_ns": 10828197227417,
+        "relative_to_interaction_s": 46.314833453,
+        "utc": "2026-10-01T21:51:22.038811Z"
+      },
+      "label": "release-and-Escape",
+      "scheduled_relative_s": 46.0,
+      "start": {
+        "monotonic_ns": 10828056511556,
+        "relative_to_interaction_s": 46.174117592,
+        "utc": "2026-10-01T21:51:21.898107Z"
+      },
+      "start_drift_s": 0.17411759200000176,
+      "status": "completed"
+    },
+    {
+      "end": {
+        "monotonic_ns": 10830023948004,
+        "relative_to_interaction_s": 48.14155404,
+        "utc": "2026-10-01T21:51:23.865538Z"
+      },
+      "label": "ffmpeg-SIGINT",
+      "orchestration_event_start_drift_s_not_used_for_validation": 0.00014739000000218994,
+      "result": {
+        "exit_code": 255,
+        "termination_method": "SIGINT"
+      },
+      "scheduled_relative_s": 48.0,
+      "signal_delivery": {
+        "actual_relative_s": 48.013417569,
+        "at": {
+          "monotonic_ns": 10829895811533,
+          "relative_to_interaction_s": 48.013417569,
+          "utc": "2026-10-01T21:51:23.737407Z"
+        },
+        "delivery_start_drift_s": 0.013417568999997798,
+        "drift_validation_basis": "timestamp immediately before send_signal(SIGINT)",
+        "method": "SIGINT",
+        "scheduled_relative_s": 48.0,
+        "send_signal_returned": {
+          "monotonic_ns": 10829895843314,
+          "relative_to_interaction_s": 48.01344935,
+          "utc": "2026-10-01T21:51:23.737442Z"
+        }
+      },
+      "start": {
+        "monotonic_ns": 10829882541354,
+        "relative_to_interaction_s": 48.00014739,
+        "utc": "2026-10-01T21:51:23.724123Z"
+      },
+      "status": "completed"
+    }
+  ],
+  "interaction_epoch": {
+    "monotonic_ns": 10781882393964,
+    "relative_to_interaction_s": 0.0,
+    "utc": "2026-10-01T21:50:35.723987Z"
+  },
+  "png_checks": [
+    {
+      "bytes": 1291985,
+      "chunks": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ],
+      "created_by": "scheduled-S-save",
+      "height": 640,
+      "name": "gltf-showcase.2026-10-01_21-50-33z.125samp.save0.png",
+      "new_relative_to": [],
+      "png_complete": true,
+      "sha256": "55040cd82c54350327f21900efe3bb0d10b987d32784780a2524e2e70dc6d34c",
+      "stable_stat_observations": 2,
+      "verified": {
+        "monotonic_ns": 10826510030271,
+        "relative_to_interaction_s": 44.627636307,
+        "utc": "2026-10-01T21:51:20.351591Z"
+      },
+      "width": 960
+    },
+    {
+      "bytes": 1266821,
+      "chunks": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ],
+      "created_by": "Escape-save",
+      "height": 640,
+      "name": "gltf-showcase.2026-10-01_21-50-33z.148samp.save1.png",
+      "new_relative_to": [
+        "gltf-showcase.2026-10-01_21-50-33z.125samp.save0.png"
+      ],
+      "png_complete": true,
+      "sha256": "c3b06129015973a7b68abad20b2c7cb97571853df89036416d2523a7504ba62f",
+      "stable_stat_observations": 2,
+      "verified": {
+        "monotonic_ns": 10828564824184,
+        "relative_to_interaction_s": 46.68243022,
+        "utc": "2026-10-01T21:51:22.406412Z"
+      },
+      "width": 960
+    }
+  ],
+  "schedule": [
+    {
+      "action": "release buttons 1/3/2; Space reset",
+      "at_s": 0.0
+    },
+    {
+      "from_s": 0.0,
+      "phase": "original-camera convergence",
+      "to_s": 12.0
+    },
+    {
+      "action": "left drag (700,400) to (810,410), 12 steps",
+      "from_s": 12.0,
+      "to_s": 15.0
+    },
+    {
+      "from_s": 15.0,
+      "phase": "left-drag convergence",
+      "to_s": 20.0
+    },
+    {
+      "action": "right drag (700,400) to (700,350), 12 steps",
+      "from_s": 20.0,
+      "to_s": 22.0
+    },
+    {
+      "from_s": 22.0,
+      "phase": "right-drag convergence",
+      "to_s": 27.0
+    },
+    {
+      "action": "middle drag (700,400) to (740,425), 12 steps",
+      "from_s": 27.0,
+      "to_s": 29.0
+    },
+    {
+      "from_s": 29.0,
+      "phase": "middle-drag convergence",
+      "to_s": 34.0
+    },
+    {
+      "action": "release buttons 1/3/2; Space reset",
+      "at_s": 34.0
+    },
+    {
+      "from_s": 34.0,
+      "phase": "restored-camera convergence",
+      "to_s": 44.0
+    },
+    {
+      "action": "S save",
+      "at_s": 44.0
+    },
+    {
+      "action": "release buttons 1/3/2; Escape save and exit",
+      "at_s": 46.0
+    },
+    {
+      "action": "SIGINT ffmpeg after renderer exit",
+      "at_s": 48.0
+    }
+  ],
+  "schema_version": 1,
+  "status": "succeeded",
+  "title_samples": [
+    {
+      "label": "wait-for-live-title",
+      "observed": {
+        "monotonic_ns": 10780542907056,
+        "relative_to_interaction_s": -1.339486908,
+        "utc": "2026-10-01T21:50:34.384497Z"
+      },
+      "title": "CIS565 Path Tracer | 3 Iterations",
+      "window_title_iteration": 3,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "initial-reset-before-epoch",
+      "observed": {
+        "monotonic_ns": 10781874654385,
+        "relative_to_interaction_s": -0.007739579,
+        "utc": "2026-10-01T21:50:35.716249Z"
+      },
+      "title": "CIS565 Path Tracer | 19 Iterations",
+      "window_title_iteration": 19,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "initial-release-and-reset-after",
+      "observed": {
+        "monotonic_ns": 10782005463973,
+        "relative_to_interaction_s": 0.123070009,
+        "utc": "2026-10-01T21:50:35.847056Z"
+      },
+      "title": "CIS565 Path Tracer | 21 Iterations",
+      "window_title_iteration": 21,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-start",
+      "observed": {
+        "monotonic_ns": 10782049210217,
+        "relative_to_interaction_s": 0.166816253,
+        "utc": "2026-10-01T21:50:35.890800Z"
+      },
+      "title": "CIS565 Path Tracer | 21 Iterations",
+      "window_title_iteration": 21,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-00",
+      "observed": {
+        "monotonic_ns": 10782075082852,
+        "relative_to_interaction_s": 0.192688888,
+        "utc": "2026-10-01T21:50:35.916672Z"
+      },
+      "title": "CIS565 Path Tracer | 21 Iterations",
+      "window_title_iteration": 21,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-01",
+      "observed": {
+        "monotonic_ns": 10783073491794,
+        "relative_to_interaction_s": 1.19109783,
+        "utc": "2026-10-01T21:50:36.915073Z"
+      },
+      "title": "CIS565 Path Tracer | 13 Iterations",
+      "window_title_iteration": 13,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-02",
+      "observed": {
+        "monotonic_ns": 10784073083436,
+        "relative_to_interaction_s": 2.190689472,
+        "utc": "2026-10-01T21:50:37.914658Z"
+      },
+      "title": "CIS565 Path Tracer | 25 Iterations",
+      "window_title_iteration": 25,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-03",
+      "observed": {
+        "monotonic_ns": 10785071265412,
+        "relative_to_interaction_s": 3.188871448,
+        "utc": "2026-10-01T21:50:38.912847Z"
+      },
+      "title": "CIS565 Path Tracer | 38 Iterations",
+      "window_title_iteration": 38,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-04",
+      "observed": {
+        "monotonic_ns": 10786072950925,
+        "relative_to_interaction_s": 4.190556961,
+        "utc": "2026-10-01T21:50:39.914528Z"
+      },
+      "title": "CIS565 Path Tracer | 50 Iterations",
+      "window_title_iteration": 50,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-05",
+      "observed": {
+        "monotonic_ns": 10787075122201,
+        "relative_to_interaction_s": 5.192728237,
+        "utc": "2026-10-01T21:50:40.916704Z"
+      },
+      "title": "CIS565 Path Tracer | 63 Iterations",
+      "window_title_iteration": 63,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-06",
+      "observed": {
+        "monotonic_ns": 10788074766853,
+        "relative_to_interaction_s": 6.192372889,
+        "utc": "2026-10-01T21:50:41.916352Z"
+      },
+      "title": "CIS565 Path Tracer | 75 Iterations",
+      "window_title_iteration": 75,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-07",
+      "observed": {
+        "monotonic_ns": 10789071694526,
+        "relative_to_interaction_s": 7.189300562,
+        "utc": "2026-10-01T21:50:42.913287Z"
+      },
+      "title": "CIS565 Path Tracer | 88 Iterations",
+      "window_title_iteration": 88,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-08",
+      "observed": {
+        "monotonic_ns": 10790071207695,
+        "relative_to_interaction_s": 8.188813731,
+        "utc": "2026-10-01T21:50:43.912783Z"
+      },
+      "title": "CIS565 Path Tracer | 100 Iterations",
+      "window_title_iteration": 100,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-09",
+      "observed": {
+        "monotonic_ns": 10791070311803,
+        "relative_to_interaction_s": 9.187917839,
+        "utc": "2026-10-01T21:50:44.911897Z"
+      },
+      "title": "CIS565 Path Tracer | 113 Iterations",
+      "window_title_iteration": 113,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-10",
+      "observed": {
+        "monotonic_ns": 10792072594642,
+        "relative_to_interaction_s": 10.190200678,
+        "utc": "2026-10-01T21:50:45.914188Z"
+      },
+      "title": "CIS565 Path Tracer | 125 Iterations",
+      "window_title_iteration": 125,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "original-camera-convergence-periodic-11",
+      "observed": {
+        "monotonic_ns": 10793070892710,
+        "relative_to_interaction_s": 11.188498746,
+        "utc": "2026-10-01T21:50:46.912486Z"
+      },
+      "title": "CIS565 Path Tracer | 138 Iterations",
+      "window_title_iteration": 138,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-orbit-drag-before",
+      "observed": {
+        "monotonic_ns": 10793906537227,
+        "relative_to_interaction_s": 12.024143263,
+        "utc": "2026-10-01T21:50:47.748131Z"
+      },
+      "title": "CIS565 Path Tracer | 148 Iterations",
+      "window_title_iteration": 148,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-orbit-drag-after",
+      "observed": {
+        "monotonic_ns": 10796964405665,
+        "relative_to_interaction_s": 15.082011701,
+        "utc": "2026-10-01T21:50:50.806000Z"
+      },
+      "title": "CIS565 Path Tracer | 3 Iterations",
+      "window_title_iteration": 3,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-drag-convergence-start",
+      "observed": {
+        "monotonic_ns": 10796999117238,
+        "relative_to_interaction_s": 15.116723274,
+        "utc": "2026-10-01T21:50:50.840704Z"
+      },
+      "title": "CIS565 Path Tracer | 3 Iterations",
+      "window_title_iteration": 3,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-drag-convergence-periodic-00",
+      "observed": {
+        "monotonic_ns": 10797033544874,
+        "relative_to_interaction_s": 15.15115091,
+        "utc": "2026-10-01T21:50:50.875129Z"
+      },
+      "title": "CIS565 Path Tracer | 3 Iterations",
+      "window_title_iteration": 3,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-drag-convergence-periodic-01",
+      "observed": {
+        "monotonic_ns": 10798037834563,
+        "relative_to_interaction_s": 16.155440599,
+        "utc": "2026-10-01T21:50:51.879422Z"
+      },
+      "title": "CIS565 Path Tracer | 12 Iterations",
+      "window_title_iteration": 12,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-drag-convergence-periodic-02",
+      "observed": {
+        "monotonic_ns": 10799050347249,
+        "relative_to_interaction_s": 17.167953285,
+        "utc": "2026-10-01T21:50:52.891931Z"
+      },
+      "title": "CIS565 Path Tracer | 25 Iterations",
+      "window_title_iteration": 25,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-drag-convergence-periodic-03",
+      "observed": {
+        "monotonic_ns": 10800033277640,
+        "relative_to_interaction_s": 18.150883676,
+        "utc": "2026-10-01T21:50:53.874860Z"
+      },
+      "title": "CIS565 Path Tracer | 37 Iterations",
+      "window_title_iteration": 37,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "left-drag-convergence-periodic-04",
+      "observed": {
+        "monotonic_ns": 10801041542609,
+        "relative_to_interaction_s": 19.159148645,
+        "utc": "2026-10-01T21:50:54.883121Z"
+      },
+      "title": "CIS565 Path Tracer | 49 Iterations",
+      "window_title_iteration": 49,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-zoom-drag-before",
+      "observed": {
+        "monotonic_ns": 10801915298035,
+        "relative_to_interaction_s": 20.032904071,
+        "utc": "2026-10-01T21:50:55.756888Z"
+      },
+      "title": "CIS565 Path Tracer | 60 Iterations",
+      "window_title_iteration": 60,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-zoom-drag-after",
+      "observed": {
+        "monotonic_ns": 10803958144394,
+        "relative_to_interaction_s": 22.07575043,
+        "utc": "2026-10-01T21:50:57.799728Z"
+      },
+      "title": "CIS565 Path Tracer | 1 Iterations",
+      "window_title_iteration": 1,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-drag-convergence-start",
+      "observed": {
+        "monotonic_ns": 10804005764402,
+        "relative_to_interaction_s": 22.123370438,
+        "utc": "2026-10-01T21:50:57.847359Z"
+      },
+      "title": "CIS565 Path Tracer | 1 Iterations",
+      "window_title_iteration": 1,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-drag-convergence-periodic-00",
+      "observed": {
+        "monotonic_ns": 10804037091300,
+        "relative_to_interaction_s": 22.154697336,
+        "utc": "2026-10-01T21:50:57.878676Z"
+      },
+      "title": "CIS565 Path Tracer | 1 Iterations",
+      "window_title_iteration": 1,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-drag-convergence-periodic-01",
+      "observed": {
+        "monotonic_ns": 10805048133249,
+        "relative_to_interaction_s": 23.165739285,
+        "utc": "2026-10-01T21:50:58.889711Z"
+      },
+      "title": "CIS565 Path Tracer | 12 Iterations",
+      "window_title_iteration": 12,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-drag-convergence-periodic-02",
+      "observed": {
+        "monotonic_ns": 10806043255817,
+        "relative_to_interaction_s": 24.160861853,
+        "utc": "2026-10-01T21:50:59.884840Z"
+      },
+      "title": "CIS565 Path Tracer | 24 Iterations",
+      "window_title_iteration": 24,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-drag-convergence-periodic-03",
+      "observed": {
+        "monotonic_ns": 10807034722304,
+        "relative_to_interaction_s": 25.15232834,
+        "utc": "2026-10-01T21:51:00.876310Z"
+      },
+      "title": "CIS565 Path Tracer | 36 Iterations",
+      "window_title_iteration": 36,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "right-drag-convergence-periodic-04",
+      "observed": {
+        "monotonic_ns": 10808032560810,
+        "relative_to_interaction_s": 26.150166846,
+        "utc": "2026-10-01T21:51:01.874154Z"
+      },
+      "title": "CIS565 Path Tracer | 48 Iterations",
+      "window_title_iteration": 48,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-pan-drag-before",
+      "observed": {
+        "monotonic_ns": 10808915109587,
+        "relative_to_interaction_s": 27.032715623,
+        "utc": "2026-10-01T21:51:02.756701Z"
+      },
+      "title": "CIS565 Path Tracer | 59 Iterations",
+      "window_title_iteration": 59,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-pan-drag-after",
+      "observed": {
+        "monotonic_ns": 10810949285314,
+        "relative_to_interaction_s": 29.06689135,
+        "utc": "2026-10-01T21:51:04.790865Z"
+      },
+      "title": "CIS565 Path Tracer | 1 Iterations",
+      "window_title_iteration": 1,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-drag-convergence-start",
+      "observed": {
+        "monotonic_ns": 10810987330687,
+        "relative_to_interaction_s": 29.104936723,
+        "utc": "2026-10-01T21:51:04.828924Z"
+      },
+      "title": "CIS565 Path Tracer | 1 Iterations",
+      "window_title_iteration": 1,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-drag-convergence-periodic-00",
+      "observed": {
+        "monotonic_ns": 10811015957087,
+        "relative_to_interaction_s": 29.133563123,
+        "utc": "2026-10-01T21:51:04.857548Z"
+      },
+      "title": "CIS565 Path Tracer | 1 Iterations",
+      "window_title_iteration": 1,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-drag-convergence-periodic-01",
+      "observed": {
+        "monotonic_ns": 10812017466785,
+        "relative_to_interaction_s": 30.135072821,
+        "utc": "2026-10-01T21:51:05.859057Z"
+      },
+      "title": "CIS565 Path Tracer | 12 Iterations",
+      "window_title_iteration": 12,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-drag-convergence-periodic-02",
+      "observed": {
+        "monotonic_ns": 10813017841652,
+        "relative_to_interaction_s": 31.135447688,
+        "utc": "2026-10-01T21:51:06.859428Z"
+      },
+      "title": "CIS565 Path Tracer | 24 Iterations",
+      "window_title_iteration": 24,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-drag-convergence-periodic-03",
+      "observed": {
+        "monotonic_ns": 10814013759440,
+        "relative_to_interaction_s": 32.131365476,
+        "utc": "2026-10-01T21:51:07.855353Z"
+      },
+      "title": "CIS565 Path Tracer | 36 Iterations",
+      "window_title_iteration": 36,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "middle-drag-convergence-periodic-04",
+      "observed": {
+        "monotonic_ns": 10815013804628,
+        "relative_to_interaction_s": 33.131410664,
+        "utc": "2026-10-01T21:51:08.855399Z"
+      },
+      "title": "CIS565 Path Tracer | 48 Iterations",
+      "window_title_iteration": 48,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restore-original-camera-before",
+      "observed": {
+        "monotonic_ns": 10815921806142,
+        "relative_to_interaction_s": 34.039412178,
+        "utc": "2026-10-01T21:51:09.763387Z"
+      },
+      "title": "CIS565 Path Tracer | 59 Iterations",
+      "window_title_iteration": 59,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restore-original-camera-after",
+      "observed": {
+        "monotonic_ns": 10816177091856,
+        "relative_to_interaction_s": 34.294697892,
+        "utc": "2026-10-01T21:51:10.018673Z"
+      },
+      "title": "CIS565 Path Tracer | 62 Iterations",
+      "window_title_iteration": 62,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-start",
+      "observed": {
+        "monotonic_ns": 10816218935521,
+        "relative_to_interaction_s": 34.336541557,
+        "utc": "2026-10-01T21:51:10.060519Z"
+      },
+      "title": "CIS565 Path Tracer | 62 Iterations",
+      "window_title_iteration": 62,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-00",
+      "observed": {
+        "monotonic_ns": 10816252350879,
+        "relative_to_interaction_s": 34.369956915,
+        "utc": "2026-10-01T21:51:10.093931Z"
+      },
+      "title": "CIS565 Path Tracer | 62 Iterations",
+      "window_title_iteration": 62,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-01",
+      "observed": {
+        "monotonic_ns": 10817254213267,
+        "relative_to_interaction_s": 35.371819303,
+        "utc": "2026-10-01T21:51:11.095806Z"
+      },
+      "title": "CIS565 Path Tracer | 13 Iterations",
+      "window_title_iteration": 13,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-02",
+      "observed": {
+        "monotonic_ns": 10818250805362,
+        "relative_to_interaction_s": 36.368411398,
+        "utc": "2026-10-01T21:51:12.092391Z"
+      },
+      "title": "CIS565 Path Tracer | 25 Iterations",
+      "window_title_iteration": 25,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-03",
+      "observed": {
+        "monotonic_ns": 10819252252159,
+        "relative_to_interaction_s": 37.369858195,
+        "utc": "2026-10-01T21:51:13.093846Z"
+      },
+      "title": "CIS565 Path Tracer | 38 Iterations",
+      "window_title_iteration": 38,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-04",
+      "observed": {
+        "monotonic_ns": 10820251817494,
+        "relative_to_interaction_s": 38.36942353,
+        "utc": "2026-10-01T21:51:14.093309Z"
+      },
+      "title": "CIS565 Path Tracer | 50 Iterations",
+      "window_title_iteration": 50,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-05",
+      "observed": {
+        "monotonic_ns": 10821250993450,
+        "relative_to_interaction_s": 39.368599486,
+        "utc": "2026-10-01T21:51:15.092571Z"
+      },
+      "title": "CIS565 Path Tracer | 63 Iterations",
+      "window_title_iteration": 63,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-06",
+      "observed": {
+        "monotonic_ns": 10822252137888,
+        "relative_to_interaction_s": 40.369743924,
+        "utc": "2026-10-01T21:51:16.093717Z"
+      },
+      "title": "CIS565 Path Tracer | 75 Iterations",
+      "window_title_iteration": 75,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-07",
+      "observed": {
+        "monotonic_ns": 10823251126978,
+        "relative_to_interaction_s": 41.368733014,
+        "utc": "2026-10-01T21:51:17.092705Z"
+      },
+      "title": "CIS565 Path Tracer | 88 Iterations",
+      "window_title_iteration": 88,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-08",
+      "observed": {
+        "monotonic_ns": 10824252841331,
+        "relative_to_interaction_s": 42.370447367,
+        "utc": "2026-10-01T21:51:18.094434Z"
+      },
+      "title": "CIS565 Path Tracer | 100 Iterations",
+      "window_title_iteration": 100,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "restored-camera-convergence-periodic-09",
+      "observed": {
+        "monotonic_ns": 10825251813881,
+        "relative_to_interaction_s": 43.369419917,
+        "utc": "2026-10-01T21:51:19.093394Z"
+      },
+      "title": "CIS565 Path Tracer | 113 Iterations",
+      "window_title_iteration": 113,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "scheduled-save-before",
+      "observed": {
+        "monotonic_ns": 10825917193827,
+        "relative_to_interaction_s": 44.034799863,
+        "utc": "2026-10-01T21:51:19.758773Z"
+      },
+      "title": "CIS565 Path Tracer | 121 Iterations",
+      "window_title_iteration": 121,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "scheduled-save-after",
+      "observed": {
+        "monotonic_ns": 10826192052061,
+        "relative_to_interaction_s": 44.309658097,
+        "utc": "2026-10-01T21:51:20.033630Z"
+      },
+      "title": "CIS565 Path Tracer | 124 Iterations",
+      "window_title_iteration": 124,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "post-save-wait-00",
+      "observed": {
+        "monotonic_ns": 10826541618703,
+        "relative_to_interaction_s": 44.659224739,
+        "utc": "2026-10-01T21:51:20.383214Z"
+      },
+      "title": "CIS565 Path Tracer | 127 Iterations",
+      "window_title_iteration": 127,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "post-save-wait-01",
+      "observed": {
+        "monotonic_ns": 10827544944619,
+        "relative_to_interaction_s": 45.662550655,
+        "utc": "2026-10-01T21:51:21.386533Z"
+      },
+      "title": "CIS565 Path Tracer | 139 Iterations",
+      "window_title_iteration": 139,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "escape-before",
+      "observed": {
+        "monotonic_ns": 10827915944688,
+        "relative_to_interaction_s": 46.033550724,
+        "utc": "2026-10-01T21:51:21.757531Z"
+      },
+      "title": "CIS565 Path Tracer | 144 Iterations",
+      "window_title_iteration": 144,
+      "xdotool_exit_code": 0
+    },
+    {
+      "label": "escape-after-best-effort",
+      "observed": {
+        "monotonic_ns": 10828232910464,
+        "relative_to_interaction_s": 46.3505165,
+        "utc": "2026-10-01T21:51:22.074500Z"
+      },
+      "title": "CIS565 Path Tracer | 148 Iterations",
+      "window_title_iteration": 148,
+      "xdotool_exit_code": 0
+    }
+  ],
+  "x11_geometry_commands": [
+    {
+      "argv": [
+        "/usr/bin/xwininfo",
+        "-id",
+        "41943047",
+        "-stats"
+      ],
+      "end": {
+        "monotonic_ns": 10780195155134,
+        "relative_to_interaction_s": -1.68723883,
+        "utc": "2026-10-01T21:50:34.036746Z"
+      },
+      "exit_code": 0,
+      "purpose": "read absolute preview client geometry: before move",
+      "start": {
+        "monotonic_ns": 10780192287579,
+        "relative_to_interaction_s": -1.690106385,
+        "utc": "2026-10-01T21:50:34.033876Z"
+      },
+      "stderr": "",
+      "stdout": "\nxwininfo: Window id: 0x2800007 \"CIS 565 Path Tracer\"\n\n  Absolute upper-left X:  116\n  Absolute upper-left Y:  119\n  Relative upper-left X:  14\n  Relative upper-left Y:  49\n  Width: 960\n  Height: 640\n  Depth: 24\n  Visual: 0x24\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x2800006 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +116+119  -844+119  -844-321  +116-321\n  -geometry 960x640+116+119\n\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xwininfo",
+        "-id",
+        "41943047",
+        "-stats"
+      ],
+      "end": {
+        "monotonic_ns": 10780376649490,
+        "relative_to_interaction_s": -1.505744474,
+        "utc": "2026-10-01T21:50:34.218243Z"
+      },
+      "exit_code": 0,
+      "purpose": "read absolute preview client geometry: after move attempt 1",
+      "start": {
+        "monotonic_ns": 10780373812976,
+        "relative_to_interaction_s": -1.508580988,
+        "utc": "2026-10-01T21:50:34.215392Z"
+      },
+      "stderr": "",
+      "stdout": "\nxwininfo: Window id: 0x2800007 \"CIS565 Path Tracer | 1 Iterations\"\n\n  Absolute upper-left X:  160\n  Absolute upper-left Y:  69\n  Relative upper-left X:  14\n  Relative upper-left Y:  49\n  Width: 960\n  Height: 640\n  Depth: 24\n  Visual: 0x24\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x2800006 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +160+69  -800+69  -800-371  +160-371\n  -geometry 960x640+160+69\n\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xwininfo",
+        "-id",
+        "41943047",
+        "-stats"
+      ],
+      "end": {
+        "monotonic_ns": 10780443642081,
+        "relative_to_interaction_s": -1.438751883,
+        "utc": "2026-10-01T21:50:34.285229Z"
+      },
+      "exit_code": 0,
+      "purpose": "read absolute preview client geometry: after move attempt 1",
+      "start": {
+        "monotonic_ns": 10780441106586,
+        "relative_to_interaction_s": -1.441287378,
+        "utc": "2026-10-01T21:50:34.282683Z"
+      },
+      "stderr": "",
+      "stdout": "\nxwininfo: Window id: 0x2800007 \"CIS565 Path Tracer | 1 Iterations\"\n\n  Absolute upper-left X:  160\n  Absolute upper-left Y:  69\n  Relative upper-left X:  14\n  Relative upper-left Y:  49\n  Width: 960\n  Height: 640\n  Depth: 24\n  Visual: 0x24\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x2800006 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +160+69  -800+69  -800-371  +160-371\n  -geometry 960x640+160+69\n\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xwininfo",
+        "-id",
+        "41943047",
+        "-stats"
+      ],
+      "end": {
+        "monotonic_ns": 10825935610615,
+        "relative_to_interaction_s": 44.053216651,
+        "utc": "2026-10-01T21:51:19.777199Z"
+      },
+      "exit_code": 0,
+      "purpose": "read absolute preview client geometry: before scheduled S save",
+      "start": {
+        "monotonic_ns": 10825933063231,
+        "relative_to_interaction_s": 44.050669267,
+        "utc": "2026-10-01T21:51:19.774645Z"
+      },
+      "stderr": "",
+      "stdout": "\nxwininfo: Window id: 0x2800007 \"CIS565 Path Tracer | 121 Iterations\"\n\n  Absolute upper-left X:  160\n  Absolute upper-left Y:  69\n  Relative upper-left X:  14\n  Relative upper-left Y:  49\n  Width: 960\n  Height: 640\n  Depth: 24\n  Visual: 0x24\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x2800006 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +160+69  -800+69  -800-371  +160-371\n  -geometry 960x640+160+69\n\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xwininfo",
+        "-id",
+        "41943047",
+        "-stats"
+      ],
+      "end": {
+        "monotonic_ns": 10827933620997,
+        "relative_to_interaction_s": 46.051227033,
+        "utc": "2026-10-01T21:51:21.775215Z"
+      },
+      "exit_code": 0,
+      "purpose": "read absolute preview client geometry: before Escape",
+      "start": {
+        "monotonic_ns": 10827931256583,
+        "relative_to_interaction_s": 46.048862619,
+        "utc": "2026-10-01T21:51:21.772841Z"
+      },
+      "stderr": "",
+      "stdout": "\nxwininfo: Window id: 0x2800007 \"CIS565 Path Tracer | 144 Iterations\"\n\n  Absolute upper-left X:  160\n  Absolute upper-left Y:  69\n  Relative upper-left X:  14\n  Relative upper-left Y:  49\n  Width: 960\n  Height: 640\n  Depth: 24\n  Visual: 0x24\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x2800006 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +160+69  -800+69  -800-371  +160-371\n  -geometry 960x640+160+69\n\n",
+      "timed_out": false
+    }
+  ],
+  "xdotool_commands": [
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "search",
+        "--all",
+        "--onlyvisible",
+        "--pid",
+        "48852",
+        "--name",
+        "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$"
+      ],
+      "end": {
+        "monotonic_ns": 10779930837378,
+        "relative_to_interaction_s": -1.951556586,
+        "utc": "2026-10-01T21:50:33.772422Z"
+      },
+      "exit_code": 1,
+      "purpose": "find visible preview window by child PID and title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10779920655597,
+        "relative_to_interaction_s": -1.961738367,
+        "utc": "2026-10-01T21:50:33.762250Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "search",
+        "--all",
+        "--onlyvisible",
+        "--pid",
+        "48852",
+        "--name",
+        "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$"
+      ],
+      "end": {
+        "monotonic_ns": 10780047964471,
+        "relative_to_interaction_s": -1.834429493,
+        "utc": "2026-10-01T21:50:33.889556Z"
+      },
+      "exit_code": 1,
+      "purpose": "find visible preview window by child PID and title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780037947795,
+        "relative_to_interaction_s": -1.844446169,
+        "utc": "2026-10-01T21:50:33.879531Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "search",
+        "--all",
+        "--onlyvisible",
+        "--pid",
+        "48852",
+        "--name",
+        "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$"
+      ],
+      "end": {
+        "monotonic_ns": 10780166497546,
+        "relative_to_interaction_s": -1.715896418,
+        "utc": "2026-10-01T21:50:34.008082Z"
+      },
+      "exit_code": 0,
+      "purpose": "find visible preview window by child PID and title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780154998006,
+        "relative_to_interaction_s": -1.727395958,
+        "utc": "2026-10-01T21:50:33.996579Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getdisplaygeometry"
+      ],
+      "end": {
+        "monotonic_ns": 10780184912891,
+        "relative_to_interaction_s": -1.697481073,
+        "utc": "2026-10-01T21:50:34.026500Z"
+      },
+      "exit_code": 0,
+      "purpose": "read inherited X display geometry",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780180722467,
+        "relative_to_interaction_s": -1.701671497,
+        "utc": "2026-10-01T21:50:34.022312Z"
+      },
+      "stderr": "",
+      "stdout": "1920 1080\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowmove",
+        "41943047",
+        "160",
+        "69"
+      ],
+      "end": {
+        "monotonic_ns": 10780216220506,
+        "relative_to_interaction_s": -1.666173458,
+        "utc": "2026-10-01T21:50:34.057804Z"
+      },
+      "exit_code": 0,
+      "purpose": "move preview without resizing (correction attempt 1)",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780212150876,
+        "relative_to_interaction_s": -1.670243088,
+        "utc": "2026-10-01T21:50:34.053735Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10780493900307,
+        "relative_to_interaction_s": -1.388493657,
+        "utc": "2026-10-01T21:50:34.335481Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial preview placement: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780458977575,
+        "relative_to_interaction_s": -1.423416389,
+        "utc": "2026-10-01T21:50:34.300555Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10780505178541,
+        "relative_to_interaction_s": -1.377215423,
+        "utc": "2026-10-01T21:50:34.346765Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial preview placement: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780501809641,
+        "relative_to_interaction_s": -1.380584323,
+        "utc": "2026-10-01T21:50:34.343391Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10780516260348,
+        "relative_to_interaction_s": -1.366133616,
+        "utc": "2026-10-01T21:50:34.357850Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial preview placement: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780512779005,
+        "relative_to_interaction_s": -1.369614959,
+        "utc": "2026-10-01T21:50:34.354359Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10780535562589,
+        "relative_to_interaction_s": -1.346831375,
+        "utc": "2026-10-01T21:50:34.377149Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: wait-for-live-title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10780531141598,
+        "relative_to_interaction_s": -1.351252366,
+        "utc": "2026-10-01T21:50:34.372730Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 3 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10781826716418,
+        "relative_to_interaction_s": -0.055677546,
+        "utc": "2026-10-01T21:50:35.668299Z"
+      },
+      "exit_code": 0,
+      "purpose": "pre-epoch deterministic target: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10781790336162,
+        "relative_to_interaction_s": -0.092057802,
+        "utc": "2026-10-01T21:50:35.631930Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10781837620060,
+        "relative_to_interaction_s": -0.044773904,
+        "utc": "2026-10-01T21:50:35.679215Z"
+      },
+      "exit_code": 0,
+      "purpose": "pre-epoch deterministic target: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10781834464887,
+        "relative_to_interaction_s": -0.047929077,
+        "utc": "2026-10-01T21:50:35.676059Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10781855245181,
+        "relative_to_interaction_s": -0.027148783,
+        "utc": "2026-10-01T21:50:35.696836Z"
+      },
+      "exit_code": 0,
+      "purpose": "pre-epoch deterministic target: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10781844920316,
+        "relative_to_interaction_s": -0.037473648,
+        "utc": "2026-10-01T21:50:35.686515Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10781866731891,
+        "relative_to_interaction_s": -0.015662073,
+        "utc": "2026-10-01T21:50:35.708324Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: initial-reset-before-epoch",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10781862898778,
+        "relative_to_interaction_s": -0.019495186,
+        "utc": "2026-10-01T21:50:35.704488Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 19 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10781903288742,
+        "relative_to_interaction_s": 0.020894778,
+        "utc": "2026-10-01T21:50:35.744884Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial-release-and-reset: release button 1",
+      "scheduled_relative_s": 0.0,
+      "start": {
+        "monotonic_ns": 10781900046856,
+        "relative_to_interaction_s": 0.017652892,
+        "utc": "2026-10-01T21:50:35.741636Z"
+      },
+      "start_drift_s": 0.017652892,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10781930260780,
+        "relative_to_interaction_s": 0.047866816,
+        "utc": "2026-10-01T21:50:35.771847Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial-release-and-reset: release button 3",
+      "scheduled_relative_s": 0.0,
+      "start": {
+        "monotonic_ns": 10781911134984,
+        "relative_to_interaction_s": 0.02874102,
+        "utc": "2026-10-01T21:50:35.752728Z"
+      },
+      "start_drift_s": 0.02874102,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10781941708558,
+        "relative_to_interaction_s": 0.059314594,
+        "utc": "2026-10-01T21:50:35.783303Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial-release-and-reset: release button 2",
+      "scheduled_relative_s": 0.0,
+      "start": {
+        "monotonic_ns": 10781938103491,
+        "relative_to_interaction_s": 0.055709527,
+        "utc": "2026-10-01T21:50:35.779697Z"
+      },
+      "start_drift_s": 0.055709527,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "key",
+        "--window",
+        "41943047",
+        "space"
+      ],
+      "end": {
+        "monotonic_ns": 10781974086516,
+        "relative_to_interaction_s": 0.091692552,
+        "utc": "2026-10-01T21:50:35.815669Z"
+      },
+      "exit_code": 0,
+      "purpose": "initial-release-and-reset: Space",
+      "scheduled_relative_s": 0.0,
+      "start": {
+        "monotonic_ns": 10781949596791,
+        "relative_to_interaction_s": 0.067202827,
+        "utc": "2026-10-01T21:50:35.791190Z"
+      },
+      "start_drift_s": 0.067202827,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10781997108156,
+        "relative_to_interaction_s": 0.114714192,
+        "utc": "2026-10-01T21:50:35.838702Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: initial-release-and-reset-after",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10781993539091,
+        "relative_to_interaction_s": 0.111145127,
+        "utc": "2026-10-01T21:50:35.835130Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 21 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10782041058836,
+        "relative_to_interaction_s": 0.158664872,
+        "utc": "2026-10-01T21:50:35.882648Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10782021505708,
+        "relative_to_interaction_s": 0.139111744,
+        "utc": "2026-10-01T21:50:35.863101Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 21 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10782064729506,
+        "relative_to_interaction_s": 0.182335542,
+        "utc": "2026-10-01T21:50:35.906313Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-00",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10782057481871,
+        "relative_to_interaction_s": 0.175087907,
+        "utc": "2026-10-01T21:50:35.899076Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 21 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10783064689024,
+        "relative_to_interaction_s": 1.18229506,
+        "utc": "2026-10-01T21:50:36.906272Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-01",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10783057659046,
+        "relative_to_interaction_s": 1.175265082,
+        "utc": "2026-10-01T21:50:36.899240Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 13 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10784064396948,
+        "relative_to_interaction_s": 2.182002984,
+        "utc": "2026-10-01T21:50:37.905979Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-02",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10784057630518,
+        "relative_to_interaction_s": 2.175236554,
+        "utc": "2026-10-01T21:50:37.899209Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 25 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10785062420569,
+        "relative_to_interaction_s": 3.180026605,
+        "utc": "2026-10-01T21:50:38.904002Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-03",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10785057643729,
+        "relative_to_interaction_s": 3.175249765,
+        "utc": "2026-10-01T21:50:38.899223Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 38 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10786063849966,
+        "relative_to_interaction_s": 4.181456002,
+        "utc": "2026-10-01T21:50:39.905432Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-04",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10786057638810,
+        "relative_to_interaction_s": 4.175244846,
+        "utc": "2026-10-01T21:50:39.899219Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 50 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10787066529284,
+        "relative_to_interaction_s": 5.18413532,
+        "utc": "2026-10-01T21:50:40.908114Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-05",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10787057626620,
+        "relative_to_interaction_s": 5.175232656,
+        "utc": "2026-10-01T21:50:40.899206Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 63 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10788065476309,
+        "relative_to_interaction_s": 6.183082345,
+        "utc": "2026-10-01T21:50:41.907060Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-06",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10788057628871,
+        "relative_to_interaction_s": 6.175234907,
+        "utc": "2026-10-01T21:50:41.899209Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 75 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10789062556576,
+        "relative_to_interaction_s": 7.180162612,
+        "utc": "2026-10-01T21:50:42.904147Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-07",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10789057625942,
+        "relative_to_interaction_s": 7.175231978,
+        "utc": "2026-10-01T21:50:42.899205Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 88 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10790061470020,
+        "relative_to_interaction_s": 8.179076056,
+        "utc": "2026-10-01T21:50:43.903056Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-08",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10790057611463,
+        "relative_to_interaction_s": 8.175217499,
+        "utc": "2026-10-01T21:50:43.899191Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 100 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10791061599874,
+        "relative_to_interaction_s": 9.17920591,
+        "utc": "2026-10-01T21:50:44.903187Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-09",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10791057604494,
+        "relative_to_interaction_s": 9.17521053,
+        "utc": "2026-10-01T21:50:44.899188Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 113 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10792063969105,
+        "relative_to_interaction_s": 10.181575141,
+        "utc": "2026-10-01T21:50:45.905562Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-10",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10792059111743,
+        "relative_to_interaction_s": 10.176717779,
+        "utc": "2026-10-01T21:50:45.900690Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 125 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10793061266698,
+        "relative_to_interaction_s": 11.178872734,
+        "utc": "2026-10-01T21:50:46.902859Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: original-camera-convergence-periodic-11",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10793057601725,
+        "relative_to_interaction_s": 11.175207761,
+        "utc": "2026-10-01T21:50:46.899183Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 138 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10793897219403,
+        "relative_to_interaction_s": 12.014825439,
+        "utc": "2026-10-01T21:50:47.738813Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-orbit-drag-before",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10793893418117,
+        "relative_to_interaction_s": 12.011024153,
+        "utc": "2026-10-01T21:50:47.735003Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 148 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10793965579532,
+        "relative_to_interaction_s": 12.083185568,
+        "utc": "2026-10-01T21:50:47.807161Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10793915753099,
+        "relative_to_interaction_s": 12.033359135,
+        "utc": "2026-10-01T21:50:47.757347Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10793992726545,
+        "relative_to_interaction_s": 12.110332581,
+        "utc": "2026-10-01T21:50:47.834298Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10793974867566,
+        "relative_to_interaction_s": 12.092473602,
+        "utc": "2026-10-01T21:50:47.816451Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10794005583018,
+        "relative_to_interaction_s": 12.123189054,
+        "utc": "2026-10-01T21:50:47.847176Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10794001706641,
+        "relative_to_interaction_s": 12.119312677,
+        "utc": "2026-10-01T21:50:47.843295Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "700",
+        "400"
+      ],
+      "end": {
+        "monotonic_ns": 10794022442322,
+        "relative_to_interaction_s": 12.140048358,
+        "utc": "2026-10-01T21:50:47.864030Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: position pointer at client-relative start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10794015790215,
+        "relative_to_interaction_s": 12.133396251,
+        "utc": "2026-10-01T21:50:47.857379Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousedown",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10794043595624,
+        "relative_to_interaction_s": 12.16120166,
+        "utc": "2026-10-01T21:50:47.885191Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: button down",
+      "scheduled_relative_s": 12.0,
+      "start": {
+        "monotonic_ns": 10794039905001,
+        "relative_to_interaction_s": 12.157511037,
+        "utc": "2026-10-01T21:50:47.881500Z"
+      },
+      "start_drift_s": 0.1575110370000008,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "709",
+        "401"
+      ],
+      "end": {
+        "monotonic_ns": 10794136276045,
+        "relative_to_interaction_s": 12.253882081,
+        "utc": "2026-10-01T21:50:47.977862Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 1/12",
+      "scheduled_relative_s": 12.25,
+      "start": {
+        "monotonic_ns": 10794132553182,
+        "relative_to_interaction_s": 12.250159218,
+        "utc": "2026-10-01T21:50:47.974136Z"
+      },
+      "start_drift_s": 0.00015921800000029407,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "718",
+        "402"
+      ],
+      "end": {
+        "monotonic_ns": 10794401873405,
+        "relative_to_interaction_s": 12.519479441,
+        "utc": "2026-10-01T21:50:48.243457Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 2/12",
+      "scheduled_relative_s": 12.5,
+      "start": {
+        "monotonic_ns": 10794382567500,
+        "relative_to_interaction_s": 12.500173536,
+        "utc": "2026-10-01T21:50:48.224146Z"
+      },
+      "start_drift_s": 0.0001735360000001407,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "728",
+        "402"
+      ],
+      "end": {
+        "monotonic_ns": 10794636267440,
+        "relative_to_interaction_s": 12.753873476,
+        "utc": "2026-10-01T21:50:48.477861Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 3/12",
+      "scheduled_relative_s": 12.75,
+      "start": {
+        "monotonic_ns": 10794632543797,
+        "relative_to_interaction_s": 12.750149833,
+        "utc": "2026-10-01T21:50:48.474128Z"
+      },
+      "start_drift_s": 0.00014983300000004363,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "737",
+        "403"
+      ],
+      "end": {
+        "monotonic_ns": 10794895549112,
+        "relative_to_interaction_s": 13.013155148,
+        "utc": "2026-10-01T21:50:48.737130Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 4/12",
+      "scheduled_relative_s": 13.0,
+      "start": {
+        "monotonic_ns": 10794882579085,
+        "relative_to_interaction_s": 13.000185121,
+        "utc": "2026-10-01T21:50:48.724156Z"
+      },
+      "start_drift_s": 0.0001851209999994552,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "746",
+        "404"
+      ],
+      "end": {
+        "monotonic_ns": 10795140568024,
+        "relative_to_interaction_s": 13.25817406,
+        "utc": "2026-10-01T21:50:48.982148Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 5/12",
+      "scheduled_relative_s": 13.25,
+      "start": {
+        "monotonic_ns": 10795133124387,
+        "relative_to_interaction_s": 13.250730423,
+        "utc": "2026-10-01T21:50:48.974703Z"
+      },
+      "start_drift_s": 0.0007304230000002576,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "755",
+        "405"
+      ],
+      "end": {
+        "monotonic_ns": 10795408760799,
+        "relative_to_interaction_s": 13.526366835,
+        "utc": "2026-10-01T21:50:49.250343Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 6/12",
+      "scheduled_relative_s": 13.5,
+      "start": {
+        "monotonic_ns": 10795382558110,
+        "relative_to_interaction_s": 13.500164146,
+        "utc": "2026-10-01T21:50:49.224140Z"
+      },
+      "start_drift_s": 0.00016414599999947654,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "764",
+        "406"
+      ],
+      "end": {
+        "monotonic_ns": 10795636320103,
+        "relative_to_interaction_s": 13.753926139,
+        "utc": "2026-10-01T21:50:49.477915Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 7/12",
+      "scheduled_relative_s": 13.75,
+      "start": {
+        "monotonic_ns": 10795632549128,
+        "relative_to_interaction_s": 13.750155164,
+        "utc": "2026-10-01T21:50:49.474130Z"
+      },
+      "start_drift_s": 0.00015516400000059605,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "773",
+        "407"
+      ],
+      "end": {
+        "monotonic_ns": 10795898330893,
+        "relative_to_interaction_s": 14.015936929,
+        "utc": "2026-10-01T21:50:49.739913Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 8/12",
+      "scheduled_relative_s": 14.0,
+      "start": {
+        "monotonic_ns": 10795882565076,
+        "relative_to_interaction_s": 14.000171112,
+        "utc": "2026-10-01T21:50:49.724145Z"
+      },
+      "start_drift_s": 0.00017111200000030635,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "782",
+        "408"
+      ],
+      "end": {
+        "monotonic_ns": 10796136419101,
+        "relative_to_interaction_s": 14.254025137,
+        "utc": "2026-10-01T21:50:49.978013Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 9/12",
+      "scheduled_relative_s": 14.25,
+      "start": {
+        "monotonic_ns": 10796132579634,
+        "relative_to_interaction_s": 14.25018567,
+        "utc": "2026-10-01T21:50:49.974159Z"
+      },
+      "start_drift_s": 0.00018567000000047074,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "792",
+        "408"
+      ],
+      "end": {
+        "monotonic_ns": 10796393277031,
+        "relative_to_interaction_s": 14.510883067,
+        "utc": "2026-10-01T21:50:50.234862Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 10/12",
+      "scheduled_relative_s": 14.5,
+      "start": {
+        "monotonic_ns": 10796382542281,
+        "relative_to_interaction_s": 14.500148317,
+        "utc": "2026-10-01T21:50:50.224126Z"
+      },
+      "start_drift_s": 0.00014831700000073056,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "801",
+        "409"
+      ],
+      "end": {
+        "monotonic_ns": 10796636328674,
+        "relative_to_interaction_s": 14.75393471,
+        "utc": "2026-10-01T21:50:50.477924Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 11/12",
+      "scheduled_relative_s": 14.75,
+      "start": {
+        "monotonic_ns": 10796632552269,
+        "relative_to_interaction_s": 14.750158305,
+        "utc": "2026-10-01T21:50:50.474134Z"
+      },
+      "start_drift_s": 0.0001583049999993591,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "810",
+        "410"
+      ],
+      "end": {
+        "monotonic_ns": 10796905331350,
+        "relative_to_interaction_s": 15.022937386,
+        "utc": "2026-10-01T21:50:50.746912Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: incremental step 12/12",
+      "scheduled_relative_s": 15.0,
+      "start": {
+        "monotonic_ns": 10796882568137,
+        "relative_to_interaction_s": 15.000174173,
+        "utc": "2026-10-01T21:50:50.724150Z"
+      },
+      "start_drift_s": 0.0001741729999995556,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10796929722463,
+        "relative_to_interaction_s": 15.047328499,
+        "utc": "2026-10-01T21:50:50.771306Z"
+      },
+      "exit_code": 0,
+      "purpose": "left-orbit-drag: button up",
+      "scheduled_relative_s": 15.0,
+      "start": {
+        "monotonic_ns": 10796915852594,
+        "relative_to_interaction_s": 15.03345863,
+        "utc": "2026-10-01T21:50:50.757441Z"
+      },
+      "start_drift_s": 0.033458630000000156,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10796955338377,
+        "relative_to_interaction_s": 15.072944413,
+        "utc": "2026-10-01T21:50:50.796934Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-orbit-drag-after",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10796951567372,
+        "relative_to_interaction_s": 15.069173408,
+        "utc": "2026-10-01T21:50:50.793151Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 3 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10796986751927,
+        "relative_to_interaction_s": 15.104357963,
+        "utc": "2026-10-01T21:50:50.828341Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-drag-convergence-start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10796982527481,
+        "relative_to_interaction_s": 15.100133517,
+        "utc": "2026-10-01T21:50:50.824115Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 3 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10797022907547,
+        "relative_to_interaction_s": 15.140513583,
+        "utc": "2026-10-01T21:50:50.864492Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-drag-convergence-periodic-00",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10797009701845,
+        "relative_to_interaction_s": 15.127307881,
+        "utc": "2026-10-01T21:50:50.851293Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 3 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10798026815816,
+        "relative_to_interaction_s": 16.144421852,
+        "utc": "2026-10-01T21:50:51.868403Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-drag-convergence-periodic-01",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10798009821679,
+        "relative_to_interaction_s": 16.127427715,
+        "utc": "2026-10-01T21:50:51.851405Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 12 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10799040701516,
+        "relative_to_interaction_s": 17.158307552,
+        "utc": "2026-10-01T21:50:52.882286Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-drag-convergence-periodic-02",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10799009834620,
+        "relative_to_interaction_s": 17.127440656,
+        "utc": "2026-10-01T21:50:52.851415Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 25 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10800023564446,
+        "relative_to_interaction_s": 18.141170482,
+        "utc": "2026-10-01T21:50:53.865149Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-drag-convergence-periodic-03",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10800009822051,
+        "relative_to_interaction_s": 18.127428087,
+        "utc": "2026-10-01T21:50:53.851407Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 37 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10801031563238,
+        "relative_to_interaction_s": 19.149169274,
+        "utc": "2026-10-01T21:50:54.873148Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: left-drag-convergence-periodic-04",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10801009849472,
+        "relative_to_interaction_s": 19.127455508,
+        "utc": "2026-10-01T21:50:54.851428Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 49 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10801904606806,
+        "relative_to_interaction_s": 20.022212842,
+        "utc": "2026-10-01T21:50:55.746190Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-zoom-drag-before",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10801893063266,
+        "relative_to_interaction_s": 20.010669302,
+        "utc": "2026-10-01T21:50:55.734656Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 60 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10801968335529,
+        "relative_to_interaction_s": 20.085941565,
+        "utc": "2026-10-01T21:50:55.809916Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10801926762413,
+        "relative_to_interaction_s": 20.044368449,
+        "utc": "2026-10-01T21:50:55.768355Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10801990079346,
+        "relative_to_interaction_s": 20.107685382,
+        "utc": "2026-10-01T21:50:55.831670Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10801978971796,
+        "relative_to_interaction_s": 20.096577832,
+        "utc": "2026-10-01T21:50:55.820565Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10802004725784,
+        "relative_to_interaction_s": 20.12233182,
+        "utc": "2026-10-01T21:50:55.846319Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10802001094873,
+        "relative_to_interaction_s": 20.118700909,
+        "utc": "2026-10-01T21:50:55.842686Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "700",
+        "400"
+      ],
+      "end": {
+        "monotonic_ns": 10802024161143,
+        "relative_to_interaction_s": 20.141767179,
+        "utc": "2026-10-01T21:50:55.865746Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: position pointer at client-relative start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10802015449464,
+        "relative_to_interaction_s": 20.1330555,
+        "utc": "2026-10-01T21:50:55.857043Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousedown",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10802066527989,
+        "relative_to_interaction_s": 20.184134025,
+        "utc": "2026-10-01T21:50:55.908113Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: button down",
+      "scheduled_relative_s": 20.0,
+      "start": {
+        "monotonic_ns": 10802044638388,
+        "relative_to_interaction_s": 20.162244424,
+        "utc": "2026-10-01T21:50:55.886232Z"
+      },
+      "start_drift_s": 0.16224442400000072,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "396"
+      ],
+      "end": {
+        "monotonic_ns": 10802093686882,
+        "relative_to_interaction_s": 20.211292918,
+        "utc": "2026-10-01T21:50:55.935271Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 1/12",
+      "scheduled_relative_s": 20.166666666666668,
+      "start": {
+        "monotonic_ns": 10802077559676,
+        "relative_to_interaction_s": 20.195165712,
+        "utc": "2026-10-01T21:50:55.919148Z"
+      },
+      "start_drift_s": 0.028499045333333584,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "392"
+      ],
+      "end": {
+        "monotonic_ns": 10802233532779,
+        "relative_to_interaction_s": 20.351138815,
+        "utc": "2026-10-01T21:50:56.075118Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 2/12",
+      "scheduled_relative_s": 20.333333333333332,
+      "start": {
+        "monotonic_ns": 10802215875675,
+        "relative_to_interaction_s": 20.333481711,
+        "utc": "2026-10-01T21:50:56.057447Z"
+      },
+      "start_drift_s": 0.0001483776666688641,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "388"
+      ],
+      "end": {
+        "monotonic_ns": 10802388803184,
+        "relative_to_interaction_s": 20.50640922,
+        "utc": "2026-10-01T21:50:56.230388Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 3/12",
+      "scheduled_relative_s": 20.5,
+      "start": {
+        "monotonic_ns": 10802384447385,
+        "relative_to_interaction_s": 20.502053421,
+        "utc": "2026-10-01T21:50:56.226029Z"
+      },
+      "start_drift_s": 0.002053420999999389,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "383"
+      ],
+      "end": {
+        "monotonic_ns": 10802562382970,
+        "relative_to_interaction_s": 20.679989006,
+        "utc": "2026-10-01T21:50:56.403966Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 4/12",
+      "scheduled_relative_s": 20.666666666666668,
+      "start": {
+        "monotonic_ns": 10802549181568,
+        "relative_to_interaction_s": 20.666787604,
+        "utc": "2026-10-01T21:50:56.390761Z"
+      },
+      "start_drift_s": 0.00012093733333173873,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "379"
+      ],
+      "end": {
+        "monotonic_ns": 10802733600766,
+        "relative_to_interaction_s": 20.851206802,
+        "utc": "2026-10-01T21:50:56.575179Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 5/12",
+      "scheduled_relative_s": 20.833333333333332,
+      "start": {
+        "monotonic_ns": 10802715906371,
+        "relative_to_interaction_s": 20.833512407,
+        "utc": "2026-10-01T21:50:56.557485Z"
+      },
+      "start_drift_s": 0.00017907366666847224,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "375"
+      ],
+      "end": {
+        "monotonic_ns": 10802891924238,
+        "relative_to_interaction_s": 21.009530274,
+        "utc": "2026-10-01T21:50:56.733506Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 6/12",
+      "scheduled_relative_s": 21.0,
+      "start": {
+        "monotonic_ns": 10802882557363,
+        "relative_to_interaction_s": 21.000163399,
+        "utc": "2026-10-01T21:50:56.724137Z"
+      },
+      "start_drift_s": 0.00016339900000161833,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "371"
+      ],
+      "end": {
+        "monotonic_ns": 10803054210220,
+        "relative_to_interaction_s": 21.171816256,
+        "utc": "2026-10-01T21:50:56.895796Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 7/12",
+      "scheduled_relative_s": 21.166666666666668,
+      "start": {
+        "monotonic_ns": 10803049215904,
+        "relative_to_interaction_s": 21.16682194,
+        "utc": "2026-10-01T21:50:56.890798Z"
+      },
+      "start_drift_s": 0.00015527333333054116,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "367"
+      ],
+      "end": {
+        "monotonic_ns": 10803243641354,
+        "relative_to_interaction_s": 21.36124739,
+        "utc": "2026-10-01T21:50:57.085223Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 8/12",
+      "scheduled_relative_s": 21.333333333333332,
+      "start": {
+        "monotonic_ns": 10803215904416,
+        "relative_to_interaction_s": 21.333510452,
+        "utc": "2026-10-01T21:50:57.057487Z"
+      },
+      "start_drift_s": 0.00017711866666658693,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "362"
+      ],
+      "end": {
+        "monotonic_ns": 10803396129679,
+        "relative_to_interaction_s": 21.513735715,
+        "utc": "2026-10-01T21:50:57.237711Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 9/12",
+      "scheduled_relative_s": 21.5,
+      "start": {
+        "monotonic_ns": 10803382545008,
+        "relative_to_interaction_s": 21.500151044,
+        "utc": "2026-10-01T21:50:57.224128Z"
+      },
+      "start_drift_s": 0.00015104399999898988,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "358"
+      ],
+      "end": {
+        "monotonic_ns": 10803559156100,
+        "relative_to_interaction_s": 21.676762136,
+        "utc": "2026-10-01T21:50:57.400742Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 10/12",
+      "scheduled_relative_s": 21.666666666666668,
+      "start": {
+        "monotonic_ns": 10803549237360,
+        "relative_to_interaction_s": 21.666843396,
+        "utc": "2026-10-01T21:50:57.390816Z"
+      },
+      "start_drift_s": 0.00017672933333301444,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "354"
+      ],
+      "end": {
+        "monotonic_ns": 10803720732993,
+        "relative_to_interaction_s": 21.838339029,
+        "utc": "2026-10-01T21:50:57.562321Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 11/12",
+      "scheduled_relative_s": 21.833333333333332,
+      "start": {
+        "monotonic_ns": 10803715904462,
+        "relative_to_interaction_s": 21.833510498,
+        "utc": "2026-10-01T21:50:57.557484Z"
+      },
+      "start_drift_s": 0.00017716466666684028,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "700",
+        "350"
+      ],
+      "end": {
+        "monotonic_ns": 10803896142715,
+        "relative_to_interaction_s": 22.013748751,
+        "utc": "2026-10-01T21:50:57.737730Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: incremental step 12/12",
+      "scheduled_relative_s": 22.0,
+      "start": {
+        "monotonic_ns": 10803882524383,
+        "relative_to_interaction_s": 22.000130419,
+        "utc": "2026-10-01T21:50:57.724104Z"
+      },
+      "start_drift_s": 0.000130419000001325,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10803909674025,
+        "relative_to_interaction_s": 22.027280061,
+        "utc": "2026-10-01T21:50:57.751267Z"
+      },
+      "exit_code": 0,
+      "purpose": "right-zoom-drag: button up",
+      "scheduled_relative_s": 22.0,
+      "start": {
+        "monotonic_ns": 10803906448624,
+        "relative_to_interaction_s": 22.02405466,
+        "utc": "2026-10-01T21:50:57.748039Z"
+      },
+      "start_drift_s": 0.024054660000000894,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10803942308516,
+        "relative_to_interaction_s": 22.059914552,
+        "utc": "2026-10-01T21:50:57.783902Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-zoom-drag-after",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10803938165922,
+        "relative_to_interaction_s": 22.055771958,
+        "utc": "2026-10-01T21:50:57.779751Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 1 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10803995244998,
+        "relative_to_interaction_s": 22.112851034,
+        "utc": "2026-10-01T21:50:57.836831Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-drag-convergence-start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10803978665051,
+        "relative_to_interaction_s": 22.096271087,
+        "utc": "2026-10-01T21:50:57.820258Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 1 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10804022973115,
+        "relative_to_interaction_s": 22.140579151,
+        "utc": "2026-10-01T21:50:57.864547Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-drag-convergence-periodic-00",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10804015860046,
+        "relative_to_interaction_s": 22.133466082,
+        "utc": "2026-10-01T21:50:57.857456Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 1 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10805030079225,
+        "relative_to_interaction_s": 23.147685261,
+        "utc": "2026-10-01T21:50:58.871662Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-drag-convergence-periodic-01",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10805016046522,
+        "relative_to_interaction_s": 23.133652558,
+        "utc": "2026-10-01T21:50:58.857626Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 12 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10806031729767,
+        "relative_to_interaction_s": 24.149335803,
+        "utc": "2026-10-01T21:50:59.873316Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-drag-convergence-periodic-02",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10806016029642,
+        "relative_to_interaction_s": 24.133635678,
+        "utc": "2026-10-01T21:50:59.857586Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 24 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10807022957288,
+        "relative_to_interaction_s": 25.140563324,
+        "utc": "2026-10-01T21:51:00.864546Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-drag-convergence-periodic-03",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10807015980482,
+        "relative_to_interaction_s": 25.133586518,
+        "utc": "2026-10-01T21:51:00.857563Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 36 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10808022199290,
+        "relative_to_interaction_s": 26.139805326,
+        "utc": "2026-10-01T21:51:01.863786Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: right-drag-convergence-periodic-04",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10808015989994,
+        "relative_to_interaction_s": 26.13359603,
+        "utc": "2026-10-01T21:51:01.857572Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 48 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10808902663964,
+        "relative_to_interaction_s": 27.02027,
+        "utc": "2026-10-01T21:51:02.744217Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-pan-drag-before",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10808894712634,
+        "relative_to_interaction_s": 27.01231867,
+        "utc": "2026-10-01T21:51:02.736296Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 59 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10808968257034,
+        "relative_to_interaction_s": 27.08586307,
+        "utc": "2026-10-01T21:51:02.809840Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10808926711459,
+        "relative_to_interaction_s": 27.044317495,
+        "utc": "2026-10-01T21:51:02.768305Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10808988454302,
+        "relative_to_interaction_s": 27.106060338,
+        "utc": "2026-10-01T21:51:02.830037Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10808979171369,
+        "relative_to_interaction_s": 27.096777405,
+        "utc": "2026-10-01T21:51:02.820760Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10809004539457,
+        "relative_to_interaction_s": 27.122145493,
+        "utc": "2026-10-01T21:51:02.846132Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10809000556276,
+        "relative_to_interaction_s": 27.118162312,
+        "utc": "2026-10-01T21:51:02.842143Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "700",
+        "400"
+      ],
+      "end": {
+        "monotonic_ns": 10809024175590,
+        "relative_to_interaction_s": 27.141781626,
+        "utc": "2026-10-01T21:51:02.865759Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: position pointer at client-relative start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10809016523408,
+        "relative_to_interaction_s": 27.134129444,
+        "utc": "2026-10-01T21:51:02.858117Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousedown",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10809058723519,
+        "relative_to_interaction_s": 27.176329555,
+        "utc": "2026-10-01T21:51:02.900306Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: button down",
+      "scheduled_relative_s": 27.0,
+      "start": {
+        "monotonic_ns": 10809049446756,
+        "relative_to_interaction_s": 27.167052792,
+        "utc": "2026-10-01T21:51:02.891038Z"
+      },
+      "start_drift_s": 0.16705279199999978,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "703",
+        "402"
+      ],
+      "end": {
+        "monotonic_ns": 10809076383864,
+        "relative_to_interaction_s": 27.1939899,
+        "utc": "2026-10-01T21:51:02.917978Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 1/12",
+      "scheduled_relative_s": 27.166666666666668,
+      "start": {
+        "monotonic_ns": 10809073025809,
+        "relative_to_interaction_s": 27.190631845,
+        "utc": "2026-10-01T21:51:02.914598Z"
+      },
+      "start_drift_s": 0.023965178333330783,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "707",
+        "404"
+      ],
+      "end": {
+        "monotonic_ns": 10809223644067,
+        "relative_to_interaction_s": 27.341250103,
+        "utc": "2026-10-01T21:51:03.065226Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 2/12",
+      "scheduled_relative_s": 27.333333333333332,
+      "start": {
+        "monotonic_ns": 10809215886202,
+        "relative_to_interaction_s": 27.333492238,
+        "utc": "2026-10-01T21:51:03.057452Z"
+      },
+      "start_drift_s": 0.00015890466666945713,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "710",
+        "406"
+      ],
+      "end": {
+        "monotonic_ns": 10809386459482,
+        "relative_to_interaction_s": 27.504065518,
+        "utc": "2026-10-01T21:51:03.228050Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 3/12",
+      "scheduled_relative_s": 27.5,
+      "start": {
+        "monotonic_ns": 10809382566555,
+        "relative_to_interaction_s": 27.500172591,
+        "utc": "2026-10-01T21:51:03.224146Z"
+      },
+      "start_drift_s": 0.00017259099999833438,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "713",
+        "408"
+      ],
+      "end": {
+        "monotonic_ns": 10809563614238,
+        "relative_to_interaction_s": 27.681220274,
+        "utc": "2026-10-01T21:51:03.405195Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 4/12",
+      "scheduled_relative_s": 27.666666666666668,
+      "start": {
+        "monotonic_ns": 10809549193405,
+        "relative_to_interaction_s": 27.666799441,
+        "utc": "2026-10-01T21:51:03.390773Z"
+      },
+      "start_drift_s": 0.00013277433333058752,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "717",
+        "410"
+      ],
+      "end": {
+        "monotonic_ns": 10809739638285,
+        "relative_to_interaction_s": 27.857244321,
+        "utc": "2026-10-01T21:51:03.581221Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 5/12",
+      "scheduled_relative_s": 27.833333333333332,
+      "start": {
+        "monotonic_ns": 10809715917648,
+        "relative_to_interaction_s": 27.833523684,
+        "utc": "2026-10-01T21:51:03.557500Z"
+      },
+      "start_drift_s": 0.0001903506666671717,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "720",
+        "412"
+      ],
+      "end": {
+        "monotonic_ns": 10809892369807,
+        "relative_to_interaction_s": 28.009975843,
+        "utc": "2026-10-01T21:51:03.733951Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 6/12",
+      "scheduled_relative_s": 28.0,
+      "start": {
+        "monotonic_ns": 10809882589101,
+        "relative_to_interaction_s": 28.000195137,
+        "utc": "2026-10-01T21:51:03.724166Z"
+      },
+      "start_drift_s": 0.0001951369999986241,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "723",
+        "415"
+      ],
+      "end": {
+        "monotonic_ns": 10810054725390,
+        "relative_to_interaction_s": 28.172331426,
+        "utc": "2026-10-01T21:51:03.896309Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 7/12",
+      "scheduled_relative_s": 28.166666666666668,
+      "start": {
+        "monotonic_ns": 10810049223631,
+        "relative_to_interaction_s": 28.166829667,
+        "utc": "2026-10-01T21:51:03.890802Z"
+      },
+      "start_drift_s": 0.00016300033333038755,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "727",
+        "417"
+      ],
+      "end": {
+        "monotonic_ns": 10810221884514,
+        "relative_to_interaction_s": 28.33949055,
+        "utc": "2026-10-01T21:51:04.063468Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 8/12",
+      "scheduled_relative_s": 28.333333333333332,
+      "start": {
+        "monotonic_ns": 10810215897044,
+        "relative_to_interaction_s": 28.33350308,
+        "utc": "2026-10-01T21:51:04.057478Z"
+      },
+      "start_drift_s": 0.00016974666666769167,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "730",
+        "419"
+      ],
+      "end": {
+        "monotonic_ns": 10810397733717,
+        "relative_to_interaction_s": 28.515339753,
+        "utc": "2026-10-01T21:51:04.239314Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 9/12",
+      "scheduled_relative_s": 28.5,
+      "start": {
+        "monotonic_ns": 10810382550685,
+        "relative_to_interaction_s": 28.500156721,
+        "utc": "2026-10-01T21:51:04.224131Z"
+      },
+      "start_drift_s": 0.00015672099999974876,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "733",
+        "421"
+      ],
+      "end": {
+        "monotonic_ns": 10810570269566,
+        "relative_to_interaction_s": 28.687875602,
+        "utc": "2026-10-01T21:51:04.411853Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 10/12",
+      "scheduled_relative_s": 28.666666666666668,
+      "start": {
+        "monotonic_ns": 10810549226007,
+        "relative_to_interaction_s": 28.666832043,
+        "utc": "2026-10-01T21:51:04.390807Z"
+      },
+      "start_drift_s": 0.00016537633333157942,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "737",
+        "423"
+      ],
+      "end": {
+        "monotonic_ns": 10810726698741,
+        "relative_to_interaction_s": 28.844304777,
+        "utc": "2026-10-01T21:51:04.568280Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 11/12",
+      "scheduled_relative_s": 28.833333333333332,
+      "start": {
+        "monotonic_ns": 10810715917360,
+        "relative_to_interaction_s": 28.833523396,
+        "utc": "2026-10-01T21:51:04.557495Z"
+      },
+      "start_drift_s": 0.00019006266666821148,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mousemove",
+        "--window",
+        "41943047",
+        "--sync",
+        "740",
+        "425"
+      ],
+      "end": {
+        "monotonic_ns": 10810889276100,
+        "relative_to_interaction_s": 29.006882136,
+        "utc": "2026-10-01T21:51:04.730861Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: incremental step 12/12",
+      "scheduled_relative_s": 29.0,
+      "start": {
+        "monotonic_ns": 10810882553231,
+        "relative_to_interaction_s": 29.000159267,
+        "utc": "2026-10-01T21:51:04.724136Z"
+      },
+      "start_drift_s": 0.00015926700000079563,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10810908182355,
+        "relative_to_interaction_s": 29.025788391,
+        "utc": "2026-10-01T21:51:04.749772Z"
+      },
+      "exit_code": 0,
+      "purpose": "middle-pan-drag: button up",
+      "scheduled_relative_s": 29.0,
+      "start": {
+        "monotonic_ns": 10810902400650,
+        "relative_to_interaction_s": 29.020006686,
+        "utc": "2026-10-01T21:51:04.743988Z"
+      },
+      "start_drift_s": 0.020006685999998552,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10810935969434,
+        "relative_to_interaction_s": 29.05357547,
+        "utc": "2026-10-01T21:51:04.777564Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-pan-drag-after",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10810932506577,
+        "relative_to_interaction_s": 29.050112613,
+        "utc": "2026-10-01T21:51:04.774087Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 1 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10810976166507,
+        "relative_to_interaction_s": 29.093772543,
+        "utc": "2026-10-01T21:51:04.817761Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-drag-convergence-start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10810972467437,
+        "relative_to_interaction_s": 29.090073473,
+        "utc": "2026-10-01T21:51:04.814062Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 1 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10811003610305,
+        "relative_to_interaction_s": 29.121216341,
+        "utc": "2026-10-01T21:51:04.845198Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-drag-convergence-periodic-00",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10810998383304,
+        "relative_to_interaction_s": 29.11598934,
+        "utc": "2026-10-01T21:51:04.839979Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 1 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10812005426661,
+        "relative_to_interaction_s": 30.123032697,
+        "utc": "2026-10-01T21:51:05.847009Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-drag-convergence-periodic-01",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10811998512665,
+        "relative_to_interaction_s": 30.116118701,
+        "utc": "2026-10-01T21:51:05.840093Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 12 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10813005977183,
+        "relative_to_interaction_s": 31.123583219,
+        "utc": "2026-10-01T21:51:06.847563Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-drag-convergence-periodic-02",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10812998493162,
+        "relative_to_interaction_s": 31.116099198,
+        "utc": "2026-10-01T21:51:06.840076Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 24 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10814002401084,
+        "relative_to_interaction_s": 32.12000712,
+        "utc": "2026-10-01T21:51:07.843996Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-drag-convergence-periodic-03",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10813998496439,
+        "relative_to_interaction_s": 32.116102475,
+        "utc": "2026-10-01T21:51:07.840080Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 36 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10815002346830,
+        "relative_to_interaction_s": 33.119952866,
+        "utc": "2026-10-01T21:51:08.843942Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: middle-drag-convergence-periodic-04",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10814998511347,
+        "relative_to_interaction_s": 33.116117383,
+        "utc": "2026-10-01T21:51:08.840095Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 48 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10815905899354,
+        "relative_to_interaction_s": 34.02350539,
+        "utc": "2026-10-01T21:51:09.747482Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restore-original-camera-before",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10815900116649,
+        "relative_to_interaction_s": 34.017722685,
+        "utc": "2026-10-01T21:51:09.741698Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 59 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10815972270289,
+        "relative_to_interaction_s": 34.089876325,
+        "utc": "2026-10-01T21:51:09.813853Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10815937203106,
+        "relative_to_interaction_s": 34.054809142,
+        "utc": "2026-10-01T21:51:09.778783Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10815991483905,
+        "relative_to_interaction_s": 34.109089941,
+        "utc": "2026-10-01T21:51:09.833067Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10815987000555,
+        "relative_to_interaction_s": 34.104606591,
+        "utc": "2026-10-01T21:51:09.828577Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10816009957442,
+        "relative_to_interaction_s": 34.127563478,
+        "utc": "2026-10-01T21:51:09.851542Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10816006241312,
+        "relative_to_interaction_s": 34.123847348,
+        "utc": "2026-10-01T21:51:09.847823Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10816043340080,
+        "relative_to_interaction_s": 34.160946116,
+        "utc": "2026-10-01T21:51:09.884924Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: release button 1",
+      "scheduled_relative_s": 34.0,
+      "start": {
+        "monotonic_ns": 10816039762263,
+        "relative_to_interaction_s": 34.157368299,
+        "utc": "2026-10-01T21:51:09.881342Z"
+      },
+      "start_drift_s": 0.15736829899999805,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10816060626424,
+        "relative_to_interaction_s": 34.17823246,
+        "utc": "2026-10-01T21:51:09.902210Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: release button 3",
+      "scheduled_relative_s": 34.0,
+      "start": {
+        "monotonic_ns": 10816056266387,
+        "relative_to_interaction_s": 34.173872423,
+        "utc": "2026-10-01T21:51:09.897840Z"
+      },
+      "start_drift_s": 0.17387242299999883,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10816077564360,
+        "relative_to_interaction_s": 34.195170396,
+        "utc": "2026-10-01T21:51:09.919148Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: release button 2",
+      "scheduled_relative_s": 34.0,
+      "start": {
+        "monotonic_ns": 10816073630954,
+        "relative_to_interaction_s": 34.19123699,
+        "utc": "2026-10-01T21:51:09.915209Z"
+      },
+      "start_drift_s": 0.19123699000000016,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "key",
+        "--window",
+        "41943047",
+        "space"
+      ],
+      "end": {
+        "monotonic_ns": 10816132569109,
+        "relative_to_interaction_s": 34.250175145,
+        "utc": "2026-10-01T21:51:09.974152Z"
+      },
+      "exit_code": 0,
+      "purpose": "restore-original-camera: Space",
+      "scheduled_relative_s": 34.0,
+      "start": {
+        "monotonic_ns": 10816091155095,
+        "relative_to_interaction_s": 34.208761131,
+        "utc": "2026-10-01T21:51:09.932740Z"
+      },
+      "start_drift_s": 0.20876113100000282,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10816164745964,
+        "relative_to_interaction_s": 34.282352,
+        "utc": "2026-10-01T21:51:10.006329Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restore-original-camera-after",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10816160855409,
+        "relative_to_interaction_s": 34.278461445,
+        "utc": "2026-10-01T21:51:10.002433Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 62 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10816206699912,
+        "relative_to_interaction_s": 34.324305948,
+        "utc": "2026-10-01T21:51:10.048286Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-start",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10816203103735,
+        "relative_to_interaction_s": 34.320709771,
+        "utc": "2026-10-01T21:51:10.044688Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 62 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10816238037814,
+        "relative_to_interaction_s": 34.35564385,
+        "utc": "2026-10-01T21:51:10.079628Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-00",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10816234293824,
+        "relative_to_interaction_s": 34.35189986,
+        "utc": "2026-10-01T21:51:10.075880Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 62 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10817240438546,
+        "relative_to_interaction_s": 35.358044582,
+        "utc": "2026-10-01T21:51:11.082027Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-01",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10817234414354,
+        "relative_to_interaction_s": 35.35202039,
+        "utc": "2026-10-01T21:51:11.075995Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 13 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10818238620005,
+        "relative_to_interaction_s": 36.356226041,
+        "utc": "2026-10-01T21:51:12.080204Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-02",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10818234407262,
+        "relative_to_interaction_s": 36.352013298,
+        "utc": "2026-10-01T21:51:12.075989Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 25 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10819238197471,
+        "relative_to_interaction_s": 37.355803507,
+        "utc": "2026-10-01T21:51:13.079791Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-03",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10819234416009,
+        "relative_to_interaction_s": 37.352022045,
+        "utc": "2026-10-01T21:51:13.075997Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 38 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10820238386873,
+        "relative_to_interaction_s": 38.355992909,
+        "utc": "2026-10-01T21:51:14.079980Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-04",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10820234415556,
+        "relative_to_interaction_s": 38.352021592,
+        "utc": "2026-10-01T21:51:14.075998Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 50 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10821238183815,
+        "relative_to_interaction_s": 39.355789851,
+        "utc": "2026-10-01T21:51:15.079775Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-05",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10821234405204,
+        "relative_to_interaction_s": 39.35201124,
+        "utc": "2026-10-01T21:51:15.075988Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 63 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10822237996438,
+        "relative_to_interaction_s": 40.355602474,
+        "utc": "2026-10-01T21:51:16.079591Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-06",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10822234405791,
+        "relative_to_interaction_s": 40.352011827,
+        "utc": "2026-10-01T21:51:16.075986Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 75 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10823238494938,
+        "relative_to_interaction_s": 41.356100974,
+        "utc": "2026-10-01T21:51:17.080080Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-07",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10823234419109,
+        "relative_to_interaction_s": 41.352025145,
+        "utc": "2026-10-01T21:51:17.076001Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 88 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10824238252899,
+        "relative_to_interaction_s": 42.355858935,
+        "utc": "2026-10-01T21:51:18.079846Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-08",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10824234384445,
+        "relative_to_interaction_s": 42.351990481,
+        "utc": "2026-10-01T21:51:18.075964Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 100 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10825239142490,
+        "relative_to_interaction_s": 43.356748526,
+        "utc": "2026-10-01T21:51:19.080728Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: restored-camera-convergence-periodic-09",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10825234417463,
+        "relative_to_interaction_s": 43.352023499,
+        "utc": "2026-10-01T21:51:19.075998Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 113 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10825903801737,
+        "relative_to_interaction_s": 44.021407773,
+        "utc": "2026-10-01T21:51:19.745386Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: scheduled-save-before",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10825897181669,
+        "relative_to_interaction_s": 44.014787705,
+        "utc": "2026-10-01T21:51:19.738764Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 121 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10826001748916,
+        "relative_to_interaction_s": 44.119354952,
+        "utc": "2026-10-01T21:51:19.843331Z"
+      },
+      "exit_code": 0,
+      "purpose": "scheduled S save: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10825966827458,
+        "relative_to_interaction_s": 44.084433494,
+        "utc": "2026-10-01T21:51:19.808412Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10826025443558,
+        "relative_to_interaction_s": 44.143049594,
+        "utc": "2026-10-01T21:51:19.867024Z"
+      },
+      "exit_code": 0,
+      "purpose": "scheduled S save: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10826016215673,
+        "relative_to_interaction_s": 44.133821709,
+        "utc": "2026-10-01T21:51:19.857794Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10826061177536,
+        "relative_to_interaction_s": 44.178783572,
+        "utc": "2026-10-01T21:51:19.902758Z"
+      },
+      "exit_code": 0,
+      "purpose": "scheduled S save: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10826041170307,
+        "relative_to_interaction_s": 44.158776343,
+        "utc": "2026-10-01T21:51:19.882750Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "key",
+        "--window",
+        "41943047",
+        "s"
+      ],
+      "end": {
+        "monotonic_ns": 10826139186188,
+        "relative_to_interaction_s": 44.256792224,
+        "utc": "2026-10-01T21:51:19.980767Z"
+      },
+      "exit_code": 0,
+      "purpose": "scheduled S save",
+      "scheduled_relative_s": 44.0,
+      "start": {
+        "monotonic_ns": 10826094300557,
+        "relative_to_interaction_s": 44.211906593,
+        "utc": "2026-10-01T21:51:19.935879Z"
+      },
+      "start_drift_s": 0.21190659300000192,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10826174714591,
+        "relative_to_interaction_s": 44.292320627,
+        "utc": "2026-10-01T21:51:20.016300Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: scheduled-save-after",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10826170994986,
+        "relative_to_interaction_s": 44.288601022,
+        "utc": "2026-10-01T21:51:20.012576Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 124 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10826529158837,
+        "relative_to_interaction_s": 44.646764873,
+        "utc": "2026-10-01T21:51:20.370754Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: post-save-wait-00",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10826525338539,
+        "relative_to_interaction_s": 44.642944575,
+        "utc": "2026-10-01T21:51:20.366927Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 127 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10827529718867,
+        "relative_to_interaction_s": 45.647324903,
+        "utc": "2026-10-01T21:51:21.371306Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: post-save-wait-01",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10827525438961,
+        "relative_to_interaction_s": 45.643044997,
+        "utc": "2026-10-01T21:51:21.367019Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 139 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10827902672369,
+        "relative_to_interaction_s": 46.020278405,
+        "utc": "2026-10-01T21:51:21.744259Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: escape-before",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10827882542784,
+        "relative_to_interaction_s": 46.00014882,
+        "utc": "2026-10-01T21:51:21.724123Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 144 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowactivate",
+        "--sync",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10828000653473,
+        "relative_to_interaction_s": 46.118259509,
+        "utc": "2026-10-01T21:51:21.842231Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape save and exit: activate",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10827966183349,
+        "relative_to_interaction_s": 46.083789385,
+        "utc": "2026-10-01T21:51:21.807765Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowraise",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10828025436344,
+        "relative_to_interaction_s": 46.14304238,
+        "utc": "2026-10-01T21:51:21.867020Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape save and exit: raise",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10828015837004,
+        "relative_to_interaction_s": 46.13344304,
+        "utc": "2026-10-01T21:51:21.857430Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowfocus"
+      ],
+      "end": {
+        "monotonic_ns": 10828043990367,
+        "relative_to_interaction_s": 46.161596403,
+        "utc": "2026-10-01T21:51:21.885586Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape save and exit: verify focus",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10828040475131,
+        "relative_to_interaction_s": 46.158081167,
+        "utc": "2026-10-01T21:51:21.882068Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10828072722285,
+        "relative_to_interaction_s": 46.190328321,
+        "utc": "2026-10-01T21:51:21.914316Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape: release button 1",
+      "scheduled_relative_s": 46.0,
+      "start": {
+        "monotonic_ns": 10828069418035,
+        "relative_to_interaction_s": 46.187024071,
+        "utc": "2026-10-01T21:51:21.911002Z"
+      },
+      "start_drift_s": 0.1870240710000033,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10828094291749,
+        "relative_to_interaction_s": 46.211897785,
+        "utc": "2026-10-01T21:51:21.935878Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape: release button 3",
+      "scheduled_relative_s": 46.0,
+      "start": {
+        "monotonic_ns": 10828087828574,
+        "relative_to_interaction_s": 46.20543461,
+        "utc": "2026-10-01T21:51:21.929422Z"
+      },
+      "start_drift_s": 0.20543460999999752,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10828142978168,
+        "relative_to_interaction_s": 46.260584204,
+        "utc": "2026-10-01T21:51:21.984563Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape: release button 2",
+      "scheduled_relative_s": 46.0,
+      "start": {
+        "monotonic_ns": 10828109852901,
+        "relative_to_interaction_s": 46.227458937,
+        "utc": "2026-10-01T21:51:21.951439Z"
+      },
+      "start_drift_s": 0.22745893700000153,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "key",
+        "--window",
+        "41943047",
+        "Escape"
+      ],
+      "end": {
+        "monotonic_ns": 10828181225994,
+        "relative_to_interaction_s": 46.29883203,
+        "utc": "2026-10-01T21:51:22.022808Z"
+      },
+      "exit_code": 0,
+      "purpose": "Escape save and renderer exit",
+      "scheduled_relative_s": 46.0,
+      "start": {
+        "monotonic_ns": 10828157946843,
+        "relative_to_interaction_s": 46.275552879,
+        "utc": "2026-10-01T21:51:21.999533Z"
+      },
+      "start_drift_s": 0.2755528790000028,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowname",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10828218194055,
+        "relative_to_interaction_s": 46.335800091,
+        "utc": "2026-10-01T21:51:22.059781Z"
+      },
+      "exit_code": 0,
+      "purpose": "sample preview title: escape-after-best-effort",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10828213469027,
+        "relative_to_interaction_s": 46.331075063,
+        "utc": "2026-10-01T21:51:22.055050Z"
+      },
+      "stderr": "",
+      "stdout": "CIS565 Path Tracer | 148 Iterations\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10834961434462,
+        "relative_to_interaction_s": 53.079040498,
+        "utc": "2026-10-01T21:51:28.803029Z"
+      },
+      "exit_code": 0,
+      "purpose": "cleanup: release button 1",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10834958352869,
+        "relative_to_interaction_s": 53.075958905,
+        "utc": "2026-10-01T21:51:28.799946Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10834977214280,
+        "relative_to_interaction_s": 53.094820316,
+        "utc": "2026-10-01T21:51:28.818810Z"
+      },
+      "exit_code": 0,
+      "purpose": "cleanup: release button 3",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10834974490906,
+        "relative_to_interaction_s": 53.092096942,
+        "utc": "2026-10-01T21:51:28.816085Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10834992851673,
+        "relative_to_interaction_s": 53.110457709,
+        "utc": "2026-10-01T21:51:28.834447Z"
+      },
+      "exit_code": 0,
+      "purpose": "cleanup: release button 2",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10834990194031,
+        "relative_to_interaction_s": 53.107800067,
+        "utc": "2026-10-01T21:51:28.831789Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    }
+  ]
+}

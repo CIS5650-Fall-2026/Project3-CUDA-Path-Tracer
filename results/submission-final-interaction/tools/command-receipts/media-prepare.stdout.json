@@ -1,0 +1,47 @@
+{
+  "status": "awaiting_root_visual_verification",
+  "evidence_prefix": "submission-final",
+  "published": false,
+  "frame_artifacts": [
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-01-t2.png",
+      "bytes": 1261960,
+      "sha256": "a6cbf1d7360867631cecc1c4ba5be78e2e719d07a13e3107fb4f86537db9351b"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-02-t12.png",
+      "bytes": 846819,
+      "sha256": "cf2d72fcecceb4f55ea16555558fffc49bb638a24eb939694da6ea8dfd564cfc"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-03-t16.png",
+      "bytes": 1457782,
+      "sha256": "068eff63b982d39696a203d2f083bd6e913f5b291f6322b63eea4a075f10764f"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-04-t23.png",
+      "bytes": 1489591,
+      "sha256": "74c911bcec0010c6c21d637f03568f74cee0d790b4528bc624a743d943c0d9b2"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-05-t30.png",
+      "bytes": 1527869,
+      "sha256": "fe868765b0009c0750692e340f668ee0e9fd5f9b4131ec9160dc2472b9b4c2cc"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-06-t36.png",
+      "bytes": 1317983,
+      "sha256": "887c763d60f49b21d3dcd9d843a14874eb615387042bbc7c43794fc14081de56"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-07-t44.5.png",
+      "bytes": 850114,
+      "sha256": "abc7a98163d6626b4beb4e64460337ded67c11ceccdb46fc7becc289b38dd5a2"
+    },
+    {
+      "path": "results/submission-final-interaction/inspected-frames/frame-08-t46.5.png",
+      "bytes": 846568,
+      "sha256": "9c21bf5d4d75cd0f0feb8ea6b326017194f98ac6fa91da703612c2b7d54d6a4b"
+    }
+  ]
+}

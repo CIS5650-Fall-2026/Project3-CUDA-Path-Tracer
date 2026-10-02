@@ -1,0 +1,42 @@
+{
+  "controller_status": "completed",
+  "errors": [],
+  "phases": [
+    {
+      "name": "build",
+      "status": "passed"
+    },
+    {
+      "name": "new-validation",
+      "status": "passed"
+    },
+    {
+      "name": "sanitizers",
+      "status": "passed"
+    },
+    {
+      "name": "gltf",
+      "status": "passed"
+    },
+    {
+      "name": "baseline-validation",
+      "status": "passed"
+    },
+    {
+      "name": "baseline-measurements",
+      "status": "passed"
+    },
+    {
+      "name": "new-measurements",
+      "status": "passed"
+    },
+    {
+      "name": "gallery",
+      "status": "passed"
+    }
+  ],
+  "approved_all_eight": true,
+  "active_renderers": [],
+  "graphical_work_allowed": true,
+  "observed_utc": "2026-10-01T23:55:44.819140+00:00"
+}

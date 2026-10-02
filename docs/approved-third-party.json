@@ -1,0 +1,42 @@
+{
+  "package": "tinygltf",
+  "version": "v2.9.7",
+  "repository": "https://github.com/syoyo/tinygltf",
+  "commit": "488a70a3df62a4df1a736e9e56fb8836580c4888",
+  "license": "MIT",
+  "approval": {
+    "approver": "Bryce Joseph",
+    "occasion": "Special OH for Project 3",
+    "date": "2026-09-21",
+    "evidence": "Student reports direct approval spoken in class; recorded in this session on 2026-10-01",
+    "scope": "tinygltf loader only; unchanged approved starter JSON/STB dependencies are reused. No upstream examples, tests, models, renderer code, or additional dependencies imported."
+  },
+  "files": [
+    {
+      "path": "external/tinygltf/tiny_gltf.h",
+      "upstream_path": "tiny_gltf.h",
+      "url": "https://raw.githubusercontent.com/syoyo/tinygltf/488a70a3df62a4df1a736e9e56fb8836580c4888/tiny_gltf.h",
+      "bytes": 279738,
+      "sha256": "b63dc0ae9e4b1ae5af288bb2b9b69ba06bc65bf9fd880795a7ba3cabe96df072"
+    },
+    {
+      "path": "external/tinygltf/LICENSE",
+      "upstream_path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/syoyo/tinygltf/488a70a3df62a4df1a736e9e56fb8836580c4888/LICENSE",
+      "bytes": 1112,
+      "sha256": "2ae461f8c8b78ed77c14e9c3b7e353ba277e44cb3dbfb5a6d380f76f2ae081a2"
+    }
+  ],
+  "instructor_confirmation": {
+    "approver": "Matthew Schwartz",
+    "role": "Instructor",
+    "date": "2026-10-01",
+    "forum": "Ed",
+    "post_number": 78,
+    "post_title": "tinygltf approved package?",
+    "statement": "Yes- tinygltf is OK to use for the glTF extra credit!",
+    "evidence": "User-provided screenshot received October 1, 2026; screenshot retained privately for inspection",
+    "screenshot_sha256": "a7b13423c77630e05b92e005a306532ed818bf8560c2d23b7f82dfeb0cd538f4",
+    "scope": "tinygltf for the glTF extra credit; no other third-party implementation authorized"
+  }
+}

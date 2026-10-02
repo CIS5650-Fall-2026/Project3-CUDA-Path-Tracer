@@ -1,0 +1,18 @@
+{
+  "byte_identical": true,
+  "expected_sha256": "bdc2f3475f456e2ea21d08e52f71ce87678a13653cd265ea0b0c44f72a8f1a8f",
+  "expected_bytes": 26356,
+  "expected_identity_matches": true,
+  "files": [
+    {
+      "path": "INSTRUCTION.md",
+      "sha256": "bdc2f3475f456e2ea21d08e52f71ce87678a13653cd265ea0b0c44f72a8f1a8f",
+      "bytes": 26356
+    },
+    {
+      "path": "/Users/didrikwiigandersen/Downloads/INSTRUCTION (3).md",
+      "sha256": "bdc2f3475f456e2ea21d08e52f71ce87678a13653cd265ea0b0c44f72a8f1a8f",
+      "bytes": 26356
+    }
+  ]
+}

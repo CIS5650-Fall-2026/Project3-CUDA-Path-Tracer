@@ -1,0 +1,898 @@
+{
+  "caveats": [
+    "Wall-clock results describe the recorded hardware, Python runtime, operating system, filesystem, host load, cache state, and this process invocation.",
+    "Each sample measures CPU construction, OBJ serialization, and one OS-buffered temporary-file write; Path.write_text does not include an fsync.",
+    "Validation, hashing, canonical-asset reads and comparisons, and report emission are outside the generation-and-write interval.",
+    "A false byte_identical_to_canonical value can reflect platform math-library formatting differences and does not invalidate an otherwise valid mesh.",
+    "No GPU geometry generation is performed or measured."
+  ],
+  "clock": {
+    "adjustable": false,
+    "implementation": "mach_absolute_time()",
+    "monotonic": true,
+    "name": "time.perf_counter",
+    "resolution_seconds": 4.166666666666666e-08
+  },
+  "generator": {
+    "canonical_asset_scope": "read-only byte-size, SHA-256, and exact-byte comparison",
+    "gpu_generation": false,
+    "implementation": "Python standard-library CPU procedural mesh generator",
+    "measured_runs": 3,
+    "output_scope": "warmup and measured OBJ files exist only in a TemporaryDirectory",
+    "timed_scope": "surface construction, OBJ serialization, and write_text wall time; temporary-directory setup, file stat, hashing, canonical reads, comparison, and post-write validation are excluded",
+    "validation_scope": "serialized OBJ validation, timed and reported separately",
+    "warmup_runs": 1
+  },
+  "machine": {
+    "machine": "arm64",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "python_compiler": "Clang 21.0.0 (clang-2100.0.123.102)",
+    "python_implementation": "CPython",
+    "python_version": "3.14.6",
+    "release": "27.0.0",
+    "system": "Darwin"
+  },
+  "measured_repeats": 3,
+  "note": "Measured CPU wall-clock procedural-generation profile for this invocation; interpret results with the recorded host metadata and caveats.",
+  "profile_only": true,
+  "profile_type": "cpu_mesh_generation",
+  "purpose": "cpu-procedural-generation-profile",
+  "records": [
+    {
+      "byte_identical_to_canonical": true,
+      "canonical_asset_byte_size": 188496,
+      "canonical_asset_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "construction_write_timing": {
+        "maximum_ms": 5.881375,
+        "mean_ms": 5.859389,
+        "median_ms": 5.870209,
+        "minimum_ms": 5.826584,
+        "samples_ms": [
+          5.870209,
+          5.881375,
+          5.826584
+        ]
+      },
+      "generation_and_write_median_ms": 5.870209,
+      "generation_and_write_ms": [
+        5.870209,
+        5.881375,
+        5.826584
+      ],
+      "lod": "low",
+      "measured_generated_byte_size": 188496,
+      "measured_generated_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "measured_runs": [
+        {
+          "construction_write_ms": 5.870209,
+          "generated_byte_size": 188496,
+          "generated_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+          "run": 1,
+          "validation_ms": 8.534041
+        },
+        {
+          "construction_write_ms": 5.881375,
+          "generated_byte_size": 188496,
+          "generated_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+          "run": 2,
+          "validation_ms": 8.417459
+        },
+        {
+          "construction_write_ms": 5.826584,
+          "generated_byte_size": 188496,
+          "generated_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+          "run": 3,
+          "validation_ms": 8.419125
+        }
+      ],
+      "nu": 32,
+      "nv": 24,
+      "post_write_validation_timing": {
+        "maximum_ms": 8.534041,
+        "mean_ms": 8.456875,
+        "median_ms": 8.419125,
+        "minimum_ms": 8.417459,
+        "samples_ms": [
+          8.534041,
+          8.417459,
+          8.419125
+        ]
+      },
+      "relative_path": "scenes/assets/fluted-body-low.obj",
+      "shape": "fluted-body",
+      "triangles": 1600,
+      "validation": {
+        "all_checks_passed": true,
+        "counts": {
+          "normals": 893,
+          "positions": 893,
+          "triangles": 1600,
+          "uvs": 893
+        },
+        "finite": {
+          "normal_count": 893,
+          "normals": true,
+          "position_count": 893,
+          "positions": true,
+          "uv_count": 893,
+          "uvs": true
+        },
+        "normals": {
+          "length_max": 1.0000000000000002,
+          "length_min": 0.9999999999999998,
+          "maximum_abs_unit_error": 2.220446049250313e-16,
+          "tolerance": 2e-07,
+          "unit_length": true,
+          "unit_length_count": 893
+        },
+        "seams": {
+          "canonical_u_expected_pairs": 25,
+          "canonical_u_pair_count": 25,
+          "canonical_u_position_normal_exact": true,
+          "canonical_u_required": true,
+          "canonical_u_uv_endpoints_retained": true,
+          "canonical_v_expected_pairs": 0,
+          "canonical_v_pair_count": 0,
+          "canonical_v_position_normal_exact": null,
+          "canonical_v_required": false,
+          "canonical_v_uv_endpoints_retained": null,
+          "cap_normals_flat": true,
+          "cap_ring_expected_pairs": 66,
+          "cap_ring_pair_count": 66,
+          "cap_side_positions_exact": true,
+          "cap_uvs_radial": true,
+          "radial_caps_required": true
+        },
+        "topology": {
+          "bad_edge_count": 0,
+          "closed_two_manifold": true,
+          "edge_incidence_max": 2,
+          "edge_incidence_min": 2,
+          "edge_incidence_two_count": 2400,
+          "euler_characteristic": 2,
+          "expected_euler_characteristic": 2,
+          "faces": 1600,
+          "welded_edges": 2400,
+          "welded_vertices": 802
+        },
+        "triangles": {
+          "minimum_area": 0.0047943333479283125,
+          "minimum_winding_dot": 0.01638797119082067,
+          "noncollapsed_count": 1600,
+          "outward_winding": true,
+          "outward_winding_count": 1600,
+          "positive_area": true,
+          "positive_area_count": 1600
+        },
+        "uvs": {
+          "component_max": 1.0,
+          "component_min": 0.0,
+          "within_unit_square": true,
+          "within_unit_square_count": 893
+        }
+      },
+      "validation_ms": 8.419125,
+      "warmup_run": {
+        "construction_write_ms": 6.083917,
+        "generated_byte_size": 188496,
+        "generated_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+        "run": 0,
+        "validation_ms": 9.7255
+      }
+    },
+    {
+      "byte_identical_to_canonical": true,
+      "canonical_asset_byte_size": 769303,
+      "canonical_asset_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "construction_write_timing": {
+        "maximum_ms": 22.087959,
+        "mean_ms": 21.988014,
+        "median_ms": 22.04,
+        "minimum_ms": 21.836083,
+        "samples_ms": [
+          22.087959,
+          21.836083,
+          22.04
+        ]
+      },
+      "generation_and_write_median_ms": 22.04,
+      "generation_and_write_ms": [
+        22.087959,
+        21.836083,
+        22.04
+      ],
+      "lod": "medium",
+      "measured_generated_byte_size": 769303,
+      "measured_generated_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "measured_runs": [
+        {
+          "construction_write_ms": 22.087959,
+          "generated_byte_size": 769303,
+          "generated_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+          "run": 1,
+          "validation_ms": 33.913875
+        },
+        {
+          "construction_write_ms": 21.836083,
+          "generated_byte_size": 769303,
+          "generated_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+          "run": 2,
+          "validation_ms": 33.36525
+        },
+        {
+          "construction_write_ms": 22.04,
+          "generated_byte_size": 769303,
+          "generated_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+          "run": 3,
+          "validation_ms": 35.410458
+        }
+      ],
+      "nu": 64,
+      "nv": 48,
+      "post_write_validation_timing": {
+        "maximum_ms": 35.410458,
+        "mean_ms": 34.229861,
+        "median_ms": 33.913875,
+        "minimum_ms": 33.36525,
+        "samples_ms": [
+          33.913875,
+          33.36525,
+          35.410458
+        ]
+      },
+      "relative_path": "scenes/assets/fluted-body-medium.obj",
+      "shape": "fluted-body",
+      "triangles": 6272,
+      "validation": {
+        "all_checks_passed": true,
+        "counts": {
+          "normals": 3317,
+          "positions": 3317,
+          "triangles": 6272,
+          "uvs": 3317
+        },
+        "finite": {
+          "normal_count": 3317,
+          "normals": true,
+          "position_count": 3317,
+          "positions": true,
+          "uv_count": 3317,
+          "uvs": true
+        },
+        "normals": {
+          "length_max": 1.0000000000000002,
+          "length_min": 0.9999999999999998,
+          "maximum_abs_unit_error": 2.220446049250313e-16,
+          "tolerance": 2e-07,
+          "unit_length": true,
+          "unit_length_count": 3317
+        },
+        "seams": {
+          "canonical_u_expected_pairs": 49,
+          "canonical_u_pair_count": 49,
+          "canonical_u_position_normal_exact": true,
+          "canonical_u_required": true,
+          "canonical_u_uv_endpoints_retained": true,
+          "canonical_v_expected_pairs": 0,
+          "canonical_v_pair_count": 0,
+          "canonical_v_position_normal_exact": null,
+          "canonical_v_required": false,
+          "canonical_v_uv_endpoints_retained": null,
+          "cap_normals_flat": true,
+          "cap_ring_expected_pairs": 130,
+          "cap_ring_pair_count": 130,
+          "cap_side_positions_exact": true,
+          "cap_uvs_radial": true,
+          "radial_caps_required": true
+        },
+        "topology": {
+          "bad_edge_count": 0,
+          "closed_two_manifold": true,
+          "edge_incidence_max": 2,
+          "edge_incidence_min": 2,
+          "edge_incidence_two_count": 9408,
+          "euler_characteristic": 2,
+          "expected_euler_characteristic": 2,
+          "faces": 6272,
+          "welded_edges": 9408,
+          "welded_vertices": 3138
+        },
+        "triangles": {
+          "minimum_area": 0.0011665448941452444,
+          "minimum_winding_dot": 0.00569260201699783,
+          "noncollapsed_count": 6272,
+          "outward_winding": true,
+          "outward_winding_count": 6272,
+          "positive_area": true,
+          "positive_area_count": 6272
+        },
+        "uvs": {
+          "component_max": 1.0,
+          "component_min": 0.0,
+          "within_unit_square": true,
+          "within_unit_square_count": 3317
+        }
+      },
+      "validation_ms": 33.913875,
+      "warmup_run": {
+        "construction_write_ms": 21.900417,
+        "generated_byte_size": 769303,
+        "generated_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+        "run": 0,
+        "validation_ms": 34.003834
+      }
+    },
+    {
+      "byte_identical_to_canonical": true,
+      "canonical_asset_byte_size": 3124619,
+      "canonical_asset_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "construction_write_timing": {
+        "maximum_ms": 86.227083,
+        "mean_ms": 86.080944,
+        "median_ms": 86.125042,
+        "minimum_ms": 85.890708,
+        "samples_ms": [
+          85.890708,
+          86.125042,
+          86.227083
+        ]
+      },
+      "generation_and_write_median_ms": 86.125042,
+      "generation_and_write_ms": [
+        85.890708,
+        86.125042,
+        86.227083
+      ],
+      "lod": "high",
+      "measured_generated_byte_size": 3124619,
+      "measured_generated_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "measured_runs": [
+        {
+          "construction_write_ms": 85.890708,
+          "generated_byte_size": 3124619,
+          "generated_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+          "run": 1,
+          "validation_ms": 135.237625
+        },
+        {
+          "construction_write_ms": 86.125042,
+          "generated_byte_size": 3124619,
+          "generated_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+          "run": 2,
+          "validation_ms": 133.536125
+        },
+        {
+          "construction_write_ms": 86.227083,
+          "generated_byte_size": 3124619,
+          "generated_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+          "run": 3,
+          "validation_ms": 134.782625
+        }
+      ],
+      "nu": 128,
+      "nv": 96,
+      "post_write_validation_timing": {
+        "maximum_ms": 135.237625,
+        "mean_ms": 134.518792,
+        "median_ms": 134.782625,
+        "minimum_ms": 133.536125,
+        "samples_ms": [
+          135.237625,
+          133.536125,
+          134.782625
+        ]
+      },
+      "relative_path": "scenes/assets/fluted-body-high.obj",
+      "shape": "fluted-body",
+      "triangles": 24832,
+      "validation": {
+        "all_checks_passed": true,
+        "counts": {
+          "normals": 12773,
+          "positions": 12773,
+          "triangles": 24832,
+          "uvs": 12773
+        },
+        "finite": {
+          "normal_count": 12773,
+          "normals": true,
+          "position_count": 12773,
+          "positions": true,
+          "uv_count": 12773,
+          "uvs": true
+        },
+        "normals": {
+          "length_max": 1.0000000000000002,
+          "length_min": 0.9999999999999998,
+          "maximum_abs_unit_error": 2.220446049250313e-16,
+          "tolerance": 2e-07,
+          "unit_length": true,
+          "unit_length_count": 12773
+        },
+        "seams": {
+          "canonical_u_expected_pairs": 97,
+          "canonical_u_pair_count": 97,
+          "canonical_u_position_normal_exact": true,
+          "canonical_u_required": true,
+          "canonical_u_uv_endpoints_retained": true,
+          "canonical_v_expected_pairs": 0,
+          "canonical_v_pair_count": 0,
+          "canonical_v_position_normal_exact": null,
+          "canonical_v_required": false,
+          "canonical_v_uv_endpoints_retained": null,
+          "cap_normals_flat": true,
+          "cap_ring_expected_pairs": 258,
+          "cap_ring_pair_count": 258,
+          "cap_side_positions_exact": true,
+          "cap_uvs_radial": true,
+          "radial_caps_required": true
+        },
+        "topology": {
+          "bad_edge_count": 0,
+          "closed_two_manifold": true,
+          "edge_incidence_max": 2,
+          "edge_incidence_min": 2,
+          "edge_incidence_two_count": 37248,
+          "euler_characteristic": 2,
+          "expected_euler_characteristic": 2,
+          "faces": 24832,
+          "welded_edges": 37248,
+          "welded_vertices": 12418
+        },
+        "triangles": {
+          "minimum_area": 0.000284157926050268,
+          "minimum_winding_dot": 0.0016043435874372122,
+          "noncollapsed_count": 24832,
+          "outward_winding": true,
+          "outward_winding_count": 24832,
+          "positive_area": true,
+          "positive_area_count": 24832
+        },
+        "uvs": {
+          "component_max": 1.0,
+          "component_min": 0.0,
+          "within_unit_square": true,
+          "within_unit_square_count": 12773
+        }
+      },
+      "validation_ms": 134.782625,
+      "warmup_run": {
+        "construction_write_ms": 86.135541,
+        "generated_byte_size": 3124619,
+        "generated_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+        "run": 0,
+        "validation_ms": 137.547959
+      }
+    },
+    {
+      "byte_identical_to_canonical": true,
+      "canonical_asset_byte_size": 121244,
+      "canonical_asset_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "construction_write_timing": {
+        "maximum_ms": 12.501083,
+        "mean_ms": 12.39682,
+        "median_ms": 12.370959,
+        "minimum_ms": 12.318417,
+        "samples_ms": [
+          12.370959,
+          12.318417,
+          12.501083
+        ]
+      },
+      "generation_and_write_median_ms": 12.370959,
+      "generation_and_write_ms": [
+        12.370959,
+        12.318417,
+        12.501083
+      ],
+      "lod": "low",
+      "measured_generated_byte_size": 121244,
+      "measured_generated_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "measured_runs": [
+        {
+          "construction_write_ms": 12.370959,
+          "generated_byte_size": 121244,
+          "generated_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+          "run": 1,
+          "validation_ms": 5.695292
+        },
+        {
+          "construction_write_ms": 12.318417,
+          "generated_byte_size": 121244,
+          "generated_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+          "run": 2,
+          "validation_ms": 5.39375
+        },
+        {
+          "construction_write_ms": 12.501083,
+          "generated_byte_size": 121244,
+          "generated_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+          "run": 3,
+          "validation_ms": 5.789792
+        }
+      ],
+      "nu": 64,
+      "nv": 8,
+      "post_write_validation_timing": {
+        "maximum_ms": 5.789792,
+        "mean_ms": 5.626278,
+        "median_ms": 5.695292,
+        "minimum_ms": 5.39375,
+        "samples_ms": [
+          5.695292,
+          5.39375,
+          5.789792
+        ]
+      },
+      "relative_path": "scenes/assets/swept-knot-low.obj",
+      "shape": "swept-knot",
+      "triangles": 1024,
+      "validation": {
+        "all_checks_passed": true,
+        "counts": {
+          "normals": 585,
+          "positions": 585,
+          "triangles": 1024,
+          "uvs": 585
+        },
+        "finite": {
+          "normal_count": 585,
+          "normals": true,
+          "position_count": 585,
+          "positions": true,
+          "uv_count": 585,
+          "uvs": true
+        },
+        "normals": {
+          "length_max": 1.0000000000000002,
+          "length_min": 0.9999999999999998,
+          "maximum_abs_unit_error": 2.220446049250313e-16,
+          "tolerance": 2e-07,
+          "unit_length": true,
+          "unit_length_count": 585
+        },
+        "seams": {
+          "canonical_u_expected_pairs": 9,
+          "canonical_u_pair_count": 9,
+          "canonical_u_position_normal_exact": true,
+          "canonical_u_required": true,
+          "canonical_u_uv_endpoints_retained": true,
+          "canonical_v_expected_pairs": 65,
+          "canonical_v_pair_count": 65,
+          "canonical_v_position_normal_exact": true,
+          "canonical_v_required": true,
+          "canonical_v_uv_endpoints_retained": true,
+          "cap_normals_flat": null,
+          "cap_ring_expected_pairs": 0,
+          "cap_ring_pair_count": 0,
+          "cap_side_positions_exact": null,
+          "cap_uvs_radial": null,
+          "radial_caps_required": false
+        },
+        "topology": {
+          "bad_edge_count": 0,
+          "closed_two_manifold": true,
+          "edge_incidence_max": 2,
+          "edge_incidence_min": 2,
+          "edge_incidence_two_count": 1536,
+          "euler_characteristic": 0,
+          "expected_euler_characteristic": 0,
+          "faces": 1024,
+          "welded_edges": 1536,
+          "welded_vertices": 512
+        },
+        "triangles": {
+          "minimum_area": 0.004668144027174719,
+          "minimum_winding_dot": 0.009304033549925872,
+          "noncollapsed_count": 1024,
+          "outward_winding": true,
+          "outward_winding_count": 1024,
+          "positive_area": true,
+          "positive_area_count": 1024
+        },
+        "uvs": {
+          "component_max": 1.0,
+          "component_min": 0.0,
+          "within_unit_square": true,
+          "within_unit_square_count": 585
+        }
+      },
+      "validation_ms": 5.695292,
+      "warmup_run": {
+        "construction_write_ms": 12.559541,
+        "generated_byte_size": 121244,
+        "generated_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+        "run": 0,
+        "validation_ms": 5.723917
+      }
+    },
+    {
+      "byte_identical_to_canonical": true,
+      "canonical_asset_byte_size": 493493,
+      "canonical_asset_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "construction_write_timing": {
+        "maximum_ms": 46.8605,
+        "mean_ms": 46.655361,
+        "median_ms": 46.80225,
+        "minimum_ms": 46.303334,
+        "samples_ms": [
+          46.80225,
+          46.303334,
+          46.8605
+        ]
+      },
+      "generation_and_write_median_ms": 46.80225,
+      "generation_and_write_ms": [
+        46.80225,
+        46.303334,
+        46.8605
+      ],
+      "lod": "medium",
+      "measured_generated_byte_size": 493493,
+      "measured_generated_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "measured_runs": [
+        {
+          "construction_write_ms": 46.80225,
+          "generated_byte_size": 493493,
+          "generated_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+          "run": 1,
+          "validation_ms": 21.864875
+        },
+        {
+          "construction_write_ms": 46.303334,
+          "generated_byte_size": 493493,
+          "generated_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+          "run": 2,
+          "validation_ms": 22.022417
+        },
+        {
+          "construction_write_ms": 46.8605,
+          "generated_byte_size": 493493,
+          "generated_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+          "run": 3,
+          "validation_ms": 21.908375
+        }
+      ],
+      "nu": 128,
+      "nv": 16,
+      "post_write_validation_timing": {
+        "maximum_ms": 22.022417,
+        "mean_ms": 21.931889,
+        "median_ms": 21.908375,
+        "minimum_ms": 21.864875,
+        "samples_ms": [
+          21.864875,
+          22.022417,
+          21.908375
+        ]
+      },
+      "relative_path": "scenes/assets/swept-knot-medium.obj",
+      "shape": "swept-knot",
+      "triangles": 4096,
+      "validation": {
+        "all_checks_passed": true,
+        "counts": {
+          "normals": 2193,
+          "positions": 2193,
+          "triangles": 4096,
+          "uvs": 2193
+        },
+        "finite": {
+          "normal_count": 2193,
+          "normals": true,
+          "position_count": 2193,
+          "positions": true,
+          "uv_count": 2193,
+          "uvs": true
+        },
+        "normals": {
+          "length_max": 1.0000000000000002,
+          "length_min": 0.9999999999999998,
+          "maximum_abs_unit_error": 2.220446049250313e-16,
+          "tolerance": 2e-07,
+          "unit_length": true,
+          "unit_length_count": 2193
+        },
+        "seams": {
+          "canonical_u_expected_pairs": 17,
+          "canonical_u_pair_count": 17,
+          "canonical_u_position_normal_exact": true,
+          "canonical_u_required": true,
+          "canonical_u_uv_endpoints_retained": true,
+          "canonical_v_expected_pairs": 129,
+          "canonical_v_pair_count": 129,
+          "canonical_v_position_normal_exact": true,
+          "canonical_v_required": true,
+          "canonical_v_uv_endpoints_retained": true,
+          "cap_normals_flat": null,
+          "cap_ring_expected_pairs": 0,
+          "cap_ring_pair_count": 0,
+          "cap_side_positions_exact": null,
+          "cap_uvs_radial": null,
+          "radial_caps_required": false
+        },
+        "topology": {
+          "bad_edge_count": 0,
+          "closed_two_manifold": true,
+          "edge_incidence_max": 2,
+          "edge_incidence_min": 2,
+          "edge_incidence_two_count": 6144,
+          "euler_characteristic": 0,
+          "expected_euler_characteristic": 0,
+          "faces": 4096,
+          "welded_edges": 6144,
+          "welded_vertices": 2048
+        },
+        "triangles": {
+          "minimum_area": 0.0011710598176861433,
+          "minimum_winding_dot": 0.004807096026479239,
+          "noncollapsed_count": 4096,
+          "outward_winding": true,
+          "outward_winding_count": 4096,
+          "positive_area": true,
+          "positive_area_count": 4096
+        },
+        "uvs": {
+          "component_max": 1.0,
+          "component_min": 0.0,
+          "within_unit_square": true,
+          "within_unit_square_count": 2193
+        }
+      },
+      "validation_ms": 21.908375,
+      "warmup_run": {
+        "construction_write_ms": 46.675667,
+        "generated_byte_size": 493493,
+        "generated_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+        "run": 0,
+        "validation_ms": 22.071333
+      }
+    },
+    {
+      "byte_identical_to_canonical": true,
+      "canonical_asset_byte_size": 2004275,
+      "canonical_asset_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "construction_write_timing": {
+        "maximum_ms": 191.108667,
+        "mean_ms": 184.243598,
+        "median_ms": 181.236292,
+        "minimum_ms": 180.385834,
+        "samples_ms": [
+          180.385834,
+          191.108667,
+          181.236292
+        ]
+      },
+      "generation_and_write_median_ms": 181.236292,
+      "generation_and_write_ms": [
+        180.385834,
+        191.108667,
+        181.236292
+      ],
+      "lod": "high",
+      "measured_generated_byte_size": 2004275,
+      "measured_generated_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "measured_runs": [
+        {
+          "construction_write_ms": 180.385834,
+          "generated_byte_size": 2004275,
+          "generated_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+          "run": 1,
+          "validation_ms": 88.727334
+        },
+        {
+          "construction_write_ms": 191.108667,
+          "generated_byte_size": 2004275,
+          "generated_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+          "run": 2,
+          "validation_ms": 88.60525
+        },
+        {
+          "construction_write_ms": 181.236292,
+          "generated_byte_size": 2004275,
+          "generated_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+          "run": 3,
+          "validation_ms": 88.339791
+        }
+      ],
+      "nu": 256,
+      "nv": 32,
+      "post_write_validation_timing": {
+        "maximum_ms": 88.727334,
+        "mean_ms": 88.557458,
+        "median_ms": 88.60525,
+        "minimum_ms": 88.339791,
+        "samples_ms": [
+          88.727334,
+          88.60525,
+          88.339791
+        ]
+      },
+      "relative_path": "scenes/assets/swept-knot-high.obj",
+      "shape": "swept-knot",
+      "triangles": 16384,
+      "validation": {
+        "all_checks_passed": true,
+        "counts": {
+          "normals": 8481,
+          "positions": 8481,
+          "triangles": 16384,
+          "uvs": 8481
+        },
+        "finite": {
+          "normal_count": 8481,
+          "normals": true,
+          "position_count": 8481,
+          "positions": true,
+          "uv_count": 8481,
+          "uvs": true
+        },
+        "normals": {
+          "length_max": 1.0000000000000002,
+          "length_min": 0.9999999999999998,
+          "maximum_abs_unit_error": 2.220446049250313e-16,
+          "tolerance": 2e-07,
+          "unit_length": true,
+          "unit_length_count": 8481
+        },
+        "seams": {
+          "canonical_u_expected_pairs": 33,
+          "canonical_u_pair_count": 33,
+          "canonical_u_position_normal_exact": true,
+          "canonical_u_required": true,
+          "canonical_u_uv_endpoints_retained": true,
+          "canonical_v_expected_pairs": 257,
+          "canonical_v_pair_count": 257,
+          "canonical_v_position_normal_exact": true,
+          "canonical_v_required": true,
+          "canonical_v_uv_endpoints_retained": true,
+          "cap_normals_flat": null,
+          "cap_ring_expected_pairs": 0,
+          "cap_ring_pair_count": 0,
+          "cap_side_positions_exact": null,
+          "cap_uvs_radial": null,
+          "radial_caps_required": false
+        },
+        "topology": {
+          "bad_edge_count": 0,
+          "closed_two_manifold": true,
+          "edge_incidence_max": 2,
+          "edge_incidence_min": 2,
+          "edge_incidence_two_count": 24576,
+          "euler_characteristic": 0,
+          "expected_euler_characteristic": 0,
+          "faces": 16384,
+          "welded_edges": 24576,
+          "welded_vertices": 8192
+        },
+        "triangles": {
+          "minimum_area": 0.0002939621857112928,
+          "minimum_winding_dot": 0.0016156858737708434,
+          "noncollapsed_count": 16384,
+          "outward_winding": true,
+          "outward_winding_count": 16384,
+          "positive_area": true,
+          "positive_area_count": 16384
+        },
+        "uvs": {
+          "component_max": 1.0,
+          "component_min": 0.0,
+          "within_unit_square": true,
+          "within_unit_square_count": 8481
+        }
+      },
+      "validation_ms": 88.60525,
+      "warmup_run": {
+        "construction_write_ms": 182.367,
+        "generated_byte_size": 2004275,
+        "generated_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+        "run": 0,
+        "validation_ms": 88.068917
+      }
+    }
+  ],
+  "schema_version": 2,
+  "units": "milliseconds",
+  "warmups": 1
+}

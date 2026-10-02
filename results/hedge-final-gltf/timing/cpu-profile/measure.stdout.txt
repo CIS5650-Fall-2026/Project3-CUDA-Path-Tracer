@@ -1,0 +1,110 @@
+[
+  {
+    "bvh_nodes": 201,
+    "bvh_rebuild_median_ms": 0.102802,
+    "bvh_rebuild_ms": [
+      0.105883,
+      0.102802,
+      0.101243
+    ],
+    "load_including_bvh_median_ms": 1.392597,
+    "load_including_bvh_ms": [
+      2.395683,
+      1.334616,
+      1.392597
+    ],
+    "primitives": 293,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+    "triangles": 288
+  },
+  {
+    "bvh_nodes": 649,
+    "bvh_rebuild_median_ms": 0.492833,
+    "bvh_rebuild_ms": [
+      0.489353,
+      0.493383,
+      0.492833
+    ],
+    "load_including_bvh_median_ms": 3.056281,
+    "load_including_bvh_ms": [
+      3.056281,
+      3.05729,
+      3.048051
+    ],
+    "primitives": 1093,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+    "triangles": 1088
+  },
+  {
+    "bvh_nodes": 2313,
+    "bvh_rebuild_median_ms": 2.385653,
+    "bvh_rebuild_ms": [
+      2.389653,
+      2.378513,
+      2.385653
+    ],
+    "load_including_bvh_median_ms": 7.232811,
+    "load_including_bvh_ms": [
+      7.097147,
+      7.249231,
+      7.232811
+    ],
+    "primitives": 4229,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+    "triangles": 4224
+  },
+  {
+    "bvh_nodes": 201,
+    "bvh_rebuild_median_ms": 0.095123,
+    "bvh_rebuild_ms": [
+      0.103753,
+      0.095123,
+      0.093352
+    ],
+    "load_including_bvh_median_ms": 2.195218,
+    "load_including_bvh_ms": [
+      2.188917,
+      2.221178,
+      2.195218
+    ],
+    "primitives": 293,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+    "triangles": 288
+  },
+  {
+    "bvh_nodes": 649,
+    "bvh_rebuild_median_ms": 0.488823,
+    "bvh_rebuild_ms": [
+      0.495353,
+      0.475142,
+      0.488823
+    ],
+    "load_including_bvh_median_ms": 5.192297,
+    "load_including_bvh_ms": [
+      5.201187,
+      5.180497,
+      5.192297
+    ],
+    "primitives": 1093,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+    "triangles": 1088
+  },
+  {
+    "bvh_nodes": 2313,
+    "bvh_rebuild_median_ms": 2.364513,
+    "bvh_rebuild_ms": [
+      2.351752,
+      2.364513,
+      2.366433
+    ],
+    "load_including_bvh_median_ms": 19.805383,
+    "load_including_bvh_ms": [
+      19.805383,
+      19.824042,
+      19.764311
+    ],
+    "primitives": 4229,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/complexity-high.json",
+    "triangles": 4224
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "step": "preview",
+  "argv": [
+    "/home/ubuntu/cis5650/with-display",
+    "python3",
+    "scripts/run_hedge_suite.py",
+    "--phase",
+    "preview",
+    "--build",
+    "build-submission",
+    "--prefix",
+    "submission-final"
+  ],
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "shell": false,
+  "source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "binary_sha256_before": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "headless_controller_sha256": "053e69f71dba9261b6fb98ab0db111860f3cad06c5d81ac4ad45a09102474d16",
+  "deadline_units_before": {
+    "/etc/systemd/system/cis5650-autostop.timer": "f74853e21b71a02b85b5754fb2dded43e094363b7d261c3cf4751c6585852564",
+    "/etc/systemd/system/cis5650-deadline.service": "83759763bfbe69915c05ce7147639bf1359db0254d2b37823bcc0217f0ec8a4f",
+    "/usr/local/sbin/cis5650-refresh-deadline": "73782530a355c5159993e7d8030190beab4dc15ca83426d2e93d149b38acbc2d"
+  },
+  "timer_deadline": "Fri 2026-10-02 02:05:59 UTC",
+  "started_at_utc": "2026-10-01T23:56:19.569055+00:00",
+  "exit_code": 0,
+  "ended_at_utc": "2026-10-01T23:56:37.674924+00:00",
+  "deadline_units_after": {
+    "/etc/systemd/system/cis5650-autostop.timer": "f74853e21b71a02b85b5754fb2dded43e094363b7d261c3cf4751c6585852564",
+    "/etc/systemd/system/cis5650-deadline.service": "83759763bfbe69915c05ce7147639bf1359db0254d2b37823bcc0217f0ec8a4f",
+    "/usr/local/sbin/cis5650-refresh-deadline": "73782530a355c5159993e7d8030190beab4dc15ca83426d2e93d149b38acbc2d"
+  },
+  "binary_sha256_after": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "stdout_log": ".local/submission-graphical-logs/preview.stdout.log",
+  "stderr_log": ".local/submission-graphical-logs/preview.stderr.log",
+  "deadline_units_unchanged": true
+}

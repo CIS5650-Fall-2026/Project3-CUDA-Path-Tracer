@@ -1,0 +1,5213 @@
+{
+  "runs": [
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 1280,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 138.5207039754,
+            "count_ms": 0.0,
+            "intersection_ms": 1966.406368113,
+            "queue_ms": 0.0,
+            "shade_ms": 1842.4478076912999,
+            "sort_ms": 2.41737598849
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 128,
+          "render_loop_wall_ms": 4033.00518,
+          "renderer_gpu_ms": 4030.28128,
+          "renderer_host_ms": 4032.93477,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 128,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 212835770478346116,
+          "geometry": 729390676191834065,
+          "materials": 15770788537044767836,
+          "render_config": 17130516731539991706,
+          "scene_file": 1612563862785355418
+        },
+        "process_elapsed_ms": 4448.168258999999,
+        "raw_checksum_fnv1a64": 12715553608300246983,
+        "raw_sha256": "29e404e01391df8143146cf7ea0df4fc35a6dd798f5ec3a2bf71ce9afca28be9",
+        "render_loop_wall_ms": 4033.00518,
+        "renderer_gpu_ms": 4030.281280517578,
+        "renderer_host_ms": 4032.9347689999995,
+        "resolution": [
+          512,
+          336
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 31.107697,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 128
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 137888,
+          "path": "gallery/renders/showcase.benchmark.csv",
+          "sha256": "9ead12d7b0fab1c465b798106b39ec40770c44f7fc49b740b5712eda258fc9e1"
+        },
+        "metadata": {
+          "bytes": 3681,
+          "path": "gallery/renders/showcase.json",
+          "sha256": "b933dc77be6d0d08a44cc905f4704d52e5d583fbf69e7b207b48db091d4c315b"
+        },
+        "png": {
+          "bytes": 377296,
+          "path": "gallery/renders/showcase.png",
+          "sha256": "242cebe8e0fcb81d7d05e092c90a2fa5d1dd6924a135c873696e988dcd6262ac"
+        },
+        "raw": {
+          "bytes": 2064424,
+          "path": "gallery/renders/showcase.sum.bin",
+          "sha256": "29e404e01391df8143146cf7ea0df4fc35a6dd798f5ec3a2bf71ce9afca28be9"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              512,
+              336
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              512,
+              336
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": true,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 12715553608300246983,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 12715553608300246983,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 212835770478346116,
+              "geometry": 729390676191834065,
+              "materials": 15770788537044767836,
+              "render_config": 17130516731539991706,
+              "scene_file": 1612563862785355418
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 1612563862785355418,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 212835770478346116,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 15770788537044767836,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 729390676191834065,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 17130516731539991706,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 31.107697,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 31.107697,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 31.107697,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 31.107697,
+              "render_loop_wall_ms": 4033.00518
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase.benchmark.csv",
+              "measured_samples": 128,
+              "renderer_gpu_ms": 4030.281280517578,
+              "renderer_host_ms": 4032.9347689999995
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 4032.93477,
+              "metadata": 4032.9347689999995
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 4030.28128,
+              "metadata": 4030.281280517578
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 4033.00518,
+              "metadata": 4033.00518
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 4448.168258999999,
+              "render_loop_wall_ms": 4033.00518
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+        "--samples",
+        "128",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/showcase",
+        "--resolution",
+        "512x336",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:17.134153Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": true,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "depth": 10,
+        "exact_comparison": false,
+        "gallery_role": "showcase",
+        "label": "showcase",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "capability",
+        "repeat": null,
+        "resolution": [
+          512,
+          336
+        ],
+        "rr": false,
+        "sample_target": 128,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-showcase.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 19990,
+        "path": "gallery/renders/showcase.command.json",
+        "sha256": "66512a6c0d14ded1f65de01c73fa8b31f4ee340dbcbd374f9cbd2eb34173c6c2"
+      },
+      "label": "showcase",
+      "phase": "gallery",
+      "process_elapsed_ms": 4448.168258999999,
+      "purpose": "capability",
+      "run_id": 55,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 182476,
+              "device": 66306,
+              "inode": 3682705,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/fluted-body-medium.glb",
+              "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd"
+            },
+            {
+              "bytes": 120412,
+              "device": 66306,
+              "inode": 3682707,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/swept-knot-medium.glb",
+              "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e"
+            },
+            {
+              "bytes": 3342,
+              "device": 66306,
+              "inode": 3682703,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+              "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+            }
+          ],
+          "manifest_sha256": "3c649d0f4f96de9f94f3099069127e2b0d51720c005d27c9365b71f3dc960033",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+          "scene_file": "gltf-showcase.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 182476,
+              "device": 66306,
+              "inode": 3682705,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/fluted-body-medium.glb",
+              "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd"
+            },
+            {
+              "bytes": 120412,
+              "device": 66306,
+              "inode": 3682707,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/swept-knot-medium.glb",
+              "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e"
+            },
+            {
+              "bytes": 3342,
+              "device": 66306,
+              "inode": 3682703,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+              "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+            }
+          ],
+          "manifest_sha256": "3c649d0f4f96de9f94f3099069127e2b0d51720c005d27c9365b71f3dc960033",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+          "scene_file": "gltf-showcase.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:12.666967Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/showcase.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 96,
+        "path": "gallery/renders/showcase.stdout.txt",
+        "sha256": "8e05766391bdfe879b08917009915ef68cfafaf3d252d00fe323fa2bf6a8a22c"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 1280,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 127.5354880472,
+            "count_ms": 0.0,
+            "intersection_ms": 122.6900796602,
+            "queue_ms": 0.0,
+            "shade_ms": 446.0025922883,
+            "sort_ms": 2.46694398933
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 128,
+          "render_loop_wall_ms": 779.704752,
+          "renderer_gpu_ms": 777.060836,
+          "renderer_host_ms": 779.673701,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 128,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 9154142434078075551,
+          "geometry": 3864739751733495646,
+          "materials": 15770788537044767836,
+          "render_config": 17130516731539991706,
+          "scene_file": 7288524922616809244
+        },
+        "process_elapsed_ms": 1083.5545629998933,
+        "raw_checksum_fnv1a64": 16353094473160052125,
+        "raw_sha256": "65464478f39f20e9692bc518682d23a705c284a7e470bf782af9db32b9b73124",
+        "render_loop_wall_ms": 779.704752,
+        "renderer_gpu_ms": 777.0608358383179,
+        "renderer_host_ms": 779.6737009999999,
+        "resolution": [
+          512,
+          336
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 6.029639,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 128
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 139358,
+          "path": "gallery/renders/baseline.benchmark.csv",
+          "sha256": "63b989e4dee332eb2a334fe094a6cb28632ee83c8da3de35f3da15b1db6f868e"
+        },
+        "metadata": {
+          "bytes": 3681,
+          "path": "gallery/renders/baseline.json",
+          "sha256": "09cbe6f2ba8bbccd7fbb76f708d0692d4bd58bd2ebec20b214108e37a9ebd243"
+        },
+        "png": {
+          "bytes": 364090,
+          "path": "gallery/renders/baseline.png",
+          "sha256": "4b4aa9fd8526fc204efb33fe9152e96ca54e58beaafc2231670f3e9912629d5f"
+        },
+        "raw": {
+          "bytes": 2064424,
+          "path": "gallery/renders/baseline.sum.bin",
+          "sha256": "65464478f39f20e9692bc518682d23a705c284a7e470bf782af9db32b9b73124"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              512,
+              336
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              512,
+              336
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": true,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 16353094473160052125,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 16353094473160052125,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 9154142434078075551,
+              "geometry": 3864739751733495646,
+              "materials": 15770788537044767836,
+              "render_config": 17130516731539991706,
+              "scene_file": 7288524922616809244
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 7288524922616809244,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 9154142434078075551,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 15770788537044767836,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 3864739751733495646,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 17130516731539991706,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.029639,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.029639,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.029639,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.029639,
+              "render_loop_wall_ms": 779.704752
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline.benchmark.csv",
+              "measured_samples": 128,
+              "renderer_gpu_ms": 777.0608358383179,
+              "renderer_host_ms": 779.6737009999999
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 128,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 779.673701,
+              "metadata": 779.6737009999999
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 777.060836,
+              "metadata": 777.0608358383179
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 779.704752,
+              "metadata": 779.704752
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 1083.5545629998933,
+              "render_loop_wall_ms": 779.704752
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+        "--samples",
+        "128",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/baseline",
+        "--resolution",
+        "512x336",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:19.020064Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": true,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "depth": 10,
+        "exact_comparison": false,
+        "gallery_role": "baseline",
+        "label": "baseline",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "capability",
+        "repeat": null,
+        "resolution": [
+          512,
+          336
+        ],
+        "rr": false,
+        "sample_target": 128,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-baseline.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 18066,
+        "path": "gallery/renders/baseline.command.json",
+        "sha256": "1a9e7781c301d6454e5e3dba56ca15a888ffad53df53717c4af2278181e3c1e7"
+      },
+      "label": "baseline",
+      "phase": "gallery",
+      "process_elapsed_ms": 1083.5545629998933,
+      "purpose": "capability",
+      "run_id": 56,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 2732,
+              "device": 66306,
+              "inode": 3670264,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+              "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58"
+            }
+          ],
+          "manifest_sha256": "8e5e8fffd321b0c4132348bf1646458ad8676bd8be4748bdb6cf8550e41779fc",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+          "scene_file": "gltf-baseline.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 2732,
+              "device": 66306,
+              "inode": 3670264,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+              "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58"
+            }
+          ],
+          "manifest_sha256": "8e5e8fffd321b0c4132348bf1646458ad8676bd8be4748bdb6cf8550e41779fc",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-baseline.json",
+          "scene_file": "gltf-baseline.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:17.918706Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/baseline.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 96,
+        "path": "gallery/renders/baseline.stdout.txt",
+        "sha256": "7ba83554792e0cabe70d8f332690d7ecbc81e5ea7c92c6dd5ec9f163bbb582cf"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 160,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 4.9574400152,
+            "count_ms": 0.0,
+            "intersection_ms": 117.029440161,
+            "queue_ms": 0.0,
+            "shade_ms": 98.6601278096,
+            "sort_ms": 0.29759999856999997
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 16,
+          "render_loop_wall_ms": 232.006803,
+          "renderer_gpu_ms": 231.676415,
+          "renderer_host_ms": 232.001823,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 16,
+        "config": {
+          "aa": true,
+          "bvh": false,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 8325147047878081231,
+          "geometry": 11488631723181008068,
+          "materials": 3117248740601025773,
+          "render_config": 7494301519214524130,
+          "scene_file": 9401113159293646963
+        },
+        "process_elapsed_ms": 476.67870300006143,
+        "raw_checksum_fnv1a64": 14383916981482296041,
+        "raw_sha256": "3c94f0c443716d58b3248f55f45b1c8e602fc926f5b2dce09684111cffc8f2cd",
+        "render_loop_wall_ms": 232.006803,
+        "renderer_gpu_ms": 231.6764154434204,
+        "renderer_host_ms": 232.001823,
+        "resolution": [
+          128,
+          84
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 14.225387,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 16
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 17295,
+          "path": "gallery/renders/low-bvh-off.benchmark.csv",
+          "sha256": "0f045372bdcd1a2dd092a2f22e54e8577051798d1b6be53f5c3dda990ea952f0"
+        },
+        "metadata": {
+          "bytes": 3686,
+          "path": "gallery/renders/low-bvh-off.json",
+          "sha256": "0b62ce2e3ee1d9b86aac62a061e274a01052082edc9da3bbd73e34ea3991ff42"
+        },
+        "png": {
+          "bytes": 27842,
+          "path": "gallery/renders/low-bvh-off.png",
+          "sha256": "92f8d3c58b77824e9331ff3131ca73330f227b2cdcdc4fb878365e38e0d07220"
+        },
+        "raw": {
+          "bytes": 129064,
+          "path": "gallery/renders/low-bvh-off.sum.bin",
+          "sha256": "3c94f0c443716d58b3248f55f45b1c8e602fc926f5b2dce09684111cffc8f2cd"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": false,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 14383916981482296041,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 14383916981482296041,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 8325147047878081231,
+              "geometry": 11488631723181008068,
+              "materials": 3117248740601025773,
+              "render_config": 7494301519214524130,
+              "scene_file": 9401113159293646963
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 9401113159293646963,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 8325147047878081231,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 3117248740601025773,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 11488631723181008068,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 7494301519214524130,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 14.225387,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 14.225387,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 14.225387,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 14.225387,
+              "render_loop_wall_ms": 232.006803
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off.benchmark.csv",
+              "measured_samples": 16,
+              "renderer_gpu_ms": 231.6764154434204,
+              "renderer_host_ms": 232.001823
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 232.001823,
+              "metadata": 232.001823
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 231.676415,
+              "metadata": 231.6764154434204
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 232.006803,
+              "metadata": 232.006803
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 476.67870300006143,
+              "render_loop_wall_ms": 232.006803
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+        "--samples",
+        "16",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-off",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:20.298363Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": false,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "complexity": "low",
+        "depth": 10,
+        "exact_comparison": true,
+        "label": "low-bvh-off",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "culling",
+        "repeat": null,
+        "resolution": [
+          128,
+          84
+        ],
+        "rr": false,
+        "sample_target": 16,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-complexity-low.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 20885,
+        "path": "gallery/renders/low-bvh-off.command.json",
+        "sha256": "38ea8405d2d8129d17eb482d1395162df98545a60b82eb02d9757b6c206e0a05"
+      },
+      "label": "low-bvh-off",
+      "phase": "gallery",
+      "process_elapsed_ms": 476.67870300006143,
+      "purpose": "culling",
+      "run_id": 57,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 10540,
+              "device": 66306,
+              "inode": 3682711,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+              "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2872,
+              "device": 66306,
+              "inode": 3682697,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+              "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+            }
+          ],
+          "manifest_sha256": "1ab6d4a1bb3f24f6e195ab03b3d80e3cee37369d433a2c9a770bf09ac32bbd1a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+          "scene_file": "gltf-complexity-low.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 10540,
+              "device": 66306,
+              "inode": 3682711,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+              "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2872,
+              "device": 66306,
+              "inode": 3682697,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+              "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+            }
+          ],
+          "manifest_sha256": "1ab6d4a1bb3f24f6e195ab03b3d80e3cee37369d433a2c9a770bf09ac32bbd1a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+          "scene_file": "gltf-complexity-low.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:19.802023Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/low-bvh-off.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 99,
+        "path": "gallery/renders/low-bvh-off.stdout.txt",
+        "sha256": "b54ed4e85d3a1e157f2b5f901cda2b3218b263375f929fd62f5e4b59ad332dfa"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 160,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 4.9004480148,
+            "count_ms": 0.0,
+            "intersection_ms": 51.060063991,
+            "queue_ms": 0.0,
+            "shade_ms": 37.0961920408,
+            "sort_ms": 0.30604799898
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 16,
+          "render_loop_wall_ms": 104.365606,
+          "renderer_gpu_ms": 104.029567,
+          "renderer_host_ms": 104.360576,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 16,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 8325147047878081231,
+          "geometry": 11488631723181008068,
+          "materials": 3117248740601025773,
+          "render_config": 8830274349388963599,
+          "scene_file": 9401113159293646963
+        },
+        "process_elapsed_ms": 347.0275509999965,
+        "raw_checksum_fnv1a64": 14383916981482296041,
+        "raw_sha256": "3c94f0c443716d58b3248f55f45b1c8e602fc926f5b2dce09684111cffc8f2cd",
+        "render_loop_wall_ms": 104.365606,
+        "renderer_gpu_ms": 104.02956676483154,
+        "renderer_host_ms": 104.36057600000002,
+        "resolution": [
+          128,
+          84
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 6.0856,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 16
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 17237,
+          "path": "gallery/renders/low-bvh-on.benchmark.csv",
+          "sha256": "a39353d1f09a8d5fface208710bf6980ff61e7a8b2c8e686226d72fe2a7a54b6"
+        },
+        "metadata": {
+          "bytes": 3688,
+          "path": "gallery/renders/low-bvh-on.json",
+          "sha256": "a422be4dfb27f3fd39de18b9a0a79c72a5e39c56c4eeda6caaf5fea723eaa19f"
+        },
+        "png": {
+          "bytes": 27842,
+          "path": "gallery/renders/low-bvh-on.png",
+          "sha256": "92f8d3c58b77824e9331ff3131ca73330f227b2cdcdc4fb878365e38e0d07220"
+        },
+        "raw": {
+          "bytes": 129064,
+          "path": "gallery/renders/low-bvh-on.sum.bin",
+          "sha256": "3c94f0c443716d58b3248f55f45b1c8e602fc926f5b2dce09684111cffc8f2cd"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": true,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 14383916981482296041,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 14383916981482296041,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 8325147047878081231,
+              "geometry": 11488631723181008068,
+              "materials": 3117248740601025773,
+              "render_config": 8830274349388963599,
+              "scene_file": 9401113159293646963
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 9401113159293646963,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 8325147047878081231,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 3117248740601025773,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 11488631723181008068,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 8830274349388963599,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.0856,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.0856,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.0856,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 6.0856,
+              "render_loop_wall_ms": 104.365606
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on.benchmark.csv",
+              "measured_samples": 16,
+              "renderer_gpu_ms": 104.02956676483154,
+              "renderer_host_ms": 104.36057600000002
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 104.360576,
+              "metadata": 104.36057600000002
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 104.029567,
+              "metadata": 104.02956676483154
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 104.365606,
+              "metadata": 104.365606
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 347.0275509999965,
+              "render_loop_wall_ms": 104.365606
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+        "--samples",
+        "16",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/low-bvh-on",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:20.841650Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": true,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "complexity": "low",
+        "depth": 10,
+        "exact_comparison": true,
+        "label": "low-bvh-on",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "culling",
+        "repeat": null,
+        "resolution": [
+          128,
+          84
+        ],
+        "rr": false,
+        "sample_target": 16,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-complexity-low.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 20868,
+        "path": "gallery/renders/low-bvh-on.command.json",
+        "sha256": "04d4164572b753ad159547f99aea2955ff4eb71cef58c848a2b7350f38a9ba59"
+      },
+      "label": "low-bvh-on",
+      "phase": "gallery",
+      "process_elapsed_ms": 347.0275509999965,
+      "purpose": "culling",
+      "run_id": 58,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 10540,
+              "device": 66306,
+              "inode": 3682711,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+              "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2872,
+              "device": 66306,
+              "inode": 3682697,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+              "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+            }
+          ],
+          "manifest_sha256": "1ab6d4a1bb3f24f6e195ab03b3d80e3cee37369d433a2c9a770bf09ac32bbd1a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+          "scene_file": "gltf-complexity-low.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 10540,
+              "device": 66306,
+              "inode": 3682711,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-low.glb",
+              "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2872,
+              "device": 66306,
+              "inode": 3682697,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+              "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+            }
+          ],
+          "manifest_sha256": "1ab6d4a1bb3f24f6e195ab03b3d80e3cee37369d433a2c9a770bf09ac32bbd1a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+          "scene_file": "gltf-complexity-low.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:20.474963Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/low-bvh-on.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 98,
+        "path": "gallery/renders/low-bvh-on.stdout.txt",
+        "sha256": "e8bd9910603f365cd8671e21f9d4d7b008006e0c8756bfefb23d5d088f6d8604"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 160,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 4.9678399995,
+            "count_ms": 0.0,
+            "intersection_ms": 428.47318314,
+            "queue_ms": 0.0,
+            "shade_ms": 336.1255346321,
+            "sort_ms": 0.31606399899
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 16,
+          "render_loop_wall_ms": 781.239667,
+          "renderer_gpu_ms": 780.890915,
+          "renderer_host_ms": 781.232686,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 16,
+        "config": {
+          "aa": true,
+          "bvh": false,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 1675229233964474048,
+          "geometry": 11078685426618518326,
+          "materials": 3117248740601025773,
+          "render_config": 7494301519214524130,
+          "scene_file": 4108227642355420137
+        },
+        "process_elapsed_ms": 1030.2790360000245,
+        "raw_checksum_fnv1a64": 4940153134783267675,
+        "raw_sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf",
+        "render_loop_wall_ms": 781.239667,
+        "renderer_gpu_ms": 780.8909149169922,
+        "renderer_host_ms": 781.2326860000001,
+        "resolution": [
+          128,
+          84
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 48.863893,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 16
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 16954,
+          "path": "gallery/renders/medium-bvh-off.benchmark.csv",
+          "sha256": "d5c3e8873eb968841608acc40df4a74cfab025a0bc9eaa6f92cb6dabe1e6c5cb"
+        },
+        "metadata": {
+          "bytes": 3704,
+          "path": "gallery/renders/medium-bvh-off.json",
+          "sha256": "10064420619f2aa0b0bf9473ca9a0c752c412693e8bb690be140bb70993f5dd1"
+        },
+        "png": {
+          "bytes": 27832,
+          "path": "gallery/renders/medium-bvh-off.png",
+          "sha256": "c27657153b97a80c7869c476474b619909febebd0e6f1ef86d9ce42e675010af"
+        },
+        "raw": {
+          "bytes": 129064,
+          "path": "gallery/renders/medium-bvh-off.sum.bin",
+          "sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": false,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 4940153134783267675,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 4940153134783267675,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 1675229233964474048,
+              "geometry": 11078685426618518326,
+              "materials": 3117248740601025773,
+              "render_config": 7494301519214524130,
+              "scene_file": 4108227642355420137
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 4108227642355420137,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 1675229233964474048,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 3117248740601025773,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 11078685426618518326,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 7494301519214524130,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 48.863893,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 48.863893,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 48.863893,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 48.863893,
+              "render_loop_wall_ms": 781.239667
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off.benchmark.csv",
+              "measured_samples": 16,
+              "renderer_gpu_ms": 780.8909149169922,
+              "renderer_host_ms": 781.2326860000001
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 781.232686,
+              "metadata": 781.2326860000001
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 780.890915,
+              "metadata": 780.8909149169922
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 781.239667,
+              "metadata": 781.239667
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 1030.2790360000245,
+              "render_loop_wall_ms": 781.239667
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+        "--samples",
+        "16",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-off",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:22.067777Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": false,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "complexity": "medium",
+        "depth": 10,
+        "exact_comparison": true,
+        "label": "medium-bvh-off",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "culling",
+        "repeat": null,
+        "resolution": [
+          128,
+          84
+        ],
+        "rr": false,
+        "sample_target": 16,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-complexity-medium.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 20991,
+        "path": "gallery/renders/medium-bvh-off.command.json",
+        "sha256": "c9683f70dd7f1dd19216d157d15fd591d895b15be2fef70535d4dd34f8621aa8"
+      },
+      "label": "medium-bvh-off",
+      "phase": "gallery",
+      "process_elapsed_ms": 1030.2790360000245,
+      "purpose": "culling",
+      "run_id": 59,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 34232,
+              "device": 66306,
+              "inode": 3682713,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-medium.glb",
+              "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2878,
+              "device": 66306,
+              "inode": 3682698,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+              "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+            }
+          ],
+          "manifest_sha256": "39c44999a338dfd0e7cd9590aca095a7c7bb921386bc50c38bb89b291288e176",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+          "scene_file": "gltf-complexity-medium.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 34232,
+              "device": 66306,
+              "inode": 3682713,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-medium.glb",
+              "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2878,
+              "device": 66306,
+              "inode": 3682698,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+              "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+            }
+          ],
+          "manifest_sha256": "39c44999a338dfd0e7cd9590aca095a7c7bb921386bc50c38bb89b291288e176",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+          "scene_file": "gltf-complexity-medium.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:21.017908Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/medium-bvh-off.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 102,
+        "path": "gallery/renders/medium-bvh-off.stdout.txt",
+        "sha256": "34ec4f5224b7a469ba93f55287f5f56b95e7668d5fc5395fc87704d6856c9534"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 160,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 4.8872319982,
+            "count_ms": 0.0,
+            "intersection_ms": 65.801791857,
+            "queue_ms": 0.0,
+            "shade_ms": 43.9672639967,
+            "sort_ms": 0.29775999888
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 16,
+          "render_loop_wall_ms": 125.971016,
+          "renderer_gpu_ms": 125.638849,
+          "renderer_host_ms": 125.965656,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 16,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 1675229233964474048,
+          "geometry": 11078685426618518326,
+          "materials": 3117248740601025773,
+          "render_config": 8830274349388963599,
+          "scene_file": 4108227642355420137
+        },
+        "process_elapsed_ms": 369.4542859999501,
+        "raw_checksum_fnv1a64": 4940153134783267675,
+        "raw_sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf",
+        "render_loop_wall_ms": 125.971016,
+        "renderer_gpu_ms": 125.6388487815857,
+        "renderer_host_ms": 125.96565600000001,
+        "resolution": [
+          128,
+          84
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 7.106569,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 16
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 17243,
+          "path": "gallery/renders/medium-bvh-on.benchmark.csv",
+          "sha256": "999a8afb7ae9245afc784e9df6a6037f4f005cda75006767ab48a6405a11b000"
+        },
+        "metadata": {
+          "bytes": 3700,
+          "path": "gallery/renders/medium-bvh-on.json",
+          "sha256": "95990cd3787bf6f33800ed3f606b0d5b27ce4f7ac074f0ad69e13bbd74f67df3"
+        },
+        "png": {
+          "bytes": 27832,
+          "path": "gallery/renders/medium-bvh-on.png",
+          "sha256": "c27657153b97a80c7869c476474b619909febebd0e6f1ef86d9ce42e675010af"
+        },
+        "raw": {
+          "bytes": 129064,
+          "path": "gallery/renders/medium-bvh-on.sum.bin",
+          "sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": true,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 4940153134783267675,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 4940153134783267675,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 1675229233964474048,
+              "geometry": 11078685426618518326,
+              "materials": 3117248740601025773,
+              "render_config": 8830274349388963599,
+              "scene_file": 4108227642355420137
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 4108227642355420137,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 1675229233964474048,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 3117248740601025773,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 11078685426618518326,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 8830274349388963599,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 7.106569,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 7.106569,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 7.106569,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 7.106569,
+              "render_loop_wall_ms": 125.971016
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on.benchmark.csv",
+              "measured_samples": 16,
+              "renderer_gpu_ms": 125.6388487815857,
+              "renderer_host_ms": 125.96565600000001
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 125.965656,
+              "metadata": 125.96565600000001
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 125.638849,
+              "metadata": 125.6388487815857
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 125.971016,
+              "metadata": 125.971016
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 369.4542859999501,
+              "render_loop_wall_ms": 125.971016
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+        "--samples",
+        "16",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/medium-bvh-on",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:22.636300Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": true,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "complexity": "medium",
+        "depth": 10,
+        "exact_comparison": true,
+        "label": "medium-bvh-on",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "culling",
+        "repeat": null,
+        "resolution": [
+          128,
+          84
+        ],
+        "rr": false,
+        "sample_target": 16,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-complexity-medium.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 20966,
+        "path": "gallery/renders/medium-bvh-on.command.json",
+        "sha256": "d94d52bbd511a85afc91173c1a22aac4eb81a9f4ee28bd7345fc03baf80cfd8c"
+      },
+      "label": "medium-bvh-on",
+      "phase": "gallery",
+      "process_elapsed_ms": 369.4542859999501,
+      "purpose": "culling",
+      "run_id": 60,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 34232,
+              "device": 66306,
+              "inode": 3682713,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-medium.glb",
+              "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2878,
+              "device": 66306,
+              "inode": 3682698,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+              "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+            }
+          ],
+          "manifest_sha256": "39c44999a338dfd0e7cd9590aca095a7c7bb921386bc50c38bb89b291288e176",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+          "scene_file": "gltf-complexity-medium.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 34232,
+              "device": 66306,
+              "inode": 3682713,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-medium.glb",
+              "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2878,
+              "device": 66306,
+              "inode": 3682698,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+              "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+            }
+          ],
+          "manifest_sha256": "39c44999a338dfd0e7cd9590aca095a7c7bb921386bc50c38bb89b291288e176",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+          "scene_file": "gltf-complexity-medium.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:22.246902Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/medium-bvh-on.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 101,
+        "path": "gallery/renders/medium-bvh-on.stdout.txt",
+        "sha256": "0ff2dead94968508e80757fa8e307eea1e5eab6e3044422d5e3b21df738165ad"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 160,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 5.2023680047,
+            "count_ms": 0.0,
+            "intersection_ms": 1659.83810887,
+            "queue_ms": 0.0,
+            "shade_ms": 1264.9347221121,
+            "sort_ms": 0.33376000021
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 16,
+          "render_loop_wall_ms": 2942.50199,
+          "renderer_gpu_ms": 2942.13531,
+          "renderer_host_ms": 2942.48582,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 16,
+        "config": {
+          "aa": true,
+          "bvh": false,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 7705158862482153579,
+          "geometry": 15574776981846155400,
+          "materials": 3117248740601025773,
+          "render_config": 7494301519214524130,
+          "scene_file": 14600225706049099695
+        },
+        "process_elapsed_ms": 3198.500095999975,
+        "raw_checksum_fnv1a64": 12745197323529186501,
+        "raw_sha256": "e823cdd3a7089f5a08dcb7646074f6f9f8645c07725b51de205feac37f94cf1b",
+        "render_loop_wall_ms": 2942.50199,
+        "renderer_gpu_ms": 2942.1353149414062,
+        "renderer_host_ms": 2942.485819,
+        "resolution": [
+          128,
+          84
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 184.564495,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 16
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 17018,
+          "path": "gallery/renders/high-bvh-off.benchmark.csv",
+          "sha256": "470291ddd961723593d7fb1b27ff734e5a1a175a03442b38c3674061dcb3f71c"
+        },
+        "metadata": {
+          "bytes": 3694,
+          "path": "gallery/renders/high-bvh-off.json",
+          "sha256": "b5186e150689b7ba1c1aba826e33f4aa73200644f14144f620b610583f43e738"
+        },
+        "png": {
+          "bytes": 27845,
+          "path": "gallery/renders/high-bvh-off.png",
+          "sha256": "eefc9407dd5bb659c0e4e1232200d7b1db0f476b9e9bc7599ad9be12daaff373"
+        },
+        "raw": {
+          "bytes": 129064,
+          "path": "gallery/renders/high-bvh-off.sum.bin",
+          "sha256": "e823cdd3a7089f5a08dcb7646074f6f9f8645c07725b51de205feac37f94cf1b"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": false,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 12745197323529186501,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 12745197323529186501,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 7705158862482153579,
+              "geometry": 15574776981846155400,
+              "materials": 3117248740601025773,
+              "render_config": 7494301519214524130,
+              "scene_file": 14600225706049099695
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 14600225706049099695,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 7705158862482153579,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 3117248740601025773,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 15574776981846155400,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 7494301519214524130,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 184.564495,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 184.564495,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 184.564495,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 184.564495,
+              "render_loop_wall_ms": 2942.50199
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off.benchmark.csv",
+              "measured_samples": 16,
+              "renderer_gpu_ms": 2942.1353149414062,
+              "renderer_host_ms": 2942.485819
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 2942.48582,
+              "metadata": 2942.485819
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 2942.13531,
+              "metadata": 2942.1353149414062
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 2942.50199,
+              "metadata": 2942.50199
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 3198.500095999975,
+              "render_loop_wall_ms": 2942.50199
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+        "--samples",
+        "16",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-off",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:26.036082Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": false,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "complexity": "high",
+        "depth": 10,
+        "exact_comparison": true,
+        "label": "high-bvh-off",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "culling",
+        "repeat": null,
+        "resolution": [
+          128,
+          84
+        ],
+        "rr": false,
+        "sample_target": 16,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-complexity-high.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 20927,
+        "path": "gallery/renders/high-bvh-off.command.json",
+        "sha256": "22b8ed7d09717803a3172121f09ae994e1926a1e16457b27e03a632912ef6c37"
+      },
+      "label": "high-bvh-off",
+      "phase": "gallery",
+      "process_elapsed_ms": 3198.500095999975,
+      "purpose": "culling",
+      "run_id": 61,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 124600,
+              "device": 66306,
+              "inode": 3682708,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-high.glb",
+              "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2874,
+              "device": 66306,
+              "inode": 3682696,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+              "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+            }
+          ],
+          "manifest_sha256": "9c927e8995e1baf44ddf5174adb2dca61a050173aee55349dcbf3f11226dd22a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+          "scene_file": "gltf-complexity-high.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 124600,
+              "device": 66306,
+              "inode": 3682708,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-high.glb",
+              "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2874,
+              "device": 66306,
+              "inode": 3682696,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+              "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+            }
+          ],
+          "manifest_sha256": "9c927e8995e1baf44ddf5174adb2dca61a050173aee55349dcbf3f11226dd22a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+          "scene_file": "gltf-complexity-high.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:22.817628Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/high-bvh-off.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 100,
+        "path": "gallery/renders/high-bvh-off.stdout.txt",
+        "sha256": "5ec632070b2234210e17fb21b6c1f4c4c482726625b9d3ba3a206fa36a029aca"
+      }
+    },
+    {
+      "actual": {
+        "benchmark_csv": {
+          "bounce_records": 160,
+          "gpu_stage_sums_ms": {
+            "compaction_ms": 4.8947200123,
+            "count_ms": 0.0,
+            "intersection_ms": 81.735423849,
+            "queue_ms": 0.0,
+            "shade_ms": 50.2537599681,
+            "sort_ms": 0.30172799882
+          },
+          "host_stage_sums_ms": {
+            "queue_host_ms": 0.0
+          },
+          "measured_samples": 16,
+          "render_loop_wall_ms": 148.368971,
+          "renderer_gpu_ms": 148.027712,
+          "renderer_host_ms": 148.356701,
+          "semantics": {
+            "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+            "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+          },
+          "wavefront_shader_breakdown_ms": {
+            "dielectric_ms": 0.0,
+            "diffuse_ms": 0.0,
+            "emission_ms": 0.0,
+            "mirror_ms": 0.0,
+            "terminal_ms": 0.0
+          }
+        },
+        "camera": {
+          "aperture": 0.0,
+          "focus_distance": 8.800000190734863,
+          "look_at": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "position": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "shutter": [
+            0.0,
+            1.0
+          ]
+        },
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 16,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 10,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        },
+        "fingerprints": {
+          "assets": 7705158862482153579,
+          "geometry": 15574776981846155400,
+          "materials": 3117248740601025773,
+          "render_config": 8830274349388963599,
+          "scene_file": 14600225706049099695
+        },
+        "process_elapsed_ms": 398.411929999952,
+        "raw_checksum_fnv1a64": 12745197323529186501,
+        "raw_sha256": "e823cdd3a7089f5a08dcb7646074f6f9f8645c07725b51de205feac37f94cf1b",
+        "render_loop_wall_ms": 148.368971,
+        "renderer_gpu_ms": 148.02771186828613,
+        "renderer_host_ms": 148.356701,
+        "resolution": [
+          128,
+          84
+        ],
+        "run_policy": {
+          "last_sample_wall_ms": 8.814439,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "seed": 947,
+        "target_samples": 16
+      },
+      "artifacts": {
+        "benchmark_csv": {
+          "bytes": 17239,
+          "path": "gallery/renders/high-bvh-on.benchmark.csv",
+          "sha256": "b756cf07ddc1fa64d67e2b1594063ec1844d9075966644c7c4b9eee884ceb471"
+        },
+        "metadata": {
+          "bytes": 3687,
+          "path": "gallery/renders/high-bvh-on.json",
+          "sha256": "6c6046da37db1457716d9fc1e1683fa28389f106b7d658f9c35da24fc92efa7e"
+        },
+        "png": {
+          "bytes": 27845,
+          "path": "gallery/renders/high-bvh-on.png",
+          "sha256": "eefc9407dd5bb659c0e4e1232200d7b1db0f476b9e9bc7599ad9be12daaff373"
+        },
+        "raw": {
+          "bytes": 129064,
+          "path": "gallery/renders/high-bvh-on.sum.bin",
+          "sha256": "e823cdd3a7089f5a08dcb7646074f6f9f8645c07725b51de205feac37f94cf1b"
+        }
+      },
+      "audit": {
+        "checks": [
+          {
+            "actual": 1,
+            "name": "metadata-format-version",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "target-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "completed-samples",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "raw-samples",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "raw-resolution",
+            "passed": true
+          },
+          {
+            "actual": [
+              128,
+              84
+            ],
+            "name": "metadata-resolution",
+            "passed": true
+          },
+          {
+            "actual": 947,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "actual": "counter",
+            "name": "sampler",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-id",
+            "passed": true
+          },
+          {
+            "actual": 2,
+            "name": "sampler-version",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aa": true,
+              "bvh": true,
+              "compact": true,
+              "debug": "none",
+              "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+              "max_depth": 10,
+              "motion": true,
+              "nee": true,
+              "rr": false,
+              "rr_start": 3,
+              "sampler": "counter",
+              "sampler_id": 2,
+              "sort": false,
+              "wavefront": false
+            },
+            "name": "config",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+            "name": "scene",
+            "passed": true
+          },
+          {
+            "actual": {
+              "aperture": 0.0,
+              "focus_distance": 8.800000190734863,
+              "look_at": [
+                0.0,
+                1.2000000476837158,
+                0.0
+              ],
+              "position": [
+                4.800000190734863,
+                2.799999952316284,
+                7.199999809265137
+              ],
+              "shutter": [
+                0.0,
+                1.0
+              ]
+            },
+            "name": "camera-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              0.0,
+              1.0
+            ],
+            "name": "camera-shutter",
+            "passed": true
+          },
+          {
+            "actual": {
+              "checksum": 12745197323529186501,
+              "checksum_security": "change/corruption detection only; not cryptographic",
+              "checksum_trailer_bytes": 8,
+              "endianness": "little",
+              "header_bytes": 32,
+              "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+              "magic": "C565SUM\\0",
+              "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+              "payload_offset_bytes": 32,
+              "png_orientation": "horizontal flip of renderer-order pixels",
+              "trailer": "little-endian FNV-1a-64 over header and payload",
+              "version": 1
+            },
+            "name": "linear-sum-metadata",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "name": "linear-sum-version",
+            "passed": true
+          },
+          {
+            "actual": 12745197323529186501,
+            "name": "raw-checksum",
+            "passed": true
+          },
+          {
+            "actual": {
+              "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on.sum.bin",
+              "png": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on.png"
+            },
+            "name": "outputs-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on.png",
+            "name": "output-png",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on.sum.bin",
+            "name": "output-raw",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "resume-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-metadata",
+            "passed": true
+          },
+          {
+            "actual": null,
+            "name": "checkpoint-every",
+            "passed": true
+          },
+          {
+            "actual": {
+              "assets": 7705158862482153579,
+              "geometry": 15574776981846155400,
+              "materials": 3117248740601025773,
+              "render_config": 8830274349388963599,
+              "scene_file": 14600225706049099695
+            },
+            "name": "fingerprints-object",
+            "passed": true
+          },
+          {
+            "actual": 14600225706049099695,
+            "name": "fingerprint-scene_file",
+            "passed": true
+          },
+          {
+            "actual": 7705158862482153579,
+            "name": "fingerprint-assets",
+            "passed": true
+          },
+          {
+            "actual": 3117248740601025773,
+            "name": "fingerprint-materials",
+            "passed": true
+          },
+          {
+            "actual": 15574776981846155400,
+            "name": "fingerprint-geometry",
+            "passed": true
+          },
+          {
+            "actual": 8830274349388963599,
+            "name": "fingerprint-render_config",
+            "passed": true
+          },
+          {
+            "actual": {
+              "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+              "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+              "compute_capability": "8.6",
+              "cuda_driver_version": 13000,
+              "cuda_runtime_version": 12080,
+              "device": "NVIDIA A10G"
+            },
+            "name": "compatibility-object",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-identifier",
+            "passed": true
+          },
+          {
+            "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+            "name": "build-source-hash",
+            "passed": true
+          },
+          {
+            "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+            "name": "starter-revision",
+            "passed": true
+          },
+          {
+            "actual": "NVIDIA A10G",
+            "name": "device",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 8.814439,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-object",
+            "passed": true
+          },
+          {
+            "actual": [
+              "last_sample_wall_ms",
+              "stop_reason",
+              "time_budget_ms"
+            ],
+            "name": "run-policy-fields",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 8.814439,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-budget",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 8.814439,
+              "stop_reason": "sample_target",
+              "time_budget_ms": null
+            },
+            "name": "run-policy-stop",
+            "passed": true
+          },
+          {
+            "actual": {
+              "last_sample_wall_ms": 8.814439,
+              "render_loop_wall_ms": 148.368971
+            },
+            "name": "last-sample-within-loop",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "name": "benchmark-enabled",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on.benchmark.csv",
+              "measured_samples": 16,
+              "renderer_gpu_ms": 148.02771186828613,
+              "renderer_host_ms": 148.356701
+            },
+            "name": "benchmark-object",
+            "passed": true
+          },
+          {
+            "actual": "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on.benchmark.csv",
+            "name": "benchmark-csv-path",
+            "passed": true
+          },
+          {
+            "actual": 16,
+            "name": "benchmark-samples",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 148.356701,
+              "metadata": 148.356701
+            },
+            "name": "benchmark-csv-renderer_host_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 148.027712,
+              "metadata": 148.02771186828613
+            },
+            "name": "benchmark-csv-renderer_gpu_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "csv": 148.368971,
+              "metadata": 148.368971
+            },
+            "name": "benchmark-csv-render_loop_wall_ms",
+            "passed": true
+          },
+          {
+            "actual": {
+              "process_elapsed_ms": 398.411929999952,
+              "render_loop_wall_ms": 148.368971
+            },
+            "name": "process-covers-render-loop",
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "raw_parser": "validate_render.read_sum",
+        "raw_values_finite_nonnegative": true
+      },
+      "binary_identity": {
+        "after": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "before": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "unchanged": true
+      },
+      "command": [
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+        "--samples",
+        "16",
+        "--seed",
+        "947",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-gltf/gallery/renders/high-bvh-on",
+        "--resolution",
+        "128x84",
+        "--depth",
+        "10",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "completed_utc": "2026-10-01T22:18:26.636177Z",
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "design": {
+        "benchmark": true,
+        "bvh": true,
+        "checkpoint_mode": null,
+        "checkpoint_relative": null,
+        "complexity": "high",
+        "depth": 10,
+        "exact_comparison": true,
+        "label": "high-bvh-on",
+        "measurement_phase": null,
+        "phase": "gallery",
+        "purpose": "culling",
+        "repeat": null,
+        "resolution": [
+          128,
+          84
+        ],
+        "rr": false,
+        "sample_target": 16,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "scene_file": "gltf-complexity-high.json",
+        "seed": 947
+      },
+      "exit_code": 0,
+      "invocation_record": {
+        "bytes": 20888,
+        "path": "gallery/renders/high-bvh-on.command.json",
+        "sha256": "f0919ea6f04ed51e1d47cb60ba3d3732ad8dfdf91d4bb5dd521146a9485901bc"
+      },
+      "label": "high-bvh-on",
+      "phase": "gallery",
+      "process_elapsed_ms": 398.411929999952,
+      "purpose": "culling",
+      "run_id": 62,
+      "scene_input_identity": {
+        "after": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 124600,
+              "device": 66306,
+              "inode": 3682708,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-high.glb",
+              "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2874,
+              "device": 66306,
+              "inode": 3682696,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+              "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+            }
+          ],
+          "manifest_sha256": "9c927e8995e1baf44ddf5174adb2dca61a050173aee55349dcbf3f11226dd22a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+          "scene_file": "gltf-complexity-high.json"
+        },
+        "before": {
+          "files": [
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3681057,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 124600,
+              "device": 66306,
+              "inode": 3682708,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/gltf/vase-high.glb",
+              "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+            },
+            {
+              "bytes": 196662,
+              "device": 66306,
+              "inode": 3673881,
+              "mtime_ns": 1790827308000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 2874,
+              "device": 66306,
+              "inode": 3682696,
+              "mtime_ns": 1790883305000000000,
+              "path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+              "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+            }
+          ],
+          "manifest_sha256": "9c927e8995e1baf44ddf5174adb2dca61a050173aee55349dcbf3f11226dd22a",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+          "scene_file": "gltf-complexity-high.json"
+        },
+        "unchanged": true
+      },
+      "schema_version": 1,
+      "source_input_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+      "started_utc": "2026-10-01T22:18:26.218220Z",
+      "status": "passed",
+      "stderr": {
+        "bytes": 0,
+        "path": "gallery/renders/high-bvh-on.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 99,
+        "path": "gallery/renders/high-bvh-on.stdout.txt",
+        "sha256": "306cc339a4e85f6b4bc70e2046f5edd31a8cc241cfbbb9e7e7c4f6d7949d67fd"
+      }
+    }
+  ],
+  "schema_version": 1
+}

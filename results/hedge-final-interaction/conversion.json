@@ -1,0 +1,50 @@
+{
+  "ffmpeg_command": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-v",
+    "error",
+    "-i",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-interaction/capture/interaction.mp4",
+    "-filter_complex",
+    "fps=4,scale=640:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=bayer:bayer_scale=3",
+    "-loop",
+    "0",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/img/interaction.gif"
+  ],
+  "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+  "gif": {
+    "path": "img/interaction.gif",
+    "duration_seconds": 49.25,
+    "fps": 4
+  },
+  "mp4": {
+    "path": "img/interaction.mp4"
+  },
+  "probe_command": [
+    "/opt/homebrew/bin/ffprobe",
+    "-v",
+    "error",
+    "-count_frames",
+    "-show_streams",
+    "-show_format",
+    "-of",
+    "json",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/img/interaction.gif"
+  ],
+  "passed": true,
+  "root_visual_verification": {
+    "passed": true,
+    "inspector": "root",
+    "frame_files": [
+      "inspected-frames/frame-12.png",
+      "inspected-frames/frame-16.png",
+      "inspected-frames/frame-2.png",
+      "inspected-frames/frame-23.png",
+      "inspected-frames/frame-30.png",
+      "inspected-frames/frame-36.png",
+      "inspected-frames/frame-44.5.png",
+      "inspected-frames/frame-46.5.png"
+    ],
+    "statement": "Inspected eight actual capture frames across convergence, orbit, zoom, pan, camera restore and save. Native image and titlebar remain fully visible. Desktop contains Ubuntu welcome/settings background and launcher icons; no credentials, private documents or personal messages are visible. Actions and iteration titles corroborate progressive changes."
+  }
+}

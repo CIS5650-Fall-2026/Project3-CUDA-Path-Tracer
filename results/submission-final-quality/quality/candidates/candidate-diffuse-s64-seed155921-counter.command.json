@@ -1,0 +1,686 @@
+{
+  "actual": {
+    "benchmark_csv": {
+      "bounce_records": 640,
+      "measured_samples": 64,
+      "render_loop_wall_ms": 291.217432,
+      "renderer_gpu_ms": 289.92288,
+      "renderer_host_ms": 291.198001
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 10.5,
+      "look_at": [
+        0.0,
+        5.0,
+        0.0
+      ],
+      "position": [
+        0.0,
+        5.0,
+        10.5
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    },
+    "completed_samples": 64,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "identity": {
+      "binary_file_identity": {
+        "bytes": 6353008,
+        "device": 66306,
+        "inode": 3689093,
+        "mtime_ns": 1790892950649290955,
+        "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+      },
+      "binary_sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "fingerprints": {
+        "assets": 11718838258311098718,
+        "geometry": 10147354337177878781,
+        "materials": 9950812798232467585,
+        "render_config": 5154763379051221133,
+        "scene_file": 9847307324157577441
+      },
+      "metadata_scene": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+      "scene_file_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a",
+      "scene_input_identity": {
+        "assets": [],
+        "manifest_sha256": "3b5ac880b859bcbc01dd28062bae2485e9a08c847e4a8050dc7cdb48a347b907",
+        "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+        "scene_bytes": 1887,
+        "scene_file": "hedge-sampling-diffuse.json",
+        "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+      }
+    },
+    "last_sample_wall_ms": 4.440252,
+    "linear_rgb_mean": 0.11512497481513143,
+    "non_render_process_overhead_ms": 237.50888399984746,
+    "process_elapsed_ms": 528.7263159998474,
+    "process_elapsed_ms_per_completed_sample": 8.261348687497616,
+    "raw_checksum_fnv1a64": 16587824405674324717,
+    "render_loop_minus_budget_ms": null,
+    "render_loop_wall_ms": 291.217432,
+    "render_loop_wall_ms_per_completed_sample": 4.550272375,
+    "renderer_gpu_ms": 289.9228801727295,
+    "renderer_gpu_ms_per_completed_sample": 4.530045002698898,
+    "renderer_host_ms": 291.1980009999999,
+    "resolution": [
+      128,
+      84
+    ],
+    "run_policy": {
+      "last_sample_wall_ms": 4.440252,
+      "stop_reason": "sample_target",
+      "time_budget_ms": null
+    },
+    "sampler": "counter",
+    "sampler_id": 2,
+    "sampler_version": 2,
+    "seed": 155921,
+    "target_samples": 64,
+    "time_budget_overshoot_ms": null
+  },
+  "artifacts": {
+    "benchmark_csv": {
+      "bytes": 98278,
+      "path": "quality/candidates/candidate-diffuse-s64-seed155921-counter.benchmark.csv",
+      "sha256": "fab65091ffbf247518b8ddc18988a54ea70bb1c0ed12aff79df3389b69d93124"
+    },
+    "metadata": {
+      "bytes": 3732,
+      "path": "quality/candidates/candidate-diffuse-s64-seed155921-counter.json",
+      "sha256": "eb7c82b2a8ba12851b4e0a37454eb0d638483b74d142a7bbc1971be0aa4d8c56"
+    },
+    "png": {
+      "bytes": 18714,
+      "path": "quality/candidates/candidate-diffuse-s64-seed155921-counter.png",
+      "sha256": "b62e09facb35230f2b1ee816a26b32ee433081e17f87f38da15ba410d134cbbc"
+    },
+    "raw": {
+      "bytes": 129064,
+      "path": "quality/candidates/candidate-diffuse-s64-seed155921-counter.sum.bin",
+      "sha256": "b6c75eb46c525e4349abcbc2d851c33db17b99ebbc5c9152daea17b985ed9fdd"
+    }
+  },
+  "audit": {
+    "checks": [
+      {
+        "detail": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "name": "binary-sha256",
+        "passed": true
+      },
+      {
+        "detail": {
+          "assets": [],
+          "manifest_sha256": "3b5ac880b859bcbc01dd28062bae2485e9a08c847e4a8050dc7cdb48a347b907",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+          "scene_bytes": 1887,
+          "scene_file": "hedge-sampling-diffuse.json",
+          "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+        },
+        "name": "scene-input-hashes",
+        "passed": true
+      },
+      {
+        "detail": "3b5ac880b859bcbc01dd28062bae2485e9a08c847e4a8050dc7cdb48a347b907",
+        "name": "scene-input-manifest-hash",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "raw-completed-samples",
+        "passed": true
+      },
+      {
+        "detail": {
+          "metadata": [
+            128,
+            84
+          ],
+          "raw": [
+            128,
+            84
+          ]
+        },
+        "name": "raw-resolution",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "target-samples",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "completed-fixed-target",
+        "passed": true
+      },
+      {
+        "detail": 155921,
+        "name": "seed",
+        "passed": true
+      },
+      {
+        "detail": 2,
+        "name": "sampler-version",
+        "passed": true
+      },
+      {
+        "detail": "counter",
+        "name": "sampler-name",
+        "passed": true
+      },
+      {
+        "detail": 2,
+        "name": "sampler-id",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            "aa",
+            "bvh",
+            "compact",
+            "debug",
+            "depth_semantics",
+            "max_depth",
+            "motion",
+            "nee",
+            "rr",
+            "rr_start",
+            "sampler",
+            "sampler_id",
+            "sort",
+            "wavefront"
+          ],
+          "expected": [
+            "aa",
+            "bvh",
+            "compact",
+            "debug",
+            "depth_semantics",
+            "max_depth",
+            "motion",
+            "nee",
+            "rr",
+            "rr_start",
+            "sampler",
+            "sampler_id",
+            "sort",
+            "wavefront"
+          ]
+        },
+        "name": "config-fields",
+        "passed": true
+      },
+      {
+        "detail": 10,
+        "name": "config-max_depth",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-aa",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-nee",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-bvh",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-compact",
+        "passed": true
+      },
+      {
+        "detail": false,
+        "name": "config-sort",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-wavefront",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-rr",
+        "passed": true
+      },
+      {
+        "detail": 3,
+        "name": "config-rr_start",
+        "passed": true
+      },
+      {
+        "detail": "counter",
+        "name": "config-sampler",
+        "passed": true
+      },
+      {
+        "detail": 2,
+        "name": "config-sampler_id",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-motion",
+        "passed": true
+      },
+      {
+        "detail": "none",
+        "name": "config-debug",
+        "passed": true
+      },
+      {
+        "detail": "maximum surface intersections; final intersection is emission-only",
+        "name": "config-depth_semantics",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "benchmark-enabled",
+        "passed": true
+      },
+      {
+        "detail": 16587824405674324717,
+        "name": "raw-checksum",
+        "passed": true
+      },
+      {
+        "detail": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "name": "compatibility-baseline_starter_revision",
+        "passed": true
+      },
+      {
+        "detail": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "name": "compatibility-build_identifier",
+        "passed": true
+      },
+      {
+        "detail": "NVIDIA A10G",
+        "name": "compatibility-device",
+        "passed": true
+      },
+      {
+        "detail": 9847307324157577441,
+        "name": "fingerprint-scene_file",
+        "passed": true
+      },
+      {
+        "detail": 11718838258311098718,
+        "name": "fingerprint-assets",
+        "passed": true
+      },
+      {
+        "detail": 9950812798232467585,
+        "name": "fingerprint-materials",
+        "passed": true
+      },
+      {
+        "detail": 10147354337177878781,
+        "name": "fingerprint-geometry",
+        "passed": true
+      },
+      {
+        "detail": 5154763379051221133,
+        "name": "fingerprint-render_config",
+        "passed": true
+      },
+      {
+        "detail": {
+          "assets": [],
+          "manifest_sha256": "3b5ac880b859bcbc01dd28062bae2485e9a08c847e4a8050dc7cdb48a347b907",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+          "scene_bytes": 1887,
+          "scene_file": "hedge-sampling-diffuse.json",
+          "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+        },
+        "name": "scene-input-filename",
+        "passed": true
+      },
+      {
+        "detail": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+        "name": "metadata-scene-path",
+        "passed": true
+      },
+      {
+        "detail": {
+          "design": [
+            0.0,
+            1.0
+          ],
+          "scene": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "authored-camera-shutter-design",
+        "passed": true
+      },
+      {
+        "detail": [
+          "aperture",
+          "focus_distance",
+          "look_at",
+          "position",
+          "shutter"
+        ],
+        "name": "camera-fields",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            5.0,
+            10.5
+          ],
+          "expected": [
+            0.0,
+            5.0,
+            10.5
+          ]
+        },
+        "name": "camera-position",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            5.0,
+            0.0
+          ],
+          "expected": [
+            0.0,
+            5.0,
+            0.0
+          ]
+        },
+        "name": "camera-look-at",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.0
+          ],
+          "expected": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": 0.0,
+          "expected": 0.0
+        },
+        "name": "camera-aperture",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": 10.5,
+          "expected": 10.5
+        },
+        "name": "camera-focus-distance",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.0
+          ],
+          "expected": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "benchmark-measured-samples",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 289.92288,
+          "metadata": 289.9228801727295
+        },
+        "name": "benchmark-csv-renderer_gpu_ms",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 291.198001,
+          "metadata": 291.1980009999999
+        },
+        "name": "benchmark-csv-renderer_host_ms",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 291.217432,
+          "metadata": 291.217432
+        },
+        "name": "benchmark-csv-render_loop_wall_ms",
+        "passed": true
+      },
+      {
+        "detail": [
+          "last_sample_wall_ms",
+          "stop_reason",
+          "time_budget_ms"
+        ],
+        "name": "policy-fields",
+        "passed": true
+      },
+      {
+        "detail": "sample_target",
+        "name": "policy-stop-reason-enum",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 4.440252,
+          "render_loop_wall_ms": 291.217432
+        },
+        "name": "policy-last-sample-within-loop",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 4.440252,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "policy-budget-null",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 4.440252,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "policy-stop-reason",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "raw_parser": "scripts.validate_render.read_sum",
+    "raw_values_finite_nonnegative": true
+  },
+  "binary_identity": {
+    "after": {
+      "bytes": 6353008,
+      "device": 66306,
+      "inode": 3689093,
+      "mtime_ns": 1790892950649290955,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    "before": {
+      "bytes": 6353008,
+      "device": 66306,
+      "inode": 3689093,
+      "mtime_ns": 1790892950649290955,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    "unchanged": true
+  },
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+    "--samples",
+    "64",
+    "--seed",
+    "155921",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-quality/quality/candidates/candidate-diffuse-s64-seed155921-counter",
+    "--resolution",
+    "128x84",
+    "--depth",
+    "10",
+    "--benchmark",
+    "--wavefront",
+    "on",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--compact",
+    "on",
+    "--bvh",
+    "on",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--sort",
+    "off",
+    "--motion",
+    "on",
+    "--sampler",
+    "counter"
+  ],
+  "completed_utc": "2026-10-01T23:08:40.415577Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "design": {
+    "depth": 10,
+    "effective_scheduling": {
+      "aa": "on",
+      "bvh": "on",
+      "compact": "on",
+      "motion": "on",
+      "nee": "on",
+      "rr": "on",
+      "rr-start": "3",
+      "sort": "off",
+      "wavefront": "on"
+    },
+    "label": "candidate-diffuse-s64-seed155921-counter",
+    "phase": "quality",
+    "purpose": "candidate",
+    "quality_samples": 64,
+    "resolution": [
+      128,
+      84
+    ],
+    "sample_target": 64,
+    "sampler": "counter",
+    "scene": "diffuse",
+    "scene_file": "hedge-sampling-diffuse.json",
+    "scheduling_overrides": {},
+    "seed": 155921,
+    "time_budget_ms": null
+  },
+  "exit_code": 0,
+  "invocation_envelope_elapsed_ms": 545.0634369999534,
+  "label": "candidate-diffuse-s64-seed155921-counter",
+  "phase": "quality",
+  "pid": 16848,
+  "process_elapsed_ms": 528.7263159998474,
+  "purpose": "candidate",
+  "run_id": 23,
+  "scene_input_identity": {
+    "after": {
+      "assets": [],
+      "manifest_sha256": "3b5ac880b859bcbc01dd28062bae2485e9a08c847e4a8050dc7cdb48a347b907",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+      "scene_bytes": 1887,
+      "scene_file": "hedge-sampling-diffuse.json",
+      "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+    },
+    "before": {
+      "assets": [],
+      "manifest_sha256": "3b5ac880b859bcbc01dd28062bae2485e9a08c847e4a8050dc7cdb48a347b907",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json",
+      "scene_bytes": 1887,
+      "scene_file": "hedge-sampling-diffuse.json",
+      "scene_sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+    },
+    "unchanged": true
+  },
+  "schema_version": 1,
+  "started_utc": "2026-10-01T23:08:39.866892Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "quality/candidates/candidate-diffuse-s64-seed155921-counter.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 134,
+    "path": "quality/candidates/candidate-diffuse-s64-seed155921-counter.stdout.txt",
+    "sha256": "770bfea1cfdcf7e00ae6fe42580982bfe5fea62341e99e0f5169cbd6fad0893f"
+  }
+}

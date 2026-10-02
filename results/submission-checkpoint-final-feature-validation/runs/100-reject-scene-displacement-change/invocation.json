@@ -1,0 +1,64 @@
+{
+  "artifacts": {},
+  "audits": [],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/temporary-scene-mutations/active-scene.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/100-reject-scene-displacement-change/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/099-scene-mutation-displacement-baseline/state.checkpoint"
+  ],
+  "command_json": {
+    "bytes": 1577,
+    "path": "runs/100-reject-scene-displacement-change/command.json",
+    "sha256": "01e88d86a864146e0424ff9444a2d1c1961af40a4415fa58ff59067c26384ef3"
+  },
+  "elapsed_seconds": 0.07482569800004057,
+  "exit_code": 1,
+  "expectation_met": true,
+  "expected_exit": "nonzero",
+  "expected_rejection_terms": [
+    "checkpoint scene-file fingerprint mismatch"
+  ],
+  "finished_utc": "2026-10-02T01:04:29.843129Z",
+  "index": 100,
+  "inputs": [
+    {
+      "bytes": 6372424,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    {
+      "bytes": 5126,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/temporary-scene-mutations/active-scene.json",
+      "role": "scene",
+      "sha256": "7695ae4e68651d244c182cc0b2c50d08dd7f487363461e32dd27595eec8f158a"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/099-scene-mutation-displacement-baseline/state.checkpoint",
+      "role": "resume",
+      "sha256": "24912823f9098b0d59f5cc58bccef1c619c7cc33fcd355e46dd4c35aff4a17dc"
+    }
+  ],
+  "label": "reject-scene-displacement-change",
+  "launch_exception": null,
+  "output_prefix": "runs/100-reject-scene-displacement-change/render",
+  "rejection_text": "error: checkpoint continuation rejected: checkpoint scene-file fingerprint mismatch\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help",
+  "run_directory": "runs/100-reject-scene-displacement-change",
+  "started_utc": "2026-10-02T01:04:29.768286Z",
+  "stderr": {
+    "bytes": 1364,
+    "path": "runs/100-reject-scene-displacement-change/stderr.txt",
+    "sha256": "ec9184a9958968e6d70e01a8a3b7e029530da2deaf344ce08c7ad939229a7096"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "runs/100-reject-scene-displacement-change/stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

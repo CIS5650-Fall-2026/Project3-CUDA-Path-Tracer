@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="824" viewBox="0 0 1120 824" role="img" aria-labelledby="title desc">
+<title id="title">Sampler convergence</title>
+<desc id="desc">Linear-RGB MSE versus retained reference; mean points and fixed-seed min–max whiskers. Axes use measured values. Evidence status — qualification: qualified; references adequate.</desc>
+<rect width="1120" height="824" fill="#f8fafc"/>
+<g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#182433">
+<text x="34" y="39" font-size="24" font-weight="650">Sampler convergence</text>
+<text x="34" y="66" font-size="13">Linear-RGB MSE versus retained reference; mean points and fixed-seed min–max whiskers. Axes use measured values. Evidence status — qualification: qualified; references adequate.</text>
+<text x="1086" y="39" text-anchor="end" font-size="13" font-weight="700" fill="#9a3412">QUALITY: QUALIFIED · REFERENCES ADEQUATE</text>
+<text x="34" y="79" font-size="17" font-weight="600">diffuse · reference adequate</text>
+<path d="M112 92 V322 H1060" fill="none" stroke="#3a4655" stroke-width="1.3"/>
+<path d="M112 322.00 H1060" stroke="#dde3ea"/>
+<text x="103" y="326.00" text-anchor="end" font-size="11">0.0001</text>
+<path d="M112 264.50 H1060" stroke="#dde3ea"/>
+<text x="103" y="268.50" text-anchor="end" font-size="11">0.000316</text>
+<path d="M112 207.00 H1060" stroke="#dde3ea"/>
+<text x="103" y="211.00" text-anchor="end" font-size="11">0.001</text>
+<path d="M112 149.50 H1060" stroke="#dde3ea"/>
+<text x="103" y="153.50" text-anchor="end" font-size="11">0.00316</text>
+<path d="M112 92.00 H1060" stroke="#dde3ea"/>
+<text x="103" y="96.00" text-anchor="end" font-size="11">0.01</text>
+<path d="M112.00 92 V322" stroke="#edf0f4"/>
+<text x="112.00" y="344" text-anchor="middle" font-size="12">16</text>
+<path d="M586.00 92 V322" stroke="#edf0f4"/>
+<text x="586.00" y="344" text-anchor="middle" font-size="12">64</text>
+<path d="M1060.00 92 V322" stroke="#edf0f4"/>
+<text x="1060.00" y="344" text-anchor="middle" font-size="12">256</text>
+<text x="586.00" y="367" text-anchor="middle" font-size="12">samples per pixel (log₂)</text>
+<text x="24" y="207.00" text-anchor="middle" font-size="12" transform="rotate(-90 24 207.00)">mean squared error (log₁₀)</text>
+<polyline points="112.00,148.16 586.00,217.80 1060.00,286.07" fill="none" stroke="#2463a6" stroke-width="2.5"/>
+<path d="M112.00 153.76 V139.54 M107.00 153.76 H117.00 M107.00 139.54 H117.00" stroke="#2463a6" stroke-width="1.4"/>
+<circle cx="112.00" cy="148.16" r="5" fill="#2463a6"><title>counter; 16 spp; mean MSE 0.00324816; range 0.0029039437–0.0038600756; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [16, 16, 16, 16, 16, 16, 16, 16]</title></circle>
+<path d="M586.00 221.72 V212.20 M581.00 221.72 H591.00 M581.00 212.20 H591.00" stroke="#2463a6" stroke-width="1.4"/>
+<circle cx="586.00" cy="217.80" r="5" fill="#2463a6"><title>counter; 64 spp; mean MSE 0.00080556612; range 0.00074476655–0.00090108958; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [64, 64, 64, 64, 64, 64, 64, 64]</title></circle>
+<path d="M1060.00 292.12 V283.05 M1055.00 292.12 H1065.00 M1055.00 283.05 H1065.00" stroke="#2463a6" stroke-width="1.4"/>
+<circle cx="1060.00" cy="286.07" r="5" fill="#2463a6"><title>counter; 256 spp; mean MSE 0.00020532013; range 0.00018191324–0.00021810313; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [256, 256, 256, 256, 256, 256, 256, 256]</title></circle>
+<polyline points="112.00,160.48 586.00,236.82 1060.00,310.21" fill="none" stroke="#d06531" stroke-width="2.5"/>
+<path d="M112.00 164.35 V156.84 M107.00 164.35 H117.00 M107.00 156.84 H117.00" stroke="#d06531" stroke-width="1.4"/>
+<circle cx="112.00" cy="160.48" r="5" fill="#d06531"><title>halton; 16 spp; mean MSE 0.0025379982; range 0.002348848–0.002729854; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [16, 16, 16, 16, 16, 16, 16, 16]</title></circle>
+<path d="M586.00 242.63 V233.48 M581.00 242.63 H591.00 M581.00 233.48 H591.00" stroke="#d06531" stroke-width="1.4"/>
+<circle cx="586.00" cy="236.82" r="5" fill="#d06531"><title>halton; 64 spp; mean MSE 0.00055041444; range 0.00048996204–0.00058851752; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [64, 64, 64, 64, 64, 64, 64, 64]</title></circle>
+<path d="M1060.00 312.94 V307.86 M1055.00 312.94 H1065.00 M1055.00 307.86 H1065.00" stroke="#d06531" stroke-width="1.4"/>
+<circle cx="1060.00" cy="310.21" r="5" fill="#d06531"><title>halton; 256 spp; mean MSE 0.00012663739; range 0.00011988–0.0001327203; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [256, 256, 256, 256, 256, 256, 256, 256]</title></circle>
+<path d="M112 390 h28" stroke="#2463a6" stroke-width="3"/>
+<text x="148" y="394" font-size="12">counter</text>
+<path d="M262 390 h28" stroke="#d06531" stroke-width="3"/>
+<text x="298" y="394" font-size="12">halton</text>
+<text x="1060" y="394" text-anchor="end" font-size="12">Halton MSE reductions — 16: +21.9%; 64: +31.7%; 256: +38.3%</text>
+<text x="34" y="439" font-size="17" font-weight="600">glass-dof · reference adequate</text>
+<path d="M112 452 V682 H1060" fill="none" stroke="#3a4655" stroke-width="1.3"/>
+<path d="M112 682.00 H1060" stroke="#dde3ea"/>
+<text x="103" y="686.00" text-anchor="end" font-size="11">0.0001</text>
+<path d="M112 624.50 H1060" stroke="#dde3ea"/>
+<text x="103" y="628.50" text-anchor="end" font-size="11">0.000562</text>
+<path d="M112 567.00 H1060" stroke="#dde3ea"/>
+<text x="103" y="571.00" text-anchor="end" font-size="11">0.00316</text>
+<path d="M112 509.50 H1060" stroke="#dde3ea"/>
+<text x="103" y="513.50" text-anchor="end" font-size="11">0.0178</text>
+<path d="M112 452.00 H1060" stroke="#dde3ea"/>
+<text x="103" y="456.00" text-anchor="end" font-size="11">0.1</text>
+<path d="M112.00 452 V682" stroke="#edf0f4"/>
+<text x="112.00" y="704" text-anchor="middle" font-size="12">16</text>
+<path d="M586.00 452 V682" stroke="#edf0f4"/>
+<text x="586.00" y="704" text-anchor="middle" font-size="12">64</text>
+<path d="M1060.00 452 V682" stroke="#edf0f4"/>
+<text x="1060.00" y="704" text-anchor="middle" font-size="12">256</text>
+<text x="586.00" y="727" text-anchor="middle" font-size="12">samples per pixel (log₂)</text>
+<text x="24" y="567.00" text-anchor="middle" font-size="12" transform="rotate(-90 24 567.00)">mean squared error (log₁₀)</text>
+<polyline points="112.00,494.50 586.00,539.85 1060.00,585.62" fill="none" stroke="#2463a6" stroke-width="2.5"/>
+<path d="M112.00 499.40 V489.59 M107.00 499.40 H117.00 M107.00 489.59 H117.00" stroke="#2463a6" stroke-width="1.4"/>
+<circle cx="112.00" cy="494.50" r="5" fill="#2463a6"><title>counter; 16 spp; mean MSE 0.027901812; range 0.024084204–0.032336602; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [16, 16, 16, 16, 16, 16, 16, 16]</title></circle>
+<path d="M586.00 541.51 V537.30 M581.00 541.51 H591.00 M581.00 537.30 H591.00" stroke="#2463a6" stroke-width="1.4"/>
+<circle cx="586.00" cy="539.85" r="5" fill="#2463a6"><title>counter; 64 spp; mean MSE 0.0071471156; range 0.0067988476–0.0077158578; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [64, 64, 64, 64, 64, 64, 64, 64]</title></circle>
+<path d="M1060.00 589.05 V582.23 M1055.00 589.05 H1065.00 M1055.00 582.23 H1065.00" stroke="#2463a6" stroke-width="1.4"/>
+<circle cx="1060.00" cy="585.62" r="5" fill="#2463a6"><title>counter; 256 spp; mean MSE 0.0018074706; range 0.0016305335–0.0020012341; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [256, 256, 256, 256, 256, 256, 256, 256]</title></circle>
+<polyline points="112.00,508.87 586.00,559.01 1060.00,609.70" fill="none" stroke="#d06531" stroke-width="2.5"/>
+<path d="M112.00 513.04 V505.25 M107.00 513.04 H117.00 M107.00 505.25 H117.00" stroke="#d06531" stroke-width="1.4"/>
+<circle cx="112.00" cy="508.87" r="5" fill="#d06531"><title>halton; 16 spp; mean MSE 0.018125015; range 0.015989955–0.020205447; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [16, 16, 16, 16, 16, 16, 16, 16]</title></circle>
+<path d="M586.00 560.07 V557.05 M581.00 560.07 H591.00 M581.00 557.05 H591.00" stroke="#d06531" stroke-width="1.4"/>
+<circle cx="586.00" cy="559.01" r="5" fill="#d06531"><title>halton; 64 spp; mean MSE 0.0040197669; range 0.0038943182–0.0042637089; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [64, 64, 64, 64, 64, 64, 64, 64]</title></circle>
+<path d="M1060.00 611.52 V606.37 M1055.00 611.52 H1065.00 M1055.00 606.37 H1065.00" stroke="#d06531" stroke-width="1.4"/>
+<circle cx="1060.00" cy="609.70" r="5" fill="#d06531"><title>halton; 256 spp; mean MSE 0.00087717901; range 0.00083043113–0.00096938609; n=8; seeds [947, 104729, 130363, 155921, 196613, 262147, 314159, 524287]; actual completed samples [256, 256, 256, 256, 256, 256, 256, 256]</title></circle>
+<path d="M112 750 h28" stroke="#2463a6" stroke-width="3"/>
+<text x="148" y="754" font-size="12">counter</text>
+<path d="M262 750 h28" stroke="#d06531" stroke-width="3"/>
+<text x="298" y="754" font-size="12">halton</text>
+<text x="1060" y="754" text-anchor="end" font-size="12">Halton MSE reductions — 16: +35.0%; 64: +43.8%; 256: +51.5%</text>
+</g>
+</svg>

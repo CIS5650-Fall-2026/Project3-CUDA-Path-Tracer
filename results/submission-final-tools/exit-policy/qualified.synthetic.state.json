@@ -1,0 +1,75 @@
+{
+  "actual_returncode": 0,
+  "attempted_network_calls": [],
+  "attempted_subprocess_calls": [],
+  "boundary_call_counts": {
+    "observed_identity_audit": 1,
+    "quality_completion": 1,
+    "scene_inspection": 1,
+    "session_construction": 1
+  },
+  "checks": {
+    "actual_completion_stderr_empty": true,
+    "actual_completion_stdout_present": true,
+    "actual_driver_returncode_matches_policy": true,
+    "actual_final_gate_status_matches_policy": true,
+    "completed_state_persisted_by_actual_branch": true,
+    "completed_timestamp_present": true,
+    "completion_calls_all_required_boundaries_once": true,
+    "execution_remains_completed": true,
+    "no_execution_errors": true,
+    "no_network_attempted": true,
+    "no_subprocess_attempted": true,
+    "qualification_retained": true,
+    "synthetic_quality_phase_completed": true
+  },
+  "expected_returncode": 0,
+  "expected_status": "passed",
+  "final_in_memory_state": {
+    "completed_utc": "2026-10-01T22:15:37.896502Z",
+    "design": {},
+    "errors": [],
+    "execution_status": "completed",
+    "identity": {
+      "mock_identity": true,
+      "observed_metadata": {
+        "passed": true,
+        "synthetic": true
+      }
+    },
+    "input_scenes": {
+      "synthetic": true
+    },
+    "mode": "synthetic-exit-policy-check",
+    "phase_requested": "quality",
+    "phases": {
+      "quality": {
+        "phase": "quality",
+        "qualification": {
+          "status": "qualified"
+        },
+        "status": "completed",
+        "synthetic": true
+      }
+    },
+    "renderer_executed": false,
+    "status": "passed",
+    "synthetic": true
+  },
+  "mock_session_events": [
+    "construct mock session",
+    "persist in memory",
+    "initialize synthetic identity",
+    "persist in memory",
+    "complete synthetic quality phase",
+    "persist in memory"
+  ],
+  "mode": "synthetic-exit-policy-check",
+  "qualification_case": "qualified",
+  "renderer_executed": false,
+  "status": "passed",
+  "stderr_log": "qualified.synthetic.stderr.log",
+  "stdout_log": "qualified.synthetic.stdout.log",
+  "synthetic": true,
+  "unexpected_error": null
+}

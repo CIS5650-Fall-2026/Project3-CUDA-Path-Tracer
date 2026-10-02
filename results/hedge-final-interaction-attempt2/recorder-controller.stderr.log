@@ -1,0 +1,2 @@
+error: RecordingError: xdotool timed out during move preview without resizing (correction attempt 3): ['/usr/bin/xdotool', 'windowmove', '--sync', '41943047', '146', '-92']
+failure evidence: /home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture

@@ -1,0 +1,204 @@
+{
+  "status": "completed",
+  "started_utc": "2026-10-02T01:02:51.199379+00:00",
+  "expected_renderer_source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "driver_sha256": "c9bb272e2b4e6f31678243859cfdddf767070b20217b50acb723079257a58010",
+  "executed_driver": "results/submission-checkpoint-final-controller/executed-controller.py",
+  "sequential_gpu_phases": true,
+  "phases": [
+    {
+      "name": "build",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "build",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T01:02:51.372214+00:00",
+      "status": "passed",
+      "stdout": "logs/build.stdout.log",
+      "stderr": "logs/build.stderr.log",
+      "summary": "results/submission-checkpoint-final-rebuild/summary.json",
+      "checkpoint_boundary_regressions": {
+        "argv": [
+          "/usr/bin/python3",
+          ".local/validate_checkpoint_cli.py",
+          "--source",
+          "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+          "--prefix",
+          "submission-checkpoint-final",
+          "--binary",
+          "build-submission/bin/cis565_path_tracer_headless"
+        ],
+        "summary": "results/submission-checkpoint-final-checkpoint-boundaries/summary.json",
+        "summary_sha256": "59353624b05803fed794d5f0b5dabb83d18a717bb60855d05ead9a25a43f3dcd"
+      },
+      "returncode": 0,
+      "ended_utc": "2026-10-02T01:03:28.318553+00:00",
+      "elapsed_seconds": 36.946051863999855,
+      "summary_sha256": "011625aefd41c7d7e0ddd2c6dae62a0c593cc48646e8bc39b6784b3d1ec32798"
+    },
+    {
+      "name": "new-validation",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "new-validation",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T01:03:28.491116+00:00",
+      "status": "passed",
+      "stdout": "logs/new-validation.stdout.log",
+      "stderr": "logs/new-validation.stderr.log",
+      "summary": "results/submission-checkpoint-final-suite-new-validation/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T01:04:33.454246+00:00",
+      "elapsed_seconds": 64.96282760700001,
+      "summary_sha256": "380102182502cbba6bf3a6805e5b4901620e64a08536d1cc0ea34042c9a1e91b"
+    },
+    {
+      "name": "sanitizers",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "sanitizers",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T01:04:33.627656+00:00",
+      "status": "passed",
+      "stdout": "logs/sanitizers.stdout.log",
+      "stderr": "logs/sanitizers.stderr.log",
+      "summary": "results/submission-checkpoint-final-suite-sanitizers/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T01:04:56.885464+00:00",
+      "elapsed_seconds": 23.25752175399998,
+      "summary_sha256": "1fa1ded62125614a31d4b68ab33f4a98998340456799e32876db97c67eac3b38"
+    },
+    {
+      "name": "gltf",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/measure_gltf.py",
+        "--binary",
+        "build-submission/bin/cis565_path_tracer_headless",
+        "--build",
+        "build-submission",
+        "--output",
+        "results/submission-checkpoint-final-gltf",
+        "--phase",
+        "all"
+      ],
+      "started_utc": "2026-10-02T01:04:57.059262+00:00",
+      "status": "passed",
+      "stdout": "logs/gltf.stdout.log",
+      "stderr": "logs/gltf.stderr.log",
+      "summary": "results/submission-checkpoint-final-gltf/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T01:05:48.733307+00:00",
+      "elapsed_seconds": 51.67371905800019,
+      "summary_sha256": "374939b662a03816413a8089ed365d4b4b3d8f58eec9ed9eb59b42aac5b1af3d"
+    },
+    {
+      "name": "baseline-validation",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "baseline-validation",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T01:05:48.906723+00:00",
+      "status": "passed",
+      "stdout": "logs/baseline-validation.stdout.log",
+      "stderr": "logs/baseline-validation.stderr.log",
+      "summary": "results/submission-checkpoint-final-suite-baseline-validation/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T01:50:56.005161+00:00",
+      "elapsed_seconds": 2707.0981157390006,
+      "summary_sha256": "e9468327b61743e12e766af5b7f6787ea931664667331be61d73fcd25b579091"
+    },
+    {
+      "name": "baseline-measurements",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "baseline-measurements",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T01:50:56.177189+00:00",
+      "status": "passed",
+      "stdout": "logs/baseline-measurements.stdout.log",
+      "stderr": "logs/baseline-measurements.stderr.log",
+      "summary": "results/submission-checkpoint-final-suite-baseline-measurements/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T01:55:48.721113+00:00",
+      "elapsed_seconds": 292.54353048199937,
+      "summary_sha256": "d3f7ae2c4c44ccce44a75ca88e8b03e8803beb75390908e5cab03e38821f69ab"
+    },
+    {
+      "name": "new-measurements",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "new-measurements",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T01:55:48.894177+00:00",
+      "status": "passed",
+      "stdout": "logs/new-measurements.stdout.log",
+      "stderr": "logs/new-measurements.stderr.log",
+      "summary": "results/submission-checkpoint-final-suite-new-measurements/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T02:31:58.771242+00:00",
+      "elapsed_seconds": 2169.8766953700006,
+      "summary_sha256": "017e4e64c65188a4ab65ae148e14d44e928879e216e0fb8f53e35fe1871e7c11"
+    },
+    {
+      "name": "gallery",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "gallery",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-checkpoint-final"
+      ],
+      "started_utc": "2026-10-02T02:31:58.945102+00:00",
+      "status": "passed",
+      "stdout": "logs/gallery.stdout.log",
+      "stderr": "logs/gallery.stderr.log",
+      "summary": "results/submission-checkpoint-final-suite-gallery/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-02T02:42:50.188796+00:00",
+      "elapsed_seconds": 651.2433021630004,
+      "summary_sha256": "7d206e4366ad0951d407793055597d8f8ce46fe4e61853ea13052edae8eb901b"
+    }
+  ],
+  "errors": [],
+  "finished_utc": "2026-10-02T02:42:50.274890+00:00"
+}

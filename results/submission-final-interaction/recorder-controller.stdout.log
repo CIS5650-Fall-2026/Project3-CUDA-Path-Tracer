@@ -1,0 +1,515 @@
+{
+  "arguments": {
+    "binary": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer",
+    "capture_fps": 30,
+    "duration_seconds": 48.0,
+    "motion": "on",
+    "output": "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture",
+    "sampler": "halton",
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json"
+  },
+  "capture": {
+    "command": [
+      "/usr/bin/ffmpeg",
+      "-nostdin",
+      "-hide_banner",
+      "-loglevel",
+      "info",
+      "-nostats",
+      "-progress",
+      "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture/capture.progress",
+      "-f",
+      "x11grab",
+      "-draw_mouse",
+      "1",
+      "-framerate",
+      "30",
+      "-video_size",
+      "1280x720",
+      "-i",
+      ":0.0+0,0",
+      "-an",
+      "-c:v",
+      "libx264",
+      "-crf",
+      "18",
+      "-preset",
+      "veryfast",
+      "-pix_fmt",
+      "yuv420p",
+      "-movflags",
+      "+faststart",
+      "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture/interaction.mp4"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture",
+    "exit": {
+      "monotonic_ns": 6734753564462,
+      "relative_to_interaction_s": 48.127352442,
+      "utc": "2026-10-01T23:58:23.600779Z"
+    },
+    "exit_code": 255,
+    "launch_complete": {
+      "monotonic_ns": 6685280405156,
+      "relative_to_interaction_s": -1.345806864,
+      "utc": "2026-10-01T23:57:34.127633Z"
+    },
+    "launch_start": {
+      "monotonic_ns": 6685272679536,
+      "relative_to_interaction_s": -1.353532484,
+      "utc": "2026-10-01T23:57:34.119909Z"
+    },
+    "pid": 25189,
+    "progress_file": "capture.progress",
+    "readiness_wait": {
+      "buffering_frame_budget": 32,
+      "capture_fps": 30,
+      "rate_aware_formula": "max(20, min(90, 12 + 32 / capture_fps))",
+      "timeout_seconds": 20.0
+    },
+    "real_frame_readiness_proof": {
+      "criterion": "ffmpeg progress frame > 0",
+      "maximum_progress_frame": 13,
+      "observed": {
+        "monotonic_ns": 6686504195135,
+        "relative_to_interaction_s": -0.122016885,
+        "utc": "2026-10-01T23:57:35.351416Z"
+      },
+      "progress_file_retained": "capture.progress",
+      "progress_snapshot": "frame=0\nfps=0.00\nstream_0_0_q=0.0\nbitrate=N/A\ntotal_size=0\nout_time_us=N/A\nout_time_ms=N/A\nout_time=N/A\ndup_frames=0\ndrop_frames=0\nspeed=N/A\nprogress=continue\nframe=0\nfps=0.00\nstream_0_0_q=0.0\nbitrate=N/A\ntotal_size=0\nout_time_us=N/A\nout_time_ms=N/A\nout_time=N/A\ndup_frames=0\ndrop_frames=0\nspeed=N/A\nprogress=continue\nframe=13\nfps=12.72\nstream_0_0_q=24.0\nbitrate=17159.5kbits/s\ntotal_size=786480\nout_time_us=366667\nout_time_ms=366667\nout_time=00:00:00.366667\ndup_frames=0\ndrop_frames=0\nspeed=0.359x\nprogress=continue\n"
+    },
+    "stderr_log": "capture.stderr.log",
+    "stdout_log": "capture.stdout.log",
+    "stop_requested": {
+      "actual_relative_s": 48.013557495,
+      "at": {
+        "monotonic_ns": 6734639769515,
+        "relative_to_interaction_s": 48.013557495,
+        "utc": "2026-10-01T23:58:23.486989Z"
+      },
+      "delivery_start_drift_s": 0.013557495000000586,
+      "drift_validation_basis": "timestamp immediately before send_signal(SIGINT)",
+      "method": "SIGINT",
+      "scheduled_relative_s": 48.0,
+      "send_signal_returned": {
+        "monotonic_ns": 6734639806496,
+        "relative_to_interaction_s": 48.013594476,
+        "utc": "2026-10-01T23:58:23.487038Z"
+      }
+    },
+    "termination": {
+      "accepted_SIGINT_exit_codes": [
+        0,
+        255
+      ],
+      "exit_code": 255,
+      "graceful_after_SIGINT": true,
+      "method": "SIGINT"
+    },
+    "video_file": "interaction.mp4"
+  },
+  "capture_geometry": {
+    "capture_region": {
+      "height": 720,
+      "width": 1280,
+      "within_display_bounds": true,
+      "x": 0,
+      "y": 0
+    },
+    "client_margins_in_capture": {
+      "bottom": 11,
+      "left": 160,
+      "right": 160,
+      "top": 69
+    },
+    "client_within_capture_bounds": true,
+    "coordinate_authority": "xwininfo absolute upper-left client coordinates",
+    "display": {
+      "height": 1080,
+      "width": 1920
+    },
+    "native_client_verified": true,
+    "placement_method": "plain xdotool windowmove with bounded stable absolute-coordinate verification",
+    "requested_client": {
+      "height": 640,
+      "width": 960,
+      "x": 160,
+      "y": 69
+    },
+    "titlebar": {
+      "inclusion_intended": true,
+      "method": "native client placed with 69 pixels of top headroom; xwininfo proves absolute client geometry; decoration extents require visual verification",
+      "visual_verification_required": true
+    },
+    "verified_client": {
+      "height": 640,
+      "width": 960,
+      "window": 10485767,
+      "x": 160,
+      "y": 69
+    },
+    "window_geometry_history": [
+      {
+        "coordinate_source": "xwininfo absolute upper-left client coordinates",
+        "height": 640,
+        "label": "before move",
+        "observed": {
+          "monotonic_ns": 6684930224901,
+          "relative_to_interaction_s": -1.695987119,
+          "utc": "2026-10-01T23:57:33.777444Z"
+        },
+        "width": 960,
+        "window": 10485767,
+        "x": 116,
+        "y": 119
+      },
+      {
+        "coordinate_source": "xwininfo absolute upper-left client coordinates",
+        "height": 640,
+        "label": "after move attempt 1",
+        "observed": {
+          "monotonic_ns": 6685110368200,
+          "relative_to_interaction_s": -1.51584382,
+          "utc": "2026-10-01T23:57:33.957597Z"
+        },
+        "width": 960,
+        "window": 10485767,
+        "x": 160,
+        "y": 69
+      },
+      {
+        "coordinate_source": "xwininfo absolute upper-left client coordinates",
+        "height": 640,
+        "label": "after move attempt 1",
+        "observed": {
+          "monotonic_ns": 6685177768373,
+          "relative_to_interaction_s": -1.448443647,
+          "utc": "2026-10-01T23:57:34.024997Z"
+        },
+        "width": 960,
+        "window": 10485767,
+        "x": 160,
+        "y": 69
+      },
+      {
+        "coordinate_source": "xwininfo absolute upper-left client coordinates",
+        "height": 640,
+        "label": "before scheduled S save",
+        "observed": {
+          "monotonic_ns": 6730704799785,
+          "relative_to_interaction_s": 44.078587765,
+          "utc": "2026-10-01T23:58:19.552024Z"
+        },
+        "width": 960,
+        "window": 10485767,
+        "x": 160,
+        "y": 69
+      },
+      {
+        "coordinate_source": "xwininfo absolute upper-left client coordinates",
+        "height": 640,
+        "label": "before Escape",
+        "observed": {
+          "monotonic_ns": 6732675746670,
+          "relative_to_interaction_s": 46.04953465,
+          "utc": "2026-10-01T23:58:21.522974Z"
+        },
+        "width": 960,
+        "window": 10485767,
+        "x": 160,
+        "y": 69
+      }
+    ],
+    "window_was_resized_or_maximized": false
+  },
+  "cleanup": {
+    "actions": [],
+    "errors": []
+  },
+  "completed": {
+    "monotonic_ns": 6739721865225,
+    "relative_to_interaction_s": 53.095653205,
+    "utc": "2026-10-01T23:58:28.569090Z"
+  },
+  "created": {
+    "monotonic_ns": 6684476810622,
+    "relative_to_interaction_s": -2.149401398,
+    "utc": "2026-10-01T23:57:33.324034Z"
+  },
+  "desktop_capture_disclosure": {
+    "automated_private_information_detection_performed": false,
+    "crop_includes_surrounding_desktop_margins": true,
+    "root_visual_verification_required": true,
+    "statement": "xdotool cannot determine whether the surrounding desktop is clean or contains private information; root must verify captured desktop content visually before publication"
+  },
+  "display": {
+    "environment_inherited_without_overrides": true,
+    "ffmpeg_x11grab_display": ":0.0",
+    "inherited_DISPLAY": ":0",
+    "inherited_XAUTHORITY_path": "/run/user/1000/gdm/Xauthority",
+    "xauthority_contents_read": false
+  },
+  "ffprobe": {
+    "command": [
+      "/usr/bin/ffprobe",
+      "-v",
+      "error",
+      "-count_frames",
+      "-show_streams",
+      "-show_format",
+      "-of",
+      "json",
+      "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture/interaction.mp4"
+    ],
+    "complete_json_file": "ffprobe.json",
+    "end": {
+      "monotonic_ns": 6739596198711,
+      "relative_to_interaction_s": 52.969986691,
+      "utc": "2026-10-01T23:58:28.443419Z"
+    },
+    "exit_code": 0,
+    "start": {
+      "monotonic_ns": 6734793140344,
+      "relative_to_interaction_s": 48.166928324,
+      "utc": "2026-10-01T23:58:23.640369Z"
+    },
+    "stderr": "",
+    "stderr_log": "ffprobe.stderr.log",
+    "timed_out": false,
+    "validated": {
+      "avg_frame_rate": "30/1",
+      "avg_frame_rate_decimal": 30.0,
+      "codec_name": "h264",
+      "decoded_frame_count": 1480,
+      "duration_consistent_with_real_elapsed": true,
+      "duration_difference_seconds": -0.03375697899999608,
+      "duration_tolerance_seconds": 3.0,
+      "format_duration": "49.333333",
+      "height": 720,
+      "media_duration_seconds": 49.333333,
+      "nb_read_frames": "1480",
+      "pix_fmt": "yuv420p",
+      "r_frame_rate": "30/1",
+      "r_frame_rate_decimal": 30.0,
+      "real_capture_launch_to_SIGINT_seconds": 49.367089979,
+      "stream_duration": "49.333333",
+      "video_bytes": 33548496,
+      "width": 1280
+    }
+  },
+  "inputs": {
+    "binary": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer",
+    "binary_sha256": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20",
+    "hashes_after": {
+      "binary_sha256": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20",
+      "scene_sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+    },
+    "hashes_after_cleanup": {
+      "binary_sha256": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20",
+      "scene_sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+    },
+    "renderer_options": [
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on"
+    ],
+    "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+    "scene_camera": {
+      "depth": 10,
+      "image_name": "gltf-showcase",
+      "iterations": 2048,
+      "resolution": [
+        960,
+        640
+      ]
+    },
+    "scene_sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50",
+    "unchanged_after_cleanup": true,
+    "unchanged_during_recording": true
+  },
+  "passed": true,
+  "png_files": [
+    {
+      "bytes": 1293043,
+      "chunks": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ],
+      "height": 640,
+      "name": "gltf-showcase.2026-10-01_23-57-33z.124samp.save0.png",
+      "png_complete": true,
+      "sha256": "3aecb4806ed0832d2802032523ae3f752ceeefead2394ffa13fd3661a3e54429",
+      "width": 960
+    },
+    {
+      "bytes": 1266821,
+      "chunks": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ],
+      "height": 640,
+      "name": "gltf-showcase.2026-10-01_23-57-33z.148samp.save1.png",
+      "png_complete": true,
+      "sha256": "c3b06129015973a7b68abad20b2c7cb97571853df89036416d2523a7504ba62f",
+      "width": 960
+    }
+  ],
+  "rate_semantics": {
+    "capture_clock_fps": 30,
+    "capture_clock_meaning": "ffmpeg x11grab screen-sampling rate; it is not renderer FPS",
+    "imgui_application_fps": "display-loop telemetry only; this script does not read or claim it",
+    "window_title_iteration_meaning": "renderer completed cover-sample iteration progress; it is not capture FPS and is not the ImGui application FPS"
+  },
+  "renderer": {
+    "command": [
+      "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer",
+      "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture",
+    "exit": {
+      "monotonic_ns": 6733300718747,
+      "relative_to_interaction_s": 46.674506727,
+      "utc": "2026-10-01T23:58:22.147937Z"
+    },
+    "exit_code": 0,
+    "launch_complete": {
+      "monotonic_ns": 6684630554152,
+      "relative_to_interaction_s": -1.995657868,
+      "utc": "2026-10-01T23:57:33.477783Z"
+    },
+    "launch_start": {
+      "monotonic_ns": 6684623469634,
+      "relative_to_interaction_s": -2.002742386,
+      "utc": "2026-10-01T23:57:33.470698Z"
+    },
+    "pid": 25173,
+    "stderr_log": "renderer.stderr.log",
+    "stdout_log": "renderer.stdout.log"
+  },
+  "renderer_provenance": {
+    "fixed_options": [
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3"
+    ],
+    "full_renderer_options": [
+      "--sort",
+      "off",
+      "--wavefront",
+      "on",
+      "--rr",
+      "on",
+      "--rr-start",
+      "3",
+      "--sampler",
+      "halton",
+      "--motion",
+      "on"
+    ],
+    "options_forwarded_as_discrete_argv": true,
+    "selected_motion": "on",
+    "selected_sampler": "halton"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "subprocess_policy": {
+    "argv_arrays_only": true,
+    "renderer_cwd": "/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture",
+    "shell": false
+  },
+  "timing": {
+    "clock": "time.monotonic_ns",
+    "interaction_epoch": {
+      "monotonic_ns": 6686626212020,
+      "relative_to_interaction_s": 0.0,
+      "utc": "2026-10-01T23:57:35.473438Z"
+    },
+    "maximum_allowed_event_start_drift_seconds": 0.75,
+    "recorded_startup_lead_in_seconds": 1.353532484,
+    "startup_lead_in_disclosure": "The video begins before the interaction epoch; this genuine encoder/X11 startup lead-in is retained and included in probed duration."
+  },
+  "tool_versions": {
+    "ffmpeg": {
+      "argv": [
+        "/usr/bin/ffmpeg",
+        "-version"
+      ],
+      "end": {
+        "monotonic_ns": 6684546965725,
+        "relative_to_interaction_s": -2.079246295,
+        "utc": "2026-10-01T23:57:33.394186Z"
+      },
+      "exit_code": 0,
+      "start": {
+        "monotonic_ns": 6684492349984,
+        "relative_to_interaction_s": -2.133862036,
+        "utc": "2026-10-01T23:57:33.339577Z"
+      },
+      "stderr": "",
+      "stdout": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers\nbuilt with gcc 13 (Ubuntu 13.2.0-23ubuntu3)\nconfiguration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared\nlibavutil      58. 29.100 / 58. 29.100\nlibavcodec     60. 31.102 / 60. 31.102\nlibavformat    60. 16.100 / 60. 16.100\nlibavdevice    60.  3.100 / 60.  3.100\nlibavfilter     9. 12.100 /  9. 12.100\nlibswscale      7.  5.100 /  7.  5.100\nlibswresample   4. 12.100 /  4. 12.100\nlibpostproc    57.  3.100 / 57.  3.100\n",
+      "timed_out": false,
+      "version_string": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+    },
+    "ffprobe": {
+      "argv": [
+        "/usr/bin/ffprobe",
+        "-version"
+      ],
+      "end": {
+        "monotonic_ns": 6684609610992,
+        "relative_to_interaction_s": -2.016601028,
+        "utc": "2026-10-01T23:57:33.456831Z"
+      },
+      "exit_code": 0,
+      "start": {
+        "monotonic_ns": 6684553828240,
+        "relative_to_interaction_s": -2.07238378,
+        "utc": "2026-10-01T23:57:33.401057Z"
+      },
+      "stderr": "",
+      "stdout": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers\nbuilt with gcc 13 (Ubuntu 13.2.0-23ubuntu3)\nconfiguration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared\nlibavutil      58. 29.100 / 58. 29.100\nlibavcodec     60. 31.102 / 60. 31.102\nlibavformat    60. 16.100 / 60. 16.100\nlibavdevice    60.  3.100 / 60.  3.100\nlibavfilter     9. 12.100 /  9. 12.100\nlibswscale      7.  5.100 /  7.  5.100\nlibswresample   4. 12.100 /  4. 12.100\nlibpostproc    57.  3.100 / 57.  3.100\n",
+      "timed_out": false,
+      "version_string": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers"
+    }
+  },
+  "tools": {
+    "ffmpeg": "/usr/bin/ffmpeg",
+    "ffprobe": "/usr/bin/ffprobe",
+    "xdotool": "/usr/bin/xdotool",
+    "xwininfo": "/usr/bin/xwininfo"
+  },
+  "window": {
+    "id": "10485767",
+    "search_constrained_to_renderer_pid": 25173,
+    "search_pattern": "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$",
+    "search_requires_all_predicates": true
+  }
+}
+/home/ubuntu/cis5650/project3/results/submission-final-interaction/capture

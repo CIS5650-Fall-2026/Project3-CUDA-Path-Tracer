@@ -1,0 +1,91 @@
+{
+  "benchmark": {
+    "csv": "results/extension-experiments/procedural-knot-marble-warmup-2.benchmark.csv",
+    "measured_samples": 16,
+    "renderer_gpu_ms": 210.20975971221924,
+    "renderer_host_ms": 210.53927100000004
+  },
+  "benchmark_enabled": true,
+  "benchmark_instrumentation": "shade_ms is aggregate shader time in both scheduling modes. diffuse_ms, mirror_ms, dielectric_ms, emission_ms, and terminal_ms are an alternative wavefront breakdown and must not be added to shade_ms. queue_host_ms is host queue bookkeeping/submission time, not GPU stage time. count_ms is the compact=off active-path count.",
+  "camera": {
+    "aperture": 0.0,
+    "focus_distance": 8.800000190734863,
+    "look_at": [
+      0.0,
+      1.5,
+      0.0
+    ],
+    "position": [
+      2.799999952316284,
+      2.299999952316284,
+      5.199999809265137
+    ]
+  },
+  "checkpoint": null,
+  "checkpoint_every": null,
+  "compatibility": {
+    "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+    "build_identifier": "cis565-project3-renderer-v1_source-sha256-d1ca1c603f9fcec1d353fd3d30b61a8025b9d3da5ad2294bf24f66e4ab0923aa_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "compute_capability": "8.6",
+    "cuda_driver_version": 13000,
+    "cuda_runtime_version": 12080,
+    "device": "NVIDIA A10G"
+  },
+  "completed_samples": 16,
+  "config": {
+    "aa": true,
+    "bvh": true,
+    "compact": true,
+    "debug": "none",
+    "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+    "max_depth": 10,
+    "nee": true,
+    "rr": true,
+    "rr_start": 3,
+    "sort": false,
+    "wavefront": true
+  },
+  "debug_view": null,
+  "display_transform": {
+    "normalization": "divide accumulated RGB sums by completed_samples",
+    "orientation": "horizontal flip matching the starter preview camera convention",
+    "tone_mapping": "Reinhard c/(1+c)",
+    "transfer": "IEC 61966-2-1 sRGB"
+  },
+  "fingerprints": {
+    "assets": 1402321081832908507,
+    "geometry": 10130989290528579507,
+    "materials": 5995843153696301724,
+    "render_config": 12788199252694454798,
+    "scene_file": 9170298485052691029
+  },
+  "format_version": 1,
+  "linear_sum_format": {
+    "checksum": 16740004549702728481,
+    "checksum_security": "change/corruption detection only; not cryptographic",
+    "checksum_trailer_bytes": 8,
+    "endianness": "little",
+    "header_bytes": 32,
+    "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+    "magic": "C565SUM\\0",
+    "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+    "payload_offset_bytes": 32,
+    "png_orientation": "horizontal flip of renderer-order pixels",
+    "trailer": "little-endian FNV-1a-64 over header and payload",
+    "version": 1
+  },
+  "outputs": {
+    "linear_sum": "results/extension-experiments/procedural-knot-marble-warmup-2.sum.bin",
+    "png": "results/extension-experiments/procedural-knot-marble-warmup-2.png"
+  },
+  "render_loop_wall_ms": 210.543531,
+  "resolution": [
+    160,
+    106
+  ],
+  "resumed_from": null,
+  "sampler_version": 2,
+  "scene": "/home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-marble.json",
+  "seed": 947,
+  "target_samples": 16
+}

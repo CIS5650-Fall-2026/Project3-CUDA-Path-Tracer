@@ -1,0 +1,58 @@
+{
+  "artifacts": {},
+  "audits": [],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "65536",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/104-reject-time-budget-negative/render",
+    "--time-budget-ms",
+    "-1"
+  ],
+  "command_json": {
+    "bytes": 1000,
+    "path": "runs/104-reject-time-budget-negative/command.json",
+    "sha256": "05bd013e70d25763e03c5f99a2117286e387636dfe9fd299cad2fd2a11965b19"
+  },
+  "elapsed_seconds": 0.0023536669998520665,
+  "exit_code": 1,
+  "expectation_met": true,
+  "expected_exit": "nonzero",
+  "expected_rejection_terms": [
+    "--time-budget-ms expects an unsigned integer"
+  ],
+  "finished_utc": "2026-10-02T01:04:31.610535Z",
+  "index": 104,
+  "inputs": [
+    {
+      "bytes": 6372424,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    }
+  ],
+  "label": "reject-time-budget-negative",
+  "launch_exception": null,
+  "output_prefix": "runs/104-reject-time-budget-negative/render",
+  "rejection_text": "error: --time-budget-ms expects an unsigned integer\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help",
+  "run_directory": "runs/104-reject-time-budget-negative",
+  "started_utc": "2026-10-02T01:04:31.608166Z",
+  "stderr": {
+    "bytes": 1332,
+    "path": "runs/104-reject-time-budget-negative/stderr.txt",
+    "sha256": "dd20b3670b59e697d50153e82ff6a2c6f91530f94e0030c5c6c5458dbd2dcdaf"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "runs/104-reject-time-budget-negative/stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

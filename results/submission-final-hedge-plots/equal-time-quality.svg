@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1307" height="376" viewBox="0 0 1307 376" role="img" aria-labelledby="title desc">
+<title id="title">Equal-time image error</title>
+<desc id="desc">Each run requested 4000 ms with a fixed safety ceiling; bars show medians and whiskers the full retained fixed-seed range. MSE uses the retained adequate reference.</desc>
+<rect width="1307" height="376" fill="#f8fafc"/>
+<g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#182433">
+<text x="34" y="39" font-size="24" font-weight="650">Equal-time image error</text>
+<text x="34" y="66" font-size="13">Each run requested 4000 ms with a fixed safety ceiling; bars show medians and whiskers the full retained fixed-seed range. MSE uses the retained adequate reference.</text>
+<text x="1273" y="39" text-anchor="end" font-size="13" font-weight="700" fill="#9a3412">QUALITY: QUALIFIED · REFERENCES ADEQUATE</text>
+<path d="M365.00 90 V328" stroke="#dde3ea"/>
+<text x="365.00" y="351" text-anchor="middle" font-size="12">0</text>
+<path d="M506.00 90 V328" stroke="#dde3ea"/>
+<text x="506.00" y="351" text-anchor="middle" font-size="12">0.0004279</text>
+<path d="M647.00 90 V328" stroke="#dde3ea"/>
+<text x="647.00" y="351" text-anchor="middle" font-size="12">0.0008557</text>
+<path d="M788.00 90 V328" stroke="#dde3ea"/>
+<text x="788.00" y="351" text-anchor="middle" font-size="12">0.001284</text>
+<path d="M929.00 90 V328" stroke="#dde3ea"/>
+<text x="929.00" y="351" text-anchor="middle" font-size="12">0.001711</text>
+<path d="M1070.00 90 V328" stroke="#dde3ea"/>
+<text x="1070.00" y="351" text-anchor="middle" font-size="12">0.002139</text>
+<text x="717.50" y="371" text-anchor="middle" font-size="12">linear-RGB MSE (lower is better)</text>
+<text x="351" y="122" text-anchor="end" font-size="12">diffuse · counter · reference adequate (n=8)</text>
+<rect x="365" y="102" width="19.58" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>mse by fixed seed — 947:5.672143654421897e-05; 104729:5.8891007935524405e-05; 130363:5.637948188341276e-05; 155921:6.46713074388201e-05; 196613:5.714329508695839e-05; 262147:6.678695573121378e-05; 314159:6.433042486750591e-05; 524287:5.991819411332242e-05</title></rect>
+<path d="M383.58 116 H387.01 M383.58 110 V122 M387.01 110 V122" stroke="#172331" stroke-width="1.5"/>
+<text x="395.01" y="122" font-size="12">5.9405e-05 [5.6379e-05, 6.6787e-05]</text>
+<text x="351" y="173" text-anchor="end" font-size="12">diffuse · halton · reference adequate (n=8)</text>
+<rect x="365" y="153" width="12.32" height="28" rx="3" fill="#d06531" opacity="0.9"><title>mse by fixed seed — 947:3.9443183149787344e-05; 104729:3.641270852780712e-05; 130363:4.0616818315573546e-05; 155921:3.5574841002710576e-05; 196613:3.7440136413428887e-05; 262147:4.024432403099641e-05; 314159:3.733575603170317e-05; 524287:3.6738255414000916e-05</title></rect>
+<path d="M376.72 167 H378.39 M376.72 161 V173 M378.39 161 V173" stroke="#172331" stroke-width="1.5"/>
+<text x="386.39" y="173" font-size="12">3.7388e-05 [3.5575e-05, 4.0617e-05]</text>
+<text x="351" y="224" text-anchor="end" font-size="12">glass-dof · counter · reference adequate (n=8)</text>
+<rect x="365" y="204" width="522.10" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>mse by fixed seed — 947:0.0015342558116734927; 104729:0.0019100487927389911; 130363:0.001507349918304818; 155921:0.001560789489240101; 196613:0.0016685277304937676; 262147:0.0017318717017493373; 314159:0.0015844077276338257; 524287:0.0015841188968903277</title></rect>
+<path d="M861.75 218 H994.46 M861.75 212 V224 M994.46 212 V224" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.46" y="224" font-size="12">0.0015843 [0.0015073, 0.00191]</text>
+<text x="351" y="275" text-anchor="end" font-size="12">glass-dof · halton · reference adequate (n=8)</text>
+<rect x="365" y="255" width="266.33" height="28" rx="3" fill="#d06531" opacity="0.9"><title>mse by fixed seed — 947:0.0009080883090144473; 104729:0.0007906770692190295; 130363:0.0008610309654166671; 155921:0.0007905578007260122; 196613:0.000837825369029767; 262147:0.0007908635975964741; 314159:0.0008254569998330327; 524287:0.0007666602294523635</title></rect>
+<path d="M617.66 269 H664.26 M617.66 263 V275 M664.26 263 V275" stroke="#172331" stroke-width="1.5"/>
+<text x="672.26" y="275" font-size="12">0.00080816 [0.00076666, 0.00090809]</text>
+</g>
+</svg>

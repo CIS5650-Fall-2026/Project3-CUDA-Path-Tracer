@@ -1,0 +1,42 @@
+[ 11%] Building CXX object CMakeFiles/cis565_core.dir/src/image.cpp.o
+[ 11%] Building CXX object CMakeFiles/cis565_core.dir/src/geometry.cpp.o
+[ 11%] Building CXX object CMakeFiles/cis565_core.dir/src/checkpoint.cpp.o
+[ 11%] Building CXX object CMakeFiles/cis565_core.dir/src/gltf_loader.cpp.o
+[ 14%] Building CXX object CMakeFiles/cis565_core.dir/src/scene.cpp.o
+[ 17%] Building CXX object CMakeFiles/cis565_core.dir/src/stb.cpp.o
+[ 20%] Building CXX object CMakeFiles/cis565_core.dir/src/utilities.cpp.o
+[ 23%] Linking CXX static library lib/libcis565_core.a
+[ 23%] Built target cis565_core
+[ 35%] Building CXX object CMakeFiles/gltf_tests.dir/tests/gltf_tests.cpp.o
+[ 35%] Building CXX object CMakeFiles/checkpoint_tests.dir/tests/checkpoint_tests.cpp.o
+[ 35%] Building CUDA object CMakeFiles/cis565_renderer.dir/src/pathtrace.cu.o
+[ 35%] Building CXX object CMakeFiles/geometry_tests.dir/tests/geometry_tests.cpp.o
+[ 38%] Linking CXX executable bin/checkpoint_tests
+[ 38%] Built target checkpoint_tests
+[ 41%] Building CUDA object CMakeFiles/cis565_renderer.dir/src/interactions.cu.o
+[ 44%] Building CUDA object CMakeFiles/cis565_renderer.dir/src/intersections.cu.o
+[ 47%] Linking CXX executable bin/geometry_tests
+[ 47%] Built target geometry_tests
+[ 50%] Building CUDA object CMakeFiles/cis565_renderer.dir/stream_compaction/device_scan.cu.o
+[ 52%] Linking CXX executable bin/gltf_tests
+[ 52%] Built target gltf_tests
+[ 55%] Linking CUDA device code CMakeFiles/cis565_renderer.dir/cmake_device_link.o
+[ 58%] Linking CXX static library lib/libcis565_renderer.a
+[ 58%] Built target cis565_renderer
+[ 64%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/main.cpp.o
+[ 64%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/glslUtility.cpp.o
+[ 67%] Building CXX object CMakeFiles/cis565_path_tracer_headless.dir/src/headless.cpp.o
+[ 70%] Building CXX object CMakeFiles/render_tests.dir/tests/render_tests.cpp.o
+[ 73%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui.cpp.o
+[ 76%] Linking CXX executable bin/render_tests
+[ 76%] Built target render_tests
+[ 79%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui_demo.cpp.o
+[ 82%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui_draw.cpp.o
+[ 85%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui_impl_glfw.cpp.o
+[ 88%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui_impl_opengl3.cpp.o
+[ 91%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui_tables.cpp.o
+[ 94%] Building CXX object CMakeFiles/cis565_path_tracer.dir/src/ImGui/imgui_widgets.cpp.o
+[ 97%] Linking CXX executable bin/cis565_path_tracer_headless
+[ 97%] Built target cis565_path_tracer_headless
+[100%] Linking CXX executable bin/cis565_path_tracer
+[100%] Built target cis565_path_tracer

@@ -3,7 +3,130 @@
 #include "scene.h"
 #include "utilities.h"
 
+#include <cuda_runtime.h>
+#include <glm/glm.hpp>
+
+#include <cstdint>
+#include <string>
+#include <vector>
+
+enum class RendererSampler : std::uint32_t
+{
+    Counter = 2,
+    Halton = 3
+};
+
+// Retained as the historical/default sampler identifier for callers that
+// still use the old name. Checkpoint format versions are independent of this
+// value; CheckpointData::samplerVersion remains the sole persisted sampler ID.
+inline constexpr std::uint32_t kRendererSamplerVersion =
+    static_cast<std::uint32_t>(RendererSampler::Counter);
+
+enum class RendererDebugMode : std::uint32_t
+{
+    None = 0,
+    Normals = 1,
+    Uv = 2,
+    Depth = 3
+};
+
+struct RendererConfig
+{
+    std::uint64_t seed = 1;
+    int maxDepth = 8;
+    bool aa = true;
+    bool nee = true;
+    bool useBvh = true;
+    bool compact = true;
+    bool sort = false;
+    bool wavefront = true;
+    bool rr = true;
+    int rrStart = 3;
+    RendererSampler sampler = RendererSampler::Counter;
+    bool motion = true;
+    bool benchmark = false;
+    RendererDebugMode debug = RendererDebugMode::None;
+};
+
+struct RendererBenchmarkRow
+{
+    std::uint64_t sample = 0;
+    int bounce = 0;
+    int activeBefore = 0;
+    int activeAfter = 0;
+    float intersectionMs = 0.0f;
+    float sortMs = 0.0f;
+    float shadeMs = 0.0f;
+    float compactionMs = 0.0f;
+    float countMs = 0.0f;
+    float queueMs = 0.0f;
+    // Host wall time for queue count/offset/live-total downloads and
+    // validation, plus CPU consumer-submission time; timing waits are excluded.
+    double queueHostMs = 0.0;
+    float diffuseMs = 0.0f;
+    float mirrorMs = 0.0f;
+    float dielectricMs = 0.0f;
+    float emissionMs = 0.0f;
+    float terminalMs = 0.0f;
+    int queuedDiffuse = 0;
+    int queuedMirror = 0;
+    int queuedDielectric = 0;
+    int queuedEmission = 0;
+    int queuedTerminal = 0;
+    int kernelDispatches = 0;
+    std::uint64_t rrTested = 0;
+    std::uint64_t rrTerminated = 0;
+};
+
+struct RendererBenchmarkSummary
+{
+    std::uint64_t measuredSamples = 0;
+    double hostMilliseconds = 0.0;
+    double gpuMilliseconds = 0.0;
+};
+
+struct RendererValidationCheck
+{
+    std::string name;
+    bool passed = false;
+    std::string detail;
+    // Optional renderer-authored JSON object emitted as structured check data.
+    std::string dataJson;
+};
+
+struct RendererValidationReport
+{
+    bool passed = false;
+    std::vector<RendererValidationCheck> checks;
+};
+
+struct RendererCompatibilityInfo
+{
+    std::string sourceBuild;
+    std::string deviceName;
+    int computeMajor = 0;
+    int computeMinor = 0;
+    int runtimeVersion = 0;
+    int driverVersion = 0;
+};
+
+// Starter-compatible preview entry points.
 void InitDataContainer(GuiDataContainer* guiData);
-void pathtraceInit(Scene *scene);
+void pathtraceInit(Scene* scene);
 void pathtraceFree();
-void pathtrace(uchar4 *pbo, int frame, int iteration);
+void pathtrace(uchar4* pbo, int frame, int iteration);
+
+// Explicit renderer control used by headless/checkpoint/validation paths.
+void pathtraceSetConfig(const RendererConfig& config);
+RendererConfig pathtraceGetConfig();
+void pathtraceResetAccumulation();
+void pathtraceRunSample();
+std::uint64_t pathtraceSampleCount();
+void pathtraceDownloadAccumulation(std::vector<glm::vec3>& accumulation);
+void pathtraceUploadAccumulation(const std::vector<glm::vec3>& accumulation,
+                                 std::uint64_t completedSamples);
+std::vector<RendererBenchmarkRow> pathtraceTakeBenchmarkRows();
+RendererBenchmarkSummary pathtraceBenchmarkSummary();
+RendererValidationReport pathtraceValidate();
+std::string pathtraceValidationJson(const RendererValidationReport& report);
+RendererCompatibilityInfo pathtraceCompatibilityInfo();

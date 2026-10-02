@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "scope": "Original media helper source snapshots; actual execution status is recorded separately in command receipts.",
+  "recorded_at_utc": "2026-10-02T02:44:31.058283+00:00",
+  "renderer_source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "evidence_prefix": "submission-checkpoint-final",
+  "compiled_executables_delivered": false,
+  "controller_executed_remote_sha256": "e1b709e6a756c403dd6c9e0c39e7e76007bb33f1af31b427479adf5887ddd1ee",
+  "sources": [
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/run_final_interaction_remote.py",
+      "original_private_path": ".local/run_final_interaction_remote.py",
+      "bytes": 19713,
+      "sha256": "e1b709e6a756c403dd6c9e0c39e7e76007bb33f1af31b427479adf5887ddd1ee"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/setup_final_display_remote.py",
+      "original_private_path": ".local/setup_final_display_remote.py",
+      "bytes": 2246,
+      "sha256": "747ed64117703f644649645c4c55088b84c2cbcbef63c07a617f5ac8dfd1904f"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/run_checkpoint_graphical_step.py",
+      "original_private_path": ".local/run_checkpoint_graphical_step.py",
+      "bytes": 11346,
+      "sha256": "fad81ac3629be0159184d934ede89b4ed6ccf6ea2e72f9da7517959a8fc8e188"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/validate_checkpoint_preview.py",
+      "original_private_path": ".local/validate_checkpoint_preview.py",
+      "bytes": 6267,
+      "sha256": "ab51f6bf0e9891bf908baf1319c9109d43cb6a1596a153c80260e167f66f52a4"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/finalize_interaction_artifacts.py",
+      "original_private_path": ".local/finalize_interaction.py",
+      "bytes": 38028,
+      "sha256": "63f3d894889ab5dfcb8ab451e8472a451d04cd97a82ae0e26f2382e2f3640fc2"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/convert_final_interaction.py",
+      "original_private_path": ".local/convert_final_interaction.py",
+      "bytes": 15612,
+      "sha256": "0cdee514e752725d39deb4d8f30922a076afcdfefb7a1a58e1e1cf6ae1a53f75"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/interaction_pixel_compare.cpp",
+      "original_private_path": ".local/interaction_pixel_compare.cpp",
+      "bytes": 3226,
+      "sha256": "667e38d90ff7d199789669e394b2ccdc05e3320b50dae766391d8f3655e5ab98"
+    },
+    {
+      "path": "results/submission-checkpoint-final-interaction/tools/run_checkpoint_media_local.py",
+      "original_private_path": ".local/run_checkpoint_media_local.py",
+      "bytes": 6697,
+      "sha256": "ea0587652eae3b3b49e01e035c0e5610ce0526501e20e9ae545b3f6131b36f45"
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "capture_executed": false,
+  "check_count": 19,
+  "checks": [
+    {
+      "absolute_origin": [
+        160,
+        69
+      ],
+      "fixture_kind": "synthetic xwininfo text matching root-observed coordinate fields",
+      "name": "absolute_client_origin_ignores_parent_relative_fields",
+      "parent_relative_origin": [
+        14,
+        49
+      ],
+      "parsed_geometry": {
+        "height": 640,
+        "width": 960,
+        "window": 7,
+        "x": 160,
+        "y": 69
+      },
+      "passed": true
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "missing_absolute_x",
+      "passed": true,
+      "rejection_message": "xwininfo omitted required absolute client geometry"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "duplicate_absolute_x",
+      "passed": true,
+      "rejection_message": "duplicate or invalid xwininfo field: '  Absolute upper-left X: 160'"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "nonnumeric_width",
+      "passed": true,
+      "rejection_message": "duplicate or invalid xwininfo field: '  Width: bad'"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "negative_height",
+      "passed": true,
+      "rejection_message": "xwininfo reported nonpositive client dimensions"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "duplicate_width",
+      "passed": true,
+      "rejection_message": "duplicate or invalid xwininfo field: '  Width: 960'"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "unmapped_window",
+      "passed": true,
+      "rejection_message": "xwininfo client must be uniquely reported as IsViewable"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "duplicate_map_state",
+      "passed": true,
+      "rejection_message": "xwininfo client must be uniquely reported as IsViewable"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "duplicate_window_id",
+      "passed": true,
+      "rejection_message": "xwininfo did not uniquely identify its client window"
+    },
+    {
+      "fixture_kind": "synthetic invalid text",
+      "name": "missing_window_id",
+      "passed": true,
+      "rejection_message": "xwininfo did not uniquely identify its client window"
+    },
+    {
+      "capture_region": {
+        "height": 720,
+        "width": 1280,
+        "within_display_bounds": true,
+        "x": 0,
+        "y": 0
+      },
+      "client_bottom": 709,
+      "client_margins": {
+        "bottom": 11,
+        "left": 160,
+        "right": 160,
+        "top": 69
+      },
+      "fixture_kind": "synthetic responses from mocked xdotool/xwininfo; no X11 command ran",
+      "movement_sequence": [
+        {
+          "absolute_after_mock_GNOME": [
+            160,
+            106
+          ],
+          "requested": [
+            160,
+            69
+          ]
+        },
+        {
+          "absolute_after_mock_GNOME": [
+            160,
+            69
+          ],
+          "requested": [
+            160,
+            32
+          ]
+        }
+      ],
+      "name": "mock_GNOME_placement_correction",
+      "passed": true,
+      "verified_client": {
+        "height": 640,
+        "width": 960,
+        "window": 7,
+        "x": 160,
+        "y": 69
+      }
+    },
+    {
+      "fixture_kind": "synthetic",
+      "name": "required_position_checkpoint_acceptance",
+      "passed": true
+    },
+    {
+      "fixture_kind": "synthetic",
+      "name": "one_pixel_displacement_rejection",
+      "passed": true,
+      "rejection_message": "synthetic one-pixel displacement: preview moved from (160,69) to (160,70)"
+    },
+    {
+      "fixture_kind": "synthetic",
+      "name": "nonnative_dimensions_rejection",
+      "passed": true,
+      "rejection_message": "synthetic nonnative width: preview client is 959x640, expected native 960x640; refusing to resize"
+    },
+    {
+      "fixture_kind": "synthetic",
+      "name": "inspection_different-window_rejection",
+      "passed": true,
+      "rejection_message": "xwininfo identified a different client window"
+    },
+    {
+      "fixture_kind": "synthetic",
+      "name": "inspection_failure_rejection",
+      "passed": true,
+      "rejection_message": "xwininfo failed while reading synthetic failure: timeout=False; exit=1; stderr=synthetic tool failure"
+    },
+    {
+      "fixture_kind": "synthetic",
+      "name": "inspection_timeout_rejection",
+      "passed": true,
+      "rejection_message": "xwininfo failed while reading synthetic timeout: timeout=True; exit=None; stderr=synthetic stderr"
+    },
+    {
+      "interaction_schedule_seconds": [
+        {
+          "action": "release buttons 1/3/2; Space reset",
+          "at_s": 0.0
+        },
+        {
+          "from_s": 0.0,
+          "phase": "original-camera convergence",
+          "to_s": 12.0
+        },
+        {
+          "action": "left drag (700,400) to (810,410), 12 steps",
+          "from_s": 12.0,
+          "to_s": 15.0
+        },
+        {
+          "from_s": 15.0,
+          "phase": "left-drag convergence",
+          "to_s": 20.0
+        },
+        {
+          "action": "right drag (700,400) to (700,350), 12 steps",
+          "from_s": 20.0,
+          "to_s": 22.0
+        },
+        {
+          "from_s": 22.0,
+          "phase": "right-drag convergence",
+          "to_s": 27.0
+        },
+        {
+          "action": "middle drag (700,400) to (740,425), 12 steps",
+          "from_s": 27.0,
+          "to_s": 29.0
+        },
+        {
+          "from_s": 29.0,
+          "phase": "middle-drag convergence",
+          "to_s": 34.0
+        },
+        {
+          "action": "release buttons 1/3/2; Space reset",
+          "at_s": 34.0
+        },
+        {
+          "from_s": 34.0,
+          "phase": "restored-camera convergence",
+          "to_s": 44.0
+        },
+        {
+          "action": "S save",
+          "at_s": 44.0
+        },
+        {
+          "action": "release buttons 1/3/2; Escape save and exit",
+          "at_s": 46.0
+        },
+        {
+          "action": "SIGINT ffmpeg after renderer exit",
+          "at_s": 48
+        }
+      ],
+      "method": "Python AST structural equality excluding source location",
+      "name": "timeline_capture_and_validation_AST_preservation",
+      "new_client_y": 69,
+      "old_client_y": 48,
+      "passed": true,
+      "preserved_constants": [
+        "CAPTURE_WIDTH",
+        "CAPTURE_HEIGHT",
+        "CLIENT_WIDTH",
+        "CLIENT_HEIGHT",
+        "CLIENT_X",
+        "MIN_DURATION_SECONDS",
+        "MAX_FPS",
+        "MAX_EVENT_DRIFT_SECONDS"
+      ],
+      "unchanged_methods": [
+        "begin_event",
+        "finish_event",
+        "xdo",
+        "require_native_geometry",
+        "launch_capture",
+        "await_capture_frame",
+        "establish_interaction_epoch",
+        "wait_until",
+        "convergence",
+        "reset_camera",
+        "drag",
+        "scheduled_save",
+        "send_escape",
+        "stop_capture",
+        "ffprobe_video",
+        "verify_geometry_checkpoint",
+        "run"
+      ]
+    },
+    {
+      "baseline_sha256_before_after": "2dd506d3560bae30bfd61ba212949eec485572e056f5e8231d35404c9d60f333",
+      "name": "source_inputs_unchanged_by_checks",
+      "passed": true,
+      "recorder_sha256_before_after": "6b3d74194e2b2916eb204cf5aec5a1e9bda4bcf5c60084f5db846662b983f395"
+    }
+  ],
+  "completed_at_utc": "2026-10-01T21:52:56.813601Z",
+  "footage_or_interaction_success_claimed": false,
+  "inputs": {
+    "current_recorder": {
+      "bytes": 80024,
+      "path": "scripts/record_interaction_video.py",
+      "sha256": "6b3d74194e2b2916eb204cf5aec5a1e9bda4bcf5c60084f5db846662b983f395"
+    },
+    "preserved_baseline": {
+      "bytes": 75199,
+      "path": "results/hedge-final-interaction/tools/record_interaction_video.pre-geometry.py",
+      "sha256": "2dd506d3560bae30bfd61ba212949eec485572e056f5e8231d35404c9d60f333"
+    },
+    "selfcheck_source": {
+      "bytes": 14288,
+      "path": "results/hedge-final-interaction/tools/recording_geometry_selfcheck.py",
+      "sha256": "76a3fcba8ac1f0678e58d5a1182308a1e993faf1cdcdb4306e6a36155697101f"
+    }
+  },
+  "mocked_inspection_commands": [
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ],
+    [
+      "/synthetic/mock/xwininfo",
+      "-id",
+      "7",
+      "-stats"
+    ]
+  ],
+  "passed": true,
+  "real_X11_command_executed": false,
+  "remote_action_performed": false,
+  "renderer_executed": false,
+  "schema_version": 1,
+  "scope": "synthetic geometry regression only",
+  "started_at_utc": "2026-10-01T21:52:56.770295Z",
+  "status": "passed"
+}

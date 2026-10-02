@@ -1,0 +1,1282 @@
+{
+  "repository": "https://github.com/CIS5650-Fall-2026/Project3-CUDA-Path-Tracer",
+  "revision": "8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+  "files": [
+    {
+      "path": ".cproject",
+      "sha256": "f2c8cfcbae5439e3d421d61d696891830895c8fb2235eedf5da31ed392668c47"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "9ff41a91a5e2c80d0a026fa47a8386809b9d4e94586d3019581d0912fb1b6234"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "f2bd4a014198f1b019a8ca28b6a4838bb5b937ec1e186d13202b8f89d1fdbbb9"
+    },
+    {
+      "path": ".project",
+      "sha256": "a07906fe18b58765297b7743749925dea9a0582cb0e56018192eddd2ac154382"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "722d5a77b38ff9f7237d2054e320353f97274fb25abb47d1050fd51ca23fbf2d"
+    },
+    {
+      "path": "GNUmakefile",
+      "sha256": "e1c9642a70f91265d9225ae62d417c5ab66e99a99472dddafdc0d969e4d58400"
+    },
+    {
+      "path": "INSTRUCTION.md",
+      "sha256": "bdc2f3475f456e2ea21d08e52f71ce87678a13653cd265ea0b0c44f72a8f1a8f"
+    },
+    {
+      "path": "Project3-CUDA-Path-Tracer.launch",
+      "sha256": "93bea2e90793ed4242eb30d15770c9de13a0e49e48611d4e918f986fdd907c0f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a436adef4589cf8a422f3c48cfdcf14c375a2f8023c3e01ac899a5b28f22d783"
+    },
+    {
+      "path": "cmake/FindGLEW.cmake",
+      "sha256": "6564e5864e8ede75d8ee27cb02aff534ac7bc63db51f0d0bd5b500af55cb2990"
+    },
+    {
+      "path": "cmake/FindGLFW.cmake",
+      "sha256": "45b08224cb36b58c6e897ac3add0477234ddf25d0fbf9eca8fc00ee60b110e6b"
+    },
+    {
+      "path": "cmake/FindGLM.cmake",
+      "sha256": "fcbe31cb0f44bc267369c23508214e7458a4d10be710bcae6c7f2feb89354485"
+    },
+    {
+      "path": "external/include/GL/LICENSE.txt",
+      "sha256": "8991cd11befec7c6a63662700f03c0cc42e864b6e77c7e70b80297c951a7f0ff"
+    },
+    {
+      "path": "external/include/GL/eglew.h",
+      "sha256": "a083a4e57554aa33907722e00ba129895554bfc9f7c73fc3648c68577046c5f4"
+    },
+    {
+      "path": "external/include/GL/glew.h",
+      "sha256": "70dc1969d43ba3ee2d2f61173025dc69d9d7901594f662441517ce1ed0f4f929"
+    },
+    {
+      "path": "external/include/GL/glxew.h",
+      "sha256": "c5aeb9aeb4d5b5cd872c2726781c05ed6ff87dc79dc1a0a0f798779309bf72b9"
+    },
+    {
+      "path": "external/include/GL/wglew.h",
+      "sha256": "57c0e65f54f0a264a3241cea51755d7358d564bfebf890dcc6fe01795a8e7e1d"
+    },
+    {
+      "path": "external/include/GLFW/COPYING.txt",
+      "sha256": "da2fb2c802537710cdebe8881b55356d07b88a6dbd7e4b912ac3091f8e6b5f6a"
+    },
+    {
+      "path": "external/include/GLFW/glfw3.h",
+      "sha256": "e80daf5acdac54bd2da5f4fb88cedf546532b85fe0bdd81069810f7aba61c87b"
+    },
+    {
+      "path": "external/include/GLFW/glfw3native.h",
+      "sha256": "504d352883480b83c35b8e2ce248219ceac46a43eb58579e9f46e1f9da794308"
+    },
+    {
+      "path": "external/include/glm/CMakeLists.txt",
+      "sha256": "0423f5d7e9bc377727ce3c3df33ce58c96690cbeeed08574c30023f93b43e890"
+    },
+    {
+      "path": "external/include/glm/common.hpp",
+      "sha256": "f6d72fd9edbb0d5de2073db2e96156c8f0e3eb5b146efffabe088bd249a1b1e8"
+    },
+    {
+      "path": "external/include/glm/detail/_features.hpp",
+      "sha256": "371bd31affebf25a212650420491a8f9b7cb4019799fd6c7c4af49f2f7c56db2"
+    },
+    {
+      "path": "external/include/glm/detail/_fixes.hpp",
+      "sha256": "12fd0a707f670cdaf436583e441ba80b68d4252616f3363d48f17329d164e392"
+    },
+    {
+      "path": "external/include/glm/detail/_noise.hpp",
+      "sha256": "85667e6bbcc000c1131b477f89df01a8b3d650a67a274e1e601478f26507e08c"
+    },
+    {
+      "path": "external/include/glm/detail/_swizzle.hpp",
+      "sha256": "b8d438589e164c45aa3811840cb0db10cafc7f1aba8783e834f27dc5f3dccfcd"
+    },
+    {
+      "path": "external/include/glm/detail/_swizzle_func.hpp",
+      "sha256": "3def723ea637b08c16fb8de4af20421c3e82e17f3a8e9bd42dbb7fd9446b211c"
+    },
+    {
+      "path": "external/include/glm/detail/_vectorize.hpp",
+      "sha256": "760611dfce4bf2974e2bd766abd3837e9f40d4bf276bc8b424f3409e18ccbc2e"
+    },
+    {
+      "path": "external/include/glm/detail/dummy.cpp",
+      "sha256": "d66deebffb546e5e0e2a046a18d14281f507c0786af7290c0a25b9a7fba9220b"
+    },
+    {
+      "path": "external/include/glm/detail/func_common.hpp",
+      "sha256": "e911376c35ed4c3237548c9553e58d1437447b9ab75ad1f1a1112ff81e57548d"
+    },
+    {
+      "path": "external/include/glm/detail/func_common.inl",
+      "sha256": "b7d27a1613f328402840085ef797ae4cd8e0d4bc89ccc4ac7e79c7154b9efb47"
+    },
+    {
+      "path": "external/include/glm/detail/func_exponential.hpp",
+      "sha256": "d1909fdb65395589d95553d317c2c282dbf212fea6255f19b160b6b710d65148"
+    },
+    {
+      "path": "external/include/glm/detail/func_exponential.inl",
+      "sha256": "b05e2d8943f3b29251178c5959da109b621aae547d0a43122579305f1f356ad5"
+    },
+    {
+      "path": "external/include/glm/detail/func_geometric.hpp",
+      "sha256": "e115a8826e0d3e6ae898e3f22c197cfcbe107479e1a1e4a02880ad8c2e052808"
+    },
+    {
+      "path": "external/include/glm/detail/func_geometric.inl",
+      "sha256": "74ad24d6ceb401610dc4c26a0e04b76151c793b55000007930cb64c916c8b2ee"
+    },
+    {
+      "path": "external/include/glm/detail/func_integer.hpp",
+      "sha256": "e4758b94dbf0dc9ea34d6178f2e9a94b64efefedf53e470041306078b517b60f"
+    },
+    {
+      "path": "external/include/glm/detail/func_integer.inl",
+      "sha256": "2653cd13812cff669c766df506a94cb4ed74f6ccba4708e9844e2a0d91c90330"
+    },
+    {
+      "path": "external/include/glm/detail/func_matrix.hpp",
+      "sha256": "028e96ef44414eeaf1fad6ef5f0c335b40699477133ffaf58567e128ac6a07ae"
+    },
+    {
+      "path": "external/include/glm/detail/func_matrix.inl",
+      "sha256": "fe4fdf9e0b304e9fd1111fb3ff1c7747fa178ead51d5d7512d5d4855bdfe27e2"
+    },
+    {
+      "path": "external/include/glm/detail/func_noise.hpp",
+      "sha256": "b3996cdfc1411739f20add6757df77031a856dfc628755eb661e3edb9292b500"
+    },
+    {
+      "path": "external/include/glm/detail/func_noise.inl",
+      "sha256": "7afc6d302f5d28aa7fd3741fffb68d248577158a70a626dd6d5d3ad66ad0f56f"
+    },
+    {
+      "path": "external/include/glm/detail/func_packing.hpp",
+      "sha256": "691ad228c4cc61e30cd17cd9eeb06623a2edee239bc1c0b1f9784d420ad2cb44"
+    },
+    {
+      "path": "external/include/glm/detail/func_packing.inl",
+      "sha256": "9b33ca9e1dec2cbb2006b3066204fcc9afe50fa53cdb17b7791cde71b1695c58"
+    },
+    {
+      "path": "external/include/glm/detail/func_trigonometric.hpp",
+      "sha256": "64089c025082d6b98a9c1c1d49af729b46167bd861abc9e134b6640b90434d59"
+    },
+    {
+      "path": "external/include/glm/detail/func_trigonometric.inl",
+      "sha256": "2d30478a0d0278e690b0b19da91bf4248901fb83ec614f04bd4ae71b1130e243"
+    },
+    {
+      "path": "external/include/glm/detail/func_vector_relational.hpp",
+      "sha256": "b7cbf42f320c2cc596f909922cbf6f50f48e8cc0b9d1d7bb118055d003b9259d"
+    },
+    {
+      "path": "external/include/glm/detail/func_vector_relational.inl",
+      "sha256": "483c555114a8314fbbd46c41837649eb4770a05b29c14f19378871b886360b76"
+    },
+    {
+      "path": "external/include/glm/detail/glm.cpp",
+      "sha256": "2caaaaf49a19806c2c0d3273d64e15e1f2eb8cd572151e6ea373c86fd1673ed6"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_common.hpp",
+      "sha256": "338799faed9df37c166df9544e924595cdf35ef34f131024155cdb39158801af"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_common.inl",
+      "sha256": "85a0c11c3293a9db53003a72ff2acb5c6296504cecbc5c044631ae07896ec270"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_exponential.hpp",
+      "sha256": "7708d8a5ba9c59ff910d07f35c307d131924cc63c10733f2003e9588338970aa"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_exponential.inl",
+      "sha256": "073d6caa4869783ad3519a70b25e316ebf14ae8bddea36b2d353e09ca4a99070"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_geometric.hpp",
+      "sha256": "dd944bbee292dff4b4618175a6539d3ff9a33721f5be3a0ea9ac02d1ea4f20eb"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_geometric.inl",
+      "sha256": "c0be5e80528cfac9cf50ed95e0781289cf807c8c022ab471237927f2675f3555"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_integer.hpp",
+      "sha256": "de0b64eccadf207ada1e89b8a558f3423facf741c3c12136ef34a924849d0e5d"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_integer.inl",
+      "sha256": "a828e0d6c905848d440991906bf25b7adf4ff68edaed531f862792764071a884"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_matrix.hpp",
+      "sha256": "aeac2a26990765067a87f95086067c915edbf32f22d68120c2344f5e9093c99a"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_matrix.inl",
+      "sha256": "e5d5b1eb9b3225ecd3cef697a43a2229b91405c7d9e00053bd87ef7dda3723a0"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_trigonometric.hpp",
+      "sha256": "d56cfb80334d9b39874d1dccbb53b19ad61c88c328aa1ac7e37926a927aff281"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_trigonometric.inl",
+      "sha256": "89468a648694914cb93f7904046c6f09af1b5d338226124a4bf9f1c56ec5032b"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_vector_relational.hpp",
+      "sha256": "232e407050c1b9ad4d4e68ac26b6eb3027d5e94e3249a259dc718d72dae5ed20"
+    },
+    {
+      "path": "external/include/glm/detail/intrinsic_vector_relational.inl",
+      "sha256": "6f41ac2e1d68243f7bec088b63754dcd9a62984b99e85a3391474dfa18c60416"
+    },
+    {
+      "path": "external/include/glm/detail/precision.hpp",
+      "sha256": "3b6ac7881e6196c3645af26bd0722ea5ce7e802209081c46761a812e71b1b628"
+    },
+    {
+      "path": "external/include/glm/detail/setup.hpp",
+      "sha256": "d41e401b3bb2dbd57130028a9304bce1c278ae0df12e5cfa2b8ef4b872057747"
+    },
+    {
+      "path": "external/include/glm/detail/type_float.hpp",
+      "sha256": "bf3ee2ec124b9c1f5d8fc832cdf2099331fc19629d8aad1b4b88096c8a39b21c"
+    },
+    {
+      "path": "external/include/glm/detail/type_gentype.hpp",
+      "sha256": "7ffcc1ee4191c9eb48ef0890332688e10f601a52bed1c11b7c658c2238acd2bd"
+    },
+    {
+      "path": "external/include/glm/detail/type_gentype.inl",
+      "sha256": "aa0cb56e9a9c100bfc028ce5d25cab3597cabebfca33bb2df202ce347cd1078f"
+    },
+    {
+      "path": "external/include/glm/detail/type_half.hpp",
+      "sha256": "582a7cef6bc8da72ed2d4ae67cfaa65339955f9e56d9dc250bf4865ce097ec54"
+    },
+    {
+      "path": "external/include/glm/detail/type_half.inl",
+      "sha256": "e000896482fc73cdbdb790fa33cce80877257ba733e89b938debdfaf194a98d6"
+    },
+    {
+      "path": "external/include/glm/detail/type_int.hpp",
+      "sha256": "278109c1c5116a0a35d1dbf1267cd0fbe8e9bb5bd7a7c388d788e828fd9c0c0f"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat.hpp",
+      "sha256": "e387ca19b0185868d2946396617818851f85a65abf10491e150c5e14e3f5a82a"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat.inl",
+      "sha256": "19031767de12a506280f5559e9ab31092dda647aafd8c2cf5af3a15006f47b29"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat2x2.hpp",
+      "sha256": "17454baa216a56b47efe5371ce5e1a9dfbd71676fcb6016d079d1293fa9153be"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat2x2.inl",
+      "sha256": "946097f162d8ff819a36e06953e445930138ac290ca9e6e6ecd96a19a77a3125"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat2x3.hpp",
+      "sha256": "88f7c7c14218aa6fdf1a9f702f215934bf4f38a78ccda8080a653ea6d173d069"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat2x3.inl",
+      "sha256": "8d6d90a1f25ec5c5f5cb33b169c1d5b771792d5027fcdd0e24e718660027cad0"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat2x4.hpp",
+      "sha256": "6170867ae9e01d898ff454c1ed3bc4e2453e11f36b7b72e822f24e90aa87fbda"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat2x4.inl",
+      "sha256": "469a20cc4403683cbf604d14398289c3c8280852bbc2b572f2612190a24e2e99"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat3x2.hpp",
+      "sha256": "ff40c2fd766aa1151e64137133f7fba0e732244057337e6497639bed3b03ef7e"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat3x2.inl",
+      "sha256": "691082dbef85cda01e690cfbf2ebd99162dc7f5cb0be5c913f2974625ff8a957"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat3x3.hpp",
+      "sha256": "83a747ab2b8210f63fb57578683e989dca9bc1743b72fc03c958747fd6b6ed98"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat3x3.inl",
+      "sha256": "c004a916341d00c9028318416f9005dc747731d995140303269779b08a4236c5"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat3x4.hpp",
+      "sha256": "4d5ab0e37f96b6ba40592415b9fbbb4a47b5aa3ec5915e01ef6c060d1bb54a00"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat3x4.inl",
+      "sha256": "a0e29bdc0a586b9c5819a2239f424bd001ff657814a3f2e9a683fd7c3acd5a8f"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat4x2.hpp",
+      "sha256": "d3264601cafe4d1cc0e9a68417234dbaee54a74638a11ba1899c0710e8755554"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat4x2.inl",
+      "sha256": "a3e429bb624517bb3f9fe5423b655472715e98170137b69ae3dbf0b356f5b76f"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat4x3.hpp",
+      "sha256": "395d2988733aec922cd627f7951f46eb9f3f3ae9af55ea959022576bdfe04c79"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat4x3.inl",
+      "sha256": "c34c4f41773fb67ef80f356e1ac51ad7ad69e871e04c2dc6ccfcceec9efff8fe"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat4x4.hpp",
+      "sha256": "ed86fed1570315d140778091ccc7d22bf4980e6adf5ca2d9df85ee1c1cb8fabb"
+    },
+    {
+      "path": "external/include/glm/detail/type_mat4x4.inl",
+      "sha256": "4205fa965a5e00b3bf1984d4397ebc9513750c3916f30604a89d194660ae6cdd"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec.hpp",
+      "sha256": "b354d3c1e8bae2f96ab772ccbff36d8006602837d00bae0321cc91ebc03fd3b2"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec.inl",
+      "sha256": "d1b097d5265a3b40af7d985a42cd23caabdd9ebd594956fddff5b3939c57c43d"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec1.hpp",
+      "sha256": "edc7aee4a99003007584c2caf2f799e9857fc2920ed7d1a383c8f870bb1b5e48"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec1.inl",
+      "sha256": "fe9ecc09f1eae8495256f4eb283c46dfa25da8c0964675c79580b45b6b2dd70e"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec2.hpp",
+      "sha256": "66c365d1200a8b882ae8781d5409ab9f97cf3d7eb11617f8e34d1fc75ab0f55f"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec2.inl",
+      "sha256": "8cc23133b84b49d8ab6570e64c9f38100cf8172b5e53258d72841525e1e3227a"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec3.hpp",
+      "sha256": "d33a3abcbfe0606d5fd80e6d310a426828fa0b9aa0cfa4c580825f3c986b4f91"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec3.inl",
+      "sha256": "715c216624d2ef6462f27d67e3b99b492d8ccab5d94087104781a762abbfff91"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec4.hpp",
+      "sha256": "c0a64400b9c99a2bc0d9caeb7468ee67d6515187ad3dc92df7f284a735763307"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec4.inl",
+      "sha256": "8d0d5023eee6b4ff3ff15bf660944587cc3510a28d23bbe920faede190765d75"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec4_avx.inl",
+      "sha256": "501be4fdef3c4fdf7481f8c890a508d86bff1a8ed9dd05d971027a77f850e444"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec4_avx2.inl",
+      "sha256": "ea90fa41c907b6e08b8436b72253fe79f05be7f8900ae3473d905d581f985076"
+    },
+    {
+      "path": "external/include/glm/detail/type_vec4_sse2.inl",
+      "sha256": "09c2277aec33422ae6db350c2bc1872c1ccc1a8328956ece89935c79748b378c"
+    },
+    {
+      "path": "external/include/glm/exponential.hpp",
+      "sha256": "2d21aa9126ec23bbc0ab74107b3595e77a62989473bf7ba656805bfe1e6a903e"
+    },
+    {
+      "path": "external/include/glm/ext.hpp",
+      "sha256": "fa5fc3d410e4e080413308d84395a310e625100f6025996c1d72f12a64c09a80"
+    },
+    {
+      "path": "external/include/glm/fwd.hpp",
+      "sha256": "b249b86b3fb47cd76c4c2707a648795567536e983f2358cb0639027489a26cb2"
+    },
+    {
+      "path": "external/include/glm/geometric.hpp",
+      "sha256": "62e5a15283f2df083cf513664055c7784c84875f1220bb82955a4b899fcf243f"
+    },
+    {
+      "path": "external/include/glm/glm.hpp",
+      "sha256": "64169ee59805974d590b4c137ae3b599e7316f261f0e53687536e8006e5674d2"
+    },
+    {
+      "path": "external/include/glm/gtc/bitfield.hpp",
+      "sha256": "8590ab1032db61273cffadbe79971241d53e779fbcad5f9d21392cdc9a14451f"
+    },
+    {
+      "path": "external/include/glm/gtc/bitfield.inl",
+      "sha256": "a89c3dc0c0d22fbc510f82854f34051ad471a749758ba7e3fa15e99543aa82b5"
+    },
+    {
+      "path": "external/include/glm/gtc/constants.hpp",
+      "sha256": "7c02b8099bf38e0e1afeceaf2e9d93f608c807cf5eaf09c561206955aa165f63"
+    },
+    {
+      "path": "external/include/glm/gtc/constants.inl",
+      "sha256": "1c7053a7d7ca8eba92d62035932e511fceb3c6e20551760f5bdb0255336e434e"
+    },
+    {
+      "path": "external/include/glm/gtc/epsilon.hpp",
+      "sha256": "9d299cf69f6b5eaef6c0850b5cad83f29f01e5efdef8ea3dbb31742e3895ecb7"
+    },
+    {
+      "path": "external/include/glm/gtc/epsilon.inl",
+      "sha256": "eb10d610a5b89549ca54d5fcafb0fe37783ee3295551a905a11969a239aa6da7"
+    },
+    {
+      "path": "external/include/glm/gtc/integer.hpp",
+      "sha256": "23f511aa464b8d6a25f9c664e200ed517454d9adf8253d3864885f1d91f18ecd"
+    },
+    {
+      "path": "external/include/glm/gtc/integer.inl",
+      "sha256": "6b7b184093ee79f3bd6077f9a89c55e9e0c182b7d348622b1bcc15fb5a9c10f8"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_access.hpp",
+      "sha256": "0c5432b65299a8966550f911b23c33529bc78326d24a7491df71bdc6fa62527a"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_access.inl",
+      "sha256": "fa300389972bb77dba885f6a000050915d51c98e26cbcc7da3c702379d0dae38"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_integer.hpp",
+      "sha256": "d11fb245a73cd3119e34b0bdba2ee82ef668d9a935dbcdd619a43c99d58cc307"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_inverse.hpp",
+      "sha256": "9e1afaae3fbbe6435c73993152825afcc4d1aaa44ac3c43239dcbba80fc688a5"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_inverse.inl",
+      "sha256": "ec26b2f5c37015d35ff66068a47ca88a248a3dced4c48cb81601ad899c33fbf1"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_transform.hpp",
+      "sha256": "61c14faf459494efa61d5fbb968ecabd50a85769ea67ecf1c4eb69a9d97868da"
+    },
+    {
+      "path": "external/include/glm/gtc/matrix_transform.inl",
+      "sha256": "f7d6018b74283f79aff64134ea9a19f92ca4cd28ccbce9b0841583c18d70d5fe"
+    },
+    {
+      "path": "external/include/glm/gtc/noise.hpp",
+      "sha256": "99b8004329b5c13af819662b718f95e1970d54298691735c0ea4e167a815f1c2"
+    },
+    {
+      "path": "external/include/glm/gtc/noise.inl",
+      "sha256": "0268ab4dd47ce4ee1ab0e91ce5f4230e7bd2475e73075a8f432ffae00fddfacb"
+    },
+    {
+      "path": "external/include/glm/gtc/packing.hpp",
+      "sha256": "892852684092ef22a306f62ef8b7a5191a64de4730c0c33c3f09aa855524e6da"
+    },
+    {
+      "path": "external/include/glm/gtc/packing.inl",
+      "sha256": "e06de411d2e7d9bae08c9dc5671291ac888dcda4d0979aa1e749f9f32b908ca3"
+    },
+    {
+      "path": "external/include/glm/gtc/quaternion.hpp",
+      "sha256": "d66c177e55721aad47f5cb71139233a3ed9e0818276a086534e10aa8da1a0a76"
+    },
+    {
+      "path": "external/include/glm/gtc/quaternion.inl",
+      "sha256": "d17edd65956baa7048e0ab209b9edfd8bdf5ce6db8ebd8db6a2d015b5867cc39"
+    },
+    {
+      "path": "external/include/glm/gtc/random.hpp",
+      "sha256": "a1e1cacc128588485935d745d847e39870e1c623f9cd74d02f4ed91356dd1437"
+    },
+    {
+      "path": "external/include/glm/gtc/random.inl",
+      "sha256": "b768d66c97f2789bef2f7016b71b22f33f2ba2904f9406b50b6a78a527d268df"
+    },
+    {
+      "path": "external/include/glm/gtc/reciprocal.hpp",
+      "sha256": "cc69c1d04a8b5c20ec4d9fed73e3a35d647694b286e487674eab64173ad4d749"
+    },
+    {
+      "path": "external/include/glm/gtc/reciprocal.inl",
+      "sha256": "d1509748fca4cd48e41fd388df6ad4b313c396d218d0201c4b9c66c42779126b"
+    },
+    {
+      "path": "external/include/glm/gtc/round.hpp",
+      "sha256": "775fe452f6102d5fd70e7f56a75ec96f8501fc2d6ad5128d7d182140b2fc5c33"
+    },
+    {
+      "path": "external/include/glm/gtc/round.inl",
+      "sha256": "b1584ebee4c35ec65a11ba257c639cb94ab0a9490f3da4e1a5fe3d458c6ca6c5"
+    },
+    {
+      "path": "external/include/glm/gtc/type_precision.hpp",
+      "sha256": "7a77f8b8353794b661d6479592038c8a7d257ed474690b892c413220f90eeb29"
+    },
+    {
+      "path": "external/include/glm/gtc/type_precision.inl",
+      "sha256": "4ba7e66865f6fff1b153826252eaaf1a3a07303a8f66ebdf31d7f736e7c5d4a4"
+    },
+    {
+      "path": "external/include/glm/gtc/type_ptr.hpp",
+      "sha256": "7e6ca319bda9f9b8bf45f41cbf2bb4b0254e3d4f399c132b3473fae482224b95"
+    },
+    {
+      "path": "external/include/glm/gtc/type_ptr.inl",
+      "sha256": "e2505b332dea7d5f5de381bd70cd38869540b6f37cb80b76351b93bdd0989e20"
+    },
+    {
+      "path": "external/include/glm/gtc/ulp.hpp",
+      "sha256": "ce5188ad96e606a6142b4c883307da8ce65544a00ad707d36230b50f98ac1f43"
+    },
+    {
+      "path": "external/include/glm/gtc/ulp.inl",
+      "sha256": "b6561cef63b88e31bfdeefa70bcc463b98db66825245f00b04769f51385b0c12"
+    },
+    {
+      "path": "external/include/glm/gtc/vec1.hpp",
+      "sha256": "fe2921587c5ae0ba0e29079b2d361f2a8040a87885f7810c5557c32ce5414baf"
+    },
+    {
+      "path": "external/include/glm/gtc/vec1.inl",
+      "sha256": "0ec9207cd955401b11142da2923e922b439bdbdbbf3aa9ed85db326c86f89201"
+    },
+    {
+      "path": "external/include/glm/gtx/associated_min_max.hpp",
+      "sha256": "5652ab883987f64ea32fd08070902c63a62a623f8b9845c0bc34d1b1661b683a"
+    },
+    {
+      "path": "external/include/glm/gtx/associated_min_max.inl",
+      "sha256": "32d21146956e96ca5edc881b5583bac53bf6972f59b6353e502bc7f3ebc21864"
+    },
+    {
+      "path": "external/include/glm/gtx/bit.hpp",
+      "sha256": "b74ff534ff1b6af6ef75f158477872089b7dd45a5a2da938c7353527e82ed8bd"
+    },
+    {
+      "path": "external/include/glm/gtx/bit.inl",
+      "sha256": "fbceecf819e34a6b9c0a89beb83f22e170092fb76b65ad46529329b1092e3051"
+    },
+    {
+      "path": "external/include/glm/gtx/closest_point.hpp",
+      "sha256": "0b8f28cdc8898f85581689ca8a3cfa62a18221c7dd0cc2758b7696ffc65d6279"
+    },
+    {
+      "path": "external/include/glm/gtx/closest_point.inl",
+      "sha256": "e5526290bcfe5c274312f1d220226e643a6d78601749df7b6eacee2890d9cd3e"
+    },
+    {
+      "path": "external/include/glm/gtx/color_space.hpp",
+      "sha256": "de6d412436aeeb7b350463eb0ffb046c80fca2433a70389c4b9faeb321ebdfa2"
+    },
+    {
+      "path": "external/include/glm/gtx/color_space.inl",
+      "sha256": "5f6a0253d258b7e3eb4b29ce2324fa10022b77ff9f45a6de4413752fd308271e"
+    },
+    {
+      "path": "external/include/glm/gtx/color_space_YCoCg.hpp",
+      "sha256": "acace32dd4528f52cd465759837dcbd660012745ac2b4941ca842ec778b150a5"
+    },
+    {
+      "path": "external/include/glm/gtx/color_space_YCoCg.inl",
+      "sha256": "ba14464556192a8f85e34983008aabb6f6a807200446262398776c9e3d70524f"
+    },
+    {
+      "path": "external/include/glm/gtx/common.hpp",
+      "sha256": "b2ea969b7c0fbb1d8c10482f89f103295e12f7d8a5e845e5933bc26df2d452bb"
+    },
+    {
+      "path": "external/include/glm/gtx/common.inl",
+      "sha256": "42dd777277fda1a0ef92e420b78eac14e4b136d2187957ba913d3466be41bc23"
+    },
+    {
+      "path": "external/include/glm/gtx/compatibility.hpp",
+      "sha256": "ce778fb6f97e0cdbe9871b682127389dd06279882312f78490f9d3bbbde71843"
+    },
+    {
+      "path": "external/include/glm/gtx/compatibility.inl",
+      "sha256": "118b6284aca825f0ad42b01c98316b3a67fadc46a8c594b57683730ac1b6d81b"
+    },
+    {
+      "path": "external/include/glm/gtx/component_wise.hpp",
+      "sha256": "47446fcaf6f380de511afbed00a46d5db39dd2601de5116146ac5ede41c42c0d"
+    },
+    {
+      "path": "external/include/glm/gtx/component_wise.inl",
+      "sha256": "f451ba4befebfe7a57bac39e08418ffec2a37551b3f90d1c6e91dc01b65e8484"
+    },
+    {
+      "path": "external/include/glm/gtx/dual_quaternion.hpp",
+      "sha256": "021fd48503464c37943c870ed38d4e1532b8b6fcfd6582cc403e68b769346b9c"
+    },
+    {
+      "path": "external/include/glm/gtx/dual_quaternion.inl",
+      "sha256": "adbaf6db13a472ca83795c989d7767e5c7d4d7627030bcfa94b183cdbdacaa8b"
+    },
+    {
+      "path": "external/include/glm/gtx/euler_angles.hpp",
+      "sha256": "c9f7be2089c232ced5fbaa3780f0b4e1532ef1c57dd52593c3cdbd5b6c550d2b"
+    },
+    {
+      "path": "external/include/glm/gtx/euler_angles.inl",
+      "sha256": "5db6e72c6fd9d332decdaad6af8af7142b8dac761ebc71fa26e951272ec0faf7"
+    },
+    {
+      "path": "external/include/glm/gtx/extend.hpp",
+      "sha256": "71a49cbf18c4c7b4334baaeaddce192ea5622463d52bdbed55ed3ba6579743e5"
+    },
+    {
+      "path": "external/include/glm/gtx/extend.inl",
+      "sha256": "8e7e874991845f2bfeedbfede1524c61de84c4ec622fe9e78e5fb168a059b924"
+    },
+    {
+      "path": "external/include/glm/gtx/extented_min_max.hpp",
+      "sha256": "22178aa7277a13abef6173c59f372e45c45cae603ea244be1ccb2fe94b4c587c"
+    },
+    {
+      "path": "external/include/glm/gtx/extented_min_max.inl",
+      "sha256": "126f24a30bc1e90bff88929170b728d5bcca47ea9592b3c15edcd246107ec362"
+    },
+    {
+      "path": "external/include/glm/gtx/fast_exponential.hpp",
+      "sha256": "488a6bf976cb2e1a171d586eb9406887d087561d480500602fbbceb4fc9df776"
+    },
+    {
+      "path": "external/include/glm/gtx/fast_exponential.inl",
+      "sha256": "71febcd4509571596024867840e64d90642d7fea3b23b89981c07a9422fa4a65"
+    },
+    {
+      "path": "external/include/glm/gtx/fast_square_root.hpp",
+      "sha256": "8652ddc9db2ef6ff080855dd85d1ee77cd8e7beb40295e3cd3811679b1633fb8"
+    },
+    {
+      "path": "external/include/glm/gtx/fast_square_root.inl",
+      "sha256": "5dd3b6cfab4df63182cc5526b927a60034c420668a34b9861270d19ee88dda6e"
+    },
+    {
+      "path": "external/include/glm/gtx/fast_trigonometry.hpp",
+      "sha256": "7e23c9e1dd12bbb150f1aea652ba11a656f9917872d452a280a24b7f92fc6c59"
+    },
+    {
+      "path": "external/include/glm/gtx/fast_trigonometry.inl",
+      "sha256": "fadac52a44ad09f67ed1760b145b630a51254126a2ddd8fc04a9cb96791cc7f0"
+    },
+    {
+      "path": "external/include/glm/gtx/gradient_paint.hpp",
+      "sha256": "1941fbc68b9d1807c0abdccec1c594063ffef44cae05cd504352a8e14fae354b"
+    },
+    {
+      "path": "external/include/glm/gtx/gradient_paint.inl",
+      "sha256": "23da9c4e8795f639bc6788e95b4b3f252722c1a320d9b6c2e1aba2fb76741fd3"
+    },
+    {
+      "path": "external/include/glm/gtx/handed_coordinate_space.hpp",
+      "sha256": "4a792acd5e94203d55db30a8e4b3799710ecfffa1addb256b15d5d06227be4be"
+    },
+    {
+      "path": "external/include/glm/gtx/handed_coordinate_space.inl",
+      "sha256": "738aaf1255b2f30f7ae999bba842cabc7443a978c9f9ecdf8ccb06d4def565c9"
+    },
+    {
+      "path": "external/include/glm/gtx/integer.hpp",
+      "sha256": "68413bde6f13d9bb1e8a7aafa75d27e93e6b23f7df0d86be9d36211b469faf08"
+    },
+    {
+      "path": "external/include/glm/gtx/integer.inl",
+      "sha256": "7362b79374e4b23f6ba752fe2c172beaed5183081216163e1b82932f33ba29ef"
+    },
+    {
+      "path": "external/include/glm/gtx/intersect.hpp",
+      "sha256": "1fe256f62e21ec6924b66b347e5932cd65c26d9b26189d187b4278ecb5dd4029"
+    },
+    {
+      "path": "external/include/glm/gtx/intersect.inl",
+      "sha256": "4541f3d265efb6b7e4b6d37efe0e46a7e7ba80ddf3e78b8d3e6601c9d3b8844c"
+    },
+    {
+      "path": "external/include/glm/gtx/io.hpp",
+      "sha256": "2f07568bf3966103b20335b2442788bd1129d7f4a343a2b8fe02a06c661b46ce"
+    },
+    {
+      "path": "external/include/glm/gtx/io.inl",
+      "sha256": "95b383c383372811b90651205f38cc37ac86c7a2b5ba2d7f8ca17e12b90d568c"
+    },
+    {
+      "path": "external/include/glm/gtx/log_base.hpp",
+      "sha256": "c49354aa975b081734888fb3624c5f1f533ada404726bcf473c67c6efd983a06"
+    },
+    {
+      "path": "external/include/glm/gtx/log_base.inl",
+      "sha256": "7f2693abac773f0fb1ac915702737f3695ef7c40a5f36f65ee7018ce717b8910"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_cross_product.hpp",
+      "sha256": "17bba98a60d04c8ed8679f295ed81c8cbb034ceaf945b39a6c2c4cb0c87a67d6"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_cross_product.inl",
+      "sha256": "ce699bf341579ca026b0ec24df1402c4e07c2cd472346a66e760692dbe2c0ddc"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_decompose.hpp",
+      "sha256": "85262accf8f66ee7552bdf5a40919074dc8bd4076f897a4c4366dde20f2dabb5"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_decompose.inl",
+      "sha256": "5a5ddc778e5a16c41d2d317359577322876fcb7449fced71b2bc8a842a89ed5f"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_interpolation.hpp",
+      "sha256": "f7bba880a054389c1205ca1f03a0da4af969d286b810c9a7bff8d3dbf5b87f1e"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_interpolation.inl",
+      "sha256": "5eb25dde1e101f28d1aa3a31920e60c82deb0bd827a3fc45640ae0000bc94222"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_major_storage.hpp",
+      "sha256": "85ec5025ed30a0c518bd151bcbc82c0d43009bc92c990a9d5a04fc114b3a0a35"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_major_storage.inl",
+      "sha256": "f60b01f58dcea5e9d548138c1366a865ef6b201a8e74a0c8302a1a338a000531"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_operation.hpp",
+      "sha256": "0abbc2da5b69b044bfbf68819b9eafd7370e65acf2c88bd283ef611682e105ce"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_operation.inl",
+      "sha256": "5784450fbb613b9720a2becad9030b932049557416b8a1cff27fc405c44505eb"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_query.hpp",
+      "sha256": "a59d76219e5ea9909c05104316910d424a162657c9c48e1c51cf6abb13dae54d"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_query.inl",
+      "sha256": "248a96a3cd9f83accfb543dbd2302643d5ca488d46b6ffb9bf81eacd193cd1b3"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_transform_2d.hpp",
+      "sha256": "eef49ff75367519088bfad547d9ee50a0dd92e4c8add90e0072bd7fdef9b421e"
+    },
+    {
+      "path": "external/include/glm/gtx/matrix_transform_2d.inl",
+      "sha256": "c258b4777eef39e0b9c1c99e3341017b99db8ece8e26bd81cfc6edf600bce003"
+    },
+    {
+      "path": "external/include/glm/gtx/mixed_product.hpp",
+      "sha256": "dbc52f3d4b3290fde9e8945db4ca3ac6c82f42ba67876535e0779adbf09c4382"
+    },
+    {
+      "path": "external/include/glm/gtx/mixed_product.inl",
+      "sha256": "c70e45d4906b99f3a330d00ec8ce69ecd89526927083509192420eb829bf5618"
+    },
+    {
+      "path": "external/include/glm/gtx/multiple.hpp",
+      "sha256": "91a9081696492b0280a3984c1b13fdc8588dc85ab5fd31d010417837b8b0b3f3"
+    },
+    {
+      "path": "external/include/glm/gtx/multiple.inl",
+      "sha256": "3472f0e4f7d053623d7f1a40885a2aa075bef0333af933ee1b0ac82ab545188b"
+    },
+    {
+      "path": "external/include/glm/gtx/norm.hpp",
+      "sha256": "bb482d828abd4bfb668de666cc116cb9a0d97ebe215bc7a0cb8af60f63660506"
+    },
+    {
+      "path": "external/include/glm/gtx/norm.inl",
+      "sha256": "6281f066c703a7296d69eac95485fc5fc353a39cb38423eb03e56084e8fc4684"
+    },
+    {
+      "path": "external/include/glm/gtx/normal.hpp",
+      "sha256": "657a6269ddf6f34b96d77b4384757754c6190f6ecef225c6178890a8ac53c844"
+    },
+    {
+      "path": "external/include/glm/gtx/normal.inl",
+      "sha256": "70648cfbd019ac5a9cb6edeeb699af32897686c9bdcbd2f196f40da8eaa7e742"
+    },
+    {
+      "path": "external/include/glm/gtx/normalize_dot.hpp",
+      "sha256": "2f961a3da9dc4a91900d923e3cc480e17df5a0cefb0c025ab6277b5b784e0f11"
+    },
+    {
+      "path": "external/include/glm/gtx/normalize_dot.inl",
+      "sha256": "6112be43b573e8dbfec9c1c832a34d2d3af1b362d4dfe587e66e3d3b8b9dbac9"
+    },
+    {
+      "path": "external/include/glm/gtx/number_precision.hpp",
+      "sha256": "e9f82fc76a69b89e10a3f61550104d03fedcc2511ed32b85b76e4107a77ace14"
+    },
+    {
+      "path": "external/include/glm/gtx/number_precision.inl",
+      "sha256": "8439d1d1bdf145be99d8fdf22b33cb2f48b8989bac5f0b80b544197f946c3ebc"
+    },
+    {
+      "path": "external/include/glm/gtx/optimum_pow.hpp",
+      "sha256": "7e10fb07ec55f323bd0ee730a3469d40fe8c29a7d3d3e14aa7b6f04268b754f5"
+    },
+    {
+      "path": "external/include/glm/gtx/optimum_pow.inl",
+      "sha256": "95c66f60102dbd0a74dc9279abe9360a31990b5865d9d108988cf5a417c7a86b"
+    },
+    {
+      "path": "external/include/glm/gtx/orthonormalize.hpp",
+      "sha256": "7df60bfb34a7184710d6e4f5d7a53cc6b3059ddd4cc34e99a024f187b39224f1"
+    },
+    {
+      "path": "external/include/glm/gtx/orthonormalize.inl",
+      "sha256": "f92ad62c5efa56003ccb9a84e493fcffc5c3b6331b8ff875c62509f030308038"
+    },
+    {
+      "path": "external/include/glm/gtx/perpendicular.hpp",
+      "sha256": "2c8963b3ec3096f288e3106c2e72643138ceb4db1be3dffe39f7c58c9df5e207"
+    },
+    {
+      "path": "external/include/glm/gtx/perpendicular.inl",
+      "sha256": "0a99f7a6cc45426e750bb479c006da223f7609ef012c9db8cece35e9040bd7b6"
+    },
+    {
+      "path": "external/include/glm/gtx/polar_coordinates.hpp",
+      "sha256": "c0274137cec6896866bfd53475ab96cc69b9e2cce11d1f8ecf8fa690bb2c1545"
+    },
+    {
+      "path": "external/include/glm/gtx/polar_coordinates.inl",
+      "sha256": "140b887852aaab8ed69c71c508eb92835205f9ce7f5b3198e13fd7570bd3bc2c"
+    },
+    {
+      "path": "external/include/glm/gtx/projection.hpp",
+      "sha256": "d892f73a0e5e0e6f82c0f3f4963e5e9cc7bfa15ddcd548efb6984ff99b741d7a"
+    },
+    {
+      "path": "external/include/glm/gtx/projection.inl",
+      "sha256": "2012c6347e8dcec8b9c8b1021dd2688e595cf74c8806e272e3bfadf8fb49ebb1"
+    },
+    {
+      "path": "external/include/glm/gtx/quaternion.hpp",
+      "sha256": "e4ab249a9e9fded23e50d213ecc440d6352dc9e77af5229b7ee1949700db633a"
+    },
+    {
+      "path": "external/include/glm/gtx/quaternion.inl",
+      "sha256": "497146960bbe8d68fab3d5c4499fe9456ea55bbf34ad06c8d2c89e9ef6508172"
+    },
+    {
+      "path": "external/include/glm/gtx/range.hpp",
+      "sha256": "e63d5358b177984dd051a4e34da1386da00e6c81f9ce6097ab1ce9def2b19f7d"
+    },
+    {
+      "path": "external/include/glm/gtx/raw_data.hpp",
+      "sha256": "3e53619a8a96b890337416773932161b936b1796c8640e2fca00967867384729"
+    },
+    {
+      "path": "external/include/glm/gtx/raw_data.inl",
+      "sha256": "ab53781df5147ce7ff3b004cf4bce0d3d530a327b97208e1c2f62fadf8b3173b"
+    },
+    {
+      "path": "external/include/glm/gtx/rotate_normalized_axis.hpp",
+      "sha256": "a5ddb9b4a1ab641f1277569b06295a4b477c480b6588379b6d733d4e866d4eb6"
+    },
+    {
+      "path": "external/include/glm/gtx/rotate_normalized_axis.inl",
+      "sha256": "cc0be9f2d5c7c4a048008a689dde11eb527b31b146529b8194ab1e62fc927905"
+    },
+    {
+      "path": "external/include/glm/gtx/rotate_vector.hpp",
+      "sha256": "1e6b8e8cab2bde724492cae25a5c5aba5cd9bef6e13932eef6abea2b813a34a4"
+    },
+    {
+      "path": "external/include/glm/gtx/rotate_vector.inl",
+      "sha256": "5a771819e9496f839fa64371c7512ee510276a4f5edfbfa3a84a1c73e0d19e2f"
+    },
+    {
+      "path": "external/include/glm/gtx/scalar_multiplication.hpp",
+      "sha256": "23386e1a2fa480c54ca4d8fe45bf24ba0326a8d1c74cb49341275156a76ab0ba"
+    },
+    {
+      "path": "external/include/glm/gtx/scalar_relational.hpp",
+      "sha256": "d0537f61f25bc45b05fb5f1859bf1a33eb15d76d10c075a0b98d4ceb3f8572b1"
+    },
+    {
+      "path": "external/include/glm/gtx/scalar_relational.inl",
+      "sha256": "890c4b04e6f5a60b3e566f6ffb5a2de1c1ac588ff3f5463dfb57a17b9aefa6f8"
+    },
+    {
+      "path": "external/include/glm/gtx/simd_mat4.hpp",
+      "sha256": "ffe4e56ab275f1c3390e359426f054aa8910c3ad732b86c9fd8f313903d78a14"
+    },
+    {
+      "path": "external/include/glm/gtx/simd_mat4.inl",
+      "sha256": "460938e8535386e2f740f434d07b5d072cb0596664411ec368edd89cf0fa954e"
+    },
+    {
+      "path": "external/include/glm/gtx/simd_quat.hpp",
+      "sha256": "87952118430e94b0c32ad4782e4c58a5f1c0c184e415a21c1d097be099e345cd"
+    },
+    {
+      "path": "external/include/glm/gtx/simd_quat.inl",
+      "sha256": "da6122874af7bc3a0d7074fffcca941f5910978868f2b326e2e140df399e02a0"
+    },
+    {
+      "path": "external/include/glm/gtx/simd_vec4.hpp",
+      "sha256": "9817e625f2d674c9399cfb2652e89f84570e1114c2c1ed2fa2c60c5cfb5e6ff0"
+    },
+    {
+      "path": "external/include/glm/gtx/simd_vec4.inl",
+      "sha256": "e949f9c72c7cb6f56b0b3c115b476a9bf200c19cf08465a60dbb8ef5eaee0f54"
+    },
+    {
+      "path": "external/include/glm/gtx/spline.hpp",
+      "sha256": "278f201f4c8708008c6f66df5378f9ea1e765dd01904ccb0dc6420d230ea16b4"
+    },
+    {
+      "path": "external/include/glm/gtx/spline.inl",
+      "sha256": "a34aac405db6a4533ce5774edb2987cb0aca76a6f756db0da6fbe14f592d499e"
+    },
+    {
+      "path": "external/include/glm/gtx/std_based_type.hpp",
+      "sha256": "8ecbae1c286d50dbe7a41ec4c8de23cb8b4b520109ce70a1c3b397a86cf1ea54"
+    },
+    {
+      "path": "external/include/glm/gtx/std_based_type.inl",
+      "sha256": "6f3a758ab2a7731f0a3713e4f6286f0cf28bbe708790571e001e1390af80dce9"
+    },
+    {
+      "path": "external/include/glm/gtx/string_cast.hpp",
+      "sha256": "ef43b10295c3c3f588fa39dbe4b31066af3e637087ce6a072761d4ff0173d2b7"
+    },
+    {
+      "path": "external/include/glm/gtx/string_cast.inl",
+      "sha256": "96dc6292bbd409d90155b9923f0cb7bce77e880b11a738299d4c2507b741821c"
+    },
+    {
+      "path": "external/include/glm/gtx/transform.hpp",
+      "sha256": "c83c20d1cb8bdeaa8b5048c5f7f39dce31ada7948d09c81de8eb5f51ab6de672"
+    },
+    {
+      "path": "external/include/glm/gtx/transform.inl",
+      "sha256": "74ae06c9c4a2e1311b7bbdde8de359071d05a23daaac4b44e60e2244610b88b9"
+    },
+    {
+      "path": "external/include/glm/gtx/transform2.hpp",
+      "sha256": "df39a74045cdcfc30e932c27d63ff74396184e23115efdbd0d6f4ba222807bf4"
+    },
+    {
+      "path": "external/include/glm/gtx/transform2.inl",
+      "sha256": "5a737dad5f354b21d751059c0a1e45754f3ae0688cfc7c892d611152fd371fad"
+    },
+    {
+      "path": "external/include/glm/gtx/type_aligned.hpp",
+      "sha256": "517ced3467a7176e6bde1eb097525d26267d70c2f761d69f0105ca03b5779c7b"
+    },
+    {
+      "path": "external/include/glm/gtx/type_aligned.inl",
+      "sha256": "317fe38f6831b330954cae17ccff879a65881e3b2f92e406e6917f8d33bdbdd1"
+    },
+    {
+      "path": "external/include/glm/gtx/vector_angle.hpp",
+      "sha256": "b29608485a0ac0a972aa0c362c909ccd7b11f87e770ab98416ad85537978e33b"
+    },
+    {
+      "path": "external/include/glm/gtx/vector_angle.inl",
+      "sha256": "6c1c015b95c450bcc0ad986f3ad0eb5c6dbc521d09ce906cbce5e939eb076e78"
+    },
+    {
+      "path": "external/include/glm/gtx/vector_query.hpp",
+      "sha256": "5815c70bce2faa358e4e47cae86b3f21aee7f42bad794d107272f15b60f1e1f1"
+    },
+    {
+      "path": "external/include/glm/gtx/vector_query.inl",
+      "sha256": "038d74b1e3bcdc5173cc57005d74a0a133b9460cb607899fbaf554fecceb6481"
+    },
+    {
+      "path": "external/include/glm/gtx/wrap.hpp",
+      "sha256": "f5dd1af4d0867d8635a7114b7dea72346df139c2750fd7d30333cd699f4f9833"
+    },
+    {
+      "path": "external/include/glm/gtx/wrap.inl",
+      "sha256": "2a0a51d01469a7ec8840a50154bc8b1c0cbf068de163f337a7171d6f47d871d0"
+    },
+    {
+      "path": "external/include/glm/integer.hpp",
+      "sha256": "d041abcd6bbb653de5c00afac37a247e53f90eba55e4d0e7eee03795a959449f"
+    },
+    {
+      "path": "external/include/glm/mat2x2.hpp",
+      "sha256": "5c567ff4bc8bf3a06e6658437a22b42f286484e50c8369516367fabd4807a223"
+    },
+    {
+      "path": "external/include/glm/mat2x3.hpp",
+      "sha256": "286f2d14004f315a1173be020fa1d66fbe76c9cc9dc1ed7e87164cd6e3b505c4"
+    },
+    {
+      "path": "external/include/glm/mat2x4.hpp",
+      "sha256": "febaa883773265e6b5826c2a7e80e898fd7f4c1b7d446dbd52010ad39c8c56aa"
+    },
+    {
+      "path": "external/include/glm/mat3x2.hpp",
+      "sha256": "15d97f9c56f59b77e0d345568203722a6ed2dcd22aca01b6998ce600b96e763d"
+    },
+    {
+      "path": "external/include/glm/mat3x3.hpp",
+      "sha256": "19274a1f46cfde413dcc85145f5a299345bfc9913d959311f31e9ba914deed5f"
+    },
+    {
+      "path": "external/include/glm/mat3x4.hpp",
+      "sha256": "b685bb4029fe63bd13498f4cff4b629e8b8d215af073bf82b694e8c8e6e0d7a2"
+    },
+    {
+      "path": "external/include/glm/mat4x2.hpp",
+      "sha256": "0101d056b6a30dad79504b2a76000120cacfc306060bc5064c844f1b47d0b720"
+    },
+    {
+      "path": "external/include/glm/mat4x3.hpp",
+      "sha256": "2c244434cdb5ce457b231a03c5659f1d9ac24e5f52f945b6f29b3885fbfc0c9b"
+    },
+    {
+      "path": "external/include/glm/mat4x4.hpp",
+      "sha256": "2f3c7cddf48ee1d7fecf3accc3fc14ba71471f060803673fa8ee935a6b4d1287"
+    },
+    {
+      "path": "external/include/glm/matrix.hpp",
+      "sha256": "890ae9e478e19f1e0405b35f421c101c27ad88f63e31d9b101b905c1875f1aee"
+    },
+    {
+      "path": "external/include/glm/packing.hpp",
+      "sha256": "7e32e91d27dc50a799cbf697b6de1fa0ab44e4eb65d2e55666da694efbf5333f"
+    },
+    {
+      "path": "external/include/glm/trigonometric.hpp",
+      "sha256": "8bb13f53dbd09817905943a4ce339b858804b69cac8fabfcd88a63e4cdde1013"
+    },
+    {
+      "path": "external/include/glm/vec2.hpp",
+      "sha256": "404633ea2a675bf506d4ccf217bb7d56a0836ff7dc04dc87ca931fdf06cc832a"
+    },
+    {
+      "path": "external/include/glm/vec3.hpp",
+      "sha256": "4756d97a176ccd0e0c169a5f260f9f3d9d891baf296a0263ffd0d2d6bbb94e30"
+    },
+    {
+      "path": "external/include/glm/vec4.hpp",
+      "sha256": "9af7781b18fe7813fa02253a70758d94d8e797d8833466a8b65e5fb375d9cb13"
+    },
+    {
+      "path": "external/include/glm/vector_relational.hpp",
+      "sha256": "557d2fb50ae3414a2fd457503c1cb1ff914ae0a18a69da47c3b20beb07bc4f04"
+    },
+    {
+      "path": "external/include/json.hpp",
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6"
+    },
+    {
+      "path": "external/include/stb_image.h",
+      "sha256": "8e820815011447b44e0d3100b002b2279954fa2479371c14ec61218ef505a4e0"
+    },
+    {
+      "path": "external/include/stb_image_write.h",
+      "sha256": "48ad5927658fe0865ffc5df0d9e9466afbabffbfb4cff57df72e28574c94315f"
+    },
+    {
+      "path": "external/lib/glew32s.lib",
+      "sha256": "bc7b5074e5636a465b34dc06721762dc85c9c969d978a10357474d3851f88851"
+    },
+    {
+      "path": "external/lib/glfw3.lib",
+      "sha256": "1f7b4f3d887473fe8d28c1a078ec02a6df297e23cca6227041eb3ba82f5b7b78"
+    },
+    {
+      "path": "external/lib/vc2015/glew32s.lib",
+      "sha256": "b25a4c49ddf0d9683589e23628db0b9380e81236953084fc0841add50e87e745"
+    },
+    {
+      "path": "external/lib/vc2015/glfw3.lib",
+      "sha256": "d0e241748c3a93a6590b4c94e91489d664aa613af77c3726f9c0ad756b8bc79b"
+    },
+    {
+      "path": "img/REFERENCE_cornell.5000samp.png",
+      "sha256": "f30f238e4b443e16e1bfd7cafd8c4009ad0dd8b53eb3e36d7acf3f652879369e"
+    },
+    {
+      "path": "img/stacked_bar_graph.png",
+      "sha256": "c7f6001f3ec5bcd3f52cc3e1eae1595c1d8aca739c3d6d675aa476355b1a5508"
+    },
+    {
+      "path": "scenes/cornell.json",
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b"
+    },
+    {
+      "path": "scenes/sphere.json",
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904"
+    },
+    {
+      "path": "src/ImGui/imconfig.h",
+      "sha256": "78dac169cf9982189686de74fbbefb063a8bd8206fe4d2ee8270b14db55dfd77"
+    },
+    {
+      "path": "src/ImGui/imgui.cpp",
+      "sha256": "060c0b40d7e5c4b120a7fbb2d0df2e34f5390fa218adf03b465a0ff07c571cdd"
+    },
+    {
+      "path": "src/ImGui/imgui.h",
+      "sha256": "31949ad71d7f3af0a627dc45e0c03c42f4a89a8a7c89b82beafb1ba3b01893c7"
+    },
+    {
+      "path": "src/ImGui/imgui_demo.cpp",
+      "sha256": "28654b96fc3e71312ca1c0d3dd35e5d1d1bd39e82b4cc9efa6798c51804c878f"
+    },
+    {
+      "path": "src/ImGui/imgui_draw.cpp",
+      "sha256": "f54c7f1d10f5a312c7deaac1c59b83831d34d818fcf05aa5003f12f27870f232"
+    },
+    {
+      "path": "src/ImGui/imgui_impl_glfw.cpp",
+      "sha256": "b035f969888dc47b80853f722344944b6e6b185fd4a08373e6a143b2c175d5b5"
+    },
+    {
+      "path": "src/ImGui/imgui_impl_glfw.h",
+      "sha256": "46e5d198e21934cf38ce3503d530c8ea930c5f8591d2712af4d3f8d84309b4ad"
+    },
+    {
+      "path": "src/ImGui/imgui_impl_opengl3.cpp",
+      "sha256": "bbb0e56531071d66221d8872215c1c1460b1e4aae7acb1106261ccb50956e978"
+    },
+    {
+      "path": "src/ImGui/imgui_impl_opengl3.h",
+      "sha256": "21f22b74bc806925579d5305f2a5a53429c769bd5fa18921dd9010413f39f816"
+    },
+    {
+      "path": "src/ImGui/imgui_impl_opengl3_loader.h",
+      "sha256": "fecf579813f8c0683a53c7167c6d1b4a0932b10345c39f4d3182cdee2c141a5a"
+    },
+    {
+      "path": "src/ImGui/imgui_internal.h",
+      "sha256": "622f48aa7bb15b9c6ffbf0ce598165e3abd3f1588a3403c0cb30fc672bb2fd89"
+    },
+    {
+      "path": "src/ImGui/imgui_tables.cpp",
+      "sha256": "275168232d809273f8089e662e8c3037c1c97fbfc80379103614f144299c0bdf"
+    },
+    {
+      "path": "src/ImGui/imgui_widgets.cpp",
+      "sha256": "813da1426ec87b588fb436f9a20ed90fcf5a699a1f1f1e83b8d215d73ca0f17d"
+    },
+    {
+      "path": "src/ImGui/imstb_rectpack.h",
+      "sha256": "2efa3d5f7d003c19743b15155dad9f46d9f9fc783a18893d703b431d3c990972"
+    },
+    {
+      "path": "src/ImGui/imstb_textedit.h",
+      "sha256": "952dafd13b3bdfceb7179da7f7d11db14419e7ae3613982741428b7a036b5d27"
+    },
+    {
+      "path": "src/ImGui/imstb_truetype.h",
+      "sha256": "5ff5cd1b81b46cd40de015a44f341ed72e05147abfe6d28d8527fb84a10566dc"
+    },
+    {
+      "path": "src/glslUtility.cpp",
+      "sha256": "ea89bcdd0197c0b870788bd1840d323c4bfbf8a73eebb97368891c4ae13c22ad"
+    },
+    {
+      "path": "src/glslUtility.hpp",
+      "sha256": "8f9b2ac75e82dd436b39c50a582136db4072c6a023af3dc717627dcaf37054ce"
+    },
+    {
+      "path": "src/image.cpp",
+      "sha256": "b10a1709dde10003d1bcd610b3a2ecaad85fbe50df2c1ed3dbb61b3917dee30b"
+    },
+    {
+      "path": "src/image.h",
+      "sha256": "cfb2bd5abbfda41b2fcacc2e87584d797e41f9cc939e63979dec35dd37f6d457"
+    },
+    {
+      "path": "src/interactions.cu",
+      "sha256": "2b26ab6513e0f226b05594692485e1cbf58bde18ce793c9bd52533fc33dd0101"
+    },
+    {
+      "path": "src/interactions.h",
+      "sha256": "c13a722177a08e91a8cb412731400d507cc9f10ea43a4a10420bfb6da7c858d8"
+    },
+    {
+      "path": "src/intersections.cu",
+      "sha256": "c637122cc4a19a4ebc1f2d1830917f950220112e9737f624a18157e0eca667e2"
+    },
+    {
+      "path": "src/intersections.h",
+      "sha256": "b8545f4348908b1194f1017832db6c4121c2c5b84f7ebe3a127182dc0a965bb8"
+    },
+    {
+      "path": "src/main.cpp",
+      "sha256": "89dc264c01ca5ac01f15eea2c81bf6a70192d3781cfd48e37a92c91014aaf6db"
+    },
+    {
+      "path": "src/pathtrace.cu",
+      "sha256": "6b6fa87efc1d767683bf0f9553e1e6f8781e7dc8fc88ff3c982eb235b0f18dbf"
+    },
+    {
+      "path": "src/pathtrace.h",
+      "sha256": "4730938083fcbd77ba23f3df35d817f8a045cd77f1afeb0cc377321de5d0d47e"
+    },
+    {
+      "path": "src/scene.cpp",
+      "sha256": "8778fdc7776bb25cddb171bb242b84b9e3136170039d7f2249a965b5789c3704"
+    },
+    {
+      "path": "src/scene.h",
+      "sha256": "f6405f85c1d6d55b29ed73b67d62d24c822e5c173e2b37c0e8361790defc9b78"
+    },
+    {
+      "path": "src/sceneStructs.h",
+      "sha256": "6bdaa97b3878156ddba5603ca6d5d0d643837e873dfc5b9d5857f52dec799098"
+    },
+    {
+      "path": "src/stb.cpp",
+      "sha256": "98362a3547c415936ee8680125ecc159c926eaecc5f689545e6d0e2f59d281bc"
+    },
+    {
+      "path": "src/utilities.cpp",
+      "sha256": "799a735f24ebe5a70c7334bd454e09e6915a820bb183b3a0f71a90fb416db985"
+    },
+    {
+      "path": "src/utilities.h",
+      "sha256": "0e7b92caf0e1c92dda96099e2f36ac07ef3c5b2186fb3f6bfd2e27502b62585d"
+    },
+    {
+      "path": "stream_compaction/CMakeLists.txt",
+      "sha256": "19252d7b9f69ccebb7ba796497679f8c3b93b5b2ac56861f3c1b4248f3c21467"
+    }
+  ]
+}

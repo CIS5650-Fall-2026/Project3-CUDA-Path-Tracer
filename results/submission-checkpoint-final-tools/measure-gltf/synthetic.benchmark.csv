@@ -1,0 +1,4 @@
+record_type,sample,bounce,active_before,active_after,intersection_ms,sort_ms,shade_ms,compaction_ms,count_ms,host_ms,gpu_ms,measured_samples,render_loop_wall_ms,queue_ms,queue_host_ms,diffuse_ms,mirror_ms,dielectric_ms,emission_ms,terminal_ms
+bounce,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+bounce,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+overall,,,,,,,,,,1,2,2,3,,,,,,,

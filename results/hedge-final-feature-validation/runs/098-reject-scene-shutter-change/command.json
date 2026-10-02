@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/temporary-scene-mutations/active-scene.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/098-reject-scene-shutter-change/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/097-scene-mutation-shutter-baseline/state.checkpoint"
+  ],
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "input_files_before_invocation": [
+    {
+      "bytes": 6213112,
+      "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+    },
+    {
+      "bytes": 5126,
+      "path": "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/temporary-scene-mutations/active-scene.json",
+      "role": "scene",
+      "sha256": "48fb9b4b880a40ff5c893fde3aa764c7ecde541da0d43b1c891c63e57d02ec7b"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/hedge-final-feature-validation/runs/097-scene-mutation-shutter-baseline/state.checkpoint",
+      "role": "resume",
+      "sha256": "4050c27e086216b0b19ff18bb8b3aa37124380e17de0aace7cddaf45c120a141"
+    }
+  ],
+  "label": "reject-scene-shutter-change",
+  "shell": false
+}

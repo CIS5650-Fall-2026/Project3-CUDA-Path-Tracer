@@ -1,0 +1,56 @@
+{
+  "capability_run_ids": [
+    55,
+    56
+  ],
+  "checks": [
+    {
+      "name": "gallery low BVH modes are byte-exact",
+      "passed": true,
+      "png_bytes": 27842,
+      "png_sha256": "92f8d3c58b77824e9331ff3131ca73330f227b2cdcdc4fb878365e38e0d07220",
+      "raw_bytes": 129064,
+      "raw_sha256": "3c94f0c443716d58b3248f55f45b1c8e602fc926f5b2dce09684111cffc8f2cd",
+      "run_ids": [
+        57,
+        58
+      ]
+    },
+    {
+      "name": "gallery medium BVH modes are byte-exact",
+      "passed": true,
+      "png_bytes": 27832,
+      "png_sha256": "c27657153b97a80c7869c476474b619909febebd0e6f1ef86d9ce42e675010af",
+      "raw_bytes": 129064,
+      "raw_sha256": "21fa2bec3ef584987f8dbb841cdd777d603c05e53a1542baaa8a50c8f27276cf",
+      "run_ids": [
+        59,
+        60
+      ]
+    },
+    {
+      "name": "gallery high BVH modes are byte-exact",
+      "passed": true,
+      "png_bytes": 27845,
+      "png_sha256": "eefc9407dd5bb659c0e4e1232200d7b1db0f476b9e9bc7599ad9be12daaff373",
+      "raw_bytes": 129064,
+      "raw_sha256": "e823cdd3a7089f5a08dcb7646074f6f9f8645c07725b51de205feac37f94cf1b",
+      "run_ids": [
+        61,
+        62
+      ]
+    }
+  ],
+  "completed_utc": "2026-10-01T22:18:26.821673Z",
+  "last_run": {
+    "label": "high-bvh-on",
+    "run_id": 62,
+    "status": "passed"
+  },
+  "phase": "gallery",
+  "run_count": 8,
+  "schema_version": 1,
+  "showcase_baseline_exactness": "not asserted: baseline intentionally omits imported objects",
+  "started_utc": "2026-10-01T22:18:12.543873Z",
+  "status": "completed"
+}

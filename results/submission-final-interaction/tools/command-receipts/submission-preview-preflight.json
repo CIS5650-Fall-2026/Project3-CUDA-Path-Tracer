@@ -1,0 +1,33 @@
+{
+  "renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "binary_sha256": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "build_report_binary_sha256_end": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "build_report_sha256": "ca038cc49e6ba252b128d0142d895b75447bd9a738eb1bb92a4dd24d26f4c784",
+  "unit_sha256": {
+    "/etc/systemd/system/cis5650-autostop.timer": "f74853e21b71a02b85b5754fb2dded43e094363b7d261c3cf4751c6585852564",
+    "/etc/systemd/system/cis5650-deadline.service": "83759763bfbe69915c05ce7147639bf1359db0254d2b37823bcc0217f0ec8a4f",
+    "/usr/local/sbin/cis5650-refresh-deadline": "73782530a355c5159993e7d8030190beab4dc15ca83426d2e93d149b38acbc2d"
+  },
+  "xorg_sha256": {
+    "/etc/X11/xorg.conf": "3cb36a84ca94495bb36c54435931d74bfe12ae9d6c1f4891539d5cc0846890ed",
+    "/etc/X11/xorg.conf.project3-video-backup": "3cb36a84ca94495bb36c54435931d74bfe12ae9d6c1f4891539d5cc0846890ed"
+  },
+  "gdm_state": "inactive",
+  "timer_state": "active",
+  "timer_deadline": "Fri 2026-10-02 02:05:59 UTC",
+  "recorder_sha256": "6b3d74194e2b2916eb204cf5aec5a1e9bda4bcf5c60084f5db846662b983f395",
+  "controller_status": "running",
+  "observed_at_utc": "2026-10-01T22:45:14.991598+00:00",
+  "preflight_passed": true,
+  "headless_pipeline_complete": false,
+  "graphical_work_started": false,
+  "capture_started": false,
+  "scope": "Read-only CPU preflight; graphical work remains gated on all eight approved phases",
+  "remote_command_sha256": "57f0c1b77fa7357095076e134483cdb5c7ada34e441537646690be6dcd85269c"
+}

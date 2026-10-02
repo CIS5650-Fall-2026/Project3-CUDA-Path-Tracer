@@ -1,0 +1,2958 @@
+{
+  "binary_paths": {
+    "headless": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless"
+  },
+  "binary_sha256_end": {
+    "headless": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+  },
+  "binary_sha256_start": {
+    "headless": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+  },
+  "build": "/home/ubuntu/cis5650/project3/build-submission",
+  "elapsed_seconds": 23.194490103999897,
+  "ended_at_utc": "2026-10-02T01:04:56.871039Z",
+  "errors": [],
+  "exit_code": 0,
+  "output_paths": [
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.json",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.png",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/001-source-hash-start.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/001-source-hash-start.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/002-sanitize-optical-workbench-counter-sorted-unified-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/002-sanitize-optical-workbench-counter-sorted-unified-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/003-sanitize-optical-workbench-counter-sorted-unified-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/003-sanitize-optical-workbench-counter-sorted-unified-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/004-sanitize-optical-workbench-counter-wavefront-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/004-sanitize-optical-workbench-counter-wavefront-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/005-sanitize-optical-workbench-counter-wavefront-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/005-sanitize-optical-workbench-counter-wavefront-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/006-sanitize-optical-workbench-halton-sorted-unified-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/006-sanitize-optical-workbench-halton-sorted-unified-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/007-sanitize-optical-workbench-halton-sorted-unified-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/007-sanitize-optical-workbench-halton-sorted-unified-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/008-sanitize-optical-workbench-halton-wavefront-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/008-sanitize-optical-workbench-halton-wavefront-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/009-sanitize-optical-workbench-halton-wavefront-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/009-sanitize-optical-workbench-halton-wavefront-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/010-sanitize-hedge-motion-validation-counter-sorted-unified-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/010-sanitize-hedge-motion-validation-counter-sorted-unified-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/011-sanitize-hedge-motion-validation-counter-sorted-unified-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/011-sanitize-hedge-motion-validation-counter-sorted-unified-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/012-sanitize-hedge-motion-validation-counter-wavefront-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/012-sanitize-hedge-motion-validation-counter-wavefront-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/013-sanitize-hedge-motion-validation-counter-wavefront-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/013-sanitize-hedge-motion-validation-counter-wavefront-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/014-sanitize-hedge-motion-validation-halton-sorted-unified-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/014-sanitize-hedge-motion-validation-halton-sorted-unified-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/015-sanitize-hedge-motion-validation-halton-sorted-unified-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/015-sanitize-hedge-motion-validation-halton-sorted-unified-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/016-sanitize-hedge-motion-validation-halton-wavefront-memcheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/016-sanitize-hedge-motion-validation-halton-wavefront-memcheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/017-sanitize-hedge-motion-validation-halton-wavefront-racecheck.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/017-sanitize-hedge-motion-validation-halton-wavefront-racecheck.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/018-source-hash-end.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/logs/018-source-hash-end.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers/summary.json"
+  ],
+  "phase": "sanitizers",
+  "prefix": "submission-checkpoint-final",
+  "renderer_metadata": [
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "f6274ef719df864cf0a30674e359fc463b3c06fba65426052b111678222a99e2"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "a8f5db5e7c2a5f91dd9b35a3da63c9f7e01db2486b3c456a14a3409f5d8184e6"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "943f920584e29e9c54ab0c92dc2b9a57fd5b29afa47b9bdba202236a31f80898"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "39422ff02e31082474c01a894b0a5b853416e8e605bf635e53b571948ee8e364"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "ed203378a955bd0781c1f225157604e076c50bceb303b5afd559e304ed28c9c7"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "096438d1bd511222bb99c517de3fe287b63794c882ec04438b3abef500c9751b"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "2ba18ddd7dc59512f45d402a713d55648474091109237989febe4cab3d889c7c"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "44be2719a70ebbad6b73c3c4b9a3cd8cefa0394a0fe3d8f2357934a7cd7f4886"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "f78b6755837757afd8e0c14866b499d6073400040da67410d20e4894abb73001"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "2b3f77fe36509dbb1f927a40f1ff265688e4796614e12002a2b533745e29b66c"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "edf76906e87131a5af0a74df45c00cfea4d068cf5d4c6f105452930a39d09f5d"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "28efdcc405412599304994252dad698a53cdd46e33d75e5a4d5975c83021f205"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "0ae7ae692dbe25062d577f66fcc17bd4f3f4fc4437b66669bed57c0384a7a37b"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": true,
+        "wavefront": false
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "d072b7b35a96e2e7d33530d353ff1cde206bca68a3225b9c111f98f0573344d3"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "6ab75a34dcd6b45d35c994929f41d3e2bac90452c0cfb31ddf1e208e96910d74"
+    },
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 3,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 8,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.json",
+      "resolution": [
+        67,
+        35
+      ],
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sampler_version": 3,
+      "sha256": "ac9c98a96f8c7e8fa4be8f2dbb9168666127b4e848ace5648cbd04e284d8ea29"
+    }
+  ],
+  "sanitizer_exact_comparisons": [
+    {
+      "byte_exact": true,
+      "paths": [
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.sum.bin"
+      ],
+      "sampler": "counter",
+      "scene": "optical-workbench",
+      "sha256": "bd82a17571a2b2fdb67e0720d30be3bf011b43f11c43864d4710cf77eab952bd"
+    },
+    {
+      "byte_exact": true,
+      "paths": [
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.sum.bin"
+      ],
+      "sampler": "halton",
+      "scene": "optical-workbench",
+      "sha256": "f17402663b65004c65e9d9762e7e88bfe5022c64e1b2d82ebd9140985adcc09b"
+    },
+    {
+      "byte_exact": true,
+      "paths": [
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.sum.bin"
+      ],
+      "sampler": "counter",
+      "scene": "hedge-motion-validation",
+      "sha256": "ef0b86ed1dc03c9d522df4b38bc2521f6772404deea7b4fb0ccc4147ddde4768"
+    },
+    {
+      "byte_exact": true,
+      "paths": [
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.sum.bin",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.sum.bin"
+      ],
+      "sampler": "halton",
+      "scene": "hedge-motion-validation",
+      "sha256": "eec2623805f063cf95a15e1aa5e1a465e13941d42dbed4dc4f03c0ac47d6bb80"
+    }
+  ],
+  "sanitizer_runs": [
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.json",
+          "sha256": "f6274ef719df864cf0a30674e359fc463b3c06fba65426052b111678222a99e2"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.png",
+          "sha256": "05bb7cec3dfd501dd7cb56458e8d62c7f28ede14e6b8771440c471d18b658eba"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.sum.bin",
+          "sha256": "bd82a17571a2b2fdb67e0720d30be3bf011b43f11c43864d4710cf77eab952bd"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "f6274ef719df864cf0a30674e359fc463b3c06fba65426052b111678222a99e2"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "optical-workbench",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-counter-sorted-unified-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.json",
+          "sha256": "a8f5db5e7c2a5f91dd9b35a3da63c9f7e01db2486b3c456a14a3409f5d8184e6"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.png",
+          "sha256": "05bb7cec3dfd501dd7cb56458e8d62c7f28ede14e6b8771440c471d18b658eba"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.sum.bin",
+          "sha256": "bd82a17571a2b2fdb67e0720d30be3bf011b43f11c43864d4710cf77eab952bd"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "a8f5db5e7c2a5f91dd9b35a3da63c9f7e01db2486b3c456a14a3409f5d8184e6"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "optical-workbench",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-counter-sorted-unified-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.json",
+          "sha256": "943f920584e29e9c54ab0c92dc2b9a57fd5b29afa47b9bdba202236a31f80898"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.png",
+          "sha256": "05bb7cec3dfd501dd7cb56458e8d62c7f28ede14e6b8771440c471d18b658eba"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.sum.bin",
+          "sha256": "bd82a17571a2b2fdb67e0720d30be3bf011b43f11c43864d4710cf77eab952bd"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "943f920584e29e9c54ab0c92dc2b9a57fd5b29afa47b9bdba202236a31f80898"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "optical-workbench",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-counter-wavefront-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.json",
+          "sha256": "39422ff02e31082474c01a894b0a5b853416e8e605bf635e53b571948ee8e364"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.png",
+          "sha256": "05bb7cec3dfd501dd7cb56458e8d62c7f28ede14e6b8771440c471d18b658eba"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.sum.bin",
+          "sha256": "bd82a17571a2b2fdb67e0720d30be3bf011b43f11c43864d4710cf77eab952bd"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "39422ff02e31082474c01a894b0a5b853416e8e605bf635e53b571948ee8e364"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "optical-workbench",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-counter-wavefront-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.json",
+          "sha256": "ed203378a955bd0781c1f225157604e076c50bceb303b5afd559e304ed28c9c7"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.png",
+          "sha256": "2e7b108bda1003b229a94a255d5351a6e699a3f5a83a2cffb0b428119c08d573"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.sum.bin",
+          "sha256": "f17402663b65004c65e9d9762e7e88bfe5022c64e1b2d82ebd9140985adcc09b"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "ed203378a955bd0781c1f225157604e076c50bceb303b5afd559e304ed28c9c7"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "optical-workbench",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-halton-sorted-unified-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.json",
+          "sha256": "096438d1bd511222bb99c517de3fe287b63794c882ec04438b3abef500c9751b"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.png",
+          "sha256": "2e7b108bda1003b229a94a255d5351a6e699a3f5a83a2cffb0b428119c08d573"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.sum.bin",
+          "sha256": "f17402663b65004c65e9d9762e7e88bfe5022c64e1b2d82ebd9140985adcc09b"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "096438d1bd511222bb99c517de3fe287b63794c882ec04438b3abef500c9751b"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "optical-workbench",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-halton-sorted-unified-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.json",
+          "sha256": "2ba18ddd7dc59512f45d402a713d55648474091109237989febe4cab3d889c7c"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.png",
+          "sha256": "2e7b108bda1003b229a94a255d5351a6e699a3f5a83a2cffb0b428119c08d573"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.sum.bin",
+          "sha256": "f17402663b65004c65e9d9762e7e88bfe5022c64e1b2d82ebd9140985adcc09b"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "2ba18ddd7dc59512f45d402a713d55648474091109237989febe4cab3d889c7c"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "optical-workbench",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-halton-wavefront-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.json",
+          "sha256": "44be2719a70ebbad6b73c3c4b9a3cd8cefa0394a0fe3d8f2357934a7cd7f4886"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.png",
+          "sha256": "2e7b108bda1003b229a94a255d5351a6e699a3f5a83a2cffb0b428119c08d573"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.sum.bin",
+          "sha256": "f17402663b65004c65e9d9762e7e88bfe5022c64e1b2d82ebd9140985adcc09b"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "44be2719a70ebbad6b73c3c4b9a3cd8cefa0394a0fe3d8f2357934a7cd7f4886"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "optical-workbench",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-optical-workbench-halton-wavefront-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.json",
+          "sha256": "f78b6755837757afd8e0c14866b499d6073400040da67410d20e4894abb73001"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.png",
+          "sha256": "406eb724c39935e2bb1b37ad4aa6950b2d88d7897a4c47ae2f6b81425adb6719"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.sum.bin",
+          "sha256": "ef0b86ed1dc03c9d522df4b38bc2521f6772404deea7b4fb0ccc4147ddde4768"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "f78b6755837757afd8e0c14866b499d6073400040da67410d20e4894abb73001"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-counter-sorted-unified-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.json",
+          "sha256": "2b3f77fe36509dbb1f927a40f1ff265688e4796614e12002a2b533745e29b66c"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.png",
+          "sha256": "406eb724c39935e2bb1b37ad4aa6950b2d88d7897a4c47ae2f6b81425adb6719"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.sum.bin",
+          "sha256": "ef0b86ed1dc03c9d522df4b38bc2521f6772404deea7b4fb0ccc4147ddde4768"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "2b3f77fe36509dbb1f927a40f1ff265688e4796614e12002a2b533745e29b66c"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-counter-sorted-unified-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.json",
+          "sha256": "edf76906e87131a5af0a74df45c00cfea4d068cf5d4c6f105452930a39d09f5d"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.png",
+          "sha256": "406eb724c39935e2bb1b37ad4aa6950b2d88d7897a4c47ae2f6b81425adb6719"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.sum.bin",
+          "sha256": "ef0b86ed1dc03c9d522df4b38bc2521f6772404deea7b4fb0ccc4147ddde4768"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "edf76906e87131a5af0a74df45c00cfea4d068cf5d4c6f105452930a39d09f5d"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-counter-wavefront-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.json",
+          "sha256": "28efdcc405412599304994252dad698a53cdd46e33d75e5a4d5975c83021f205"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.png",
+          "sha256": "406eb724c39935e2bb1b37ad4aa6950b2d88d7897a4c47ae2f6b81425adb6719"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.sum.bin",
+          "sha256": "ef0b86ed1dc03c9d522df4b38bc2521f6772404deea7b4fb0ccc4147ddde4768"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sampler_version": 2,
+        "sha256": "28efdcc405412599304994252dad698a53cdd46e33d75e5a4d5975c83021f205"
+      },
+      "sampler": "counter",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-counter-wavefront-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.json",
+          "sha256": "0ae7ae692dbe25062d577f66fcc17bd4f3f4fc4437b66669bed57c0384a7a37b"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.png",
+          "sha256": "f54496344af9e5911ec037ec2146151fbd1307f91c6ccb3efc9a5cf43ea46ba1"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.sum.bin",
+          "sha256": "eec2623805f063cf95a15e1aa5e1a465e13941d42dbed4dc4f03c0ac47d6bb80"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "0ae7ae692dbe25062d577f66fcc17bd4f3f4fc4437b66669bed57c0384a7a37b"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-halton-sorted-unified-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.json",
+          "sha256": "d072b7b35a96e2e7d33530d353ff1cde206bca68a3225b9c111f98f0573344d3"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.png",
+          "sha256": "f54496344af9e5911ec037ec2146151fbd1307f91c6ccb3efc9a5cf43ea46ba1"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.sum.bin",
+          "sha256": "eec2623805f063cf95a15e1aa5e1a465e13941d42dbed4dc4f03c0ac47d6bb80"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": true,
+          "wavefront": false
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "d072b7b35a96e2e7d33530d353ff1cde206bca68a3225b9c111f98f0573344d3"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "sorted-unified",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-halton-sorted-unified-racecheck",
+      "tool": "racecheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.json",
+          "sha256": "6ab75a34dcd6b45d35c994929f41d3e2bac90452c0cfb31ddf1e208e96910d74"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.png",
+          "sha256": "f54496344af9e5911ec037ec2146151fbd1307f91c6ccb3efc9a5cf43ea46ba1"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.sum.bin",
+          "sha256": "eec2623805f063cf95a15e1aa5e1a465e13941d42dbed4dc4f03c0ac47d6bb80"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "6ab75a34dcd6b45d35c994929f41d3e2bac90452c0cfb31ddf1e208e96910d74"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [
+          0
+        ],
+        "racecheck_counts": [],
+        "warning_lines": []
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-halton-wavefront-memcheck",
+      "tool": "memcheck"
+    },
+    {
+      "artifacts": {
+        "metadata": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.json",
+          "sha256": "ac9c98a96f8c7e8fa4be8f2dbb9168666127b4e848ace5648cbd04e284d8ea29"
+        },
+        "png": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.png",
+          "sha256": "f54496344af9e5911ec037ec2146151fbd1307f91c6ccb3efc9a5cf43ea46ba1"
+        },
+        "sum": {
+          "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.sum.bin",
+          "sha256": "eec2623805f063cf95a15e1aa5e1a465e13941d42dbed4dc4f03c0ac47d6bb80"
+        }
+      },
+      "headless_binary_sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+      "metadata": {
+        "camera_shutter": [
+          0.0,
+          1.0
+        ],
+        "compatibility": {
+          "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+          "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+          "compute_capability": "8.6",
+          "cuda_driver_version": 13000,
+          "cuda_runtime_version": 12080,
+          "device": "NVIDIA A10G"
+        },
+        "completed_samples": 3,
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 8,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "halton",
+          "sampler_id": 3,
+          "sort": false,
+          "wavefront": true
+        },
+        "format_version": 1,
+        "linear_sum_format_version": 1,
+        "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck.json",
+        "resolution": [
+          67,
+          35
+        ],
+        "sampler": "halton",
+        "sampler_id": 3,
+        "sampler_version": 3,
+        "sha256": "ac9c98a96f8c7e8fa4be8f2dbb9168666127b4e848ace5648cbd04e284d8ea29"
+      },
+      "sampler": "halton",
+      "sanitizer_summary": {
+        "clean": true,
+        "error_counts": [],
+        "racecheck_counts": [
+          {
+            "errors": 0,
+            "hazards": 0,
+            "warnings": 0
+          }
+        ],
+        "warning_lines": [
+          "========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)"
+        ]
+      },
+      "scene": "hedge-motion-validation",
+      "schedule": "wavefront",
+      "source_input_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+      "stage": "sanitize-hedge-motion-validation-halton-wavefront-racecheck",
+      "tool": "racecheck"
+    }
+  ],
+  "schema_version": 1,
+  "source_hash_script_sha256_end": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_hash_script_sha256_start": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_input_sha256_end": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "source_input_sha256_start": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "stages": [
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.08590111899980002,
+      "ended_at_utc": "2026-10-02T01:04:33.770025Z",
+      "name": "source-hash-start",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:33.684129Z",
+      "status": "passed",
+      "stderr_log": "logs/001-source-hash-start.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/001-source-hash-start.stdout.log",
+      "stdout_sha256": "5512e5154d54d23408830bd22ab8357727899510247e15b040a5bf634ec99d0c"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.2714336700000786,
+      "ended_at_utc": "2026-10-02T01:04:35.041973Z",
+      "name": "sanitize-optical-workbench-counter-sorted-unified-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:33.770554Z",
+      "status": "passed",
+      "stderr_log": "logs/002-sanitize-optical-workbench-counter-sorted-unified-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/002-sanitize-optical-workbench-counter-sorted-unified-memcheck.stdout.log",
+      "stdout_sha256": "66e55043ff6199ec5f84823a142791452d350404e5044c14c0d9857f217a891a"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-sorted-unified-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 2.1229016779998346,
+      "ended_at_utc": "2026-10-02T01:04:37.170879Z",
+      "name": "sanitize-optical-workbench-counter-sorted-unified-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:35.047990Z",
+      "status": "passed",
+      "stderr_log": "logs/003-sanitize-optical-workbench-counter-sorted-unified-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/003-sanitize-optical-workbench-counter-sorted-unified-racecheck.stdout.log",
+      "stdout_sha256": "e4ce09b82fd9aced08ed0ab16597758c46f599a9707222099544118d06c756cc"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.1508179129998553,
+      "ended_at_utc": "2026-10-02T01:04:38.327725Z",
+      "name": "sanitize-optical-workbench-counter-wavefront-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:37.176920Z",
+      "status": "passed",
+      "stderr_log": "logs/004-sanitize-optical-workbench-counter-wavefront-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/004-sanitize-optical-workbench-counter-wavefront-memcheck.stdout.log",
+      "stdout_sha256": "96e6df61641022fdac0d8b02a0b8da2db337f03a82086e33cb02090ee410fac5"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-counter-wavefront-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.493251015999931,
+      "ended_at_utc": "2026-10-02T01:04:39.826130Z",
+      "name": "sanitize-optical-workbench-counter-wavefront-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:38.332892Z",
+      "status": "passed",
+      "stderr_log": "logs/005-sanitize-optical-workbench-counter-wavefront-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/005-sanitize-optical-workbench-counter-wavefront-racecheck.stdout.log",
+      "stdout_sha256": "9b38991a0938447d45130e700cccade5192affb70b2331b0c76d3583c2551271"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.9802800489999299,
+      "ended_at_utc": "2026-10-02T01:04:40.811668Z",
+      "name": "sanitize-optical-workbench-halton-sorted-unified-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:39.831400Z",
+      "status": "passed",
+      "stderr_log": "logs/006-sanitize-optical-workbench-halton-sorted-unified-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/006-sanitize-optical-workbench-halton-sorted-unified-memcheck.stdout.log",
+      "stdout_sha256": "2e76551fa74514e6b945536f3dc0c9528c8e54444ba58e6aaace1003333cf4e3"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-sorted-unified-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 2.0673773189998883,
+      "ended_at_utc": "2026-10-02T01:04:42.884496Z",
+      "name": "sanitize-optical-workbench-halton-sorted-unified-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:40.817131Z",
+      "status": "passed",
+      "stderr_log": "logs/007-sanitize-optical-workbench-halton-sorted-unified-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/007-sanitize-optical-workbench-halton-sorted-unified-racecheck.stdout.log",
+      "stdout_sha256": "1bb4227d1d358468a947b9ea2075d8df8955640f322dc1781037af764da857ae"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.1985180809999747,
+      "ended_at_utc": "2026-10-02T01:04:44.090335Z",
+      "name": "sanitize-optical-workbench-halton-wavefront-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:42.891830Z",
+      "status": "passed",
+      "stderr_log": "logs/008-sanitize-optical-workbench-halton-wavefront-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/008-sanitize-optical-workbench-halton-wavefront-memcheck.stdout.log",
+      "stdout_sha256": "baf9d04cdf7ac0dd9c91ef5e39d230e3530a2ec3d72a7cb7522a1dfc00e4621e"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/optical-workbench.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/optical-workbench-halton-wavefront-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.5883965259999968,
+      "ended_at_utc": "2026-10-02T01:04:45.684166Z",
+      "name": "sanitize-optical-workbench-halton-wavefront-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:44.095782Z",
+      "status": "passed",
+      "stderr_log": "logs/009-sanitize-optical-workbench-halton-wavefront-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/009-sanitize-optical-workbench-halton-wavefront-racecheck.stdout.log",
+      "stdout_sha256": "0b878365791bd7d399950c4a929d88f83bab3bd499c8a995ad04c698f161ffcb"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.8826584749999711,
+      "ended_at_utc": "2026-10-02T01:04:46.572144Z",
+      "name": "sanitize-hedge-motion-validation-counter-sorted-unified-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:45.689499Z",
+      "status": "passed",
+      "stderr_log": "logs/010-sanitize-hedge-motion-validation-counter-sorted-unified-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/010-sanitize-hedge-motion-validation-counter-sorted-unified-memcheck.stdout.log",
+      "stdout_sha256": "09afde06a502e50b18cc7cc6a959f2bc104d03a4dfa9fa706e2f6269c2eca0cc"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-sorted-unified-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.835677277999821,
+      "ended_at_utc": "2026-10-02T01:04:48.412946Z",
+      "name": "sanitize-hedge-motion-validation-counter-sorted-unified-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:46.577282Z",
+      "status": "passed",
+      "stderr_log": "logs/011-sanitize-hedge-motion-validation-counter-sorted-unified-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/011-sanitize-hedge-motion-validation-counter-sorted-unified-racecheck.stdout.log",
+      "stdout_sha256": "1dde757bf872534cc0c9a3d8afbd19b99ec922d3b33a00a332e47461f61b61db"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.29144511100003,
+      "ended_at_utc": "2026-10-02T01:04:49.709586Z",
+      "name": "sanitize-hedge-motion-validation-counter-wavefront-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:48.418154Z",
+      "status": "passed",
+      "stderr_log": "logs/012-sanitize-hedge-motion-validation-counter-wavefront-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/012-sanitize-hedge-motion-validation-counter-wavefront-memcheck.stdout.log",
+      "stdout_sha256": "2f6725e28f6a30b81818f7548956ff35d49259324770f1ef919594c416dd7c81"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-counter-wavefront-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.3839775129999907,
+      "ended_at_utc": "2026-10-02T01:04:51.098680Z",
+      "name": "sanitize-hedge-motion-validation-counter-wavefront-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:49.714715Z",
+      "status": "passed",
+      "stderr_log": "logs/013-sanitize-hedge-motion-validation-counter-wavefront-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/013-sanitize-hedge-motion-validation-counter-wavefront-racecheck.stdout.log",
+      "stdout_sha256": "c397e54c9755c5f18df5f5c454652c0541e01d241992fa4d763e171487e5c0f9"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.9036725579999256,
+      "ended_at_utc": "2026-10-02T01:04:52.007451Z",
+      "name": "sanitize-hedge-motion-validation-halton-sorted-unified-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:51.103791Z",
+      "status": "passed",
+      "stderr_log": "logs/014-sanitize-hedge-motion-validation-halton-sorted-unified-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/014-sanitize-hedge-motion-validation-halton-sorted-unified-memcheck.stdout.log",
+      "stdout_sha256": "078802c071639383c2307577997009d656bdfac6353838906eac7c09a5da8598"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "on",
+        "--wavefront",
+        "off",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-sorted-unified-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.989201118999972,
+      "ended_at_utc": "2026-10-02T01:04:54.001816Z",
+      "name": "sanitize-hedge-motion-validation-halton-sorted-unified-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:52.012627Z",
+      "status": "passed",
+      "stderr_log": "logs/015-sanitize-hedge-motion-validation-halton-sorted-unified-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/015-sanitize-hedge-motion-validation-halton-sorted-unified-racecheck.stdout.log",
+      "stdout_sha256": "d6ecd38c31ddbd5e0263248c0d314bf4cf786f3d67ec083bda65e071257e9e13"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "memcheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-memcheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.3123731429998315,
+      "ended_at_utc": "2026-10-02T01:04:55.319291Z",
+      "name": "sanitize-hedge-motion-validation-halton-wavefront-memcheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:54.006957Z",
+      "status": "passed",
+      "stderr_log": "logs/016-sanitize-hedge-motion-validation-halton-wavefront-memcheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/016-sanitize-hedge-motion-validation-halton-wavefront-memcheck.stdout.log",
+      "stdout_sha256": "c6f0d041524786dffa501eb9e5e88c4003f18395aae51672408cdea7ba672327"
+    },
+    {
+      "argv": [
+        "compute-sanitizer",
+        "--error-exitcode",
+        "90",
+        "--target-processes",
+        "all",
+        "--tool",
+        "racecheck",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+        "--resolution",
+        "67x35",
+        "--samples",
+        "3",
+        "--depth",
+        "8",
+        "--seed",
+        "947",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton",
+        "--sort",
+        "off",
+        "--wavefront",
+        "on",
+        "--compact",
+        "on",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-sanitizers/renders/hedge-motion-validation-halton-wavefront-racecheck"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 1.3715258780000568,
+      "ended_at_utc": "2026-10-02T01:04:56.695994Z",
+      "name": "sanitize-hedge-motion-validation-halton-wavefront-racecheck",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:55.324480Z",
+      "status": "passed",
+      "stderr_log": "logs/017-sanitize-hedge-motion-validation-halton-wavefront-racecheck.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/017-sanitize-hedge-motion-validation-halton-wavefront-racecheck.stdout.log",
+      "stdout_sha256": "0a7cdf8f5520013eb062c34c0930a7989b2554487deef2ac8593311342952a22"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.08646807200011608,
+      "ended_at_utc": "2026-10-02T01:04:56.863260Z",
+      "name": "source-hash-end",
+      "returncode": 0,
+      "started_at_utc": "2026-10-02T01:04:56.776799Z",
+      "status": "passed",
+      "stderr_log": "logs/018-source-hash-end.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/018-source-hash-end.stdout.log",
+      "stdout_sha256": "5512e5154d54d23408830bd22ab8357727899510247e15b040a5bf634ec99d0c"
+    }
+  ],
+  "started_at_utc": "2026-10-02T01:04:33.676543Z",
+  "status": "passed",
+  "suite_path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-suite-sanitizers"
+}

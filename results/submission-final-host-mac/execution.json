@@ -1,0 +1,337 @@
+{
+  "recorded_utc": "2026-10-01T22:24:38.425417+00:00",
+  "scope": "CPU-only host correctness; GPU validation and GPU performance are outside this evidence directory",
+  "repository_scene_argument_policy": "Every top-level scenes/*.json path was sorted and inserted explicitly into the optimized geometry subprocess argument array.",
+  "repository_scene_arguments": [
+    "scenes/closed-benchmark.json",
+    "scenes/complexity-high.json",
+    "scenes/complexity-low.json",
+    "scenes/complexity-medium.json",
+    "scenes/cornell.json",
+    "scenes/gltf-baseline.json",
+    "scenes/gltf-complexity-high.json",
+    "scenes/gltf-complexity-low.json",
+    "scenes/gltf-complexity-medium.json",
+    "scenes/gltf-equivalence-data-uri.json",
+    "scenes/gltf-equivalence-external.json",
+    "scenes/gltf-equivalence-glb.json",
+    "scenes/gltf-motion-validation.json",
+    "scenes/gltf-showcase.json",
+    "scenes/hedge-motion-frozen-end.json",
+    "scenes/hedge-motion-frozen-midpoint.json",
+    "scenes/hedge-motion-frozen-start.json",
+    "scenes/hedge-motion-validation.json",
+    "scenes/hedge-motion.json",
+    "scenes/hedge-obj-baseline.json",
+    "scenes/hedge-sampling-diffuse.json",
+    "scenes/hedge-sampling-glass-dof.json",
+    "scenes/light-test-cube.json",
+    "scenes/light-test-mesh.json",
+    "scenes/light-test-sphere.json",
+    "scenes/open-benchmark.json",
+    "scenes/optical-workbench.json",
+    "scenes/preview-smoke.json",
+    "scenes/procedural-fluted-body-cells.json",
+    "scenes/procedural-fluted-body-marble.json",
+    "scenes/procedural-fluted-body-plain.json",
+    "scenes/procedural-optical-stilllife.json",
+    "scenes/procedural-swept-knot-cells.json",
+    "scenes/procedural-swept-knot-marble.json",
+    "scenes/procedural-swept-knot-plain.json",
+    "scenes/sphere.json",
+    "scenes/uniform-benchmark.json",
+    "scenes/workbench-dof.json",
+    "scenes/workbench-mirror.json",
+    "scenes/workbench-no-bump.json",
+    "scenes/workbench-procedural.json"
+  ],
+  "sanitizers": {
+    "build_instrumentation": "address,undefined,float-cast-overflow",
+    "sanitizer_recovery_enabled": false,
+    "frame_pointers_omitted": false,
+    "environment_overrides": {
+      "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "leak_checking_enabled": false,
+    "leak_checking_disclosure": "Apple ASan reports detect_leaks=1 unsupported; leak checking is disabled with detect_leaks=0 while ASan, UBSan, float-cast-overflow, halt-on-error, and no sanitizer recovery remain enabled."
+  },
+  "fresh_test_invocations": {
+    "geometry_optimized": {
+      "label": "optimized geometry with all sorted top-level repository scenes",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/geometry_tests",
+        "scenes/closed-benchmark.json",
+        "scenes/complexity-high.json",
+        "scenes/complexity-low.json",
+        "scenes/complexity-medium.json",
+        "scenes/cornell.json",
+        "scenes/gltf-baseline.json",
+        "scenes/gltf-complexity-high.json",
+        "scenes/gltf-complexity-low.json",
+        "scenes/gltf-complexity-medium.json",
+        "scenes/gltf-equivalence-data-uri.json",
+        "scenes/gltf-equivalence-external.json",
+        "scenes/gltf-equivalence-glb.json",
+        "scenes/gltf-motion-validation.json",
+        "scenes/gltf-showcase.json",
+        "scenes/hedge-motion-frozen-end.json",
+        "scenes/hedge-motion-frozen-midpoint.json",
+        "scenes/hedge-motion-frozen-start.json",
+        "scenes/hedge-motion-validation.json",
+        "scenes/hedge-motion.json",
+        "scenes/hedge-obj-baseline.json",
+        "scenes/hedge-sampling-diffuse.json",
+        "scenes/hedge-sampling-glass-dof.json",
+        "scenes/light-test-cube.json",
+        "scenes/light-test-mesh.json",
+        "scenes/light-test-sphere.json",
+        "scenes/open-benchmark.json",
+        "scenes/optical-workbench.json",
+        "scenes/preview-smoke.json",
+        "scenes/procedural-fluted-body-cells.json",
+        "scenes/procedural-fluted-body-marble.json",
+        "scenes/procedural-fluted-body-plain.json",
+        "scenes/procedural-optical-stilllife.json",
+        "scenes/procedural-swept-knot-cells.json",
+        "scenes/procedural-swept-knot-marble.json",
+        "scenes/procedural-swept-knot-plain.json",
+        "scenes/sphere.json",
+        "scenes/uniform-benchmark.json",
+        "scenes/workbench-dof.json",
+        "scenes/workbench-mirror.json",
+        "scenes/workbench-no-bump.json",
+        "scenes/workbench-procedural.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.535575+00:00",
+      "ended_utc": "2026-10-01T22:24:37.531879+00:00",
+      "duration_seconds": 1.9962925,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2970,
+        "sha256": "8afd8103cd9660316ee26da80ef88fa3c37feff7b9c8614aff709d5cbb815cfd"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "geometry-41-scenes.stdout",
+      "stderr_file": "geometry-41-scenes.stderr",
+      "parsed_result": {
+        "groups": 24,
+        "repository_scenes": 41,
+        "assertions": 10556741,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "geometry-41-scenes.stdout",
+      "raw_stderr_file": "geometry-41-scenes.stderr"
+    },
+    "geometry_sanitized": {
+      "label": "sanitized geometry useful full host suite without scene arguments",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/geometry_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:37.532191+00:00",
+      "ended_utc": "2026-10-01T22:24:37.996823+00:00",
+      "duration_seconds": 0.464624208,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 1104,
+        "sha256": "ed2256959ea7b5304ffd3ff914cf3e3b9e541905e39d7abaef4cda3de4595ec1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "geometry-sanitized.stdout",
+      "stderr_file": "geometry-sanitized.stderr",
+      "parsed_result": {
+        "groups": 24,
+        "repository_scenes": 0,
+        "assertions": 1808444,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "geometry-sanitized.stdout",
+      "raw_stderr_file": "geometry-sanitized.stderr"
+    },
+    "gltf_optimized": {
+      "label": "optimized glTF host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/gltf_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:37.996990+00:00",
+      "ended_utc": "2026-10-01T22:24:38.036991+00:00",
+      "duration_seconds": 0.03999475,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 579,
+        "sha256": "5c7de738265f201caf20f5f6548b020268493e7d14b51902bb9d17c428ac6124"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "gltf.stdout",
+      "stderr_file": "gltf.stderr",
+      "parsed_result": {
+        "groups": 11,
+        "assertions": 351,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "gltf.stdout",
+      "raw_stderr_file": "gltf.stderr"
+    },
+    "gltf_sanitized": {
+      "label": "sanitized glTF host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/gltf_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.037231+00:00",
+      "ended_utc": "2026-10-01T22:24:38.144163+00:00",
+      "duration_seconds": 0.106925458,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 579,
+        "sha256": "5c7de738265f201caf20f5f6548b020268493e7d14b51902bb9d17c428ac6124"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "gltf-sanitized.stdout",
+      "stderr_file": "gltf-sanitized.stderr",
+      "parsed_result": {
+        "groups": 11,
+        "assertions": 351,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "gltf-sanitized.stdout",
+      "raw_stderr_file": "gltf-sanitized.stderr"
+    },
+    "checkpoint_optimized": {
+      "label": "optimized checkpoint host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/checkpoint_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.144318+00:00",
+      "ended_utc": "2026-10-01T22:24:38.152292+00:00",
+      "duration_seconds": 0.007967708,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 23,
+        "sha256": "3cee322ae8382b3d0b8f1877c1c7fc92fb0f262a98fd82e99101d1a3efd29404"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "checkpoint.stdout",
+      "stderr_file": "checkpoint.stderr",
+      "parsed_result": {
+        "pass_marker_count": 1,
+        "passed": true
+      },
+      "raw_stdout_file": "checkpoint.stdout",
+      "raw_stderr_file": "checkpoint.stderr"
+    },
+    "checkpoint_sanitized": {
+      "label": "sanitized checkpoint host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/checkpoint_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.152404+00:00",
+      "ended_utc": "2026-10-01T22:24:38.169635+00:00",
+      "duration_seconds": 0.017224667,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 23,
+        "sha256": "3cee322ae8382b3d0b8f1877c1c7fc92fb0f262a98fd82e99101d1a3efd29404"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "checkpoint-sanitized.stdout",
+      "stderr_file": "checkpoint-sanitized.stderr",
+      "parsed_result": {
+        "pass_marker_count": 1,
+        "passed": true
+      },
+      "raw_stdout_file": "checkpoint-sanitized.stdout",
+      "raw_stderr_file": "checkpoint-sanitized.stderr"
+    }
+  },
+  "expected_count_checks": {
+    "geometry_optimized_groups_24": true,
+    "geometry_optimized_repository_scenes_41": true,
+    "geometry_sanitized_groups_24": true,
+    "geometry_sanitized_repository_scenes_0": true,
+    "gltf_optimized_groups_11": true,
+    "gltf_optimized_assertions_351": true,
+    "gltf_sanitized_groups_11": true,
+    "gltf_sanitized_assertions_351": true
+  },
+  "all_expected_count_checks_passed": true,
+  "raw_test_stderr_scope": {
+    "files": [
+      "geometry-41-scenes.stderr",
+      "geometry-sanitized.stderr",
+      "gltf.stderr",
+      "gltf-sanitized.stderr",
+      "checkpoint.stderr",
+      "checkpoint-sanitized.stderr"
+    ],
+    "all_empty": true,
+    "excludes_historical_build_transcripts": true,
+    "note": "test-summary.json empty_stderr describes only these six fresh raw test stderr files."
+  }
+}

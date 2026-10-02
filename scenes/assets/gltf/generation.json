@@ -1,0 +1,233 @@
+{
+  "format": {
+    "container": "glTF 2.0; GLB v2 or JSON with external/data URI buffer",
+    "indices": "little-endian uint32, TRIANGLES",
+    "vertex": "interleaved little-endian float32 POSITION(3), NORMAL(3), TEXCOORD_0(2); byteStride 32",
+    "uv_contract": "stored glTF v = float32(1 - canonical OBJ v); the loader applies 1-v. The restored renderer v can differ from direct OBJ v by float32 rounding and is not claimed bit-exact."
+  },
+  "generated_scenes": {
+    "scenes/gltf-baseline.json": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58",
+    "scenes/gltf-complexity-high.json": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2",
+    "scenes/gltf-complexity-low.json": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e",
+    "scenes/gltf-complexity-medium.json": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664",
+    "scenes/gltf-equivalence-data-uri.json": "ec6de8d3ffd85508e798e4b9bcec769ff937e61049a6a1b21b3c6948e74a9531",
+    "scenes/gltf-equivalence-external.json": "72a7b8b6baca8d51c4f38d0a525a4bec867937144600a731a8947923d46df4dc",
+    "scenes/gltf-equivalence-glb.json": "8726026e91dce73dc45aefbab263b6d2dbcf56a5541602d611bafb2aa3f4d826",
+    "scenes/gltf-motion-validation.json": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9",
+    "scenes/gltf-showcase.json": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+  },
+  "generator": {
+    "path": "scripts/generate_gltf_assets.py",
+    "sha256": "535a23ff6d933bcbcf877d3eebdf2caf17f788242c88403d7aa817cec2395062"
+  },
+  "meshes": {
+    "vase-low": {
+      "assets": {
+        "glb": {
+          "bytes": 10540,
+          "path": "scenes/assets/gltf/vase-low.glb",
+          "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+        },
+        "external_gltf": {
+          "bytes": 1028,
+          "path": "scenes/assets/gltf/vase-low.gltf",
+          "sha256": "f415baa92a020dada57c82da4f70b18a5f46ad7776c5658e8c0e60599f122c1a"
+        },
+        "external_bin": {
+          "bytes": 9504,
+          "path": "scenes/assets/gltf/vase-low.bin",
+          "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622"
+        },
+        "data_uri_gltf": {
+          "bytes": 13725,
+          "path": "scenes/assets/gltf/vase-low-data-uri.gltf",
+          "sha256": "e27cd56f7b9383b9066d6533604b1e74173c59204ad08655e8a4013e0513711a"
+        }
+      },
+      "binary": {
+        "bytes": 9504,
+        "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622"
+      },
+      "counts": {
+        "positions": 189,
+        "texcoords": 189,
+        "normals": 189,
+        "triangles": 288,
+        "exported_vertices": 189,
+        "indices": 864
+      },
+      "position_bounds_float32": {
+        "max": [
+          0.7300000190734863,
+          2.700000047683716,
+          0.7300000190734863
+        ],
+        "min": [
+          -0.7300000190734863,
+          0.0,
+          -0.7300000190734863
+        ]
+      },
+      "source": {
+        "path": "scenes/assets/vase-low.obj",
+        "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543"
+      }
+    },
+    "vase-medium": {
+      "assets": {
+        "glb": {
+          "bytes": 34232,
+          "path": "scenes/assets/gltf/vase-medium.glb",
+          "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+        }
+      },
+      "binary": {
+        "bytes": 33184,
+        "sha256": "8ef97262d86b2efdf73c887c96deb9e9b282bdaf527faa49f33c247ce82a0ca8"
+      },
+      "counts": {
+        "positions": 629,
+        "texcoords": 629,
+        "normals": 629,
+        "triangles": 1088,
+        "exported_vertices": 629,
+        "indices": 3264
+      },
+      "position_bounds_float32": {
+        "max": [
+          0.7300000190734863,
+          2.700000047683716,
+          0.7300000190734863
+        ],
+        "min": [
+          -0.7300000190734863,
+          0.0,
+          -0.7300000190734863
+        ]
+      },
+      "source": {
+        "path": "scenes/assets/vase-medium.obj",
+        "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb"
+      }
+    },
+    "vase-high": {
+      "assets": {
+        "glb": {
+          "bytes": 124600,
+          "path": "scenes/assets/gltf/vase-high.glb",
+          "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+        }
+      },
+      "binary": {
+        "bytes": 123552,
+        "sha256": "7053811c0e0e585bd9d9173648a4649e7b7a91631544de74dc37aa602a006fd2"
+      },
+      "counts": {
+        "positions": 2277,
+        "texcoords": 2277,
+        "normals": 2277,
+        "triangles": 4224,
+        "exported_vertices": 2277,
+        "indices": 12672
+      },
+      "position_bounds_float32": {
+        "max": [
+          0.7300000190734863,
+          2.700000047683716,
+          0.7300000190734863
+        ],
+        "min": [
+          -0.7300000190734863,
+          0.0,
+          -0.7300000190734863
+        ]
+      },
+      "source": {
+        "path": "scenes/assets/vase-high.obj",
+        "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+      }
+    },
+    "fluted-body-medium": {
+      "assets": {
+        "glb": {
+          "bytes": 182476,
+          "path": "scenes/assets/gltf/fluted-body-medium.glb",
+          "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd"
+        }
+      },
+      "binary": {
+        "bytes": 181408,
+        "sha256": "4c6b7ab771ddfe38502f3244e1a8c88f9b04e2942566f8a21c85b2a5368bc074"
+      },
+      "counts": {
+        "positions": 3317,
+        "texcoords": 3317,
+        "normals": 3317,
+        "triangles": 6272,
+        "exported_vertices": 3317,
+        "indices": 18816
+      },
+      "position_bounds_float32": {
+        "max": [
+          0.883853554725647,
+          2.700000047683716,
+          0.8694919347763062
+        ],
+        "min": [
+          -0.8881109952926636,
+          0.0,
+          -0.8566867113113403
+        ]
+      },
+      "source": {
+        "path": "scenes/assets/fluted-body-medium.obj",
+        "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10"
+      }
+    },
+    "swept-knot-medium": {
+      "assets": {
+        "glb": {
+          "bytes": 120412,
+          "path": "scenes/assets/gltf/swept-knot-medium.glb",
+          "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e"
+        }
+      },
+      "binary": {
+        "bytes": 119328,
+        "sha256": "350f4fc2d6d82b6e8e10a3218ea3ef952b228859d08e39780f33e0a4bd599289"
+      },
+      "counts": {
+        "positions": 2193,
+        "texcoords": 2193,
+        "normals": 2193,
+        "triangles": 4096,
+        "exported_vertices": 2193,
+        "indices": 12288
+      },
+      "position_bounds_float32": {
+        "max": [
+          1.4500000476837158,
+          1.4059796333312988,
+          0.46360865235328674
+        ],
+        "min": [
+          -1.2179533243179321,
+          -1.3587003946304321,
+          -0.4739789068698883
+        ]
+      },
+      "source": {
+        "path": "scenes/assets/swept-knot-medium.obj",
+        "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b"
+      }
+    }
+  },
+  "scene_sources": {
+    "scenes/complexity-low.json": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+    "scenes/complexity-medium.json": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+    "scenes/complexity-high.json": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+    "scenes/hedge-motion.json": "36dc2940eccf27ebb0a75ee5d2bd6fa9604694bfe1fead13ede18632a40f8980",
+    "scenes/hedge-motion-validation.json": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+  },
+  "schema": "cis565-gltf-generation-v1"
+}

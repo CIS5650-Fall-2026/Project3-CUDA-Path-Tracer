@@ -1,0 +1,731 @@
+[
+  {
+    "command": [
+      "xdotool",
+      "search",
+      "--onlyvisible",
+      "--pid",
+      "46814"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "search",
+      "--onlyvisible",
+      "--pid",
+      "46814"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "search",
+      "--onlyvisible",
+      "--pid",
+      "46814"
+    ],
+    "returncode": 0,
+    "stdout": "41943047",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "windowactivate",
+      "--sync",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 5 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 6 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "initial-frame-progress",
+    "title": "CIS565 Path Tracer | 6 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "s"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "action": "initial-save",
+    "image": "optical-workbench.2026-10-01_21-42-09z.7samp.save0.png",
+    "bytes": 1561838,
+    "sha256": "2598616db510cd94148e6a63d3d07923c7e3fc7485ee6f05fb91eef42bdb2879"
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousemove",
+      "--window",
+      "41943047",
+      "700",
+      "400"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 15 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 17 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "horizontal-orbit-pointer-ready",
+    "title": "CIS565 Path Tracer | 17 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousedown",
+      "1"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 24 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 25 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "horizontal-orbit-button-held",
+    "title": "CIS565 Path Tracer | 25 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousemove",
+      "--window",
+      "41943047",
+      "810",
+      "400"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 6 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 7 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "horizontal-orbit-motion-delivered",
+    "title": "CIS565 Path Tracer | 7 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mouseup",
+      "1"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 14 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 15 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "horizontal-orbit",
+    "title": "CIS565 Path Tracer | 15 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "s"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "action": "horizontal-orbit-save",
+    "image": "optical-workbench.2026-10-01_21-42-09z.16samp.save1.png",
+    "bytes": 1580397,
+    "sha256": "3408053cc7fb65a433a618b408ad262e2afef99b6fcd4ab095db81a1dc2bdccd"
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "space"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 5 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 7 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "restore-before-vertical-zoom",
+    "title": "CIS565 Path Tracer | 7 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousemove",
+      "--window",
+      "41943047",
+      "700",
+      "400"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 13 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 15 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "vertical-zoom-pointer-ready",
+    "title": "CIS565 Path Tracer | 15 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousedown",
+      "3"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 22 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 23 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "vertical-zoom-button-held",
+    "title": "CIS565 Path Tracer | 23 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousemove",
+      "--window",
+      "41943047",
+      "700",
+      "450"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 6 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 8 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "vertical-zoom-motion-delivered",
+    "title": "CIS565 Path Tracer | 8 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mouseup",
+      "3"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 14 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 16 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "vertical-zoom",
+    "title": "CIS565 Path Tracer | 16 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "s"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "action": "vertical-zoom-save",
+    "image": "optical-workbench.2026-10-01_21-42-09z.17samp.save2.png",
+    "bytes": 1505771,
+    "sha256": "3bcc298869aa45a18b77a677c379f8ecaa053280fe117438de5eedfc7fd4ba3c"
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "space"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 5 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 7 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "restore-before-screen-plane-pan",
+    "title": "CIS565 Path Tracer | 7 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousemove",
+      "--window",
+      "41943047",
+      "700",
+      "400"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 14 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 15 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "screen-plane-pan-pointer-ready",
+    "title": "CIS565 Path Tracer | 15 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousedown",
+      "2"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 22 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 24 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "screen-plane-pan-button-held",
+    "title": "CIS565 Path Tracer | 24 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mousemove",
+      "--window",
+      "41943047",
+      "740",
+      "425"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 5 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 7 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "screen-plane-pan-motion-delivered",
+    "title": "CIS565 Path Tracer | 7 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "mouseup",
+      "2"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 13 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 15 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "screen-plane-pan",
+    "title": "CIS565 Path Tracer | 15 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "s"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "action": "screen-plane-pan-save",
+    "image": "optical-workbench.2026-10-01_21-42-09z.16samp.save3.png",
+    "bytes": 1500902,
+    "sha256": "6586f641f35ab6269806d02ef3e9921832a084c5e19da7d59f110e57c4b3855d"
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "space"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 5 Iterations",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "xdotool",
+      "getwindowname",
+      "41943047"
+    ],
+    "returncode": 0,
+    "stdout": "CIS565 Path Tracer | 7 Iterations",
+    "stderr": ""
+  },
+  {
+    "action": "space-restore",
+    "title": "CIS565 Path Tracer | 7 Iterations",
+    "frame_progress": true
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "s"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "action": "space-restore-save",
+    "image": "optical-workbench.2026-10-01_21-42-09z.8samp.save4.png",
+    "bytes": 1556727,
+    "sha256": "75ac3f8b3f24d6f64224c1ff3640fd81e7a5a5b7d0dbd7e2f3fb19a29f0fa0ef"
+  },
+  {
+    "command": [
+      "xdotool",
+      "key",
+      "--window",
+      "41943047",
+      "Escape"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "action": "escape-save",
+    "image": "optical-workbench.2026-10-01_21-42-09z.10samp.save5.png",
+    "bytes": 1546766,
+    "sha256": "4d8b8a0fb82f9b21c5b899016e3f6db92a0d21426c2dc342e7917a686842c819"
+  }
+]

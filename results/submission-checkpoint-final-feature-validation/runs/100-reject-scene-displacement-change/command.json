@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/temporary-scene-mutations/active-scene.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/100-reject-scene-displacement-change/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/099-scene-mutation-displacement-baseline/state.checkpoint"
+  ],
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "input_files_before_invocation": [
+    {
+      "bytes": 6372424,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    {
+      "bytes": 5126,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/temporary-scene-mutations/active-scene.json",
+      "role": "scene",
+      "sha256": "7695ae4e68651d244c182cc0b2c50d08dd7f487363461e32dd27595eec8f158a"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/099-scene-mutation-displacement-baseline/state.checkpoint",
+      "role": "resume",
+      "sha256": "24912823f9098b0d59f5cc58bccef1c619c7cc33fcd355e46dd4c35aff4a17dc"
+    }
+  ],
+  "label": "reject-scene-displacement-change",
+  "shell": false
+}

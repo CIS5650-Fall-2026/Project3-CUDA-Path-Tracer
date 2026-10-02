@@ -1,0 +1,13 @@
+{
+  "scope": "Downloaded actual preview suite only; no new renderer execution or media publication",
+  "passed": true,
+  "source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "binary_sha256": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "suite_summary_sha256": "dc31380ab9844c43eeccf1e4328e630e30c8fdc1128959e87e774dc85c572413",
+  "preview_summary_sha256": "4735c5b7c07a40aa10c125633035e06eac9e0607352c08f300b038dfd525b06b",
+  "renderer_metadata_records_validated": 1,
+  "validated_at_utc": "2026-10-01T23:57:13.866346+00:00"
+}

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="630" viewBox="0 0 1000 630">
+<rect width="1000" height="630" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Surface and camera feature costs</text>
+<text x="28" y="67" font-size="14">Three measured repeats; bars show median GPU ms per sample, whiskers min–max. Lower is faster.</text>
+<path d="M310.00 92 V585" stroke="#dce2ec"/>
+<text x="310.00" y="606" text-anchor="middle" font-size="13">0.00</text>
+<path d="M428.00 92 V585" stroke="#dce2ec"/>
+<text x="428.00" y="606" text-anchor="middle" font-size="13">2.79</text>
+<path d="M546.00 92 V585" stroke="#dce2ec"/>
+<text x="546.00" y="606" text-anchor="middle" font-size="13">5.58</text>
+<path d="M664.00 92 V585" stroke="#dce2ec"/>
+<text x="664.00" y="606" text-anchor="middle" font-size="13">8.37</text>
+<path d="M782.00 92 V585" stroke="#dce2ec"/>
+<text x="782.00" y="606" text-anchor="middle" font-size="13">11.16</text>
+<path d="M900.00 92 V585" stroke="#dce2ec"/>
+<text x="900.00" y="606" text-anchor="middle" font-size="13">13.95</text>
+<text x="296" y="121" text-anchor="end" font-size="14">texture / file</text>
+<rect x="310" y="100" width="518.07" height="29" rx="3" fill="#2166ac"/>
+<path d="M825.23 114 H828.83 M825.23 108 V120 M828.83 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="836.07" y="121" font-size="13">12.245</text>
+<text x="296" y="167" text-anchor="end" font-size="14">texture / procedural</text>
+<rect x="310" y="146" width="513.47" height="29" rx="3" fill="#ca6e22"/>
+<path d="M823.43 160 H827.81 M823.43 154 V166 M827.81 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="831.47" y="167" font-size="13">12.137</text>
+<text x="296" y="213" text-anchor="end" font-size="14">bump / off</text>
+<rect x="310" y="192" width="519.49" height="29" rx="3" fill="#318f68"/>
+<path d="M826.11 206 H829.71 M826.11 200 V212 M829.71 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="837.49" y="213" font-size="13">12.279</text>
+<text x="296" y="259" text-anchor="end" font-size="14">bump / on</text>
+<rect x="310" y="238" width="518.97" height="29" rx="3" fill="#2166ac"/>
+<path d="M828.94 252 H829.22 M828.94 246 V258 M829.22 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="836.97" y="259" font-size="13">12.266</text>
+<text x="296" y="305" text-anchor="end" font-size="14">refraction / mirror</text>
+<rect x="310" y="284" width="526.68" height="29" rx="3" fill="#ca6e22"/>
+<path d="M832.54 298 H836.79 M832.54 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="844.68" y="305" font-size="13">12.449</text>
+<text x="296" y="351" text-anchor="end" font-size="14">refraction / glass</text>
+<rect x="310" y="330" width="520.43" height="29" rx="3" fill="#318f68"/>
+<path d="M828.72 344 H830.48 M828.72 338 V350 M830.48 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="838.43" y="351" font-size="13">12.301</text>
+<text x="296" y="397" text-anchor="end" font-size="14">dof / off</text>
+<rect x="310" y="376" width="518.66" height="29" rx="3" fill="#2166ac"/>
+<path d="M827.57 390 H830.42 M827.57 384 V396 M830.42 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="836.66" y="397" font-size="13">12.259</text>
+<text x="296" y="443" text-anchor="end" font-size="14">dof / on</text>
+<rect x="310" y="422" width="523.75" height="29" rx="3" fill="#ca6e22"/>
+<path d="M833.35 436 H834.37 M833.35 430 V442 M834.37 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="841.75" y="443" font-size="13">12.379</text>
+<text x="296" y="489" text-anchor="end" font-size="14">nee / off</text>
+<rect x="310" y="468" width="361.13" height="29" rx="3" fill="#318f68"/>
+<path d="M668.19 482 H671.81 M668.19 476 V488 M671.81 476 V488" stroke="#172235" stroke-width="2"/>
+<text x="679.13" y="489" font-size="13">8.536</text>
+<text x="296" y="535" text-anchor="end" font-size="14">nee / on</text>
+<rect x="310" y="514" width="519.51" height="29" rx="3" fill="#2166ac"/>
+<path d="M829.17 528 H829.82 M829.17 522 V534 M829.82 522 V534" stroke="#172235" stroke-width="2"/>
+<text x="837.51" y="535" font-size="13">12.279</text>
+</g>
+</svg>

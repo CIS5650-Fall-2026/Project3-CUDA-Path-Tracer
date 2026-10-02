@@ -1,0 +1,12 @@
+[PASS] external percent URI, attributes, motion, assets, determinism
+[PASS] data URI and GLB index widths and UV flip
+[PASS] unindexed and missing attribute fallbacks
+[PASS] scene selection and scene-less roots
+[PASS] hierarchy TRS/matrix instances and mirrored normals
+[PASS] unsupported geometry-changing features
+[PASS] hierarchy and transform rejections
+[PASS] accessor schema/reference rejections
+[PASS] raw storage and GLB boundary rejections
+[PASS] decoded data rejections
+[PASS] URI and file rejections
+Executed 11 glTF test groups and 351 assertions; 0 group(s) failed.

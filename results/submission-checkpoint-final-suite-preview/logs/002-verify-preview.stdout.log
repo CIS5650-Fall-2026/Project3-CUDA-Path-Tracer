@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "smoke_samples": 16,
+  "preview_headless_png_exact": true,
+  "interaction_saves": 6,
+  "frame_progress": true,
+  "escape_exit_code": 0,
+  "space_restore_png_exact": true,
+  "restored_samples": 8,
+  "independent_camera_motion_checks": [
+    "horizontal-orbit",
+    "vertical-zoom",
+    "screen-plane-pan"
+  ],
+  "renderer_config": {
+    "wavefront": "on",
+    "rr": "on",
+    "rr_start": 3
+  },
+  "compatibility": {
+    "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+    "build_identifier": "cis565-project3-renderer-v1_source-a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "compute_capability": "8.6",
+    "cuda_driver_version": 13000,
+    "cuda_runtime_version": 12080,
+    "device": "NVIDIA A10G"
+  }
+}
+/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-preview

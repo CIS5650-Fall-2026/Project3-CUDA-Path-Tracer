@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/home/ubuntu/cis5650/project3/results/submission-final-gltf/timing/cpu-profile/private-profile-scene-load",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json",
+    "/home/ubuntu/cis5650/project3/scenes/complexity-low.json",
+    "/home/ubuntu/cis5650/project3/scenes/complexity-medium.json",
+    "/home/ubuntu/cis5650/project3/scenes/complexity-high.json"
+  ],
+  "completed_utc": "2026-10-01T22:18:12.403623Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "exit_code": 0,
+  "name": "measure",
+  "pid": 9049,
+  "process_elapsed_ms": 188.56090200006292,
+  "started_utc": "2026-10-01T22:18:12.211569Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "measure.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 2412,
+    "path": "measure.stdout.txt",
+    "sha256": "969577044fe10071837735c34d818b0149b31b69ebaa10efc08f9241edfffc02"
+  }
+}

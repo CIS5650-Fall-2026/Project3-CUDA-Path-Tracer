@@ -1,0 +1,15 @@
+{
+  "scope": "Downloaded actual preview suite only; no new renderer execution or media publication",
+  "passed": true,
+  "source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "binary_sha256": {
+    "headless": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3",
+    "preview": "cd947651707e7e06fd40a6314afa0716e735a9af0aa9f4a0deead066d9c42142"
+  },
+  "headless_controller_sha256": "6e718b5f19969fc52628ac5f113bf9f8052b585f4380d8f75d9beacfff16a0c4",
+  "evidence_prefix": "submission-checkpoint-final",
+  "suite_summary_sha256": "2296ca275c042bf6d9a59a9e0077892614dead0319ef6014715d6e75f07637a9",
+  "preview_summary_sha256": "ed9aa6f508ceb106d022da8af16583c9f833390a2b2f3284815371cf3412a08d",
+  "renderer_metadata_records_validated": 1,
+  "validated_at_utc": "2026-10-02T02:44:31.090954+00:00"
+}

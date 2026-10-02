@@ -1,0 +1,811 @@
+{
+  "actual": {
+    "benchmark_csv": {
+      "bounce_records": 614,
+      "measured_samples": 64,
+      "render_loop_wall_ms": 937.565387,
+      "renderer_gpu_ms": 936.173281,
+      "renderer_host_ms": 937.515526
+    },
+    "camera": {
+      "aperture": 0.05999999865889549,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    },
+    "completed_samples": 64,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "identity": {
+      "binary_file_identity": {
+        "bytes": 6213112,
+        "device": 66306,
+        "inode": 3683213,
+        "mtime_ns": 1790884184563204282,
+        "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+        "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+      },
+      "binary_sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1",
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "fingerprints": {
+        "assets": 10455606408608127933,
+        "geometry": 10223477082081647481,
+        "materials": 3117248740601025773,
+        "render_config": 6068678726061242250,
+        "scene_file": 8975682081181023738
+      },
+      "metadata_scene": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+      "scene_file_sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02",
+      "scene_input_identity": {
+        "assets": [
+          {
+            "bytes": 196662,
+            "logical_path": "assets/glaze.bmp",
+            "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+            "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+          },
+          {
+            "bytes": 196662,
+            "logical_path": "assets/height.bmp",
+            "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+            "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+          },
+          {
+            "bytes": 282121,
+            "logical_path": "assets/torus.obj",
+            "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/torus.obj",
+            "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+          },
+          {
+            "bytes": 387854,
+            "logical_path": "assets/vase-high.obj",
+            "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+            "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+          }
+        ],
+        "manifest_sha256": "902454505cfbfde2efe135b117a4a66ff27476f574988733792982db61a3f734",
+        "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+        "scene_bytes": 2313,
+        "scene_file": "hedge-sampling-glass-dof.json",
+        "scene_sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02"
+      }
+    },
+    "last_sample_wall_ms": 14.166943,
+    "linear_rgb_mean": 0.34700235721254247,
+    "non_render_process_overhead_ms": 311.3098349996968,
+    "process_elapsed_ms": 1248.8752219996968,
+    "process_elapsed_ms_per_completed_sample": 19.513675343745263,
+    "raw_checksum_fnv1a64": 14469600398924950524,
+    "render_loop_minus_budget_ms": null,
+    "render_loop_wall_ms": 937.565387,
+    "render_loop_wall_ms_per_completed_sample": 14.649459171875,
+    "renderer_gpu_ms": 936.1732807159424,
+    "renderer_gpu_ms_per_completed_sample": 14.6277075111866,
+    "renderer_host_ms": 937.515526,
+    "resolution": [
+      128,
+      84
+    ],
+    "run_policy": {
+      "last_sample_wall_ms": 14.166943,
+      "stop_reason": "sample_target",
+      "time_budget_ms": null
+    },
+    "sampler": "halton",
+    "sampler_id": 3,
+    "sampler_version": 3,
+    "seed": 947,
+    "target_samples": 64,
+    "time_budget_overshoot_ms": null
+  },
+  "artifacts": {
+    "benchmark_csv": {
+      "bytes": 97939,
+      "path": "quality/candidates/candidate-glass-dof-s64-seed947-halton.benchmark.csv",
+      "sha256": "ab7b0ad723623941e4e824fe53d8eafbd05bd171b63d631c5a7cfe32ed2ea0ed"
+    },
+    "metadata": {
+      "bytes": 3787,
+      "path": "quality/candidates/candidate-glass-dof-s64-seed947-halton.json",
+      "sha256": "cd2c7e0b2cd0c5e8e38b3ad87bb548078fa89b42ccacc435bdad7c26f1d7f1c0"
+    },
+    "png": {
+      "bytes": 26278,
+      "path": "quality/candidates/candidate-glass-dof-s64-seed947-halton.png",
+      "sha256": "b9ce830da14c66df67a7e5dd89e595f0b2ef276dfc0fb1ff48c39b65b5a06a11"
+    },
+    "raw": {
+      "bytes": 129064,
+      "path": "quality/candidates/candidate-glass-dof-s64-seed947-halton.sum.bin",
+      "sha256": "ed70b40568c1330fccd12db3597d4513b5aa8448c6211932aa91ed18da349757"
+    }
+  },
+  "audit": {
+    "checks": [
+      {
+        "detail": {
+          "bytes": 6213112,
+          "device": 66306,
+          "inode": 3683213,
+          "mtime_ns": 1790884184563204282,
+          "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+          "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+        },
+        "name": "binary-sha256",
+        "passed": true
+      },
+      {
+        "detail": {
+          "assets": [
+            {
+              "bytes": 196662,
+              "logical_path": "assets/glaze.bmp",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 196662,
+              "logical_path": "assets/height.bmp",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 282121,
+              "logical_path": "assets/torus.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/torus.obj",
+              "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+            },
+            {
+              "bytes": 387854,
+              "logical_path": "assets/vase-high.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+              "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+            }
+          ],
+          "manifest_sha256": "902454505cfbfde2efe135b117a4a66ff27476f574988733792982db61a3f734",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+          "scene_bytes": 2313,
+          "scene_file": "hedge-sampling-glass-dof.json",
+          "scene_sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02"
+        },
+        "name": "scene-input-hashes",
+        "passed": true
+      },
+      {
+        "detail": "902454505cfbfde2efe135b117a4a66ff27476f574988733792982db61a3f734",
+        "name": "scene-input-manifest-hash",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "raw-completed-samples",
+        "passed": true
+      },
+      {
+        "detail": {
+          "metadata": [
+            128,
+            84
+          ],
+          "raw": [
+            128,
+            84
+          ]
+        },
+        "name": "raw-resolution",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "target-samples",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "completed-fixed-target",
+        "passed": true
+      },
+      {
+        "detail": 947,
+        "name": "seed",
+        "passed": true
+      },
+      {
+        "detail": 3,
+        "name": "sampler-version",
+        "passed": true
+      },
+      {
+        "detail": "halton",
+        "name": "sampler-name",
+        "passed": true
+      },
+      {
+        "detail": 3,
+        "name": "sampler-id",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            "aa",
+            "bvh",
+            "compact",
+            "debug",
+            "depth_semantics",
+            "max_depth",
+            "motion",
+            "nee",
+            "rr",
+            "rr_start",
+            "sampler",
+            "sampler_id",
+            "sort",
+            "wavefront"
+          ],
+          "expected": [
+            "aa",
+            "bvh",
+            "compact",
+            "debug",
+            "depth_semantics",
+            "max_depth",
+            "motion",
+            "nee",
+            "rr",
+            "rr_start",
+            "sampler",
+            "sampler_id",
+            "sort",
+            "wavefront"
+          ]
+        },
+        "name": "config-fields",
+        "passed": true
+      },
+      {
+        "detail": 10,
+        "name": "config-max_depth",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-aa",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-nee",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-bvh",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-compact",
+        "passed": true
+      },
+      {
+        "detail": false,
+        "name": "config-sort",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-wavefront",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-rr",
+        "passed": true
+      },
+      {
+        "detail": 3,
+        "name": "config-rr_start",
+        "passed": true
+      },
+      {
+        "detail": "halton",
+        "name": "config-sampler",
+        "passed": true
+      },
+      {
+        "detail": 3,
+        "name": "config-sampler_id",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-motion",
+        "passed": true
+      },
+      {
+        "detail": "none",
+        "name": "config-debug",
+        "passed": true
+      },
+      {
+        "detail": "maximum surface intersections; final intersection is emission-only",
+        "name": "config-depth_semantics",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "benchmark-enabled",
+        "passed": true
+      },
+      {
+        "detail": 14469600398924950524,
+        "name": "raw-checksum",
+        "passed": true
+      },
+      {
+        "detail": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "name": "compatibility-baseline_starter_revision",
+        "passed": true
+      },
+      {
+        "detail": "cis565-project3-renderer-v1_source-a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "name": "compatibility-build_identifier",
+        "passed": true
+      },
+      {
+        "detail": "NVIDIA A10G",
+        "name": "compatibility-device",
+        "passed": true
+      },
+      {
+        "detail": 8975682081181023738,
+        "name": "fingerprint-scene_file",
+        "passed": true
+      },
+      {
+        "detail": 10455606408608127933,
+        "name": "fingerprint-assets",
+        "passed": true
+      },
+      {
+        "detail": 3117248740601025773,
+        "name": "fingerprint-materials",
+        "passed": true
+      },
+      {
+        "detail": 10223477082081647481,
+        "name": "fingerprint-geometry",
+        "passed": true
+      },
+      {
+        "detail": 6068678726061242250,
+        "name": "fingerprint-render_config",
+        "passed": true
+      },
+      {
+        "detail": {
+          "assets": [
+            {
+              "bytes": 196662,
+              "logical_path": "assets/glaze.bmp",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+              "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+            },
+            {
+              "bytes": 196662,
+              "logical_path": "assets/height.bmp",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+              "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+            },
+            {
+              "bytes": 282121,
+              "logical_path": "assets/torus.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/torus.obj",
+              "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+            },
+            {
+              "bytes": 387854,
+              "logical_path": "assets/vase-high.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+              "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+            }
+          ],
+          "manifest_sha256": "902454505cfbfde2efe135b117a4a66ff27476f574988733792982db61a3f734",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+          "scene_bytes": 2313,
+          "scene_file": "hedge-sampling-glass-dof.json",
+          "scene_sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02"
+        },
+        "name": "scene-input-filename",
+        "passed": true
+      },
+      {
+        "detail": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+        "name": "metadata-scene-path",
+        "passed": true
+      },
+      {
+        "detail": {
+          "design": [
+            0.0,
+            1.0
+          ],
+          "scene": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "authored-camera-shutter-design",
+        "passed": true
+      },
+      {
+        "detail": [
+          "aperture",
+          "focus_distance",
+          "look_at",
+          "position",
+          "shutter"
+        ],
+        "name": "camera-fields",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "expected": [
+            4.8,
+            2.8,
+            7.2
+          ]
+        },
+        "name": "camera-position",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "expected": [
+            0.0,
+            1.2,
+            0.0
+          ]
+        },
+        "name": "camera-look-at",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.0
+          ],
+          "expected": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": 0.05999999865889549,
+          "expected": 0.06
+        },
+        "name": "camera-aperture",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": 8.800000190734863,
+          "expected": 8.8
+        },
+        "name": "camera-focus-distance",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.0
+          ],
+          "expected": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "detail": 64,
+        "name": "benchmark-measured-samples",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 936.173281,
+          "metadata": 936.1732807159424
+        },
+        "name": "benchmark-csv-renderer_gpu_ms",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 937.515526,
+          "metadata": 937.515526
+        },
+        "name": "benchmark-csv-renderer_host_ms",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 937.565387,
+          "metadata": 937.565387
+        },
+        "name": "benchmark-csv-render_loop_wall_ms",
+        "passed": true
+      },
+      {
+        "detail": [
+          "last_sample_wall_ms",
+          "stop_reason",
+          "time_budget_ms"
+        ],
+        "name": "policy-fields",
+        "passed": true
+      },
+      {
+        "detail": "sample_target",
+        "name": "policy-stop-reason-enum",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 14.166943,
+          "render_loop_wall_ms": 937.565387
+        },
+        "name": "policy-last-sample-within-loop",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 14.166943,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "policy-budget-null",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 14.166943,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "policy-stop-reason",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "raw_parser": "scripts.validate_render.read_sum",
+    "raw_values_finite_nonnegative": true
+  },
+  "binary_identity": {
+    "after": {
+      "bytes": 6213112,
+      "device": 66306,
+      "inode": 3683213,
+      "mtime_ns": 1790884184563204282,
+      "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+      "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+    },
+    "before": {
+      "bytes": 6213112,
+      "device": 66306,
+      "inode": 3683213,
+      "mtime_ns": 1790884184563204282,
+      "path": "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+      "sha256": "16e728e56afea8efc479ce92a7775987fe84e7a14c3afbc5cd5c57e44eeb81b1"
+    },
+    "unchanged": true
+  },
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-final/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+    "--samples",
+    "64",
+    "--seed",
+    "947",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/hedge-final-quality/quality/candidates/candidate-glass-dof-s64-seed947-halton",
+    "--resolution",
+    "128x84",
+    "--depth",
+    "10",
+    "--benchmark",
+    "--wavefront",
+    "on",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--compact",
+    "on",
+    "--bvh",
+    "on",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--sort",
+    "off",
+    "--motion",
+    "on",
+    "--sampler",
+    "halton"
+  ],
+  "completed_utc": "2026-10-01T20:55:00.790799Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "design": {
+    "depth": 10,
+    "effective_scheduling": {
+      "aa": "on",
+      "bvh": "on",
+      "compact": "on",
+      "motion": "on",
+      "nee": "on",
+      "rr": "on",
+      "rr-start": "3",
+      "sort": "off",
+      "wavefront": "on"
+    },
+    "label": "candidate-glass-dof-s64-seed947-halton",
+    "phase": "quality",
+    "purpose": "candidate",
+    "quality_samples": 64,
+    "resolution": [
+      128,
+      84
+    ],
+    "sample_target": 64,
+    "sampler": "halton",
+    "scene": "glass-dof",
+    "scene_file": "hedge-sampling-glass-dof.json",
+    "scheduling_overrides": {},
+    "seed": 947,
+    "time_budget_ms": null
+  },
+  "exit_code": 0,
+  "invocation_envelope_elapsed_ms": 1267.8231710006003,
+  "label": "candidate-glass-dof-s64-seed947-halton",
+  "phase": "quality",
+  "pid": 43015,
+  "process_elapsed_ms": 1248.8752219996968,
+  "purpose": "candidate",
+  "run_id": 66,
+  "scene_input_identity": {
+    "after": {
+      "assets": [
+        {
+          "bytes": 196662,
+          "logical_path": "assets/glaze.bmp",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "logical_path": "assets/height.bmp",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 282121,
+          "logical_path": "assets/torus.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/torus.obj",
+          "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+        },
+        {
+          "bytes": 387854,
+          "logical_path": "assets/vase-high.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+          "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+        }
+      ],
+      "manifest_sha256": "902454505cfbfde2efe135b117a4a66ff27476f574988733792982db61a3f734",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+      "scene_bytes": 2313,
+      "scene_file": "hedge-sampling-glass-dof.json",
+      "scene_sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02"
+    },
+    "before": {
+      "assets": [
+        {
+          "bytes": 196662,
+          "logical_path": "assets/glaze.bmp",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/glaze.bmp",
+          "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+        },
+        {
+          "bytes": 196662,
+          "logical_path": "assets/height.bmp",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/height.bmp",
+          "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+        },
+        {
+          "bytes": 282121,
+          "logical_path": "assets/torus.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/torus.obj",
+          "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+        },
+        {
+          "bytes": 387854,
+          "logical_path": "assets/vase-high.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/vase-high.obj",
+          "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+        }
+      ],
+      "manifest_sha256": "902454505cfbfde2efe135b117a4a66ff27476f574988733792982db61a3f734",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json",
+      "scene_bytes": 2313,
+      "scene_file": "hedge-sampling-glass-dof.json",
+      "scene_sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02"
+    },
+    "unchanged": true
+  },
+  "schema_version": 1,
+  "started_utc": "2026-10-01T20:54:59.518993Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "quality/candidates/candidate-glass-dof-s64-seed947-halton.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 127,
+    "path": "quality/candidates/candidate-glass-dof-s64-seed947-halton.stdout.txt",
+    "sha256": "61569bbca498786891a15b48b2329dc236bdb79050056bafff3bf6f0e84af382"
+  }
+}

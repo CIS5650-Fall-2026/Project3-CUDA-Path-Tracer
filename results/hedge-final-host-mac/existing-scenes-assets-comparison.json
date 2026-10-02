@@ -1,0 +1,266 @@
+{
+  "baseline_revision": "f92d1d56394baf4d262008515fd55896d2dc76e2",
+  "checked_files": 37,
+  "all_byte_identical": true,
+  "files": [
+    {
+      "path": "scenes/assets/area-light.obj",
+      "bytes": 122,
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635",
+      "baseline_sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/fluted-body-high.obj",
+      "bytes": 3124619,
+      "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "baseline_sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/fluted-body-low.obj",
+      "bytes": 188496,
+      "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "baseline_sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/fluted-body-medium.obj",
+      "bytes": 769303,
+      "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "baseline_sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/glaze.bmp",
+      "bytes": 196662,
+      "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c",
+      "baseline_sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/height.bmp",
+      "bytes": 196662,
+      "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442",
+      "baseline_sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/swept-knot-high.obj",
+      "bytes": 2004275,
+      "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "baseline_sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/swept-knot-low.obj",
+      "bytes": 121244,
+      "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "baseline_sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/swept-knot-medium.obj",
+      "bytes": 493493,
+      "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "baseline_sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/torus.obj",
+      "bytes": 282121,
+      "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f",
+      "baseline_sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/vase-high.obj",
+      "bytes": 387854,
+      "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c",
+      "baseline_sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/vase-low.obj",
+      "bytes": 24651,
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543",
+      "baseline_sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/assets/vase-medium.obj",
+      "bytes": 94338,
+      "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb",
+      "baseline_sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/closed-benchmark.json",
+      "bytes": 3283,
+      "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a",
+      "baseline_sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/complexity-high.json",
+      "bytes": 2863,
+      "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+      "baseline_sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/complexity-low.json",
+      "bytes": 2861,
+      "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+      "baseline_sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/complexity-medium.json",
+      "bytes": 2867,
+      "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+      "baseline_sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/cornell.json",
+      "bytes": 2265,
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b",
+      "baseline_sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/light-test-cube.json",
+      "bytes": 1351,
+      "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05",
+      "baseline_sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/light-test-mesh.json",
+      "bytes": 1391,
+      "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8",
+      "baseline_sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/light-test-sphere.json",
+      "bytes": 1353,
+      "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58",
+      "baseline_sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/open-benchmark.json",
+      "bytes": 2109,
+      "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8",
+      "baseline_sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/optical-workbench.json",
+      "bytes": 3147,
+      "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2",
+      "baseline_sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/preview-smoke.json",
+      "bytes": 3141,
+      "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1",
+      "baseline_sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-fluted-body-cells.json",
+      "bytes": 2306,
+      "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a",
+      "baseline_sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-fluted-body-marble.json",
+      "bytes": 2308,
+      "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c",
+      "baseline_sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-fluted-body-plain.json",
+      "bytes": 2305,
+      "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e",
+      "baseline_sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-optical-stilllife.json",
+      "bytes": 3101,
+      "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "baseline_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-swept-knot-cells.json",
+      "bytes": 2305,
+      "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758",
+      "baseline_sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-swept-knot-marble.json",
+      "bytes": 2307,
+      "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d",
+      "baseline_sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/procedural-swept-knot-plain.json",
+      "bytes": 2304,
+      "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3",
+      "baseline_sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/sphere.json",
+      "bytes": 607,
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904",
+      "baseline_sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/uniform-benchmark.json",
+      "bytes": 3265,
+      "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6",
+      "baseline_sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/workbench-dof.json",
+      "bytes": 3146,
+      "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001",
+      "baseline_sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/workbench-mirror.json",
+      "bytes": 3131,
+      "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f",
+      "baseline_sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/workbench-no-bump.json",
+      "bytes": 3082,
+      "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b",
+      "baseline_sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b",
+      "byte_identical": true
+    },
+    {
+      "path": "scenes/workbench-procedural.json",
+      "bytes": 3079,
+      "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d",
+      "baseline_sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d",
+      "byte_identical": true
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "convergence_phases": [],
+  "events": [],
+  "interaction_epoch": null,
+  "png_checks": [],
+  "schedule": [
+    {
+      "action": "release buttons 1/3/2; Space reset",
+      "at_s": 0.0
+    },
+    {
+      "from_s": 0.0,
+      "phase": "original-camera convergence",
+      "to_s": 12.0
+    },
+    {
+      "action": "left drag (700,400) to (810,410), 12 steps",
+      "from_s": 12.0,
+      "to_s": 15.0
+    },
+    {
+      "from_s": 15.0,
+      "phase": "left-drag convergence",
+      "to_s": 20.0
+    },
+    {
+      "action": "right drag (700,400) to (700,350), 12 steps",
+      "from_s": 20.0,
+      "to_s": 22.0
+    },
+    {
+      "from_s": 22.0,
+      "phase": "right-drag convergence",
+      "to_s": 27.0
+    },
+    {
+      "action": "middle drag (700,400) to (740,425), 12 steps",
+      "from_s": 27.0,
+      "to_s": 29.0
+    },
+    {
+      "from_s": 29.0,
+      "phase": "middle-drag convergence",
+      "to_s": 34.0
+    },
+    {
+      "action": "release buttons 1/3/2; Space reset",
+      "at_s": 34.0
+    },
+    {
+      "from_s": 34.0,
+      "phase": "restored-camera convergence",
+      "to_s": 44.0
+    },
+    {
+      "action": "S save",
+      "at_s": 44.0
+    },
+    {
+      "action": "release buttons 1/3/2; Escape save and exit",
+      "at_s": 46.0
+    },
+    {
+      "action": "SIGINT ffmpeg after renderer exit",
+      "at_s": 48.0
+    }
+  ],
+  "schema_version": 1,
+  "status": "failed",
+  "title_samples": [],
+  "xdotool_commands": [
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "search",
+        "--all",
+        "--onlyvisible",
+        "--pid",
+        "47518",
+        "--name",
+        "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$"
+      ],
+      "end": {
+        "monotonic_ns": 10419218369178,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.059955Z"
+      },
+      "exit_code": 1,
+      "purpose": "find visible preview window by child PID and title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419209656580,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.051251Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "search",
+        "--all",
+        "--onlyvisible",
+        "--pid",
+        "47518",
+        "--name",
+        "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$"
+      ],
+      "end": {
+        "monotonic_ns": 10419335711239,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.177306Z"
+      },
+      "exit_code": 1,
+      "purpose": "find visible preview window by child PID and title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419325419190,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.167002Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "search",
+        "--all",
+        "--onlyvisible",
+        "--pid",
+        "47518",
+        "--name",
+        "^CIS ?565 Path Tracer( [|] [0-9]+ Iterations)?$"
+      ],
+      "end": {
+        "monotonic_ns": 10419454966341,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.296550Z"
+      },
+      "exit_code": 0,
+      "purpose": "find visible preview window by child PID and title",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419442811322,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.284389Z"
+      },
+      "stderr": "",
+      "stdout": "41943047\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getdisplaygeometry"
+      ],
+      "end": {
+        "monotonic_ns": 10419472987262,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.314579Z"
+      },
+      "exit_code": 0,
+      "purpose": "read inherited X display geometry",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419469324646,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.310910Z"
+      },
+      "stderr": "",
+      "stdout": "1920 1080\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowgeometry",
+        "--shell",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10419485267844,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.326857Z"
+      },
+      "exit_code": 0,
+      "purpose": "read preview client geometry: before move",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419480262673,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.321852Z"
+      },
+      "stderr": "",
+      "stdout": "WINDOW=41943047\nX=130\nY=168\nWIDTH=960\nHEIGHT=640\nSCREEN=0\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowmove",
+        "--sync",
+        "41943047",
+        "160",
+        "48"
+      ],
+      "end": {
+        "monotonic_ns": 10419565550725,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.407135Z"
+      },
+      "exit_code": 0,
+      "purpose": "move preview without resizing (correction attempt 1)",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419499801024,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.341388Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowgeometry",
+        "--shell",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10419577430156,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.419019Z"
+      },
+      "exit_code": 0,
+      "purpose": "read preview client geometry: after move attempt 1",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419572947209,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.414535Z"
+      },
+      "stderr": "",
+      "stdout": "WINDOW=41943047\nX=174\nY=118\nWIDTH=960\nHEIGHT=640\nSCREEN=0\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowmove",
+        "--sync",
+        "41943047",
+        "146",
+        "-22"
+      ],
+      "end": {
+        "monotonic_ns": 10419657390179,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.498974Z"
+      },
+      "exit_code": 0,
+      "purpose": "move preview without resizing (correction attempt 2)",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419592670105,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.434260Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "getwindowgeometry",
+        "--shell",
+        "41943047"
+      ],
+      "end": {
+        "monotonic_ns": 10419668266224,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.509859Z"
+      },
+      "exit_code": 0,
+      "purpose": "read preview client geometry: after move attempt 2",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419664867275,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.506461Z"
+      },
+      "stderr": "",
+      "stdout": "WINDOW=41943047\nX=160\nY=118\nWIDTH=960\nHEIGHT=640\nSCREEN=0\n",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "windowmove",
+        "--sync",
+        "41943047",
+        "146",
+        "-92"
+      ],
+      "end": {
+        "monotonic_ns": 10424688741673,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.530323Z"
+      },
+      "exit_code": null,
+      "purpose": "move preview without resizing (correction attempt 3)",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10419682631770,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:33.524226Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": true
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "1"
+      ],
+      "end": {
+        "monotonic_ns": 10424703657833,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.545244Z"
+      },
+      "exit_code": 0,
+      "purpose": "cleanup: release button 1",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10424699729210,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.541316Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "3"
+      ],
+      "end": {
+        "monotonic_ns": 10424715942044,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.557526Z"
+      },
+      "exit_code": 0,
+      "purpose": "cleanup: release button 3",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10424711175750,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.552756Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "/usr/bin/xdotool",
+        "mouseup",
+        "2"
+      ],
+      "end": {
+        "monotonic_ns": 10424727426755,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.569011Z"
+      },
+      "exit_code": 0,
+      "purpose": "cleanup: release button 2",
+      "scheduled_relative_s": null,
+      "start": {
+        "monotonic_ns": 10424723499872,
+        "relative_to_interaction_s": null,
+        "utc": "2026-10-01T21:44:38.565083Z"
+      },
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    }
+  ]
+}

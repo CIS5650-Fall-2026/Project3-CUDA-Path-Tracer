@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/059-resumed-sampler-halton-motion-off-wavefront-on-rr-off/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/058-partial-sampler-halton-motion-off-wavefront-on-rr-off/state.checkpoint"
+  ],
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "input_files_before_invocation": [
+    {
+      "bytes": 6353008,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/058-partial-sampler-halton-motion-off-wavefront-on-rr-off/state.checkpoint",
+      "role": "resume",
+      "sha256": "0d935e6b16ba9b2f08403b4ef59f5015662a11a4f3efda0243569193f9deeba3"
+    }
+  ],
+  "label": "resumed-sampler-halton-motion-off-wavefront-on-rr-off",
+  "shell": false
+}

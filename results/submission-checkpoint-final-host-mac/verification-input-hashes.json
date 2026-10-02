@@ -1,0 +1,4026 @@
+{
+  "recorded_utc": "2026-10-02T01:02:03.626446+00:00",
+  "renderer_source_sha256": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639",
+  "source_hash_coverage_note": "CMakeLists.txt and all files under src, stream_compaction, external and cmake; tests, all scenes/assets, INSTRUCTION.md, and the source-hash helper are also hashed individually here.",
+  "test_sources": [
+    "tests/checkpoint_tests.cpp",
+    "tests/geometry_tests.cpp",
+    "tests/gltf_tests.cpp",
+    "tests/output_path_tests.cpp",
+    "tests/render_tests.cpp"
+  ],
+  "helper_inputs": [
+    "scripts/source_hash.py",
+    ".local/run_checkpoint_host_evidence.py"
+  ],
+  "runtime_repository_inputs": [
+    "scenes/assets/area-light.obj",
+    "scenes/assets/fluted-body-high.obj",
+    "scenes/assets/fluted-body-low.obj",
+    "scenes/assets/fluted-body-medium.obj",
+    "scenes/assets/glaze.bmp",
+    "scenes/assets/gltf/fluted-body-medium.glb",
+    "scenes/assets/gltf/generation.json",
+    "scenes/assets/gltf/swept-knot-medium.glb",
+    "scenes/assets/gltf/vase-high.glb",
+    "scenes/assets/gltf/vase-low-data-uri.gltf",
+    "scenes/assets/gltf/vase-low.bin",
+    "scenes/assets/gltf/vase-low.glb",
+    "scenes/assets/gltf/vase-low.gltf",
+    "scenes/assets/gltf/vase-medium.glb",
+    "scenes/assets/height.bmp",
+    "scenes/assets/swept-knot-high.obj",
+    "scenes/assets/swept-knot-low.obj",
+    "scenes/assets/swept-knot-medium.obj",
+    "scenes/assets/torus.obj",
+    "scenes/assets/vase-high.obj",
+    "scenes/assets/vase-low.obj",
+    "scenes/assets/vase-medium.obj",
+    "scenes/closed-benchmark.json",
+    "scenes/complexity-high.json",
+    "scenes/complexity-low.json",
+    "scenes/complexity-medium.json",
+    "scenes/cornell.json",
+    "scenes/gltf-baseline.json",
+    "scenes/gltf-complexity-high.json",
+    "scenes/gltf-complexity-low.json",
+    "scenes/gltf-complexity-medium.json",
+    "scenes/gltf-equivalence-data-uri.json",
+    "scenes/gltf-equivalence-external.json",
+    "scenes/gltf-equivalence-glb.json",
+    "scenes/gltf-motion-validation.json",
+    "scenes/gltf-showcase.json",
+    "scenes/hedge-motion-frozen-end.json",
+    "scenes/hedge-motion-frozen-midpoint.json",
+    "scenes/hedge-motion-frozen-start.json",
+    "scenes/hedge-motion-validation.json",
+    "scenes/hedge-motion.json",
+    "scenes/hedge-obj-baseline.json",
+    "scenes/hedge-sampling-diffuse.json",
+    "scenes/hedge-sampling-glass-dof.json",
+    "scenes/light-test-cube.json",
+    "scenes/light-test-mesh.json",
+    "scenes/light-test-sphere.json",
+    "scenes/open-benchmark.json",
+    "scenes/optical-workbench.json",
+    "scenes/preview-smoke.json",
+    "scenes/procedural-fluted-body-cells.json",
+    "scenes/procedural-fluted-body-marble.json",
+    "scenes/procedural-fluted-body-plain.json",
+    "scenes/procedural-optical-stilllife.json",
+    "scenes/procedural-swept-knot-cells.json",
+    "scenes/procedural-swept-knot-marble.json",
+    "scenes/procedural-swept-knot-plain.json",
+    "scenes/sphere.json",
+    "scenes/uniform-benchmark.json",
+    "scenes/workbench-dof.json",
+    "scenes/workbench-mirror.json",
+    "scenes/workbench-no-bump.json",
+    "scenes/workbench-procedural.json"
+  ],
+  "before": [
+    {
+      "bytes": 12779,
+      "sha256": "359bf0b52a44fa8736618972a4bd33ac05b75604fcf6c02b8e8a351a5ecbb1b0",
+      "path": "CMakeLists.txt"
+    },
+    {
+      "bytes": 26356,
+      "sha256": "bdc2f3475f456e2ea21d08e52f71ce87678a13653cd265ea0b0c44f72a8f1a8f",
+      "path": "INSTRUCTION.md"
+    },
+    {
+      "bytes": 2237,
+      "sha256": "6564e5864e8ede75d8ee27cb02aff534ac7bc63db51f0d0bd5b500af55cb2990",
+      "path": "cmake/FindGLEW.cmake"
+    },
+    {
+      "bytes": 2046,
+      "sha256": "45b08224cb36b58c6e897ac3add0477234ddf25d0fbf9eca8fc00ee60b110e6b",
+      "path": "cmake/FindGLFW.cmake"
+    },
+    {
+      "bytes": 1200,
+      "sha256": "fcbe31cb0f44bc267369c23508214e7458a4d10be710bcae6c7f2feb89354485",
+      "path": "cmake/FindGLM.cmake"
+    },
+    {
+      "bytes": 3797,
+      "sha256": "8991cd11befec7c6a63662700f03c0cc42e864b6e77c7e70b80297c951a7f0ff",
+      "path": "external/include/GL/LICENSE.txt"
+    },
+    {
+      "bytes": 103594,
+      "sha256": "a083a4e57554aa33907722e00ba129895554bfc9f7c73fc3648c68577046c5f4",
+      "path": "external/include/GL/eglew.h"
+    },
+    {
+      "bytes": 1186601,
+      "sha256": "70dc1969d43ba3ee2d2f61173025dc69d9d7901594f662441517ce1ed0f4f929",
+      "path": "external/include/GL/glew.h"
+    },
+    {
+      "bytes": 73435,
+      "sha256": "c5aeb9aeb4d5b5cd872c2726781c05ed6ff87dc79dc1a0a0f798779309bf72b9",
+      "path": "external/include/GL/glxew.h"
+    },
+    {
+      "bytes": 63314,
+      "sha256": "57c0e65f54f0a264a3241cea51755d7358d564bfebf890dcc6fe01795a8e7e1d",
+      "path": "external/include/GL/wglew.h"
+    },
+    {
+      "bytes": 934,
+      "sha256": "da2fb2c802537710cdebe8881b55356d07b88a6dbd7e4b912ac3091f8e6b5f6a",
+      "path": "external/include/GLFW/COPYING.txt"
+    },
+    {
+      "bytes": 205169,
+      "sha256": "e80daf5acdac54bd2da5f4fb88cedf546532b85fe0bdd81069810f7aba61c87b",
+      "path": "external/include/GLFW/glfw3.h"
+    },
+    {
+      "bytes": 16420,
+      "sha256": "504d352883480b83c35b8e2ce248219ceac46a43eb58579e9f46e1f9da794308",
+      "path": "external/include/GLFW/glfw3native.h"
+    },
+    {
+      "bytes": 1468,
+      "sha256": "0423f5d7e9bc377727ce3c3df33ce58c96690cbeeed08574c30023f93b43e890",
+      "path": "external/include/glm/CMakeLists.txt"
+    },
+    {
+      "bytes": 1644,
+      "sha256": "f6d72fd9edbb0d5de2073db2e96156c8f0e3eb5b146efffabe088bd249a1b1e8",
+      "path": "external/include/glm/common.hpp"
+    },
+    {
+      "bytes": 13123,
+      "sha256": "371bd31affebf25a212650420491a8f9b7cb4019799fd6c7c4af49f2f7c56db2",
+      "path": "external/include/glm/detail/_features.hpp"
+    },
+    {
+      "bytes": 1983,
+      "sha256": "12fd0a707f670cdaf436583e441ba80b68d4252616f3363d48f17329d164e392",
+      "path": "external/include/glm/detail/_fixes.hpp"
+    },
+    {
+      "bytes": 4348,
+      "sha256": "85667e6bbcc000c1131b477f89df01a8b3d650a67a274e1e601478f26507e08c",
+      "path": "external/include/glm/detail/_noise.hpp"
+    },
+    {
+      "bytes": 55046,
+      "sha256": "b8d438589e164c45aa3811840cb0db10cafc7f1aba8783e834f27dc5f3dccfcd",
+      "path": "external/include/glm/detail/_swizzle.hpp"
+    },
+    {
+      "bytes": 64653,
+      "sha256": "3def723ea637b08c16fb8de4af20421c3e82e17f3a8e9bd42dbb7fd9446b211c",
+      "path": "external/include/glm/detail/_swizzle_func.hpp"
+    },
+    {
+      "bytes": 5055,
+      "sha256": "760611dfce4bf2974e2bd766abd3837e9f40d4bf276bc8b424f3409e18ccbc2e",
+      "path": "external/include/glm/detail/_vectorize.hpp"
+    },
+    {
+      "bytes": 7156,
+      "sha256": "d66deebffb546e5e0e2a046a18d14281f507c0786af7290c0a25b9a7fba9220b",
+      "path": "external/include/glm/detail/dummy.cpp"
+    },
+    {
+      "bytes": 24008,
+      "sha256": "e911376c35ed4c3237548c9553e58d1437447b9ab75ad1f1a1112ff81e57548d",
+      "path": "external/include/glm/detail/func_common.hpp"
+    },
+    {
+      "bytes": 25294,
+      "sha256": "b7d27a1613f328402840085ef797ae4cd8e0d4bc89ccc4ac7e79c7154b9efb47",
+      "path": "external/include/glm/detail/func_common.inl"
+    },
+    {
+      "bytes": 7001,
+      "sha256": "d1909fdb65395589d95553d317c2c282dbf212fea6255f19b160b6b710d65148",
+      "path": "external/include/glm/detail/func_exponential.hpp"
+    },
+    {
+      "bytes": 5668,
+      "sha256": "b05e2d8943f3b29251178c5959da109b621aae547d0a43122579305f1f356ad5",
+      "path": "external/include/glm/detail/func_exponential.inl"
+    },
+    {
+      "bytes": 6422,
+      "sha256": "e115a8826e0d3e6ae898e3f22c197cfcbe107479e1a1e4a02880ad8c2e052808",
+      "path": "external/include/glm/detail/func_geometric.hpp"
+    },
+    {
+      "bytes": 6826,
+      "sha256": "74ad24d6ceb401610dc4c26a0e04b76151c793b55000007930cb64c916c8b2ee",
+      "path": "external/include/glm/detail/func_geometric.inl"
+    },
+    {
+      "bytes": 11672,
+      "sha256": "e4758b94dbf0dc9ea34d6178f2e9a94b64efefedf53e470041306078b517b60f",
+      "path": "external/include/glm/detail/func_integer.hpp"
+    },
+    {
+      "bytes": 15992,
+      "sha256": "2653cd13812cff669c766df506a94cb4ed74f6ccba4708e9844e2a0d91c90330",
+      "path": "external/include/glm/detail/func_integer.inl"
+    },
+    {
+      "bytes": 6812,
+      "sha256": "028e96ef44414eeaf1fad6ef5f0c335b40699477133ffaf58567e128ac6a07ae",
+      "path": "external/include/glm/detail/func_matrix.hpp"
+    },
+    {
+      "bytes": 9641,
+      "sha256": "fe4fdf9e0b304e9fd1111fb3ff1c7747fa178ead51d5d7512d5d4855bdfe27e2",
+      "path": "external/include/glm/detail/func_matrix.inl"
+    },
+    {
+      "bytes": 4183,
+      "sha256": "b3996cdfc1411739f20add6757df77031a856dfc628755eb661e3edb9292b500",
+      "path": "external/include/glm/detail/func_noise.hpp"
+    },
+    {
+      "bytes": 12964,
+      "sha256": "7afc6d302f5d28aa7fd3741fffb68d248577158a70a626dd6d5d3ad66ad0f56f",
+      "path": "external/include/glm/detail/func_noise.inl"
+    },
+    {
+      "bytes": 12272,
+      "sha256": "691ad228c4cc61e30cd17cd9eeb06623a2edee239bc1c0b1f9784d420ad2cb44",
+      "path": "external/include/glm/detail/func_packing.hpp"
+    },
+    {
+      "bytes": 3811,
+      "sha256": "9b33ca9e1dec2cbb2006b3066204fcc9afe50fa53cdb17b7791cde71b1695c58",
+      "path": "external/include/glm/detail/func_packing.inl"
+    },
+    {
+      "bytes": 10997,
+      "sha256": "64089c025082d6b98a9c1c1d49af729b46167bd861abc9e134b6640b90434d59",
+      "path": "external/include/glm/detail/func_trigonometric.hpp"
+    },
+    {
+      "bytes": 7313,
+      "sha256": "2d30478a0d0278e690b0b19da91bf4248901fb83ec614f04bd4ae71b1130e243",
+      "path": "external/include/glm/detail/func_trigonometric.inl"
+    },
+    {
+      "bytes": 7350,
+      "sha256": "b7cbf42f320c2cc596f909922cbf6f50f48e8cc0b9d1d7bb118055d003b9259d",
+      "path": "external/include/glm/detail/func_vector_relational.hpp"
+    },
+    {
+      "bytes": 5043,
+      "sha256": "483c555114a8314fbbd46c41837649eb4770a05b29c14f19378871b886360b76",
+      "path": "external/include/glm/detail/func_vector_relational.inl"
+    },
+    {
+      "bytes": 9625,
+      "sha256": "2caaaaf49a19806c2c0d3273d64e15e1f2eb8cd572151e6ea373c86fd1673ed6",
+      "path": "external/include/glm/detail/glm.cpp"
+    },
+    {
+      "bytes": 2548,
+      "sha256": "338799faed9df37c166df9544e924595cdf35ef34f131024155cdb39158801af",
+      "path": "external/include/glm/detail/intrinsic_common.hpp"
+    },
+    {
+      "bytes": 13454,
+      "sha256": "85a0c11c3293a9db53003a72ff2acb5c6296504cecbc5c044631ae07896ec270",
+      "path": "external/include/glm/detail/intrinsic_common.inl"
+    },
+    {
+      "bytes": 2907,
+      "sha256": "7708d8a5ba9c59ff910d07f35c307d131924cc63c10733f2003e9588338970aa",
+      "path": "external/include/glm/detail/intrinsic_exponential.hpp"
+    },
+    {
+      "bytes": 1495,
+      "sha256": "073d6caa4869783ad3519a70b25e316ebf14ae8bddea36b2d353e09ca4a99070",
+      "path": "external/include/glm/detail/intrinsic_exponential.inl"
+    },
+    {
+      "bytes": 2260,
+      "sha256": "dd944bbee292dff4b4618175a6539d3ff9a33721f5be3a0ea9ac02d1ea4f20eb",
+      "path": "external/include/glm/detail/intrinsic_geometric.hpp"
+    },
+    {
+      "bytes": 4547,
+      "sha256": "c0be5e80528cfac9cf50ed95e0781289cf807c8c022ab471237927f2675f3555",
+      "path": "external/include/glm/detail/intrinsic_geometric.inl"
+    },
+    {
+      "bytes": 1850,
+      "sha256": "de0b64eccadf207ada1e89b8a558f3423facf741c3c12136ef34a924849d0e5d",
+      "path": "external/include/glm/detail/intrinsic_integer.hpp"
+    },
+    {
+      "bytes": 5158,
+      "sha256": "a828e0d6c905848d440991906bf25b7adf4ff68edaed531f862792764071a884",
+      "path": "external/include/glm/detail/intrinsic_integer.inl"
+    },
+    {
+      "bytes": 2361,
+      "sha256": "aeac2a26990765067a87f95086067c915edbf32f22d68120c2344f5e9093c99a",
+      "path": "external/include/glm/detail/intrinsic_matrix.hpp"
+    },
+    {
+      "bytes": 41536,
+      "sha256": "e5d5b1eb9b3225ecd3cef697a43a2229b91405c7d9e00053bd87ef7dda3723a0",
+      "path": "external/include/glm/detail/intrinsic_matrix.inl"
+    },
+    {
+      "bytes": 1757,
+      "sha256": "d56cfb80334d9b39874d1dccbb53b19ad61c88c328aa1ac7e37926a927aff281",
+      "path": "external/include/glm/detail/intrinsic_trigonometric.hpp"
+    },
+    {
+      "bytes": 1497,
+      "sha256": "89468a648694914cb93f7904046c6f09af1b5d338226124a4bf9f1c56ec5032b",
+      "path": "external/include/glm/detail/intrinsic_trigonometric.inl"
+    },
+    {
+      "bytes": 1765,
+      "sha256": "232e407050c1b9ad4d4e68ac26b6eb3027d5e94e3249a259dc718d72dae5ed20",
+      "path": "external/include/glm/detail/intrinsic_vector_relational.hpp"
+    },
+    {
+      "bytes": 9778,
+      "sha256": "6f41ac2e1d68243f7bec088b63754dcd9a62984b99e85a3391474dfa18c60416",
+      "path": "external/include/glm/detail/intrinsic_vector_relational.inl"
+    },
+    {
+      "bytes": 1721,
+      "sha256": "3b6ac7881e6196c3645af26bd0722ea5ce7e802209081c46761a812e71b1b628",
+      "path": "external/include/glm/detail/precision.hpp"
+    },
+    {
+      "bytes": 34821,
+      "sha256": "d41e401b3bb2dbd57130028a9304bce1c278ae0df12e5cfa2b8ef4b872057747",
+      "path": "external/include/glm/detail/setup.hpp"
+    },
+    {
+      "bytes": 4223,
+      "sha256": "bf3ee2ec124b9c1f5d8fc832cdf2099331fc19629d8aad1b4b88096c8a39b21c",
+      "path": "external/include/glm/detail/type_float.hpp"
+    },
+    {
+      "bytes": 6289,
+      "sha256": "7ffcc1ee4191c9eb48ef0890332688e10f601a52bed1c11b7c658c2238acd2bd",
+      "path": "external/include/glm/detail/type_gentype.hpp"
+    },
+    {
+      "bytes": 10396,
+      "sha256": "aa0cb56e9a9c100bfc028ce5d25cab3597cabebfca33bb2df202ce347cd1078f",
+      "path": "external/include/glm/detail/type_gentype.inl"
+    },
+    {
+      "bytes": 1861,
+      "sha256": "582a7cef6bc8da72ed2d4ae67cfaa65339955f9e56d9dc250bf4865ce097ec54",
+      "path": "external/include/glm/detail/type_half.hpp"
+    },
+    {
+      "bytes": 6209,
+      "sha256": "e000896482fc73cdbdb790fa33cce80877257ba733e89b938debdfaf194a98d6",
+      "path": "external/include/glm/detail/type_half.inl"
+    },
+    {
+      "bytes": 10392,
+      "sha256": "278109c1c5116a0a35d1dbf1267cd0fbe8e9bb5bd7a7c388d788e828fd9c0c0f",
+      "path": "external/include/glm/detail/type_int.hpp"
+    },
+    {
+      "bytes": 41982,
+      "sha256": "e387ca19b0185868d2946396617818851f85a65abf10491e150c5e14e3f5a82a",
+      "path": "external/include/glm/detail/type_mat.hpp"
+    },
+    {
+      "bytes": 1605,
+      "sha256": "19031767de12a506280f5559e9ab31092dda647aafd8c2cf5af3a15006f47b29",
+      "path": "external/include/glm/detail/type_mat.inl"
+    },
+    {
+      "bytes": 8168,
+      "sha256": "17454baa216a56b47efe5371ce5e1a9dfbd71676fcb6016d079d1293fa9153be",
+      "path": "external/include/glm/detail/type_mat2x2.hpp"
+    },
+    {
+      "bytes": 14903,
+      "sha256": "946097f162d8ff819a36e06953e445930138ac290ca9e6e6ecd96a19a77a3125",
+      "path": "external/include/glm/detail/type_mat2x2.inl"
+    },
+    {
+      "bytes": 7133,
+      "sha256": "88f7c7c14218aa6fdf1a9f702f215934bf4f38a78ccda8080a653ea6d173d069",
+      "path": "external/include/glm/detail/type_mat2x3.hpp"
+    },
+    {
+      "bytes": 14128,
+      "sha256": "8d6d90a1f25ec5c5f5cb33b169c1d5b771792d5027fcdd0e24e718660027cad0",
+      "path": "external/include/glm/detail/type_mat2x3.inl"
+    },
+    {
+      "bytes": 7206,
+      "sha256": "6170867ae9e01d898ff454c1ed3bc4e2453e11f36b7b72e822f24e90aa87fbda",
+      "path": "external/include/glm/detail/type_mat2x4.hpp"
+    },
+    {
+      "bytes": 14914,
+      "sha256": "469a20cc4403683cbf604d14398289c3c8280852bbc2b572f2612190a24e2e99",
+      "path": "external/include/glm/detail/type_mat2x4.inl"
+    },
+    {
+      "bytes": 7218,
+      "sha256": "ff40c2fd766aa1151e64137133f7fba0e732244057337e6497639bed3b03ef7e",
+      "path": "external/include/glm/detail/type_mat3x2.hpp"
+    },
+    {
+      "bytes": 15133,
+      "sha256": "691082dbef85cda01e690cfbf2ebd99162dc7f5cb0be5c913f2974625ff8a957",
+      "path": "external/include/glm/detail/type_mat3x2.inl"
+    },
+    {
+      "bytes": 8418,
+      "sha256": "83a747ab2b8210f63fb57578683e989dca9bc1743b72fc03c958747fd6b6ed98",
+      "path": "external/include/glm/detail/type_mat3x3.hpp"
+    },
+    {
+      "bytes": 18823,
+      "sha256": "c004a916341d00c9028318416f9005dc747731d995140303269779b08a4236c5",
+      "path": "external/include/glm/detail/type_mat3x3.inl"
+    },
+    {
+      "bytes": 7465,
+      "sha256": "4d5ab0e37f96b6ba40592415b9fbbb4a47b5aa3ec5915e01ef6c060d1bb54a00",
+      "path": "external/include/glm/detail/type_mat3x4.hpp"
+    },
+    {
+      "bytes": 17469,
+      "sha256": "a0e29bdc0a586b9c5819a2239f424bd001ff657814a3f2e9a683fd7c3acd5a8f",
+      "path": "external/include/glm/detail/type_mat3x4.inl"
+    },
+    {
+      "bytes": 7373,
+      "sha256": "d3264601cafe4d1cc0e9a68417234dbaee54a74638a11ba1899c0710e8755554",
+      "path": "external/include/glm/detail/type_mat4x2.hpp"
+    },
+    {
+      "bytes": 16890,
+      "sha256": "a3e429bb624517bb3f9fe5423b655472715e98170137b69ae3dbf0b356f5b76f",
+      "path": "external/include/glm/detail/type_mat4x2.inl"
+    },
+    {
+      "bytes": 7533,
+      "sha256": "395d2988733aec922cd627f7951f46eb9f3f3ae9af55ea959022576bdfe04c79",
+      "path": "external/include/glm/detail/type_mat4x3.hpp"
+    },
+    {
+      "bytes": 18797,
+      "sha256": "c34c4f41773fb67ef80f356e1ac51ad7ad69e871e04c2dc6ccfcceec9efff8fe",
+      "path": "external/include/glm/detail/type_mat4x3.inl"
+    },
+    {
+      "bytes": 8800,
+      "sha256": "ed86fed1570315d140778091ccc7d22bf4980e6adf5ca2d9df85ee1c1cb8fabb",
+      "path": "external/include/glm/detail/type_mat4x4.hpp"
+    },
+    {
+      "bytes": 27563,
+      "sha256": "4205fa965a5e00b3bf1984d4397ebc9513750c3916f30604a89d194660ae6cdd",
+      "path": "external/include/glm/detail/type_mat4x4.inl"
+    },
+    {
+      "bytes": 26983,
+      "sha256": "b354d3c1e8bae2f96ab772ccbff36d8006602837d00bae0321cc91ebc03fd3b2",
+      "path": "external/include/glm/detail/type_vec.hpp"
+    },
+    {
+      "bytes": 1604,
+      "sha256": "d1b097d5265a3b40af7d985a42cd23caabdd9ebd594956fddff5b3939c57c43d",
+      "path": "external/include/glm/detail/type_vec.inl"
+    },
+    {
+      "bytes": 11540,
+      "sha256": "edc7aee4a99003007584c2caf2f799e9857fc2920ed7d1a383c8f870bb1b5e48",
+      "path": "external/include/glm/detail/type_vec1.hpp"
+    },
+    {
+      "bytes": 15554,
+      "sha256": "fe9ecc09f1eae8495256f4eb283c46dfa25da8c0964675c79580b45b6b2dd70e",
+      "path": "external/include/glm/detail/type_vec1.inl"
+    },
+    {
+      "bytes": 14884,
+      "sha256": "66c365d1200a8b882ae8781d5409ab9f97cf3d7eb11617f8e34d1fc75ab0f55f",
+      "path": "external/include/glm/detail/type_vec2.hpp"
+    },
+    {
+      "bytes": 22216,
+      "sha256": "8cc23133b84b49d8ab6570e64c9f38100cf8172b5e53258d72841525e1e3227a",
+      "path": "external/include/glm/detail/type_vec2.inl"
+    },
+    {
+      "bytes": 16088,
+      "sha256": "d33a3abcbfe0606d5fd80e6d310a426828fa0b9aa0cfa4c580825f3c986b4f91",
+      "path": "external/include/glm/detail/type_vec3.hpp"
+    },
+    {
+      "bytes": 25080,
+      "sha256": "715c216624d2ef6462f27d67e3b99b492d8ccab5d94087104781a762abbfff91",
+      "path": "external/include/glm/detail/type_vec3.inl"
+    },
+    {
+      "bytes": 19726,
+      "sha256": "c0a64400b9c99a2bc0d9caeb7468ee67d6515187ad3dc92df7f284a735763307",
+      "path": "external/include/glm/detail/type_vec4.hpp"
+    },
+    {
+      "bytes": 28515,
+      "sha256": "8d0d5023eee6b4ff3ff15bf660944587cc3510a28d23bbe920faede190765d75",
+      "path": "external/include/glm/detail/type_vec4.inl"
+    },
+    {
+      "bytes": 1687,
+      "sha256": "501be4fdef3c4fdf7481f8c890a508d86bff1a8ed9dd05d971027a77f850e444",
+      "path": "external/include/glm/detail/type_vec4_avx.inl"
+    },
+    {
+      "bytes": 1688,
+      "sha256": "ea90fa41c907b6e08b8436b72253fe79f05be7f8900ae3473d905d581f985076",
+      "path": "external/include/glm/detail/type_vec4_avx2.inl"
+    },
+    {
+      "bytes": 3765,
+      "sha256": "09c2277aec33422ae6db350c2bc1872c1ccc1a8328956ece89935c79748b378c",
+      "path": "external/include/glm/detail/type_vec4_sse2.inl"
+    },
+    {
+      "bytes": 1654,
+      "sha256": "2d21aa9126ec23bbc0ab74107b3595e77a62989473bf7ba656805bfe1e6a903e",
+      "path": "external/include/glm/exponential.hpp"
+    },
+    {
+      "bytes": 5300,
+      "sha256": "fa5fc3d410e4e080413308d84395a310e625100f6025996c1d72f12a64c09a80",
+      "path": "external/include/glm/ext.hpp"
+    },
+    {
+      "bytes": 81805,
+      "sha256": "b249b86b3fb47cd76c4c2707a648795567536e983f2358cb0639027489a26cb2",
+      "path": "external/include/glm/fwd.hpp"
+    },
+    {
+      "bytes": 1650,
+      "sha256": "62e5a15283f2df083cf513664055c7784c84875f1220bb82955a4b899fcf243f",
+      "path": "external/include/glm/geometric.hpp"
+    },
+    {
+      "bytes": 4458,
+      "sha256": "64169ee59805974d590b4c137ae3b599e7316f261f0e53687536e8006e5674d2",
+      "path": "external/include/glm/glm.hpp"
+    },
+    {
+      "bytes": 9435,
+      "sha256": "8590ab1032db61273cffadbe79971241d53e779fbcad5f9d21392cdc9a14451f",
+      "path": "external/include/glm/gtc/bitfield.hpp"
+    },
+    {
+      "bytes": 16869,
+      "sha256": "a89c3dc0c0d22fbc510f82854f34051ad471a749758ba7e3fa15e99543aa82b5",
+      "path": "external/include/glm/gtc/bitfield.inl"
+    },
+    {
+      "bytes": 5508,
+      "sha256": "7c02b8099bf38e0e1afeceaf2e9d93f608c807cf5eaf09c561206955aa165f63",
+      "path": "external/include/glm/gtc/constants.hpp"
+    },
+    {
+      "bytes": 5353,
+      "sha256": "1c7053a7d7ca8eba92d62035932e511fceb3c6e20551760f5bdb0255336e434e",
+      "path": "external/include/glm/gtc/constants.inl"
+    },
+    {
+      "bytes": 3460,
+      "sha256": "9d299cf69f6b5eaef6c0850b5cad83f29f01e5efdef8ea3dbb31742e3895ecb7",
+      "path": "external/include/glm/gtc/epsilon.hpp"
+    },
+    {
+      "bytes": 4161,
+      "sha256": "eb10d610a5b89549ca54d5fcafb0fe37783ee3295551a905a11969a239aa6da7",
+      "path": "external/include/glm/gtc/epsilon.inl"
+    },
+    {
+      "bytes": 4233,
+      "sha256": "23f511aa464b8d6a25f9c664e200ed517454d9adf8253d3864885f1d91f18ecd",
+      "path": "external/include/glm/gtc/integer.hpp"
+    },
+    {
+      "bytes": 2949,
+      "sha256": "6b7b184093ee79f3bd6077f9a89c55e9e0c182b7d348622b1bcc15fb5a9c10f8",
+      "path": "external/include/glm/gtc/integer.inl"
+    },
+    {
+      "bytes": 2973,
+      "sha256": "0c5432b65299a8966550f911b23c33529bc78326d24a7491df71bdc6fa62527a",
+      "path": "external/include/glm/gtc/matrix_access.hpp"
+    },
+    {
+      "bytes": 3014,
+      "sha256": "fa300389972bb77dba885f6a000050915d51c98e26cbcc7da3c702379d0dae38",
+      "path": "external/include/glm/gtc/matrix_access.inl"
+    },
+    {
+      "bytes": 15914,
+      "sha256": "d11fb245a73cd3119e34b0bdba2ee82ef668d9a935dbcdd619a43c99d58cc307",
+      "path": "external/include/glm/gtc/matrix_integer.hpp"
+    },
+    {
+      "bytes": 3027,
+      "sha256": "9e1afaae3fbbe6435c73993152825afcc4d1aaa44ac3c43239dcbba80fc688a5",
+      "path": "external/include/glm/gtc/matrix_inverse.hpp"
+    },
+    {
+      "bytes": 6507,
+      "sha256": "ec26b2f5c37015d35ff66068a47ca88a248a3dced4c48cb81601ad899c33fbf1",
+      "path": "external/include/glm/gtc/matrix_inverse.inl"
+    },
+    {
+      "bytes": 12955,
+      "sha256": "61c14faf459494efa61d5fbb968ecabd50a85769ea67ecf1c4eb69a9d97868da",
+      "path": "external/include/glm/gtc/matrix_transform.hpp"
+    },
+    {
+      "bytes": 11204,
+      "sha256": "f7d6018b74283f79aff64134ea9a19f92ca4cd28ccbce9b0841583c18d70d5fe",
+      "path": "external/include/glm/gtc/matrix_transform.inl"
+    },
+    {
+      "bytes": 3160,
+      "sha256": "99b8004329b5c13af819662b718f95e1970d54298691735c0ea4e167a815f1c2",
+      "path": "external/include/glm/gtc/noise.hpp"
+    },
+    {
+      "bytes": 34292,
+      "sha256": "0268ab4dd47ce4ee1ab0e91ce5f4230e7bd2475e73075a8f432ffae00fddfacb",
+      "path": "external/include/glm/gtc/noise.inl"
+    },
+    {
+      "bytes": 26350,
+      "sha256": "892852684092ef22a306f62ef8b7a5191a64de4730c0c33c3f09aa855524e6da",
+      "path": "external/include/glm/gtc/packing.hpp"
+    },
+    {
+      "bytes": 14664,
+      "sha256": "e06de411d2e7d9bae08c9dc5671291ac888dcda4d0979aa1e749f9f32b908ca3",
+      "path": "external/include/glm/gtc/packing.inl"
+    },
+    {
+      "bytes": 13131,
+      "sha256": "d66c177e55721aad47f5cb71139233a3ed9e0818276a086534e10aa8da1a0a76",
+      "path": "external/include/glm/gtc/quaternion.hpp"
+    },
+    {
+      "bytes": 22223,
+      "sha256": "d17edd65956baa7048e0ab209b9edfd8bdf5ce6db8ebd8db6a2d015b5867cc39",
+      "path": "external/include/glm/gtc/quaternion.inl"
+    },
+    {
+      "bytes": 4004,
+      "sha256": "a1e1cacc128588485935d745d847e39870e1c623f9cd74d02f4ed91356dd1437",
+      "path": "external/include/glm/gtc/random.hpp"
+    },
+    {
+      "bytes": 13177,
+      "sha256": "b768d66c97f2789bef2f7016b71b22f33f2ba2904f9406b50b6a78a527d268df",
+      "path": "external/include/glm/gtc/random.inl"
+    },
+    {
+      "bytes": 4038,
+      "sha256": "cc69c1d04a8b5c20ec4d9fed73e3a35d647694b286e487674eab64173ad4d749",
+      "path": "external/include/glm/gtc/reciprocal.hpp"
+    },
+    {
+      "bytes": 8406,
+      "sha256": "d1509748fca4cd48e41fd388df6ad4b313c396d218d0201c4b9c66c42779126b",
+      "path": "external/include/glm/gtc/reciprocal.inl"
+    },
+    {
+      "bytes": 7097,
+      "sha256": "775fe452f6102d5fd70e7f56a75ec96f8501fc2d6ad5128d7d182140b2fc5c33",
+      "path": "external/include/glm/gtc/round.hpp"
+    },
+    {
+      "bytes": 11472,
+      "sha256": "b1584ebee4c35ec65a11ba257c639cb94ab0a9490f3da4e1a5fe3d458c6ca6c5",
+      "path": "external/include/glm/gtc/round.inl"
+    },
+    {
+      "bytes": 25807,
+      "sha256": "7a77f8b8353794b661d6479592038c8a7d257ed474690b892c413220f90eeb29",
+      "path": "external/include/glm/gtc/type_precision.hpp"
+    },
+    {
+      "bytes": 1627,
+      "sha256": "4ba7e66865f6fff1b153826252eaaf1a3a07303a8f66ebdf31d7f736e7c5d4a4",
+      "path": "external/include/glm/gtc/type_precision.inl"
+    },
+    {
+      "bytes": 5835,
+      "sha256": "7e6ca319bda9f9b8bf45f41cbf2bb4b0254e3d4f399c132b3473fae482224b95",
+      "path": "external/include/glm/gtc/type_ptr.hpp"
+    },
+    {
+      "bytes": 11456,
+      "sha256": "e2505b332dea7d5f5de381bd70cd38869540b6f37cb80b76351b93bdd0989e20",
+      "path": "external/include/glm/gtc/type_ptr.inl"
+    },
+    {
+      "bytes": 3393,
+      "sha256": "ce5188ad96e606a6142b4c883307da8ce65544a00ad707d36230b50f98ac1f43",
+      "path": "external/include/glm/gtc/ulp.hpp"
+    },
+    {
+      "bytes": 10226,
+      "sha256": "b6561cef63b88e31bfdeefa70bcc463b98db66825245f00b04769f51385b0c12",
+      "path": "external/include/glm/gtc/ulp.inl"
+    },
+    {
+      "bytes": 6680,
+      "sha256": "fe2921587c5ae0ba0e29079b2d361f2a8040a87885f7810c5557c32ce5414baf",
+      "path": "external/include/glm/gtc/vec1.hpp"
+    },
+    {
+      "bytes": 1601,
+      "sha256": "0ec9207cd955401b11142da2923e922b439bdbdbbf3aa9ed85db326c86f89201",
+      "path": "external/include/glm/gtc/vec1.inl"
+    },
+    {
+      "bytes": 9619,
+      "sha256": "5652ab883987f64ea32fd08070902c63a62a623f8b9845c0bc34d1b1661b683a",
+      "path": "external/include/glm/gtx/associated_min_max.hpp"
+    },
+    {
+      "bytes": 11495,
+      "sha256": "32d21146956e96ca5edc881b5583bac53bf6972f59b6353e502bc7f3ebc21864",
+      "path": "external/include/glm/gtx/associated_min_max.inl"
+    },
+    {
+      "bytes": 4484,
+      "sha256": "b74ff534ff1b6af6ef75f158477872089b7dd45a5a2da938c7353527e82ed8bd",
+      "path": "external/include/glm/gtx/bit.hpp"
+    },
+    {
+      "bytes": 3637,
+      "sha256": "fbceecf819e34a6b9c0a89beb83f22e170092fb76b65ad46529329b1092e3051",
+      "path": "external/include/glm/gtx/bit.inl"
+    },
+    {
+      "bytes": 2653,
+      "sha256": "0b8f28cdc8898f85581689ca8a3cfa62a18221c7dd0cc2758b7696ffc65d6279",
+      "path": "external/include/glm/gtx/closest_point.hpp"
+    },
+    {
+      "bytes": 2723,
+      "sha256": "e5526290bcfe5c274312f1d220226e643a6d78601749df7b6eacee2890d9cd3e",
+      "path": "external/include/glm/gtx/closest_point.inl"
+    },
+    {
+      "bytes": 3302,
+      "sha256": "de6d412436aeeb7b350463eb0ffb046c80fca2433a70389c4b9faeb321ebdfa2",
+      "path": "external/include/glm/gtx/color_space.hpp"
+    },
+    {
+      "bytes": 4841,
+      "sha256": "5f6a0253d258b7e3eb4b29ce2324fa10022b77ff9f45a6de4413752fd308271e",
+      "path": "external/include/glm/gtx/color_space.inl"
+    },
+    {
+      "bytes": 3182,
+      "sha256": "acace32dd4528f52cd465759837dcbd660012745ac2b4941ca842ec778b150a5",
+      "path": "external/include/glm/gtx/color_space_YCoCg.hpp"
+    },
+    {
+      "bytes": 3087,
+      "sha256": "ba14464556192a8f85e34983008aabb6f6a807200446262398776c9e3d70524f",
+      "path": "external/include/glm/gtx/color_space_YCoCg.inl"
+    },
+    {
+      "bytes": 2934,
+      "sha256": "b2ea969b7c0fbb1d8c10482f89f103295e12f7d8a5e845e5933bc26df2d452bb",
+      "path": "external/include/glm/gtx/common.hpp"
+    },
+    {
+      "bytes": 3356,
+      "sha256": "42dd777277fda1a0ef92e420b78eac14e4b136d2187957ba913d3466be41bc23",
+      "path": "external/include/glm/gtx/common.inl"
+    },
+    {
+      "bytes": 16028,
+      "sha256": "ce778fb6f97e0cdbe9871b682127389dd06279882312f78490f9d3bbbde71843",
+      "path": "external/include/glm/gtx/compatibility.hpp"
+    },
+    {
+      "bytes": 2711,
+      "sha256": "118b6284aca825f0ad42b01c98316b3a67fadc46a8c594b57683730ac1b6d81b",
+      "path": "external/include/glm/gtx/compatibility.inl"
+    },
+    {
+      "bytes": 2974,
+      "sha256": "47446fcaf6f380de511afbed00a46d5db39dd2601de5116146ac5ede41c42c0d",
+      "path": "external/include/glm/gtx/component_wise.hpp"
+    },
+    {
+      "bytes": 2784,
+      "sha256": "f451ba4befebfe7a57bac39e08418ffec2a37551b3f90d1c6e91dc01b65e8484",
+      "path": "external/include/glm/gtx/component_wise.inl"
+    },
+    {
+      "bytes": 10766,
+      "sha256": "021fd48503464c37943c870ed38d4e1532b8b6fcfd6582cc403e68b769346b9c",
+      "path": "external/include/glm/gtx/dual_quaternion.hpp"
+    },
+    {
+      "bytes": 12892,
+      "sha256": "adbaf6db13a472ca83795c989d7767e5c7d4d7627030bcfa94b183cdbdacaa8b",
+      "path": "external/include/glm/gtx/dual_quaternion.inl"
+    },
+    {
+      "bytes": 5371,
+      "sha256": "c9f7be2089c232ced5fbaa3780f0b4e1532ef1c57dd52593c3cdbd5b6c550d2b",
+      "path": "external/include/glm/gtx/euler_angles.hpp"
+    },
+    {
+      "bytes": 7341,
+      "sha256": "5db6e72c6fd9d332decdaad6af8af7142b8dac761ebc71fa26e951272ec0faf7",
+      "path": "external/include/glm/gtx/euler_angles.inl"
+    },
+    {
+      "bytes": 2403,
+      "sha256": "71a49cbf18c4c7b4334baaeaddce192ea5622463d52bdbed55ed3ba6579743e5",
+      "path": "external/include/glm/gtx/extend.hpp"
+    },
+    {
+      "bytes": 2511,
+      "sha256": "8e7e874991845f2bfeedbfede1524c61de84c4ec622fe9e78e5fb168a059b924",
+      "path": "external/include/glm/gtx/extend.inl"
+    },
+    {
+      "bytes": 4985,
+      "sha256": "22178aa7277a13abef6173c59f372e45c45cae603ea244be1ccb2fe94b4c587c",
+      "path": "external/include/glm/gtx/extented_min_max.hpp"
+    },
+    {
+      "bytes": 4053,
+      "sha256": "126f24a30bc1e90bff88929170b728d5bcca47ea9592b3c15edcd246107ec362",
+      "path": "external/include/glm/gtx/extented_min_max.inl"
+    },
+    {
+      "bytes": 4672,
+      "sha256": "488a6bf976cb2e1a171d586eb9406887d087561d480500602fbbceb4fc9df776",
+      "path": "external/include/glm/gtx/fast_exponential.hpp"
+    },
+    {
+      "bytes": 6100,
+      "sha256": "71febcd4509571596024867840e64d90642d7fea3b23b89981c07a9422fa4a65",
+      "path": "external/include/glm/gtx/fast_exponential.inl"
+    },
+    {
+      "bytes": 4413,
+      "sha256": "8652ddc9db2ef6ff080855dd85d1ee77cd8e7beb40295e3cd3811679b1633fb8",
+      "path": "external/include/glm/gtx/fast_square_root.hpp"
+    },
+    {
+      "bytes": 4004,
+      "sha256": "5dd3b6cfab4df63182cc5526b927a60034c420668a34b9861270d19ee88dda6e",
+      "path": "external/include/glm/gtx/fast_square_root.inl"
+    },
+    {
+      "bytes": 3734,
+      "sha256": "7e23c9e1dd12bbb150f1aea652ba11a656f9917872d452a280a24b7f92fc6c59",
+      "path": "external/include/glm/gtx/fast_trigonometry.hpp"
+    },
+    {
+      "bytes": 5654,
+      "sha256": "fadac52a44ad09f67ed1760b145b630a51254126a2ddd8fc04a9cb96791cc7f0",
+      "path": "external/include/glm/gtx/fast_trigonometry.inl"
+    },
+    {
+      "bytes": 2779,
+      "sha256": "1941fbc68b9d1807c0abdccec1c594063ffef44cae05cd504352a8e14fae354b",
+      "path": "external/include/glm/gtx/gradient_paint.hpp"
+    },
+    {
+      "bytes": 2513,
+      "sha256": "23da9c4e8795f639bc6788e95b4b3f252722c1a320d9b6c2e1aba2fb76741fd3",
+      "path": "external/include/glm/gtx/gradient_paint.inl"
+    },
+    {
+      "bytes": 2827,
+      "sha256": "4a792acd5e94203d55db30a8e4b3799710ecfffa1addb256b15d5d06227be4be",
+      "path": "external/include/glm/gtx/handed_coordinate_space.hpp"
+    },
+    {
+      "bytes": 2153,
+      "sha256": "738aaf1255b2f30f7ae999bba842cabc7443a978c9f9ecdf8ccb06d4def565c9",
+      "path": "external/include/glm/gtx/handed_coordinate_space.inl"
+    },
+    {
+      "bytes": 3498,
+      "sha256": "68413bde6f13d9bb1e8a7aafa75d27e93e6b23f7df0d86be9d36211b469faf08",
+      "path": "external/include/glm/gtx/integer.hpp"
+    },
+    {
+      "bytes": 5379,
+      "sha256": "7362b79374e4b23f6ba752fe2c172beaed5183081216163e1b82932f33ba29ef",
+      "path": "external/include/glm/gtx/integer.inl"
+    },
+    {
+      "bytes": 4455,
+      "sha256": "1fe256f62e21ec6924b66b347e5932cd65c26d9b26189d187b4278ecb5dd4029",
+      "path": "external/include/glm/gtx/intersect.hpp"
+    },
+    {
+      "bytes": 7006,
+      "sha256": "4541f3d265efb6b7e4b6d37efe0e46a7e7ba80ddf3e78b8d3e6601c9d3b8844c",
+      "path": "external/include/glm/gtx/intersect.inl"
+    },
+    {
+      "bytes": 8039,
+      "sha256": "2f07568bf3966103b20335b2442788bd1129d7f4a343a2b8fe02a06c661b46ce",
+      "path": "external/include/glm/gtx/io.hpp"
+    },
+    {
+      "bytes": 16877,
+      "sha256": "95b383c383372811b90651205f38cc37ac86c7a2b5ba2d7f8ca17e12b90d568c",
+      "path": "external/include/glm/gtx/io.inl"
+    },
+    {
+      "bytes": 2523,
+      "sha256": "c49354aa975b081734888fb3624c5f1f533ada404726bcf473c67c6efd983a06",
+      "path": "external/include/glm/gtx/log_base.hpp"
+    },
+    {
+      "bytes": 2037,
+      "sha256": "7f2693abac773f0fb1ac915702737f3695ef7c40a5f36f65ee7018ce717b8910",
+      "path": "external/include/glm/gtx/log_base.inl"
+    },
+    {
+      "bytes": 2639,
+      "sha256": "17bba98a60d04c8ed8679f295ed81c8cbb034ceaf945b39a6c2c4cb0c87a67d6",
+      "path": "external/include/glm/gtx/matrix_cross_product.hpp"
+    },
+    {
+      "bytes": 2271,
+      "sha256": "ce699bf341579ca026b0ec24df1402c4e07c2cd472346a66e760692dbe2c0ddc",
+      "path": "external/include/glm/gtx/matrix_cross_product.inl"
+    },
+    {
+      "bytes": 2684,
+      "sha256": "85262accf8f66ee7552bdf5a40919074dc8bd4076f897a4c4366dde20f2dabb5",
+      "path": "external/include/glm/gtx/matrix_decompose.hpp"
+    },
+    {
+      "bytes": 7809,
+      "sha256": "5a5ddc778e5a16c41d2d317359577322876fcb7449fced71b2bc8a842a89ed5f",
+      "path": "external/include/glm/gtx/matrix_decompose.inl"
+    },
+    {
+      "bytes": 3295,
+      "sha256": "f7bba880a054389c1205ca1f03a0da4af969d286b810c9a7bff8d3dbf5b87f1e",
+      "path": "external/include/glm/gtx/matrix_interpolation.hpp"
+    },
+    {
+      "bytes": 5285,
+      "sha256": "5eb25dde1e101f28d1aa3a31920e60c82deb0bd827a3fc45640ae0000bc94222",
+      "path": "external/include/glm/gtx/matrix_interpolation.inl"
+    },
+    {
+      "bytes": 5082,
+      "sha256": "85ec5025ed30a0c518bd151bcbc82c0d43009bc92c990a9d5a04fc114b3a0a35",
+      "path": "external/include/glm/gtx/matrix_major_storage.hpp"
+    },
+    {
+      "bytes": 5214,
+      "sha256": "f60b01f58dcea5e9d548138c1366a865ef6b201a8e74a0c8302a1a338a000531",
+      "path": "external/include/glm/gtx/matrix_major_storage.inl"
+    },
+    {
+      "bytes": 3818,
+      "sha256": "0abbc2da5b69b044bfbf68819b9eafd7370e65acf2c88bd283ef611682e105ce",
+      "path": "external/include/glm/gtx/matrix_operation.hpp"
+    },
+    {
+      "bytes": 3804,
+      "sha256": "5784450fbb613b9720a2becad9030b932049557416b8a1cff27fc405c44505eb",
+      "path": "external/include/glm/gtx/matrix_operation.inl"
+    },
+    {
+      "bytes": 3979,
+      "sha256": "a59d76219e5ea9909c05104316910d424a162657c9c48e1c51cf6abb13dae54d",
+      "path": "external/include/glm/gtx/matrix_query.hpp"
+    },
+    {
+      "bytes": 5388,
+      "sha256": "248a96a3cd9f83accfb543dbd2302643d5ca488d46b6ffb9bf81eacd193cd1b3",
+      "path": "external/include/glm/gtx/matrix_query.inl"
+    },
+    {
+      "bytes": 3856,
+      "sha256": "eef49ff75367519088bfad547d9ee50a0dd92e4c8add90e0072bd7fdef9b421e",
+      "path": "external/include/glm/gtx/matrix_transform_2d.hpp"
+    },
+    {
+      "bytes": 2912,
+      "sha256": "c258b4777eef39e0b9c1c99e3341017b99db8ece8e26bd81cfc6edf600bce003",
+      "path": "external/include/glm/gtx/matrix_transform_2d.inl"
+    },
+    {
+      "bytes": 2385,
+      "sha256": "dbc52f3d4b3290fde9e8945db4ca3ac6c82f42ba67876535e0779adbf09c4382",
+      "path": "external/include/glm/gtx/mixed_product.hpp"
+    },
+    {
+      "bytes": 1846,
+      "sha256": "c70e45d4906b99f3a330d00ec8ce69ecd89526927083509192420eb829bf5618",
+      "path": "external/include/glm/gtx/mixed_product.inl"
+    },
+    {
+      "bytes": 3696,
+      "sha256": "91a9081696492b0280a3984c1b13fdc8588dc85ab5fd31d010417837b8b0b3f3",
+      "path": "external/include/glm/gtx/multiple.hpp"
+    },
+    {
+      "bytes": 2807,
+      "sha256": "3472f0e4f7d053623d7f1a40885a2aa075bef0333af933ee1b0ac82ab545188b",
+      "path": "external/include/glm/gtx/multiple.inl"
+    },
+    {
+      "bytes": 3993,
+      "sha256": "bb482d828abd4bfb668de666cc116cb9a0d97ebe215bc7a0cb8af60f63660506",
+      "path": "external/include/glm/gtx/norm.hpp"
+    },
+    {
+      "bytes": 3782,
+      "sha256": "6281f066c703a7296d69eac95485fc5fc353a39cb38423eb03e56084e8fc4684",
+      "path": "external/include/glm/gtx/norm.inl"
+    },
+    {
+      "bytes": 2399,
+      "sha256": "657a6269ddf6f34b96d77b4384757754c6190f6ecef225c6178890a8ac53c844",
+      "path": "external/include/glm/gtx/normal.hpp"
+    },
+    {
+      "bytes": 1859,
+      "sha256": "70648cfbd019ac5a9cb6edeeb699af32897686c9bdcbd2f196f40da8eaa7e742",
+      "path": "external/include/glm/gtx/normal.inl"
+    },
+    {
+      "bytes": 2929,
+      "sha256": "2f961a3da9dc4a91900d923e3cc480e17df5a0cefb0c025ab6277b5b784e0f11",
+      "path": "external/include/glm/gtx/normalize_dot.hpp"
+    },
+    {
+      "bytes": 2161,
+      "sha256": "6112be43b573e8dbfec9c1c832a34d2d3af1b362d4dfe587e66e3d3b8b9dbac9",
+      "path": "external/include/glm/gtx/normalize_dot.inl"
+    },
+    {
+      "bytes": 3643,
+      "sha256": "e9f82fc76a69b89e10a3f61550104d03fedcc2511ed32b85b76e4107a77ace14",
+      "path": "external/include/glm/gtx/number_precision.hpp"
+    },
+    {
+      "bytes": 1645,
+      "sha256": "8439d1d1bdf145be99d8fdf22b33cb2f48b8989bac5f0b80b544197f946c3ebc",
+      "path": "external/include/glm/gtx/number_precision.inl"
+    },
+    {
+      "bytes": 2636,
+      "sha256": "7e10fb07ec55f323bd0ee730a3469d40fe8c29a7d3d3e14aa7b6f04268b754f5",
+      "path": "external/include/glm/gtx/optimum_pow.hpp"
+    },
+    {
+      "bytes": 1976,
+      "sha256": "95c66f60102dbd0a74dc9279abe9360a31990b5865d9d108988cf5a417c7a86b",
+      "path": "external/include/glm/gtx/optimum_pow.inl"
+    },
+    {
+      "bytes": 2644,
+      "sha256": "7df60bfb34a7184710d6e4f5d7a53cc6b3059ddd4cc34e99a024f187b39224f1",
+      "path": "external/include/glm/gtx/orthonormalize.hpp"
+    },
+    {
+      "bytes": 2194,
+      "sha256": "f92ad62c5efa56003ccb9a84e493fcffc5c3b6331b8ff875c62509f030308038",
+      "path": "external/include/glm/gtx/orthonormalize.inl"
+    },
+    {
+      "bytes": 2438,
+      "sha256": "2c8963b3ec3096f288e3106c2e72643138ceb4db1be3dffe39f7c58c9df5e207",
+      "path": "external/include/glm/gtx/perpendicular.hpp"
+    },
+    {
+      "bytes": 1805,
+      "sha256": "0a99f7a6cc45426e750bb479c006da223f7609ef012c9db8cece35e9040bd7b6",
+      "path": "external/include/glm/gtx/perpendicular.inl"
+    },
+    {
+      "bytes": 2651,
+      "sha256": "c0274137cec6896866bfd53475ab96cc69b9e2cce11d1f8ecf8fa690bb2c1545",
+      "path": "external/include/glm/gtx/polar_coordinates.hpp"
+    },
+    {
+      "bytes": 2336,
+      "sha256": "140b887852aaab8ed69c71c508eb92835205f9ce7f5b3198e13fd7570bd3bc2c",
+      "path": "external/include/glm/gtx/polar_coordinates.inl"
+    },
+    {
+      "bytes": 2304,
+      "sha256": "d892f73a0e5e0e6f82c0f3f4963e5e9cc7bfa15ddcd548efb6984ff99b741d7a",
+      "path": "external/include/glm/gtx/projection.hpp"
+    },
+    {
+      "bytes": 1824,
+      "sha256": "2012c6347e8dcec8b9c8b1021dd2688e595cf74c8806e272e3bfadf8fb49ebb1",
+      "path": "external/include/glm/gtx/projection.inl"
+    },
+    {
+      "bytes": 6251,
+      "sha256": "e4ab249a9e9fded23e50d213ecc440d6352dc9e77af5229b7ee1949700db633a",
+      "path": "external/include/glm/gtx/quaternion.hpp"
+    },
+    {
+      "bytes": 7262,
+      "sha256": "497146960bbe8d68fab3d5c4499fe9456ea55bbf34ad06c8d2c89e9ef6508172",
+      "path": "external/include/glm/gtx/quaternion.inl"
+    },
+    {
+      "bytes": 3487,
+      "sha256": "e63d5358b177984dd051a4e34da1386da00e6c81f9ce6097ab1ce9def2b19f7d",
+      "path": "external/include/glm/gtx/range.hpp"
+    },
+    {
+      "bytes": 2567,
+      "sha256": "3e53619a8a96b890337416773932161b936b1796c8640e2fca00967867384729",
+      "path": "external/include/glm/gtx/raw_data.hpp"
+    },
+    {
+      "bytes": 1609,
+      "sha256": "ab53781df5147ce7ff3b004cf4bce0d3d530a327b97208e1c2f62fadf8b3173b",
+      "path": "external/include/glm/gtx/raw_data.inl"
+    },
+    {
+      "bytes": 3666,
+      "sha256": "a5ddb9b4a1ab641f1277569b06295a4b477c480b6588379b6d733d4e866d4eb6",
+      "path": "external/include/glm/gtx/rotate_normalized_axis.hpp"
+    },
+    {
+      "bytes": 3283,
+      "sha256": "cc0be9f2d5c7c4a048008a689dde11eb527b31b146529b8194ab1e62fc927905",
+      "path": "external/include/glm/gtx/rotate_normalized_axis.inl"
+    },
+    {
+      "bytes": 4870,
+      "sha256": "1e6b8e8cab2bde724492cae25a5c5aba5cd9bef6e13932eef6abea2b813a34a4",
+      "path": "external/include/glm/gtx/rotate_vector.hpp"
+    },
+    {
+      "bytes": 5393,
+      "sha256": "5a771819e9496f839fa64371c7512ee510276a4f5edfbfa3a84a1c73e0d19e2f",
+      "path": "external/include/glm/gtx/rotate_vector.inl"
+    },
+    {
+      "bytes": 3476,
+      "sha256": "23386e1a2fa480c54ca4d8fe45bf24ba0326a8d1c74cb49341275156a76ab0ba",
+      "path": "external/include/glm/gtx/scalar_multiplication.hpp"
+    },
+    {
+      "bytes": 2217,
+      "sha256": "d0537f61f25bc45b05fb5f1859bf1a33eb15d76d10c075a0b98d4ceb3f8572b1",
+      "path": "external/include/glm/gtx/scalar_relational.hpp"
+    },
+    {
+      "bytes": 2588,
+      "sha256": "890c4b04e6f5a60b3e566f6ffb5a2de1c1ac588ff3f5463dfb57a17b9aefa6f8",
+      "path": "external/include/glm/gtx/scalar_relational.inl"
+    },
+    {
+      "bytes": 7059,
+      "sha256": "ffe4e56ab275f1c3390e359426f054aa8910c3ad732b86c9fd8f313903d78a14",
+      "path": "external/include/glm/gtx/simd_mat4.hpp"
+    },
+    {
+      "bytes": 13011,
+      "sha256": "460938e8535386e2f740f434d07b5d072cb0596664411ec368edd89cf0fa954e",
+      "path": "external/include/glm/gtx/simd_mat4.inl"
+    },
+    {
+      "bytes": 9748,
+      "sha256": "87952118430e94b0c32ad4782e4c58a5f1c0c184e415a21c1d097be099e345cd",
+      "path": "external/include/glm/gtx/simd_quat.hpp"
+    },
+    {
+      "bytes": 17564,
+      "sha256": "da6122874af7bc3a0d7074fffcca941f5910978868f2b326e2e140df399e02a0",
+      "path": "external/include/glm/gtx/simd_quat.inl"
+    },
+    {
+      "bytes": 17214,
+      "sha256": "9817e625f2d674c9399cfb2652e89f84570e1114c2c1ed2fa2c60c5cfb5e6ff0",
+      "path": "external/include/glm/gtx/simd_vec4.hpp"
+    },
+    {
+      "bytes": 15651,
+      "sha256": "e949f9c72c7cb6f56b0b3c115b476a9bf200c19cf08465a60dbb8ef5eaee0f54",
+      "path": "external/include/glm/gtx/simd_vec4.inl"
+    },
+    {
+      "bytes": 2946,
+      "sha256": "278f201f4c8708008c6f66df5378f9ea1e765dd01904ccb0dc6420d230ea16b4",
+      "path": "external/include/glm/gtx/spline.hpp"
+    },
+    {
+      "bytes": 3494,
+      "sha256": "a34aac405db6a4533ce5774edb2987cb0aca76a6f756db0da6fbe14f592d499e",
+      "path": "external/include/glm/gtx/spline.inl"
+    },
+    {
+      "bytes": 3320,
+      "sha256": "8ecbae1c286d50dbe7a41ec4c8de23cb8b4b520109ce70a1c3b397a86cf1ea54",
+      "path": "external/include/glm/gtx/std_based_type.hpp"
+    },
+    {
+      "bytes": 1641,
+      "sha256": "6f3a758ab2a7731f0a3713e4f6286f0cf28bbe708790571e001e1390af80dce9",
+      "path": "external/include/glm/gtx/std_based_type.inl"
+    },
+    {
+      "bytes": 2712,
+      "sha256": "ef43b10295c3c3f588fa39dbe4b31066af3e637087ce6a072761d4ff0173d2b7",
+      "path": "external/include/glm/gtx/string_cast.hpp"
+    },
+    {
+      "bytes": 13558,
+      "sha256": "96dc6292bbd409d90155b9923f0cb7bce77e880b11a738299d4c2507b741821c",
+      "path": "external/include/glm/gtx/string_cast.inl"
+    },
+    {
+      "bytes": 3008,
+      "sha256": "c83c20d1cb8bdeaa8b5048c5f7f39dce31ada7948d09c81de8eb5f51ab6de672",
+      "path": "external/include/glm/gtx/transform.hpp"
+    },
+    {
+      "bytes": 2130,
+      "sha256": "74ae06c9c4a2e1311b7bbdde8de359071d05a23daaac4b44e60e2244610b88b9",
+      "path": "external/include/glm/gtx/transform.inl"
+    },
+    {
+      "bytes": 4860,
+      "sha256": "df39a74045cdcfc30e932c27d63ff74396184e23115efdbd0d6f4ba222807bf4",
+      "path": "external/include/glm/gtx/transform2.hpp"
+    },
+    {
+      "bytes": 4734,
+      "sha256": "5a737dad5f354b21d751059c0a1e45754f3ae0688cfc7c892d611152fd371fad",
+      "path": "external/include/glm/gtx/transform2.inl"
+    },
+    {
+      "bytes": 34393,
+      "sha256": "517ced3467a7176e6bde1eb097525d26267d70c2f761d69f0105ca03b5779c7b",
+      "path": "external/include/glm/gtx/type_aligned.hpp"
+    },
+    {
+      "bytes": 1637,
+      "sha256": "317fe38f6831b330954cae17ccff879a65881e3b2f92e406e6917f8d33bdbdd1",
+      "path": "external/include/glm/gtx/type_aligned.inl"
+    },
+    {
+      "bytes": 3134,
+      "sha256": "b29608485a0ac0a972aa0c362c909ccd7b11f87e770ab98416ad85537978e33b",
+      "path": "external/include/glm/gtx/vector_angle.hpp"
+    },
+    {
+      "bytes": 3083,
+      "sha256": "6c1c015b95c450bcc0ad986f3ad0eb5c6dbc521d09ce906cbce5e939eb076e78",
+      "path": "external/include/glm/gtx/vector_angle.inl"
+    },
+    {
+      "bytes": 3762,
+      "sha256": "5815c70bce2faa358e4e47cae86b3f21aee7f42bad794d107272f15b60f1e1f1",
+      "path": "external/include/glm/gtx/vector_query.hpp"
+    },
+    {
+      "bytes": 6501,
+      "sha256": "038d74b1e3bcdc5173cc57005d74a0a133b9460cb607899fbaf554fecceb6481",
+      "path": "external/include/glm/gtx/vector_query.inl"
+    },
+    {
+      "bytes": 2582,
+      "sha256": "f5dd1af4d0867d8635a7114b7dea72346df139c2750fd7d30333cd699f4f9833",
+      "path": "external/include/glm/gtx/wrap.hpp"
+    },
+    {
+      "bytes": 4946,
+      "sha256": "2a0a51d01469a7ec8840a50154bc8b1c0cbf068de163f337a7171d6f47d871d0",
+      "path": "external/include/glm/gtx/wrap.inl"
+    },
+    {
+      "bytes": 1646,
+      "sha256": "d041abcd6bbb653de5c00afac37a247e53f90eba55e4d0e7eee03795a959449f",
+      "path": "external/include/glm/integer.hpp"
+    },
+    {
+      "bytes": 4437,
+      "sha256": "5c567ff4bc8bf3a06e6658437a22b42f286484e50c8369516367fabd4807a223",
+      "path": "external/include/glm/mat2x2.hpp"
+    },
+    {
+      "bytes": 3059,
+      "sha256": "286f2d14004f315a1173be020fa1d66fbe76c9cc9dc1ed7e87164cd6e3b505c4",
+      "path": "external/include/glm/mat2x3.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "febaa883773265e6b5826c2a7e80e898fd7f4c1b7d446dbd52010ad39c8c56aa",
+      "path": "external/include/glm/mat2x4.hpp"
+    },
+    {
+      "bytes": 3056,
+      "sha256": "15d97f9c56f59b77e0d345568203722a6ed2dcd22aca01b6998ce600b96e763d",
+      "path": "external/include/glm/mat3x2.hpp"
+    },
+    {
+      "bytes": 4437,
+      "sha256": "19274a1f46cfde413dcc85145f5a299345bfc9913d959311f31e9ba914deed5f",
+      "path": "external/include/glm/mat3x3.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "b685bb4029fe63bd13498f4cff4b629e8b8d215af073bf82b694e8c8e6e0d7a2",
+      "path": "external/include/glm/mat3x4.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "0101d056b6a30dad79504b2a76000120cacfc306060bc5064c844f1b47d0b720",
+      "path": "external/include/glm/mat4x2.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "2c244434cdb5ce457b231a03c5659f1d9ac24e5f52f945b6f29b3885fbfc0c9b",
+      "path": "external/include/glm/mat4x3.hpp"
+    },
+    {
+      "bytes": 4437,
+      "sha256": "2f3c7cddf48ee1d7fecf3accc3fc14ba71471f060803673fa8ee935a6b4d1287",
+      "path": "external/include/glm/mat4x4.hpp"
+    },
+    {
+      "bytes": 1644,
+      "sha256": "890ae9e478e19f1e0405b35f421c101c27ad88f63e31d9b101b905c1875f1aee",
+      "path": "external/include/glm/matrix.hpp"
+    },
+    {
+      "bytes": 1646,
+      "sha256": "7e32e91d27dc50a799cbf697b6de1fa0ab44e4eb65d2e55666da694efbf5333f",
+      "path": "external/include/glm/packing.hpp"
+    },
+    {
+      "bytes": 1658,
+      "sha256": "8bb13f53dbd09817905943a4ce339b858804b69cac8fabfcd88a63e4cdde1013",
+      "path": "external/include/glm/trigonometric.hpp"
+    },
+    {
+      "bytes": 1640,
+      "sha256": "404633ea2a675bf506d4ccf217bb7d56a0836ff7dc04dc87ca931fdf06cc832a",
+      "path": "external/include/glm/vec2.hpp"
+    },
+    {
+      "bytes": 1640,
+      "sha256": "4756d97a176ccd0e0c169a5f260f9f3d9d891baf296a0263ffd0d2d6bbb94e30",
+      "path": "external/include/glm/vec3.hpp"
+    },
+    {
+      "bytes": 1640,
+      "sha256": "9af7781b18fe7813fa02253a70758d94d8e797d8833466a8b65e5fb375d9cb13",
+      "path": "external/include/glm/vec4.hpp"
+    },
+    {
+      "bytes": 1666,
+      "sha256": "557d2fb50ae3414a2fd457503c1cb1ff914ae0a18a69da47c3b20beb07bc4f04",
+      "path": "external/include/glm/vector_relational.hpp"
+    },
+    {
+      "bytes": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+      "path": "external/include/json.hpp"
+    },
+    {
+      "bytes": 220351,
+      "sha256": "8e820815011447b44e0d3100b002b2279954fa2479371c14ec61218ef505a4e0",
+      "path": "external/include/stb_image.h"
+    },
+    {
+      "bytes": 25863,
+      "sha256": "48ad5927658fe0865ffc5df0d9e9466afbabffbfb4cff57df72e28574c94315f",
+      "path": "external/include/stb_image_write.h"
+    },
+    {
+      "bytes": 2584968,
+      "sha256": "bc7b5074e5636a465b34dc06721762dc85c9c969d978a10357474d3851f88851",
+      "path": "external/lib/glew32s.lib"
+    },
+    {
+      "bytes": 646206,
+      "sha256": "1f7b4f3d887473fe8d28c1a078ec02a6df297e23cca6227041eb3ba82f5b7b78",
+      "path": "external/lib/glfw3.lib"
+    },
+    {
+      "bytes": 2214664,
+      "sha256": "b25a4c49ddf0d9683589e23628db0b9380e81236953084fc0841add50e87e745",
+      "path": "external/lib/vc2015/glew32s.lib"
+    },
+    {
+      "bytes": 323518,
+      "sha256": "d0e241748c3a93a6590b4c94e91489d664aa613af77c3726f9c0ad756b8bc79b",
+      "path": "external/lib/vc2015/glfw3.lib"
+    },
+    {
+      "bytes": 1112,
+      "sha256": "2ae461f8c8b78ed77c14e9c3b7e353ba277e44cb3dbfb5a6d380f76f2ae081a2",
+      "path": "external/tinygltf/LICENSE"
+    },
+    {
+      "bytes": 279738,
+      "sha256": "b63dc0ae9e4b1ae5af288bb2b9b69ba06bc65bf9fd880795a7ba3cabe96df072",
+      "path": "external/tinygltf/tiny_gltf.h"
+    },
+    {
+      "bytes": 122,
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635",
+      "path": "scenes/assets/area-light.obj"
+    },
+    {
+      "bytes": 3124619,
+      "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "path": "scenes/assets/fluted-body-high.obj"
+    },
+    {
+      "bytes": 188496,
+      "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "path": "scenes/assets/fluted-body-low.obj"
+    },
+    {
+      "bytes": 769303,
+      "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "path": "scenes/assets/fluted-body-medium.obj"
+    },
+    {
+      "bytes": 196662,
+      "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c",
+      "path": "scenes/assets/glaze.bmp"
+    },
+    {
+      "bytes": 182476,
+      "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd",
+      "path": "scenes/assets/gltf/fluted-body-medium.glb"
+    },
+    {
+      "bytes": 7868,
+      "sha256": "171dc1f9906d2a31fa07e2297da03a234af4ae1081ea720f052b9dd3a520399a",
+      "path": "scenes/assets/gltf/generation.json"
+    },
+    {
+      "bytes": 120412,
+      "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e",
+      "path": "scenes/assets/gltf/swept-knot-medium.glb"
+    },
+    {
+      "bytes": 124600,
+      "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344",
+      "path": "scenes/assets/gltf/vase-high.glb"
+    },
+    {
+      "bytes": 13725,
+      "sha256": "e27cd56f7b9383b9066d6533604b1e74173c59204ad08655e8a4013e0513711a",
+      "path": "scenes/assets/gltf/vase-low-data-uri.gltf"
+    },
+    {
+      "bytes": 9504,
+      "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622",
+      "path": "scenes/assets/gltf/vase-low.bin"
+    },
+    {
+      "bytes": 10540,
+      "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf",
+      "path": "scenes/assets/gltf/vase-low.glb"
+    },
+    {
+      "bytes": 1028,
+      "sha256": "f415baa92a020dada57c82da4f70b18a5f46ad7776c5658e8c0e60599f122c1a",
+      "path": "scenes/assets/gltf/vase-low.gltf"
+    },
+    {
+      "bytes": 34232,
+      "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8",
+      "path": "scenes/assets/gltf/vase-medium.glb"
+    },
+    {
+      "bytes": 196662,
+      "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442",
+      "path": "scenes/assets/height.bmp"
+    },
+    {
+      "bytes": 2004275,
+      "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "path": "scenes/assets/swept-knot-high.obj"
+    },
+    {
+      "bytes": 121244,
+      "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "path": "scenes/assets/swept-knot-low.obj"
+    },
+    {
+      "bytes": 493493,
+      "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "path": "scenes/assets/swept-knot-medium.obj"
+    },
+    {
+      "bytes": 282121,
+      "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f",
+      "path": "scenes/assets/torus.obj"
+    },
+    {
+      "bytes": 387854,
+      "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c",
+      "path": "scenes/assets/vase-high.obj"
+    },
+    {
+      "bytes": 24651,
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543",
+      "path": "scenes/assets/vase-low.obj"
+    },
+    {
+      "bytes": 94338,
+      "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb",
+      "path": "scenes/assets/vase-medium.obj"
+    },
+    {
+      "bytes": 3283,
+      "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a",
+      "path": "scenes/closed-benchmark.json"
+    },
+    {
+      "bytes": 2863,
+      "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+      "path": "scenes/complexity-high.json"
+    },
+    {
+      "bytes": 2861,
+      "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+      "path": "scenes/complexity-low.json"
+    },
+    {
+      "bytes": 2867,
+      "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+      "path": "scenes/complexity-medium.json"
+    },
+    {
+      "bytes": 2265,
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b",
+      "path": "scenes/cornell.json"
+    },
+    {
+      "bytes": 2732,
+      "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58",
+      "path": "scenes/gltf-baseline.json"
+    },
+    {
+      "bytes": 2874,
+      "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2",
+      "path": "scenes/gltf-complexity-high.json"
+    },
+    {
+      "bytes": 2872,
+      "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e",
+      "path": "scenes/gltf-complexity-low.json"
+    },
+    {
+      "bytes": 2878,
+      "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664",
+      "path": "scenes/gltf-complexity-medium.json"
+    },
+    {
+      "bytes": 2889,
+      "sha256": "ec6de8d3ffd85508e798e4b9bcec769ff937e61049a6a1b21b3c6948e74a9531",
+      "path": "scenes/gltf-equivalence-data-uri.json"
+    },
+    {
+      "bytes": 2880,
+      "sha256": "72a7b8b6baca8d51c4f38d0a525a4bec867937144600a731a8947923d46df4dc",
+      "path": "scenes/gltf-equivalence-external.json"
+    },
+    {
+      "bytes": 2874,
+      "sha256": "8726026e91dce73dc45aefbab263b6d2dbcf56a5541602d611bafb2aa3f4d826",
+      "path": "scenes/gltf-equivalence-glb.json"
+    },
+    {
+      "bytes": 5055,
+      "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9",
+      "path": "scenes/gltf-motion-validation.json"
+    },
+    {
+      "bytes": 3342,
+      "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50",
+      "path": "scenes/gltf-showcase.json"
+    },
+    {
+      "bytes": 2300,
+      "sha256": "d6c9e70a67eb1dabc73102f104f085d19153e2e69a60538b940a54569cc483e6",
+      "path": "scenes/hedge-motion-frozen-end.json"
+    },
+    {
+      "bytes": 2305,
+      "sha256": "17bb532cf3c63fe4f76c10628d33b8cdaada99b9eaca1649b3d7b6d582c731b2",
+      "path": "scenes/hedge-motion-frozen-midpoint.json"
+    },
+    {
+      "bytes": 2302,
+      "sha256": "08d2e803a24f11087c9545e4fbbd72411245feec0ea168ba04d50fba6d15e40a",
+      "path": "scenes/hedge-motion-frozen-start.json"
+    },
+    {
+      "bytes": 3374,
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0",
+      "path": "scenes/hedge-motion-validation.json"
+    },
+    {
+      "bytes": 2289,
+      "sha256": "36dc2940eccf27ebb0a75ee5d2bd6fa9604694bfe1fead13ede18632a40f8980",
+      "path": "scenes/hedge-motion.json"
+    },
+    {
+      "bytes": 2527,
+      "sha256": "ad6209b1a0e43476243f83c2252a148689c43e43aad871f7592f31f59a803bd2",
+      "path": "scenes/hedge-obj-baseline.json"
+    },
+    {
+      "bytes": 1887,
+      "sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a",
+      "path": "scenes/hedge-sampling-diffuse.json"
+    },
+    {
+      "bytes": 2313,
+      "sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02",
+      "path": "scenes/hedge-sampling-glass-dof.json"
+    },
+    {
+      "bytes": 1351,
+      "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05",
+      "path": "scenes/light-test-cube.json"
+    },
+    {
+      "bytes": 1391,
+      "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8",
+      "path": "scenes/light-test-mesh.json"
+    },
+    {
+      "bytes": 1353,
+      "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58",
+      "path": "scenes/light-test-sphere.json"
+    },
+    {
+      "bytes": 2109,
+      "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8",
+      "path": "scenes/open-benchmark.json"
+    },
+    {
+      "bytes": 3147,
+      "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2",
+      "path": "scenes/optical-workbench.json"
+    },
+    {
+      "bytes": 3141,
+      "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1",
+      "path": "scenes/preview-smoke.json"
+    },
+    {
+      "bytes": 2306,
+      "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a",
+      "path": "scenes/procedural-fluted-body-cells.json"
+    },
+    {
+      "bytes": 2308,
+      "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c",
+      "path": "scenes/procedural-fluted-body-marble.json"
+    },
+    {
+      "bytes": 2305,
+      "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e",
+      "path": "scenes/procedural-fluted-body-plain.json"
+    },
+    {
+      "bytes": 3101,
+      "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "path": "scenes/procedural-optical-stilllife.json"
+    },
+    {
+      "bytes": 2305,
+      "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758",
+      "path": "scenes/procedural-swept-knot-cells.json"
+    },
+    {
+      "bytes": 2307,
+      "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d",
+      "path": "scenes/procedural-swept-knot-marble.json"
+    },
+    {
+      "bytes": 2304,
+      "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3",
+      "path": "scenes/procedural-swept-knot-plain.json"
+    },
+    {
+      "bytes": 607,
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904",
+      "path": "scenes/sphere.json"
+    },
+    {
+      "bytes": 3265,
+      "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6",
+      "path": "scenes/uniform-benchmark.json"
+    },
+    {
+      "bytes": 3146,
+      "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001",
+      "path": "scenes/workbench-dof.json"
+    },
+    {
+      "bytes": 3131,
+      "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f",
+      "path": "scenes/workbench-mirror.json"
+    },
+    {
+      "bytes": 3082,
+      "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b",
+      "path": "scenes/workbench-no-bump.json"
+    },
+    {
+      "bytes": 3079,
+      "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d",
+      "path": "scenes/workbench-procedural.json"
+    },
+    {
+      "bytes": 849,
+      "sha256": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+      "path": "scripts/source_hash.py"
+    },
+    {
+      "bytes": 9999,
+      "sha256": "78dac169cf9982189686de74fbbefb063a8bd8206fe4d2ee8270b14db55dfd77",
+      "path": "src/ImGui/imconfig.h"
+    },
+    {
+      "bytes": 680565,
+      "sha256": "060c0b40d7e5c4b120a7fbb2d0df2e34f5390fa218adf03b465a0ff07c571cdd",
+      "path": "src/ImGui/imgui.cpp"
+    },
+    {
+      "bytes": 300080,
+      "sha256": "31949ad71d7f3af0a627dc45e0c03c42f4a89a8a7c89b82beafb1ba3b01893c7",
+      "path": "src/ImGui/imgui.h"
+    },
+    {
+      "bytes": 411816,
+      "sha256": "28654b96fc3e71312ca1c0d3dd35e5d1d1bd39e82b4cc9efa6798c51804c878f",
+      "path": "src/ImGui/imgui_demo.cpp"
+    },
+    {
+      "bytes": 212542,
+      "sha256": "f54c7f1d10f5a312c7deaac1c59b83831d34d818fcf05aa5003f12f27870f232",
+      "path": "src/ImGui/imgui_draw.cpp"
+    },
+    {
+      "bytes": 35884,
+      "sha256": "b035f969888dc47b80853f722344944b6e6b185fd4a08373e6a143b2c175d5b5",
+      "path": "src/ImGui/imgui_impl_glfw.cpp"
+    },
+    {
+      "bytes": 3481,
+      "sha256": "46e5d198e21934cf38ce3503d530c8ea930c5f8591d2712af4d3f8d84309b4ad",
+      "path": "src/ImGui/imgui_impl_glfw.h"
+    },
+    {
+      "bytes": 41865,
+      "sha256": "bbb0e56531071d66221d8872215c1c1460b1e4aae7acb1106261ccb50956e978",
+      "path": "src/ImGui/imgui_impl_opengl3.cpp"
+    },
+    {
+      "bytes": 2867,
+      "sha256": "21f22b74bc806925579d5305f2a5a53429c769bd5fa18921dd9010413f39f816",
+      "path": "src/ImGui/imgui_impl_opengl3.h"
+    },
+    {
+      "bytes": 35278,
+      "sha256": "fecf579813f8c0683a53c7167c6d1b4a0932b10345c39f4d3182cdee2c141a5a",
+      "path": "src/ImGui/imgui_impl_opengl3_loader.h"
+    },
+    {
+      "bytes": 215138,
+      "sha256": "622f48aa7bb15b9c6ffbf0ce598165e3abd3f1588a3403c0cb30fc672bb2fd89",
+      "path": "src/ImGui/imgui_internal.h"
+    },
+    {
+      "bytes": 216873,
+      "sha256": "275168232d809273f8089e662e8c3037c1c97fbfc80379103614f144299c0bdf",
+      "path": "src/ImGui/imgui_tables.cpp"
+    },
+    {
+      "bytes": 414744,
+      "sha256": "813da1426ec87b588fb436f9a20ed90fcf5a699a1f1f1e83b8d215d73ca0f17d",
+      "path": "src/ImGui/imgui_widgets.cpp"
+    },
+    {
+      "bytes": 20344,
+      "sha256": "2efa3d5f7d003c19743b15155dad9f46d9f9fc783a18893d703b431d3c990972",
+      "path": "src/ImGui/imstb_rectpack.h"
+    },
+    {
+      "bytes": 54933,
+      "sha256": "952dafd13b3bdfceb7179da7f7d11db14419e7ae3613982741428b7a036b5d27",
+      "path": "src/ImGui/imstb_textedit.h"
+    },
+    {
+      "bytes": 199422,
+      "sha256": "5ff5cd1b81b46cd40de015a44f341ed72e05147abfe6d28d8527fb84a10566dc",
+      "path": "src/ImGui/imstb_truetype.h"
+    },
+    {
+      "bytes": 1759,
+      "sha256": "3153fcb9b8e775a49287ed9ff3519eb74398f0d4971cb77a3b128b158eea85bd",
+      "path": "src/checker_parity.cuh"
+    },
+    {
+      "bytes": 59834,
+      "sha256": "e8a878425b1b562aec83da03143fc73afa4f6c672afbcef0e3132c24ded3b81d",
+      "path": "src/checkpoint.cpp"
+    },
+    {
+      "bytes": 8025,
+      "sha256": "21a07282200f9dab423aa4ddbb75038d9bbf65f0a54ce2d003d6d4be90c19692",
+      "path": "src/checkpoint.h"
+    },
+    {
+      "bytes": 9781,
+      "sha256": "ebbb16ec3aba1048b86b5534dc95661324ddf603d1fa7090cb61284bc812ae3a",
+      "path": "src/geometry.cpp"
+    },
+    {
+      "bytes": 41534,
+      "sha256": "3f12bca0b5f982d5498721f1198996496d7c39846066123bbc4ea3fb089e65c6",
+      "path": "src/geometry.cuh"
+    },
+    {
+      "bytes": 1430,
+      "sha256": "9d525e8833530d8bd584fe3486764a4cc0aba047076a103dfb7ede8223aa57f2",
+      "path": "src/geometry.h"
+    },
+    {
+      "bytes": 5816,
+      "sha256": "ea89bcdd0197c0b870788bd1840d323c4bfbf8a73eebb97368891c4ae13c22ad",
+      "path": "src/glslUtility.cpp"
+    },
+    {
+      "bytes": 520,
+      "sha256": "8f9b2ac75e82dd436b39c50a582136db4072c6a023af3dc717627dcaf37054ce",
+      "path": "src/glslUtility.hpp"
+    },
+    {
+      "bytes": 68805,
+      "sha256": "cb6d3534bb0fa9fa77eecad0c2c2ea1409b6fd0216f2b3d280315341a3fc16df",
+      "path": "src/gltf_loader.cpp"
+    },
+    {
+      "bytes": 568,
+      "sha256": "912a7e0c18547177f6b43ecf91e1e685d9f543c8deb50b9b2679d54e3e08da2f",
+      "path": "src/gltf_loader.h"
+    },
+    {
+      "bytes": 62616,
+      "sha256": "c9dc1658a7f2bc984fa5ecf15192b40829aa520d63ac4bc79a4649c8971911ca",
+      "path": "src/headless.cpp"
+    },
+    {
+      "bytes": 3325,
+      "sha256": "b0989e8d11e8c13184052eca06b4685038eb829426ee103deb9ac66780a9b492",
+      "path": "src/image.cpp"
+    },
+    {
+      "bytes": 343,
+      "sha256": "cfb2bd5abbfda41b2fcacc2e87584d797e41f9cc939e63979dec35dd37f6d457",
+      "path": "src/image.h"
+    },
+    {
+      "bytes": 14415,
+      "sha256": "e873c88c037982e83b3986a32aa21b510a42fbdc0c862bbd5b16910037015a6b",
+      "path": "src/interactions.cu"
+    },
+    {
+      "bytes": 2048,
+      "sha256": "f56de0875239aeeefba72d9df19f764b3f3025334d0ec0be855640e5a939fbb8",
+      "path": "src/interactions.h"
+    },
+    {
+      "bytes": 2990,
+      "sha256": "5ed30afdd4c4a38be883f1f080fa9f32c97ef51f8933c8021e52abfcd59581af",
+      "path": "src/intersections.cu"
+    },
+    {
+      "bytes": 2223,
+      "sha256": "b8545f4348908b1194f1017832db6c4121c2c5b84f7ebe3a127182dc0a965bb8",
+      "path": "src/intersections.h"
+    },
+    {
+      "bytes": 26268,
+      "sha256": "6189703666d5a30b71c49c27d4570a21304ff60d4f113ed1e04065557505aa7b",
+      "path": "src/main.cpp"
+    },
+    {
+      "bytes": 10754,
+      "sha256": "c9728129416c7f348b342552d52f29b0a10509a9906b9e3206270e1cd206a802",
+      "path": "src/output_path.cpp"
+    },
+    {
+      "bytes": 910,
+      "sha256": "00fdc4806a2a753cbc43a036ccc4e739287a95419818c10d1725cfb8b5faf274",
+      "path": "src/output_path.h"
+    },
+    {
+      "bytes": 201699,
+      "sha256": "1c2f73f0788510de81497dfc5e91fd851e9663ebf42372c15ce94ab74647118d",
+      "path": "src/pathtrace.cu"
+    },
+    {
+      "bytes": 3649,
+      "sha256": "7d0e901a38547631f1bd46ad0938c3ab7a973b994a3e5e569e0ecb84d84a23da",
+      "path": "src/pathtrace.h"
+    },
+    {
+      "bytes": 2956,
+      "sha256": "123a324e52de6f736084775c0176fe623f567d33cc06bcd2bda63b81f3759a49",
+      "path": "src/procedural_texture.cuh"
+    },
+    {
+      "bytes": 52637,
+      "sha256": "c91e29301323601e8e1c2f5a743d71fbdde34b0a867d73815a82a646e38a9388",
+      "path": "src/scene.cpp"
+    },
+    {
+      "bytes": 558,
+      "sha256": "bba04fdddf4a59f8967b8f5303033bb6b22cba1d7e3fcec64baa58790aa75447",
+      "path": "src/scene.h"
+    },
+    {
+      "bytes": 2038,
+      "sha256": "19f354e800b3570c14b467a4a1556e467872314b2d8dbe3cf4a6c75fe706046d",
+      "path": "src/sceneStructs.h"
+    },
+    {
+      "bytes": 125,
+      "sha256": "98362a3547c415936ee8680125ecc159c926eaecc5f689545e6d0e2f59d281bc",
+      "path": "src/stb.cpp"
+    },
+    {
+      "bytes": 3513,
+      "sha256": "799a735f24ebe5a70c7334bd454e09e6915a820bb183b3a0f71a90fb416db985",
+      "path": "src/utilities.cpp"
+    },
+    {
+      "bytes": 1145,
+      "sha256": "0e7b92caf0e1c92dda96099e2f36ac07ef3c5b2186fb3f6bfd2e27502b62585d",
+      "path": "src/utilities.h"
+    },
+    {
+      "bytes": 815,
+      "sha256": "19252d7b9f69ccebb7ba796497679f8c3b93b5b2ac56861f3c1b4248f3c21467",
+      "path": "stream_compaction/CMakeLists.txt"
+    },
+    {
+      "bytes": 7628,
+      "sha256": "9030a7d52500c883447bf4cd11b0000950588ec492928827340dcea598d0f024",
+      "path": "stream_compaction/device_scan.cu"
+    },
+    {
+      "bytes": 1563,
+      "sha256": "2d5582eee1b307d1c5c7bfb59fb743d885b6600aec8358e5bb9a654925f664c5",
+      "path": "stream_compaction/device_scan.cuh"
+    },
+    {
+      "bytes": 46610,
+      "sha256": "3d56d2c616edad47ad4bdf9048b16c0035417ed50aa3dc75db61fc0180abd368",
+      "path": "tests/checkpoint_tests.cpp"
+    },
+    {
+      "bytes": 109191,
+      "sha256": "952fc376a6f8d5c785ad70cee5504c561e2cb087db41f183daeaf93da907c7b6",
+      "path": "tests/geometry_tests.cpp"
+    },
+    {
+      "bytes": 56693,
+      "sha256": "05d4efd7128c9c7a8def5ca0ce76f209e5a552a845f8cc00e3d76686df6b800a",
+      "path": "tests/gltf_tests.cpp"
+    },
+    {
+      "bytes": 12361,
+      "sha256": "3e8fd204d99b653b4e1e9ac9c15101ac9fe2ffa90deecefd4e0a8d1c21f8f72b",
+      "path": "tests/output_path_tests.cpp"
+    },
+    {
+      "bytes": 5350,
+      "sha256": "570fe9b1d078daa369ffcb5657c14bffed0fe3e1dab5e6042ab197e959c1d293",
+      "path": "tests/render_tests.cpp"
+    }
+  ],
+  "after": [
+    {
+      "bytes": 12779,
+      "sha256": "359bf0b52a44fa8736618972a4bd33ac05b75604fcf6c02b8e8a351a5ecbb1b0",
+      "path": "CMakeLists.txt"
+    },
+    {
+      "bytes": 26356,
+      "sha256": "bdc2f3475f456e2ea21d08e52f71ce87678a13653cd265ea0b0c44f72a8f1a8f",
+      "path": "INSTRUCTION.md"
+    },
+    {
+      "bytes": 2237,
+      "sha256": "6564e5864e8ede75d8ee27cb02aff534ac7bc63db51f0d0bd5b500af55cb2990",
+      "path": "cmake/FindGLEW.cmake"
+    },
+    {
+      "bytes": 2046,
+      "sha256": "45b08224cb36b58c6e897ac3add0477234ddf25d0fbf9eca8fc00ee60b110e6b",
+      "path": "cmake/FindGLFW.cmake"
+    },
+    {
+      "bytes": 1200,
+      "sha256": "fcbe31cb0f44bc267369c23508214e7458a4d10be710bcae6c7f2feb89354485",
+      "path": "cmake/FindGLM.cmake"
+    },
+    {
+      "bytes": 3797,
+      "sha256": "8991cd11befec7c6a63662700f03c0cc42e864b6e77c7e70b80297c951a7f0ff",
+      "path": "external/include/GL/LICENSE.txt"
+    },
+    {
+      "bytes": 103594,
+      "sha256": "a083a4e57554aa33907722e00ba129895554bfc9f7c73fc3648c68577046c5f4",
+      "path": "external/include/GL/eglew.h"
+    },
+    {
+      "bytes": 1186601,
+      "sha256": "70dc1969d43ba3ee2d2f61173025dc69d9d7901594f662441517ce1ed0f4f929",
+      "path": "external/include/GL/glew.h"
+    },
+    {
+      "bytes": 73435,
+      "sha256": "c5aeb9aeb4d5b5cd872c2726781c05ed6ff87dc79dc1a0a0f798779309bf72b9",
+      "path": "external/include/GL/glxew.h"
+    },
+    {
+      "bytes": 63314,
+      "sha256": "57c0e65f54f0a264a3241cea51755d7358d564bfebf890dcc6fe01795a8e7e1d",
+      "path": "external/include/GL/wglew.h"
+    },
+    {
+      "bytes": 934,
+      "sha256": "da2fb2c802537710cdebe8881b55356d07b88a6dbd7e4b912ac3091f8e6b5f6a",
+      "path": "external/include/GLFW/COPYING.txt"
+    },
+    {
+      "bytes": 205169,
+      "sha256": "e80daf5acdac54bd2da5f4fb88cedf546532b85fe0bdd81069810f7aba61c87b",
+      "path": "external/include/GLFW/glfw3.h"
+    },
+    {
+      "bytes": 16420,
+      "sha256": "504d352883480b83c35b8e2ce248219ceac46a43eb58579e9f46e1f9da794308",
+      "path": "external/include/GLFW/glfw3native.h"
+    },
+    {
+      "bytes": 1468,
+      "sha256": "0423f5d7e9bc377727ce3c3df33ce58c96690cbeeed08574c30023f93b43e890",
+      "path": "external/include/glm/CMakeLists.txt"
+    },
+    {
+      "bytes": 1644,
+      "sha256": "f6d72fd9edbb0d5de2073db2e96156c8f0e3eb5b146efffabe088bd249a1b1e8",
+      "path": "external/include/glm/common.hpp"
+    },
+    {
+      "bytes": 13123,
+      "sha256": "371bd31affebf25a212650420491a8f9b7cb4019799fd6c7c4af49f2f7c56db2",
+      "path": "external/include/glm/detail/_features.hpp"
+    },
+    {
+      "bytes": 1983,
+      "sha256": "12fd0a707f670cdaf436583e441ba80b68d4252616f3363d48f17329d164e392",
+      "path": "external/include/glm/detail/_fixes.hpp"
+    },
+    {
+      "bytes": 4348,
+      "sha256": "85667e6bbcc000c1131b477f89df01a8b3d650a67a274e1e601478f26507e08c",
+      "path": "external/include/glm/detail/_noise.hpp"
+    },
+    {
+      "bytes": 55046,
+      "sha256": "b8d438589e164c45aa3811840cb0db10cafc7f1aba8783e834f27dc5f3dccfcd",
+      "path": "external/include/glm/detail/_swizzle.hpp"
+    },
+    {
+      "bytes": 64653,
+      "sha256": "3def723ea637b08c16fb8de4af20421c3e82e17f3a8e9bd42dbb7fd9446b211c",
+      "path": "external/include/glm/detail/_swizzle_func.hpp"
+    },
+    {
+      "bytes": 5055,
+      "sha256": "760611dfce4bf2974e2bd766abd3837e9f40d4bf276bc8b424f3409e18ccbc2e",
+      "path": "external/include/glm/detail/_vectorize.hpp"
+    },
+    {
+      "bytes": 7156,
+      "sha256": "d66deebffb546e5e0e2a046a18d14281f507c0786af7290c0a25b9a7fba9220b",
+      "path": "external/include/glm/detail/dummy.cpp"
+    },
+    {
+      "bytes": 24008,
+      "sha256": "e911376c35ed4c3237548c9553e58d1437447b9ab75ad1f1a1112ff81e57548d",
+      "path": "external/include/glm/detail/func_common.hpp"
+    },
+    {
+      "bytes": 25294,
+      "sha256": "b7d27a1613f328402840085ef797ae4cd8e0d4bc89ccc4ac7e79c7154b9efb47",
+      "path": "external/include/glm/detail/func_common.inl"
+    },
+    {
+      "bytes": 7001,
+      "sha256": "d1909fdb65395589d95553d317c2c282dbf212fea6255f19b160b6b710d65148",
+      "path": "external/include/glm/detail/func_exponential.hpp"
+    },
+    {
+      "bytes": 5668,
+      "sha256": "b05e2d8943f3b29251178c5959da109b621aae547d0a43122579305f1f356ad5",
+      "path": "external/include/glm/detail/func_exponential.inl"
+    },
+    {
+      "bytes": 6422,
+      "sha256": "e115a8826e0d3e6ae898e3f22c197cfcbe107479e1a1e4a02880ad8c2e052808",
+      "path": "external/include/glm/detail/func_geometric.hpp"
+    },
+    {
+      "bytes": 6826,
+      "sha256": "74ad24d6ceb401610dc4c26a0e04b76151c793b55000007930cb64c916c8b2ee",
+      "path": "external/include/glm/detail/func_geometric.inl"
+    },
+    {
+      "bytes": 11672,
+      "sha256": "e4758b94dbf0dc9ea34d6178f2e9a94b64efefedf53e470041306078b517b60f",
+      "path": "external/include/glm/detail/func_integer.hpp"
+    },
+    {
+      "bytes": 15992,
+      "sha256": "2653cd13812cff669c766df506a94cb4ed74f6ccba4708e9844e2a0d91c90330",
+      "path": "external/include/glm/detail/func_integer.inl"
+    },
+    {
+      "bytes": 6812,
+      "sha256": "028e96ef44414eeaf1fad6ef5f0c335b40699477133ffaf58567e128ac6a07ae",
+      "path": "external/include/glm/detail/func_matrix.hpp"
+    },
+    {
+      "bytes": 9641,
+      "sha256": "fe4fdf9e0b304e9fd1111fb3ff1c7747fa178ead51d5d7512d5d4855bdfe27e2",
+      "path": "external/include/glm/detail/func_matrix.inl"
+    },
+    {
+      "bytes": 4183,
+      "sha256": "b3996cdfc1411739f20add6757df77031a856dfc628755eb661e3edb9292b500",
+      "path": "external/include/glm/detail/func_noise.hpp"
+    },
+    {
+      "bytes": 12964,
+      "sha256": "7afc6d302f5d28aa7fd3741fffb68d248577158a70a626dd6d5d3ad66ad0f56f",
+      "path": "external/include/glm/detail/func_noise.inl"
+    },
+    {
+      "bytes": 12272,
+      "sha256": "691ad228c4cc61e30cd17cd9eeb06623a2edee239bc1c0b1f9784d420ad2cb44",
+      "path": "external/include/glm/detail/func_packing.hpp"
+    },
+    {
+      "bytes": 3811,
+      "sha256": "9b33ca9e1dec2cbb2006b3066204fcc9afe50fa53cdb17b7791cde71b1695c58",
+      "path": "external/include/glm/detail/func_packing.inl"
+    },
+    {
+      "bytes": 10997,
+      "sha256": "64089c025082d6b98a9c1c1d49af729b46167bd861abc9e134b6640b90434d59",
+      "path": "external/include/glm/detail/func_trigonometric.hpp"
+    },
+    {
+      "bytes": 7313,
+      "sha256": "2d30478a0d0278e690b0b19da91bf4248901fb83ec614f04bd4ae71b1130e243",
+      "path": "external/include/glm/detail/func_trigonometric.inl"
+    },
+    {
+      "bytes": 7350,
+      "sha256": "b7cbf42f320c2cc596f909922cbf6f50f48e8cc0b9d1d7bb118055d003b9259d",
+      "path": "external/include/glm/detail/func_vector_relational.hpp"
+    },
+    {
+      "bytes": 5043,
+      "sha256": "483c555114a8314fbbd46c41837649eb4770a05b29c14f19378871b886360b76",
+      "path": "external/include/glm/detail/func_vector_relational.inl"
+    },
+    {
+      "bytes": 9625,
+      "sha256": "2caaaaf49a19806c2c0d3273d64e15e1f2eb8cd572151e6ea373c86fd1673ed6",
+      "path": "external/include/glm/detail/glm.cpp"
+    },
+    {
+      "bytes": 2548,
+      "sha256": "338799faed9df37c166df9544e924595cdf35ef34f131024155cdb39158801af",
+      "path": "external/include/glm/detail/intrinsic_common.hpp"
+    },
+    {
+      "bytes": 13454,
+      "sha256": "85a0c11c3293a9db53003a72ff2acb5c6296504cecbc5c044631ae07896ec270",
+      "path": "external/include/glm/detail/intrinsic_common.inl"
+    },
+    {
+      "bytes": 2907,
+      "sha256": "7708d8a5ba9c59ff910d07f35c307d131924cc63c10733f2003e9588338970aa",
+      "path": "external/include/glm/detail/intrinsic_exponential.hpp"
+    },
+    {
+      "bytes": 1495,
+      "sha256": "073d6caa4869783ad3519a70b25e316ebf14ae8bddea36b2d353e09ca4a99070",
+      "path": "external/include/glm/detail/intrinsic_exponential.inl"
+    },
+    {
+      "bytes": 2260,
+      "sha256": "dd944bbee292dff4b4618175a6539d3ff9a33721f5be3a0ea9ac02d1ea4f20eb",
+      "path": "external/include/glm/detail/intrinsic_geometric.hpp"
+    },
+    {
+      "bytes": 4547,
+      "sha256": "c0be5e80528cfac9cf50ed95e0781289cf807c8c022ab471237927f2675f3555",
+      "path": "external/include/glm/detail/intrinsic_geometric.inl"
+    },
+    {
+      "bytes": 1850,
+      "sha256": "de0b64eccadf207ada1e89b8a558f3423facf741c3c12136ef34a924849d0e5d",
+      "path": "external/include/glm/detail/intrinsic_integer.hpp"
+    },
+    {
+      "bytes": 5158,
+      "sha256": "a828e0d6c905848d440991906bf25b7adf4ff68edaed531f862792764071a884",
+      "path": "external/include/glm/detail/intrinsic_integer.inl"
+    },
+    {
+      "bytes": 2361,
+      "sha256": "aeac2a26990765067a87f95086067c915edbf32f22d68120c2344f5e9093c99a",
+      "path": "external/include/glm/detail/intrinsic_matrix.hpp"
+    },
+    {
+      "bytes": 41536,
+      "sha256": "e5d5b1eb9b3225ecd3cef697a43a2229b91405c7d9e00053bd87ef7dda3723a0",
+      "path": "external/include/glm/detail/intrinsic_matrix.inl"
+    },
+    {
+      "bytes": 1757,
+      "sha256": "d56cfb80334d9b39874d1dccbb53b19ad61c88c328aa1ac7e37926a927aff281",
+      "path": "external/include/glm/detail/intrinsic_trigonometric.hpp"
+    },
+    {
+      "bytes": 1497,
+      "sha256": "89468a648694914cb93f7904046c6f09af1b5d338226124a4bf9f1c56ec5032b",
+      "path": "external/include/glm/detail/intrinsic_trigonometric.inl"
+    },
+    {
+      "bytes": 1765,
+      "sha256": "232e407050c1b9ad4d4e68ac26b6eb3027d5e94e3249a259dc718d72dae5ed20",
+      "path": "external/include/glm/detail/intrinsic_vector_relational.hpp"
+    },
+    {
+      "bytes": 9778,
+      "sha256": "6f41ac2e1d68243f7bec088b63754dcd9a62984b99e85a3391474dfa18c60416",
+      "path": "external/include/glm/detail/intrinsic_vector_relational.inl"
+    },
+    {
+      "bytes": 1721,
+      "sha256": "3b6ac7881e6196c3645af26bd0722ea5ce7e802209081c46761a812e71b1b628",
+      "path": "external/include/glm/detail/precision.hpp"
+    },
+    {
+      "bytes": 34821,
+      "sha256": "d41e401b3bb2dbd57130028a9304bce1c278ae0df12e5cfa2b8ef4b872057747",
+      "path": "external/include/glm/detail/setup.hpp"
+    },
+    {
+      "bytes": 4223,
+      "sha256": "bf3ee2ec124b9c1f5d8fc832cdf2099331fc19629d8aad1b4b88096c8a39b21c",
+      "path": "external/include/glm/detail/type_float.hpp"
+    },
+    {
+      "bytes": 6289,
+      "sha256": "7ffcc1ee4191c9eb48ef0890332688e10f601a52bed1c11b7c658c2238acd2bd",
+      "path": "external/include/glm/detail/type_gentype.hpp"
+    },
+    {
+      "bytes": 10396,
+      "sha256": "aa0cb56e9a9c100bfc028ce5d25cab3597cabebfca33bb2df202ce347cd1078f",
+      "path": "external/include/glm/detail/type_gentype.inl"
+    },
+    {
+      "bytes": 1861,
+      "sha256": "582a7cef6bc8da72ed2d4ae67cfaa65339955f9e56d9dc250bf4865ce097ec54",
+      "path": "external/include/glm/detail/type_half.hpp"
+    },
+    {
+      "bytes": 6209,
+      "sha256": "e000896482fc73cdbdb790fa33cce80877257ba733e89b938debdfaf194a98d6",
+      "path": "external/include/glm/detail/type_half.inl"
+    },
+    {
+      "bytes": 10392,
+      "sha256": "278109c1c5116a0a35d1dbf1267cd0fbe8e9bb5bd7a7c388d788e828fd9c0c0f",
+      "path": "external/include/glm/detail/type_int.hpp"
+    },
+    {
+      "bytes": 41982,
+      "sha256": "e387ca19b0185868d2946396617818851f85a65abf10491e150c5e14e3f5a82a",
+      "path": "external/include/glm/detail/type_mat.hpp"
+    },
+    {
+      "bytes": 1605,
+      "sha256": "19031767de12a506280f5559e9ab31092dda647aafd8c2cf5af3a15006f47b29",
+      "path": "external/include/glm/detail/type_mat.inl"
+    },
+    {
+      "bytes": 8168,
+      "sha256": "17454baa216a56b47efe5371ce5e1a9dfbd71676fcb6016d079d1293fa9153be",
+      "path": "external/include/glm/detail/type_mat2x2.hpp"
+    },
+    {
+      "bytes": 14903,
+      "sha256": "946097f162d8ff819a36e06953e445930138ac290ca9e6e6ecd96a19a77a3125",
+      "path": "external/include/glm/detail/type_mat2x2.inl"
+    },
+    {
+      "bytes": 7133,
+      "sha256": "88f7c7c14218aa6fdf1a9f702f215934bf4f38a78ccda8080a653ea6d173d069",
+      "path": "external/include/glm/detail/type_mat2x3.hpp"
+    },
+    {
+      "bytes": 14128,
+      "sha256": "8d6d90a1f25ec5c5f5cb33b169c1d5b771792d5027fcdd0e24e718660027cad0",
+      "path": "external/include/glm/detail/type_mat2x3.inl"
+    },
+    {
+      "bytes": 7206,
+      "sha256": "6170867ae9e01d898ff454c1ed3bc4e2453e11f36b7b72e822f24e90aa87fbda",
+      "path": "external/include/glm/detail/type_mat2x4.hpp"
+    },
+    {
+      "bytes": 14914,
+      "sha256": "469a20cc4403683cbf604d14398289c3c8280852bbc2b572f2612190a24e2e99",
+      "path": "external/include/glm/detail/type_mat2x4.inl"
+    },
+    {
+      "bytes": 7218,
+      "sha256": "ff40c2fd766aa1151e64137133f7fba0e732244057337e6497639bed3b03ef7e",
+      "path": "external/include/glm/detail/type_mat3x2.hpp"
+    },
+    {
+      "bytes": 15133,
+      "sha256": "691082dbef85cda01e690cfbf2ebd99162dc7f5cb0be5c913f2974625ff8a957",
+      "path": "external/include/glm/detail/type_mat3x2.inl"
+    },
+    {
+      "bytes": 8418,
+      "sha256": "83a747ab2b8210f63fb57578683e989dca9bc1743b72fc03c958747fd6b6ed98",
+      "path": "external/include/glm/detail/type_mat3x3.hpp"
+    },
+    {
+      "bytes": 18823,
+      "sha256": "c004a916341d00c9028318416f9005dc747731d995140303269779b08a4236c5",
+      "path": "external/include/glm/detail/type_mat3x3.inl"
+    },
+    {
+      "bytes": 7465,
+      "sha256": "4d5ab0e37f96b6ba40592415b9fbbb4a47b5aa3ec5915e01ef6c060d1bb54a00",
+      "path": "external/include/glm/detail/type_mat3x4.hpp"
+    },
+    {
+      "bytes": 17469,
+      "sha256": "a0e29bdc0a586b9c5819a2239f424bd001ff657814a3f2e9a683fd7c3acd5a8f",
+      "path": "external/include/glm/detail/type_mat3x4.inl"
+    },
+    {
+      "bytes": 7373,
+      "sha256": "d3264601cafe4d1cc0e9a68417234dbaee54a74638a11ba1899c0710e8755554",
+      "path": "external/include/glm/detail/type_mat4x2.hpp"
+    },
+    {
+      "bytes": 16890,
+      "sha256": "a3e429bb624517bb3f9fe5423b655472715e98170137b69ae3dbf0b356f5b76f",
+      "path": "external/include/glm/detail/type_mat4x2.inl"
+    },
+    {
+      "bytes": 7533,
+      "sha256": "395d2988733aec922cd627f7951f46eb9f3f3ae9af55ea959022576bdfe04c79",
+      "path": "external/include/glm/detail/type_mat4x3.hpp"
+    },
+    {
+      "bytes": 18797,
+      "sha256": "c34c4f41773fb67ef80f356e1ac51ad7ad69e871e04c2dc6ccfcceec9efff8fe",
+      "path": "external/include/glm/detail/type_mat4x3.inl"
+    },
+    {
+      "bytes": 8800,
+      "sha256": "ed86fed1570315d140778091ccc7d22bf4980e6adf5ca2d9df85ee1c1cb8fabb",
+      "path": "external/include/glm/detail/type_mat4x4.hpp"
+    },
+    {
+      "bytes": 27563,
+      "sha256": "4205fa965a5e00b3bf1984d4397ebc9513750c3916f30604a89d194660ae6cdd",
+      "path": "external/include/glm/detail/type_mat4x4.inl"
+    },
+    {
+      "bytes": 26983,
+      "sha256": "b354d3c1e8bae2f96ab772ccbff36d8006602837d00bae0321cc91ebc03fd3b2",
+      "path": "external/include/glm/detail/type_vec.hpp"
+    },
+    {
+      "bytes": 1604,
+      "sha256": "d1b097d5265a3b40af7d985a42cd23caabdd9ebd594956fddff5b3939c57c43d",
+      "path": "external/include/glm/detail/type_vec.inl"
+    },
+    {
+      "bytes": 11540,
+      "sha256": "edc7aee4a99003007584c2caf2f799e9857fc2920ed7d1a383c8f870bb1b5e48",
+      "path": "external/include/glm/detail/type_vec1.hpp"
+    },
+    {
+      "bytes": 15554,
+      "sha256": "fe9ecc09f1eae8495256f4eb283c46dfa25da8c0964675c79580b45b6b2dd70e",
+      "path": "external/include/glm/detail/type_vec1.inl"
+    },
+    {
+      "bytes": 14884,
+      "sha256": "66c365d1200a8b882ae8781d5409ab9f97cf3d7eb11617f8e34d1fc75ab0f55f",
+      "path": "external/include/glm/detail/type_vec2.hpp"
+    },
+    {
+      "bytes": 22216,
+      "sha256": "8cc23133b84b49d8ab6570e64c9f38100cf8172b5e53258d72841525e1e3227a",
+      "path": "external/include/glm/detail/type_vec2.inl"
+    },
+    {
+      "bytes": 16088,
+      "sha256": "d33a3abcbfe0606d5fd80e6d310a426828fa0b9aa0cfa4c580825f3c986b4f91",
+      "path": "external/include/glm/detail/type_vec3.hpp"
+    },
+    {
+      "bytes": 25080,
+      "sha256": "715c216624d2ef6462f27d67e3b99b492d8ccab5d94087104781a762abbfff91",
+      "path": "external/include/glm/detail/type_vec3.inl"
+    },
+    {
+      "bytes": 19726,
+      "sha256": "c0a64400b9c99a2bc0d9caeb7468ee67d6515187ad3dc92df7f284a735763307",
+      "path": "external/include/glm/detail/type_vec4.hpp"
+    },
+    {
+      "bytes": 28515,
+      "sha256": "8d0d5023eee6b4ff3ff15bf660944587cc3510a28d23bbe920faede190765d75",
+      "path": "external/include/glm/detail/type_vec4.inl"
+    },
+    {
+      "bytes": 1687,
+      "sha256": "501be4fdef3c4fdf7481f8c890a508d86bff1a8ed9dd05d971027a77f850e444",
+      "path": "external/include/glm/detail/type_vec4_avx.inl"
+    },
+    {
+      "bytes": 1688,
+      "sha256": "ea90fa41c907b6e08b8436b72253fe79f05be7f8900ae3473d905d581f985076",
+      "path": "external/include/glm/detail/type_vec4_avx2.inl"
+    },
+    {
+      "bytes": 3765,
+      "sha256": "09c2277aec33422ae6db350c2bc1872c1ccc1a8328956ece89935c79748b378c",
+      "path": "external/include/glm/detail/type_vec4_sse2.inl"
+    },
+    {
+      "bytes": 1654,
+      "sha256": "2d21aa9126ec23bbc0ab74107b3595e77a62989473bf7ba656805bfe1e6a903e",
+      "path": "external/include/glm/exponential.hpp"
+    },
+    {
+      "bytes": 5300,
+      "sha256": "fa5fc3d410e4e080413308d84395a310e625100f6025996c1d72f12a64c09a80",
+      "path": "external/include/glm/ext.hpp"
+    },
+    {
+      "bytes": 81805,
+      "sha256": "b249b86b3fb47cd76c4c2707a648795567536e983f2358cb0639027489a26cb2",
+      "path": "external/include/glm/fwd.hpp"
+    },
+    {
+      "bytes": 1650,
+      "sha256": "62e5a15283f2df083cf513664055c7784c84875f1220bb82955a4b899fcf243f",
+      "path": "external/include/glm/geometric.hpp"
+    },
+    {
+      "bytes": 4458,
+      "sha256": "64169ee59805974d590b4c137ae3b599e7316f261f0e53687536e8006e5674d2",
+      "path": "external/include/glm/glm.hpp"
+    },
+    {
+      "bytes": 9435,
+      "sha256": "8590ab1032db61273cffadbe79971241d53e779fbcad5f9d21392cdc9a14451f",
+      "path": "external/include/glm/gtc/bitfield.hpp"
+    },
+    {
+      "bytes": 16869,
+      "sha256": "a89c3dc0c0d22fbc510f82854f34051ad471a749758ba7e3fa15e99543aa82b5",
+      "path": "external/include/glm/gtc/bitfield.inl"
+    },
+    {
+      "bytes": 5508,
+      "sha256": "7c02b8099bf38e0e1afeceaf2e9d93f608c807cf5eaf09c561206955aa165f63",
+      "path": "external/include/glm/gtc/constants.hpp"
+    },
+    {
+      "bytes": 5353,
+      "sha256": "1c7053a7d7ca8eba92d62035932e511fceb3c6e20551760f5bdb0255336e434e",
+      "path": "external/include/glm/gtc/constants.inl"
+    },
+    {
+      "bytes": 3460,
+      "sha256": "9d299cf69f6b5eaef6c0850b5cad83f29f01e5efdef8ea3dbb31742e3895ecb7",
+      "path": "external/include/glm/gtc/epsilon.hpp"
+    },
+    {
+      "bytes": 4161,
+      "sha256": "eb10d610a5b89549ca54d5fcafb0fe37783ee3295551a905a11969a239aa6da7",
+      "path": "external/include/glm/gtc/epsilon.inl"
+    },
+    {
+      "bytes": 4233,
+      "sha256": "23f511aa464b8d6a25f9c664e200ed517454d9adf8253d3864885f1d91f18ecd",
+      "path": "external/include/glm/gtc/integer.hpp"
+    },
+    {
+      "bytes": 2949,
+      "sha256": "6b7b184093ee79f3bd6077f9a89c55e9e0c182b7d348622b1bcc15fb5a9c10f8",
+      "path": "external/include/glm/gtc/integer.inl"
+    },
+    {
+      "bytes": 2973,
+      "sha256": "0c5432b65299a8966550f911b23c33529bc78326d24a7491df71bdc6fa62527a",
+      "path": "external/include/glm/gtc/matrix_access.hpp"
+    },
+    {
+      "bytes": 3014,
+      "sha256": "fa300389972bb77dba885f6a000050915d51c98e26cbcc7da3c702379d0dae38",
+      "path": "external/include/glm/gtc/matrix_access.inl"
+    },
+    {
+      "bytes": 15914,
+      "sha256": "d11fb245a73cd3119e34b0bdba2ee82ef668d9a935dbcdd619a43c99d58cc307",
+      "path": "external/include/glm/gtc/matrix_integer.hpp"
+    },
+    {
+      "bytes": 3027,
+      "sha256": "9e1afaae3fbbe6435c73993152825afcc4d1aaa44ac3c43239dcbba80fc688a5",
+      "path": "external/include/glm/gtc/matrix_inverse.hpp"
+    },
+    {
+      "bytes": 6507,
+      "sha256": "ec26b2f5c37015d35ff66068a47ca88a248a3dced4c48cb81601ad899c33fbf1",
+      "path": "external/include/glm/gtc/matrix_inverse.inl"
+    },
+    {
+      "bytes": 12955,
+      "sha256": "61c14faf459494efa61d5fbb968ecabd50a85769ea67ecf1c4eb69a9d97868da",
+      "path": "external/include/glm/gtc/matrix_transform.hpp"
+    },
+    {
+      "bytes": 11204,
+      "sha256": "f7d6018b74283f79aff64134ea9a19f92ca4cd28ccbce9b0841583c18d70d5fe",
+      "path": "external/include/glm/gtc/matrix_transform.inl"
+    },
+    {
+      "bytes": 3160,
+      "sha256": "99b8004329b5c13af819662b718f95e1970d54298691735c0ea4e167a815f1c2",
+      "path": "external/include/glm/gtc/noise.hpp"
+    },
+    {
+      "bytes": 34292,
+      "sha256": "0268ab4dd47ce4ee1ab0e91ce5f4230e7bd2475e73075a8f432ffae00fddfacb",
+      "path": "external/include/glm/gtc/noise.inl"
+    },
+    {
+      "bytes": 26350,
+      "sha256": "892852684092ef22a306f62ef8b7a5191a64de4730c0c33c3f09aa855524e6da",
+      "path": "external/include/glm/gtc/packing.hpp"
+    },
+    {
+      "bytes": 14664,
+      "sha256": "e06de411d2e7d9bae08c9dc5671291ac888dcda4d0979aa1e749f9f32b908ca3",
+      "path": "external/include/glm/gtc/packing.inl"
+    },
+    {
+      "bytes": 13131,
+      "sha256": "d66c177e55721aad47f5cb71139233a3ed9e0818276a086534e10aa8da1a0a76",
+      "path": "external/include/glm/gtc/quaternion.hpp"
+    },
+    {
+      "bytes": 22223,
+      "sha256": "d17edd65956baa7048e0ab209b9edfd8bdf5ce6db8ebd8db6a2d015b5867cc39",
+      "path": "external/include/glm/gtc/quaternion.inl"
+    },
+    {
+      "bytes": 4004,
+      "sha256": "a1e1cacc128588485935d745d847e39870e1c623f9cd74d02f4ed91356dd1437",
+      "path": "external/include/glm/gtc/random.hpp"
+    },
+    {
+      "bytes": 13177,
+      "sha256": "b768d66c97f2789bef2f7016b71b22f33f2ba2904f9406b50b6a78a527d268df",
+      "path": "external/include/glm/gtc/random.inl"
+    },
+    {
+      "bytes": 4038,
+      "sha256": "cc69c1d04a8b5c20ec4d9fed73e3a35d647694b286e487674eab64173ad4d749",
+      "path": "external/include/glm/gtc/reciprocal.hpp"
+    },
+    {
+      "bytes": 8406,
+      "sha256": "d1509748fca4cd48e41fd388df6ad4b313c396d218d0201c4b9c66c42779126b",
+      "path": "external/include/glm/gtc/reciprocal.inl"
+    },
+    {
+      "bytes": 7097,
+      "sha256": "775fe452f6102d5fd70e7f56a75ec96f8501fc2d6ad5128d7d182140b2fc5c33",
+      "path": "external/include/glm/gtc/round.hpp"
+    },
+    {
+      "bytes": 11472,
+      "sha256": "b1584ebee4c35ec65a11ba257c639cb94ab0a9490f3da4e1a5fe3d458c6ca6c5",
+      "path": "external/include/glm/gtc/round.inl"
+    },
+    {
+      "bytes": 25807,
+      "sha256": "7a77f8b8353794b661d6479592038c8a7d257ed474690b892c413220f90eeb29",
+      "path": "external/include/glm/gtc/type_precision.hpp"
+    },
+    {
+      "bytes": 1627,
+      "sha256": "4ba7e66865f6fff1b153826252eaaf1a3a07303a8f66ebdf31d7f736e7c5d4a4",
+      "path": "external/include/glm/gtc/type_precision.inl"
+    },
+    {
+      "bytes": 5835,
+      "sha256": "7e6ca319bda9f9b8bf45f41cbf2bb4b0254e3d4f399c132b3473fae482224b95",
+      "path": "external/include/glm/gtc/type_ptr.hpp"
+    },
+    {
+      "bytes": 11456,
+      "sha256": "e2505b332dea7d5f5de381bd70cd38869540b6f37cb80b76351b93bdd0989e20",
+      "path": "external/include/glm/gtc/type_ptr.inl"
+    },
+    {
+      "bytes": 3393,
+      "sha256": "ce5188ad96e606a6142b4c883307da8ce65544a00ad707d36230b50f98ac1f43",
+      "path": "external/include/glm/gtc/ulp.hpp"
+    },
+    {
+      "bytes": 10226,
+      "sha256": "b6561cef63b88e31bfdeefa70bcc463b98db66825245f00b04769f51385b0c12",
+      "path": "external/include/glm/gtc/ulp.inl"
+    },
+    {
+      "bytes": 6680,
+      "sha256": "fe2921587c5ae0ba0e29079b2d361f2a8040a87885f7810c5557c32ce5414baf",
+      "path": "external/include/glm/gtc/vec1.hpp"
+    },
+    {
+      "bytes": 1601,
+      "sha256": "0ec9207cd955401b11142da2923e922b439bdbdbbf3aa9ed85db326c86f89201",
+      "path": "external/include/glm/gtc/vec1.inl"
+    },
+    {
+      "bytes": 9619,
+      "sha256": "5652ab883987f64ea32fd08070902c63a62a623f8b9845c0bc34d1b1661b683a",
+      "path": "external/include/glm/gtx/associated_min_max.hpp"
+    },
+    {
+      "bytes": 11495,
+      "sha256": "32d21146956e96ca5edc881b5583bac53bf6972f59b6353e502bc7f3ebc21864",
+      "path": "external/include/glm/gtx/associated_min_max.inl"
+    },
+    {
+      "bytes": 4484,
+      "sha256": "b74ff534ff1b6af6ef75f158477872089b7dd45a5a2da938c7353527e82ed8bd",
+      "path": "external/include/glm/gtx/bit.hpp"
+    },
+    {
+      "bytes": 3637,
+      "sha256": "fbceecf819e34a6b9c0a89beb83f22e170092fb76b65ad46529329b1092e3051",
+      "path": "external/include/glm/gtx/bit.inl"
+    },
+    {
+      "bytes": 2653,
+      "sha256": "0b8f28cdc8898f85581689ca8a3cfa62a18221c7dd0cc2758b7696ffc65d6279",
+      "path": "external/include/glm/gtx/closest_point.hpp"
+    },
+    {
+      "bytes": 2723,
+      "sha256": "e5526290bcfe5c274312f1d220226e643a6d78601749df7b6eacee2890d9cd3e",
+      "path": "external/include/glm/gtx/closest_point.inl"
+    },
+    {
+      "bytes": 3302,
+      "sha256": "de6d412436aeeb7b350463eb0ffb046c80fca2433a70389c4b9faeb321ebdfa2",
+      "path": "external/include/glm/gtx/color_space.hpp"
+    },
+    {
+      "bytes": 4841,
+      "sha256": "5f6a0253d258b7e3eb4b29ce2324fa10022b77ff9f45a6de4413752fd308271e",
+      "path": "external/include/glm/gtx/color_space.inl"
+    },
+    {
+      "bytes": 3182,
+      "sha256": "acace32dd4528f52cd465759837dcbd660012745ac2b4941ca842ec778b150a5",
+      "path": "external/include/glm/gtx/color_space_YCoCg.hpp"
+    },
+    {
+      "bytes": 3087,
+      "sha256": "ba14464556192a8f85e34983008aabb6f6a807200446262398776c9e3d70524f",
+      "path": "external/include/glm/gtx/color_space_YCoCg.inl"
+    },
+    {
+      "bytes": 2934,
+      "sha256": "b2ea969b7c0fbb1d8c10482f89f103295e12f7d8a5e845e5933bc26df2d452bb",
+      "path": "external/include/glm/gtx/common.hpp"
+    },
+    {
+      "bytes": 3356,
+      "sha256": "42dd777277fda1a0ef92e420b78eac14e4b136d2187957ba913d3466be41bc23",
+      "path": "external/include/glm/gtx/common.inl"
+    },
+    {
+      "bytes": 16028,
+      "sha256": "ce778fb6f97e0cdbe9871b682127389dd06279882312f78490f9d3bbbde71843",
+      "path": "external/include/glm/gtx/compatibility.hpp"
+    },
+    {
+      "bytes": 2711,
+      "sha256": "118b6284aca825f0ad42b01c98316b3a67fadc46a8c594b57683730ac1b6d81b",
+      "path": "external/include/glm/gtx/compatibility.inl"
+    },
+    {
+      "bytes": 2974,
+      "sha256": "47446fcaf6f380de511afbed00a46d5db39dd2601de5116146ac5ede41c42c0d",
+      "path": "external/include/glm/gtx/component_wise.hpp"
+    },
+    {
+      "bytes": 2784,
+      "sha256": "f451ba4befebfe7a57bac39e08418ffec2a37551b3f90d1c6e91dc01b65e8484",
+      "path": "external/include/glm/gtx/component_wise.inl"
+    },
+    {
+      "bytes": 10766,
+      "sha256": "021fd48503464c37943c870ed38d4e1532b8b6fcfd6582cc403e68b769346b9c",
+      "path": "external/include/glm/gtx/dual_quaternion.hpp"
+    },
+    {
+      "bytes": 12892,
+      "sha256": "adbaf6db13a472ca83795c989d7767e5c7d4d7627030bcfa94b183cdbdacaa8b",
+      "path": "external/include/glm/gtx/dual_quaternion.inl"
+    },
+    {
+      "bytes": 5371,
+      "sha256": "c9f7be2089c232ced5fbaa3780f0b4e1532ef1c57dd52593c3cdbd5b6c550d2b",
+      "path": "external/include/glm/gtx/euler_angles.hpp"
+    },
+    {
+      "bytes": 7341,
+      "sha256": "5db6e72c6fd9d332decdaad6af8af7142b8dac761ebc71fa26e951272ec0faf7",
+      "path": "external/include/glm/gtx/euler_angles.inl"
+    },
+    {
+      "bytes": 2403,
+      "sha256": "71a49cbf18c4c7b4334baaeaddce192ea5622463d52bdbed55ed3ba6579743e5",
+      "path": "external/include/glm/gtx/extend.hpp"
+    },
+    {
+      "bytes": 2511,
+      "sha256": "8e7e874991845f2bfeedbfede1524c61de84c4ec622fe9e78e5fb168a059b924",
+      "path": "external/include/glm/gtx/extend.inl"
+    },
+    {
+      "bytes": 4985,
+      "sha256": "22178aa7277a13abef6173c59f372e45c45cae603ea244be1ccb2fe94b4c587c",
+      "path": "external/include/glm/gtx/extented_min_max.hpp"
+    },
+    {
+      "bytes": 4053,
+      "sha256": "126f24a30bc1e90bff88929170b728d5bcca47ea9592b3c15edcd246107ec362",
+      "path": "external/include/glm/gtx/extented_min_max.inl"
+    },
+    {
+      "bytes": 4672,
+      "sha256": "488a6bf976cb2e1a171d586eb9406887d087561d480500602fbbceb4fc9df776",
+      "path": "external/include/glm/gtx/fast_exponential.hpp"
+    },
+    {
+      "bytes": 6100,
+      "sha256": "71febcd4509571596024867840e64d90642d7fea3b23b89981c07a9422fa4a65",
+      "path": "external/include/glm/gtx/fast_exponential.inl"
+    },
+    {
+      "bytes": 4413,
+      "sha256": "8652ddc9db2ef6ff080855dd85d1ee77cd8e7beb40295e3cd3811679b1633fb8",
+      "path": "external/include/glm/gtx/fast_square_root.hpp"
+    },
+    {
+      "bytes": 4004,
+      "sha256": "5dd3b6cfab4df63182cc5526b927a60034c420668a34b9861270d19ee88dda6e",
+      "path": "external/include/glm/gtx/fast_square_root.inl"
+    },
+    {
+      "bytes": 3734,
+      "sha256": "7e23c9e1dd12bbb150f1aea652ba11a656f9917872d452a280a24b7f92fc6c59",
+      "path": "external/include/glm/gtx/fast_trigonometry.hpp"
+    },
+    {
+      "bytes": 5654,
+      "sha256": "fadac52a44ad09f67ed1760b145b630a51254126a2ddd8fc04a9cb96791cc7f0",
+      "path": "external/include/glm/gtx/fast_trigonometry.inl"
+    },
+    {
+      "bytes": 2779,
+      "sha256": "1941fbc68b9d1807c0abdccec1c594063ffef44cae05cd504352a8e14fae354b",
+      "path": "external/include/glm/gtx/gradient_paint.hpp"
+    },
+    {
+      "bytes": 2513,
+      "sha256": "23da9c4e8795f639bc6788e95b4b3f252722c1a320d9b6c2e1aba2fb76741fd3",
+      "path": "external/include/glm/gtx/gradient_paint.inl"
+    },
+    {
+      "bytes": 2827,
+      "sha256": "4a792acd5e94203d55db30a8e4b3799710ecfffa1addb256b15d5d06227be4be",
+      "path": "external/include/glm/gtx/handed_coordinate_space.hpp"
+    },
+    {
+      "bytes": 2153,
+      "sha256": "738aaf1255b2f30f7ae999bba842cabc7443a978c9f9ecdf8ccb06d4def565c9",
+      "path": "external/include/glm/gtx/handed_coordinate_space.inl"
+    },
+    {
+      "bytes": 3498,
+      "sha256": "68413bde6f13d9bb1e8a7aafa75d27e93e6b23f7df0d86be9d36211b469faf08",
+      "path": "external/include/glm/gtx/integer.hpp"
+    },
+    {
+      "bytes": 5379,
+      "sha256": "7362b79374e4b23f6ba752fe2c172beaed5183081216163e1b82932f33ba29ef",
+      "path": "external/include/glm/gtx/integer.inl"
+    },
+    {
+      "bytes": 4455,
+      "sha256": "1fe256f62e21ec6924b66b347e5932cd65c26d9b26189d187b4278ecb5dd4029",
+      "path": "external/include/glm/gtx/intersect.hpp"
+    },
+    {
+      "bytes": 7006,
+      "sha256": "4541f3d265efb6b7e4b6d37efe0e46a7e7ba80ddf3e78b8d3e6601c9d3b8844c",
+      "path": "external/include/glm/gtx/intersect.inl"
+    },
+    {
+      "bytes": 8039,
+      "sha256": "2f07568bf3966103b20335b2442788bd1129d7f4a343a2b8fe02a06c661b46ce",
+      "path": "external/include/glm/gtx/io.hpp"
+    },
+    {
+      "bytes": 16877,
+      "sha256": "95b383c383372811b90651205f38cc37ac86c7a2b5ba2d7f8ca17e12b90d568c",
+      "path": "external/include/glm/gtx/io.inl"
+    },
+    {
+      "bytes": 2523,
+      "sha256": "c49354aa975b081734888fb3624c5f1f533ada404726bcf473c67c6efd983a06",
+      "path": "external/include/glm/gtx/log_base.hpp"
+    },
+    {
+      "bytes": 2037,
+      "sha256": "7f2693abac773f0fb1ac915702737f3695ef7c40a5f36f65ee7018ce717b8910",
+      "path": "external/include/glm/gtx/log_base.inl"
+    },
+    {
+      "bytes": 2639,
+      "sha256": "17bba98a60d04c8ed8679f295ed81c8cbb034ceaf945b39a6c2c4cb0c87a67d6",
+      "path": "external/include/glm/gtx/matrix_cross_product.hpp"
+    },
+    {
+      "bytes": 2271,
+      "sha256": "ce699bf341579ca026b0ec24df1402c4e07c2cd472346a66e760692dbe2c0ddc",
+      "path": "external/include/glm/gtx/matrix_cross_product.inl"
+    },
+    {
+      "bytes": 2684,
+      "sha256": "85262accf8f66ee7552bdf5a40919074dc8bd4076f897a4c4366dde20f2dabb5",
+      "path": "external/include/glm/gtx/matrix_decompose.hpp"
+    },
+    {
+      "bytes": 7809,
+      "sha256": "5a5ddc778e5a16c41d2d317359577322876fcb7449fced71b2bc8a842a89ed5f",
+      "path": "external/include/glm/gtx/matrix_decompose.inl"
+    },
+    {
+      "bytes": 3295,
+      "sha256": "f7bba880a054389c1205ca1f03a0da4af969d286b810c9a7bff8d3dbf5b87f1e",
+      "path": "external/include/glm/gtx/matrix_interpolation.hpp"
+    },
+    {
+      "bytes": 5285,
+      "sha256": "5eb25dde1e101f28d1aa3a31920e60c82deb0bd827a3fc45640ae0000bc94222",
+      "path": "external/include/glm/gtx/matrix_interpolation.inl"
+    },
+    {
+      "bytes": 5082,
+      "sha256": "85ec5025ed30a0c518bd151bcbc82c0d43009bc92c990a9d5a04fc114b3a0a35",
+      "path": "external/include/glm/gtx/matrix_major_storage.hpp"
+    },
+    {
+      "bytes": 5214,
+      "sha256": "f60b01f58dcea5e9d548138c1366a865ef6b201a8e74a0c8302a1a338a000531",
+      "path": "external/include/glm/gtx/matrix_major_storage.inl"
+    },
+    {
+      "bytes": 3818,
+      "sha256": "0abbc2da5b69b044bfbf68819b9eafd7370e65acf2c88bd283ef611682e105ce",
+      "path": "external/include/glm/gtx/matrix_operation.hpp"
+    },
+    {
+      "bytes": 3804,
+      "sha256": "5784450fbb613b9720a2becad9030b932049557416b8a1cff27fc405c44505eb",
+      "path": "external/include/glm/gtx/matrix_operation.inl"
+    },
+    {
+      "bytes": 3979,
+      "sha256": "a59d76219e5ea9909c05104316910d424a162657c9c48e1c51cf6abb13dae54d",
+      "path": "external/include/glm/gtx/matrix_query.hpp"
+    },
+    {
+      "bytes": 5388,
+      "sha256": "248a96a3cd9f83accfb543dbd2302643d5ca488d46b6ffb9bf81eacd193cd1b3",
+      "path": "external/include/glm/gtx/matrix_query.inl"
+    },
+    {
+      "bytes": 3856,
+      "sha256": "eef49ff75367519088bfad547d9ee50a0dd92e4c8add90e0072bd7fdef9b421e",
+      "path": "external/include/glm/gtx/matrix_transform_2d.hpp"
+    },
+    {
+      "bytes": 2912,
+      "sha256": "c258b4777eef39e0b9c1c99e3341017b99db8ece8e26bd81cfc6edf600bce003",
+      "path": "external/include/glm/gtx/matrix_transform_2d.inl"
+    },
+    {
+      "bytes": 2385,
+      "sha256": "dbc52f3d4b3290fde9e8945db4ca3ac6c82f42ba67876535e0779adbf09c4382",
+      "path": "external/include/glm/gtx/mixed_product.hpp"
+    },
+    {
+      "bytes": 1846,
+      "sha256": "c70e45d4906b99f3a330d00ec8ce69ecd89526927083509192420eb829bf5618",
+      "path": "external/include/glm/gtx/mixed_product.inl"
+    },
+    {
+      "bytes": 3696,
+      "sha256": "91a9081696492b0280a3984c1b13fdc8588dc85ab5fd31d010417837b8b0b3f3",
+      "path": "external/include/glm/gtx/multiple.hpp"
+    },
+    {
+      "bytes": 2807,
+      "sha256": "3472f0e4f7d053623d7f1a40885a2aa075bef0333af933ee1b0ac82ab545188b",
+      "path": "external/include/glm/gtx/multiple.inl"
+    },
+    {
+      "bytes": 3993,
+      "sha256": "bb482d828abd4bfb668de666cc116cb9a0d97ebe215bc7a0cb8af60f63660506",
+      "path": "external/include/glm/gtx/norm.hpp"
+    },
+    {
+      "bytes": 3782,
+      "sha256": "6281f066c703a7296d69eac95485fc5fc353a39cb38423eb03e56084e8fc4684",
+      "path": "external/include/glm/gtx/norm.inl"
+    },
+    {
+      "bytes": 2399,
+      "sha256": "657a6269ddf6f34b96d77b4384757754c6190f6ecef225c6178890a8ac53c844",
+      "path": "external/include/glm/gtx/normal.hpp"
+    },
+    {
+      "bytes": 1859,
+      "sha256": "70648cfbd019ac5a9cb6edeeb699af32897686c9bdcbd2f196f40da8eaa7e742",
+      "path": "external/include/glm/gtx/normal.inl"
+    },
+    {
+      "bytes": 2929,
+      "sha256": "2f961a3da9dc4a91900d923e3cc480e17df5a0cefb0c025ab6277b5b784e0f11",
+      "path": "external/include/glm/gtx/normalize_dot.hpp"
+    },
+    {
+      "bytes": 2161,
+      "sha256": "6112be43b573e8dbfec9c1c832a34d2d3af1b362d4dfe587e66e3d3b8b9dbac9",
+      "path": "external/include/glm/gtx/normalize_dot.inl"
+    },
+    {
+      "bytes": 3643,
+      "sha256": "e9f82fc76a69b89e10a3f61550104d03fedcc2511ed32b85b76e4107a77ace14",
+      "path": "external/include/glm/gtx/number_precision.hpp"
+    },
+    {
+      "bytes": 1645,
+      "sha256": "8439d1d1bdf145be99d8fdf22b33cb2f48b8989bac5f0b80b544197f946c3ebc",
+      "path": "external/include/glm/gtx/number_precision.inl"
+    },
+    {
+      "bytes": 2636,
+      "sha256": "7e10fb07ec55f323bd0ee730a3469d40fe8c29a7d3d3e14aa7b6f04268b754f5",
+      "path": "external/include/glm/gtx/optimum_pow.hpp"
+    },
+    {
+      "bytes": 1976,
+      "sha256": "95c66f60102dbd0a74dc9279abe9360a31990b5865d9d108988cf5a417c7a86b",
+      "path": "external/include/glm/gtx/optimum_pow.inl"
+    },
+    {
+      "bytes": 2644,
+      "sha256": "7df60bfb34a7184710d6e4f5d7a53cc6b3059ddd4cc34e99a024f187b39224f1",
+      "path": "external/include/glm/gtx/orthonormalize.hpp"
+    },
+    {
+      "bytes": 2194,
+      "sha256": "f92ad62c5efa56003ccb9a84e493fcffc5c3b6331b8ff875c62509f030308038",
+      "path": "external/include/glm/gtx/orthonormalize.inl"
+    },
+    {
+      "bytes": 2438,
+      "sha256": "2c8963b3ec3096f288e3106c2e72643138ceb4db1be3dffe39f7c58c9df5e207",
+      "path": "external/include/glm/gtx/perpendicular.hpp"
+    },
+    {
+      "bytes": 1805,
+      "sha256": "0a99f7a6cc45426e750bb479c006da223f7609ef012c9db8cece35e9040bd7b6",
+      "path": "external/include/glm/gtx/perpendicular.inl"
+    },
+    {
+      "bytes": 2651,
+      "sha256": "c0274137cec6896866bfd53475ab96cc69b9e2cce11d1f8ecf8fa690bb2c1545",
+      "path": "external/include/glm/gtx/polar_coordinates.hpp"
+    },
+    {
+      "bytes": 2336,
+      "sha256": "140b887852aaab8ed69c71c508eb92835205f9ce7f5b3198e13fd7570bd3bc2c",
+      "path": "external/include/glm/gtx/polar_coordinates.inl"
+    },
+    {
+      "bytes": 2304,
+      "sha256": "d892f73a0e5e0e6f82c0f3f4963e5e9cc7bfa15ddcd548efb6984ff99b741d7a",
+      "path": "external/include/glm/gtx/projection.hpp"
+    },
+    {
+      "bytes": 1824,
+      "sha256": "2012c6347e8dcec8b9c8b1021dd2688e595cf74c8806e272e3bfadf8fb49ebb1",
+      "path": "external/include/glm/gtx/projection.inl"
+    },
+    {
+      "bytes": 6251,
+      "sha256": "e4ab249a9e9fded23e50d213ecc440d6352dc9e77af5229b7ee1949700db633a",
+      "path": "external/include/glm/gtx/quaternion.hpp"
+    },
+    {
+      "bytes": 7262,
+      "sha256": "497146960bbe8d68fab3d5c4499fe9456ea55bbf34ad06c8d2c89e9ef6508172",
+      "path": "external/include/glm/gtx/quaternion.inl"
+    },
+    {
+      "bytes": 3487,
+      "sha256": "e63d5358b177984dd051a4e34da1386da00e6c81f9ce6097ab1ce9def2b19f7d",
+      "path": "external/include/glm/gtx/range.hpp"
+    },
+    {
+      "bytes": 2567,
+      "sha256": "3e53619a8a96b890337416773932161b936b1796c8640e2fca00967867384729",
+      "path": "external/include/glm/gtx/raw_data.hpp"
+    },
+    {
+      "bytes": 1609,
+      "sha256": "ab53781df5147ce7ff3b004cf4bce0d3d530a327b97208e1c2f62fadf8b3173b",
+      "path": "external/include/glm/gtx/raw_data.inl"
+    },
+    {
+      "bytes": 3666,
+      "sha256": "a5ddb9b4a1ab641f1277569b06295a4b477c480b6588379b6d733d4e866d4eb6",
+      "path": "external/include/glm/gtx/rotate_normalized_axis.hpp"
+    },
+    {
+      "bytes": 3283,
+      "sha256": "cc0be9f2d5c7c4a048008a689dde11eb527b31b146529b8194ab1e62fc927905",
+      "path": "external/include/glm/gtx/rotate_normalized_axis.inl"
+    },
+    {
+      "bytes": 4870,
+      "sha256": "1e6b8e8cab2bde724492cae25a5c5aba5cd9bef6e13932eef6abea2b813a34a4",
+      "path": "external/include/glm/gtx/rotate_vector.hpp"
+    },
+    {
+      "bytes": 5393,
+      "sha256": "5a771819e9496f839fa64371c7512ee510276a4f5edfbfa3a84a1c73e0d19e2f",
+      "path": "external/include/glm/gtx/rotate_vector.inl"
+    },
+    {
+      "bytes": 3476,
+      "sha256": "23386e1a2fa480c54ca4d8fe45bf24ba0326a8d1c74cb49341275156a76ab0ba",
+      "path": "external/include/glm/gtx/scalar_multiplication.hpp"
+    },
+    {
+      "bytes": 2217,
+      "sha256": "d0537f61f25bc45b05fb5f1859bf1a33eb15d76d10c075a0b98d4ceb3f8572b1",
+      "path": "external/include/glm/gtx/scalar_relational.hpp"
+    },
+    {
+      "bytes": 2588,
+      "sha256": "890c4b04e6f5a60b3e566f6ffb5a2de1c1ac588ff3f5463dfb57a17b9aefa6f8",
+      "path": "external/include/glm/gtx/scalar_relational.inl"
+    },
+    {
+      "bytes": 7059,
+      "sha256": "ffe4e56ab275f1c3390e359426f054aa8910c3ad732b86c9fd8f313903d78a14",
+      "path": "external/include/glm/gtx/simd_mat4.hpp"
+    },
+    {
+      "bytes": 13011,
+      "sha256": "460938e8535386e2f740f434d07b5d072cb0596664411ec368edd89cf0fa954e",
+      "path": "external/include/glm/gtx/simd_mat4.inl"
+    },
+    {
+      "bytes": 9748,
+      "sha256": "87952118430e94b0c32ad4782e4c58a5f1c0c184e415a21c1d097be099e345cd",
+      "path": "external/include/glm/gtx/simd_quat.hpp"
+    },
+    {
+      "bytes": 17564,
+      "sha256": "da6122874af7bc3a0d7074fffcca941f5910978868f2b326e2e140df399e02a0",
+      "path": "external/include/glm/gtx/simd_quat.inl"
+    },
+    {
+      "bytes": 17214,
+      "sha256": "9817e625f2d674c9399cfb2652e89f84570e1114c2c1ed2fa2c60c5cfb5e6ff0",
+      "path": "external/include/glm/gtx/simd_vec4.hpp"
+    },
+    {
+      "bytes": 15651,
+      "sha256": "e949f9c72c7cb6f56b0b3c115b476a9bf200c19cf08465a60dbb8ef5eaee0f54",
+      "path": "external/include/glm/gtx/simd_vec4.inl"
+    },
+    {
+      "bytes": 2946,
+      "sha256": "278f201f4c8708008c6f66df5378f9ea1e765dd01904ccb0dc6420d230ea16b4",
+      "path": "external/include/glm/gtx/spline.hpp"
+    },
+    {
+      "bytes": 3494,
+      "sha256": "a34aac405db6a4533ce5774edb2987cb0aca76a6f756db0da6fbe14f592d499e",
+      "path": "external/include/glm/gtx/spline.inl"
+    },
+    {
+      "bytes": 3320,
+      "sha256": "8ecbae1c286d50dbe7a41ec4c8de23cb8b4b520109ce70a1c3b397a86cf1ea54",
+      "path": "external/include/glm/gtx/std_based_type.hpp"
+    },
+    {
+      "bytes": 1641,
+      "sha256": "6f3a758ab2a7731f0a3713e4f6286f0cf28bbe708790571e001e1390af80dce9",
+      "path": "external/include/glm/gtx/std_based_type.inl"
+    },
+    {
+      "bytes": 2712,
+      "sha256": "ef43b10295c3c3f588fa39dbe4b31066af3e637087ce6a072761d4ff0173d2b7",
+      "path": "external/include/glm/gtx/string_cast.hpp"
+    },
+    {
+      "bytes": 13558,
+      "sha256": "96dc6292bbd409d90155b9923f0cb7bce77e880b11a738299d4c2507b741821c",
+      "path": "external/include/glm/gtx/string_cast.inl"
+    },
+    {
+      "bytes": 3008,
+      "sha256": "c83c20d1cb8bdeaa8b5048c5f7f39dce31ada7948d09c81de8eb5f51ab6de672",
+      "path": "external/include/glm/gtx/transform.hpp"
+    },
+    {
+      "bytes": 2130,
+      "sha256": "74ae06c9c4a2e1311b7bbdde8de359071d05a23daaac4b44e60e2244610b88b9",
+      "path": "external/include/glm/gtx/transform.inl"
+    },
+    {
+      "bytes": 4860,
+      "sha256": "df39a74045cdcfc30e932c27d63ff74396184e23115efdbd0d6f4ba222807bf4",
+      "path": "external/include/glm/gtx/transform2.hpp"
+    },
+    {
+      "bytes": 4734,
+      "sha256": "5a737dad5f354b21d751059c0a1e45754f3ae0688cfc7c892d611152fd371fad",
+      "path": "external/include/glm/gtx/transform2.inl"
+    },
+    {
+      "bytes": 34393,
+      "sha256": "517ced3467a7176e6bde1eb097525d26267d70c2f761d69f0105ca03b5779c7b",
+      "path": "external/include/glm/gtx/type_aligned.hpp"
+    },
+    {
+      "bytes": 1637,
+      "sha256": "317fe38f6831b330954cae17ccff879a65881e3b2f92e406e6917f8d33bdbdd1",
+      "path": "external/include/glm/gtx/type_aligned.inl"
+    },
+    {
+      "bytes": 3134,
+      "sha256": "b29608485a0ac0a972aa0c362c909ccd7b11f87e770ab98416ad85537978e33b",
+      "path": "external/include/glm/gtx/vector_angle.hpp"
+    },
+    {
+      "bytes": 3083,
+      "sha256": "6c1c015b95c450bcc0ad986f3ad0eb5c6dbc521d09ce906cbce5e939eb076e78",
+      "path": "external/include/glm/gtx/vector_angle.inl"
+    },
+    {
+      "bytes": 3762,
+      "sha256": "5815c70bce2faa358e4e47cae86b3f21aee7f42bad794d107272f15b60f1e1f1",
+      "path": "external/include/glm/gtx/vector_query.hpp"
+    },
+    {
+      "bytes": 6501,
+      "sha256": "038d74b1e3bcdc5173cc57005d74a0a133b9460cb607899fbaf554fecceb6481",
+      "path": "external/include/glm/gtx/vector_query.inl"
+    },
+    {
+      "bytes": 2582,
+      "sha256": "f5dd1af4d0867d8635a7114b7dea72346df139c2750fd7d30333cd699f4f9833",
+      "path": "external/include/glm/gtx/wrap.hpp"
+    },
+    {
+      "bytes": 4946,
+      "sha256": "2a0a51d01469a7ec8840a50154bc8b1c0cbf068de163f337a7171d6f47d871d0",
+      "path": "external/include/glm/gtx/wrap.inl"
+    },
+    {
+      "bytes": 1646,
+      "sha256": "d041abcd6bbb653de5c00afac37a247e53f90eba55e4d0e7eee03795a959449f",
+      "path": "external/include/glm/integer.hpp"
+    },
+    {
+      "bytes": 4437,
+      "sha256": "5c567ff4bc8bf3a06e6658437a22b42f286484e50c8369516367fabd4807a223",
+      "path": "external/include/glm/mat2x2.hpp"
+    },
+    {
+      "bytes": 3059,
+      "sha256": "286f2d14004f315a1173be020fa1d66fbe76c9cc9dc1ed7e87164cd6e3b505c4",
+      "path": "external/include/glm/mat2x3.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "febaa883773265e6b5826c2a7e80e898fd7f4c1b7d446dbd52010ad39c8c56aa",
+      "path": "external/include/glm/mat2x4.hpp"
+    },
+    {
+      "bytes": 3056,
+      "sha256": "15d97f9c56f59b77e0d345568203722a6ed2dcd22aca01b6998ce600b96e763d",
+      "path": "external/include/glm/mat3x2.hpp"
+    },
+    {
+      "bytes": 4437,
+      "sha256": "19274a1f46cfde413dcc85145f5a299345bfc9913d959311f31e9ba914deed5f",
+      "path": "external/include/glm/mat3x3.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "b685bb4029fe63bd13498f4cff4b629e8b8d215af073bf82b694e8c8e6e0d7a2",
+      "path": "external/include/glm/mat3x4.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "0101d056b6a30dad79504b2a76000120cacfc306060bc5064c844f1b47d0b720",
+      "path": "external/include/glm/mat4x2.hpp"
+    },
+    {
+      "bytes": 3060,
+      "sha256": "2c244434cdb5ce457b231a03c5659f1d9ac24e5f52f945b6f29b3885fbfc0c9b",
+      "path": "external/include/glm/mat4x3.hpp"
+    },
+    {
+      "bytes": 4437,
+      "sha256": "2f3c7cddf48ee1d7fecf3accc3fc14ba71471f060803673fa8ee935a6b4d1287",
+      "path": "external/include/glm/mat4x4.hpp"
+    },
+    {
+      "bytes": 1644,
+      "sha256": "890ae9e478e19f1e0405b35f421c101c27ad88f63e31d9b101b905c1875f1aee",
+      "path": "external/include/glm/matrix.hpp"
+    },
+    {
+      "bytes": 1646,
+      "sha256": "7e32e91d27dc50a799cbf697b6de1fa0ab44e4eb65d2e55666da694efbf5333f",
+      "path": "external/include/glm/packing.hpp"
+    },
+    {
+      "bytes": 1658,
+      "sha256": "8bb13f53dbd09817905943a4ce339b858804b69cac8fabfcd88a63e4cdde1013",
+      "path": "external/include/glm/trigonometric.hpp"
+    },
+    {
+      "bytes": 1640,
+      "sha256": "404633ea2a675bf506d4ccf217bb7d56a0836ff7dc04dc87ca931fdf06cc832a",
+      "path": "external/include/glm/vec2.hpp"
+    },
+    {
+      "bytes": 1640,
+      "sha256": "4756d97a176ccd0e0c169a5f260f9f3d9d891baf296a0263ffd0d2d6bbb94e30",
+      "path": "external/include/glm/vec3.hpp"
+    },
+    {
+      "bytes": 1640,
+      "sha256": "9af7781b18fe7813fa02253a70758d94d8e797d8833466a8b65e5fb375d9cb13",
+      "path": "external/include/glm/vec4.hpp"
+    },
+    {
+      "bytes": 1666,
+      "sha256": "557d2fb50ae3414a2fd457503c1cb1ff914ae0a18a69da47c3b20beb07bc4f04",
+      "path": "external/include/glm/vector_relational.hpp"
+    },
+    {
+      "bytes": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+      "path": "external/include/json.hpp"
+    },
+    {
+      "bytes": 220351,
+      "sha256": "8e820815011447b44e0d3100b002b2279954fa2479371c14ec61218ef505a4e0",
+      "path": "external/include/stb_image.h"
+    },
+    {
+      "bytes": 25863,
+      "sha256": "48ad5927658fe0865ffc5df0d9e9466afbabffbfb4cff57df72e28574c94315f",
+      "path": "external/include/stb_image_write.h"
+    },
+    {
+      "bytes": 2584968,
+      "sha256": "bc7b5074e5636a465b34dc06721762dc85c9c969d978a10357474d3851f88851",
+      "path": "external/lib/glew32s.lib"
+    },
+    {
+      "bytes": 646206,
+      "sha256": "1f7b4f3d887473fe8d28c1a078ec02a6df297e23cca6227041eb3ba82f5b7b78",
+      "path": "external/lib/glfw3.lib"
+    },
+    {
+      "bytes": 2214664,
+      "sha256": "b25a4c49ddf0d9683589e23628db0b9380e81236953084fc0841add50e87e745",
+      "path": "external/lib/vc2015/glew32s.lib"
+    },
+    {
+      "bytes": 323518,
+      "sha256": "d0e241748c3a93a6590b4c94e91489d664aa613af77c3726f9c0ad756b8bc79b",
+      "path": "external/lib/vc2015/glfw3.lib"
+    },
+    {
+      "bytes": 1112,
+      "sha256": "2ae461f8c8b78ed77c14e9c3b7e353ba277e44cb3dbfb5a6d380f76f2ae081a2",
+      "path": "external/tinygltf/LICENSE"
+    },
+    {
+      "bytes": 279738,
+      "sha256": "b63dc0ae9e4b1ae5af288bb2b9b69ba06bc65bf9fd880795a7ba3cabe96df072",
+      "path": "external/tinygltf/tiny_gltf.h"
+    },
+    {
+      "bytes": 122,
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635",
+      "path": "scenes/assets/area-light.obj"
+    },
+    {
+      "bytes": 3124619,
+      "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "path": "scenes/assets/fluted-body-high.obj"
+    },
+    {
+      "bytes": 188496,
+      "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "path": "scenes/assets/fluted-body-low.obj"
+    },
+    {
+      "bytes": 769303,
+      "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "path": "scenes/assets/fluted-body-medium.obj"
+    },
+    {
+      "bytes": 196662,
+      "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c",
+      "path": "scenes/assets/glaze.bmp"
+    },
+    {
+      "bytes": 182476,
+      "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd",
+      "path": "scenes/assets/gltf/fluted-body-medium.glb"
+    },
+    {
+      "bytes": 7868,
+      "sha256": "171dc1f9906d2a31fa07e2297da03a234af4ae1081ea720f052b9dd3a520399a",
+      "path": "scenes/assets/gltf/generation.json"
+    },
+    {
+      "bytes": 120412,
+      "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e",
+      "path": "scenes/assets/gltf/swept-knot-medium.glb"
+    },
+    {
+      "bytes": 124600,
+      "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344",
+      "path": "scenes/assets/gltf/vase-high.glb"
+    },
+    {
+      "bytes": 13725,
+      "sha256": "e27cd56f7b9383b9066d6533604b1e74173c59204ad08655e8a4013e0513711a",
+      "path": "scenes/assets/gltf/vase-low-data-uri.gltf"
+    },
+    {
+      "bytes": 9504,
+      "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622",
+      "path": "scenes/assets/gltf/vase-low.bin"
+    },
+    {
+      "bytes": 10540,
+      "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf",
+      "path": "scenes/assets/gltf/vase-low.glb"
+    },
+    {
+      "bytes": 1028,
+      "sha256": "f415baa92a020dada57c82da4f70b18a5f46ad7776c5658e8c0e60599f122c1a",
+      "path": "scenes/assets/gltf/vase-low.gltf"
+    },
+    {
+      "bytes": 34232,
+      "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8",
+      "path": "scenes/assets/gltf/vase-medium.glb"
+    },
+    {
+      "bytes": 196662,
+      "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442",
+      "path": "scenes/assets/height.bmp"
+    },
+    {
+      "bytes": 2004275,
+      "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "path": "scenes/assets/swept-knot-high.obj"
+    },
+    {
+      "bytes": 121244,
+      "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "path": "scenes/assets/swept-knot-low.obj"
+    },
+    {
+      "bytes": 493493,
+      "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "path": "scenes/assets/swept-knot-medium.obj"
+    },
+    {
+      "bytes": 282121,
+      "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f",
+      "path": "scenes/assets/torus.obj"
+    },
+    {
+      "bytes": 387854,
+      "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c",
+      "path": "scenes/assets/vase-high.obj"
+    },
+    {
+      "bytes": 24651,
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543",
+      "path": "scenes/assets/vase-low.obj"
+    },
+    {
+      "bytes": 94338,
+      "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb",
+      "path": "scenes/assets/vase-medium.obj"
+    },
+    {
+      "bytes": 3283,
+      "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a",
+      "path": "scenes/closed-benchmark.json"
+    },
+    {
+      "bytes": 2863,
+      "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+      "path": "scenes/complexity-high.json"
+    },
+    {
+      "bytes": 2861,
+      "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+      "path": "scenes/complexity-low.json"
+    },
+    {
+      "bytes": 2867,
+      "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+      "path": "scenes/complexity-medium.json"
+    },
+    {
+      "bytes": 2265,
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b",
+      "path": "scenes/cornell.json"
+    },
+    {
+      "bytes": 2732,
+      "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58",
+      "path": "scenes/gltf-baseline.json"
+    },
+    {
+      "bytes": 2874,
+      "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2",
+      "path": "scenes/gltf-complexity-high.json"
+    },
+    {
+      "bytes": 2872,
+      "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e",
+      "path": "scenes/gltf-complexity-low.json"
+    },
+    {
+      "bytes": 2878,
+      "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664",
+      "path": "scenes/gltf-complexity-medium.json"
+    },
+    {
+      "bytes": 2889,
+      "sha256": "ec6de8d3ffd85508e798e4b9bcec769ff937e61049a6a1b21b3c6948e74a9531",
+      "path": "scenes/gltf-equivalence-data-uri.json"
+    },
+    {
+      "bytes": 2880,
+      "sha256": "72a7b8b6baca8d51c4f38d0a525a4bec867937144600a731a8947923d46df4dc",
+      "path": "scenes/gltf-equivalence-external.json"
+    },
+    {
+      "bytes": 2874,
+      "sha256": "8726026e91dce73dc45aefbab263b6d2dbcf56a5541602d611bafb2aa3f4d826",
+      "path": "scenes/gltf-equivalence-glb.json"
+    },
+    {
+      "bytes": 5055,
+      "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9",
+      "path": "scenes/gltf-motion-validation.json"
+    },
+    {
+      "bytes": 3342,
+      "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50",
+      "path": "scenes/gltf-showcase.json"
+    },
+    {
+      "bytes": 2300,
+      "sha256": "d6c9e70a67eb1dabc73102f104f085d19153e2e69a60538b940a54569cc483e6",
+      "path": "scenes/hedge-motion-frozen-end.json"
+    },
+    {
+      "bytes": 2305,
+      "sha256": "17bb532cf3c63fe4f76c10628d33b8cdaada99b9eaca1649b3d7b6d582c731b2",
+      "path": "scenes/hedge-motion-frozen-midpoint.json"
+    },
+    {
+      "bytes": 2302,
+      "sha256": "08d2e803a24f11087c9545e4fbbd72411245feec0ea168ba04d50fba6d15e40a",
+      "path": "scenes/hedge-motion-frozen-start.json"
+    },
+    {
+      "bytes": 3374,
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0",
+      "path": "scenes/hedge-motion-validation.json"
+    },
+    {
+      "bytes": 2289,
+      "sha256": "36dc2940eccf27ebb0a75ee5d2bd6fa9604694bfe1fead13ede18632a40f8980",
+      "path": "scenes/hedge-motion.json"
+    },
+    {
+      "bytes": 2527,
+      "sha256": "ad6209b1a0e43476243f83c2252a148689c43e43aad871f7592f31f59a803bd2",
+      "path": "scenes/hedge-obj-baseline.json"
+    },
+    {
+      "bytes": 1887,
+      "sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a",
+      "path": "scenes/hedge-sampling-diffuse.json"
+    },
+    {
+      "bytes": 2313,
+      "sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02",
+      "path": "scenes/hedge-sampling-glass-dof.json"
+    },
+    {
+      "bytes": 1351,
+      "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05",
+      "path": "scenes/light-test-cube.json"
+    },
+    {
+      "bytes": 1391,
+      "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8",
+      "path": "scenes/light-test-mesh.json"
+    },
+    {
+      "bytes": 1353,
+      "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58",
+      "path": "scenes/light-test-sphere.json"
+    },
+    {
+      "bytes": 2109,
+      "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8",
+      "path": "scenes/open-benchmark.json"
+    },
+    {
+      "bytes": 3147,
+      "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2",
+      "path": "scenes/optical-workbench.json"
+    },
+    {
+      "bytes": 3141,
+      "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1",
+      "path": "scenes/preview-smoke.json"
+    },
+    {
+      "bytes": 2306,
+      "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a",
+      "path": "scenes/procedural-fluted-body-cells.json"
+    },
+    {
+      "bytes": 2308,
+      "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c",
+      "path": "scenes/procedural-fluted-body-marble.json"
+    },
+    {
+      "bytes": 2305,
+      "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e",
+      "path": "scenes/procedural-fluted-body-plain.json"
+    },
+    {
+      "bytes": 3101,
+      "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "path": "scenes/procedural-optical-stilllife.json"
+    },
+    {
+      "bytes": 2305,
+      "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758",
+      "path": "scenes/procedural-swept-knot-cells.json"
+    },
+    {
+      "bytes": 2307,
+      "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d",
+      "path": "scenes/procedural-swept-knot-marble.json"
+    },
+    {
+      "bytes": 2304,
+      "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3",
+      "path": "scenes/procedural-swept-knot-plain.json"
+    },
+    {
+      "bytes": 607,
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904",
+      "path": "scenes/sphere.json"
+    },
+    {
+      "bytes": 3265,
+      "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6",
+      "path": "scenes/uniform-benchmark.json"
+    },
+    {
+      "bytes": 3146,
+      "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001",
+      "path": "scenes/workbench-dof.json"
+    },
+    {
+      "bytes": 3131,
+      "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f",
+      "path": "scenes/workbench-mirror.json"
+    },
+    {
+      "bytes": 3082,
+      "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b",
+      "path": "scenes/workbench-no-bump.json"
+    },
+    {
+      "bytes": 3079,
+      "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d",
+      "path": "scenes/workbench-procedural.json"
+    },
+    {
+      "bytes": 849,
+      "sha256": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+      "path": "scripts/source_hash.py"
+    },
+    {
+      "bytes": 9999,
+      "sha256": "78dac169cf9982189686de74fbbefb063a8bd8206fe4d2ee8270b14db55dfd77",
+      "path": "src/ImGui/imconfig.h"
+    },
+    {
+      "bytes": 680565,
+      "sha256": "060c0b40d7e5c4b120a7fbb2d0df2e34f5390fa218adf03b465a0ff07c571cdd",
+      "path": "src/ImGui/imgui.cpp"
+    },
+    {
+      "bytes": 300080,
+      "sha256": "31949ad71d7f3af0a627dc45e0c03c42f4a89a8a7c89b82beafb1ba3b01893c7",
+      "path": "src/ImGui/imgui.h"
+    },
+    {
+      "bytes": 411816,
+      "sha256": "28654b96fc3e71312ca1c0d3dd35e5d1d1bd39e82b4cc9efa6798c51804c878f",
+      "path": "src/ImGui/imgui_demo.cpp"
+    },
+    {
+      "bytes": 212542,
+      "sha256": "f54c7f1d10f5a312c7deaac1c59b83831d34d818fcf05aa5003f12f27870f232",
+      "path": "src/ImGui/imgui_draw.cpp"
+    },
+    {
+      "bytes": 35884,
+      "sha256": "b035f969888dc47b80853f722344944b6e6b185fd4a08373e6a143b2c175d5b5",
+      "path": "src/ImGui/imgui_impl_glfw.cpp"
+    },
+    {
+      "bytes": 3481,
+      "sha256": "46e5d198e21934cf38ce3503d530c8ea930c5f8591d2712af4d3f8d84309b4ad",
+      "path": "src/ImGui/imgui_impl_glfw.h"
+    },
+    {
+      "bytes": 41865,
+      "sha256": "bbb0e56531071d66221d8872215c1c1460b1e4aae7acb1106261ccb50956e978",
+      "path": "src/ImGui/imgui_impl_opengl3.cpp"
+    },
+    {
+      "bytes": 2867,
+      "sha256": "21f22b74bc806925579d5305f2a5a53429c769bd5fa18921dd9010413f39f816",
+      "path": "src/ImGui/imgui_impl_opengl3.h"
+    },
+    {
+      "bytes": 35278,
+      "sha256": "fecf579813f8c0683a53c7167c6d1b4a0932b10345c39f4d3182cdee2c141a5a",
+      "path": "src/ImGui/imgui_impl_opengl3_loader.h"
+    },
+    {
+      "bytes": 215138,
+      "sha256": "622f48aa7bb15b9c6ffbf0ce598165e3abd3f1588a3403c0cb30fc672bb2fd89",
+      "path": "src/ImGui/imgui_internal.h"
+    },
+    {
+      "bytes": 216873,
+      "sha256": "275168232d809273f8089e662e8c3037c1c97fbfc80379103614f144299c0bdf",
+      "path": "src/ImGui/imgui_tables.cpp"
+    },
+    {
+      "bytes": 414744,
+      "sha256": "813da1426ec87b588fb436f9a20ed90fcf5a699a1f1f1e83b8d215d73ca0f17d",
+      "path": "src/ImGui/imgui_widgets.cpp"
+    },
+    {
+      "bytes": 20344,
+      "sha256": "2efa3d5f7d003c19743b15155dad9f46d9f9fc783a18893d703b431d3c990972",
+      "path": "src/ImGui/imstb_rectpack.h"
+    },
+    {
+      "bytes": 54933,
+      "sha256": "952dafd13b3bdfceb7179da7f7d11db14419e7ae3613982741428b7a036b5d27",
+      "path": "src/ImGui/imstb_textedit.h"
+    },
+    {
+      "bytes": 199422,
+      "sha256": "5ff5cd1b81b46cd40de015a44f341ed72e05147abfe6d28d8527fb84a10566dc",
+      "path": "src/ImGui/imstb_truetype.h"
+    },
+    {
+      "bytes": 1759,
+      "sha256": "3153fcb9b8e775a49287ed9ff3519eb74398f0d4971cb77a3b128b158eea85bd",
+      "path": "src/checker_parity.cuh"
+    },
+    {
+      "bytes": 59834,
+      "sha256": "e8a878425b1b562aec83da03143fc73afa4f6c672afbcef0e3132c24ded3b81d",
+      "path": "src/checkpoint.cpp"
+    },
+    {
+      "bytes": 8025,
+      "sha256": "21a07282200f9dab423aa4ddbb75038d9bbf65f0a54ce2d003d6d4be90c19692",
+      "path": "src/checkpoint.h"
+    },
+    {
+      "bytes": 9781,
+      "sha256": "ebbb16ec3aba1048b86b5534dc95661324ddf603d1fa7090cb61284bc812ae3a",
+      "path": "src/geometry.cpp"
+    },
+    {
+      "bytes": 41534,
+      "sha256": "3f12bca0b5f982d5498721f1198996496d7c39846066123bbc4ea3fb089e65c6",
+      "path": "src/geometry.cuh"
+    },
+    {
+      "bytes": 1430,
+      "sha256": "9d525e8833530d8bd584fe3486764a4cc0aba047076a103dfb7ede8223aa57f2",
+      "path": "src/geometry.h"
+    },
+    {
+      "bytes": 5816,
+      "sha256": "ea89bcdd0197c0b870788bd1840d323c4bfbf8a73eebb97368891c4ae13c22ad",
+      "path": "src/glslUtility.cpp"
+    },
+    {
+      "bytes": 520,
+      "sha256": "8f9b2ac75e82dd436b39c50a582136db4072c6a023af3dc717627dcaf37054ce",
+      "path": "src/glslUtility.hpp"
+    },
+    {
+      "bytes": 68805,
+      "sha256": "cb6d3534bb0fa9fa77eecad0c2c2ea1409b6fd0216f2b3d280315341a3fc16df",
+      "path": "src/gltf_loader.cpp"
+    },
+    {
+      "bytes": 568,
+      "sha256": "912a7e0c18547177f6b43ecf91e1e685d9f543c8deb50b9b2679d54e3e08da2f",
+      "path": "src/gltf_loader.h"
+    },
+    {
+      "bytes": 62616,
+      "sha256": "c9dc1658a7f2bc984fa5ecf15192b40829aa520d63ac4bc79a4649c8971911ca",
+      "path": "src/headless.cpp"
+    },
+    {
+      "bytes": 3325,
+      "sha256": "b0989e8d11e8c13184052eca06b4685038eb829426ee103deb9ac66780a9b492",
+      "path": "src/image.cpp"
+    },
+    {
+      "bytes": 343,
+      "sha256": "cfb2bd5abbfda41b2fcacc2e87584d797e41f9cc939e63979dec35dd37f6d457",
+      "path": "src/image.h"
+    },
+    {
+      "bytes": 14415,
+      "sha256": "e873c88c037982e83b3986a32aa21b510a42fbdc0c862bbd5b16910037015a6b",
+      "path": "src/interactions.cu"
+    },
+    {
+      "bytes": 2048,
+      "sha256": "f56de0875239aeeefba72d9df19f764b3f3025334d0ec0be855640e5a939fbb8",
+      "path": "src/interactions.h"
+    },
+    {
+      "bytes": 2990,
+      "sha256": "5ed30afdd4c4a38be883f1f080fa9f32c97ef51f8933c8021e52abfcd59581af",
+      "path": "src/intersections.cu"
+    },
+    {
+      "bytes": 2223,
+      "sha256": "b8545f4348908b1194f1017832db6c4121c2c5b84f7ebe3a127182dc0a965bb8",
+      "path": "src/intersections.h"
+    },
+    {
+      "bytes": 26268,
+      "sha256": "6189703666d5a30b71c49c27d4570a21304ff60d4f113ed1e04065557505aa7b",
+      "path": "src/main.cpp"
+    },
+    {
+      "bytes": 10754,
+      "sha256": "c9728129416c7f348b342552d52f29b0a10509a9906b9e3206270e1cd206a802",
+      "path": "src/output_path.cpp"
+    },
+    {
+      "bytes": 910,
+      "sha256": "00fdc4806a2a753cbc43a036ccc4e739287a95419818c10d1725cfb8b5faf274",
+      "path": "src/output_path.h"
+    },
+    {
+      "bytes": 201699,
+      "sha256": "1c2f73f0788510de81497dfc5e91fd851e9663ebf42372c15ce94ab74647118d",
+      "path": "src/pathtrace.cu"
+    },
+    {
+      "bytes": 3649,
+      "sha256": "7d0e901a38547631f1bd46ad0938c3ab7a973b994a3e5e569e0ecb84d84a23da",
+      "path": "src/pathtrace.h"
+    },
+    {
+      "bytes": 2956,
+      "sha256": "123a324e52de6f736084775c0176fe623f567d33cc06bcd2bda63b81f3759a49",
+      "path": "src/procedural_texture.cuh"
+    },
+    {
+      "bytes": 52637,
+      "sha256": "c91e29301323601e8e1c2f5a743d71fbdde34b0a867d73815a82a646e38a9388",
+      "path": "src/scene.cpp"
+    },
+    {
+      "bytes": 558,
+      "sha256": "bba04fdddf4a59f8967b8f5303033bb6b22cba1d7e3fcec64baa58790aa75447",
+      "path": "src/scene.h"
+    },
+    {
+      "bytes": 2038,
+      "sha256": "19f354e800b3570c14b467a4a1556e467872314b2d8dbe3cf4a6c75fe706046d",
+      "path": "src/sceneStructs.h"
+    },
+    {
+      "bytes": 125,
+      "sha256": "98362a3547c415936ee8680125ecc159c926eaecc5f689545e6d0e2f59d281bc",
+      "path": "src/stb.cpp"
+    },
+    {
+      "bytes": 3513,
+      "sha256": "799a735f24ebe5a70c7334bd454e09e6915a820bb183b3a0f71a90fb416db985",
+      "path": "src/utilities.cpp"
+    },
+    {
+      "bytes": 1145,
+      "sha256": "0e7b92caf0e1c92dda96099e2f36ac07ef3c5b2186fb3f6bfd2e27502b62585d",
+      "path": "src/utilities.h"
+    },
+    {
+      "bytes": 815,
+      "sha256": "19252d7b9f69ccebb7ba796497679f8c3b93b5b2ac56861f3c1b4248f3c21467",
+      "path": "stream_compaction/CMakeLists.txt"
+    },
+    {
+      "bytes": 7628,
+      "sha256": "9030a7d52500c883447bf4cd11b0000950588ec492928827340dcea598d0f024",
+      "path": "stream_compaction/device_scan.cu"
+    },
+    {
+      "bytes": 1563,
+      "sha256": "2d5582eee1b307d1c5c7bfb59fb743d885b6600aec8358e5bb9a654925f664c5",
+      "path": "stream_compaction/device_scan.cuh"
+    },
+    {
+      "bytes": 46610,
+      "sha256": "3d56d2c616edad47ad4bdf9048b16c0035417ed50aa3dc75db61fc0180abd368",
+      "path": "tests/checkpoint_tests.cpp"
+    },
+    {
+      "bytes": 109191,
+      "sha256": "952fc376a6f8d5c785ad70cee5504c561e2cb087db41f183daeaf93da907c7b6",
+      "path": "tests/geometry_tests.cpp"
+    },
+    {
+      "bytes": 56693,
+      "sha256": "05d4efd7128c9c7a8def5ca0ce76f209e5a552a845f8cc00e3d76686df6b800a",
+      "path": "tests/gltf_tests.cpp"
+    },
+    {
+      "bytes": 12361,
+      "sha256": "3e8fd204d99b653b4e1e9ac9c15101ac9fe2ffa90deecefd4e0a8d1c21f8f72b",
+      "path": "tests/output_path_tests.cpp"
+    },
+    {
+      "bytes": 5350,
+      "sha256": "570fe9b1d078daa369ffcb5657c14bffed0fe3e1dab5e6042ab197e959c1d293",
+      "path": "tests/render_tests.cpp"
+    }
+  ],
+  "unchanged": true,
+  "helper_before": {
+    "bytes": 21143,
+    "sha256": "1a1b78251d99bafe8c4ef4989674967b8488e9617d22ea76db2dc70bcc814a77",
+    "path": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/.local/run_checkpoint_host_evidence.py"
+  },
+  "helper_after": {
+    "bytes": 21143,
+    "sha256": "1a1b78251d99bafe8c4ef4989674967b8488e9617d22ea76db2dc70bcc814a77",
+    "path": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/.local/run_checkpoint_host_evidence.py"
+  }
+}

@@ -1,0 +1,31 @@
+error: checkpoint preflight failed: checkpoint checksum does not match its contents
+Usage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]
+
+Required for normal rendering:
+  --samples N              Total completed sample target (resume-safe)
+  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json
+
+Renderer options:
+  --seed N                 Unsigned 64-bit deterministic seed
+  --resolution WIDTHxHEIGHT
+  --depth N                Maximum surface intersections
+  --aa on|off
+  --nee on|off
+  --bvh on|off
+  --compact on|off
+  --sort on|off
+  --wavefront on|off
+  --rr on|off
+  --rr-start N             Completed scattering events before roulette (1..4096)
+  --sampler counter|halton Sampling algorithm (default: counter)
+  --motion on|off          Rigid-translation motion blur (default: on)
+  --debug normals|uv|depth  Deterministic first-hit semantic view
+
+Checkpoint and diagnostics:
+  --checkpoint PATH        Atomically save final checkpoint
+  --checkpoint-every N     Also save every N completed samples
+  --resume PATH            Resume a compatible checkpoint
+  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling
+  --benchmark              Write PREFIX.benchmark.csv
+  --validate               Run GPU equivalence/edge validation and exit
+  --help

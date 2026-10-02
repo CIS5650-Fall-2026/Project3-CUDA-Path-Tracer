@@ -1,0 +1,52 @@
+{
+  "recorded_utc": "2026-10-01T19:40:23.970216+00:00",
+  "scope": "CPU correctness host only; not GPU performance or a CPU renderer benchmark",
+  "commands": [
+    {
+      "command": [
+        "sw_vers"
+      ],
+      "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "uname",
+        "-m"
+      ],
+      "stdout": "arm64\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "sysctl",
+        "-n",
+        "machdep.cpu.brand_string"
+      ],
+      "stdout": "Apple M5\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "sysctl",
+        "-n",
+        "hw.memsize"
+      ],
+      "stdout": "25769803776\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "clang++",
+        "--version"
+      ],
+      "stdout": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ]
+}

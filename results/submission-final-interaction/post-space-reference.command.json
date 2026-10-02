@@ -1,0 +1,83 @@
+{
+  "argv": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+    "--seed",
+    "1",
+    "--resolution",
+    "960x640",
+    "--depth",
+    "10",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--bvh",
+    "on",
+    "--compact",
+    "on",
+    "--sort",
+    "off",
+    "--wavefront",
+    "on",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--sampler",
+    "halton",
+    "--motion",
+    "on",
+    "--samples",
+    "124",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-interaction/post-space-reference"
+  ],
+  "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "ended": {
+    "monotonic_ns": 6750046745159,
+    "utc": "2026-10-01T23:58:38.893961Z"
+  },
+  "evidence_prefix": "submission-final",
+  "exit_code": 0,
+  "headless_binary_sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+  "outputs": {
+    "linear_sum": {
+      "bytes": 7372840,
+      "path": "results/submission-final-interaction/post-space-reference.sum.bin",
+      "sha256": "54df1a5c88d5ee383473323139479ba113a5d8925a70a34d591b8145de91281b"
+    },
+    "metadata": {
+      "bytes": 3110,
+      "path": "results/submission-final-interaction/post-space-reference.json",
+      "sha256": "36d18eac3778b41bb16fcec73b2277d1bddba0f74aae2c448348cd9ba918fd80"
+    },
+    "png": {
+      "bytes": 1292709,
+      "path": "results/submission-final-interaction/post-space-reference.png",
+      "sha256": "7ad2215c88f9d16f358f8d806cdeb05abdf9af3881cf30439d6ecf8b94f4232d"
+    }
+  },
+  "passed": true,
+  "renderer_build_dir": "build-submission",
+  "renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "scheduled_S_save": {
+    "bytes": 1293043,
+    "created_by": "scheduled-S-save",
+    "name": "gltf-showcase.2026-10-01_23-57-33z.124samp.save0.png",
+    "renderer_stdout_log": "renderer.stdout.log",
+    "samples": 124,
+    "sha256": "3aecb4806ed0832d2802032523ae3f752ceeefead2394ffa13fd3661a3e54429"
+  },
+  "shell": false,
+  "source_snapshot": "reference-provenance-before.json",
+  "source_snapshot_after": "reference-provenance-after.json",
+  "started": {
+    "monotonic_ns": 6740007901815,
+    "utc": "2026-10-01T23:58:28.855130Z"
+  },
+  "status": "succeeded",
+  "stderr_log": "post-space-reference.stderr.log",
+  "stdout_log": "post-space-reference.stdout.log"
+}

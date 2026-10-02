@@ -1,0 +1,65 @@
+[PASS] POD defaults
+[PASS] OBJ index forms and independent negative indices
+[PASS] OBJ convex quad fan, comments, and organizational records
+[PASS] OBJ invalid geometry and syntax
+[PASS] OBJ singular transform and missing file
+[PASS] OBJ mirrored transform
+[PASS] scene materials, camera, and view
+[PASS] camera lens and validation
+[PASS] motion and shutter scene parsing
+[PASS] scene unknown and malformed inputs
+[PASS] texture color/bump/orientation/assets
+[PASS] texture failures
+[PASS] procedural texture host contract
+[PASS] procedural parser aliases and validation
+[PASS] generated procedural mesh assets
+[PASS] primitive intersections and BVH agreement
+[PASS] rigid translation intersections and swept bounds
+[PASS] triangle barycentrics/normals/derivatives
+[PASS] stable closest tie break
+[PASS] BVH construction/determinism/depth cap
+[PASS] empty geometry and invalid BVH fallback
+[PASS] BVH depth/stack overflow fallback
+[PASS] randomized transformed BVH equivalence
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/closed-benchmark.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/complexity-high.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/complexity-low.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/complexity-medium.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/cornell.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-baseline.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-complexity-high.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-complexity-low.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-complexity-medium.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-equivalence-data-uri.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-equivalence-external.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-equivalence-glb.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-motion-validation.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/gltf-showcase.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-motion-frozen-end.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-motion-frozen-midpoint.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-motion-frozen-start.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-motion.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-obj-baseline.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-sampling-diffuse.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/hedge-sampling-glass-dof.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/light-test-cube.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/light-test-mesh.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/light-test-sphere.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/open-benchmark.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/optical-workbench.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/preview-smoke.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-fluted-body-cells.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-fluted-body-marble.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-fluted-body-plain.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-cells.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-marble.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/procedural-swept-knot-plain.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/sphere.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/uniform-benchmark.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/workbench-dof.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/workbench-mirror.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/workbench-no-bump.json
+[SCENE PASS] /home/ubuntu/cis5650/project3/scenes/workbench-procedural.json
+Executed 23 test groups, 41 repository scene(s), and 10537291 assertions; 0 group(s) failed.

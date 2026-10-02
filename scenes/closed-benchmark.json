@@ -1,0 +1,250 @@
+{
+  "Materials": {
+    "ceramic": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.95,
+        0.95,
+        0.95
+      ],
+      "TEXTURE": "assets/glaze.bmp",
+      "BUMP": "assets/height.bmp",
+      "BUMP_STRENGTH": 0.025
+    },
+    "glass": {
+      "TYPE": "Glass",
+      "RGB": [
+        0.99,
+        0.995,
+        1
+      ],
+      "IOR": 1.5
+    },
+    "gold": {
+      "TYPE": "Specular",
+      "RGB": [
+        0.93,
+        0.68,
+        0.28
+      ],
+      "ROUGHNESS": 0
+    },
+    "floor": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.7,
+        0.73,
+        0.8
+      ],
+      "PROCEDURAL": "checker"
+    },
+    "wall": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.08,
+        0.115,
+        0.18
+      ]
+    },
+    "warm": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.82,
+        0.62
+      ],
+      "EMITTANCE": 16
+    },
+    "cool": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.5,
+        0.72,
+        1
+      ],
+      "EMITTANCE": 12
+    }
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        0,
+        3,
+        -4
+      ],
+      "SCALE": [
+        12,
+        6,
+        0.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        0,
+        3,
+        4
+      ],
+      "SCALE": [
+        12,
+        6,
+        0.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0,
+        -0.05,
+        0
+      ],
+      "SCALE": [
+        12,
+        0.1,
+        8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0,
+        6,
+        0
+      ],
+      "SCALE": [
+        12,
+        0.1,
+        8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        -6,
+        3,
+        0
+      ],
+      "SCALE": [
+        0.1,
+        6,
+        8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        6,
+        3,
+        0
+      ],
+      "SCALE": [
+        0.1,
+        6,
+        8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "warm",
+      "TRANS": [
+        0,
+        5.9,
+        0
+      ],
+      "SCALE": [
+        2,
+        0.1,
+        2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "ceramic",
+      "TRANS": [
+        0,
+        1,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "Camera": {
+    "RES": [
+      192,
+      128
+    ],
+    "FOVY": 22,
+    "ITERATIONS": 16,
+    "DEPTH": 12,
+    "FILE": "closed-benchmark",
+    "EYE": [
+      0,
+      3,
+      3.8
+    ],
+    "LOOKAT": [
+      0,
+      2.8,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ],
+    "APERTURE": 0,
+    "FOCUS": 8.8
+  },
+  "BVH_MAX_DEPTH": 32
+}

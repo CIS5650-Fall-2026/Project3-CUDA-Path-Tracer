@@ -1,0 +1,109 @@
+{
+  "Materials": {
+    "surface": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        1,
+        1
+      ],
+      "EMITTANCE": 8
+    }
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "surface",
+      "TRANS": [
+        0,
+        -0.1,
+        0
+      ],
+      "SCALE": [
+        10,
+        0.2,
+        10
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "surface",
+      "TRANS": [
+        0,
+        2,
+        -3
+      ],
+      "SCALE": [
+        10,
+        4,
+        0.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "obj",
+      "MATERIAL": "light",
+      "TRANS": [
+        0,
+        3.8,
+        0
+      ],
+      "SCALE": [
+        1.7,
+        1,
+        1.2
+      ],
+      "ROTAT": [
+        0,
+        25,
+        0
+      ],
+      "FILE": "assets/area-light.obj"
+    }
+  ],
+  "Camera": {
+    "RES": [
+      64,
+      48
+    ],
+    "FOVY": 22,
+    "ITERATIONS": 4096,
+    "DEPTH": 4,
+    "FILE": "light-test-mesh",
+    "EYE": [
+      4,
+      2.5,
+      6
+    ],
+    "LOOKAT": [
+      0,
+      0.5,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ],
+    "APERTURE": 0,
+    "FOCUS": 8.8
+  },
+  "BVH_MAX_DEPTH": 32
+}

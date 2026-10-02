@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "results/submission-final-interaction/tools/finalize_interaction.py",
+    "--root",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+    "--expected-source-sha256",
+    "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+    "--prefix",
+    "submission-final",
+    "--renderer-build-dir",
+    "build-submission",
+    "--pixel-source",
+    "results/submission-final-interaction/tools/interaction_pixel_compare.cpp",
+    "--build-dir",
+    ".local/interaction-helper-build/submission-current",
+    "--capture-reference-only",
+    "--check-only"
+  ],
+  "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+  "shell": false,
+  "started_at_utc": "2026-10-02T00:00:03.213449+00:00",
+  "exit_code": 0,
+  "ended_at_utc": "2026-10-02T00:00:06.809794+00:00",
+  "elapsed_seconds": 3.5962259999942034,
+  "stdout_log": "capture-reference-check.stdout.json",
+  "stderr_log": "capture-reference-check.stderr.log"
+}

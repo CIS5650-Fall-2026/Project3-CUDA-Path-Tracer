@@ -1,0 +1,15 @@
+{
+  "scope": "Actual root-relative frame artifact resolution only; no renderer execution or final wrapper claim",
+  "checked_at_utc": "2026-10-02T00:03:27.564069+00:00",
+  "frame_count": 8,
+  "all_frame_paths_hashes_bytes_match": true,
+  "original_executed_finalizer": {
+    "path": "results/submission-final-interaction/tools/finalize_interaction.py",
+    "sha256": "14ea2c70ef0ee5e61fe28d9e410c43252ff85fa9a892e6cdd3ba06c472bf8e2b"
+  },
+  "corrected_finalizer": {
+    "path": "results/submission-final-interaction/tools/finalize_interaction_artifacts.py",
+    "sha256": "63f3d894889ab5dfcb8ab451e8472a451d04cd97a82ae0e26f2382e2f3640fc2"
+  },
+  "change": "Resolve converter repository-relative frame_files from ROOT rather than result directory; all data and numerical checks unchanged."
+}

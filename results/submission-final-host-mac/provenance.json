@@ -1,0 +1,155 @@
+{
+  "recorded_utc": "2026-10-01T22:24:38.426055+00:00",
+  "renderer_source_sha256_expected": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "renderer_source_hash_before": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "renderer_source_hash_after": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "renderer_source_unchanged": true,
+  "source_hash_checks": [
+    {
+      "label": "renderer source hash before fresh evidence work",
+      "command": [
+        "python3",
+        "scripts/source_hash.py"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.313743+00:00",
+      "ended_utc": "2026-10-01T22:24:35.348831+00:00",
+      "duration_seconds": 0.035021792,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 65,
+        "sha256": "4039167ddf3aa65815511ed108eae03a1f06c24cdf55cded2505c48b9cb7e263"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_text": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703\n",
+      "stderr_text": ""
+    },
+    {
+      "label": "renderer source hash after fresh test and byte-proof work",
+      "command": [
+        "python3",
+        "scripts/source_hash.py"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.377250+00:00",
+      "ended_utc": "2026-10-01T22:24:38.412026+00:00",
+      "duration_seconds": 0.034769792,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 65,
+        "sha256": "4039167ddf3aa65815511ed108eae03a1f06c24cdf55cded2505c48b9cb7e263"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_text": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703\n",
+      "stderr_text": ""
+    }
+  ],
+  "binaries_before": [
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/checkpoint_tests",
+      "bytes": 1066432,
+      "sha256": "ead797752602019f7c26761e7ae742883a48128aebbd579cb74a2fc758a64358",
+      "name": "optimized_checkpoint_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/geometry_tests",
+      "bytes": 1244544,
+      "sha256": "17fb85b7b473708be594c0a5e23f98d32047afbd6591f4d0a56a0d83824e80a6",
+      "name": "optimized_geometry_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/gltf_tests",
+      "bytes": 1238248,
+      "sha256": "5d96f3e3d795932025f3a9afc2bc46eb60f11810ab76b6790d3c558ed63fd95e",
+      "name": "optimized_gltf_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/checkpoint_tests",
+      "bytes": 3753488,
+      "sha256": "ffaaf13309ea545678fd3d912409ba0f5daaa59de7e40d0d4f5d7c6bccf9d610",
+      "name": "sanitized_checkpoint_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/geometry_tests",
+      "bytes": 4242848,
+      "sha256": "e67e774d97e170e43c482999eb06dbe1007b714a11fd294ad232b4331a2f37f4",
+      "name": "sanitized_geometry_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/gltf_tests",
+      "bytes": 4394392,
+      "sha256": "7dc0058d1a304c817db967f1ccba5f0368515e48d81120304f751607713674ef",
+      "name": "sanitized_gltf_tests",
+      "executable": true
+    }
+  ],
+  "binaries_after": [
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/checkpoint_tests",
+      "bytes": 1066432,
+      "sha256": "ead797752602019f7c26761e7ae742883a48128aebbd579cb74a2fc758a64358",
+      "name": "optimized_checkpoint_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/geometry_tests",
+      "bytes": 1244544,
+      "sha256": "17fb85b7b473708be594c0a5e23f98d32047afbd6591f4d0a56a0d83824e80a6",
+      "name": "optimized_geometry_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/gltf_tests",
+      "bytes": 1238248,
+      "sha256": "5d96f3e3d795932025f3a9afc2bc46eb60f11810ab76b6790d3c558ed63fd95e",
+      "name": "optimized_gltf_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/checkpoint_tests",
+      "bytes": 3753488,
+      "sha256": "ffaaf13309ea545678fd3d912409ba0f5daaa59de7e40d0d4f5d7c6bccf9d610",
+      "name": "sanitized_checkpoint_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/geometry_tests",
+      "bytes": 4242848,
+      "sha256": "e67e774d97e170e43c482999eb06dbe1007b714a11fd294ad232b4331a2f37f4",
+      "name": "sanitized_geometry_tests",
+      "executable": true
+    },
+    {
+      "path": "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/gltf_tests",
+      "bytes": 4394392,
+      "sha256": "7dc0058d1a304c817db967f1ccba5f0368515e48d81120304f751607713674ef",
+      "name": "sanitized_gltf_tests",
+      "executable": true
+    }
+  ],
+  "binaries_unchanged": true,
+  "tests_helpers_and_runtime_inputs_unchanged": true,
+  "builds_reused": true,
+  "build_record_limitation": "Supplied build commands and command-prefixed transcripts are historical; they do not contain per-command timestamps or return codes and are not represented as fresh raw compiler stdout/stderr."
+}

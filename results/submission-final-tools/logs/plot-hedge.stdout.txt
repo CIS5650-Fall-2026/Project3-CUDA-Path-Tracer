@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "convergence statistics from per-seed values",
+    "signed sampler comparisons and explicit regressions",
+    "equal-time actual sample/GPU metrics",
+    "visible inconclusive/inadequate-reference disclosure",
+    "missing measured ranges rejected without imputation",
+    "static and motion timing charts",
+    "SVG envelope and hashes"
+  ],
+  "generated_svg_count": 6,
+  "passed": true,
+  "synthetic_only": true
+}

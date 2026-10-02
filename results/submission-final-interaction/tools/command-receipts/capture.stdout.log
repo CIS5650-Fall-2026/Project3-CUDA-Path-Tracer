@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "status": "succeeded",
+  "scheduled_S_save": {
+    "samples": 124,
+    "name": "gltf-showcase.2026-10-01_23-57-33z.124samp.save0.png",
+    "bytes": 1293043,
+    "sha256": "3aecb4806ed0832d2802032523ae3f752ceeefead2394ffa13fd3661a3e54429",
+    "created_by": "scheduled-S-save",
+    "renderer_stdout_log": "renderer.stdout.log"
+  },
+  "result_dir": "/home/ubuntu/cis5650/project3/results/submission-final-interaction"
+}

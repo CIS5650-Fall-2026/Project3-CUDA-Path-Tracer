@@ -1,0 +1,2 @@
+error: RecordingError: display is 1024x768; capture requires at least 1280x720
+failure evidence: /home/ubuntu/cis5650/project3/results/hedge-final-interaction/capture

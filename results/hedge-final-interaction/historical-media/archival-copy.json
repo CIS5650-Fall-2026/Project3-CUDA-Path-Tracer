@@ -1,0 +1,25 @@
+{
+  "archived_utc": "2026-10-01T23:23:13.382999+00:00",
+  "scope": "Unchanged historical derivatives and manifests copied before current README media refresh; not evidence for corrected source. Original MP4 remains in ../capture/interaction.mp4.",
+  "historical_renderer_source_sha256": "a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86",
+  "files": [
+    {
+      "original_path": "img/interaction.gif",
+      "archived_path": "results/hedge-final-interaction/historical-media/interaction.gif",
+      "sha256": "5dd04f47eac98666426bbb87c756baf9821b54cdd4bcd4971497ed7f0794c70a",
+      "bytes": 9122152
+    },
+    {
+      "original_path": "img/render-manifest.json",
+      "archived_path": "results/hedge-final-interaction/historical-media/render-manifest.json",
+      "sha256": "5eca071c3514fb781d97445ce2b1f11aa8b13152194980ddf20b89326d4c0089",
+      "bytes": 74003
+    },
+    {
+      "original_path": "img/chart-manifest.json",
+      "archived_path": "results/hedge-final-interaction/historical-media/chart-manifest.json",
+      "sha256": "fb616fb2bf7fc84f7cb75c4a45cbc222a059446b53904e9ad3384458a14db692",
+      "bytes": 272427
+    }
+  ]
+}

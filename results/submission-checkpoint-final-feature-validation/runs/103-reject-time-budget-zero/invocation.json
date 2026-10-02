@@ -1,0 +1,58 @@
+{
+  "artifacts": {},
+  "audits": [],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "65536",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-feature-validation/runs/103-reject-time-budget-zero/render",
+    "--time-budget-ms",
+    "0"
+  ],
+  "command_json": {
+    "bytes": 991,
+    "path": "runs/103-reject-time-budget-zero/command.json",
+    "sha256": "b95eb42c50e25342224907277e8f8436336ce228f560bbdd089ab5f5aa0be80f"
+  },
+  "elapsed_seconds": 0.0023455370001101983,
+  "exit_code": 1,
+  "expectation_met": true,
+  "expected_exit": "nonzero",
+  "expected_rejection_terms": [
+    "--time-budget-ms must be in"
+  ],
+  "finished_utc": "2026-10-02T01:04:31.323622Z",
+  "index": 103,
+  "inputs": [
+    {
+      "bytes": 6372424,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7c4244cb0438205b3aeea105fdb0a7410dafffed3009bf48dc524fe1fb6674d3"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    }
+  ],
+  "label": "reject-time-budget-zero",
+  "launch_exception": null,
+  "output_prefix": "runs/103-reject-time-budget-zero/render",
+  "rejection_text": "error: --time-budget-ms must be in [1, 2^63-1]\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help",
+  "run_directory": "runs/103-reject-time-budget-zero",
+  "started_utc": "2026-10-02T01:04:31.321261Z",
+  "stderr": {
+    "bytes": 1327,
+    "path": "runs/103-reject-time-budget-zero/stderr.txt",
+    "sha256": "444a271f090cc7fa1ea94e0a43670987d43f288fdecb9d8b04bdd9de1c9d28cb"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "runs/103-reject-time-budget-zero/stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

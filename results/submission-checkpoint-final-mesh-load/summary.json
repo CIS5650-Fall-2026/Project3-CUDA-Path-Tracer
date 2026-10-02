@@ -1,0 +1,130 @@
+{
+  "records": [
+    {
+      "bvh_nodes": 1023,
+      "bvh_rebuild_median_ms": 0.887652,
+      "bvh_rebuild_ms": [
+        0.887652,
+        0.889702,
+        0.879282
+      ],
+      "load_including_bvh_median_ms": 7.264077,
+      "load_including_bvh_ms": [
+        7.283487,
+        7.205515,
+        7.264077
+      ],
+      "primitives": 1600,
+      "scene": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/fluted-body-low.json",
+      "triangles": 1600
+    },
+    {
+      "bvh_nodes": 4095,
+      "bvh_rebuild_median_ms": 4.339096,
+      "bvh_rebuild_ms": [
+        4.354346,
+        4.333605,
+        4.339096
+      ],
+      "load_including_bvh_median_ms": 28.536475,
+      "load_including_bvh_ms": [
+        28.572946,
+        28.486144,
+        28.536475
+      ],
+      "primitives": 6272,
+      "scene": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/fluted-body-medium.json",
+      "triangles": 6272
+    },
+    {
+      "bvh_nodes": 16383,
+      "bvh_rebuild_median_ms": 21.406901,
+      "bvh_rebuild_ms": [
+        21.406901,
+        21.406551,
+        21.505874
+      ],
+      "load_including_bvh_median_ms": 115.968236,
+      "load_including_bvh_ms": [
+        113.226369,
+        115.968236,
+        115.986576
+      ],
+      "primitives": 24832,
+      "scene": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/fluted-body-high.json",
+      "triangles": 24832
+    },
+    {
+      "bvh_nodes": 511,
+      "bvh_rebuild_median_ms": 0.497502,
+      "bvh_rebuild_ms": [
+        0.497502,
+        0.500122,
+        0.486592
+      ],
+      "load_including_bvh_median_ms": 4.196523,
+      "load_including_bvh_ms": [
+        4.200752,
+        4.196523,
+        4.184212
+      ],
+      "primitives": 1024,
+      "scene": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/swept-knot-low.json",
+      "triangles": 1024
+    },
+    {
+      "bvh_nodes": 2047,
+      "bvh_rebuild_median_ms": 2.550202,
+      "bvh_rebuild_ms": [
+        2.550202,
+        2.552952,
+        2.543742
+      ],
+      "load_including_bvh_median_ms": 16.746368,
+      "load_including_bvh_ms": [
+        16.748738,
+        16.746368,
+        16.674226
+      ],
+      "primitives": 4096,
+      "scene": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/swept-knot-medium.json",
+      "triangles": 4096
+    },
+    {
+      "bvh_nodes": 8191,
+      "bvh_rebuild_median_ms": 12.831532,
+      "bvh_rebuild_ms": [
+        12.878744,
+        12.831532,
+        12.802062
+      ],
+      "load_including_bvh_median_ms": 67.999737,
+      "load_including_bvh_ms": [
+        68.168871,
+        67.973396,
+        67.999737
+      ],
+      "primitives": 16384,
+      "scene": "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/swept-knot-high.json",
+      "triangles": 16384
+    }
+  ],
+  "warmups": 1,
+  "measured_repeats": 3,
+  "units": "milliseconds",
+  "compile_command": [
+    "c++",
+    "-std=c++17",
+    "-O3",
+    "-DNDEBUG",
+    "-I/home/ubuntu/cis5650/project3/src",
+    "-I/home/ubuntu/cis5650/project3/external/include",
+    "/home/ubuntu/cis5650/project3/scripts/profile_scene_load.cpp",
+    "/home/ubuntu/cis5650/project3/build-submission/lib/libcis565_core.a",
+    "-o",
+    "/home/ubuntu/cis5650/project3/results/submission-checkpoint-final-mesh-load/profile-scene-load"
+  ],
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "helper_sha256": "fc1673f5a9f0771fef66d9dd3b7544e2c624c9019cfbc03454c0239f0d6cd3c1",
+  "note": "CPU scene load includes parsing, transforms, camera setup, and initial BVH; separate BVH measurement rebuilds from loaded primitives. Files are warm in the OS cache. These are not GPU generation timings."
+}

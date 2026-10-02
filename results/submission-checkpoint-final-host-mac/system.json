@@ -1,0 +1,185 @@
+{
+  "system-compiler": {
+    "receipt": {
+      "label": "system-compiler",
+      "command": [
+        "/usr/bin/clang++",
+        "--version"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are not recorded."
+      },
+      "started_utc": "2026-10-02T01:01:48.957377+00:00",
+      "ended_utc": "2026-10-02T01:01:48.965917+00:00",
+      "duration_seconds": 0.008528874997864477,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 158,
+        "sha256": "a856ec74c559401131ad608625ef252fb2db6c78bc0c480c1c4c782ee4896db1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "system-compiler.stdout",
+      "stderr_file": "system-compiler.stderr"
+    },
+    "output": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n"
+  },
+  "system-os": {
+    "receipt": {
+      "label": "system-os",
+      "command": [
+        "/usr/bin/sw_vers"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are not recorded."
+      },
+      "started_utc": "2026-10-02T01:01:48.966182+00:00",
+      "ended_utc": "2026-10-02T01:01:48.972460+00:00",
+      "duration_seconds": 0.006271000005654059,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 66,
+        "sha256": "4ef10a0fc370704ea84699cf3851e51488598c5f1ab35cb572eb6b96278a8e5c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "system-os.stdout",
+      "stderr_file": "system-os.stderr"
+    },
+    "output": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n"
+  },
+  "system-architecture": {
+    "receipt": {
+      "label": "system-architecture",
+      "command": [
+        "/usr/bin/uname",
+        "-m"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are not recorded."
+      },
+      "started_utc": "2026-10-02T01:01:48.972678+00:00",
+      "ended_utc": "2026-10-02T01:01:48.974568+00:00",
+      "duration_seconds": 0.0018846669991035014,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 6,
+        "sha256": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "system-architecture.stdout",
+      "stderr_file": "system-architecture.stderr"
+    },
+    "output": "arm64\n"
+  },
+  "system-hardware": {
+    "receipt": {
+      "label": "system-hardware",
+      "command": [
+        "/usr/sbin/sysctl",
+        "hw.model",
+        "hw.memsize",
+        "machdep.cpu.brand_string"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are not recorded."
+      },
+      "started_utc": "2026-10-02T01:01:48.974816+00:00",
+      "ended_utc": "2026-10-02T01:01:48.977392+00:00",
+      "duration_seconds": 0.002571125005488284,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 77,
+        "sha256": "bb89eaeb18dee8324eef31b972830c3f7c2f1b3b7e23d154e2a49a1e0fa5abcd"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "system-hardware.stdout",
+      "stderr_file": "system-hardware.stderr"
+    },
+    "output": "hw.model: Mac17,2\nhw.memsize: 25769803776\nmachdep.cpu.brand_string: Apple M5\n"
+  },
+  "system-base-revision": {
+    "receipt": {
+      "label": "system-base-revision",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are not recorded."
+      },
+      "started_utc": "2026-10-02T01:01:48.977585+00:00",
+      "ended_utc": "2026-10-02T01:01:48.982118+00:00",
+      "duration_seconds": 0.004529041994828731,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 41,
+        "sha256": "42dec59b7b464081fd180759b16ec8c9ec974043bbb25b6e5d6821d2f6d581f6"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "system-base-revision.stdout",
+      "stderr_file": "system-base-revision.stderr"
+    },
+    "output": "8bf3e811b7df5ae078765d3afd93890cf1653f79\n"
+  },
+  "system-source-hash": {
+    "receipt": {
+      "label": "system-source-hash",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/source_hash.py"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are not recorded."
+      },
+      "started_utc": "2026-10-02T01:01:48.982330+00:00",
+      "ended_utc": "2026-10-02T01:01:49.015039+00:00",
+      "duration_seconds": 0.032703624994610436,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 65,
+        "sha256": "5512e5154d54d23408830bd22ab8357727899510247e15b040a5bf634ec99d0c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "system-source-hash.stdout",
+      "stderr_file": "system-source-hash.stderr"
+    },
+    "output": "a1979f061a22d1a7e815bb906ba62a2eeb1f0ae65f1c7a51ecbb19aa36bdd639\n"
+  }
+}

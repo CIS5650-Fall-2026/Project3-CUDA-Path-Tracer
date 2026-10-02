@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "purpose": "procedural-evidence-retention-index",
+  "context": {
+    "note": "Original command and path fields inside retained reports are historical execution metadata and are not presently runnable paths.",
+    "old22_comparator_note": "Baseline comparison inputs are the recorded Git revision and canonical asset files. The transient comparison helper is not part of the renderer; git show at the recorded revision reproduces the reference bytes.",
+    "performance_scope": "Mac QA CPU timings are local verification evidence, separate from AWS performance. AWS CPU measurements are retained independently and are not registered in this Mac artifact index."
+  },
+  "reports_by_original_absolute_path": {
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/procedural-mesh-profile-topology-final.json": {
+      "retained_path": "results/extension-host/procedural-mesh-validation.json",
+      "sha256": "3fde73174ef29bdf7a06f6be3cc94715617ed16412aa5cb52a8bc234fe7c484e",
+      "byte_size": 19026,
+      "role": "Mac QA topology and geometry validation correlated with the retained normal raw Mac CPU profile; not AWS performance evidence."
+    },
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/cpu-procedural-generation-profile-local.json": {
+      "retained_path": "results/extension-host/procedural-generation-mac.json",
+      "sha256": "51b58b87510a9fa158aa5bb9ad71ecf6fa05fc897088b5edbf9dd5bfe034c91e",
+      "byte_size": 29861,
+      "role": "Raw Mac QA CPU procedural-generation profile with local timings and host metadata; not AWS performance evidence."
+    },
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/profile-temp-isolation-final.json": {
+      "retained_path": "results/extension-host/procedural-profile-isolation.json",
+      "sha256": "19d07de1538a8e047a3122c46f38e936bc5d45f04419aaf9835c46f08dde01e6",
+      "byte_size": 22295,
+      "role": "Mac QA temporary-output isolation and scene-asset byte/mtime immutability evidence referencing the normal raw Mac profile."
+    },
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/default-generator-byte-reproducibility-final.json": {
+      "retained_path": "results/extension-host/procedural-regeneration.json",
+      "sha256": "f74905b7d9673903e4946f343368daa5dcf2ca585a51fb909e3c91bf43b3d127",
+      "byte_size": 17194,
+      "role": "Local deterministic default-generator byte reproducibility evidence for the canonical scene set."
+    },
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/old22-baseline-comparison-temp-profiler-final.json": {
+      "retained_path": "results/extension-host/old22-baseline-comparison.json",
+      "sha256": "d6fcf5659940ef833c61ba0430e4fa99d9849d5bc2a9606aa4470acf27b98c26",
+      "byte_size": 14404,
+      "role": "Historical 22-file baseline immutability comparison against commit de0a568dfc77e1a4d15ba760a7b8e0d35086461b."
+    },
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/profile-controlled-mismatch-check.json": {
+      "retained_path": "results/extension-host/procedural-controlled-mismatch.json",
+      "sha256": "9a7088ec7870f9f84d9575b0563058cc0ace391105d91ae497919f44168eeb2d",
+      "byte_size": 3104,
+      "role": "Controlled mismatch detector evidence referencing the controlled-mismatch raw Mac profile."
+    },
+    "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/cpu-procedural-generation-profile-controlled-mismatch.json": {
+      "retained_path": "results/extension-host/procedural-generation-mac-controlled-mismatch.json",
+      "sha256": "ad73e3eeb4dbafd628ae7143a5c6838cedaa9c0b4aeaa187e7f588a4826c9216",
+      "byte_size": 29845,
+      "role": "Raw Mac QA CPU procedural-generation controlled-mismatch profile with local timings and host metadata; not AWS performance evidence."
+    }
+  },
+  "cross_report_references": [
+    {
+      "source_original_absolute_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/procedural-mesh-profile-topology-final.json",
+      "source_retained_path": "results/extension-host/procedural-mesh-validation.json",
+      "field": "source_profile",
+      "source_json_pointer": "/source_profile",
+      "original_target_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/cpu-procedural-generation-profile-local.json",
+      "retained_target_path": "results/extension-host/procedural-generation-mac.json",
+      "target_sha256": "51b58b87510a9fa158aa5bb9ad71ecf6fa05fc897088b5edbf9dd5bfe034c91e"
+    },
+    {
+      "source_original_absolute_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/profile-temp-isolation-final.json",
+      "source_retained_path": "results/extension-host/procedural-profile-isolation.json",
+      "field": "profile_path",
+      "source_json_pointer": "/profile_path",
+      "original_target_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/cpu-procedural-generation-profile-local.json",
+      "retained_target_path": "results/extension-host/procedural-generation-mac.json",
+      "target_sha256": "51b58b87510a9fa158aa5bb9ad71ecf6fa05fc897088b5edbf9dd5bfe034c91e"
+    },
+    {
+      "source_original_absolute_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/profile-controlled-mismatch-check.json",
+      "source_retained_path": "results/extension-host/procedural-controlled-mismatch.json",
+      "field": "profile_path",
+      "source_json_pointer": "/profile_path",
+      "original_target_path": "/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/tmp.gcgUpPoQSY/cpu-procedural-generation-profile-controlled-mismatch.json",
+      "retained_target_path": "results/extension-host/procedural-generation-mac-controlled-mismatch.json",
+      "target_sha256": "ad73e3eeb4dbafd628ae7143a5c6838cedaa9c0b4aeaa187e7f588a4826c9216"
+    }
+  ]
+}

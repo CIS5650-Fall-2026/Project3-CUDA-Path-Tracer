@@ -1,0 +1,1 @@
+self-test passed: OBJ rejection, GLB structure, accessors, and three encodings

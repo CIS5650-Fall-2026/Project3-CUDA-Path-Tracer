@@ -1,0 +1,24 @@
+{
+  "command": [
+    "c++",
+    "--version"
+  ],
+  "completed_utc": "2026-10-01T20:45:45.949390Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "exit_code": 0,
+  "name": "compiler-version",
+  "pid": 39746,
+  "process_elapsed_ms": 4.390066000269144,
+  "started_utc": "2026-10-01T20:45:45.941147Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "compiler-version.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 246,
+    "path": "compiler-version.stdout.txt",
+    "sha256": "88b7c4b67564a146863224148116065fee418539f0a408f3636a68f3bde51805"
+  }
+}

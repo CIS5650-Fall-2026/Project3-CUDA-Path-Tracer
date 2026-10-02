@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "results/submission-final-interaction/tools/finalize_interaction.py",
+    "--root",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+    "--expected-source-sha256",
+    "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+    "--prefix",
+    "submission-final",
+    "--renderer-build-dir",
+    "build-submission",
+    "--pixel-source",
+    "results/submission-final-interaction/tools/interaction_pixel_compare.cpp",
+    "--build-dir",
+    ".local/interaction-helper-build/submission-current"
+  ],
+  "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+  "shell": false,
+  "exit_code": 1,
+  "recorded_at_utc": "2026-10-02T00:03:56.069943+00:00",
+  "timestamp_disclosure": "This failure receipt was recorded after observing the actual subprocess exit; precise start/end timestamps were not retained.",
+  "stdout_log": "full-artifact-finalize.stdout.json",
+  "stderr_log": "full-artifact-finalize.stderr.log",
+  "reason": "Original finalizer applied the result-directory prefix twice to repository-relative review frame paths. Original source, logs, and all data preserved."
+}

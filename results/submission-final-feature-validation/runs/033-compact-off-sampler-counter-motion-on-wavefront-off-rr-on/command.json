@@ -1,0 +1,54 @@
+{
+  "argv": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "17",
+    "--seed",
+    "947",
+    "--resolution",
+    "17x13",
+    "--depth",
+    "7",
+    "--compact",
+    "off",
+    "--sort",
+    "off",
+    "--bvh",
+    "on",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--wavefront",
+    "off",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--sampler",
+    "counter",
+    "--motion",
+    "on",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/033-compact-off-sampler-counter-motion-on-wavefront-off-rr-on/render",
+    "--benchmark"
+  ],
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "input_files_before_invocation": [
+    {
+      "bytes": 6353008,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    }
+  ],
+  "label": "compact-off-sampler-counter-motion-on-wavefront-off-rr-on",
+  "shell": false
+}

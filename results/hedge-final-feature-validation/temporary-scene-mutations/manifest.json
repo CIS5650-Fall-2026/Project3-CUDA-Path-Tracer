@@ -1,0 +1,75 @@
+{
+  "absolute_baseline": {
+    "bytes": 5124,
+    "path": "temporary-scene-mutations/absolute-baseline-preserved.json",
+    "sha256": "d06a78c79671c69dbb7e405d1441894a5ae4468c599fa0562e83eb21b9cc0a15"
+  },
+  "absolutized_assets": [
+    {
+      "absolute": "/home/ubuntu/cis5650/project3/scenes/assets/vase-low.obj",
+      "exists": true,
+      "location": "Objects[6].FILE",
+      "original": "assets/vase-low.obj",
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543"
+    },
+    {
+      "absolute": "/home/ubuntu/cis5650/project3/scenes/assets/area-light.obj",
+      "exists": true,
+      "location": "Objects[10].FILE",
+      "original": "assets/area-light.obj",
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635"
+    }
+  ],
+  "active_baseline_sha256": "d06a78c79671c69dbb7e405d1441894a5ae4468c599fa0562e83eb21b9cc0a15",
+  "canonical_source": {
+    "bytes": 3374,
+    "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+  },
+  "canonical_source_byte_copy": {
+    "bytes": 3374,
+    "path": "temporary-scene-mutations/canonical-source-byte-copy.json",
+    "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+  },
+  "mutations": [
+    {
+      "baseline_sha256": "d06a78c79671c69dbb7e405d1441894a5ae4468c599fa0562e83eb21b9cc0a15",
+      "kind": "shutter",
+      "mutated_sha256": "48fb9b4b880a40ff5c893fde3aa764c7ecde541da0d43b1c891c63e57d02ec7b",
+      "new_shutter": [
+        0.25,
+        0.75
+      ],
+      "old_shutter": [
+        0.0,
+        1.0
+      ],
+      "preserved_variant": {
+        "bytes": 5126,
+        "path": "temporary-scene-mutations/mutated-shutter-preserved.json",
+        "sha256": "48fb9b4b880a40ff5c893fde3aa764c7ecde541da0d43b1c891c63e57d02ec7b"
+      }
+    },
+    {
+      "baseline_sha256": "d06a78c79671c69dbb7e405d1441894a5ae4468c599fa0562e83eb21b9cc0a15",
+      "kind": "displacement",
+      "mutated_sha256": "7695ae4e68651d244c182cc0b2c50d08dd7f487363461e32dd27595eec8f158a",
+      "new_motion_translation": [
+        1.375,
+        0.15,
+        -0.35
+      ],
+      "object_index": 4,
+      "old_motion_translation": [
+        1.0,
+        0.15,
+        -0.35
+      ],
+      "preserved_variant": {
+        "bytes": 5126,
+        "path": "temporary-scene-mutations/mutated-displacement-preserved.json",
+        "sha256": "7695ae4e68651d244c182cc0b2c50d08dd7f487363461e32dd27595eec8f158a"
+      }
+    }
+  ]
+}

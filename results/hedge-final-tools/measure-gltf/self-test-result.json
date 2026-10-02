@@ -1,0 +1,682 @@
+{
+  "checks": [
+    {
+      "detail": 18,
+      "name": "validation-count",
+      "passed": true
+    },
+    {
+      "detail": 36,
+      "name": "timing-count",
+      "passed": true
+    },
+    {
+      "detail": 8,
+      "name": "gallery-count",
+      "passed": true
+    },
+    {
+      "detail": 62,
+      "name": "all-count",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "unique-phase-labels",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "encoding-matrix",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "motion-matrix",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "motion-group-keys",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "motion-checkpoint-count",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "validation-settings",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "timing-settings",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "gallery-settings",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "no-validate-flag",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "benchmark-flag",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "17",
+        "expected": "17"
+      },
+      "name": "command-samples",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "947",
+        "expected": "947"
+      },
+      "name": "command-seed",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "17x13",
+        "expected": "17x13"
+      },
+      "name": "command-resolution",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "7",
+        "expected": "7"
+      },
+      "name": "command-depth",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "off",
+        "expected": "off"
+      },
+      "name": "command-wavefront",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "off",
+        "expected": "off"
+      },
+      "name": "command-rr",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "3",
+        "expected": "3"
+      },
+      "name": "command-rr-start",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "on",
+        "expected": "on"
+      },
+      "name": "command-compact",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "off",
+        "expected": "off"
+      },
+      "name": "command-bvh",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "on",
+        "expected": "on"
+      },
+      "name": "command-aa",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "on",
+        "expected": "on"
+      },
+      "name": "command-nee",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "off",
+        "expected": "off"
+      },
+      "name": "command-sort",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "on",
+        "expected": "on"
+      },
+      "name": "command-motion",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": "counter",
+        "expected": "counter"
+      },
+      "name": "command-sampler",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/regular-counter",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "name": "counter-command-sampler",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/regular-counter",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "name": "counter-command-rr-off",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/regular-counter",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "counter"
+      ],
+      "name": "counter-command-rr-start",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/regular-halton",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton"
+      ],
+      "name": "halton-command-sampler",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/regular-halton",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton"
+      ],
+      "name": "halton-command-rr-off",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/regular-halton",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--benchmark",
+        "--wavefront",
+        "off",
+        "--rr",
+        "off",
+        "--rr-start",
+        "3",
+        "--compact",
+        "on",
+        "--bvh",
+        "off",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--sort",
+        "off",
+        "--motion",
+        "on",
+        "--sampler",
+        "halton"
+      ],
+      "name": "halton-command-rr-start",
+      "passed": true
+    },
+    {
+      "detail": 4,
+      "name": "resume-matrix-count",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-counter-bvh-off",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-counter-bvh-off.checkpoint"
+      ],
+      "name": "minimal-resume-counter-bvh-off",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-counter-bvh-off",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-counter-bvh-off.checkpoint"
+      ],
+      "name": "resume-no-benchmark-counter-bvh-off",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-counter-bvh-on",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-counter-bvh-on.checkpoint"
+      ],
+      "name": "minimal-resume-counter-bvh-on",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-counter-bvh-on",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-counter-bvh-on.checkpoint"
+      ],
+      "name": "resume-no-benchmark-counter-bvh-on",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-halton-bvh-off",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-halton-bvh-off.checkpoint"
+      ],
+      "name": "minimal-resume-halton-bvh-off",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-halton-bvh-off",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-halton-bvh-off.checkpoint"
+      ],
+      "name": "resume-no-benchmark-halton-bvh-off",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-halton-bvh-on",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-halton-bvh-on.checkpoint"
+      ],
+      "name": "minimal-resume-halton-bvh-on",
+      "passed": true
+    },
+    {
+      "detail": [
+        "/synthetic/headless",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/gltf-motion-validation.json",
+        "--samples",
+        "17",
+        "--output",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/resume-halton-bvh-on",
+        "--resume",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/hedge-final-tools/measure-gltf/validation/checkpoints/motion-halton-bvh-on.checkpoint"
+      ],
+      "name": "resume-no-benchmark-halton-bvh-on",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "motion-rr-off",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "sampler-ids",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "unsupported-sampler-rejected",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "resume-physical-fields-equal",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "resume-physical-fields-differences",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "timing-repeat-design",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "gallery-depths",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "authoritative-raw-parser",
+      "passed": true
+    },
+    {
+      "detail": {
+        "bounce_records": 2,
+        "gpu_stage_sums_ms": {
+          "compaction_ms": 0.0,
+          "count_ms": 0.0,
+          "intersection_ms": 0.0,
+          "queue_ms": 0.0,
+          "shade_ms": 0.0,
+          "sort_ms": 0.0
+        },
+        "host_stage_sums_ms": {
+          "queue_host_ms": 0.0
+        },
+        "measured_samples": 2,
+        "render_loop_wall_ms": 3.0,
+        "renderer_gpu_ms": 2.0,
+        "renderer_host_ms": 1.0,
+        "semantics": {
+          "queue_host_ms": "host queue bookkeeping/submission; not GPU work",
+          "shader_breakdown": "alternative wavefront breakdown; do not add to aggregate shade_ms"
+        },
+        "wavefront_shader_breakdown_ms": {
+          "dielectric_ms": 0.0,
+          "diffuse_ms": 0.0,
+          "emission_ms": 0.0,
+          "mirror_ms": 0.0,
+          "terminal_ms": 0.0
+        }
+      },
+      "name": "benchmark-parser",
+      "passed": true
+    },
+    {
+      "detail": {
+        "bytes": 32,
+        "checksum_fnv1a64": 11935186554794586109,
+        "format_version": 3,
+        "path": "synthetic.checkpoint",
+        "payload_bytes": 0,
+        "sha256": "ff12fa262237ea4eae3ad2f66389f9cec5f2ceb3c44956c7ea172d1b0e8f5b4e"
+      },
+      "name": "checkpoint-v3-parser",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "checkpoint-non-v3-rejected",
+      "passed": true
+    }
+  ],
+  "compiler_executed": false,
+  "completed_utc": "2026-10-01T20:11:50.303498Z",
+  "design": {
+    "default_sampler": "counter",
+    "fixed_scheduling": {
+      "aa": "on",
+      "compact": "on",
+      "motion": "on",
+      "nee": "on",
+      "rr": "off",
+      "rr_start": 3,
+      "sort": "off",
+      "wavefront": "off"
+    },
+    "gallery": {
+      "capability_renders": 2,
+      "culling_renders": 6,
+      "depth": 10,
+      "sampler": "counter",
+      "showcase_baseline_exactness": "not asserted: object omission is intentional"
+    },
+    "renderer_process_counts": {
+      "all": 62,
+      "gallery": 8,
+      "timing": 36,
+      "validation": 18
+    },
+    "sampler_ids": {
+      "counter": 2,
+      "halton": 3
+    },
+    "seed": 947,
+    "timing": {
+      "configurations": 6,
+      "measured_repeats_per_configuration": 3,
+      "sampler": "counter",
+      "warmups_excluded_from_statistics": true,
+      "warmups_per_configuration": 3
+    },
+    "validation": {
+      "encoding_renders": 6,
+      "encoding_sampler": "counter",
+      "motion_continuation": "fresh 17 vs checkpoint 5 -> minimal resume 17",
+      "motion_renders": 12,
+      "motion_samplers": [
+        "counter",
+        "halton"
+      ]
+    }
+  },
+  "mode": "self-test",
+  "renderer_executed": false,
+  "schema_version": 1,
+  "status": "passed",
+  "tool": "scripts/measure_gltf.py"
+}

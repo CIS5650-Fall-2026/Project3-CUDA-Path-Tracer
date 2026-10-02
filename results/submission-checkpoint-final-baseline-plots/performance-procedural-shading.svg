@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="446" viewBox="0 0 1000 446">
+<rect width="1000" height="446" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Procedural scene GPU shading cost</text>
+<text x="28" y="67" font-size="14">Median GPU shading ms/sample from aggregate shade_ms; per-type timings are separate breakdowns.</text>
+<path d="M310.00 92 V401" stroke="#dce2ec"/>
+<text x="310.00" y="422" text-anchor="middle" font-size="13">0.00</text>
+<path d="M428.00 92 V401" stroke="#dce2ec"/>
+<text x="428.00" y="422" text-anchor="middle" font-size="13">3.04</text>
+<path d="M546.00 92 V401" stroke="#dce2ec"/>
+<text x="546.00" y="422" text-anchor="middle" font-size="13">6.07</text>
+<path d="M664.00 92 V401" stroke="#dce2ec"/>
+<text x="664.00" y="422" text-anchor="middle" font-size="13">9.11</text>
+<path d="M782.00 92 V401" stroke="#dce2ec"/>
+<text x="782.00" y="422" text-anchor="middle" font-size="13">12.14</text>
+<path d="M900.00 92 V401" stroke="#dce2ec"/>
+<text x="900.00" y="422" text-anchor="middle" font-size="13">15.18</text>
+<text x="296" y="121" text-anchor="end" font-size="14">procedural-body / plain</text>
+<rect x="310" y="100" width="524.27" height="29" rx="3" fill="#2166ac"/>
+<path d="M834.10 114 H836.79 M834.10 108 V120 M836.79 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="842.27" y="121" font-size="13">13.490</text>
+<text x="296" y="167" text-anchor="end" font-size="14">procedural-body / marble</text>
+<rect x="310" y="146" width="410.95" height="29" rx="3" fill="#ca6e22"/>
+<path d="M719.23 160 H722.33 M719.23 154 V166 M722.33 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="728.95" y="167" font-size="13">10.574</text>
+<text x="296" y="213" text-anchor="end" font-size="14">procedural-body / cells</text>
+<rect x="310" y="192" width="370.38" height="29" rx="3" fill="#318f68"/>
+<path d="M678.75 206 H681.00 M678.75 200 V212 M681.00 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="688.38" y="213" font-size="13">9.530</text>
+<text x="296" y="259" text-anchor="end" font-size="14">procedural-knot / plain</text>
+<rect x="310" y="238" width="373.74" height="29" rx="3" fill="#2166ac"/>
+<path d="M683.68 252 H684.85 M683.68 246 V258 M684.85 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="691.74" y="259" font-size="13">9.617</text>
+<text x="296" y="305" text-anchor="end" font-size="14">procedural-knot / marble</text>
+<rect x="310" y="284" width="327.42" height="29" rx="3" fill="#ca6e22"/>
+<path d="M635.87 298 H639.25 M635.87 292 V304 M639.25 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="645.42" y="305" font-size="13">8.425</text>
+<text x="296" y="351" text-anchor="end" font-size="14">procedural-knot / cells</text>
+<rect x="310" y="330" width="315.90" height="29" rx="3" fill="#318f68"/>
+<path d="M624.78 344 H626.26 M624.78 338 V350 M626.26 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="633.90" y="351" font-size="13">8.128</text>
+</g>
+</svg>

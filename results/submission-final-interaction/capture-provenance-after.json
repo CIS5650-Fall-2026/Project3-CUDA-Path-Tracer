@@ -1,0 +1,358 @@
+{
+  "binary_paths": {
+    "headless": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "preview": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer"
+  },
+  "binary_sha256": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "evidence_prefix": "submission-final",
+  "kind": "after-capture",
+  "recorder_script": {
+    "bytes": 80024,
+    "path": "scripts/record_interaction_video.py",
+    "sha256": "6b3d74194e2b2916eb204cf5aec5a1e9bda4bcf5c60084f5db846662b983f395"
+  },
+  "renderer_build_dir": "build-submission",
+  "renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "scene": "/home/ubuntu/cis5650/project3/scenes/gltf-showcase.json",
+  "scene_assets": [
+    {
+      "bytes": 122,
+      "path": "scenes/assets/area-light.obj",
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635"
+    },
+    {
+      "bytes": 3124619,
+      "path": "scenes/assets/fluted-body-high.obj",
+      "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+    },
+    {
+      "bytes": 188496,
+      "path": "scenes/assets/fluted-body-low.obj",
+      "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247"
+    },
+    {
+      "bytes": 769303,
+      "path": "scenes/assets/fluted-body-medium.obj",
+      "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10"
+    },
+    {
+      "bytes": 196662,
+      "path": "scenes/assets/glaze.bmp",
+      "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+    },
+    {
+      "bytes": 182476,
+      "path": "scenes/assets/gltf/fluted-body-medium.glb",
+      "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd"
+    },
+    {
+      "bytes": 7868,
+      "path": "scenes/assets/gltf/generation.json",
+      "sha256": "171dc1f9906d2a31fa07e2297da03a234af4ae1081ea720f052b9dd3a520399a"
+    },
+    {
+      "bytes": 120412,
+      "path": "scenes/assets/gltf/swept-knot-medium.glb",
+      "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e"
+    },
+    {
+      "bytes": 124600,
+      "path": "scenes/assets/gltf/vase-high.glb",
+      "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344"
+    },
+    {
+      "bytes": 13725,
+      "path": "scenes/assets/gltf/vase-low-data-uri.gltf",
+      "sha256": "e27cd56f7b9383b9066d6533604b1e74173c59204ad08655e8a4013e0513711a"
+    },
+    {
+      "bytes": 9504,
+      "path": "scenes/assets/gltf/vase-low.bin",
+      "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622"
+    },
+    {
+      "bytes": 10540,
+      "path": "scenes/assets/gltf/vase-low.glb",
+      "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf"
+    },
+    {
+      "bytes": 1028,
+      "path": "scenes/assets/gltf/vase-low.gltf",
+      "sha256": "f415baa92a020dada57c82da4f70b18a5f46ad7776c5658e8c0e60599f122c1a"
+    },
+    {
+      "bytes": 34232,
+      "path": "scenes/assets/gltf/vase-medium.glb",
+      "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8"
+    },
+    {
+      "bytes": 196662,
+      "path": "scenes/assets/height.bmp",
+      "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+    },
+    {
+      "bytes": 2004275,
+      "path": "scenes/assets/swept-knot-high.obj",
+      "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+    },
+    {
+      "bytes": 121244,
+      "path": "scenes/assets/swept-knot-low.obj",
+      "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434"
+    },
+    {
+      "bytes": 493493,
+      "path": "scenes/assets/swept-knot-medium.obj",
+      "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b"
+    },
+    {
+      "bytes": 282121,
+      "path": "scenes/assets/torus.obj",
+      "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+    },
+    {
+      "bytes": 387854,
+      "path": "scenes/assets/vase-high.obj",
+      "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+    },
+    {
+      "bytes": 24651,
+      "path": "scenes/assets/vase-low.obj",
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543"
+    },
+    {
+      "bytes": 94338,
+      "path": "scenes/assets/vase-medium.obj",
+      "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb"
+    },
+    {
+      "bytes": 3283,
+      "path": "scenes/closed-benchmark.json",
+      "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a"
+    },
+    {
+      "bytes": 2863,
+      "path": "scenes/complexity-high.json",
+      "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212"
+    },
+    {
+      "bytes": 2861,
+      "path": "scenes/complexity-low.json",
+      "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5"
+    },
+    {
+      "bytes": 2867,
+      "path": "scenes/complexity-medium.json",
+      "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f"
+    },
+    {
+      "bytes": 2265,
+      "path": "scenes/cornell.json",
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b"
+    },
+    {
+      "bytes": 2732,
+      "path": "scenes/gltf-baseline.json",
+      "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58"
+    },
+    {
+      "bytes": 2874,
+      "path": "scenes/gltf-complexity-high.json",
+      "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2"
+    },
+    {
+      "bytes": 2872,
+      "path": "scenes/gltf-complexity-low.json",
+      "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e"
+    },
+    {
+      "bytes": 2878,
+      "path": "scenes/gltf-complexity-medium.json",
+      "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664"
+    },
+    {
+      "bytes": 2889,
+      "path": "scenes/gltf-equivalence-data-uri.json",
+      "sha256": "ec6de8d3ffd85508e798e4b9bcec769ff937e61049a6a1b21b3c6948e74a9531"
+    },
+    {
+      "bytes": 2880,
+      "path": "scenes/gltf-equivalence-external.json",
+      "sha256": "72a7b8b6baca8d51c4f38d0a525a4bec867937144600a731a8947923d46df4dc"
+    },
+    {
+      "bytes": 2874,
+      "path": "scenes/gltf-equivalence-glb.json",
+      "sha256": "8726026e91dce73dc45aefbab263b6d2dbcf56a5541602d611bafb2aa3f4d826"
+    },
+    {
+      "bytes": 5055,
+      "path": "scenes/gltf-motion-validation.json",
+      "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9"
+    },
+    {
+      "bytes": 3342,
+      "path": "scenes/gltf-showcase.json",
+      "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50"
+    },
+    {
+      "bytes": 2300,
+      "path": "scenes/hedge-motion-frozen-end.json",
+      "sha256": "d6c9e70a67eb1dabc73102f104f085d19153e2e69a60538b940a54569cc483e6"
+    },
+    {
+      "bytes": 2305,
+      "path": "scenes/hedge-motion-frozen-midpoint.json",
+      "sha256": "17bb532cf3c63fe4f76c10628d33b8cdaada99b9eaca1649b3d7b6d582c731b2"
+    },
+    {
+      "bytes": 2302,
+      "path": "scenes/hedge-motion-frozen-start.json",
+      "sha256": "08d2e803a24f11087c9545e4fbbd72411245feec0ea168ba04d50fba6d15e40a"
+    },
+    {
+      "bytes": 3374,
+      "path": "scenes/hedge-motion-validation.json",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    },
+    {
+      "bytes": 2289,
+      "path": "scenes/hedge-motion.json",
+      "sha256": "36dc2940eccf27ebb0a75ee5d2bd6fa9604694bfe1fead13ede18632a40f8980"
+    },
+    {
+      "bytes": 2527,
+      "path": "scenes/hedge-obj-baseline.json",
+      "sha256": "ad6209b1a0e43476243f83c2252a148689c43e43aad871f7592f31f59a803bd2"
+    },
+    {
+      "bytes": 1887,
+      "path": "scenes/hedge-sampling-diffuse.json",
+      "sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a"
+    },
+    {
+      "bytes": 2313,
+      "path": "scenes/hedge-sampling-glass-dof.json",
+      "sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02"
+    },
+    {
+      "bytes": 1351,
+      "path": "scenes/light-test-cube.json",
+      "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05"
+    },
+    {
+      "bytes": 1391,
+      "path": "scenes/light-test-mesh.json",
+      "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8"
+    },
+    {
+      "bytes": 1353,
+      "path": "scenes/light-test-sphere.json",
+      "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58"
+    },
+    {
+      "bytes": 2109,
+      "path": "scenes/open-benchmark.json",
+      "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8"
+    },
+    {
+      "bytes": 3147,
+      "path": "scenes/optical-workbench.json",
+      "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2"
+    },
+    {
+      "bytes": 3141,
+      "path": "scenes/preview-smoke.json",
+      "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1"
+    },
+    {
+      "bytes": 2306,
+      "path": "scenes/procedural-fluted-body-cells.json",
+      "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a"
+    },
+    {
+      "bytes": 2308,
+      "path": "scenes/procedural-fluted-body-marble.json",
+      "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c"
+    },
+    {
+      "bytes": 2305,
+      "path": "scenes/procedural-fluted-body-plain.json",
+      "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e"
+    },
+    {
+      "bytes": 3101,
+      "path": "scenes/procedural-optical-stilllife.json",
+      "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+    },
+    {
+      "bytes": 2305,
+      "path": "scenes/procedural-swept-knot-cells.json",
+      "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758"
+    },
+    {
+      "bytes": 2307,
+      "path": "scenes/procedural-swept-knot-marble.json",
+      "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d"
+    },
+    {
+      "bytes": 2304,
+      "path": "scenes/procedural-swept-knot-plain.json",
+      "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3"
+    },
+    {
+      "bytes": 607,
+      "path": "scenes/sphere.json",
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904"
+    },
+    {
+      "bytes": 3265,
+      "path": "scenes/uniform-benchmark.json",
+      "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6"
+    },
+    {
+      "bytes": 3146,
+      "path": "scenes/workbench-dof.json",
+      "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001"
+    },
+    {
+      "bytes": 3131,
+      "path": "scenes/workbench-mirror.json",
+      "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f"
+    },
+    {
+      "bytes": 3082,
+      "path": "scenes/workbench-no-bump.json",
+      "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b"
+    },
+    {
+      "bytes": 3079,
+      "path": "scenes/workbench-procedural.json",
+      "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d"
+    }
+  ],
+  "scene_assets_scope": "all regular files recursively under scenes, including the selected scene and all assets",
+  "schema_version": 1,
+  "source_hash_invocation": {
+    "argv": [
+      "/usr/bin/python3",
+      "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+    ],
+    "cwd": "/home/ubuntu/cis5650/project3",
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703\n"
+  },
+  "source_hash_script": {
+    "bytes": 849,
+    "path": "scripts/source_hash.py",
+    "sha256": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295"
+  },
+  "timestamp": {
+    "monotonic_ns": 6739865163710,
+    "utc": "2026-10-01T23:58:28.712386Z"
+  }
+}
