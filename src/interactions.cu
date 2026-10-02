@@ -1,3 +1,4 @@
+#include "checker_parity.cuh"
 #include "interactions.h"
 #include "intersections.h"
 #include "procedural_texture.cuh"
@@ -302,8 +303,7 @@ __device__ SurfaceEvaluation evaluateSurface(const SceneView& scene,
     if (material.procedural == 1) {
         const float scale = material.checkerScale > 0.0f
             ? material.checkerScale : 8.0f;
-        const int checker = static_cast<int>(floorf(hit.uv.x * scale))
-            + static_cast<int>(floorf(hit.uv.y * scale));
+        const unsigned int checker = checkerParity(hit.uv.x, hit.uv.y, scale);
         result.baseColor *= (checker & 1) == 0 ? 1.0f : 0.18f;
     }
     if (material.procedural == 2 || material.procedural == 3) {

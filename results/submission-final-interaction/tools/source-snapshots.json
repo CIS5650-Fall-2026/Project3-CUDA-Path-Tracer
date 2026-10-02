@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "scope": "Original helper source snapshots and actual execution receipts; media publication remains pending",
+  "recorded_at_utc": "2026-10-01T23:59:44.675287+00:00",
+  "renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "controller_executed_remote_sha256": "e1b709e6a756c403dd6c9e0c39e7e76007bb33f1af31b427479adf5887ddd1ee",
+  "sources": [
+    {
+      "path": "results/submission-final-interaction/tools/run_final_interaction_remote.py",
+      "original_private_path": ".local/run_final_interaction_remote.py",
+      "bytes": 19713,
+      "sha256": "e1b709e6a756c403dd6c9e0c39e7e76007bb33f1af31b427479adf5887ddd1ee"
+    },
+    {
+      "path": "results/submission-final-interaction/tools/finalize_interaction.py",
+      "original_private_path": ".local/finalize_interaction.py",
+      "bytes": 37880,
+      "sha256": "14ea2c70ef0ee5e61fe28d9e410c43252ff85fa9a892e6cdd3ba06c472bf8e2b"
+    },
+    {
+      "path": "results/submission-final-interaction/tools/interaction_pixel_compare.cpp",
+      "original_private_path": ".local/interaction_pixel_compare.cpp",
+      "bytes": 3226,
+      "sha256": "667e38d90ff7d199789669e394b2ccdc05e3320b50dae766391d8f3655e5ab98"
+    },
+    {
+      "path": "results/submission-final-interaction/tools/convert_final_interaction.py",
+      "original_private_path": ".local/convert_final_interaction.py",
+      "bytes": 15612,
+      "sha256": "0cdee514e752725d39deb4d8f30922a076afcdfefb7a1a58e1e1cf6ae1a53f75"
+    },
+    {
+      "path": "results/submission-final-interaction/tools/run_submission_graphical_step.py",
+      "original_private_path": ".local/run_submission_graphical_step.py",
+      "bytes": 11143,
+      "sha256": "18c53c761096101a89ce631e55e3e760fdf16ce4622fbfeb9069181801963882"
+    },
+    {
+      "path": "results/submission-final-interaction/tools/validate_submission_preview.py",
+      "original_private_path": ".local/validate_submission_preview.py",
+      "bytes": 4638,
+      "sha256": "356ac65c29a576e1b4874aed8ac865e64ff4871860033ebfddbbbbfa3880d9c7"
+    },
+    {
+      "path": "results/submission-final-interaction/tools/setup_final_display_remote.py",
+      "original_private_path": ".local/setup_final_display_remote.py",
+      "bytes": 2246,
+      "sha256": "747ed64117703f644649645c4c55088b84c2cbcbef63c07a617f5ac8dfd1904f"
+    }
+  ],
+  "compiled_executables_delivered": false,
+  "additional_executed_source_versions": [
+    {
+      "path": "results/submission-final-interaction/tools/finalize_interaction_artifacts.py",
+      "original_private_path": ".local/finalize_interaction.py",
+      "bytes": 38028,
+      "sha256": "63f3d894889ab5dfcb8ab451e8472a451d04cd97a82ae0e26f2382e2f3640fc2",
+      "reason": "Resolve converter repository-relative frame_files from ROOT rather than result directory; all data and numerical checks unchanged."
+    }
+  ]
+}

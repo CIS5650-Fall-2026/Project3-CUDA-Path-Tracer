@@ -1,0 +1,642 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "gpu-equivalence-and-edge-validation",
+      "passed": true
+    },
+    {
+      "name": "compact-off-wavefront-off-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "brute-force-wavefront-off-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "sort-on-wavefront-off-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "all-valid-scheduling-toggles-wavefront-off-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "fresh-process-exact-resume-wavefront-off-rr-off",
+      "passed": true,
+      "detail": "5-to-17 continuation must equal an uninterrupted 17-sample render",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1",
+      "inherited_config": {
+        "seed": 947,
+        "resolution": [
+          17,
+          13
+        ],
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 7,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 11,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        }
+      },
+      "resume_arguments": [
+        "--samples",
+        "17",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/resumed-wavefront-off-rr-off",
+        "--resume",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/partial-wavefront-off-rr-off.checkpoint"
+      ]
+    },
+    {
+      "name": "instrumented-identity-wavefront-off-rr-off",
+      "passed": true,
+      "detail": "benchmark instrumentation must not alter rendering bytes",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "benchmark-counters-wavefront-off-rr-off",
+      "passed": true,
+      "bounce_records": 119,
+      "queued_paths": 0,
+      "kernel_dispatches": 0,
+      "rr_tested": 0,
+      "rr_terminated": 0
+    },
+    {
+      "name": "compact-off-wavefront-off-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "brute-force-wavefront-off-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "sort-on-wavefront-off-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "all-valid-scheduling-toggles-wavefront-off-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "fresh-process-exact-resume-wavefront-off-rr-on",
+      "passed": true,
+      "detail": "5-to-17 continuation must equal an uninterrupted 17-sample render",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8",
+      "inherited_config": {
+        "seed": 947,
+        "resolution": [
+          17,
+          13
+        ],
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 7,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": false
+        }
+      },
+      "resume_arguments": [
+        "--samples",
+        "17",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/resumed-wavefront-off-rr-on",
+        "--resume",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/partial-wavefront-off-rr-on.checkpoint"
+      ]
+    },
+    {
+      "name": "instrumented-identity-wavefront-off-rr-on",
+      "passed": true,
+      "detail": "benchmark instrumentation must not alter rendering bytes",
+      "raw_sha256": "1d0735fe87f6d5644c4771f6884786ea6391b15916570b64954250fa6b44618a"
+    },
+    {
+      "name": "benchmark-counters-wavefront-off-rr-on",
+      "passed": true,
+      "bounce_records": 90,
+      "queued_paths": 0,
+      "kernel_dispatches": 0,
+      "rr_tested": 3875,
+      "rr_terminated": 3638
+    },
+    {
+      "name": "compact-off-wavefront-on-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "brute-force-wavefront-on-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "all-valid-scheduling-toggles-wavefront-on-rr-off",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "fresh-process-exact-resume-wavefront-on-rr-off",
+      "passed": true,
+      "detail": "5-to-17 continuation must equal an uninterrupted 17-sample render",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1",
+      "inherited_config": {
+        "seed": 947,
+        "resolution": [
+          17,
+          13
+        ],
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 7,
+          "motion": true,
+          "nee": true,
+          "rr": false,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        }
+      },
+      "resume_arguments": [
+        "--samples",
+        "17",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/resumed-wavefront-on-rr-off",
+        "--resume",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/partial-wavefront-on-rr-off.checkpoint"
+      ]
+    },
+    {
+      "name": "instrumented-identity-wavefront-on-rr-off",
+      "passed": true,
+      "detail": "benchmark instrumentation must not alter rendering bytes",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "benchmark-counters-wavefront-on-rr-off",
+      "passed": true,
+      "bounce_records": 119,
+      "queued_paths": 9666,
+      "kernel_dispatches": 710,
+      "rr_tested": 0,
+      "rr_terminated": 0
+    },
+    {
+      "name": "compact-off-wavefront-on-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "brute-force-wavefront-on-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "all-valid-scheduling-toggles-wavefront-on-rr-on",
+      "passed": true,
+      "detail": "valid scheduling changes must preserve the complete raw sum file",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "fresh-process-exact-resume-wavefront-on-rr-on",
+      "passed": true,
+      "detail": "5-to-17 continuation must equal an uninterrupted 17-sample render",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8",
+      "inherited_config": {
+        "seed": 947,
+        "resolution": [
+          17,
+          13
+        ],
+        "config": {
+          "aa": true,
+          "bvh": true,
+          "compact": true,
+          "debug": "none",
+          "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+          "max_depth": 7,
+          "motion": true,
+          "nee": true,
+          "rr": true,
+          "rr_start": 3,
+          "sampler": "counter",
+          "sampler_id": 2,
+          "sort": false,
+          "wavefront": true
+        }
+      },
+      "resume_arguments": [
+        "--samples",
+        "17",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/resumed-wavefront-on-rr-on",
+        "--resume",
+        "/home/ubuntu/cis5650/project3/results/submission-final-validation/partial-wavefront-on-rr-on.checkpoint"
+      ]
+    },
+    {
+      "name": "instrumented-identity-wavefront-on-rr-on",
+      "passed": true,
+      "detail": "benchmark instrumentation must not alter rendering bytes",
+      "raw_sha256": "1d0735fe87f6d5644c4771f6884786ea6391b15916570b64954250fa6b44618a"
+    },
+    {
+      "name": "benchmark-counters-wavefront-on-rr-on",
+      "passed": true,
+      "bounce_records": 90,
+      "queued_paths": 11435,
+      "kernel_dispatches": 255,
+      "rr_tested": 3875,
+      "rr_terminated": 3638
+    },
+    {
+      "name": "wavefront-legacy-equivalence-rr-off",
+      "passed": true,
+      "detail": "legacy and queue-based material scheduling must be byte-identical",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "wavefront-legacy-equivalence-rr-on",
+      "passed": true,
+      "detail": "legacy and queue-based material scheduling must be byte-identical",
+      "raw_sha256": "a69318c27ab1167a5ad89d4ac33a42d85b4af88002d62a4bf3c2664c9b12d5c8"
+    },
+    {
+      "name": "rr-off-start-identity-wavefront-off",
+      "passed": true,
+      "detail": "rr-start must not affect bytes while Russian roulette is disabled",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "rr-depth-not-reached-identity-wavefront-off",
+      "passed": true,
+      "detail": "RR on/off must be byte-identical when max depth is at most rr-start",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "rr-off-start-identity-wavefront-on",
+      "passed": true,
+      "detail": "rr-start must not affect bytes while Russian roulette is disabled",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "rr-depth-not-reached-identity-wavefront-on",
+      "passed": true,
+      "detail": "RR on/off must be byte-identical when max depth is at most rr-start",
+      "raw_sha256": "f48a49a4851531e047e9f066c7fe07c52089d26e4c41c393e9b375b305da98c1"
+    },
+    {
+      "name": "reject-seed",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint seed does not match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-resolution",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint resolution does not match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-feature",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint NEE setting does not match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-wavefront",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint wavefront setting does not match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-rr",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint Russian-roulette setting does not match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-rr-start",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint Russian-roulette start depth does not match requested continuation\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-wavefront-sort-conflict",
+      "passed": true,
+      "rejection": "error: --sort on requires --wavefront off\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-rr-start-zero",
+      "passed": true,
+      "rejection": "error: --rr-start must be in [1, 4096]\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-rr-start-oversized",
+      "passed": true,
+      "rejection": "error: --rr-start must be in [1, 4096]\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-corruption",
+      "passed": true,
+      "rejection": "error: checkpoint preflight failed: checkpoint checksum does not match its contents\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-checkpoint-version-1",
+      "passed": true,
+      "rejection": "error: checkpoint preflight failed: unsupported checkpoint format version 1\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-checkpoint-version-2",
+      "passed": true,
+      "rejection": "error: checkpoint preflight failed: unsupported checkpoint format version 2\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-noncanonical-wavefront",
+      "passed": true,
+      "rejection": "error: checkpoint preflight failed: checkpoint render configuration is truncated or non-canonical\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-noncanonical-rr",
+      "passed": true,
+      "rejection": "error: checkpoint preflight failed: checkpoint render configuration is truncated or non-canonical\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-noncanonical-motion",
+      "passed": true,
+      "rejection": "error: checkpoint preflight failed: checkpoint render configuration is truncated or non-canonical\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "reject-asset-change",
+      "passed": true,
+      "rejection": "error: checkpoint continuation rejected: checkpoint asset fingerprint mismatch\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help"
+    },
+    {
+      "name": "cube-depth-one-exact",
+      "passed": true,
+      "detail": "depth-one NEE must not add an untraced transport vertex",
+      "raw_sha256": "9baf632c9b1a7e849349e18f67a04505d501c7c7b322f2f60661505b2c393443"
+    },
+    {
+      "name": "cube-mis-brightness",
+      "passed": true,
+      "nee_mean": 0.2615769715331642,
+      "bsdf_mean": 0.26176848927639185,
+      "relative_difference": 0.0007316302422687853,
+      "samples": 8192,
+      "rr": false
+    },
+    {
+      "name": "sphere-depth-one-exact",
+      "passed": true,
+      "detail": "depth-one NEE must not add an untraced transport vertex",
+      "raw_sha256": "cbd356cf20edc9de1b55cef498dcbadf3ba674ce85aac26431587e813ffbaf93"
+    },
+    {
+      "name": "sphere-mis-brightness",
+      "passed": true,
+      "nee_mean": 0.23266767190779092,
+      "bsdf_mean": 0.23288600429827966,
+      "relative_difference": 0.0009375075636108246,
+      "samples": 8192,
+      "rr": false
+    },
+    {
+      "name": "mesh-depth-one-exact",
+      "passed": true,
+      "detail": "depth-one NEE must not add an untraced transport vertex",
+      "raw_sha256": "9baf632c9b1a7e849349e18f67a04505d501c7c7b322f2f60661505b2c393443"
+    },
+    {
+      "name": "mesh-mis-brightness",
+      "passed": true,
+      "nee_mean": 0.16763732644050341,
+      "bsdf_mean": 0.16811674354232764,
+      "relative_difference": 0.002851691578855262,
+      "samples": 8192,
+      "rr": false
+    },
+    {
+      "name": "rr-closed-paired-statistical-agreement",
+      "passed": true,
+      "seeds": [
+        947,
+        104729,
+        130363,
+        155921,
+        196613,
+        262147,
+        314159,
+        524287
+      ],
+      "samples_per_seed": 8192,
+      "resolution": [
+        64,
+        48
+      ],
+      "max_depth": 32,
+      "rr_start": 3,
+      "rr_off_mean": 0.04394383259800508,
+      "rr_on_mean": 0.04394455808119346,
+      "rr_off_sample_variance": 2.655220023731995e-10,
+      "rr_on_sample_variance": 2.960322066832035e-10,
+      "paired_mean_difference": 7.254831883877697e-07,
+      "paired_sample_variance": 1.3615746878422426e-11,
+      "paired_standard_error": 1.304595094196971e-06,
+      "absolute_mean_error": 7.254831883877697e-07,
+      "allowed_error": 0.0004404383259800508,
+      "criterion": "abs(mean(on-off)) <= max(4*SE, 1%*mean(off)) + 1e-6",
+      "paired_estimates": [
+        {
+          "seed": 947,
+          "rr_off_mean": 0.04392565764288116,
+          "rr_on_mean": 0.04393181158909303,
+          "difference": 6.153946211874539e-06
+        },
+        {
+          "seed": 104729,
+          "rr_off_mean": 0.04392492720573197,
+          "rr_on_mean": 0.04392544203382284,
+          "difference": 5.148280908737202e-07
+        },
+        {
+          "seed": 130363,
+          "rr_off_mean": 0.04394502043533066,
+          "rr_on_mean": 0.04394193583614955,
+          "difference": -3.0845991811148665e-06
+        },
+        {
+          "seed": 155921,
+          "rr_off_mean": 0.043947343409930305,
+          "rr_on_mean": 0.04394896056174326,
+          "difference": 1.6171518129534657e-06
+        },
+        {
+          "seed": 196613,
+          "rr_off_mean": 0.04395268852868463,
+          "rr_on_mean": 0.043953302783595265,
+          "difference": 6.14254910637213e-07
+        },
+        {
+          "seed": 262147,
+          "rr_off_mean": 0.04397311201546472,
+          "rr_on_mean": 0.04397879121236454,
+          "difference": 5.679196899817385e-06
+        },
+        {
+          "seed": 314159,
+          "rr_off_mean": 0.0439510777878493,
+          "rr_on_mean": 0.04394776812884831,
+          "difference": -3.3096590009856763e-06
+        },
+        {
+          "seed": 524287,
+          "rr_off_mean": 0.043930833758167864,
+          "rr_on_mean": 0.04392845250393091,
+          "difference": -2.3812542369536227e-06
+        }
+      ]
+    },
+    {
+      "name": "rr-glass-paired-statistical-agreement",
+      "passed": true,
+      "seeds": [
+        947,
+        104729,
+        130363,
+        155921,
+        196613,
+        262147,
+        314159,
+        524287
+      ],
+      "samples_per_seed": 8192,
+      "resolution": [
+        64,
+        48
+      ],
+      "max_depth": 32,
+      "rr_start": 3,
+      "rr_off_mean": 0.2868340668632563,
+      "rr_on_mean": 0.2868276416251787,
+      "rr_off_sample_variance": 1.0704167324133988e-08,
+      "rr_on_sample_variance": 1.8684079694339058e-08,
+      "paired_mean_difference": -6.425238077589768e-06,
+      "paired_sample_variance": 2.109007464222586e-09,
+      "paired_standard_error": 1.6236561613464327e-05,
+      "absolute_mean_error": 6.425238077589768e-06,
+      "allowed_error": 0.002869340668632563,
+      "criterion": "abs(mean(on-off)) <= max(4*SE, 1%*mean(off)) + 1e-6",
+      "paired_estimates": [
+        {
+          "seed": 947,
+          "rr_off_mean": 0.2869256940161422,
+          "rr_on_mean": 0.28694476221300036,
+          "difference": 1.9068196858151865e-05
+        },
+        {
+          "seed": 104729,
+          "rr_off_mean": 0.2865931846459186,
+          "rr_on_mean": 0.28651496113762676,
+          "difference": -7.822350829184144e-05
+        },
+        {
+          "seed": 130363,
+          "rr_off_mean": 0.28689245407963565,
+          "rr_on_mean": 0.2869498580428643,
+          "difference": 5.7403963228674915e-05
+        },
+        {
+          "seed": 155921,
+          "rr_off_mean": 0.2868000372994737,
+          "rr_on_mean": 0.2868258936844179,
+          "difference": 2.5856384944233923e-05
+        },
+        {
+          "seed": 196613,
+          "rr_off_mean": 0.2868618517957335,
+          "rr_on_mean": 0.28688843671367265,
+          "difference": 2.6584917939165287e-05
+        },
+        {
+          "seed": 262147,
+          "rr_off_mean": 0.286863280477255,
+          "rr_on_mean": 0.2868333218509916,
+          "difference": -2.9958626263426602e-05
+        },
+        {
+          "seed": 314159,
+          "rr_off_mean": 0.28687044009153795,
+          "rr_on_mean": 0.2868492254429575,
+          "difference": -2.121464858045874e-05
+        },
+        {
+          "seed": 524287,
+          "rr_off_mean": 0.2868655925003539,
+          "rr_on_mean": 0.2868146739158987,
+          "difference": -5.091858445521735e-05
+        }
+      ]
+    }
+  ],
+  "fixed_rr_seeds": [
+    947,
+    104729,
+    130363,
+    155921,
+    196613,
+    262147,
+    314159,
+    524287
+  ],
+  "compatibility": {
+    "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+    "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+    "compute_capability": "8.6",
+    "cuda_driver_version": 13000,
+    "cuda_runtime_version": 12080,
+    "device": "NVIDIA A10G"
+  }
+}

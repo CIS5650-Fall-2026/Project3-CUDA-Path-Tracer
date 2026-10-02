@@ -1,0 +1,181 @@
+{
+  "binary_paths": {
+    "headless": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "preview": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer"
+  },
+  "binary_sha256_end": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "binary_sha256_start": {
+    "headless": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "preview": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20"
+  },
+  "build": "/home/ubuntu/cis5650/project3/build-submission",
+  "elapsed_seconds": 18.013581698999587,
+  "ended_at_utc": "2026-10-01T23:56:37.663173Z",
+  "errors": [],
+  "exit_code": 0,
+  "output_paths": [
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/actions.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/summary.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/horizontal-orbit-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/horizontal-orbit-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/horizontal-orbit-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/horizontal-orbit-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/imgui.ini",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/optical-workbench.2026-10-01_23-56-21z.13samp.save5.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/optical-workbench.2026-10-01_23-56-21z.16samp.save1.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/optical-workbench.2026-10-01_23-56-21z.17samp.save2.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/optical-workbench.2026-10-01_23-56-21z.17samp.save3.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/optical-workbench.2026-10-01_23-56-21z.8samp.save0.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/optical-workbench.2026-10-01_23-56-21z.9samp.save4.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/preview.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/reset-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/reset-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/reset-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/reset-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/screen-plane-pan-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/screen-plane-pan-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/screen-plane-pan-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/screen-plane-pan-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/vertical-zoom-original-reference.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/vertical-zoom-original-reference.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/vertical-zoom-original-reference.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/vertical-zoom-original-reference.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/smoke/headless.json",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/smoke/headless.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/smoke/headless.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/smoke/headless.sum.bin",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/smoke/preview-smoke.2026-10-01_23-56-19z.16samp.save0.png",
+    "/home/ubuntu/cis5650/project3/results/submission-final-preview/smoke/preview.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/logs/001-source-hash-start.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/logs/001-source-hash-start.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/logs/002-verify-preview.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/logs/002-verify-preview.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/logs/003-source-hash-end.stderr.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/logs/003-source-hash-end.stdout.log",
+    "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview/summary.json"
+  ],
+  "phase": "preview",
+  "prefix": "submission-final",
+  "renderer_metadata": [
+    {
+      "camera_shutter": [
+        0.0,
+        1.0
+      ],
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "completed_samples": 16,
+      "config": {
+        "aa": true,
+        "bvh": true,
+        "compact": true,
+        "debug": "none",
+        "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+        "max_depth": 10,
+        "motion": true,
+        "nee": true,
+        "rr": true,
+        "rr_start": 3,
+        "sampler": "counter",
+        "sampler_id": 2,
+        "sort": false,
+        "wavefront": true
+      },
+      "format_version": 1,
+      "linear_sum_format_version": 1,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-final-preview/interactive/horizontal-orbit-original-reference.json",
+      "resolution": [
+        960,
+        640
+      ],
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sampler_version": 2,
+      "sha256": "dcc23bb1f799323ce3254759aa231a9eff3fd1555a7359b4da766ccc7668f4d1"
+    }
+  ],
+  "schema_version": 1,
+  "source_hash_script_sha256_end": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_hash_script_sha256_start": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+  "source_input_sha256_end": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "source_input_sha256_start": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "stages": [
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.08769005700014532,
+      "ended_at_utc": "2026-10-01T23:56:19.751581Z",
+      "name": "source-hash-start",
+      "returncode": 0,
+      "started_at_utc": "2026-10-01T23:56:19.663905Z",
+      "status": "passed",
+      "stderr_log": "logs/001-source-hash-start.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/001-source-hash-start.stdout.log",
+      "stdout_sha256": "4039167ddf3aa65815511ed108eae03a1f06c24cdf55cded2505c48b9cb7e263"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/verify_preview.py",
+        "--preview-binary",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer",
+        "--headless-binary",
+        "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "--output",
+        "/home/ubuntu/cis5650/project3/results/submission-final-preview",
+        "--wavefront",
+        "on",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 17.809474811000655,
+      "ended_at_utc": "2026-10-01T23:56:37.561312Z",
+      "name": "verify-preview",
+      "returncode": 0,
+      "started_at_utc": "2026-10-01T23:56:19.751848Z",
+      "status": "passed",
+      "stderr_log": "logs/002-verify-preview.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/002-verify-preview.stdout.log",
+      "stdout_sha256": "c3b0b14a7e6af82557f655f4d073ddb228cc4019c2e6d248e596b89342c15f06"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "/home/ubuntu/cis5650/project3/scripts/source_hash.py"
+      ],
+      "cwd": "/home/ubuntu/cis5650/project3",
+      "elapsed_seconds": 0.08718680200036033,
+      "ended_at_utc": "2026-10-01T23:56:37.648710Z",
+      "name": "source-hash-end",
+      "returncode": 0,
+      "started_at_utc": "2026-10-01T23:56:37.561535Z",
+      "status": "passed",
+      "stderr_log": "logs/003-source-hash-end.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "logs/003-source-hash-end.stdout.log",
+      "stdout_sha256": "4039167ddf3aa65815511ed108eae03a1f06c24cdf55cded2505c48b9cb7e263"
+    }
+  ],
+  "started_at_utc": "2026-10-01T23:56:19.649585Z",
+  "status": "passed",
+  "suite_path": "/home/ubuntu/cis5650/project3/results/submission-final-suite-preview"
+}

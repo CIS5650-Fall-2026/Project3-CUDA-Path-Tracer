@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "check_only": false,
+  "saved_samples": 124,
+  "comparison": {
+    "passed": true,
+    "method": "PNG bytes first, then independently authored RGB8 decoder wrapper",
+    "outcome": "bounded RGB8 differences",
+    "details": {
+      "passed": true,
+      "width": 960,
+      "height": 640,
+      "channels": 3,
+      "total_pixels": 614400,
+      "differing_pixels": 1,
+      "differing_channels": 1,
+      "maximum_absolute_channel_difference": 1,
+      "sum_absolute_channel_differences": 1,
+      "rgb8_equal": false,
+      "acceptance_maximum_absolute_channel_difference": 1,
+      "first_differences": [
+        {
+          "x": 753,
+          "y": 77,
+          "channel": 0,
+          "preview": 71,
+          "reference": 70
+        }
+      ],
+      "png_bytes_equal": false,
+      "disclosure": "PNG bytes and some RGB8 channels differ. Every channel differs by at most 1 of 255 levels; this is consistent with the known preview division versus headless reciprocal multiplication normalization difference. The cause has not been independently reproduced, and neither exact image equality nor raw accumulation equality is claimed.",
+      "raw_sum_equality_claimed": false
+    }
+  },
+  "scope": "complete artifact verification",
+  "capture_duration_seconds": 49.333333,
+  "gif_duration_seconds": 49.25
+}

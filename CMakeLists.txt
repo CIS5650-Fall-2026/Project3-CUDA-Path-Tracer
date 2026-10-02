@@ -71,6 +71,7 @@ if(BUILD_RENDERER)
 
     set(cis565_renderer_sources
         src/pathtrace.cu
+        src/checker_parity.cuh
         src/procedural_texture.cuh
         src/interactions.cu
         src/intersections.cu

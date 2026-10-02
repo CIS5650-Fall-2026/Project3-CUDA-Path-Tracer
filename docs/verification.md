@@ -1,6 +1,6 @@
 # Verification and assignment coverage
 
-The current renderer source hash is `a16c1aba9a7cf17d4d2ffd902e5f78e0967acd06942d399ff3af256029227e86`, computed by `scripts/source_hash.py` over CMake, renderer, compaction, external and CMake-helper inputs. The recorded Release build supplies this value explicitly as `PROJECT3_BUILD_ID`. Every current render identifies this build; older `results/extension-*` records are retained as historical evidence and are not the basis of the current README measurements.
+The current renderer source hash is `07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703`, computed by `scripts/source_hash.py` over CMake, renderer, compaction, external and CMake-helper inputs. The recorded Release build supplies this value explicitly as `PROJECT3_BUILD_ID`. Every current render identifies this build; older `results/extension-*` and `results/hedge-final-*` records are retained as historical evidence and are not the basis of the current README measurements.
 
 ## Coverage and listed points
 
@@ -28,30 +28,32 @@ The first 10 feature points satisfy Part 2. The remaining 34 nominal points supp
 
 | Check | Result | Retained evidence |
 |---|---|---|
-| Release CUDA and preview build; CTest | 4/4 tests pass | [Build and system records](../results/hedge-final-rebuild/) |
-| AWS host geometry, all scenes | 23 groups, 41 scenes, 10,537,291 assertions; zero failures | [Build-phase summary](../results/hedge-final-rebuild/summary.json) |
-| Mac host geometry, all scenes | 23 groups, 41 scenes, 10,536,220 assertions; zero failures | [Host report](../results/hedge-final-host-mac/test-summary.json) |
-| Host glTF and checkpoint checks | Optimized and ASan/UBSan pass; glTF 11 groups/351 assertions each | [Executed commands and logs](../results/hedge-final-host-mac/) |
-| Existing scene/asset preservation | All 37 files byte-identical to the previous local revision | [Hash comparison](../results/hedge-final-host-mac/existing-scenes-assets-comparison.json) |
-| Instructions restored | Byte-identical to the supplied INSTRUCTION (3).md | [Restoration record](../results/hedge-final-host-mac/instruction-restoration.json) |
-| Evidence-tool self-tests and deterministic glTF regeneration check | Seven commands pass; synthetic self-tests are separately labeled | [Tool report](../results/hedge-final-tools/summary.json) |
-| Device checks | 51/51 pass | [Device output](../results/hedge-final-validation/gpu-validation.stdout.txt) |
-| Core renders, rejection and statistical regression | 57 checks pass | [Validation](../results/hedge-final-validation/summary.json) |
-| Sampling/motion/format/runtime validation | 338 checks across 108 invocations; zero failures | [New-feature validator](../results/hedge-final-feature-validation/summary.json) |
-| CUDA memory and race validation | 16 runs pass, zero errors/hazards/warnings; exact per-scene/sampler sums | [Sanitizer records](../results/hedge-final-suite-sanitizers/summary.json) |
-| Baseline timing matrix | 48 variants, 288 processes; 168 outputs in 12 exact groups verified | [Matrix](../results/hedge-final-experiments/summary.json), [exact comparisons](../results/hedge-final-experiments/exact-comparison.json) |
-| Sampling convergence and equal-time study | 140 renders; qualified; 36.2% pooled MSE reduction, six of six improved means and all image-mean checks pass | [Complete quality report](../results/hedge-final-quality/quality/summary.json) |
-| Sampling and motion timing | 36 processes, three warmups/three repeats per setting | [Timing](../results/hedge-final-timing/timing/summary.json) |
-| glTF encodings, moving meshes, resume, culling and host loading | 62 renders; all checks pass | [glTF study](../results/hedge-final-gltf/summary.json) |
-| Current comparison galleries | 23 baseline +16 new-feature +8 glTF records | [Baseline settings](../results/hedge-final-gallery/gallery.json), [new settings](../results/hedge-final-feature-gallery/gallery/summary.json), [glTF settings](../results/hedge-final-gltf/gallery/summary.json) |
-| Interactive preview | camera controls, six unique saves, progress and reset pass; preview/headless PNG comparisons exact | [Preview check](../results/hedge-final-preview/summary.json) |
-| Actual interaction recording | 49.3-second actual MP4, complete controls; 125-spp independent comparison differs in five RGB8 channels by one level | [Recording and reset comparison](../results/hedge-final-interaction/) |
+| Release CUDA and preview build; CTest | 4/4 tests pass | [Build and system records](../results/submission-final-rebuild/) |
+| AWS host geometry, all scenes | 24 groups, 41 scenes, 10,557,812 assertions; zero failures | [Build-phase summary](../results/submission-final-rebuild/summary.json) |
+| Mac host geometry, all scenes | 24 groups, 41 scenes, 10,556,741 assertions; zero failures | [Host report](../results/submission-final-host-mac/test-summary.json) |
+| Host glTF and checkpoint checks | Optimized and ASan/UBSan pass; glTF 11 groups/351 assertions each | [Executed commands and logs](../results/submission-final-host-mac/) |
+| Existing scene/asset preservation | All 37 files byte-identical to the previous local revision | [Hash comparison](../results/submission-final-host-mac/existing-scenes-assets-comparison.json) |
+| Instructions restored | Byte-identical to the supplied INSTRUCTION (3).md | [Restoration record](../results/submission-final-host-mac/instruction-restoration.json) |
+| Evidence-tool self-tests and deterministic glTF regeneration check | Seven commands pass; synthetic self-tests are separately labeled | [Tool report](../results/submission-final-tools/summary.json) |
+| Device checks | 57/57 pass | [Device output](../results/submission-final-validation/gpu-validation.stdout.txt) |
+| Core renders, rejection and statistical regression | 57 checks pass | [Validation](../results/submission-final-validation/summary.json) |
+| Sampling/motion/format/runtime validation | 338 checks across 108 invocations; zero failures | [New-feature validator](../results/submission-final-feature-validation/summary.json) |
+| CUDA memory and race validation | 16 runs pass, zero errors/hazards/warnings; exact per-scene/sampler sums | [Sanitizer records](../results/submission-final-suite-sanitizers/summary.json) |
+| Baseline timing matrix | 48 variants, 288 processes; 168 outputs in 12 exact groups verified | [Matrix](../results/submission-final-experiments/summary.json), [exact comparisons](../results/submission-final-experiments/exact-comparison.json) |
+| Sampling convergence and equal-time study | 140 renders; qualified; 36.2% pooled MSE reduction, six of six improved means and all image-mean checks pass | [Complete quality report](../results/submission-final-quality/quality/summary.json) |
+| Sampling and motion timing | 36 processes, three warmups/three repeats per setting | [Timing](../results/submission-final-timing/timing/summary.json) |
+| glTF encodings, moving meshes, resume, culling and host loading | 62 renders; all checks pass | [glTF study](../results/submission-final-gltf/summary.json) |
+| Current comparison galleries | 23 baseline +16 new-feature +8 glTF records | [Baseline settings](../results/submission-final-gallery/gallery.json), [new settings](../results/submission-final-feature-gallery/gallery/summary.json), [glTF settings](../results/submission-final-gltf/gallery/summary.json) |
+| Interactive preview | camera controls, six unique saves, progress and reset pass; preview/headless PNG comparisons exact | [Preview check](../results/submission-final-preview/summary.json) |
+| Actual interaction recording | 49.333-second actual MP4, complete controls; 124-spp independent comparison differs in one RGB8 channel by one level | [Recording and reset comparison](../results/submission-final-interaction/) |
+
+The sanitized Mac geometry suite also passes 24 groups and 1,808,444 assertions. LeakSanitizer is disabled because it is unsupported on this Apple runtime; AddressSanitizer, UndefinedBehaviorSanitizer and float-cast-overflow checks run with error recovery disabled.
 
 Host assertion counts include checks performed for observed hits and can vary between compiler/platform runs. They are CPU correctness checks, not measurements of a CPU path tracer.
 
 ## Hardware and reproduction
 
-GPU evidence uses an AWS g5.xlarge workstation with AMD EPYC 7R32 (4 vCPUs), 16 GiB provisioned host RAM, NVIDIA A10G (23,028 MiB reported memory), Ubuntu 24.04.4, CUDA 12.8.93, GCC 13.3 and CMake 3.28.3. Release targets architecture 86. [System logs](../results/hedge-final-rebuild/system.log) retain the actual reports. The graphical preview uses NVIDIA OpenGL on the same GPU. Local host checks use Apple M5, 24 GiB RAM, macOS 27.0.1 and Apple clang 21.0.0; [host specifications](../results/hedge-final-host-mac/system.json) are separate.
+GPU evidence uses an AWS g5.xlarge workstation with AMD EPYC 7R32 (4 vCPUs), 16 GiB provisioned host RAM, NVIDIA A10G (23,028 MiB reported memory), Ubuntu 24.04.4, CUDA 12.8.93, GCC 13.3 and CMake 3.28.3. Release targets architecture 86. [System logs](../results/submission-final-rebuild/system.log) retain the actual reports. The graphical preview uses NVIDIA OpenGL on the same GPU. Local host checks use Apple M5, 24 GiB RAM, macOS 27.0.1 and Apple clang 21.0.0; [host specifications](../results/submission-final-host-mac/system.json) are separate.
 
 Run each suite phase with a new results prefix:
 
@@ -66,7 +68,7 @@ python3 scripts/run_hedge_suite.py --phase gallery --build build --prefix reprod
 python3 scripts/measure_gltf.py --binary build/bin/cis565_path_tracer_headless --build build --output results/reproduction-gltf --phase all
 ```
 
-The measurement driver used for the retained sampling study is archived byte-for-byte in [the supplemental tool check](../results/hedge-final-tools-exit-policy/summary.json). After that successful study, a small CLI return-code correction made completed negative/inconclusive studies return 2, as the suite expects; it changes neither the numerical methods nor the qualified-result path. Fresh synthetic branch checks and both current tool self-tests pass. The archived driver hash matches the actual study metadata.
+The current measurement driver is the exact driver executed for this refresh; each session records its hash. The CLI returns 0 for a completed qualified result, 2 for a completed negative/inconclusive result, and 1 for an execution failure. Fresh synthetic completion-branch checks and tool self-tests exercise those distinctions without fabricating render evidence.
 
 Phases record commands, UTC times, elapsed time, logs, binary hashes and source identity before/after. Output guards prevent overwriting an existing study. A completed negative or inconclusive sampling result has exit code 2 and remains evidence; execution failure has exit code 1. The design does not discard unfavorable seeds or trials.
 
@@ -77,6 +79,9 @@ Both samplers are indexed by original pixel and absolute sample number. Sorting,
 A path samples one exposure time, preserved through every bounce and visibility ray. Moving sphere, cube, mesh and emissive geometry tests cover coherent intersections and light PDFs. Frozen shutters and motion-off runs have independent exact comparisons. Swept BVH bounds enclose the complete declared motion interval, so midpoint/full-shutter timing holds the hierarchy fixed. glTF validation checks external-buffer, data-URI and GLB equivalence, both samplers on genuinely moving loaded geometry, BVH on/off and minimal checkpoint continuation.
 
 Memory/race checks cover the original workbench and moving validation scene, counter/Halton sampling, sorted unified/wavefront schedules and both tools. The non-square 67-by-35 resolution exercises partial blocks; raw sums agree within each scene/sampler group. Host ASan/UBSan separately covers parsing, accessor range/overflow checks, hierarchy transforms and checkpoint storage.
+
+
+Final review reproduced unsafe float-to-int conversion and signed addition in checker parity at large accepted inputs. The original shared host/device fix preserves float multiplication before flooring for ordinary inputs, uses safe cell parity without signed addition, and defines overflowing float products through a finite double fallback. Optimized and ASan/UBSan/float-cast-overflow host tests and six actual CUDA validation groups cover ordinary behavior, float-rounding boundaries, signed-sum overflow, out-of-range cells, product overflow and surface consumption. All current GPU studies were rerun after this source change; older passing reports do not accept the corrected bundle.
 
 ## Statistical and timing methods
 
@@ -92,7 +97,7 @@ CUDA-event phase timing synchronizes the instrumented renderer. Overall GPU-even
 
 ## Images, interaction and provenance
 
-Current README illustrations are mapped to actual render artifacts and metadata by [the image manifest](../img/render-manifest.json). [The chart manifest](../img/chart-manifest.json) maps each displayed SVG to its retained measured data and source-bound suite. A [presentation-only chart regeneration](../results/hedge-final-hedge-plots-layout/layout-verification.json) fixes label overlap, retains the original plots and verifies identical numeric data. The baseline gallery retains both original and procedural covers, six plain/pattern sculpture comparisons, diagnostics, feature pairs and exact restart. New views add counter/Halton, four exposures, mesh-presence and scheduling comparisons. glTF adds its own presence/culling pairs. Capture settings and the post-Space saved-image/headless comparison are retained with the interaction evidence; capture frame rate is not renderer throughput. Pre-capture attempts that failed desktop size/placement guards are retained in `results/hedge-final-interaction-attempt1/` and `results/hedge-final-interaction-attempt2/` and are not successful recordings. The corrected recorder measures absolute client coordinates with `xwininfo`, avoiding the observed parent-offset double counting in `xdotool`; the native 960×640 image is placed at (160,69) inside the 1280×720 capture. Its geometry checks do not resize the renderer. The earlier recorder is archived with the interaction tools.
+Current README illustrations are mapped to actual render artifacts and metadata by [the image manifest](../img/render-manifest.json). [The chart manifest](../img/chart-manifest.json) maps each displayed SVG to its retained measured data and source-bound suite. The current plotting tools generate readable label positions directly from the refreshed data; their manifest records every output hash. The baseline gallery retains both original and procedural covers, six plain/pattern sculpture comparisons, diagnostics, feature pairs and exact restart. New views add counter/Halton, four exposures, mesh-presence and scheduling comparisons. glTF adds its own presence/culling pairs. Capture settings and the post-Space saved-image/headless comparison are retained with the interaction evidence; capture frame rate is not renderer throughput. Earlier pre-capture attempts retained under `results/hedge-final-interaction-attempt1/` and `results/hedge-final-interaction-attempt2/` are historical failed attempts, not current successful recordings. The corrected recorder measures absolute client coordinates with `xwininfo`, avoiding the observed parent-offset double counting in `xdotool`; the native 960×640 image is placed at (160,69) inside the 1280×720 capture. Its geometry checks do not resize the renderer. The earlier recorder is archived with the interaction tools. The preceding successful GIF and image/chart manifests are preserved under `results/hedge-final-interaction/historical-media/` with exact archival hashes; they do not validate the corrected bundle.
 
 > Using third-party code without its approval, including using another student's code, is an academic integrity violation, and will, at minimum, result in you receiving an F for the semester.
 

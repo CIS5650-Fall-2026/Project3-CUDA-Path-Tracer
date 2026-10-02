@@ -1,3 +1,4 @@
+#include "checker_parity.cuh"
 #include "geometry.cuh"
 #include "procedural_texture.cuh"
 #include "scene.h"
@@ -1820,6 +1821,105 @@ void compareSceneRayExactly(const SceneView& view, const Ray& ray, float tMin, f
     }
 }
 
+void testCheckerParityHostContract() {
+    CHECK(renderer::checkerParity(0.1f, 0.2f, 8.0f) == 1u);
+    CHECK(renderer::checkerParity(0.25f, 0.25f, 4.0f) == 0u);
+    CHECK(renderer::checkerParity(-0.25f, 0.0f, 4.0f) == 1u);
+    CHECK(renderer::checkerParity(-0.25f, 0.25f, 4.0f) == 0u);
+    CHECK(renderer::checkerParity(0.25f, 0.0f, -4.0f) == 1u);
+    CHECK(renderer::checkerParity(3.0f, -7.0f, 0.0f) == 0u);
+
+    // These products round to integral floats before floorf. Recomputing every
+    // product in double would change both results.
+    CHECK(renderer::checkerParity(0.7f, 0.0f, 10.0f) == 1u);
+    CHECK(renderer::checkerParity(-0.3f, 0.0f, 10.0f) == 1u);
+    CHECK(renderer::checkerParity(-0.3f, 0.3f, 10.0f) == 0u);
+
+    const std::array<float, 8> scales = {
+        -31.75f, -3.25f, 0.125f, 0.5f, 1.0f, 3.25f, 10.0f, 63.5f,
+    };
+    std::uint32_t randomState = 0x7c4a7f19u;
+    for (int sample = 0; sample < 4096; ++sample) {
+        const float u = 4096.0f * signedRandom(randomState) + 0.03125f;
+        const float v = 4096.0f * signedRandom(randomState) - 0.046875f;
+        const float scale = scales[static_cast<std::size_t>(sample) % scales.size()];
+        const float uCell = floorf(u * scale);
+        const float vCell = floorf(v * scale);
+
+        CHECK(uCell >= -2147483648.0f && uCell < 2147483648.0f);
+        CHECK(vCell >= -2147483648.0f && vCell < 2147483648.0f);
+        const std::int32_t uInteger = static_cast<std::int32_t>(uCell);
+        const std::int32_t vInteger = static_cast<std::int32_t>(vCell);
+        const std::int64_t wideSum = static_cast<std::int64_t>(uInteger)
+            + static_cast<std::int64_t>(vInteger);
+        CHECK(wideSum >= std::numeric_limits<int>::min());
+        CHECK(wideSum <= std::numeric_limits<int>::max());
+
+        // Evaluate the prior expression only after proving both conversions and
+        // its signed addition are in range.
+        const int priorChecker = static_cast<int>(floorf(u * scale))
+            + static_cast<int>(floorf(v * scale));
+        CHECK(renderer::checkerParity(u, v, scale)
+              == static_cast<unsigned int>(priorChecker & 1));
+    }
+
+    const float int32Upper = 2147483648.0f;
+    const float largestSafePositive = std::nextafter(int32Upper, 0.0f);
+    const float firstUnsafeNegative = std::nextafter(
+        -int32Upper, -std::numeric_limits<float>::infinity());
+    CHECK(renderer::checkerParity(-int32Upper, 0.0f, 1.0f) == 0u);
+    CHECK(renderer::checkerParity(largestSafePositive, 1.0f, 1.0f) == 1u);
+    CHECK(renderer::checkerParity(int32Upper, 1.0f, 1.0f) == 1u);
+    CHECK(renderer::checkerParity(firstUnsafeNegative, 1.0f, 1.0f) == 1u);
+
+    const std::int32_t highCell = static_cast<std::int32_t>(largestSafePositive);
+    CHECK(static_cast<std::int64_t>(highCell) + 129
+          > std::numeric_limits<std::int32_t>::max());
+    CHECK(renderer::checkerParity(largestSafePositive, 129.0f, 1.0f) == 1u);
+    const std::int32_t lowCell = static_cast<std::int32_t>(-int32Upper);
+    CHECK(static_cast<std::int64_t>(lowCell) - 1
+          < std::numeric_limits<std::int32_t>::min());
+    CHECK(renderer::checkerParity(-int32Upper, -1.0f, 1.0f) == 1u);
+
+    const float symmetricOverflowCell = floorf(0.5f * 3.0e9f);
+    CHECK(symmetricOverflowCell >= -int32Upper
+          && symmetricOverflowCell < int32Upper);
+    const std::int32_t symmetricInteger =
+        static_cast<std::int32_t>(symmetricOverflowCell);
+    CHECK(static_cast<std::int64_t>(symmetricInteger)
+              + static_cast<std::int64_t>(symmetricInteger)
+          > std::numeric_limits<std::int32_t>::max());
+    CHECK(renderer::checkerParity(0.5f, 0.5f, 3.0e9f) == 0u);
+
+    CHECK(renderer::checkerParity(1.0e20f, 1.0f, 1.0f) == 1u);
+    CHECK(renderer::checkerParity(0.5f, 0.5f, 1.0e20f) == 0u);
+
+    const float maximum = std::numeric_limits<float>::max();
+    const float minimumNormal = std::numeric_limits<float>::min();
+    CHECK(!std::isfinite(maximum * maximum));
+    CHECK(floorf(minimumNormal * maximum) == 3.0f);
+    CHECK(renderer::checkerParity(maximum, maximum, maximum) == 0u);
+    CHECK(renderer::checkerParity(-maximum, maximum, maximum) == 0u);
+    CHECK(renderer::checkerParity(maximum, minimumNormal, maximum) == 1u);
+    CHECK(renderer::checkerParity(-maximum, minimumNormal, maximum) == 1u);
+    CHECK(renderer::checkerParity(maximum, -minimumNormal, maximum) == 0u);
+    CHECK(renderer::checkerParity(maximum, 0.5f, 2.0f) == 1u);
+
+    const float subnormal = std::numeric_limits<float>::denorm_min();
+    CHECK(renderer::checkerParity(-subnormal, 0.0f, 1.0f) == 1u);
+    CHECK(renderer::checkerParity(-subnormal, 0.0f, 0.5f) == 0u);
+    CHECK(renderer::checkerParity(subnormal, subnormal, subnormal) == 0u);
+
+    const float infinity = std::numeric_limits<float>::infinity();
+    const float nan = std::numeric_limits<float>::quiet_NaN();
+    CHECK(renderer::checkerParity(nan, 1.0f, 1.0f) == 0u);
+    CHECK(renderer::checkerParity(infinity, 1.0f, 1.0f) == 0u);
+    CHECK(renderer::checkerParity(1.0f, nan, 1.0f) == 0u);
+    CHECK(renderer::checkerParity(1.0f, -infinity, 1.0f) == 0u);
+    CHECK(renderer::checkerParity(1.0f, 0.0f, nan) == 0u);
+    CHECK(renderer::checkerParity(1.0f, 0.0f, infinity) == 0u);
+}
+
 void testProceduralTextureHostContract() {
     const glm::vec3 white(1.0f);
     for (int id : {-17, 0, 1, 4, 99}) {
@@ -1918,6 +2018,13 @@ void testProceduralParserAliasesAndValidation() {
     Scene scaledChecker(scaledCheckerPath.string());
     CHECK(scaledChecker.materials[0].procedural == 1);
     CHECK_NEAR(scaledChecker.materials[0].checkerScale, 3.25f, 0.0f);
+
+    const fs::path largeCheckerPath = scenePathFor(
+        "large-checker",
+        materialWith(",\"PROCEDURAL\":\"checker\",\"CHECKER_SCALE\":1e20"));
+    Scene largeChecker(largeCheckerPath.string());
+    CHECK(largeChecker.materials[0].procedural == 1);
+    CHECK_NEAR(largeChecker.materials[0].checkerScale, 1.0e20f, 0.0f);
 
     const std::array<const char*, 4> invalidScaleModes = {
         nullptr, "none", "marble", "cells",
@@ -2270,6 +2377,7 @@ int main(int argc, char** argv) {
         {"scene unknown and malformed inputs", testSceneUnknownAndMalformedInputs},
         {"texture color/bump/orientation/assets", testTextureLoadingColorBumpOrientationAndAssets},
         {"texture failures", testTextureFailures},
+        {"checker parity host contract", testCheckerParityHostContract},
         {"procedural texture host contract", testProceduralTextureHostContract},
         {"procedural parser aliases and validation", testProceduralParserAliasesAndValidation},
         {"generated procedural mesh assets", testGeneratedProceduralMeshAssets},

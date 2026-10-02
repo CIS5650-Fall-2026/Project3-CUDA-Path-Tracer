@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "results/submission-final-interaction/tools/convert_final_interaction.py",
+    "publish",
+    "--root",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+    "--expected-source-sha256",
+    "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+    "--prefix",
+    "submission-final",
+    "--renderer-build-dir",
+    "build-submission",
+    "--finalizer",
+    "results/submission-final-interaction/tools/finalize_interaction.py",
+    "--pixel-source",
+    "results/submission-final-interaction/tools/interaction_pixel_compare.cpp",
+    "--verification-build-dir",
+    ".local/interaction-helper-build/submission-current",
+    "--visual-verification",
+    "results/submission-final-interaction/root-visual-review.json"
+  ],
+  "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+  "shell": false,
+  "started_at_utc": "2026-10-02T00:02:10.857842+00:00",
+  "root_review_sha256": "458c8b5cf174909aa9b3404dc8ecd59c1c720ee48c05a08254674f0bd3578e9e",
+  "exit_code": 0,
+  "ended_at_utc": "2026-10-02T00:02:14.412716+00:00",
+  "elapsed_seconds": 3.554752332995122,
+  "stdout_log": "media-publish.stdout.json",
+  "stderr_log": "media-publish.stderr.log"
+}

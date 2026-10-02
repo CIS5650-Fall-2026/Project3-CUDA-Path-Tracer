@@ -8,31 +8,31 @@
 <path d="M365.00 90 V328" stroke="#dde3ea"/>
 <text x="365.00" y="351" text-anchor="middle" font-size="12">0</text>
 <path d="M506.00 90 V328" stroke="#dde3ea"/>
-<text x="506.00" y="351" text-anchor="middle" font-size="12">897.4</text>
+<text x="506.00" y="351" text-anchor="middle" font-size="12">897.8</text>
 <path d="M647.00 90 V328" stroke="#dde3ea"/>
-<text x="647.00" y="351" text-anchor="middle" font-size="12">1795</text>
+<text x="647.00" y="351" text-anchor="middle" font-size="12">1796</text>
 <path d="M788.00 90 V328" stroke="#dde3ea"/>
-<text x="788.00" y="351" text-anchor="middle" font-size="12">2692</text>
+<text x="788.00" y="351" text-anchor="middle" font-size="12">2694</text>
 <path d="M929.00 90 V328" stroke="#dde3ea"/>
-<text x="929.00" y="351" text-anchor="middle" font-size="12">3590</text>
+<text x="929.00" y="351" text-anchor="middle" font-size="12">3591</text>
 <path d="M1070.00 90 V328" stroke="#dde3ea"/>
-<text x="1070.00" y="351" text-anchor="middle" font-size="12">4487</text>
+<text x="1070.00" y="351" text-anchor="middle" font-size="12">4489</text>
 <text x="717.50" y="371" text-anchor="middle" font-size="12">actual renderer GPU milliseconds</text>
 <text x="351" y="122" text-anchor="end" font-size="12">diffuse · counter (n=8)</text>
-<rect x="365" y="102" width="625.96" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3984.179102420807; 104729:3983.575454711914; 130363:3985.4344930648804; 155921:3982.3877115249634; 196613:3983.1802201271057; 262147:3985.7201266288757; 314159:3982.151487827301; 524287:3985.554844856262</title></rect>
-<path d="M990.69 116 H991.25 M990.69 110 V122 M991.25 110 V122" stroke="#172331" stroke-width="1.5"/>
-<text x="999.25" y="122" font-size="12">3983.9 [3982.2, 3985.7]</text>
+<rect x="365" y="102" width="625.54" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3985.6552934646606; 104729:3984.2471709251404; 130363:3982.0596771240234; 155921:3985.6354870796204; 196613:3982.2947545051575; 262147:3983.0622692108154; 314159:3983.3718667030334; 524287:3981.8438391685486</title></rect>
+<path d="M990.32 116 H990.92 M990.32 110 V122 M990.92 110 V122" stroke="#172331" stroke-width="1.5"/>
+<text x="998.92" y="122" font-size="12">3983.2 [3981.8, 3985.7]</text>
 <text x="351" y="173" text-anchor="end" font-size="12">diffuse · halton (n=8)</text>
-<rect x="365" y="153" width="626.33" height="28" rx="3" fill="#d06531" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3985.944353580475; 104729:3987.178879737854; 130363:3983.8598675727844; 155921:3988.1946239471436; 196613:3985.468349456787; 262147:3985.3166728019714; 314159:3986.5591340065002; 524287:3987.24467754364</title></rect>
-<path d="M990.95 167 H991.64 M990.95 161 V173 M991.64 161 V173" stroke="#172331" stroke-width="1.5"/>
-<text x="999.64" y="173" font-size="12">3986.3 [3983.9, 3988.2]</text>
+<rect x="365" y="153" width="625.92" height="28" rx="3" fill="#d06531" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3984.530563354492; 104729:3986.2804465293884; 130363:3987.41113615036; 155921:3985.3536925315857; 196613:3984.4326395988464; 262147:3987.986171722412; 314159:3985.3315834999084; 524287:3985.901443004608</title></rect>
+<path d="M990.73 167 H991.29 M990.73 161 V173 M991.29 161 V173" stroke="#172331" stroke-width="1.5"/>
+<text x="999.29" y="173" font-size="12">3985.6 [3984.4, 3988]</text>
 <text x="351" y="224" text-anchor="end" font-size="12">glass-dof · counter (n=8)</text>
-<rect x="365" y="204" width="627.98" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3995.9886684417725; 104729:3996.084860801697; 130363:3995.3483142852783; 155921:3994.426537513733; 196613:3997.444727897644; 262147:4000.165913581848; 314159:4000.4420862197876; 524287:4002.485252380371</title></rect>
-<path d="M992.62 218 H993.88 M992.62 212 V224 M993.88 212 V224" stroke="#172331" stroke-width="1.5"/>
-<text x="1001.88" y="224" font-size="12">3996.8 [3994.4, 4002.5]</text>
+<rect x="365" y="204" width="628.59" height="28" rx="3" fill="#2463a6" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:4002.498432159424; 104729:3997.8937273025513; 130363:3998.5144596099854; 155921:4002.8064937591553; 196613:3999.5954513549805; 262147:4004.690498352051; 314159:4008.219807624817; 524287:4004.593565940857</title></rect>
+<path d="M992.84 218 H994.46 M992.84 212 V224 M994.46 212 V224" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.46" y="224" font-size="12">4002.7 [3997.9, 4008.2]</text>
 <text x="351" y="275" text-anchor="end" font-size="12">glass-dof · halton (n=8)</text>
-<rect x="365" y="255" width="628.56" height="28" rx="3" fill="#d06531" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:4000.7172803878784; 104729:4001.641535758972; 130363:4006.1959714889526; 155921:3996.6777629852295; 196613:3994.3741426467896; 262147:4000.120132446289; 314159:4002.476414680481; 524287:3999.8703746795654</title></rect>
-<path d="M992.61 269 H994.46 M992.61 263 V275 M994.46 263 V275" stroke="#172331" stroke-width="1.5"/>
-<text x="1002.46" y="275" font-size="12">4000.4 [3994.4, 4006.2]</text>
+<rect x="365" y="255" width="628.44" height="28" rx="3" fill="#d06531" opacity="0.9"><title>renderer_gpu_ms by fixed seed — 947:3994.6162939071655; 104729:4006.7813415527344; 130363:4003.503203392029; 155921:3997.246778488159; 196613:3997.172637939453; 262147:4007.2671031951904; 314159:3999.866912841797; 524287:4006.1098890304565</title></rect>
+<path d="M992.33 269 H994.31 M992.33 263 V275 M994.31 263 V275" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.31" y="275" font-size="12">4001.7 [3994.6, 4007.3]</text>
 </g>
 </svg>

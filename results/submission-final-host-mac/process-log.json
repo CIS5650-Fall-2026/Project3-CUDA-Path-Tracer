@@ -1,0 +1,1449 @@
+{
+  "processes": [
+    {
+      "label": "renderer source hash before fresh evidence work",
+      "command": [
+        "python3",
+        "scripts/source_hash.py"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.313743+00:00",
+      "ended_utc": "2026-10-01T22:24:35.348831+00:00",
+      "duration_seconds": 0.035021792,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 65,
+        "sha256": "4039167ddf3aa65815511ed108eae03a1f06c24cdf55cded2505c48b9cb7e263"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_text": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703\n",
+      "stderr_text": ""
+    },
+    {
+      "label": "system fact 1: sw_vers",
+      "command": [
+        "sw_vers"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.360802+00:00",
+      "ended_utc": "2026-10-01T22:24:35.366942+00:00",
+      "duration_seconds": 0.006128792,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 66,
+        "sha256": "4ef10a0fc370704ea84699cf3851e51488598c5f1ab35cb572eb6b96278a8e5c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "system fact 2: uname -m",
+      "command": [
+        "uname",
+        "-m"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.367036+00:00",
+      "ended_utc": "2026-10-01T22:24:35.368981+00:00",
+      "duration_seconds": 0.001940417,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 6,
+        "sha256": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "system fact 3: sysctl -n machdep.cpu.brand_string",
+      "command": [
+        "sysctl",
+        "-n",
+        "machdep.cpu.brand_string"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.369060+00:00",
+      "ended_utc": "2026-10-01T22:24:35.370954+00:00",
+      "duration_seconds": 0.001890708,
+      "returncode": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 54,
+        "sha256": "4b48e95fc2c708e90935b4eb0c7fdbef56360fded00e57f1b083e052354d3774"
+      }
+    },
+    {
+      "label": "system fact 4: sysctl -n hw.memsize",
+      "command": [
+        "sysctl",
+        "-n",
+        "hw.memsize"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.371050+00:00",
+      "ended_utc": "2026-10-01T22:24:35.372920+00:00",
+      "duration_seconds": 0.001859458,
+      "returncode": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 54,
+        "sha256": "4b48e95fc2c708e90935b4eb0c7fdbef56360fded00e57f1b083e052354d3774"
+      }
+    },
+    {
+      "label": "system fact 5: /usr/bin/clang++ --version",
+      "command": [
+        "/usr/bin/clang++",
+        "--version"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.373026+00:00",
+      "ended_utc": "2026-10-01T22:24:35.386501+00:00",
+      "duration_seconds": 0.013469791,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 158,
+        "sha256": "a856ec74c559401131ad608625ef252fb2db6c78bc0c480c1c4c782ee4896db1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "system fact 6: date -u +%Y-%m-%dT%H:%M:%SZ",
+      "command": [
+        "date",
+        "-u",
+        "+%Y-%m-%dT%H:%M:%SZ"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.386599+00:00",
+      "ended_utc": "2026-10-01T22:24:35.389686+00:00",
+      "duration_seconds": 0.0030845,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 21,
+        "sha256": "aab4d2d9a976f16227bd179a5026a2e7af6c98b64b4630fd755ac4d6cc70eb5d"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "sandbox-safe hardware fact fallback: system_profiler",
+      "command": [
+        "system_profiler",
+        "SPHardwareDataType"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.389769+00:00",
+      "ended_utc": "2026-10-01T22:24:35.529130+00:00",
+      "duration_seconds": 0.139351541,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 456,
+        "sha256": "b0d96cb69bb7aa030ff39649d6cf6bbecf6968186e3f519938f7e8c605b958f5"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "optimized geometry with all sorted top-level repository scenes",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/geometry_tests",
+        "scenes/closed-benchmark.json",
+        "scenes/complexity-high.json",
+        "scenes/complexity-low.json",
+        "scenes/complexity-medium.json",
+        "scenes/cornell.json",
+        "scenes/gltf-baseline.json",
+        "scenes/gltf-complexity-high.json",
+        "scenes/gltf-complexity-low.json",
+        "scenes/gltf-complexity-medium.json",
+        "scenes/gltf-equivalence-data-uri.json",
+        "scenes/gltf-equivalence-external.json",
+        "scenes/gltf-equivalence-glb.json",
+        "scenes/gltf-motion-validation.json",
+        "scenes/gltf-showcase.json",
+        "scenes/hedge-motion-frozen-end.json",
+        "scenes/hedge-motion-frozen-midpoint.json",
+        "scenes/hedge-motion-frozen-start.json",
+        "scenes/hedge-motion-validation.json",
+        "scenes/hedge-motion.json",
+        "scenes/hedge-obj-baseline.json",
+        "scenes/hedge-sampling-diffuse.json",
+        "scenes/hedge-sampling-glass-dof.json",
+        "scenes/light-test-cube.json",
+        "scenes/light-test-mesh.json",
+        "scenes/light-test-sphere.json",
+        "scenes/open-benchmark.json",
+        "scenes/optical-workbench.json",
+        "scenes/preview-smoke.json",
+        "scenes/procedural-fluted-body-cells.json",
+        "scenes/procedural-fluted-body-marble.json",
+        "scenes/procedural-fluted-body-plain.json",
+        "scenes/procedural-optical-stilllife.json",
+        "scenes/procedural-swept-knot-cells.json",
+        "scenes/procedural-swept-knot-marble.json",
+        "scenes/procedural-swept-knot-plain.json",
+        "scenes/sphere.json",
+        "scenes/uniform-benchmark.json",
+        "scenes/workbench-dof.json",
+        "scenes/workbench-mirror.json",
+        "scenes/workbench-no-bump.json",
+        "scenes/workbench-procedural.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.535575+00:00",
+      "ended_utc": "2026-10-01T22:24:37.531879+00:00",
+      "duration_seconds": 1.9962925,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2970,
+        "sha256": "8afd8103cd9660316ee26da80ef88fa3c37feff7b9c8614aff709d5cbb815cfd"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "geometry-41-scenes.stdout",
+      "stderr_file": "geometry-41-scenes.stderr",
+      "parsed_result": {
+        "groups": 24,
+        "repository_scenes": 41,
+        "assertions": 10556741,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "geometry-41-scenes.stdout",
+      "raw_stderr_file": "geometry-41-scenes.stderr"
+    },
+    {
+      "label": "sanitized geometry useful full host suite without scene arguments",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/geometry_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:37.532191+00:00",
+      "ended_utc": "2026-10-01T22:24:37.996823+00:00",
+      "duration_seconds": 0.464624208,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 1104,
+        "sha256": "ed2256959ea7b5304ffd3ff914cf3e3b9e541905e39d7abaef4cda3de4595ec1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "geometry-sanitized.stdout",
+      "stderr_file": "geometry-sanitized.stderr",
+      "parsed_result": {
+        "groups": 24,
+        "repository_scenes": 0,
+        "assertions": 1808444,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "geometry-sanitized.stdout",
+      "raw_stderr_file": "geometry-sanitized.stderr"
+    },
+    {
+      "label": "optimized glTF host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/gltf_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:37.996990+00:00",
+      "ended_utc": "2026-10-01T22:24:38.036991+00:00",
+      "duration_seconds": 0.03999475,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 579,
+        "sha256": "5c7de738265f201caf20f5f6548b020268493e7d14b51902bb9d17c428ac6124"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "gltf.stdout",
+      "stderr_file": "gltf.stderr",
+      "parsed_result": {
+        "groups": 11,
+        "assertions": 351,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "gltf.stdout",
+      "raw_stderr_file": "gltf.stderr"
+    },
+    {
+      "label": "sanitized glTF host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/gltf_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.037231+00:00",
+      "ended_utc": "2026-10-01T22:24:38.144163+00:00",
+      "duration_seconds": 0.106925458,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 579,
+        "sha256": "5c7de738265f201caf20f5f6548b020268493e7d14b51902bb9d17c428ac6124"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "gltf-sanitized.stdout",
+      "stderr_file": "gltf-sanitized.stderr",
+      "parsed_result": {
+        "groups": 11,
+        "assertions": 351,
+        "failed_groups": 0,
+        "passed": true
+      },
+      "raw_stdout_file": "gltf-sanitized.stdout",
+      "raw_stderr_file": "gltf-sanitized.stderr"
+    },
+    {
+      "label": "optimized checkpoint host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/release.BiB2Jj/checkpoint_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.144318+00:00",
+      "ended_utc": "2026-10-01T22:24:38.152292+00:00",
+      "duration_seconds": 0.007967708,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 23,
+        "sha256": "3cee322ae8382b3d0b8f1877c1c7fc92fb0f262a98fd82e99101d1a3efd29404"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "checkpoint.stdout",
+      "stderr_file": "checkpoint.stderr",
+      "parsed_result": {
+        "pass_marker_count": 1,
+        "passed": true
+      },
+      "raw_stdout_file": "checkpoint.stdout",
+      "raw_stderr_file": "checkpoint.stderr"
+    },
+    {
+      "label": "sanitized checkpoint host suite",
+      "command": [
+        "/tmp/cis565-checker-fix.PF71I2/sanitized.uuGKKY/checkpoint_tests"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.152404+00:00",
+      "ended_utc": "2026-10-01T22:24:38.169635+00:00",
+      "duration_seconds": 0.017224667,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 23,
+        "sha256": "3cee322ae8382b3d0b8f1877c1c7fc92fb0f262a98fd82e99101d1a3efd29404"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_file": "checkpoint-sanitized.stdout",
+      "stderr_file": "checkpoint-sanitized.stderr",
+      "parsed_result": {
+        "pass_marker_count": 1,
+        "passed": true
+      },
+      "raw_stdout_file": "checkpoint-sanitized.stdout",
+      "raw_stderr_file": "checkpoint-sanitized.stderr"
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/area-light.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/area-light.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.170028+00:00",
+      "ended_utc": "2026-10-01T22:24:38.177355+00:00",
+      "duration_seconds": 0.007321916,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 122,
+        "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/fluted-body-high.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/fluted-body-high.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.177500+00:00",
+      "ended_utc": "2026-10-01T22:24:38.185667+00:00",
+      "duration_seconds": 0.008162333,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3124619,
+        "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/fluted-body-low.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/fluted-body-low.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.189009+00:00",
+      "ended_utc": "2026-10-01T22:24:38.194098+00:00",
+      "duration_seconds": 0.00508275,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 188496,
+        "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/fluted-body-medium.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/fluted-body-medium.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.194454+00:00",
+      "ended_utc": "2026-10-01T22:24:38.200538+00:00",
+      "duration_seconds": 0.006079583,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 769303,
+        "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/glaze.bmp",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/glaze.bmp"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.201430+00:00",
+      "ended_utc": "2026-10-01T22:24:38.206271+00:00",
+      "duration_seconds": 0.004836542,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 196662,
+        "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/height.bmp",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/height.bmp"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.206605+00:00",
+      "ended_utc": "2026-10-01T22:24:38.210936+00:00",
+      "duration_seconds": 0.004327459,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 196662,
+        "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/swept-knot-high.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/swept-knot-high.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.211242+00:00",
+      "ended_utc": "2026-10-01T22:24:38.218495+00:00",
+      "duration_seconds": 0.007249625,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2004275,
+        "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/swept-knot-low.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/swept-knot-low.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.220493+00:00",
+      "ended_utc": "2026-10-01T22:24:38.224980+00:00",
+      "duration_seconds": 0.004482958,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 121244,
+        "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/swept-knot-medium.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/swept-knot-medium.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.225233+00:00",
+      "ended_utc": "2026-10-01T22:24:38.230504+00:00",
+      "duration_seconds": 0.005266916,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 493493,
+        "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/torus.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/torus.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.231147+00:00",
+      "ended_utc": "2026-10-01T22:24:38.236163+00:00",
+      "duration_seconds": 0.005011458,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 282121,
+        "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/vase-high.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/vase-high.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.236571+00:00",
+      "ended_utc": "2026-10-01T22:24:38.241446+00:00",
+      "duration_seconds": 0.00487125,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 387854,
+        "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/vase-low.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/vase-low.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.241933+00:00",
+      "ended_utc": "2026-10-01T22:24:38.246858+00:00",
+      "duration_seconds": 0.004920041,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 24651,
+        "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/assets/vase-medium.obj",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/assets/vase-medium.obj"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.247029+00:00",
+      "ended_utc": "2026-10-01T22:24:38.252094+00:00",
+      "duration_seconds": 0.005061333,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 94338,
+        "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/closed-benchmark.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/closed-benchmark.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.252334+00:00",
+      "ended_utc": "2026-10-01T22:24:38.257599+00:00",
+      "duration_seconds": 0.005260458,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3283,
+        "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/complexity-high.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/complexity-high.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.257750+00:00",
+      "ended_utc": "2026-10-01T22:24:38.262364+00:00",
+      "duration_seconds": 0.004608541,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2863,
+        "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/complexity-low.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/complexity-low.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.262519+00:00",
+      "ended_utc": "2026-10-01T22:24:38.272293+00:00",
+      "duration_seconds": 0.0097655,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2861,
+        "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/complexity-medium.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/complexity-medium.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.272568+00:00",
+      "ended_utc": "2026-10-01T22:24:38.279217+00:00",
+      "duration_seconds": 0.00664175,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2867,
+        "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/cornell.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/cornell.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.279375+00:00",
+      "ended_utc": "2026-10-01T22:24:38.284258+00:00",
+      "duration_seconds": 0.004877917,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2265,
+        "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/light-test-cube.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/light-test-cube.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.284411+00:00",
+      "ended_utc": "2026-10-01T22:24:38.288913+00:00",
+      "duration_seconds": 0.004498458,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 1351,
+        "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/light-test-mesh.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/light-test-mesh.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.289052+00:00",
+      "ended_utc": "2026-10-01T22:24:38.293369+00:00",
+      "duration_seconds": 0.004312542,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 1391,
+        "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/light-test-sphere.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/light-test-sphere.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.293502+00:00",
+      "ended_utc": "2026-10-01T22:24:38.298006+00:00",
+      "duration_seconds": 0.004499375,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 1353,
+        "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/open-benchmark.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/open-benchmark.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.298134+00:00",
+      "ended_utc": "2026-10-01T22:24:38.303550+00:00",
+      "duration_seconds": 0.00541125,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2109,
+        "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/optical-workbench.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/optical-workbench.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.303714+00:00",
+      "ended_utc": "2026-10-01T22:24:38.308622+00:00",
+      "duration_seconds": 0.004903708,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3147,
+        "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/preview-smoke.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/preview-smoke.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.308791+00:00",
+      "ended_utc": "2026-10-01T22:24:38.313714+00:00",
+      "duration_seconds": 0.004918583,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3141,
+        "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-fluted-body-cells.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-fluted-body-cells.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.313873+00:00",
+      "ended_utc": "2026-10-01T22:24:38.318481+00:00",
+      "duration_seconds": 0.00460325,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2306,
+        "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-fluted-body-marble.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-fluted-body-marble.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.318610+00:00",
+      "ended_utc": "2026-10-01T22:24:38.322975+00:00",
+      "duration_seconds": 0.00436025,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2308,
+        "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-fluted-body-plain.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-fluted-body-plain.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.323095+00:00",
+      "ended_utc": "2026-10-01T22:24:38.327283+00:00",
+      "duration_seconds": 0.004183708,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2305,
+        "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-optical-stilllife.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-optical-stilllife.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.327407+00:00",
+      "ended_utc": "2026-10-01T22:24:38.331832+00:00",
+      "duration_seconds": 0.004420792,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3101,
+        "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-swept-knot-cells.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-swept-knot-cells.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.331962+00:00",
+      "ended_utc": "2026-10-01T22:24:38.336787+00:00",
+      "duration_seconds": 0.004820917,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2305,
+        "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-swept-knot-marble.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-swept-knot-marble.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.336944+00:00",
+      "ended_utc": "2026-10-01T22:24:38.341436+00:00",
+      "duration_seconds": 0.004488625,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2307,
+        "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/procedural-swept-knot-plain.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/procedural-swept-knot-plain.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.341572+00:00",
+      "ended_utc": "2026-10-01T22:24:38.346000+00:00",
+      "duration_seconds": 0.004423583,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 2304,
+        "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/sphere.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/sphere.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.346160+00:00",
+      "ended_utc": "2026-10-01T22:24:38.350586+00:00",
+      "duration_seconds": 0.004421667,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 607,
+        "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/uniform-benchmark.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/uniform-benchmark.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.350713+00:00",
+      "ended_utc": "2026-10-01T22:24:38.355108+00:00",
+      "duration_seconds": 0.004390292,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3265,
+        "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/workbench-dof.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/workbench-dof.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.355237+00:00",
+      "ended_utc": "2026-10-01T22:24:38.359561+00:00",
+      "duration_seconds": 0.00432025,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3146,
+        "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/workbench-mirror.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/workbench-mirror.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.359682+00:00",
+      "ended_utc": "2026-10-01T22:24:38.364047+00:00",
+      "duration_seconds": 0.004361541,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3131,
+        "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/workbench-no-bump.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/workbench-no-bump.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.364174+00:00",
+      "ended_utc": "2026-10-01T22:24:38.369000+00:00",
+      "duration_seconds": 0.004821708,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3082,
+        "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "protected baseline bytes: scenes/workbench-procedural.json",
+      "command": [
+        "git",
+        "show",
+        "f92d1d56394baf4d262008515fd55896d2dc76e2:scenes/workbench-procedural.json"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.369166+00:00",
+      "ended_utc": "2026-10-01T22:24:38.373889+00:00",
+      "duration_seconds": 0.004719084,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 3079,
+        "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "renderer source hash after fresh test and byte-proof work",
+      "command": [
+        "python3",
+        "scripts/source_hash.py"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:38.377250+00:00",
+      "ended_utc": "2026-10-01T22:24:38.412026+00:00",
+      "duration_seconds": 0.034769792,
+      "returncode": 0,
+      "stdout": {
+        "bytes": 65,
+        "sha256": "4039167ddf3aa65815511ed108eae03a1f06c24cdf55cded2505c48b9cb7e263"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_text": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703\n",
+      "stderr_text": ""
+    }
+  ]
+}

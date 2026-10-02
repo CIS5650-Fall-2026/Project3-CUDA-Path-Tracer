@@ -26,6 +26,8 @@ Sampler version 3, the prime-base generator, digit scrambling, exposure-time sam
 
 Our earlier extension added original histogram/scan/scatter material queues, specialized CUDA shading kernels, Russian roulette transport, fluted-body and swept-knot geometry, and analytic marble and staggered-cell textures. Their equations are independently translated into implementation. No external noise, mesh-generation, integrator, queue, or model-loading implementation is imported. The previous fully reviewed local revision is `589fecacad54b359a854a825020d69216d099c45`; its reviews are historical and do not accept the current sampling, motion and glTF additions.
 
+The shared checker-parity helper and its host/CUDA boundary regressions are independently authored. They correct the accepted-input overflow found during final review without importing a checker implementation or changing ordinary float-first cell boundaries. All current rendering evidence is refreshed after that fix.
+
 ## Completion acceptance
 
 > Using third-party code without its approval, including using another student's code, is an academic integrity violation, and will, at minimum, result in you receiving an F for the semester.

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1244" height="376" viewBox="0 0 1244 376" role="img" aria-labelledby="title desc">
+<title id="title">Fixed-256-spp renderer GPU cost</title>
+<desc id="desc">Bars summarize retained measured repeats only; warmups are excluded. Whiskers show the measured min–max range.</desc>
+<rect width="1244" height="376" fill="#f8fafc"/>
+<g font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#182433">
+<text x="34" y="39" font-size="24" font-weight="650">Fixed-256-spp renderer GPU cost</text>
+<text x="34" y="66" font-size="13">Bars summarize retained measured repeats only; warmups are excluded. Whiskers show the measured min–max range.</text>
+<path d="M365.00 90 V328" stroke="#dde3ea"/>
+<text x="365.00" y="351" text-anchor="middle" font-size="12">0</text>
+<path d="M506.00 90 V328" stroke="#dde3ea"/>
+<text x="506.00" y="351" text-anchor="middle" font-size="12">3.274</text>
+<path d="M647.00 90 V328" stroke="#dde3ea"/>
+<text x="647.00" y="351" text-anchor="middle" font-size="12">6.548</text>
+<path d="M788.00 90 V328" stroke="#dde3ea"/>
+<text x="788.00" y="351" text-anchor="middle" font-size="12">9.822</text>
+<path d="M929.00 90 V328" stroke="#dde3ea"/>
+<text x="929.00" y="351" text-anchor="middle" font-size="12">13.1</text>
+<path d="M1070.00 90 V328" stroke="#dde3ea"/>
+<text x="1070.00" y="351" text-anchor="middle" font-size="12">16.37</text>
+<text x="717.50" y="371" text-anchor="middle" font-size="12">renderer GPU milliseconds per completed sample</text>
+<text x="351" y="122" text-anchor="end" font-size="12">diffuse · counter (n=3)</text>
+<rect x="365" y="102" width="192.22" height="28" rx="3" fill="#2463a6" opacity="0.9"></rect>
+<path d="M557.15 116 H557.76 M557.15 110 V122 M557.76 110 V122" stroke="#172331" stroke-width="1.5"/>
+<text x="565.76" y="122" font-size="12">4.4631 [4.4617, 4.4758]</text>
+<text x="351" y="173" text-anchor="end" font-size="12">diffuse · halton (n=3)</text>
+<rect x="365" y="153" width="211.84" height="28" rx="3" fill="#d06531" opacity="0.9"></rect>
+<path d="M576.63 167 H577.52 M576.63 161 V173 M577.52 161 V173" stroke="#172331" stroke-width="1.5"/>
+<text x="585.52" y="173" font-size="12">4.9187 [4.9138, 4.9345]</text>
+<text x="351" y="224" text-anchor="end" font-size="12">glass-dof · counter (n=3)</text>
+<rect x="365" y="204" width="611.00" height="28" rx="3" fill="#2463a6" opacity="0.9"></rect>
+<path d="M975.54 218 H976.62 M975.54 212 V224 M976.62 212 V224" stroke="#172331" stroke-width="1.5"/>
+<text x="984.62" y="224" font-size="12">14.187 [14.176, 14.201]</text>
+<text x="351" y="275" text-anchor="end" font-size="12">glass-dof · halton (n=3)</text>
+<rect x="365" y="255" width="629.09" height="28" rx="3" fill="#d06531" opacity="0.9"></rect>
+<path d="M993.29 269 H994.46 M993.29 263 V275 M994.46 263 V275" stroke="#172331" stroke-width="1.5"/>
+<text x="1002.46" y="275" font-size="12">14.607 [14.588, 14.616]</text>
+</g>
+</svg>

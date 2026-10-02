@@ -1,0 +1,463 @@
+{
+  "capture_MP4": {
+    "bytes": 33548496,
+    "path": "results/submission-final-interaction/capture/interaction.mp4",
+    "sha256": "5ce5d0aadd2f7915903f87941bac494c05cd76dfebcd18bedb423a21141aae9c"
+  },
+  "capture_and_reference_verified": {
+    "artifacts": {
+      "capture_MP4": {
+        "bytes": 33548496,
+        "path": "results/submission-final-interaction/capture/interaction.mp4",
+        "sha256": "5ce5d0aadd2f7915903f87941bac494c05cd76dfebcd18bedb423a21141aae9c"
+      },
+      "reference_command": {
+        "bytes": 2667,
+        "path": "results/submission-final-interaction/post-space-reference.command.json",
+        "sha256": "567ccd3f883fe1e07b5b85f027f228428a70534b158162b4ae527debf01eed39"
+      },
+      "reference_metadata": {
+        "bytes": 3110,
+        "path": "results/submission-final-interaction/post-space-reference.json",
+        "sha256": "36d18eac3778b41bb16fcec73b2277d1bddba0f74aae2c448348cd9ba918fd80"
+      },
+      "reference_png": {
+        "bytes": 1292709,
+        "path": "results/submission-final-interaction/post-space-reference.png",
+        "sha256": "7ad2215c88f9d16f358f8d806cdeb05abdf9af3881cf30439d6ecf8b94f4232d"
+      },
+      "reference_sum": {
+        "bytes": 7372840,
+        "path": "results/submission-final-interaction/post-space-reference.sum.bin",
+        "sha256": "54df1a5c88d5ee383473323139479ba113a5d8925a70a34d591b8145de91281b"
+      },
+      "scheduled_S_save": {
+        "bytes": 1293043,
+        "path": "results/submission-final-interaction/capture/gltf-showcase.2026-10-01_23-57-33z.124samp.save0.png",
+        "sha256": "3aecb4806ed0832d2802032523ae3f752ceeefead2394ffa13fd3661a3e54429"
+      }
+    },
+    "capture_ffprobe": {
+      "avg_frame_rate": "30/1",
+      "codec_name": "h264",
+      "command": [
+        "/opt/homebrew/bin/ffprobe",
+        "-v",
+        "error",
+        "-count_frames",
+        "-show_streams",
+        "-show_format",
+        "-of",
+        "json",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4"
+      ],
+      "decoded_frame_count": 1480,
+      "exit_code": 0,
+      "height": 720,
+      "media_duration_seconds": 49.333333,
+      "pix_fmt": "yuv420p",
+      "r_frame_rate": "30/1",
+      "width": 1280
+    },
+    "evidence_prefix": "submission-final",
+    "headless_binary_sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+    "helper_build": {
+      "command": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-O2",
+        "-I",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/external/include",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/tools/interaction_pixel_compare.cpp",
+        "-o",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/.local/interaction-helper-build/submission-current/interaction_pixel_compare"
+      ],
+      "decoder_header_sha256": "8e820815011447b44e0d3100b002b2279954fa2479371c14ec61218ef505a4e0",
+      "executable_delivery_required": false,
+      "exit_code": 0,
+      "external_decoder_implementation_copied": false,
+      "source_sha256": "667e38d90ff7d199789669e394b2ccdc05e3320b50dae766391d8f3655e5ab98",
+      "temporary_executable": {
+        "bytes": 92168,
+        "delivery_required": false,
+        "path": ".local/interaction-helper-build/submission-current/interaction_pixel_compare",
+        "purpose": "temporary local verification only",
+        "sha256": "86b528b2cb68c968bfe183b1dc5f1aff83f25ec69978324439068ed9168c833a"
+      }
+    },
+    "passed": true,
+    "post_space_comparison": {
+      "details": {
+        "acceptance_maximum_absolute_channel_difference": 1,
+        "channels": 3,
+        "differing_channels": 1,
+        "differing_pixels": 1,
+        "disclosure": "PNG bytes and some RGB8 channels differ. Every channel differs by at most 1 of 255 levels; this is consistent with the known preview division versus headless reciprocal multiplication normalization difference. The cause has not been independently reproduced, and neither exact image equality nor raw accumulation equality is claimed.",
+        "first_differences": [
+          {
+            "channel": 0,
+            "preview": 71,
+            "reference": 70,
+            "x": 753,
+            "y": 77
+          }
+        ],
+        "height": 640,
+        "maximum_absolute_channel_difference": 1,
+        "passed": true,
+        "png_bytes_equal": false,
+        "raw_sum_equality_claimed": false,
+        "rgb8_equal": false,
+        "sum_absolute_channel_differences": 1,
+        "total_pixels": 614400,
+        "width": 960
+      },
+      "method": "PNG bytes first, then independently authored RGB8 decoder wrapper",
+      "outcome": "bounded RGB8 differences",
+      "passed": true
+    },
+    "post_space_saved_samples": 124,
+    "preview_binary_sha256": "c521e18081efa40f2665b8048f90e3120042416b4d33b98def35ef06ae6c2e20",
+    "reference_linear_sum_validation": {
+      "checksum": 3016568771839566708,
+      "checksum_security": "change/corruption detection only; not cryptographic",
+      "completed_samples": 124,
+      "passed": true,
+      "preview_raw_sums_available": false,
+      "raw_sum_equality_claimed": false
+    },
+    "renderer_build_dir": "build-submission",
+    "renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+    "scope": "capture and independent reference only; media publication remains pending",
+    "status": "passed"
+  },
+  "converter_source": {
+    "bytes": 15612,
+    "path": "results/submission-final-interaction/tools/convert_final_interaction.py",
+    "sha256": "0cdee514e752725d39deb4d8f30922a076afcdfefb7a1a58e1e1cf6ae1a53f75"
+  },
+  "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+  "evidence_prefix": "submission-final",
+  "ffmpeg_command": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-i",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+    "-filter_complex",
+    "fps=4,scale=640:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=bayer:bayer_scale=3",
+    "-loop",
+    "0",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/media-pending/interaction.gif"
+  ],
+  "finalizer_source": {
+    "bytes": 37880,
+    "path": "results/submission-final-interaction/tools/finalize_interaction.py",
+    "sha256": "14ea2c70ef0ee5e61fe28d9e410c43252ff85fa9a892e6cdd3ba06c472bf8e2b"
+  },
+  "frame_artifacts": [
+    {
+      "bytes": 1261960,
+      "path": "results/submission-final-interaction/inspected-frames/frame-01-t2.png",
+      "sha256": "a6cbf1d7360867631cecc1c4ba5be78e2e719d07a13e3107fb4f86537db9351b"
+    },
+    {
+      "bytes": 846819,
+      "path": "results/submission-final-interaction/inspected-frames/frame-02-t12.png",
+      "sha256": "cf2d72fcecceb4f55ea16555558fffc49bb638a24eb939694da6ea8dfd564cfc"
+    },
+    {
+      "bytes": 1457782,
+      "path": "results/submission-final-interaction/inspected-frames/frame-03-t16.png",
+      "sha256": "068eff63b982d39696a203d2f083bd6e913f5b291f6322b63eea4a075f10764f"
+    },
+    {
+      "bytes": 1489591,
+      "path": "results/submission-final-interaction/inspected-frames/frame-04-t23.png",
+      "sha256": "74c911bcec0010c6c21d637f03568f74cee0d790b4528bc624a743d943c0d9b2"
+    },
+    {
+      "bytes": 1527869,
+      "path": "results/submission-final-interaction/inspected-frames/frame-05-t30.png",
+      "sha256": "fe868765b0009c0750692e340f668ee0e9fd5f9b4131ec9160dc2472b9b4c2cc"
+    },
+    {
+      "bytes": 1317983,
+      "path": "results/submission-final-interaction/inspected-frames/frame-06-t36.png",
+      "sha256": "887c763d60f49b21d3dcd9d843a14874eb615387042bbc7c43794fc14081de56"
+    },
+    {
+      "bytes": 850114,
+      "path": "results/submission-final-interaction/inspected-frames/frame-07-t44.5.png",
+      "sha256": "abc7a98163d6626b4beb4e64460337ded67c11ceccdb46fc7becc289b38dd5a2"
+    },
+    {
+      "bytes": 846568,
+      "path": "results/submission-final-interaction/inspected-frames/frame-08-t46.5.png",
+      "sha256": "9c21bf5d4d75cd0f0feb8ea6b326017194f98ac6fa91da703612c2b7d54d6a4b"
+    }
+  ],
+  "frame_extraction_commands": [
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "2",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-01-t2.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.098052Z",
+      "exit_code": 0,
+      "media_time_seconds": 2.0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:40.964801Z",
+      "stderr_log": "privacy-frame-01.stderr.log",
+      "stdout_log": "privacy-frame-01.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "12",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-02-t12.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.207723Z",
+      "exit_code": 0,
+      "media_time_seconds": 12.0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.098913Z",
+      "stderr_log": "privacy-frame-02.stderr.log",
+      "stdout_log": "privacy-frame-02.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "16",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-03-t16.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.323929Z",
+      "exit_code": 0,
+      "media_time_seconds": 16.0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.208334Z",
+      "stderr_log": "privacy-frame-03.stderr.log",
+      "stdout_log": "privacy-frame-03.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "23",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-04-t23.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.484437Z",
+      "exit_code": 0,
+      "media_time_seconds": 23.0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.324872Z",
+      "stderr_log": "privacy-frame-04.stderr.log",
+      "stdout_log": "privacy-frame-04.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "30",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-05-t30.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.635569Z",
+      "exit_code": 0,
+      "media_time_seconds": 30.0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.485364Z",
+      "stderr_log": "privacy-frame-05.stderr.log",
+      "stdout_log": "privacy-frame-05.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "36",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-06-t36.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.761850Z",
+      "exit_code": 0,
+      "media_time_seconds": 36.0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.636594Z",
+      "stderr_log": "privacy-frame-06.stderr.log",
+      "stdout_log": "privacy-frame-06.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "44.5",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-07-t44.5.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.866069Z",
+      "exit_code": 0,
+      "media_time_seconds": 44.5,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.762673Z",
+      "stderr_log": "privacy-frame-07.stderr.log",
+      "stdout_log": "privacy-frame-07.stdout.log"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-n",
+        "-ss",
+        "46.5",
+        "-i",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+        "-frames:v",
+        "1",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/inspected-frames/frame-08-t46.5.png"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:41.975476Z",
+      "exit_code": 0,
+      "media_time_seconds": 46.5,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:41.866683Z",
+      "stderr_log": "privacy-frame-08.stderr.log",
+      "stdout_log": "privacy-frame-08.stdout.log"
+    }
+  ],
+  "gif_conversion": {
+    "argv": [
+      "/opt/homebrew/bin/ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/capture/interaction.mp4",
+      "-filter_complex",
+      "fps=4,scale=640:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=bayer:bayer_scale=3",
+      "-loop",
+      "0",
+      "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/media-pending/interaction.gif"
+    ],
+    "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+    "ended_at_utc": "2026-10-02T00:00:40.816357Z",
+    "exit_code": 0,
+    "shell": false,
+    "started_at_utc": "2026-10-02T00:00:39.617198Z",
+    "stderr_log": "gif-conversion.stderr.log",
+    "stdout_log": "gif-conversion.stdout.log"
+  },
+  "gif_fps": 4,
+  "gif_probe": {
+    "avg_frame_rate": "4/1",
+    "decoded_frames": 197,
+    "duration_seconds": 49.25,
+    "receipt": {
+      "argv": [
+        "/opt/homebrew/bin/ffprobe",
+        "-v",
+        "error",
+        "-count_frames",
+        "-show_streams",
+        "-show_format",
+        "-of",
+        "json",
+        "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/media-pending/interaction.gif"
+      ],
+      "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+      "ended_at_utc": "2026-10-02T00:00:40.964475Z",
+      "exit_code": 0,
+      "shell": false,
+      "started_at_utc": "2026-10-02T00:00:40.816386Z",
+      "stderr_log": "gif-ffprobe.stderr.log",
+      "stdout_log": "gif-ffprobe.stdout.log"
+    }
+  },
+  "passed": false,
+  "pending_GIF": {
+    "bytes": 9447847,
+    "path": "results/submission-final-interaction/media-pending/interaction.gif",
+    "sha256": "86346687849636b59306c926251fd2842074b92f3f5160be9386ac3f7a83b166"
+  },
+  "pending_MP4": {
+    "bytes": 33548496,
+    "path": "results/submission-final-interaction/media-pending/interaction.mp4",
+    "sha256": "5ce5d0aadd2f7915903f87941bac494c05cd76dfebcd18bedb423a21141aae9c"
+  },
+  "prepared_at_utc": "2026-10-02T00:00:41.987487Z",
+  "published_img_files_changed": false,
+  "renderer_build_dir": "build-submission",
+  "renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "root_visual_verification_performed": false,
+  "schema_version": 1,
+  "status": "awaiting_root_visual_verification"
+}

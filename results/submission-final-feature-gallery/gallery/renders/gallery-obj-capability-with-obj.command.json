@@ -1,0 +1,755 @@
+{
+  "actual": {
+    "benchmark_csv": {
+      "bounce_records": 1280,
+      "measured_samples": 128,
+      "render_loop_wall_ms": 5748.12041,
+      "renderer_gpu_ms": 5745.44567,
+      "renderer_host_ms": 5748.07896
+    },
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 8.800000190734863,
+      "look_at": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "position": [
+        4.800000190734863,
+        2.799999952316284,
+        7.199999809265137
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    },
+    "completed_samples": 128,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 10,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "counter",
+      "sampler_id": 2,
+      "sort": false,
+      "wavefront": true
+    },
+    "identity": {
+      "binary_file_identity": {
+        "bytes": 6353008,
+        "device": 66306,
+        "inode": 3689093,
+        "mtime_ns": 1790892950649290955,
+        "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+        "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+      },
+      "binary_sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8",
+      "compatibility": {
+        "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "compute_capability": "8.6",
+        "cuda_driver_version": 13000,
+        "cuda_runtime_version": 12080,
+        "device": "NVIDIA A10G"
+      },
+      "fingerprints": {
+        "assets": 183936298049799943,
+        "geometry": 14131036386253639563,
+        "materials": 15770788537044767836,
+        "render_config": 2359283628168182556,
+        "scene_file": 14045347781311483301
+      },
+      "metadata_scene": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+      "scene_file_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "scene_input_identity": {
+        "assets": [
+          {
+            "bytes": 3124619,
+            "logical_path": "assets/fluted-body-high.obj",
+            "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/fluted-body-high.obj",
+            "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+          },
+          {
+            "bytes": 2004275,
+            "logical_path": "assets/swept-knot-high.obj",
+            "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/swept-knot-high.obj",
+            "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+          }
+        ],
+        "manifest_sha256": "3a9b10d4757743cd3b5a95753a6566386144f9cac2cc474a8647623803b4741b",
+        "resolved_path": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+        "scene_bytes": 3101,
+        "scene_file": "procedural-optical-stilllife.json",
+        "scene_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+      }
+    },
+    "last_sample_wall_ms": 44.803367,
+    "linear_rgb_mean": 0.3412238965658096,
+    "non_render_process_overhead_ms": 548.8216650000923,
+    "process_elapsed_ms": 6296.942072000093,
+    "process_elapsed_ms_per_completed_sample": 49.19485993750072,
+    "raw_checksum_fnv1a64": 4874948950104458741,
+    "render_loop_minus_budget_ms": null,
+    "render_loop_wall_ms": 5748.120407,
+    "render_loop_wall_ms_per_completed_sample": 44.9071906796875,
+    "renderer_gpu_ms": 5745.44567489624,
+    "renderer_gpu_ms_per_completed_sample": 44.88629433512688,
+    "renderer_host_ms": 5748.078957,
+    "resolution": [
+      512,
+      336
+    ],
+    "run_policy": {
+      "last_sample_wall_ms": 44.803367,
+      "stop_reason": "sample_target",
+      "time_budget_ms": null
+    },
+    "sampler": "counter",
+    "sampler_id": 2,
+    "sampler_version": 2,
+    "seed": 947,
+    "target_samples": 128,
+    "time_budget_overshoot_ms": null
+  },
+  "artifacts": {
+    "benchmark_csv": {
+      "bytes": 205216,
+      "path": "gallery/renders/gallery-obj-capability-with-obj.benchmark.csv",
+      "sha256": "00f6fdf480c1313acb02ae8bf7b5579e85deee69545225f8983d772eca26798d"
+    },
+    "metadata": {
+      "bytes": 3790,
+      "path": "gallery/renders/gallery-obj-capability-with-obj.json",
+      "sha256": "d246970687d66f08816d9b2d471384340b2c488cedf5e6d8fa23b0f81e749db0"
+    },
+    "png": {
+      "bytes": 378632,
+      "path": "gallery/renders/gallery-obj-capability-with-obj.png",
+      "sha256": "ab16e4000bc8d0e5358e2af6df176e4165d1e866755fe39d29e068b7c172c400"
+    },
+    "raw": {
+      "bytes": 2064424,
+      "path": "gallery/renders/gallery-obj-capability-with-obj.sum.bin",
+      "sha256": "3037db14493ec159031e1f7a42165d3fee2553af7960cd70d37f328f9c160e87"
+    }
+  },
+  "audit": {
+    "checks": [
+      {
+        "detail": {
+          "bytes": 6353008,
+          "device": 66306,
+          "inode": 3689093,
+          "mtime_ns": 1790892950649290955,
+          "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+          "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+        },
+        "name": "binary-sha256",
+        "passed": true
+      },
+      {
+        "detail": {
+          "assets": [
+            {
+              "bytes": 3124619,
+              "logical_path": "assets/fluted-body-high.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/fluted-body-high.obj",
+              "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+            },
+            {
+              "bytes": 2004275,
+              "logical_path": "assets/swept-knot-high.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/swept-knot-high.obj",
+              "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+            }
+          ],
+          "manifest_sha256": "3a9b10d4757743cd3b5a95753a6566386144f9cac2cc474a8647623803b4741b",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+          "scene_bytes": 3101,
+          "scene_file": "procedural-optical-stilllife.json",
+          "scene_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+        },
+        "name": "scene-input-hashes",
+        "passed": true
+      },
+      {
+        "detail": "3a9b10d4757743cd3b5a95753a6566386144f9cac2cc474a8647623803b4741b",
+        "name": "scene-input-manifest-hash",
+        "passed": true
+      },
+      {
+        "detail": 128,
+        "name": "raw-completed-samples",
+        "passed": true
+      },
+      {
+        "detail": {
+          "metadata": [
+            512,
+            336
+          ],
+          "raw": [
+            512,
+            336
+          ]
+        },
+        "name": "raw-resolution",
+        "passed": true
+      },
+      {
+        "detail": 128,
+        "name": "target-samples",
+        "passed": true
+      },
+      {
+        "detail": 128,
+        "name": "completed-fixed-target",
+        "passed": true
+      },
+      {
+        "detail": 947,
+        "name": "seed",
+        "passed": true
+      },
+      {
+        "detail": 2,
+        "name": "sampler-version",
+        "passed": true
+      },
+      {
+        "detail": "counter",
+        "name": "sampler-name",
+        "passed": true
+      },
+      {
+        "detail": 2,
+        "name": "sampler-id",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            "aa",
+            "bvh",
+            "compact",
+            "debug",
+            "depth_semantics",
+            "max_depth",
+            "motion",
+            "nee",
+            "rr",
+            "rr_start",
+            "sampler",
+            "sampler_id",
+            "sort",
+            "wavefront"
+          ],
+          "expected": [
+            "aa",
+            "bvh",
+            "compact",
+            "debug",
+            "depth_semantics",
+            "max_depth",
+            "motion",
+            "nee",
+            "rr",
+            "rr_start",
+            "sampler",
+            "sampler_id",
+            "sort",
+            "wavefront"
+          ]
+        },
+        "name": "config-fields",
+        "passed": true
+      },
+      {
+        "detail": 10,
+        "name": "config-max_depth",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-aa",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-nee",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-bvh",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-compact",
+        "passed": true
+      },
+      {
+        "detail": false,
+        "name": "config-sort",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-wavefront",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-rr",
+        "passed": true
+      },
+      {
+        "detail": 3,
+        "name": "config-rr_start",
+        "passed": true
+      },
+      {
+        "detail": "counter",
+        "name": "config-sampler",
+        "passed": true
+      },
+      {
+        "detail": 2,
+        "name": "config-sampler_id",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "config-motion",
+        "passed": true
+      },
+      {
+        "detail": "none",
+        "name": "config-debug",
+        "passed": true
+      },
+      {
+        "detail": "maximum surface intersections; final intersection is emission-only",
+        "name": "config-depth_semantics",
+        "passed": true
+      },
+      {
+        "detail": true,
+        "name": "benchmark-enabled",
+        "passed": true
+      },
+      {
+        "detail": 4874948950104458741,
+        "name": "raw-checksum",
+        "passed": true
+      },
+      {
+        "detail": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+        "name": "compatibility-baseline_starter_revision",
+        "passed": true
+      },
+      {
+        "detail": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+        "name": "compatibility-build_identifier",
+        "passed": true
+      },
+      {
+        "detail": "NVIDIA A10G",
+        "name": "compatibility-device",
+        "passed": true
+      },
+      {
+        "detail": 14045347781311483301,
+        "name": "fingerprint-scene_file",
+        "passed": true
+      },
+      {
+        "detail": 183936298049799943,
+        "name": "fingerprint-assets",
+        "passed": true
+      },
+      {
+        "detail": 15770788537044767836,
+        "name": "fingerprint-materials",
+        "passed": true
+      },
+      {
+        "detail": 14131036386253639563,
+        "name": "fingerprint-geometry",
+        "passed": true
+      },
+      {
+        "detail": 2359283628168182556,
+        "name": "fingerprint-render_config",
+        "passed": true
+      },
+      {
+        "detail": {
+          "assets": [
+            {
+              "bytes": 3124619,
+              "logical_path": "assets/fluted-body-high.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/fluted-body-high.obj",
+              "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+            },
+            {
+              "bytes": 2004275,
+              "logical_path": "assets/swept-knot-high.obj",
+              "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/swept-knot-high.obj",
+              "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+            }
+          ],
+          "manifest_sha256": "3a9b10d4757743cd3b5a95753a6566386144f9cac2cc474a8647623803b4741b",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+          "scene_bytes": 3101,
+          "scene_file": "procedural-optical-stilllife.json",
+          "scene_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+        },
+        "name": "scene-input-filename",
+        "passed": true
+      },
+      {
+        "detail": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+        "name": "metadata-scene-path",
+        "passed": true
+      },
+      {
+        "detail": {
+          "design": [
+            0.0,
+            1.0
+          ],
+          "scene": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "authored-camera-shutter-design",
+        "passed": true
+      },
+      {
+        "detail": [
+          "aperture",
+          "focus_distance",
+          "look_at",
+          "position",
+          "shutter"
+        ],
+        "name": "camera-fields",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            4.800000190734863,
+            2.799999952316284,
+            7.199999809265137
+          ],
+          "expected": [
+            4.8,
+            2.8,
+            7.2
+          ]
+        },
+        "name": "camera-position",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "expected": [
+            0.0,
+            1.2,
+            0.0
+          ]
+        },
+        "name": "camera-look-at",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.0
+          ],
+          "expected": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": 0.0,
+          "expected": 0.0
+        },
+        "name": "camera-aperture",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": 8.800000190734863,
+          "expected": 8.8
+        },
+        "name": "camera-focus-distance",
+        "passed": true
+      },
+      {
+        "detail": {
+          "actual": [
+            0.0,
+            1.0
+          ],
+          "expected": [
+            0.0,
+            1.0
+          ]
+        },
+        "name": "camera-shutter",
+        "passed": true
+      },
+      {
+        "detail": 128,
+        "name": "benchmark-measured-samples",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 5745.44567,
+          "metadata": 5745.44567489624
+        },
+        "name": "benchmark-csv-renderer_gpu_ms",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 5748.07896,
+          "metadata": 5748.078957
+        },
+        "name": "benchmark-csv-renderer_host_ms",
+        "passed": true
+      },
+      {
+        "detail": {
+          "csv": 5748.12041,
+          "metadata": 5748.120407
+        },
+        "name": "benchmark-csv-render_loop_wall_ms",
+        "passed": true
+      },
+      {
+        "detail": [
+          "last_sample_wall_ms",
+          "stop_reason",
+          "time_budget_ms"
+        ],
+        "name": "policy-fields",
+        "passed": true
+      },
+      {
+        "detail": "sample_target",
+        "name": "policy-stop-reason-enum",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 44.803367,
+          "render_loop_wall_ms": 5748.120407
+        },
+        "name": "policy-last-sample-within-loop",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 44.803367,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "policy-budget-null",
+        "passed": true
+      },
+      {
+        "detail": {
+          "last_sample_wall_ms": 44.803367,
+          "stop_reason": "sample_target",
+          "time_budget_ms": null
+        },
+        "name": "policy-stop-reason",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "raw_parser": "scripts.validate_render.read_sum",
+    "raw_values_finite_nonnegative": true
+  },
+  "binary_identity": {
+    "after": {
+      "bytes": 6353008,
+      "device": 66306,
+      "inode": 3689093,
+      "mtime_ns": 1790892950649290955,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    "before": {
+      "bytes": 6353008,
+      "device": 66306,
+      "inode": 3689093,
+      "mtime_ns": 1790892950649290955,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    "unchanged": true
+  },
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+    "--samples",
+    "128",
+    "--seed",
+    "947",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-gallery/gallery/renders/gallery-obj-capability-with-obj",
+    "--resolution",
+    "512x336",
+    "--depth",
+    "10",
+    "--benchmark",
+    "--wavefront",
+    "on",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--compact",
+    "on",
+    "--bvh",
+    "on",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--sort",
+    "off",
+    "--motion",
+    "on",
+    "--sampler",
+    "counter"
+  ],
+  "completed_utc": "2026-10-01T23:44:17.321489Z",
+  "cwd": "/home/ubuntu/cis5650/project3",
+  "design": {
+    "depth": 10,
+    "effective_scheduling": {
+      "aa": "on",
+      "bvh": "on",
+      "compact": "on",
+      "motion": "on",
+      "nee": "on",
+      "rr": "on",
+      "rr-start": "3",
+      "sort": "off",
+      "wavefront": "on"
+    },
+    "gallery_exactness_requirement": "not-asserted",
+    "gallery_pair_id": "obj-capability",
+    "gallery_pair_semantics": "capability-illustration-not-performance-comparison",
+    "gallery_role": "with-obj",
+    "kind": "capability",
+    "label": "gallery-obj-capability-with-obj",
+    "phase": "gallery",
+    "purpose": "gallery",
+    "resolution": [
+      512,
+      336
+    ],
+    "sample_target": 128,
+    "sampler": "counter",
+    "scene": "procedural-optical-stilllife",
+    "scene_file": "procedural-optical-stilllife.json",
+    "scheduling_overrides": {},
+    "seed": 947,
+    "time_budget_ms": null
+  },
+  "exit_code": 0,
+  "invocation_envelope_elapsed_ms": 6319.2793449998135,
+  "label": "gallery-obj-capability-with-obj",
+  "phase": "gallery",
+  "pid": 21765,
+  "process_elapsed_ms": 6296.942072000093,
+  "purpose": "gallery",
+  "run_id": 10,
+  "scene_input_identity": {
+    "after": {
+      "assets": [
+        {
+          "bytes": 3124619,
+          "logical_path": "assets/fluted-body-high.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/fluted-body-high.obj",
+          "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+        },
+        {
+          "bytes": 2004275,
+          "logical_path": "assets/swept-knot-high.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/swept-knot-high.obj",
+          "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+        }
+      ],
+      "manifest_sha256": "3a9b10d4757743cd3b5a95753a6566386144f9cac2cc474a8647623803b4741b",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+      "scene_bytes": 3101,
+      "scene_file": "procedural-optical-stilllife.json",
+      "scene_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+    },
+    "before": {
+      "assets": [
+        {
+          "bytes": 3124619,
+          "logical_path": "assets/fluted-body-high.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/fluted-body-high.obj",
+          "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909"
+        },
+        {
+          "bytes": 2004275,
+          "logical_path": "assets/swept-knot-high.obj",
+          "resolved_path": "/home/ubuntu/cis5650/project3/scenes/assets/swept-knot-high.obj",
+          "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035"
+        }
+      ],
+      "manifest_sha256": "3a9b10d4757743cd3b5a95753a6566386144f9cac2cc474a8647623803b4741b",
+      "resolved_path": "/home/ubuntu/cis5650/project3/scenes/procedural-optical-stilllife.json",
+      "scene_bytes": 3101,
+      "scene_file": "procedural-optical-stilllife.json",
+      "scene_sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833"
+    },
+    "unchanged": true
+  },
+  "schema_version": 1,
+  "started_utc": "2026-10-01T23:44:10.998626Z",
+  "status": "passed",
+  "stderr": {
+    "bytes": 0,
+    "path": "gallery/renders/gallery-obj-capability-with-obj.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 130,
+    "path": "gallery/renders/gallery-obj-capability-with-obj.stdout.txt",
+    "sha256": "b8e09c4a57ca859d551abf4d3fad2055d32ecde02df17cb925ddab45a1e00ee9"
+  }
+}

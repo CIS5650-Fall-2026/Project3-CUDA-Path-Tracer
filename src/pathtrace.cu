@@ -1,5 +1,6 @@
 #include "pathtrace.h"
 
+#include "checker_parity.cuh"
 #include "device_scan.cuh"
 #include "geometry.cuh"
 #include "interactions.h"
@@ -2688,6 +2689,75 @@ __global__ void motionUnitValidation(int* failures)
     *failures = result;
 }
 
+struct CheckerParityValidationCase
+{
+    float u;
+    float v;
+    float scale;
+    unsigned int expected;
+    unsigned int group;
+};
+
+enum CheckerParityValidationFailure : unsigned int
+{
+    kCheckerOrdinaryFailure = 1u << 0u,
+    kCheckerFloatRoundingFailure = 1u << 1u,
+    kCheckerSignedSumFailure = 1u << 2u,
+    kCheckerLargeCastFailure = 1u << 3u,
+    kCheckerProductOverflowFailure = 1u << 4u,
+    kCheckerSurfaceFailure = 1u << 5u,
+};
+
+__global__ void checkerParityUnitValidation(
+    const CheckerParityValidationCase* cases, int caseCount,
+    unsigned int* failures)
+{
+    if (blockIdx.x != 0 || threadIdx.x != 0)
+    {
+        return;
+    }
+
+    unsigned int result = 0u;
+    constexpr float tolerance = 2.0e-6f;
+    SceneView emptyScene;
+    Hit hit;
+    hit.t = 1.0f;
+    hit.materialId = 0;
+    hit.position = glm::vec3(0.0f);
+    hit.geometricNormal = glm::vec3(0.0f, 1.0f, 0.0f);
+    hit.shadingNormal = hit.geometricNormal;
+    hit.dpdu = glm::vec3(1.0f, 0.0f, 0.0f);
+    hit.dpdv = glm::vec3(0.0f, 0.0f, 1.0f);
+    hit.frontFace = true;
+    Material material;
+    material.color = glm::vec3(0.2f, 0.4f, 0.8f);
+    material.procedural = 1;
+
+    for (int index = 0; index < caseCount; ++index)
+    {
+        const CheckerParityValidationCase test = cases[index];
+        const unsigned int actual = renderer::checkerParity(
+            test.u, test.v, test.scale);
+        if (actual != test.expected)
+        {
+            result |= test.group;
+        }
+
+        hit.uv = glm::vec2(test.u, test.v);
+        material.checkerScale = test.scale;
+        const renderer::SurfaceEvaluation surface = renderer::evaluateSurface(
+            emptyScene, material, hit);
+        const float multiplier = test.expected == 0u ? 1.0f : 0.18f;
+        if (!validationVectorNear(surface.baseColor,
+                material.color * multiplier, tolerance))
+        {
+            result |= kCheckerSurfaceFailure;
+        }
+    }
+
+    *failures = result;
+}
+
 __global__ void proceduralTextureUnitValidation(int* failures)
 {
     if (blockIdx.x != 0 || threadIdx.x != 0)
@@ -5078,6 +5148,73 @@ RendererValidationReport pathtraceValidate()
         addCheck("procedural_surface_multiplication",
             (proceduralFailures & 0x10) == 0,
             "evaluateSurface multiplies linear RGB by IDs 2/3 without checker consumption");
+
+        const std::vector<CheckerParityValidationCase> checkerCases = {
+            {0.1f, 0.2f, 8.0f, 1u, kCheckerOrdinaryFailure},
+            {0.25f, 0.25f, 4.0f, 0u, kCheckerOrdinaryFailure},
+            {-0.25f, 0.0f, 4.0f, 1u, kCheckerOrdinaryFailure},
+            {-0.25f, 0.25f, 4.0f, 0u, kCheckerOrdinaryFailure},
+            {0.7f, 0.0f, 10.0f, 1u, kCheckerFloatRoundingFailure},
+            {-0.3f, 0.0f, 10.0f, 1u, kCheckerFloatRoundingFailure},
+            {-0.3f, 0.3f, 10.0f, 0u, kCheckerFloatRoundingFailure},
+            {0.5f, 0.5f, 3.0e9f, 0u, kCheckerSignedSumFailure},
+            {2147483520.0f, 129.0f, 1.0f, 1u,
+                kCheckerSignedSumFailure},
+            {-2147483648.0f, -1.0f, 1.0f, 1u,
+                kCheckerSignedSumFailure},
+            {-2147483648.0f, 0.0f, 1.0f, 0u,
+                kCheckerSignedSumFailure},
+            {2147483648.0f, 1.0f, 1.0f, 1u,
+                kCheckerLargeCastFailure},
+            {-2147483904.0f, 1.0f, 1.0f, 1u,
+                kCheckerLargeCastFailure},
+            {0.5f, 0.5f, 1.0e20f, 0u, kCheckerLargeCastFailure},
+            {1.0e20f, 1.0f, 1.0f, 1u, kCheckerLargeCastFailure},
+            {-1.0e20f, 1.0f, 1.0f, 1u, kCheckerLargeCastFailure},
+            {FLT_MAX, FLT_MAX, FLT_MAX, 0u,
+                kCheckerProductOverflowFailure},
+            {-FLT_MAX, FLT_MAX, FLT_MAX, 0u,
+                kCheckerProductOverflowFailure},
+            {FLT_MAX, FLT_MIN, FLT_MAX, 1u,
+                kCheckerProductOverflowFailure},
+            {-FLT_MAX, FLT_MIN, FLT_MAX, 1u,
+                kCheckerProductOverflowFailure},
+            {FLT_MAX, -FLT_MIN, FLT_MAX, 0u,
+                kCheckerProductOverflowFailure},
+        };
+        DeviceBuffer<CheckerParityValidationCase> checkerCasesDevice(
+            checkerCases.size(), "allocate checker parity validation cases");
+        cudaCheck(cudaMemcpy(checkerCasesDevice.get(), checkerCases.data(),
+            checkerCases.size() * sizeof(CheckerParityValidationCase),
+            cudaMemcpyHostToDevice),
+            "upload checker parity validation runtime inputs");
+        DeviceBuffer<unsigned int> checkerFailuresDevice(1,
+            "allocate checker parity validation result");
+        checkerParityUnitValidation<<<1, 1>>>(checkerCasesDevice.get(),
+            static_cast<int>(checkerCases.size()), checkerFailuresDevice.get());
+        launchCheck("run checker parity GPU unit validation");
+        unsigned int checkerFailures = 0u;
+        cudaCheck(cudaMemcpy(&checkerFailures, checkerFailuresDevice.get(),
+            sizeof(checkerFailures), cudaMemcpyDeviceToHost),
+            "download checker parity GPU validation result");
+        addCheck("checker_parity_ordinary_runtime_inputs",
+            (checkerFailures & kCheckerOrdinaryFailure) == 0u,
+            "uploaded runtime inputs cover ordinary positive, negative, and mixed odd cells");
+        addCheck("checker_parity_float_rounding_runtime_inputs",
+            (checkerFailures & kCheckerFloatRoundingFailure) == 0u,
+            "uploaded runtime inputs preserve float-first products for 0.7 and -0.3 at scale 10");
+        addCheck("checker_parity_signed_sum_overflow_runtime_inputs",
+            (checkerFailures & kCheckerSignedSumFailure) == 0u,
+            "uploaded runtime inputs cover INT boundaries and symmetric/asymmetric signed-sum overflow");
+        addCheck("checker_parity_large_cast_runtime_inputs",
+            (checkerFailures & kCheckerLargeCastFailure) == 0u,
+            "uploaded runtime inputs cover positive and negative cells beyond signed conversion range");
+        addCheck("checker_parity_product_overflow_runtime_inputs",
+            (checkerFailures & kCheckerProductOverflowFailure) == 0u,
+            "uploaded runtime inputs cover positive/negative maximum-float products and mixed cells");
+        addCheck("checker_surface_consumption_runtime_inputs",
+            (checkerFailures & kCheckerSurfaceFailure) == 0u,
+            "evaluateSurface consumes every uploaded finite positive-scale row as 1.0 or 0.18");
 
         DeviceBuffer<int> rrFailuresDevice(1,
             "allocate Russian roulette validation result");

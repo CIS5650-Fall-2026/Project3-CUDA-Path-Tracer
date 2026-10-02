@@ -1,0 +1,58 @@
+{
+  "artifacts": {},
+  "audits": [],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "1",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/096-reject-unknown-motion/render",
+    "--motion",
+    "maybe"
+  ],
+  "command_json": {
+    "bytes": 968,
+    "path": "runs/096-reject-unknown-motion/command.json",
+    "sha256": "1405754b3de3765e9c9fe3c2389c44de2ac02c28f8a8e417392d2cddfb309afc"
+  },
+  "elapsed_seconds": 0.0023999449999791977,
+  "exit_code": 1,
+  "expectation_met": true,
+  "expected_exit": "nonzero",
+  "expected_rejection_terms": [
+    "--motion expects exactly"
+  ],
+  "finished_utc": "2026-10-01T22:17:04.884800Z",
+  "index": 96,
+  "inputs": [
+    {
+      "bytes": 6353008,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    }
+  ],
+  "label": "reject-unknown-motion",
+  "launch_exception": null,
+  "output_prefix": "runs/096-reject-unknown-motion/render",
+  "rejection_text": "error: --motion expects exactly 'on' or 'off'\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help",
+  "run_directory": "runs/096-reject-unknown-motion",
+  "started_utc": "2026-10-01T22:17:04.882385Z",
+  "stderr": {
+    "bytes": 1326,
+    "path": "runs/096-reject-unknown-motion/stderr.txt",
+    "sha256": "3e23fe7ff7be3ebe3d6fbeb1561f018db715784a928900da7c6d49d44ff1b28b"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "runs/096-reject-unknown-motion/stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

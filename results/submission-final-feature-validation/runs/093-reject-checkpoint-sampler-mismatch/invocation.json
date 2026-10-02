@@ -1,0 +1,66 @@
+{
+  "artifacts": {},
+  "audits": [],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "17",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/093-reject-checkpoint-sampler-mismatch/render",
+    "--resume",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/041-partial-sampler-counter-motion-on-wavefront-on-rr-on/state.checkpoint",
+    "--sampler",
+    "halton"
+  ],
+  "command_json": {
+    "bytes": 1485,
+    "path": "runs/093-reject-checkpoint-sampler-mismatch/command.json",
+    "sha256": "79ca5c5625e4db30d3e4c343eb53b5256f6d825afbf546718b09ccfde1e3b5fd"
+  },
+  "elapsed_seconds": 0.07539144500003658,
+  "exit_code": 1,
+  "expectation_met": true,
+  "expected_exit": "nonzero",
+  "expected_rejection_terms": [
+    "checkpoint sampler ID"
+  ],
+  "finished_utc": "2026-10-01T22:17:03.977667Z",
+  "index": 93,
+  "inputs": [
+    {
+      "bytes": 6353008,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    },
+    {
+      "bytes": 12842,
+      "path": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/041-partial-sampler-counter-motion-on-wavefront-on-rr-on/state.checkpoint",
+      "role": "resume",
+      "sha256": "2207c5414eab478f40cc55faa0ce1220369c3ae7796a84cfd1c080c51e69e8ca"
+    }
+  ],
+  "label": "reject-checkpoint-sampler-mismatch",
+  "launch_exception": null,
+  "output_prefix": "runs/093-reject-checkpoint-sampler-mismatch/render",
+  "rejection_text": "error: checkpoint continuation rejected: checkpoint sampler ID does not match this renderer\nUsage: /home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless SCENE.json [options]\n\nRequired for normal rendering:\n  --samples N              Total completed sample target (resume-safe)\n  --output PREFIX          Unique output prefix; writes .png, .sum.bin, .json\n\nRenderer options:\n  --seed N                 Unsigned 64-bit deterministic seed\n  --resolution WIDTHxHEIGHT\n  --depth N                Maximum surface intersections\n  --aa on|off\n  --nee on|off\n  --bvh on|off\n  --compact on|off\n  --sort on|off\n  --wavefront on|off\n  --rr on|off\n  --rr-start N             Completed scattering events before roulette (1..4096)\n  --sampler counter|halton Sampling algorithm (default: counter)\n  --motion on|off          Rigid-translation motion blur (default: on)\n  --debug normals|uv|depth  Deterministic first-hit semantic view\n\nCheckpoint and diagnostics:\n  --checkpoint PATH        Atomically save final checkpoint\n  --checkpoint-every N     Also save every N completed samples\n  --resume PATH            Resume a compatible checkpoint\n  --time-budget-ms N       Fresh-render diagnostic budget; --samples is the ceiling\n  --benchmark              Write PREFIX.benchmark.csv\n  --validate               Run GPU equivalence/edge validation and exit\n  --help",
+  "run_directory": "runs/093-reject-checkpoint-sampler-mismatch",
+  "started_utc": "2026-10-01T22:17:03.902233Z",
+  "stderr": {
+    "bytes": 1372,
+    "path": "runs/093-reject-checkpoint-sampler-mismatch/stderr.txt",
+    "sha256": "297eefe9fcea642cb13f26abcf8f117987750ea74d57f2b919945fec6ed726c9"
+  },
+  "stdout": {
+    "bytes": 0,
+    "path": "runs/093-reject-checkpoint-sampler-mismatch/stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

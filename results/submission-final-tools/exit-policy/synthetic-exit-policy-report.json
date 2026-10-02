@@ -1,0 +1,253 @@
+{
+  "actual_driver_path": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scripts/measure_hedge.py",
+  "actual_driver_sha256_end": "17ede42a83b29255c8bd9babf24f46f4613412e0c92da5da74d62ae23fdbfa89",
+  "actual_driver_sha256_start": "17ede42a83b29255c8bd9babf24f46f4613412e0c92da5da74d62ae23fdbfa89",
+  "actual_driver_unchanged": true,
+  "actual_entrypoints_exercised": [
+    "run_measurement",
+    "final_gate_status"
+  ],
+  "cases": [
+    {
+      "actual_returncode": 0,
+      "attempted_network_calls": [],
+      "attempted_subprocess_calls": [],
+      "boundary_call_counts": {
+        "observed_identity_audit": 1,
+        "quality_completion": 1,
+        "scene_inspection": 1,
+        "session_construction": 1
+      },
+      "checks": {
+        "actual_completion_stderr_empty": true,
+        "actual_completion_stdout_present": true,
+        "actual_driver_returncode_matches_policy": true,
+        "actual_final_gate_status_matches_policy": true,
+        "completed_state_persisted_by_actual_branch": true,
+        "completed_timestamp_present": true,
+        "completion_calls_all_required_boundaries_once": true,
+        "execution_remains_completed": true,
+        "no_execution_errors": true,
+        "no_network_attempted": true,
+        "no_subprocess_attempted": true,
+        "qualification_retained": true,
+        "synthetic_quality_phase_completed": true
+      },
+      "expected_returncode": 0,
+      "expected_status": "passed",
+      "final_in_memory_state": {
+        "completed_utc": "2026-10-01T22:15:37.896502Z",
+        "design": {},
+        "errors": [],
+        "execution_status": "completed",
+        "identity": {
+          "mock_identity": true,
+          "observed_metadata": {
+            "passed": true,
+            "synthetic": true
+          }
+        },
+        "input_scenes": {
+          "synthetic": true
+        },
+        "mode": "synthetic-exit-policy-check",
+        "phase_requested": "quality",
+        "phases": {
+          "quality": {
+            "phase": "quality",
+            "qualification": {
+              "status": "qualified"
+            },
+            "status": "completed",
+            "synthetic": true
+          }
+        },
+        "renderer_executed": false,
+        "status": "passed",
+        "synthetic": true
+      },
+      "mock_session_events": [
+        "construct mock session",
+        "persist in memory",
+        "initialize synthetic identity",
+        "persist in memory",
+        "complete synthetic quality phase",
+        "persist in memory"
+      ],
+      "mode": "synthetic-exit-policy-check",
+      "qualification_case": "qualified",
+      "renderer_executed": false,
+      "status": "passed",
+      "stderr_log": "qualified.synthetic.stderr.log",
+      "stdout_log": "qualified.synthetic.stdout.log",
+      "synthetic": true,
+      "unexpected_error": null
+    },
+    {
+      "actual_returncode": 2,
+      "attempted_network_calls": [],
+      "attempted_subprocess_calls": [],
+      "boundary_call_counts": {
+        "observed_identity_audit": 1,
+        "quality_completion": 1,
+        "scene_inspection": 1,
+        "session_construction": 1
+      },
+      "checks": {
+        "actual_completion_stderr_empty": true,
+        "actual_completion_stdout_present": true,
+        "actual_driver_returncode_matches_policy": true,
+        "actual_final_gate_status_matches_policy": true,
+        "completed_state_persisted_by_actual_branch": true,
+        "completed_timestamp_present": true,
+        "completion_calls_all_required_boundaries_once": true,
+        "execution_remains_completed": true,
+        "no_execution_errors": true,
+        "no_network_attempted": true,
+        "no_subprocess_attempted": true,
+        "qualification_retained": true,
+        "synthetic_quality_phase_completed": true
+      },
+      "expected_returncode": 2,
+      "expected_status": "not-qualified",
+      "final_in_memory_state": {
+        "completed_utc": "2026-10-01T22:15:37.897481Z",
+        "design": {},
+        "errors": [],
+        "execution_status": "completed",
+        "identity": {
+          "mock_identity": true,
+          "observed_metadata": {
+            "passed": true,
+            "synthetic": true
+          }
+        },
+        "input_scenes": {
+          "synthetic": true
+        },
+        "mode": "synthetic-exit-policy-check",
+        "phase_requested": "quality",
+        "phases": {
+          "quality": {
+            "phase": "quality",
+            "qualification": {
+              "status": "not-qualified"
+            },
+            "status": "completed",
+            "synthetic": true
+          }
+        },
+        "renderer_executed": false,
+        "status": "not-qualified",
+        "synthetic": true
+      },
+      "mock_session_events": [
+        "construct mock session",
+        "persist in memory",
+        "initialize synthetic identity",
+        "persist in memory",
+        "complete synthetic quality phase",
+        "persist in memory"
+      ],
+      "mode": "synthetic-exit-policy-check",
+      "qualification_case": "not-qualified",
+      "renderer_executed": false,
+      "status": "passed",
+      "stderr_log": "not-qualified.synthetic.stderr.log",
+      "stdout_log": "not-qualified.synthetic.stdout.log",
+      "synthetic": true,
+      "unexpected_error": null
+    },
+    {
+      "actual_returncode": 2,
+      "attempted_network_calls": [],
+      "attempted_subprocess_calls": [],
+      "boundary_call_counts": {
+        "observed_identity_audit": 1,
+        "quality_completion": 1,
+        "scene_inspection": 1,
+        "session_construction": 1
+      },
+      "checks": {
+        "actual_completion_stderr_empty": true,
+        "actual_completion_stdout_present": true,
+        "actual_driver_returncode_matches_policy": true,
+        "actual_final_gate_status_matches_policy": true,
+        "completed_state_persisted_by_actual_branch": true,
+        "completed_timestamp_present": true,
+        "completion_calls_all_required_boundaries_once": true,
+        "execution_remains_completed": true,
+        "no_execution_errors": true,
+        "no_network_attempted": true,
+        "no_subprocess_attempted": true,
+        "qualification_retained": true,
+        "synthetic_quality_phase_completed": true
+      },
+      "expected_returncode": 2,
+      "expected_status": "inconclusive",
+      "final_in_memory_state": {
+        "completed_utc": "2026-10-01T22:15:37.898159Z",
+        "design": {},
+        "errors": [],
+        "execution_status": "completed",
+        "identity": {
+          "mock_identity": true,
+          "observed_metadata": {
+            "passed": true,
+            "synthetic": true
+          }
+        },
+        "input_scenes": {
+          "synthetic": true
+        },
+        "mode": "synthetic-exit-policy-check",
+        "phase_requested": "quality",
+        "phases": {
+          "quality": {
+            "phase": "quality",
+            "qualification": {
+              "status": "inconclusive"
+            },
+            "status": "completed",
+            "synthetic": true
+          }
+        },
+        "renderer_executed": false,
+        "status": "inconclusive",
+        "synthetic": true
+      },
+      "mock_session_events": [
+        "construct mock session",
+        "persist in memory",
+        "initialize synthetic identity",
+        "persist in memory",
+        "complete synthetic quality phase",
+        "persist in memory"
+      ],
+      "mode": "synthetic-exit-policy-check",
+      "qualification_case": "inconclusive",
+      "renderer_executed": false,
+      "status": "passed",
+      "stderr_log": "inconclusive.synthetic.stderr.log",
+      "stdout_log": "inconclusive.synthetic.stdout.log",
+      "synthetic": true,
+      "unexpected_error": null
+    }
+  ],
+  "completed_utc": "2026-10-01T22:15:37.898461+00:00",
+  "mocked_boundaries": [
+    "MeasurementSession construction/persistence/identity",
+    "inspect_scene_inputs",
+    "run_quality",
+    "observed_identities"
+  ],
+  "mode": "synthetic-exit-policy-check",
+  "network_used": false,
+  "notice": "Synthetic mocked completion policy integration check. This report contains no render evidence or measured image quality/timing values.",
+  "numerical_measurements": false,
+  "policy": "completed qualified -> 0; completed not-qualified/inconclusive -> 2; all execution_status values remain completed",
+  "renderer_executed": false,
+  "schema_version": 1,
+  "status": "passed",
+  "synthetic": true
+}

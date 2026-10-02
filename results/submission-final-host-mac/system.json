@@ -1,0 +1,154 @@
+{
+  "recorded_utc": "2026-10-01T22:24:35.529434+00:00",
+  "scope": "CPU-only host correctness; not GPU validation, GPU performance, or a CPU renderer benchmark",
+  "commands": [
+    {
+      "command": [
+        "sw_vers"
+      ],
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.360802+00:00",
+      "ended_utc": "2026-10-01T22:24:35.366942+00:00",
+      "duration_seconds": 0.006128792,
+      "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "uname",
+        "-m"
+      ],
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.367036+00:00",
+      "ended_utc": "2026-10-01T22:24:35.368981+00:00",
+      "duration_seconds": 0.001940417,
+      "stdout": "arm64\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "sysctl",
+        "-n",
+        "machdep.cpu.brand_string"
+      ],
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.369060+00:00",
+      "ended_utc": "2026-10-01T22:24:35.370954+00:00",
+      "duration_seconds": 0.001890708,
+      "stdout": "",
+      "stderr": "sysctl: sysctl fmt -1 1024 1: Operation not permitted\n",
+      "returncode": 1
+    },
+    {
+      "command": [
+        "sysctl",
+        "-n",
+        "hw.memsize"
+      ],
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.371050+00:00",
+      "ended_utc": "2026-10-01T22:24:35.372920+00:00",
+      "duration_seconds": 0.001859458,
+      "stdout": "",
+      "stderr": "sysctl: sysctl fmt -1 1024 1: Operation not permitted\n",
+      "returncode": 1
+    },
+    {
+      "command": [
+        "/usr/bin/clang++",
+        "--version"
+      ],
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.373026+00:00",
+      "ended_utc": "2026-10-01T22:24:35.386501+00:00",
+      "duration_seconds": 0.013469791,
+      "stdout": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "date",
+        "-u",
+        "+%Y-%m-%dT%H:%M:%SZ"
+      ],
+      "environment": {
+        "inherit_parent_environment": true,
+        "disclosed_overrides_only": {},
+        "note": "Unrelated inherited environment values are intentionally not recorded."
+      },
+      "started_utc": "2026-10-01T22:24:35.386599+00:00",
+      "ended_utc": "2026-10-01T22:24:35.389686+00:00",
+      "duration_seconds": 0.0030845,
+      "stdout": "2026-10-01T22:24:35Z\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ],
+  "required_command_failures": [
+    [
+      "sysctl",
+      "-n",
+      "machdep.cpu.brand_string"
+    ],
+    [
+      "sysctl",
+      "-n",
+      "hw.memsize"
+    ]
+  ],
+  "required_command_failure_note": "The sysctl invocations were executed and recorded exactly. In this managed sandbox they returned Operation not permitted; selected non-sensitive hardware facts were therefore captured with system_profiler.",
+  "hardware_fallback": {
+    "command": [
+      "system_profiler",
+      "SPHardwareDataType"
+    ],
+    "environment": {
+      "inherit_parent_environment": true,
+      "disclosed_overrides_only": {},
+      "note": "Unrelated inherited environment values are intentionally not recorded."
+    },
+    "started_utc": "2026-10-01T22:24:35.389769+00:00",
+    "ended_utc": "2026-10-01T22:24:35.529130+00:00",
+    "duration_seconds": 0.139351541,
+    "returncode": 0,
+    "selected_facts": {
+      "model_name": "MacBook Pro",
+      "chip": "Apple M5",
+      "memory_display": "24 GB",
+      "memory_bytes_derived_from_display": 25769803776
+    },
+    "raw_stdout": {
+      "bytes": 456,
+      "sha256": "b0d96cb69bb7aa030ff39649d6cf6bbecf6968186e3f519938f7e8c605b958f5"
+    },
+    "raw_stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "raw_stdout_omitted": true,
+    "raw_stdout_omission_reason": "system_profiler emits unrelated device identifiers; only the non-sensitive model, chip, and memory facts are retained."
+  }
+}

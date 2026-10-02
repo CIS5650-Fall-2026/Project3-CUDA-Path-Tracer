@@ -1,0 +1,646 @@
+{
+  "artifacts": {
+    "checkpoint": {
+      "bytes": 12842,
+      "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/state.checkpoint",
+      "sha256": "885d5b0dd44ed683b7d964a26b46e204ae0488f1f89cad90500fb72247baf886"
+    },
+    "metadata": {
+      "bytes": 3318,
+      "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render.json",
+      "sha256": "bdc5e5ed57625578c66c538d23f30bcc19fcaa464cc173dc9f7758b8cdbc2e56"
+    },
+    "png": {
+      "bytes": 535,
+      "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render.png",
+      "sha256": "378d87229d823884c0d0be45706939e1c76b3b219af4a3a4cb4201f975287895"
+    },
+    "raw_sum": {
+      "bytes": 2692,
+      "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render.sum.bin",
+      "sha256": "fcf94cb0665dfbceb69f9170ea38a45348350af2ddab5886dabc3a534ab7df12"
+    }
+  },
+  "audits": [
+    {
+      "name": "raw-sum-parsed-by-validate-render",
+      "passed": true
+    },
+    {
+      "name": "metadata-json-readable",
+      "passed": true
+    },
+    {
+      "actual": {
+        "bytes": 535,
+        "sha256": "378d87229d823884c0d0be45706939e1c76b3b219af4a3a4cb4201f975287895"
+      },
+      "name": "png-present-and-signature-valid",
+      "passed": true
+    },
+    {
+      "name": "metadata-is-object",
+      "passed": true
+    },
+    {
+      "name": "metadata-json-floats-finite",
+      "passed": true
+    },
+    {
+      "actual": 5,
+      "expected": 5,
+      "name": "target-samples",
+      "passed": true
+    },
+    {
+      "actual": 5,
+      "expected": 5,
+      "name": "completed-samples",
+      "passed": true
+    },
+    {
+      "actual": [
+        17,
+        13
+      ],
+      "expected": [
+        17,
+        13
+      ],
+      "name": "metadata-resolution",
+      "passed": true
+    },
+    {
+      "actual": [
+        17,
+        13
+      ],
+      "expected": [
+        17,
+        13
+      ],
+      "name": "raw-resolution-matches-metadata",
+      "passed": true
+    },
+    {
+      "actual": 5,
+      "expected": 5,
+      "name": "raw-samples-match-metadata",
+      "passed": true
+    },
+    {
+      "actual": {
+        "value_count": 663
+      },
+      "name": "raw-values-finite-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": 11901734596194997348,
+      "expected": 11901734596194997348,
+      "name": "raw-checksum-matches-metadata",
+      "passed": true
+    },
+    {
+      "actual": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "expected": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "name": "scene-path",
+      "passed": true
+    },
+    {
+      "actual": 947,
+      "expected": 947,
+      "name": "seed",
+      "passed": true
+    },
+    {
+      "actual": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/state.checkpoint",
+      "expected": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/state.checkpoint",
+      "name": "metadata-checkpoint",
+      "passed": true
+    },
+    {
+      "name": "metadata-resumed-from",
+      "passed": true
+    },
+    {
+      "actual": "halton",
+      "expected": "halton",
+      "name": "metadata-sampler",
+      "passed": true
+    },
+    {
+      "actual": 3,
+      "expected": 3,
+      "name": "metadata-sampler-id",
+      "passed": true
+    },
+    {
+      "actual": 3,
+      "expected": 3,
+      "name": "metadata-sampler-version",
+      "passed": true
+    },
+    {
+      "name": "config-is-object",
+      "passed": true
+    },
+    {
+      "actual": [
+        "aa",
+        "bvh",
+        "compact",
+        "debug",
+        "depth_semantics",
+        "max_depth",
+        "motion",
+        "nee",
+        "rr",
+        "rr_start",
+        "sampler",
+        "sampler_id",
+        "sort",
+        "wavefront"
+      ],
+      "expected": [
+        "aa",
+        "bvh",
+        "compact",
+        "debug",
+        "depth_semantics",
+        "max_depth",
+        "motion",
+        "nee",
+        "rr",
+        "rr_start",
+        "sampler",
+        "sampler_id",
+        "sort",
+        "wavefront"
+      ],
+      "name": "config-exact-fields",
+      "passed": true
+    },
+    {
+      "actual": 7,
+      "expected": 7,
+      "name": "config-max-depth",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-aa",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-nee",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-bvh",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-compact",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "config-sort",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-wavefront",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-rr",
+      "passed": true
+    },
+    {
+      "actual": 3,
+      "expected": 3,
+      "name": "config-rr-start",
+      "passed": true
+    },
+    {
+      "actual": "halton",
+      "expected": "halton",
+      "name": "config-sampler",
+      "passed": true
+    },
+    {
+      "actual": 3,
+      "expected": 3,
+      "name": "config-sampler-id",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "config-motion",
+      "passed": true
+    },
+    {
+      "actual": "none",
+      "expected": "none",
+      "name": "config-debug",
+      "passed": true
+    },
+    {
+      "actual": "maximum surface intersections; final intersection is emission-only",
+      "expected": "maximum surface intersections; final intersection is emission-only",
+      "name": "config-depth-semantics",
+      "passed": true
+    },
+    {
+      "name": "camera-is-object",
+      "passed": true
+    },
+    {
+      "actual": [
+        "aperture",
+        "focus_distance",
+        "look_at",
+        "position",
+        "shutter"
+      ],
+      "expected": [
+        "aperture",
+        "focus_distance",
+        "look_at",
+        "position",
+        "shutter"
+      ],
+      "name": "camera-exact-fields",
+      "passed": true
+    },
+    {
+      "actual": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "expected": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "name": "camera-position",
+      "passed": true
+    },
+    {
+      "actual": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "expected": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "name": "camera-look-at",
+      "passed": true
+    },
+    {
+      "actual": 0.0,
+      "expected": 0.0,
+      "name": "camera-aperture",
+      "passed": true
+    },
+    {
+      "actual": 11.0,
+      "expected": 11.0,
+      "name": "camera-focus-distance",
+      "passed": true
+    },
+    {
+      "actual": [
+        0.0,
+        1.0
+      ],
+      "expected": [
+        0.0,
+        1.0
+      ],
+      "name": "camera-shutter",
+      "passed": true
+    },
+    {
+      "actual": [
+        0.0,
+        1.0
+      ],
+      "name": "camera-shutter-range",
+      "passed": true
+    },
+    {
+      "actual": 0.0,
+      "name": "camera-aperture-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": 11.0,
+      "name": "camera-focus-distance-positive",
+      "passed": true
+    },
+    {
+      "actual": {
+        "assets": 7600896668236057885,
+        "geometry": 7316588533633355303,
+        "materials": 11884046144069487820,
+        "render_config": 11830563586722518799,
+        "scene_file": 10188050214372398967
+      },
+      "expected": [
+        "scene_file",
+        "assets",
+        "materials",
+        "geometry",
+        "render_config"
+      ],
+      "name": "scene-asset-and-render-fingerprints-retained",
+      "passed": true
+    },
+    {
+      "actual": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+      "name": "build-identifier-retained",
+      "passed": true
+    },
+    {
+      "actual": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+      "name": "source-identifier-retained",
+      "passed": true
+    },
+    {
+      "actual": 26.92525,
+      "name": "render-loop-wall-ms-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": {
+        "process_elapsed_ms": 286.9769860000133,
+        "render_loop_wall_ms": 26.92525,
+        "timer_tolerance_ms": 100.0
+      },
+      "name": "render-loop-contained-in-process-elapsed",
+      "passed": true
+    },
+    {
+      "name": "run-policy-is-object",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "obsolete-policy-alias-absent",
+      "passed": true
+    },
+    {
+      "actual": [
+        "last_sample_wall_ms",
+        "stop_reason",
+        "time_budget_ms"
+      ],
+      "expected": [
+        "last_sample_wall_ms",
+        "stop_reason",
+        "time_budget_ms"
+      ],
+      "name": "run-policy-exact-fields",
+      "passed": true
+    },
+    {
+      "expected": "null",
+      "name": "time-budget-type",
+      "passed": true
+    },
+    {
+      "name": "time-budget-request-recorded",
+      "passed": true
+    },
+    {
+      "actual": 4.440203,
+      "name": "last-sample-wall-ms-nonnegative",
+      "passed": true
+    },
+    {
+      "actual": 4.440203,
+      "expected": {
+        "at_most_render_loop_wall_ms": 26.92525
+      },
+      "name": "last-sample-contained-in-render-loop",
+      "passed": true
+    },
+    {
+      "actual": "sample_target",
+      "expected": "sample_target",
+      "name": "stop-reason-consistent",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "benchmark-enabled-flag",
+      "passed": true
+    }
+  ],
+  "command": [
+    "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+    "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "--samples",
+    "5",
+    "--seed",
+    "947",
+    "--resolution",
+    "17x13",
+    "--depth",
+    "7",
+    "--compact",
+    "on",
+    "--sort",
+    "off",
+    "--bvh",
+    "on",
+    "--aa",
+    "on",
+    "--nee",
+    "on",
+    "--wavefront",
+    "on",
+    "--rr",
+    "on",
+    "--rr-start",
+    "3",
+    "--sampler",
+    "halton",
+    "--motion",
+    "on",
+    "--output",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render",
+    "--checkpoint",
+    "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/state.checkpoint"
+  ],
+  "command_json": {
+    "bytes": 1515,
+    "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/command.json",
+    "sha256": "e0e7a510481c82745dda09c3cc7c98d8e2bb7c9c287ad3e7880289890beb248f"
+  },
+  "elapsed_seconds": 0.2869769860000133,
+  "exit_code": 0,
+  "expectation_met": true,
+  "expected_exit": "zero",
+  "expected_rejection_terms": [],
+  "finished_utc": "2026-10-01T22:16:56.708444Z",
+  "index": 85,
+  "inputs": [
+    {
+      "bytes": 6353008,
+      "path": "/home/ubuntu/cis5650/project3/build-submission/bin/cis565_path_tracer_headless",
+      "role": "binary",
+      "sha256": "7d9e86347b715570495bb1d6653b98e03877733dd09c1c68c6844f6953480cc8"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+      "role": "scene",
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0"
+    }
+  ],
+  "label": "partial-sampler-halton-motion-on-wavefront-on-rr-on",
+  "launch_exception": null,
+  "metadata": {
+    "benchmark_enabled": false,
+    "benchmark_instrumentation": null,
+    "camera": {
+      "aperture": 0.0,
+      "focus_distance": 11.0,
+      "look_at": [
+        0.0,
+        1.5,
+        0.0
+      ],
+      "position": [
+        6.0,
+        3.5999999046325684,
+        9.0
+      ],
+      "shutter": [
+        0.0,
+        1.0
+      ]
+    },
+    "checkpoint": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/state.checkpoint",
+    "checkpoint_every": null,
+    "compatibility": {
+      "baseline_starter_revision": "authorized-starter:8695a5af18ae6fc130d1d38713be82bbbff7f38f",
+      "build_identifier": "cis565-project3-renderer-v1_source-07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703_cxx-GNU-13.3.0_cuda-NVIDIA-12.8.93_config-Release_arch-86_flags-fc56c912431a1aa5d461fbcbeb6c4123cb49f66958fe7fea9e06c7d9ea95fbd5",
+      "compute_capability": "8.6",
+      "cuda_driver_version": 13000,
+      "cuda_runtime_version": 12080,
+      "device": "NVIDIA A10G"
+    },
+    "completed_samples": 5,
+    "config": {
+      "aa": true,
+      "bvh": true,
+      "compact": true,
+      "debug": "none",
+      "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+      "max_depth": 7,
+      "motion": true,
+      "nee": true,
+      "rr": true,
+      "rr_start": 3,
+      "sampler": "halton",
+      "sampler_id": 3,
+      "sort": false,
+      "wavefront": true
+    },
+    "debug_view": null,
+    "display_transform": {
+      "normalization": "divide accumulated RGB sums by completed_samples",
+      "orientation": "horizontal flip matching the starter preview camera convention",
+      "tone_mapping": "Reinhard c/(1+c)",
+      "transfer": "IEC 61966-2-1 sRGB"
+    },
+    "fingerprints": {
+      "assets": 7600896668236057885,
+      "geometry": 7316588533633355303,
+      "materials": 11884046144069487820,
+      "render_config": 11830563586722518799,
+      "scene_file": 10188050214372398967
+    },
+    "format_version": 1,
+    "linear_sum_format": {
+      "checksum": 11901734596194997348,
+      "checksum_security": "change/corruption detection only; not cryptographic",
+      "checksum_trailer_bytes": 8,
+      "endianness": "little",
+      "header_bytes": 32,
+      "header_fields": "magic[8], u32 version,width,height,channels, u64 completed_samples",
+      "magic": "C565SUM\\0",
+      "payload": "row-major renderer-order interleaved RGB IEEE-754 binary32 accumulated sums",
+      "payload_offset_bytes": 32,
+      "png_orientation": "horizontal flip of renderer-order pixels",
+      "trailer": "little-endian FNV-1a-64 over header and payload",
+      "version": 1
+    },
+    "outputs": {
+      "linear_sum": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render.sum.bin",
+      "png": "/home/ubuntu/cis5650/project3/results/submission-final-feature-validation/runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render.png"
+    },
+    "render_loop_wall_ms": 26.92525,
+    "resolution": [
+      17,
+      13
+    ],
+    "resumed_from": null,
+    "run_policy": {
+      "last_sample_wall_ms": 4.440203,
+      "stop_reason": "sample_target",
+      "time_budget_ms": null
+    },
+    "sampler": "halton",
+    "sampler_id": 3,
+    "sampler_version": 3,
+    "scene": "/home/ubuntu/cis5650/project3/scenes/hedge-motion-validation.json",
+    "seed": 947,
+    "target_samples": 5
+  },
+  "output_prefix": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/render",
+  "raw_summary": {
+    "height": 13,
+    "maximum": 11.06235122680664,
+    "minimum": 0.0,
+    "samples": 5,
+    "sha256": "fcf94cb0665dfbceb69f9170ea38a45348350af2ddab5886dabc3a534ab7df12",
+    "value_count": 663,
+    "width": 17
+  },
+  "run_directory": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on",
+  "started_utc": "2026-10-01T22:16:56.421448Z",
+  "stderr": {
+    "bytes": 0,
+    "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 153,
+    "path": "runs/085-partial-sampler-halton-motion-on-wavefront-on-rr-on/stdout.txt",
+    "sha256": "10c4b5ec285cf8ee0ba2440083a87f0b857dd3d66c79717a68d5d3f249cbda39"
+  }
+}

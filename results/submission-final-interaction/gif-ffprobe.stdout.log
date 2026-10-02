@@ -1,0 +1,63 @@
+{
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "gif",
+            "codec_long_name": "CompuServe GIF (Graphics Interchange Format)",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 640,
+            "height": 360,
+            "coded_width": 640,
+            "coded_height": 360,
+            "has_b_frames": 0,
+            "pix_fmt": "bgra",
+            "level": -99,
+            "refs": 1,
+            "r_frame_rate": "4/1",
+            "avg_frame_rate": "4/1",
+            "time_base": "1/100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 4925,
+            "duration": "49.250000",
+            "nb_frames": "197",
+            "nb_read_frames": "197",
+            "disposition": {
+                "default": 0,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+            }
+        }
+    ],
+    "format": {
+        "filename": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/results/submission-final-interaction/media-pending/interaction.gif",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "gif",
+        "format_long_name": "CompuServe Graphics Interchange Format (GIF)",
+        "start_time": "0.000000",
+        "duration": "49.250000",
+        "size": "9447847",
+        "bit_rate": "1534675",
+        "probe_score": 100
+    }
+}

@@ -1,0 +1,977 @@
+{
+  "recorded_utc": "2026-10-01T22:24:38.425636+00:00",
+  "source_hash_coverage_note": "scripts/source_hash.py covers CMakeLists.txt and all files under src, stream_compaction, external, and cmake. Tests, scenes/assets, and scripts are separately hashed here.",
+  "test_sources": [
+    "tests/checkpoint_tests.cpp",
+    "tests/geometry_tests.cpp",
+    "tests/gltf_tests.cpp"
+  ],
+  "helper_inputs": [
+    "scripts/source_hash.py",
+    "scripts/generate_assets.py",
+    "src/checker_parity.cuh",
+    "src/procedural_texture.cuh",
+    "src/checkpoint.h",
+    "src/geometry.cuh",
+    "src/scene.h",
+    "external/include/json.hpp"
+  ],
+  "runtime_repository_inputs": [
+    "scenes/assets/area-light.obj",
+    "scenes/assets/fluted-body-high.obj",
+    "scenes/assets/fluted-body-low.obj",
+    "scenes/assets/fluted-body-medium.obj",
+    "scenes/assets/glaze.bmp",
+    "scenes/assets/gltf/fluted-body-medium.glb",
+    "scenes/assets/gltf/generation.json",
+    "scenes/assets/gltf/swept-knot-medium.glb",
+    "scenes/assets/gltf/vase-high.glb",
+    "scenes/assets/gltf/vase-low-data-uri.gltf",
+    "scenes/assets/gltf/vase-low.bin",
+    "scenes/assets/gltf/vase-low.glb",
+    "scenes/assets/gltf/vase-low.gltf",
+    "scenes/assets/gltf/vase-medium.glb",
+    "scenes/assets/height.bmp",
+    "scenes/assets/swept-knot-high.obj",
+    "scenes/assets/swept-knot-low.obj",
+    "scenes/assets/swept-knot-medium.obj",
+    "scenes/assets/torus.obj",
+    "scenes/assets/vase-high.obj",
+    "scenes/assets/vase-low.obj",
+    "scenes/assets/vase-medium.obj",
+    "scenes/closed-benchmark.json",
+    "scenes/complexity-high.json",
+    "scenes/complexity-low.json",
+    "scenes/complexity-medium.json",
+    "scenes/cornell.json",
+    "scenes/gltf-baseline.json",
+    "scenes/gltf-complexity-high.json",
+    "scenes/gltf-complexity-low.json",
+    "scenes/gltf-complexity-medium.json",
+    "scenes/gltf-equivalence-data-uri.json",
+    "scenes/gltf-equivalence-external.json",
+    "scenes/gltf-equivalence-glb.json",
+    "scenes/gltf-motion-validation.json",
+    "scenes/gltf-showcase.json",
+    "scenes/hedge-motion-frozen-end.json",
+    "scenes/hedge-motion-frozen-midpoint.json",
+    "scenes/hedge-motion-frozen-start.json",
+    "scenes/hedge-motion-validation.json",
+    "scenes/hedge-motion.json",
+    "scenes/hedge-obj-baseline.json",
+    "scenes/hedge-sampling-diffuse.json",
+    "scenes/hedge-sampling-glass-dof.json",
+    "scenes/light-test-cube.json",
+    "scenes/light-test-mesh.json",
+    "scenes/light-test-sphere.json",
+    "scenes/open-benchmark.json",
+    "scenes/optical-workbench.json",
+    "scenes/preview-smoke.json",
+    "scenes/procedural-fluted-body-cells.json",
+    "scenes/procedural-fluted-body-marble.json",
+    "scenes/procedural-fluted-body-plain.json",
+    "scenes/procedural-optical-stilllife.json",
+    "scenes/procedural-swept-knot-cells.json",
+    "scenes/procedural-swept-knot-marble.json",
+    "scenes/procedural-swept-knot-plain.json",
+    "scenes/sphere.json",
+    "scenes/uniform-benchmark.json",
+    "scenes/workbench-dof.json",
+    "scenes/workbench-mirror.json",
+    "scenes/workbench-no-bump.json",
+    "scenes/workbench-procedural.json"
+  ],
+  "before": [
+    {
+      "path": "external/include/json.hpp",
+      "bytes": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "scenes/assets/area-light.obj",
+      "bytes": 122,
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/fluted-body-high.obj",
+      "bytes": 3124619,
+      "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/fluted-body-low.obj",
+      "bytes": 188496,
+      "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/fluted-body-medium.obj",
+      "bytes": 769303,
+      "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/glaze.bmp",
+      "bytes": 196662,
+      "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/fluted-body-medium.glb",
+      "bytes": 182476,
+      "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/generation.json",
+      "bytes": 7868,
+      "sha256": "171dc1f9906d2a31fa07e2297da03a234af4ae1081ea720f052b9dd3a520399a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/swept-knot-medium.glb",
+      "bytes": 120412,
+      "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-high.glb",
+      "bytes": 124600,
+      "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low-data-uri.gltf",
+      "bytes": 13725,
+      "sha256": "e27cd56f7b9383b9066d6533604b1e74173c59204ad08655e8a4013e0513711a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low.bin",
+      "bytes": 9504,
+      "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low.glb",
+      "bytes": 10540,
+      "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low.gltf",
+      "bytes": 1028,
+      "sha256": "f415baa92a020dada57c82da4f70b18a5f46ad7776c5658e8c0e60599f122c1a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-medium.glb",
+      "bytes": 34232,
+      "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/height.bmp",
+      "bytes": 196662,
+      "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/swept-knot-high.obj",
+      "bytes": 2004275,
+      "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/swept-knot-low.obj",
+      "bytes": 121244,
+      "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/swept-knot-medium.obj",
+      "bytes": 493493,
+      "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/torus.obj",
+      "bytes": 282121,
+      "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/vase-high.obj",
+      "bytes": 387854,
+      "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/vase-low.obj",
+      "bytes": 24651,
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/vase-medium.obj",
+      "bytes": 94338,
+      "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/closed-benchmark.json",
+      "bytes": 3283,
+      "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/complexity-high.json",
+      "bytes": 2863,
+      "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/complexity-low.json",
+      "bytes": 2861,
+      "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/complexity-medium.json",
+      "bytes": 2867,
+      "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/cornell.json",
+      "bytes": 2265,
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-baseline.json",
+      "bytes": 2732,
+      "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-complexity-high.json",
+      "bytes": 2874,
+      "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-complexity-low.json",
+      "bytes": 2872,
+      "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-complexity-medium.json",
+      "bytes": 2878,
+      "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-equivalence-data-uri.json",
+      "bytes": 2889,
+      "sha256": "ec6de8d3ffd85508e798e4b9bcec769ff937e61049a6a1b21b3c6948e74a9531",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-equivalence-external.json",
+      "bytes": 2880,
+      "sha256": "72a7b8b6baca8d51c4f38d0a525a4bec867937144600a731a8947923d46df4dc",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-equivalence-glb.json",
+      "bytes": 2874,
+      "sha256": "8726026e91dce73dc45aefbab263b6d2dbcf56a5541602d611bafb2aa3f4d826",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-motion-validation.json",
+      "bytes": 5055,
+      "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-showcase.json",
+      "bytes": 3342,
+      "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-frozen-end.json",
+      "bytes": 2300,
+      "sha256": "d6c9e70a67eb1dabc73102f104f085d19153e2e69a60538b940a54569cc483e6",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-frozen-midpoint.json",
+      "bytes": 2305,
+      "sha256": "17bb532cf3c63fe4f76c10628d33b8cdaada99b9eaca1649b3d7b6d582c731b2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-frozen-start.json",
+      "bytes": 2302,
+      "sha256": "08d2e803a24f11087c9545e4fbbd72411245feec0ea168ba04d50fba6d15e40a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-validation.json",
+      "bytes": 3374,
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion.json",
+      "bytes": 2289,
+      "sha256": "36dc2940eccf27ebb0a75ee5d2bd6fa9604694bfe1fead13ede18632a40f8980",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-obj-baseline.json",
+      "bytes": 2527,
+      "sha256": "ad6209b1a0e43476243f83c2252a148689c43e43aad871f7592f31f59a803bd2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-sampling-diffuse.json",
+      "bytes": 1887,
+      "sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-sampling-glass-dof.json",
+      "bytes": 2313,
+      "sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/light-test-cube.json",
+      "bytes": 1351,
+      "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/light-test-mesh.json",
+      "bytes": 1391,
+      "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/light-test-sphere.json",
+      "bytes": 1353,
+      "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/open-benchmark.json",
+      "bytes": 2109,
+      "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/optical-workbench.json",
+      "bytes": 3147,
+      "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/preview-smoke.json",
+      "bytes": 3141,
+      "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-fluted-body-cells.json",
+      "bytes": 2306,
+      "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-fluted-body-marble.json",
+      "bytes": 2308,
+      "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-fluted-body-plain.json",
+      "bytes": 2305,
+      "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-optical-stilllife.json",
+      "bytes": 3101,
+      "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-swept-knot-cells.json",
+      "bytes": 2305,
+      "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-swept-knot-marble.json",
+      "bytes": 2307,
+      "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-swept-knot-plain.json",
+      "bytes": 2304,
+      "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/sphere.json",
+      "bytes": 607,
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/uniform-benchmark.json",
+      "bytes": 3265,
+      "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-dof.json",
+      "bytes": 3146,
+      "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-mirror.json",
+      "bytes": 3131,
+      "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-no-bump.json",
+      "bytes": 3082,
+      "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-procedural.json",
+      "bytes": 3079,
+      "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scripts/generate_assets.py",
+      "bytes": 47754,
+      "sha256": "6b3dae389ef40eaab0c1a0c630680e17cf7225db26e6f87f130deb799bee41d2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scripts/source_hash.py",
+      "bytes": 849,
+      "sha256": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "src/checker_parity.cuh",
+      "bytes": 1759,
+      "sha256": "3153fcb9b8e775a49287ed9ff3519eb74398f0d4971cb77a3b128b158eea85bd",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/checkpoint.h",
+      "bytes": 8025,
+      "sha256": "21a07282200f9dab423aa4ddbb75038d9bbf65f0a54ce2d003d6d4be90c19692",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/geometry.cuh",
+      "bytes": 41534,
+      "sha256": "3f12bca0b5f982d5498721f1198996496d7c39846066123bbc4ea3fb089e65c6",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/procedural_texture.cuh",
+      "bytes": 2956,
+      "sha256": "123a324e52de6f736084775c0176fe623f567d33cc06bcd2bda63b81f3759a49",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/scene.h",
+      "bytes": 558,
+      "sha256": "bba04fdddf4a59f8967b8f5303033bb6b22cba1d7e3fcec64baa58790aa75447",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "tests/checkpoint_tests.cpp",
+      "bytes": 41642,
+      "sha256": "8ee74c67ead6df34167c47de6cd4bd4090ed17190e0f6f8f5cc949b73bc9eb2d",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "tests/geometry_tests.cpp",
+      "bytes": 109191,
+      "sha256": "952fc376a6f8d5c785ad70cee5504c561e2cb087db41f183daeaf93da907c7b6",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "tests/gltf_tests.cpp",
+      "bytes": 56693,
+      "sha256": "05d4efd7128c9c7a8def5ca0ce76f209e5a552a845f8cc00e3d76686df6b800a",
+      "renderer_source_hash_coverage": false
+    }
+  ],
+  "after": [
+    {
+      "path": "external/include/json.hpp",
+      "bytes": 919975,
+      "sha256": "9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "scenes/assets/area-light.obj",
+      "bytes": 122,
+      "sha256": "fc6a0fe41c938d8e7b9cf1c608cd717c68fda7bf7c674824fe21d14bdbdd7635",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/fluted-body-high.obj",
+      "bytes": 3124619,
+      "sha256": "3b6ea471936cc825f9de115ba4563ba170774f5be4b25e1260029c509080d909",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/fluted-body-low.obj",
+      "bytes": 188496,
+      "sha256": "0aab233a1fc96581a05ae9e69b6afcdd36a709453bf19c541c6d9c736cbf9247",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/fluted-body-medium.obj",
+      "bytes": 769303,
+      "sha256": "e7f0e44b73ac7a0a54e665139b62a5f598e6d5d34fa53b4eeebb140e06f15c10",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/glaze.bmp",
+      "bytes": 196662,
+      "sha256": "dbde29bfcf8c2b8ed7b45128537da67f25be71792f54a8f4e91f7ba09306590c",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/fluted-body-medium.glb",
+      "bytes": 182476,
+      "sha256": "40e17d9ed7bc5be569a73cefb44101b371eaba53a1c2c176e60374b1333faccd",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/generation.json",
+      "bytes": 7868,
+      "sha256": "171dc1f9906d2a31fa07e2297da03a234af4ae1081ea720f052b9dd3a520399a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/swept-knot-medium.glb",
+      "bytes": 120412,
+      "sha256": "64a8a6a3e2b330b0bee792ddcdff52e610f268b6b1ebbdc4cda597ca6121385e",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-high.glb",
+      "bytes": 124600,
+      "sha256": "874fe8f47ed9aa972e549e5faf8bb66647bdb5a02974ef73c39b92f03f5e8344",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low-data-uri.gltf",
+      "bytes": 13725,
+      "sha256": "e27cd56f7b9383b9066d6533604b1e74173c59204ad08655e8a4013e0513711a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low.bin",
+      "bytes": 9504,
+      "sha256": "a0cc4b7d2717b404e33db15323a31f67ee17f37080df6b7413b8a106a3b12622",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low.glb",
+      "bytes": 10540,
+      "sha256": "ca5ba0418e0d80e72b6be604b12b4256990185830aa77e83ca3af5fe7b7f51cf",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-low.gltf",
+      "bytes": 1028,
+      "sha256": "f415baa92a020dada57c82da4f70b18a5f46ad7776c5658e8c0e60599f122c1a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/gltf/vase-medium.glb",
+      "bytes": 34232,
+      "sha256": "20c7a71e04bf1602e0071a0e0d756e31245cb27131cc831290376b2fb9dd95c8",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/height.bmp",
+      "bytes": 196662,
+      "sha256": "b9117b0f6d357819e17f768f11b26b8f07ff40d6f899fc6e3cf701cd8c9ba442",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/swept-knot-high.obj",
+      "bytes": 2004275,
+      "sha256": "665c683fd58769879a89cc987a3a94af060491653cddac6e82eed76a461f4035",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/swept-knot-low.obj",
+      "bytes": 121244,
+      "sha256": "9585d869a8cb7420fe663364d30492077da20cfa568bbc501550a5056c2b5434",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/swept-knot-medium.obj",
+      "bytes": 493493,
+      "sha256": "2655e7f0a40753b0a0a167cd7ffe0ba0cfe70f6fb127e53bc7e13a4743f2c72b",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/torus.obj",
+      "bytes": 282121,
+      "sha256": "130155884620d7f063928969784d1dbfdee37ed43d068d7e86ce208e34a28c8f",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/vase-high.obj",
+      "bytes": 387854,
+      "sha256": "ea931380b7e588a4a919b27305a39ceaceb3bf8eaad0cd96e7a7b3e27fa44c1c",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/vase-low.obj",
+      "bytes": 24651,
+      "sha256": "3714608cf8ed3d9d74df860bbfa536eb6dc127a9ac6dc60d188cccc53b4ea543",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/assets/vase-medium.obj",
+      "bytes": 94338,
+      "sha256": "2ab657c1774c6ac95ac56e78290cc392ea40de22209e88aa86883dd00a9155eb",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/closed-benchmark.json",
+      "bytes": 3283,
+      "sha256": "1a1d92344f23e52647b91d97f2a9aca50a50dd5be3acca7a544317a7bd5d091a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/complexity-high.json",
+      "bytes": 2863,
+      "sha256": "6b89ecc42e7cb67eff04116dba26339f2ca383aa04b63bf070e7901b029f3212",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/complexity-low.json",
+      "bytes": 2861,
+      "sha256": "ad5b0872cc93601f032078e3908e327840f1ab4fc892d7040516b8c6958282f5",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/complexity-medium.json",
+      "bytes": 2867,
+      "sha256": "5c316d36b015b3872e9eeb65000fce695ce5114e52bea500eae1be72ee7d894f",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/cornell.json",
+      "bytes": 2265,
+      "sha256": "a91a6c62d6b070df78e88c1bf3d8b6d84583e04d883e6e1f04b002864c2dd18b",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-baseline.json",
+      "bytes": 2732,
+      "sha256": "2ed1a03ec6d4cd7548c3e905a71e36a2916e173351894bc251e525b11d174d58",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-complexity-high.json",
+      "bytes": 2874,
+      "sha256": "3f15d2d8e0b8ccd4c6902df903f0e54af4cb5985a8c929477454d892b446daf2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-complexity-low.json",
+      "bytes": 2872,
+      "sha256": "9650d29f071aa1286e1d05a9783334fe0c45edcaef9cbf5f6d4fcca627bd330e",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-complexity-medium.json",
+      "bytes": 2878,
+      "sha256": "a250bcd968c4ef702fac68db2bd2ff1b1c8721e402dcd62dd24299af872bf664",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-equivalence-data-uri.json",
+      "bytes": 2889,
+      "sha256": "ec6de8d3ffd85508e798e4b9bcec769ff937e61049a6a1b21b3c6948e74a9531",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-equivalence-external.json",
+      "bytes": 2880,
+      "sha256": "72a7b8b6baca8d51c4f38d0a525a4bec867937144600a731a8947923d46df4dc",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-equivalence-glb.json",
+      "bytes": 2874,
+      "sha256": "8726026e91dce73dc45aefbab263b6d2dbcf56a5541602d611bafb2aa3f4d826",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-motion-validation.json",
+      "bytes": 5055,
+      "sha256": "eb4167fb3e0777f1d1df7edda41f5238407ff1afce35d54f22d9263c9a9993c9",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/gltf-showcase.json",
+      "bytes": 3342,
+      "sha256": "e31acd9a9467bd489f2b4e6fbf1cd7c6d9fb9303f5691f4373ce72f1e71d3a50",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-frozen-end.json",
+      "bytes": 2300,
+      "sha256": "d6c9e70a67eb1dabc73102f104f085d19153e2e69a60538b940a54569cc483e6",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-frozen-midpoint.json",
+      "bytes": 2305,
+      "sha256": "17bb532cf3c63fe4f76c10628d33b8cdaada99b9eaca1649b3d7b6d582c731b2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-frozen-start.json",
+      "bytes": 2302,
+      "sha256": "08d2e803a24f11087c9545e4fbbd72411245feec0ea168ba04d50fba6d15e40a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion-validation.json",
+      "bytes": 3374,
+      "sha256": "7858e815bf4b20c84e7eb4b9018b17d70918e97d8a891624ffd3ce82f3f393c0",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-motion.json",
+      "bytes": 2289,
+      "sha256": "36dc2940eccf27ebb0a75ee5d2bd6fa9604694bfe1fead13ede18632a40f8980",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-obj-baseline.json",
+      "bytes": 2527,
+      "sha256": "ad6209b1a0e43476243f83c2252a148689c43e43aad871f7592f31f59a803bd2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-sampling-diffuse.json",
+      "bytes": 1887,
+      "sha256": "bc20872c3ba25750a13d9b834c8f77ce55cfea43049567ac98f0694c5dd0782a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/hedge-sampling-glass-dof.json",
+      "bytes": 2313,
+      "sha256": "309b35f5c5df8fa6e0d2fc7ec48b2c216e54d93760dbe7d6e9b0350f2ab3ad02",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/light-test-cube.json",
+      "bytes": 1351,
+      "sha256": "8df967e6ad4e43f0eb12f1c0c4fd3776cba3f0593d60340c9c33624bea40fc05",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/light-test-mesh.json",
+      "bytes": 1391,
+      "sha256": "836802d655e42cf42003ea58d1cb71f5ca1ebcb6e93168765118fed22623aae8",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/light-test-sphere.json",
+      "bytes": 1353,
+      "sha256": "e6d991ae1445f4c366ef551f0a318ae40f332a0ea412476e93ba0e80ac2d5a58",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/open-benchmark.json",
+      "bytes": 2109,
+      "sha256": "f80e4388175f6b915bb3346d95e93b15f49f84493358bbfc915f3f7e969ca9d8",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/optical-workbench.json",
+      "bytes": 3147,
+      "sha256": "8675a3e1bc6c4be48cc8d8b6c465bb9fe1cb0b26a07dff7437edc0d058358ed2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/preview-smoke.json",
+      "bytes": 3141,
+      "sha256": "2a34e20a0451fd3be8be3fdaa72a9b09221a1add7b6998e03293308cdf9c86e1",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-fluted-body-cells.json",
+      "bytes": 2306,
+      "sha256": "41c2a5f5b636c8e19f3a4887aeabc50532538fa750f17d240cd0cb91f682888a",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-fluted-body-marble.json",
+      "bytes": 2308,
+      "sha256": "34f8815aa71818826ddf735561b22075a38fba4dbb897f73cc11235989486c8c",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-fluted-body-plain.json",
+      "bytes": 2305,
+      "sha256": "6fc14522e7a039e26cc0b8831595901665ecf03287b85e99df091e56d4219e3e",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-optical-stilllife.json",
+      "bytes": 3101,
+      "sha256": "53b4f321c43395b3aaa7937d4606086068807b2b3ceaef3694fcffb0ebc3d833",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-swept-knot-cells.json",
+      "bytes": 2305,
+      "sha256": "61e3b5e4076490636285642e1eaed0f6181d081cf4ae98eaf57bbd704350c758",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-swept-knot-marble.json",
+      "bytes": 2307,
+      "sha256": "2c9e1c88634c80d8bd31361122816c66296c84dcb5b0fb39049010d03b02c30d",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/procedural-swept-knot-plain.json",
+      "bytes": 2304,
+      "sha256": "1caf43f21f850529ab4c48576b6aad74e8079bc1613b6c172da79dab687d4ee3",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/sphere.json",
+      "bytes": 607,
+      "sha256": "f3622eaf44561105fdaa4ab6ebfe25b45ce96123cadbc2025a0c72156d14d904",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/uniform-benchmark.json",
+      "bytes": 3265,
+      "sha256": "07d66fdfd2907600765062e89b2b3912ecc657c8dc4ea1354f4c7fb32ba72ac6",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-dof.json",
+      "bytes": 3146,
+      "sha256": "45d981b7920f7707f185c98e70a5b7edfa82f563cf04130b7955906c45b84001",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-mirror.json",
+      "bytes": 3131,
+      "sha256": "de32833833c3e976d8e974b005e89a0732e1d69f69c08da378d261bb716c328f",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-no-bump.json",
+      "bytes": 3082,
+      "sha256": "afc7389b68d24385db75b6bea5a7de760a902c2f3bb711d25acd2f9c3ed7071b",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scenes/workbench-procedural.json",
+      "bytes": 3079,
+      "sha256": "1f46a57184c79afc9da01226fb33fa3406ce38d4f19e9a5de926439ba494ef7d",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scripts/generate_assets.py",
+      "bytes": 47754,
+      "sha256": "6b3dae389ef40eaab0c1a0c630680e17cf7225db26e6f87f130deb799bee41d2",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "scripts/source_hash.py",
+      "bytes": 849,
+      "sha256": "dfd60869e393d6b49d4bbcbf9091d67e4fb569a38b50fb478dfd74cf5b10a295",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "src/checker_parity.cuh",
+      "bytes": 1759,
+      "sha256": "3153fcb9b8e775a49287ed9ff3519eb74398f0d4971cb77a3b128b158eea85bd",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/checkpoint.h",
+      "bytes": 8025,
+      "sha256": "21a07282200f9dab423aa4ddbb75038d9bbf65f0a54ce2d003d6d4be90c19692",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/geometry.cuh",
+      "bytes": 41534,
+      "sha256": "3f12bca0b5f982d5498721f1198996496d7c39846066123bbc4ea3fb089e65c6",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/procedural_texture.cuh",
+      "bytes": 2956,
+      "sha256": "123a324e52de6f736084775c0176fe623f567d33cc06bcd2bda63b81f3759a49",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "src/scene.h",
+      "bytes": 558,
+      "sha256": "bba04fdddf4a59f8967b8f5303033bb6b22cba1d7e3fcec64baa58790aa75447",
+      "renderer_source_hash_coverage": true
+    },
+    {
+      "path": "tests/checkpoint_tests.cpp",
+      "bytes": 41642,
+      "sha256": "8ee74c67ead6df34167c47de6cd4bd4090ed17190e0f6f8f5cc949b73bc9eb2d",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "tests/geometry_tests.cpp",
+      "bytes": 109191,
+      "sha256": "952fc376a6f8d5c785ad70cee5504c561e2cb087db41f183daeaf93da907c7b6",
+      "renderer_source_hash_coverage": false
+    },
+    {
+      "path": "tests/gltf_tests.cpp",
+      "bytes": 56693,
+      "sha256": "05d4efd7128c9c7a8def5ca0ce76f209e5a552a845f8cc00e3d76686df6b800a",
+      "renderer_source_hash_coverage": false
+    }
+  ],
+  "unchanged": true
+}

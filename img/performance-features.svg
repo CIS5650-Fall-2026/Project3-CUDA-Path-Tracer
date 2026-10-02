@@ -6,54 +6,54 @@
 <path d="M310.00 92 V585" stroke="#dce2ec"/>
 <text x="310.00" y="606" text-anchor="middle" font-size="13">0.00</text>
 <path d="M428.00 92 V585" stroke="#dce2ec"/>
-<text x="428.00" y="606" text-anchor="middle" font-size="13">2.79</text>
+<text x="428.00" y="606" text-anchor="middle" font-size="13">2.78</text>
 <path d="M546.00 92 V585" stroke="#dce2ec"/>
-<text x="546.00" y="606" text-anchor="middle" font-size="13">5.58</text>
+<text x="546.00" y="606" text-anchor="middle" font-size="13">5.56</text>
 <path d="M664.00 92 V585" stroke="#dce2ec"/>
-<text x="664.00" y="606" text-anchor="middle" font-size="13">8.38</text>
+<text x="664.00" y="606" text-anchor="middle" font-size="13">8.33</text>
 <path d="M782.00 92 V585" stroke="#dce2ec"/>
-<text x="782.00" y="606" text-anchor="middle" font-size="13">11.17</text>
+<text x="782.00" y="606" text-anchor="middle" font-size="13">11.11</text>
 <path d="M900.00 92 V585" stroke="#dce2ec"/>
-<text x="900.00" y="606" text-anchor="middle" font-size="13">13.96</text>
+<text x="900.00" y="606" text-anchor="middle" font-size="13">13.89</text>
 <text x="296" y="121" text-anchor="end" font-size="14">texture / file</text>
-<rect x="310" y="100" width="518.12" height="29" rx="3" fill="#2166ac"/>
-<path d="M827.19 114 H828.76 M827.19 108 V120 M828.76 108 V120" stroke="#172235" stroke-width="2"/>
-<text x="836.12" y="121" font-size="13">12.259</text>
+<rect x="310" y="100" width="520.14" height="29" rx="3" fill="#2166ac"/>
+<path d="M827.95 114 H831.70 M827.95 108 V120 M831.70 108 V120" stroke="#172235" stroke-width="2"/>
+<text x="838.14" y="121" font-size="13">12.246</text>
 <text x="296" y="167" text-anchor="end" font-size="14">texture / procedural</text>
-<rect x="310" y="146" width="516.36" height="29" rx="3" fill="#ca6e22"/>
-<path d="M823.89 160 H827.69 M823.89 154 V166 M827.69 154 V166" stroke="#172235" stroke-width="2"/>
-<text x="834.36" y="167" font-size="13">12.218</text>
+<rect x="310" y="146" width="518.48" height="29" rx="3" fill="#ca6e22"/>
+<path d="M826.27 160 H829.57 M826.27 154 V166 M829.57 154 V166" stroke="#172235" stroke-width="2"/>
+<text x="836.48" y="167" font-size="13">12.207</text>
 <text x="296" y="213" text-anchor="end" font-size="14">bump / off</text>
-<rect x="310" y="192" width="516.28" height="29" rx="3" fill="#318f68"/>
-<path d="M825.70 206 H826.32 M825.70 200 V212 M826.32 200 V212" stroke="#172235" stroke-width="2"/>
-<text x="834.28" y="213" font-size="13">12.216</text>
+<rect x="310" y="192" width="521.02" height="29" rx="3" fill="#318f68"/>
+<path d="M830.79 206 H831.04 M830.79 200 V212 M831.04 200 V212" stroke="#172235" stroke-width="2"/>
+<text x="839.02" y="213" font-size="13">12.267</text>
 <text x="296" y="259" text-anchor="end" font-size="14">bump / on</text>
-<rect x="310" y="238" width="519.06" height="29" rx="3" fill="#2166ac"/>
-<path d="M825.64 252 H830.36 M825.64 246 V258 M830.36 246 V258" stroke="#172235" stroke-width="2"/>
-<text x="837.06" y="259" font-size="13">12.281</text>
+<rect x="310" y="238" width="521.98" height="29" rx="3" fill="#2166ac"/>
+<path d="M831.09 252 H832.73 M831.09 246 V258 M832.73 246 V258" stroke="#172235" stroke-width="2"/>
+<text x="839.98" y="259" font-size="13">12.290</text>
 <text x="296" y="305" text-anchor="end" font-size="14">refraction / mirror</text>
-<rect x="310" y="284" width="526.10" height="29" rx="3" fill="#ca6e22"/>
-<path d="M832.93 298 H836.79 M832.93 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
-<text x="844.10" y="305" font-size="13">12.448</text>
+<rect x="310" y="284" width="526.77" height="29" rx="3" fill="#ca6e22"/>
+<path d="M836.08 298 H836.79 M836.08 292 V304 M836.79 292 V304" stroke="#172235" stroke-width="2"/>
+<text x="844.77" y="305" font-size="13">12.403</text>
 <text x="296" y="351" text-anchor="end" font-size="14">refraction / glass</text>
-<rect x="310" y="330" width="520.67" height="29" rx="3" fill="#318f68"/>
-<path d="M826.91 344 H831.23 M826.91 338 V350 M831.23 338 V350" stroke="#172235" stroke-width="2"/>
-<text x="838.67" y="351" font-size="13">12.319</text>
+<rect x="310" y="330" width="520.96" height="29" rx="3" fill="#318f68"/>
+<path d="M829.64 344 H833.23 M829.64 338 V350 M833.23 338 V350" stroke="#172235" stroke-width="2"/>
+<text x="838.96" y="351" font-size="13">12.266</text>
 <text x="296" y="397" text-anchor="end" font-size="14">dof / off</text>
-<rect x="310" y="376" width="519.18" height="29" rx="3" fill="#2166ac"/>
-<path d="M828.54 390 H829.92 M828.54 384 V396 M829.92 384 V396" stroke="#172235" stroke-width="2"/>
-<text x="837.18" y="397" font-size="13">12.284</text>
+<rect x="310" y="376" width="522.69" height="29" rx="3" fill="#2166ac"/>
+<path d="M831.97 390 H833.21 M831.97 384 V396 M833.21 384 V396" stroke="#172235" stroke-width="2"/>
+<text x="840.69" y="397" font-size="13">12.306</text>
 <text x="296" y="443" text-anchor="end" font-size="14">dof / on</text>
-<rect x="310" y="422" width="522.25" height="29" rx="3" fill="#ca6e22"/>
-<path d="M829.58 436 H832.74 M829.58 430 V442 M832.74 430 V442" stroke="#172235" stroke-width="2"/>
-<text x="840.25" y="443" font-size="13">12.357</text>
+<rect x="310" y="422" width="524.89" height="29" rx="3" fill="#ca6e22"/>
+<path d="M834.30 436 H836.14 M834.30 430 V442 M836.14 430 V442" stroke="#172235" stroke-width="2"/>
+<text x="842.89" y="443" font-size="13">12.358</text>
 <text x="296" y="489" text-anchor="end" font-size="14">nee / off</text>
-<rect x="310" y="468" width="360.73" height="29" rx="3" fill="#318f68"/>
-<path d="M667.87 482 H671.14 M667.87 476 V488 M671.14 476 V488" stroke="#172235" stroke-width="2"/>
-<text x="678.73" y="489" font-size="13">8.535</text>
+<rect x="310" y="468" width="363.59" height="29" rx="3" fill="#318f68"/>
+<path d="M670.25 482 H673.74 M670.25 476 V488 M673.74 476 V488" stroke="#172235" stroke-width="2"/>
+<text x="681.59" y="489" font-size="13">8.560</text>
 <text x="296" y="535" text-anchor="end" font-size="14">nee / on</text>
-<rect x="310" y="514" width="518.37" height="29" rx="3" fill="#2166ac"/>
-<path d="M827.64 528 H830.60 M827.64 522 V534 M830.60 522 V534" stroke="#172235" stroke-width="2"/>
-<text x="836.37" y="535" font-size="13">12.265</text>
+<rect x="310" y="514" width="521.70" height="29" rx="3" fill="#2166ac"/>
+<path d="M828.77 528 H833.33 M828.77 522 V534 M833.33 522 V534" stroke="#172235" stroke-width="2"/>
+<text x="839.70" y="535" font-size="13">12.283</text>
 </g>
 </svg>

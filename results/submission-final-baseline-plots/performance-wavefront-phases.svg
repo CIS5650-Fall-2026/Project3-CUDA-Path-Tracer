@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="730" viewBox="0 0 1180 730">
+<rect width="1180" height="730" fill="#f6f8fc"/>
+<g font-family="system-ui, sans-serif" fill="#1a2538">
+<text x="28" y="38" font-size="24" font-weight="600">Wavefront scheduling GPU phase medians</text>
+<text x="28" y="66" font-size="14">Stacks show nonoverlapping phase medians in ms/sample; overall GPU elapsed is in performance-wavefront.svg.</text>
+<text x="28" y="87" font-size="14">Wavefront bars use the five specialized shader timings instead of aggregate shade_ms; queue_host is excluded.</text>
+<rect x="28" y="98" width="13" height="13" rx="2" fill="#355f8a"/>
+<text x="47" y="109" font-size="12">intersection</text>
+<rect x="146" y="98" width="13" height="13" rx="2" fill="#7b5aa6"/>
+<text x="165" y="109" font-size="12">legacy sort</text>
+<rect x="257" y="98" width="13" height="13" rx="2" fill="#c05a32"/>
+<text x="276" y="109" font-size="12">queue construction</text>
+<rect x="417" y="98" width="13" height="13" rx="2" fill="#3f8f73"/>
+<text x="436" y="109" font-size="12">unified shade</text>
+<rect x="542" y="98" width="13" height="13" rx="2" fill="#4ca66b"/>
+<text x="561" y="109" font-size="12">diffuse shade</text>
+<rect x="667" y="98" width="13" height="13" rx="2" fill="#76b7b2"/>
+<text x="686" y="109" font-size="12">mirror shade</text>
+<rect x="785" y="98" width="13" height="13" rx="2" fill="#4f86c6"/>
+<text x="804" y="109" font-size="12">dielectric shade</text>
+<rect x="931" y="98" width="13" height="13" rx="2" fill="#d6a33c"/>
+<text x="950" y="109" font-size="12">emission shade</text>
+<rect x="28" y="121" width="13" height="13" rx="2" fill="#9b8066"/>
+<text x="47" y="132" font-size="12">terminal shade</text>
+<rect x="160" y="121" width="13" height="13" rx="2" fill="#d16ba5"/>
+<text x="179" y="132" font-size="12">compaction</text>
+<rect x="264" y="121" width="13" height="13" rx="2" fill="#7b8794"/>
+<text x="283" y="132" font-size="12">active count</text>
+<path d="M330.00 146 V685" stroke="#dce2ec"/>
+<text x="330.00" y="707" text-anchor="middle" font-size="13">0.00</text>
+<path d="M476.00 146 V685" stroke="#dce2ec"/>
+<text x="476.00" y="707" text-anchor="middle" font-size="13">25.02</text>
+<path d="M622.00 146 V685" stroke="#dce2ec"/>
+<text x="622.00" y="707" text-anchor="middle" font-size="13">50.04</text>
+<path d="M768.00 146 V685" stroke="#dce2ec"/>
+<text x="768.00" y="707" text-anchor="middle" font-size="13">75.07</text>
+<path d="M914.00 146 V685" stroke="#dce2ec"/>
+<text x="914.00" y="707" text-anchor="middle" font-size="13">100.09</text>
+<path d="M1060.00 146 V685" stroke="#dce2ec"/>
+<text x="1060.00" y="707" text-anchor="middle" font-size="13">125.11</text>
+<text x="316" y="174" text-anchor="end" font-size="13">wave-uniform / legacy-unsorted</text>
+<rect x="330.00" y="154" width="95.10" height="27" fill="#355f8a"><title>intersection: 16.298793 ms/sample</title></rect>
+<rect x="425.10" y="154" width="79.41" height="27" fill="#3f8f73"><title>unified shade: 13.609702 ms/sample</title></rect>
+<rect x="504.51" y="154" width="7.13" height="27" fill="#d16ba5"><title>compaction: 1.221136 ms/sample</title></rect>
+<rect x="511.64" y="154" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="518.64" y="173" font-size="12">31.130</text>
+<text x="316" y="216" text-anchor="end" font-size="13">wave-uniform / legacy-sorted</text>
+<rect x="330.00" y="196" width="94.99" height="27" fill="#355f8a"><title>intersection: 16.280246 ms/sample</title></rect>
+<rect x="424.99" y="196" width="83.26" height="27" fill="#7b5aa6"><title>legacy sort: 14.269519 ms/sample</title></rect>
+<rect x="508.26" y="196" width="71.14" height="27" fill="#3f8f73"><title>unified shade: 12.191656 ms/sample</title></rect>
+<rect x="579.39" y="196" width="7.51" height="27" fill="#d16ba5"><title>compaction: 1.287373 ms/sample</title></rect>
+<rect x="586.90" y="196" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="593.90" y="215" font-size="12">44.029</text>
+<text x="316" y="258" text-anchor="end" font-size="13">wave-uniform / wavefront</text>
+<rect x="330.00" y="238" width="94.91" height="27" fill="#355f8a"><title>intersection: 16.265946 ms/sample</title></rect>
+<rect x="424.91" y="238" width="6.26" height="27" fill="#c05a32"><title>queue construction: 1.073287 ms/sample</title></rect>
+<rect x="431.17" y="238" width="71.33" height="27" fill="#4ca66b"><title>diffuse shade: 12.225184 ms/sample</title></rect>
+<rect x="502.51" y="238" width="0.00" height="27" fill="#76b7b2"><title>mirror shade: 0.000000 ms/sample</title></rect>
+<rect x="502.51" y="238" width="0.00" height="27" fill="#4f86c6"><title>dielectric shade: 0.000000 ms/sample</title></rect>
+<rect x="502.51" y="238" width="3.97" height="27" fill="#d6a33c"><title>emission shade: 0.679970 ms/sample</title></rect>
+<rect x="506.47" y="238" width="4.27" height="27" fill="#9b8066"><title>terminal shade: 0.731069 ms/sample</title></rect>
+<rect x="510.74" y="238" width="6.92" height="27" fill="#d16ba5"><title>compaction: 1.186418 ms/sample</title></rect>
+<rect x="517.66" y="238" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="524.66" y="257" font-size="12">32.162</text>
+<text x="316" y="300" text-anchor="end" font-size="13">wave-mixed / legacy-unsorted</text>
+<rect x="330.00" y="280" width="94.47" height="27" fill="#355f8a"><title>intersection: 16.189828 ms/sample</title></rect>
+<rect x="424.47" y="280" width="73.81" height="27" fill="#3f8f73"><title>unified shade: 12.649763 ms/sample</title></rect>
+<rect x="498.28" y="280" width="7.28" height="27" fill="#d16ba5"><title>compaction: 1.247008 ms/sample</title></rect>
+<rect x="505.55" y="280" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="512.55" y="299" font-size="12">30.087</text>
+<text x="316" y="342" text-anchor="end" font-size="13">wave-mixed / legacy-sorted</text>
+<rect x="330.00" y="322" width="93.97" height="27" fill="#355f8a"><title>intersection: 16.104913 ms/sample</title></rect>
+<rect x="423.97" y="322" width="64.18" height="27" fill="#7b5aa6"><title>legacy sort: 10.999615 ms/sample</title></rect>
+<rect x="488.15" y="322" width="64.12" height="27" fill="#3f8f73"><title>unified shade: 10.988769 ms/sample</title></rect>
+<rect x="552.27" y="322" width="7.67" height="27" fill="#d16ba5"><title>compaction: 1.314186 ms/sample</title></rect>
+<rect x="559.94" y="322" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="566.94" y="341" font-size="12">39.407</text>
+<text x="316" y="384" text-anchor="end" font-size="13">wave-mixed / wavefront</text>
+<rect x="330.00" y="364" width="94.05" height="27" fill="#355f8a"><title>intersection: 16.117915 ms/sample</title></rect>
+<rect x="424.05" y="364" width="5.63" height="27" fill="#c05a32"><title>queue construction: 0.965543 ms/sample</title></rect>
+<rect x="429.68" y="364" width="126.26" height="27" fill="#4ca66b"><title>diffuse shade: 21.638385 ms/sample</title></rect>
+<rect x="555.94" y="364" width="2.03" height="27" fill="#76b7b2"><title>mirror shade: 0.348358 ms/sample</title></rect>
+<rect x="557.97" y="364" width="3.06" height="27" fill="#4f86c6"><title>dielectric shade: 0.525126 ms/sample</title></rect>
+<rect x="561.04" y="364" width="3.63" height="27" fill="#d6a33c"><title>emission shade: 0.622438 ms/sample</title></rect>
+<rect x="564.67" y="364" width="4.09" height="27" fill="#9b8066"><title>terminal shade: 0.700932 ms/sample</title></rect>
+<rect x="568.76" y="364" width="7.10" height="27" fill="#d16ba5"><title>compaction: 1.217566 ms/sample</title></rect>
+<rect x="575.86" y="364" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="582.86" y="383" font-size="12">42.136</text>
+<text x="316" y="426" text-anchor="end" font-size="13">wave-closed / legacy-unsorted</text>
+<rect x="330.00" y="406" width="40.23" height="27" fill="#355f8a"><title>intersection: 6.895313 ms/sample</title></rect>
+<rect x="370.23" y="406" width="119.77" height="27" fill="#3f8f73"><title>unified shade: 20.526498 ms/sample</title></rect>
+<rect x="490.00" y="406" width="65.46" height="27" fill="#d16ba5"><title>compaction: 11.218135 ms/sample</title></rect>
+<rect x="555.46" y="406" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="562.46" y="425" font-size="12">38.640</text>
+<text x="316" y="468" text-anchor="end" font-size="13">wave-closed / legacy-sorted</text>
+<rect x="330.00" y="448" width="39.66" height="27" fill="#355f8a"><title>intersection: 6.796894 ms/sample</title></rect>
+<rect x="369.66" y="448" width="433.04" height="27" fill="#7b5aa6"><title>legacy sort: 74.215803 ms/sample</title></rect>
+<rect x="802.70" y="448" width="113.48" height="27" fill="#3f8f73"><title>unified shade: 19.447925 ms/sample</title></rect>
+<rect x="916.18" y="448" width="65.61" height="27" fill="#d16ba5"><title>compaction: 11.243707 ms/sample</title></rect>
+<rect x="981.79" y="448" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="988.79" y="467" font-size="12">111.704</text>
+<text x="316" y="510" text-anchor="end" font-size="13">wave-closed / wavefront</text>
+<rect x="330.00" y="490" width="40.45" height="27" fill="#355f8a"><title>intersection: 6.933092 ms/sample</title></rect>
+<rect x="370.45" y="490" width="26.93" height="27" fill="#c05a32"><title>queue construction: 4.614827 ms/sample</title></rect>
+<rect x="397.38" y="490" width="140.50" height="27" fill="#4ca66b"><title>diffuse shade: 24.078638 ms/sample</title></rect>
+<rect x="537.88" y="490" width="0.00" height="27" fill="#76b7b2"><title>mirror shade: 0.000000 ms/sample</title></rect>
+<rect x="537.88" y="490" width="0.00" height="27" fill="#4f86c6"><title>dielectric shade: 0.000000 ms/sample</title></rect>
+<rect x="537.88" y="490" width="3.22" height="27" fill="#d6a33c"><title>emission shade: 0.552706 ms/sample</title></rect>
+<rect x="541.10" y="490" width="0.00" height="27" fill="#9b8066"><title>terminal shade: 0.000000 ms/sample</title></rect>
+<rect x="541.10" y="490" width="65.32" height="27" fill="#d16ba5"><title>compaction: 11.194649 ms/sample</title></rect>
+<rect x="606.42" y="490" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="613.42" y="509" font-size="12">47.374</text>
+<text x="316" y="552" text-anchor="end" font-size="13">wave-mesh-heavy / legacy-unsorted</text>
+<rect x="330.00" y="532" width="70.41" height="27" fill="#355f8a"><title>intersection: 12.067722 ms/sample</title></rect>
+<rect x="400.41" y="532" width="54.59" height="27" fill="#3f8f73"><title>unified shade: 9.356103 ms/sample</title></rect>
+<rect x="455.01" y="532" width="7.16" height="27" fill="#d16ba5"><title>compaction: 1.226296 ms/sample</title></rect>
+<rect x="462.16" y="532" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="469.16" y="551" font-size="12">22.650</text>
+<text x="316" y="594" text-anchor="end" font-size="13">wave-mesh-heavy / legacy-sorted</text>
+<rect x="330.00" y="574" width="71.82" height="27" fill="#355f8a"><title>intersection: 12.308029 ms/sample</title></rect>
+<rect x="401.82" y="574" width="63.46" height="27" fill="#7b5aa6"><title>legacy sort: 10.876451 ms/sample</title></rect>
+<rect x="465.28" y="574" width="48.27" height="27" fill="#3f8f73"><title>unified shade: 8.271809 ms/sample</title></rect>
+<rect x="513.54" y="574" width="7.48" height="27" fill="#d16ba5"><title>compaction: 1.282700 ms/sample</title></rect>
+<rect x="521.03" y="574" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="528.03" y="593" font-size="12">32.739</text>
+<text x="316" y="636" text-anchor="end" font-size="13">wave-mesh-heavy / wavefront</text>
+<rect x="330.00" y="616" width="70.12" height="27" fill="#355f8a"><title>intersection: 12.017473 ms/sample</title></rect>
+<rect x="400.12" y="616" width="5.64" height="27" fill="#c05a32"><title>queue construction: 0.966964 ms/sample</title></rect>
+<rect x="405.76" y="616" width="89.11" height="27" fill="#4ca66b"><title>diffuse shade: 15.271929 ms/sample</title></rect>
+<rect x="494.87" y="616" width="0.00" height="27" fill="#76b7b2"><title>mirror shade: 0.000000 ms/sample</title></rect>
+<rect x="494.87" y="616" width="3.00" height="27" fill="#4f86c6"><title>dielectric shade: 0.513540 ms/sample</title></rect>
+<rect x="497.87" y="616" width="3.47" height="27" fill="#d6a33c"><title>emission shade: 0.594841 ms/sample</title></rect>
+<rect x="501.34" y="616" width="4.11" height="27" fill="#9b8066"><title>terminal shade: 0.703669 ms/sample</title></rect>
+<rect x="505.45" y="616" width="7.05" height="27" fill="#d16ba5"><title>compaction: 1.207718 ms/sample</title></rect>
+<rect x="512.49" y="616" width="0.00" height="27" fill="#7b8794"><title>active count: 0.000000 ms/sample</title></rect>
+<text x="519.49" y="635" font-size="12">31.276</text>
+</g>
+</svg>

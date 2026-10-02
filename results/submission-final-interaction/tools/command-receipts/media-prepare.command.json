@@ -1,0 +1,51 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "results/submission-final-interaction/tools/convert_final_interaction.py",
+    "prepare",
+    "--root",
+    "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+    "--expected-source-sha256",
+    "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+    "--prefix",
+    "submission-final",
+    "--renderer-build-dir",
+    "build-submission",
+    "--finalizer",
+    "results/submission-final-interaction/tools/finalize_interaction.py",
+    "--pixel-source",
+    "results/submission-final-interaction/tools/interaction_pixel_compare.cpp",
+    "--verification-build-dir",
+    ".local/interaction-helper-build/submission-current"
+  ],
+  "cwd": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3",
+  "shell": false,
+  "started_at_utc": "2026-10-02T00:00:36.139837+00:00",
+  "published_media_before": {
+    "interaction.gif": {
+      "bytes": 9122152,
+      "sha256": "5dd04f47eac98666426bbb87c756baf9821b54cdd4bcd4971497ed7f0794c70a"
+    },
+    "interaction.mp4": {
+      "bytes": 33724785,
+      "sha256": "56e07c7856a0ea316c28fc42304617945718add6a837ddae59405e699ba8d1c1"
+    }
+  },
+  "exit_code": 0,
+  "ended_at_utc": "2026-10-02T00:00:42.034784+00:00",
+  "elapsed_seconds": 5.894798207998974,
+  "published_media_after": {
+    "interaction.gif": {
+      "bytes": 9122152,
+      "sha256": "5dd04f47eac98666426bbb87c756baf9821b54cdd4bcd4971497ed7f0794c70a"
+    },
+    "interaction.mp4": {
+      "bytes": 33724785,
+      "sha256": "56e07c7856a0ea316c28fc42304617945718add6a837ddae59405e699ba8d1c1"
+    }
+  },
+  "published_media_unchanged": true,
+  "stdout_log": "media-prepare.stdout.json",
+  "stderr_log": "media-prepare.stderr.log"
+}

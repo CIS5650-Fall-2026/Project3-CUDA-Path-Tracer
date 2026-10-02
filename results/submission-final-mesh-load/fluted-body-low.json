@@ -1,0 +1,59 @@
+{
+  "Materials": {
+    "surface": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "Objects": [
+    {
+      "TYPE": "obj",
+      "MATERIAL": "surface",
+      "FILE": "/home/ubuntu/cis5650/project3/scenes/assets/fluted-body-low.obj",
+      "TRANS": [
+        0,
+        0,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "Camera": {
+    "RES": [
+      1,
+      1
+    ],
+    "FOVY": 20,
+    "ITERATIONS": 1,
+    "DEPTH": 1,
+    "FILE": "profile",
+    "EYE": [
+      0,
+      1,
+      5
+    ],
+    "LOOKAT": [
+      0,
+      1,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  }
+}

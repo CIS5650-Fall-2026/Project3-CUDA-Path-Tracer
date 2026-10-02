@@ -1,0 +1,75 @@
+{
+  "benchmark": {
+    "measured_samples": 4,
+    "renderer_gpu_ms": 2.0,
+    "renderer_host_ms": 3.0
+  },
+  "benchmark_enabled": true,
+  "camera": {
+    "aperture": 0.0,
+    "focus_distance": 10.5,
+    "look_at": [
+      0.0,
+      5.0,
+      0.0
+    ],
+    "position": [
+      0.0,
+      5.0,
+      10.5
+    ],
+    "shutter": [
+      0.0,
+      1.0
+    ]
+  },
+  "compatibility": {
+    "baseline_starter_revision": "synthetic-self-test",
+    "build_identifier": "synthetic-self-test",
+    "device": "synthetic-self-test-device"
+  },
+  "completed_samples": 4,
+  "config": {
+    "aa": true,
+    "bvh": true,
+    "compact": true,
+    "debug": "none",
+    "depth_semantics": "maximum surface intersections; final intersection is emission-only",
+    "max_depth": 10,
+    "motion": true,
+    "nee": true,
+    "rr": true,
+    "rr_start": 3,
+    "sampler": "counter",
+    "sampler_id": 2,
+    "sort": false,
+    "wavefront": true
+  },
+  "fingerprints": {
+    "assets": 2,
+    "geometry": 4,
+    "materials": 3,
+    "render_config": 5,
+    "scene_file": 1
+  },
+  "format_version": 1,
+  "linear_sum_format": {
+    "checksum": 15126161980040613203
+  },
+  "render_loop_wall_ms": 4005.0,
+  "resolution": [
+    2,
+    1
+  ],
+  "run_policy": {
+    "last_sample_wall_ms": 5.0,
+    "stop_reason": "time_budget",
+    "time_budget_ms": 4000
+  },
+  "sampler": "counter",
+  "sampler_id": 2,
+  "sampler_version": 2,
+  "scene": "/Users/didrikwiigandersen/university_of_pennsylvania/fall_2026/cis_5650/project_3/scenes/hedge-sampling-diffuse.json",
+  "seed": 947,
+  "target_samples": 65536
+}

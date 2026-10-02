@@ -1,0 +1,209 @@
+{
+  "checks": [
+    {
+      "name": "three encodings and both BVH modes are byte-exact",
+      "passed": true,
+      "png_bytes": 704,
+      "png_sha256": "e5430b9ae6b503548f39304ff817b4ae83fbb47a7d5bf31249313c9f91b5e93e",
+      "raw_bytes": 2692,
+      "raw_sha256": "188b44bc462b10d8a571192c4fdc52ee395de0ed7b0060223e0f5a70e7b7cfb5",
+      "run_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "motion counter-bvh-off fresh/resume is byte-exact",
+      "passed": true,
+      "png_bytes": 578,
+      "png_sha256": "27a052c017fc336517fbb10f06a39b0f5d224525a2c4d30466b1a6f791c87aa7",
+      "raw_bytes": 2692,
+      "raw_sha256": "ce38121de0918f0bc78b7af3ae191e551a056ca6d5518f26c7b5b585d884399c",
+      "run_ids": [
+        7,
+        9
+      ]
+    },
+    {
+      "name": "motion counter-bvh-on fresh/resume is byte-exact",
+      "passed": true,
+      "png_bytes": 578,
+      "png_sha256": "27a052c017fc336517fbb10f06a39b0f5d224525a2c4d30466b1a6f791c87aa7",
+      "raw_bytes": 2692,
+      "raw_sha256": "ce38121de0918f0bc78b7af3ae191e551a056ca6d5518f26c7b5b585d884399c",
+      "run_ids": [
+        10,
+        12
+      ]
+    },
+    {
+      "name": "motion counter BVH reference modes are byte-exact",
+      "passed": true,
+      "png_bytes": 578,
+      "png_sha256": "27a052c017fc336517fbb10f06a39b0f5d224525a2c4d30466b1a6f791c87aa7",
+      "raw_bytes": 2692,
+      "raw_sha256": "ce38121de0918f0bc78b7af3ae191e551a056ca6d5518f26c7b5b585d884399c",
+      "run_ids": [
+        7,
+        10
+      ]
+    },
+    {
+      "name": "motion halton-bvh-off fresh/resume is byte-exact",
+      "passed": true,
+      "png_bytes": 559,
+      "png_sha256": "fdfce003df515e716a675000e9329f0548f08629e1b4af7c9850eb45d6f57397",
+      "raw_bytes": 2692,
+      "raw_sha256": "ea830ce5a1dc80ef02448e4098c34998499c1609adbc509b7a95e3f5b009d68a",
+      "run_ids": [
+        13,
+        15
+      ]
+    },
+    {
+      "name": "motion halton-bvh-on fresh/resume is byte-exact",
+      "passed": true,
+      "png_bytes": 559,
+      "png_sha256": "fdfce003df515e716a675000e9329f0548f08629e1b4af7c9850eb45d6f57397",
+      "raw_bytes": 2692,
+      "raw_sha256": "ea830ce5a1dc80ef02448e4098c34998499c1609adbc509b7a95e3f5b009d68a",
+      "run_ids": [
+        16,
+        18
+      ]
+    },
+    {
+      "name": "motion halton BVH reference modes are byte-exact",
+      "passed": true,
+      "png_bytes": 559,
+      "png_sha256": "fdfce003df515e716a675000e9329f0548f08629e1b4af7c9850eb45d6f57397",
+      "raw_bytes": 2692,
+      "raw_sha256": "ea830ce5a1dc80ef02448e4098c34998499c1609adbc509b7a95e3f5b009d68a",
+      "run_ids": [
+        13,
+        16
+      ]
+    }
+  ],
+  "completed_utc": "2026-10-01T22:17:42.648022Z",
+  "counter_halton_outputs_compared": false,
+  "encoding_metadata_fingerprints_compared": false,
+  "last_run": {
+    "label": "motion-halton-resume-bvh-on",
+    "run_id": 18,
+    "status": "passed"
+  },
+  "metadata_note": "Encoding-specific fingerprints may differ and are not compared across encodings. Within each motion fresh/resume group, fingerprints and compatibility are exact.",
+  "minimal_resume_benchmark_csv_expected": false,
+  "motion_groups": [
+    {
+      "bvh": false,
+      "checkpoint": "validation/checkpoints/motion-counter-bvh-off.checkpoint",
+      "group_key": "counter-bvh-off",
+      "inherited_physical_fields": [
+        "resolution",
+        "target_samples",
+        "seed",
+        "sampler",
+        "sampler_id",
+        "sampler_version",
+        "config",
+        "camera",
+        "fingerprints",
+        "compatibility"
+      ],
+      "partial_run_id": 8,
+      "reference_run_id": 7,
+      "resume_run_id": 9,
+      "sampler": "counter",
+      "sampler_id": 2
+    },
+    {
+      "bvh": true,
+      "checkpoint": "validation/checkpoints/motion-counter-bvh-on.checkpoint",
+      "group_key": "counter-bvh-on",
+      "inherited_physical_fields": [
+        "resolution",
+        "target_samples",
+        "seed",
+        "sampler",
+        "sampler_id",
+        "sampler_version",
+        "config",
+        "camera",
+        "fingerprints",
+        "compatibility"
+      ],
+      "partial_run_id": 11,
+      "reference_run_id": 10,
+      "resume_run_id": 12,
+      "sampler": "counter",
+      "sampler_id": 2
+    },
+    {
+      "bvh": false,
+      "checkpoint": "validation/checkpoints/motion-halton-bvh-off.checkpoint",
+      "group_key": "halton-bvh-off",
+      "inherited_physical_fields": [
+        "resolution",
+        "target_samples",
+        "seed",
+        "sampler",
+        "sampler_id",
+        "sampler_version",
+        "config",
+        "camera",
+        "fingerprints",
+        "compatibility"
+      ],
+      "partial_run_id": 14,
+      "reference_run_id": 13,
+      "resume_run_id": 15,
+      "sampler": "halton",
+      "sampler_id": 3
+    },
+    {
+      "bvh": true,
+      "checkpoint": "validation/checkpoints/motion-halton-bvh-on.checkpoint",
+      "group_key": "halton-bvh-on",
+      "inherited_physical_fields": [
+        "resolution",
+        "target_samples",
+        "seed",
+        "sampler",
+        "sampler_id",
+        "sampler_version",
+        "config",
+        "camera",
+        "fingerprints",
+        "compatibility"
+      ],
+      "partial_run_id": 17,
+      "reference_run_id": 16,
+      "resume_run_id": 18,
+      "sampler": "halton",
+      "sampler_id": 3
+    }
+  ],
+  "motion_resume_physical_metadata_compared": [
+    "resolution",
+    "target_samples",
+    "seed",
+    "sampler",
+    "sampler_id",
+    "sampler_version",
+    "config",
+    "camera",
+    "fingerprints",
+    "compatibility"
+  ],
+  "phase": "validation",
+  "run_count": 18,
+  "schema_version": 1,
+  "started_utc": "2026-10-01T22:17:35.463820Z",
+  "status": "completed"
+}

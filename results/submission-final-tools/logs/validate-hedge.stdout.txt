@@ -1,0 +1,129 @@
+{
+  "checks": [
+    {
+      "computed_invocations": 108,
+      "expected_invocations": 108,
+      "matrix_configurations": 16,
+      "name": "fixed-design-counts",
+      "passed": true
+    },
+    {
+      "command": [
+        "/synthetic/headless",
+        "/synthetic/scene.json",
+        "--samples",
+        "17",
+        "--seed",
+        "947",
+        "--resolution",
+        "17x13",
+        "--depth",
+        "7",
+        "--compact",
+        "on",
+        "--sort",
+        "off",
+        "--bvh",
+        "on",
+        "--aa",
+        "on",
+        "--nee",
+        "on",
+        "--wavefront",
+        "off",
+        "--rr",
+        "on",
+        "--rr-start",
+        "3",
+        "--sampler",
+        "halton",
+        "--motion",
+        "off",
+        "--output",
+        "/synthetic/output"
+      ],
+      "name": "fresh-command-fixed-options",
+      "passed": true
+    },
+    {
+      "command": [
+        "/synthetic/headless",
+        "/synthetic/scene.json",
+        "--samples",
+        "17",
+        "--output",
+        "/synthetic/output",
+        "--resume",
+        "/synthetic/state.checkpoint"
+      ],
+      "name": "minimal-resume-command",
+      "passed": true
+    },
+    {
+      "failed": [],
+      "name": "synthetic-metadata-and-range-audits",
+      "passed": true
+    },
+    {
+      "failed": [],
+      "name": "synthetic-budgeted-target-completion-uses-sample-target",
+      "passed": true
+    },
+    {
+      "name": "synthetic-audit-detects-sample-mismatch",
+      "passed": true
+    },
+    {
+      "failed": [],
+      "name": "synthetic-time-budget-range-and-stop-audits",
+      "passed": true
+    },
+    {
+      "name": "synthetic-time-budget-audit-detects-premature-stop",
+      "passed": true
+    },
+    {
+      "name": "synthetic-audit-rejects-stale-or-extended-policy-schema",
+      "passed": true
+    },
+    {
+      "failed": [],
+      "name": "synthetic-benchmark-counter-audits",
+      "passed": true,
+      "totals": {
+        "active_before": 10,
+        "bounce_records": 1,
+        "kernel_dispatches": 2,
+        "overall_gpu_ms": 0.5,
+        "overall_host_ms": 1.0,
+        "overall_measured_samples": 3,
+        "overall_render_loop_wall_ms": 1.5,
+        "queued_paths": 10,
+        "rr_terminated": 1,
+        "rr_tested": 2
+      }
+    },
+    {
+      "failed": [],
+      "name": "synthetic-benchmark-csv-metadata-consistency",
+      "passed": true
+    },
+    {
+      "assets": [
+        {
+          "absolute": "/private/var/folders/wl/9mz185h56js6p82b07_ycp200000gn/T/validate-hedge-self-test-ed4g4xo1/mesh.obj",
+          "exists": true,
+          "location": "Objects[0].FILE",
+          "original": "mesh.obj",
+          "sha256": "5728a2d3ee69fa5de54b9776f2f99a090caa67f57c438c5592690efe181a9196"
+        }
+      ],
+      "name": "temporary-scene-assets-become-absolute",
+      "passed": true
+    }
+  ],
+  "mode": "self-test",
+  "passed": true,
+  "renderer_executed": false,
+  "tool": "validate_hedge.py"
+}

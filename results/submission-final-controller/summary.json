@@ -1,0 +1,190 @@
+{
+  "status": "completed",
+  "started_utc": "2026-10-01T22:14:58.262030+00:00",
+  "expected_renderer_source_sha256": "07233055f7de64aac672f3b5f173066827eac89b27c3fc12f4b7f35982847703",
+  "driver_sha256": "66656e3b883766378e6bd5356786c1b610b20046cf897116b1aa9e760d3be987",
+  "executed_driver": "results/submission-final-controller/executed-controller.py",
+  "sequential_gpu_phases": true,
+  "phases": [
+    {
+      "name": "build",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "build",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T22:14:58.434513+00:00",
+      "status": "passed",
+      "stdout": "logs/build.stdout.log",
+      "stderr": "logs/build.stderr.log",
+      "summary": "results/submission-final-rebuild/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T22:16:05.744147+00:00",
+      "elapsed_seconds": 67.30936272600002,
+      "summary_sha256": "ca038cc49e6ba252b128d0142d895b75447bd9a738eb1bb92a4dd24d26f4c784"
+    },
+    {
+      "name": "new-validation",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "new-validation",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T22:16:05.916923+00:00",
+      "status": "passed",
+      "stdout": "logs/new-validation.stdout.log",
+      "stderr": "logs/new-validation.stderr.log",
+      "summary": "results/submission-final-suite-new-validation/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T22:17:11.630358+00:00",
+      "elapsed_seconds": 65.71314251499996,
+      "summary_sha256": "d57c3780b24dfd041c9431ff17fdb43b099521433d3ff992492409c345c6927d"
+    },
+    {
+      "name": "sanitizers",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "sanitizers",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T22:17:11.806468+00:00",
+      "status": "passed",
+      "stdout": "logs/sanitizers.stdout.log",
+      "stderr": "logs/sanitizers.stderr.log",
+      "summary": "results/submission-final-suite-sanitizers/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T22:17:35.123561+00:00",
+      "elapsed_seconds": 23.316758270000037,
+      "summary_sha256": "66439665956d7eb67ed05b0424d4b1f2d5871b54d6a63f1e2737c74bc9cd6168"
+    },
+    {
+      "name": "gltf",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/measure_gltf.py",
+        "--binary",
+        "build-submission/bin/cis565_path_tracer_headless",
+        "--build",
+        "build-submission",
+        "--output",
+        "results/submission-final-gltf",
+        "--phase",
+        "all"
+      ],
+      "started_utc": "2026-10-01T22:17:35.296696+00:00",
+      "status": "passed",
+      "stdout": "logs/gltf.stdout.log",
+      "stderr": "logs/gltf.stderr.log",
+      "summary": "results/submission-final-gltf/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T22:18:27.161125+00:00",
+      "elapsed_seconds": 51.86411582400001,
+      "summary_sha256": "2a91ae6450bb6be4f72ecd1f8daca9d5a691b6591c6aa66cc0ada151b18c19d9"
+    },
+    {
+      "name": "baseline-validation",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "baseline-validation",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T22:18:27.334889+00:00",
+      "status": "passed",
+      "stdout": "logs/baseline-validation.stdout.log",
+      "stderr": "logs/baseline-validation.stderr.log",
+      "summary": "results/submission-final-suite-baseline-validation/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T23:03:35.046011+00:00",
+      "elapsed_seconds": 2707.710787855,
+      "summary_sha256": "44bc877797eeb237573f978a122da075116f934c8a4bdda03f97f07cf9c13969"
+    },
+    {
+      "name": "baseline-measurements",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "baseline-measurements",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T23:03:35.218679+00:00",
+      "status": "passed",
+      "stdout": "logs/baseline-measurements.stdout.log",
+      "stderr": "logs/baseline-measurements.stderr.log",
+      "summary": "results/submission-final-suite-baseline-measurements/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T23:08:28.429759+00:00",
+      "elapsed_seconds": 293.2107259219997,
+      "summary_sha256": "42f38604da2dd6b7b2c5cef2f9d871ac79d4aceb2baea99e5d983a78f9bfdeb3"
+    },
+    {
+      "name": "new-measurements",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "new-measurements",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T23:08:28.603147+00:00",
+      "status": "passed",
+      "stdout": "logs/new-measurements.stdout.log",
+      "stderr": "logs/new-measurements.stderr.log",
+      "summary": "results/submission-final-suite-new-measurements/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T23:44:41.298647+00:00",
+      "elapsed_seconds": 2172.6951079220003,
+      "summary_sha256": "5489dca827e7503df8c1766edf02dbe7dcf1960571f72401b06a9bf9a550214a"
+    },
+    {
+      "name": "gallery",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/run_hedge_suite.py",
+        "--phase",
+        "gallery",
+        "--build",
+        "build-submission",
+        "--prefix",
+        "submission-final"
+      ],
+      "started_utc": "2026-10-01T23:44:41.471664+00:00",
+      "status": "passed",
+      "stdout": "logs/gallery.stdout.log",
+      "stderr": "logs/gallery.stderr.log",
+      "summary": "results/submission-final-suite-gallery/summary.json",
+      "returncode": 0,
+      "ended_utc": "2026-10-01T23:55:32.625922+00:00",
+      "elapsed_seconds": 651.153859522,
+      "summary_sha256": "1ca356496da0cec366e5757279be9826c388b7618ff094f9ce3a6b95b5b53344"
+    }
+  ],
+  "errors": [],
+  "finished_utc": "2026-10-01T23:55:32.712963+00:00"
+}
