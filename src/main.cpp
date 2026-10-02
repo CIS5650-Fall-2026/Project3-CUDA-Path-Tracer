@@ -4,6 +4,7 @@
 #include "scene.h"
 #include "sceneStructs.h"
 #include "utilities.h"
+#include "checkpoint.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
@@ -23,6 +24,10 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <chrono>
+#include <algorithm>
+#include <stdexcept>
+#include <iomanip>
 
 static std::string startTimeString;
 
@@ -61,9 +66,14 @@ bool mouseOverImGuiWinow = false;
 
 // Forward declarations for window loop and interactivity
 void runCuda();
+void saveImage();
+void recordStats();
+void saveProgress();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos);
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+
+#include "applicationExtensions.h"
 
 std::string currentTimeString()
 {
@@ -255,7 +265,7 @@ void InitImguiData(GuiDataContainer* guiData)
 }
 
 
-// LOOK: Un-Comment to check ImGui Usage
+// Draw rendering statistics in the preview window.
 void RenderImGui()
 {
     mouseOverImGuiWinow = io->WantCaptureMouse;
@@ -270,9 +280,9 @@ void RenderImGui()
     static float f = 0.0f;
     static int counter = 0;
 
-    ImGui::Begin("Path Tracer Analytics");                  // Create a window called "Hello, world!" and append into it.
+    ImGui::Begin("Path Tracer Analytics");                  // Display depth and frame-rate statistics.
     
-    // LOOK: Un-Comment to check the output window and usage
+    // Optional UI controls.
     //ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
     //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
     //ImGui::Checkbox("Another Window", &show_another_window);
@@ -330,6 +340,7 @@ void mainLoop()
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 
+    cleanupCuda();
     glfwDestroyWindow(window);
     glfwTerminate();
 }
@@ -340,11 +351,13 @@ void mainLoop()
 
 int main(int argc, char** argv)
 {
+    try
+    {
     startTimeString = currentTimeString();
 
     if (argc < 2)
     {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+        printf("Usage: %s SCENEFILE.json [--headless] [--samples N] [--output PREFIX] [--raw FILE] [--stats CSV] [--checkpoint FILE] [--checkpoint-every N] [--resume FILE]\n", argv[0]);
         return 1;
     }
 
@@ -352,6 +365,7 @@ int main(int argc, char** argv)
 
     // Load scene file
     scene = new Scene(sceneFile);
+    parseCommandLine(argc, argv);
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
@@ -362,6 +376,8 @@ int main(int argc, char** argv)
     Camera& cam = renderState->camera;
     width = cam.resolution.x;
     height = cam.resolution.y;
+    restoreProgress();
+    if (renderHeadless()) return 0;
 
     glm::vec3 view = cam.view;
     glm::vec3 up = cam.up;
@@ -374,13 +390,16 @@ int main(int argc, char** argv)
     // so, (0 0 1) is forward, (0 1 0) is up
     glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
     glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    glm::vec3 offset = cam.position - cam.lookAt;
+    phi = std::atan2(offset.x, offset.z);
+    theta = std::acos(glm::clamp(offset.y / glm::length(offset), -1.0f, 1.0f));
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
 
     // Initialize CUDA and GL components
-    init();
+    if (!init()) throw std::runtime_error("Could not initialize OpenGL");
+    camchanged = false;
+    if (iteration > 0) pathtraceInit(scene);
 
     // Initialize ImGui Data
     InitImguiData(guiData);
@@ -389,11 +408,21 @@ int main(int argc, char** argv)
     // GLFW main loop
     mainLoop();
 
+    pathtraceFree();
+    delete guiData; delete scene; scene = nullptr;
     return 0;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+        pathtraceFree();
+        return 1;
+    }
 }
 
 void saveImage()
 {
+    if (iteration <= 0) return;
     float samples = iteration;
     // output image file
     Image img(width, height);
@@ -403,19 +432,32 @@ void saveImage()
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::vec3 pix = renderState->displayImage[index];
+            img.setPixel(width - 1 - x, y, glm::vec3(pix));
         }
     }
 
     std::string filename = renderState->imageName;
     std::ostringstream ss;
-    ss << filename << "." << startTimeString << "." << samples << "samp";
+    static unsigned int saveSerial = 0;
+    ss << filename << "." << startTimeString << "." << samples << "samp." << saveSerial++;
     filename = ss.str();
+    if (!outputPrefix.empty()) filename = outputPrefix;
 
-    // CHECKITOUT
     img.savePNG(filename);
     //img.saveHDR(filename);  // Save a Radiance HDR file
+    Image hdr(width, height);
+    for (int y = 0; y < height; ++y)
+        for (int x = 0; x < width; ++x)
+            hdr.setPixel(width - 1 - x, y, renderState->image[y * width + x] / samples);
+    hdr.saveHDR(filename);
+    if (!rawPath.empty())
+    {
+        std::ofstream raw(rawPath, std::ios::binary);
+        for (auto p : renderState->image)
+            for (int c = 0; c < 3; ++c) raw.write(reinterpret_cast<const char*>(&p[c]), sizeof(float));
+        if (!raw) throw std::runtime_error("Cannot save raw accumulation");
+    }
 }
 
 void runCuda()
@@ -431,14 +473,15 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        cam.up = glm::normalize(glm::cross(r, v));
         cam.right = r;
 
         cam.position = cameraPosition;
         cameraPosition += cam.lookAt;
         cam.position = cameraPosition;
         camchanged = false;
+        std::fill(renderState->image.begin(), renderState->image.end(), glm::vec3(0));
     }
 
     // Map OpenGL buffer object for writing from CUDA on a single GPU
@@ -459,16 +502,21 @@ void runCuda()
         // execute the kernel
         int frame = 0;
         pathtrace(pbo_dptr, frame, iteration);
+        recordStats();
 
         // unmap buffer object
         cudaGLUnmapBufferObject(pbo);
+        if (checkpointEvery > 0 && iteration % checkpointEvery == 0) saveProgress();
     }
     else
     {
+        uchar4* pbo_dptr = nullptr;
+        cudaGLMapBufferObject((void**)&pbo_dptr, pbo);
+        pathtraceRefresh(pbo_dptr, iteration);
+        cudaGLUnmapBufferObject(pbo);
         saveImage();
-        pathtraceFree();
-        cudaDeviceReset();
-        exit(EXIT_SUCCESS);
+        saveProgress();
+        glfwSetWindowShouldClose(window, GL_TRUE);
     }
 }
 
@@ -484,10 +532,14 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         {
             case GLFW_KEY_ESCAPE:
                 saveImage();
+                saveProgress();
                 glfwSetWindowShouldClose(window, GL_TRUE);
                 break;
             case GLFW_KEY_S:
                 saveImage();
+                break;
+            case GLFW_KEY_C:
+                saveProgress();
                 break;
             case GLFW_KEY_SPACE:
                 camchanged = true;
@@ -513,7 +565,7 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    if (xpos == lastX || ypos == lastY)
+    if (xpos == lastX && ypos == lastY)
     {
         return; // otherwise, clicking back into window causes re-start
     }
@@ -523,7 +575,7 @@ void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
         // compute new camera parameters
         phi -= (xpos - lastX) / width;
         theta -= (ypos - lastY) / height;
-        theta = std::fmax(0.001f, std::fmin(theta, PI));
+        theta = std::fmax(0.001f, std::fmin(theta, PI - 0.001f));
         camchanged = true;
     }
     else if (rightMousePressed)

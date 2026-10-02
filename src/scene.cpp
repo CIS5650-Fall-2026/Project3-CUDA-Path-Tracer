@@ -5,6 +5,8 @@
 #include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include "json.hpp"
+#include "objLoader.h"
+#include "sceneExtensions.h"
 
 #include <fstream>
 #include <iostream>
@@ -34,6 +36,7 @@ Scene::Scene(string filename)
 void Scene::loadFromJSON(const std::string& jsonName)
 {
     std::ifstream f(jsonName);
+    if (!f) throw std::runtime_error("Cannot open scene: " + jsonName);
     json data = json::parse(f);
     const auto& materialsData = data["Materials"];
     std::unordered_map<std::string, uint32_t> MatNameToID;
@@ -42,7 +45,8 @@ void Scene::loadFromJSON(const std::string& jsonName)
         const auto& name = item.key();
         const auto& p = item.value();
         Material newMaterial{};
-        // TODO: handle materials loading differently
+        // Load named materials before resolving object material references.
+        newMaterial.indexOfRefraction = p.value("IOR", 1.5f);
         if (p["TYPE"] == "Diffuse")
         {
             const auto& col = p["RGB"];
@@ -56,9 +60,20 @@ void Scene::loadFromJSON(const std::string& jsonName)
         }
         else if (p["TYPE"] == "Specular")
         {
+            newMaterial.hasReflective = 1;
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
         }
+        else if (p["TYPE"] == "Glass" || p["TYPE"] == "Refractive")
+        {
+            newMaterial.color = sceneExtensions::vec(p.at("RGB"));
+            newMaterial.hasRefractive = 1;
+        }
+        else
+        {
+            throw std::runtime_error("Unknown material type");
+        }
+        sceneExtensions::validateMaterial(newMaterial, p);
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
     }
@@ -66,27 +81,40 @@ void Scene::loadFromJSON(const std::string& jsonName)
     for (const auto& p : objectsData)
     {
         const auto& type = p["TYPE"];
-        Geom newGeom;
+        Geom newGeom{};
         if (type == "cube")
         {
             newGeom.type = CUBE;
         }
-        else
+        else if (type == "sphere")
         {
             newGeom.type = SPHERE;
         }
-        newGeom.materialid = MatNameToID[p["MATERIAL"]];
+        else if (type == "obj" || type == "mesh")
+        {
+            newGeom.type = MESH;
+        }
+        else
+        {
+            throw std::runtime_error("Unknown geometry type");
+        }
+        newGeom.materialid = MatNameToID.at(p["MATERIAL"].get<std::string>());
         const auto& trans = p["TRANS"];
         const auto& rotat = p["ROTAT"];
         const auto& scale = p["SCALE"];
         newGeom.translation = glm::vec3(trans[0], trans[1], trans[2]);
         newGeom.rotation = glm::vec3(rotat[0], rotat[1], rotat[2]);
         newGeom.scale = glm::vec3(scale[0], scale[1], scale[2]);
+        sceneExtensions::validateGeometry(newGeom, p);
+        if (p.contains("VELOCITY")) newGeom.velocity = sceneExtensions::vec(p.at("VELOCITY"));
         newGeom.transform = utilityCore::buildTransformationMatrix(
             newGeom.translation, newGeom.rotation, newGeom.scale);
         newGeom.inverseTransform = glm::inverse(newGeom.transform);
         newGeom.invTranspose = glm::inverseTranspose(newGeom.transform);
 
+        if (newGeom.type == MESH)
+            loadObj((std::filesystem::path(jsonName).parent_path() / p.at("FILE").get<std::string>()).string(), triangles, newGeom);
+        if (materials[newGeom.materialid].emittance > 0) lights.push_back(static_cast<int>(geoms.size()));
         geoms.push_back(newGeom);
     }
     const auto& cameraData = data["Camera"];
@@ -105,20 +133,26 @@ void Scene::loadFromJSON(const std::string& jsonName)
     camera.lookAt = glm::vec3(lookat[0], lookat[1], lookat[2]);
     camera.up = glm::vec3(up[0], up[1], up[2]);
 
+    sceneExtensions::cameraSettings(camera, cameraData, state, fovy);
+
     //calculate fov based on resolution
     float yscaled = tan(fovy * (PI / 180));
     float xscaled = (yscaled * camera.resolution.x) / camera.resolution.y;
     float fovx = (atan(xscaled) * 180) / PI;
     camera.fov = glm::vec2(fovx, fovy);
 
+    camera.view = glm::normalize(camera.lookAt - camera.position);
     camera.right = glm::normalize(glm::cross(camera.view, camera.up));
     camera.pixelLength = glm::vec2(2 * xscaled / (float)camera.resolution.x,
         2 * yscaled / (float)camera.resolution.y);
 
     camera.view = glm::normalize(camera.lookAt - camera.position);
 
+    camera.up = glm::normalize(glm::cross(camera.right, camera.view));
+
     //set up render camera stuff
     int arraylen = camera.resolution.x * camera.resolution.y;
     state.image.resize(arraylen);
     std::fill(state.image.begin(), state.image.end(), glm::vec3());
+    sceneExtensions::finish(*this, data);
 }

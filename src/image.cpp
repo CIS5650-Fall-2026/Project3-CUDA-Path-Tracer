@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 Image::Image(int x, int y)
     : xSize(x), ySize(y), pixels(new glm::vec3[x * y]) 
@@ -11,7 +12,7 @@ Image::Image(int x, int y)
 
 Image::~Image()
 {
-    delete pixels;
+    delete[] pixels;
 }
 
 void Image::setPixel(int x, int y, const glm::vec3 &pixel)
@@ -36,7 +37,8 @@ void Image::savePNG(const std::string &baseFilename)
     }
 
     std::string filename = baseFilename + ".png";
-    stbi_write_png(filename.c_str(), xSize, ySize, 3, bytes, xSize * 3);
+    int saved = stbi_write_png(filename.c_str(), xSize, ySize, 3, bytes, xSize * 3);
+    if (!saved) { delete[] bytes; throw std::runtime_error("Cannot save image: " + filename); }
     std::cout << "Saved " << filename << "." << std::endl;
 
     delete[] bytes;
@@ -45,6 +47,7 @@ void Image::savePNG(const std::string &baseFilename)
 void Image::saveHDR(const std::string &baseFilename)
 {
     std::string filename = baseFilename + ".hdr";
-    stbi_write_hdr(filename.c_str(), xSize, ySize, 3, (const float *) pixels);
+    if (!stbi_write_hdr(filename.c_str(), xSize, ySize, 3, (const float *) pixels))
+        throw std::runtime_error("Cannot save HDR: " + filename);
     std::cout << "Saved " + filename + "." << std::endl;
 }

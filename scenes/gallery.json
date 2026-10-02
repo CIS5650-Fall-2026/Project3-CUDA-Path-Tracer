@@ -1,0 +1,34 @@
+{
+  "Materials": {
+    "floor": {"TYPE":"Diffuse","RGB":[0.65,0.68,0.72]},
+    "blue": {"TYPE":"Diffuse","RGB":[0.08,0.3,0.8]},
+    "gold": {"TYPE":"Diffuse","RGB":[0.85,0.48,0.08]},
+    "coral": {"TYPE":"Diffuse","RGB":[0.8,0.12,0.09]},
+    "glass": {"TYPE":"Glass","RGB":[0.99,0.99,0.99],"IOR":1.5},
+    "mirror": {"TYPE":"Specular","RGB":[0.94,0.94,0.94]},
+    "key": {"TYPE":"Emitting","RGB":[1.0,0.88,0.72],"EMITTANCE":10},
+    "fill": {"TYPE":"Emitting","RGB":[0.55,0.72,1.0],"EMITTANCE":5}
+  },
+  "Camera": {
+    "RES":[480,320],"FOVY":25,"ITERATIONS":512,"DEPTH":12,"FILE":"gallery",
+    "EYE":[7,4.5,11],"LOOKAT":[0,1.2,0],"UP":[0,1,0],
+    "APERTURE":0.12,"FOCAL_DISTANCE":13.5,"SHUTTER_OPEN":0,"SHUTTER_CLOSE":1
+  },
+  "Renderer": {
+    "MATERIAL_SORTING":true,"ANTIALIASING":true,"RUSSIAN_ROULETTE":true,"RR_DEPTH":3,
+    "REFRACTION":true,"DEPTH_OF_FIELD":true,"DIRECT_LIGHTING":true,"SAMPLER":"halton",
+    "MOTION_BLUR":true,"COMPACTION":true,"SHARED_COMPACTION":true,"MESH_CULLING":true,
+    "POSTPROCESS":true,"EXPOSURE":0,"GAMMA":2.2,"BLOOM_STRENGTH":0.18,"BLOOM_THRESHOLD":1,"BLOOM_RADIUS":6,"SEED":1
+  },
+  "Objects": [
+    {"TYPE":"cube","MATERIAL":"floor","TRANS":[0,-0.15,0],"ROTAT":[0,0,0],"SCALE":[16,0.3,16]},
+    {"TYPE":"cube","MATERIAL":"blue","TRANS":[0,2,-5],"ROTAT":[0,0,0],"SCALE":[12,4,0.3]},
+    {"TYPE":"cube","MATERIAL":"key","TRANS":[-2,7,1],"ROTAT":[0,0,12],"SCALE":[5,0.2,4]},
+    {"TYPE":"sphere","MATERIAL":"fill","TRANS":[5,4,-2],"ROTAT":[0,0,0],"SCALE":[2,2,2]},
+    {"TYPE":"sphere","MATERIAL":"glass","TRANS":[-1.5,1.35,1.2],"ROTAT":[0,0,0],"SCALE":[2.7,2.7,2.7]},
+    {"TYPE":"obj","FILE":"meshes/prism.obj","MATERIAL":"gold","TRANS":[1.3,0,1.0],"ROTAT":[0,25,0],"SCALE":[1.4,2.2,1.4]},
+    {"TYPE":"sphere","MATERIAL":"mirror","TRANS":[2.6,1.1,-2.0],"ROTAT":[0,0,0],"SCALE":[2.2,2.2,2.2]},
+    {"TYPE":"sphere","MATERIAL":"coral","TRANS":[-3.3,0.6,-1.3],"ROTAT":[0,0,0],"SCALE":[1.2,1.2,1.2],"VELOCITY":[1.4,0,0]},
+    {"TYPE":"cube","MATERIAL":"coral","TRANS":[-1,1,-3.5],"ROTAT":[0,20,0],"SCALE":[1,2,1]}
+  ]
+}

@@ -12,5 +12,8 @@ public:
 
     std::vector<Geom> geoms;
     std::vector<Material> materials;
+    std::vector<Triangle> triangles;
+    std::vector<int> lights;
+    std::string sourceSignature;
     RenderState state;
 };
