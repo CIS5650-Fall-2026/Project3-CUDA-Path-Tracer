@@ -1,0 +1,106 @@
+{
+  "Materials": {
+    "gold": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.6,
+        0.18
+      ],
+      "EMITTANCE": 2
+    },
+    "cyan": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.12,
+        0.8,
+        1
+      ],
+      "EMITTANCE": 2
+    }
+  },
+  "Camera": {
+    "RES": [
+      192,
+      144
+    ],
+    "FOVY": 30,
+    "ITERATIONS": 256,
+    "DEPTH": 2,
+    "FILE": "analysis_aa",
+    "EYE": [
+      0,
+      0,
+      4
+    ],
+    "LOOKAT": [
+      0,
+      0,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "gold",
+      "TRANS": [
+        0,
+        -0.42,
+        0
+      ],
+      "SCALE": [
+        2.8,
+        0.025,
+        0.05
+      ],
+      "ROTAT": [
+        0,
+        0,
+        23
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        0,
+        0.15,
+        0
+      ],
+      "SCALE": [
+        2.8,
+        0.055,
+        0.05
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -17
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "gold",
+      "TRANS": [
+        0.7,
+        0.55,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        0.46,
+        0.46
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

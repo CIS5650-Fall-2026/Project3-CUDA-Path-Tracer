@@ -18,11 +18,17 @@
 #include <cuda_gl_interop.h>
 
 #include <cstdlib>
+#include <cmath>
 #include <cstring>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <filesystem>
+#include <iomanip>
+#include <chrono>
+#include <set>
+#include <stdexcept>
 
 static std::string startTimeString;
 
@@ -64,6 +70,7 @@ void runCuda();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos);
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+void saveImage();
 
 std::string currentTimeString()
 {
@@ -171,7 +178,13 @@ void cleanupCuda()
 
 void initCuda()
 {
-    cudaGLSetGLDevice(0);
+    cudaError_t result = cudaGLSetGLDevice(0);
+    if (result != cudaSuccess)
+    {
+        fprintf(stderr, "CUDA/OpenGL setup failed: %s. Try the --headless option.\n",
+            cudaGetErrorString(result));
+        exit(EXIT_FAILURE);
+    }
 
     // Clean up on program exit
     atexit(cleanupCuda);
@@ -192,7 +205,13 @@ void initPBO()
 
     // Allocate data for the buffer. 4-channel 8-bit image
     glBufferData(GL_PIXEL_UNPACK_BUFFER, size_tex_data, NULL, GL_DYNAMIC_COPY);
-    cudaGLRegisterBufferObject(pbo);
+    cudaError_t result = cudaGLRegisterBufferObject(pbo);
+    if (result != cudaSuccess)
+    {
+        fprintf(stderr, "CUDA/OpenGL buffer sharing failed: %s. Try the --headless option.\n",
+            cudaGetErrorString(result));
+        exit(EXIT_FAILURE);
+    }
 }
 
 void errorCallback(int error, const char* description)
@@ -227,6 +246,7 @@ bool init()
         return false;
     }
     printf("Opengl Version:%s\n", glGetString(GL_VERSION));
+    printf("Opengl Renderer:%s\n", glGetString(GL_RENDERER));
     //Set up ImGui
 
     IMGUI_CHECKVERSION();
@@ -285,6 +305,14 @@ void RenderImGui()
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    bool settingsChanged = ImGui::Checkbox("Sort paths by material", &imguiData->MaterialSortingEnabled);
+    settingsChanged |= ImGui::Checkbox("Direct area lighting", &imguiData->DirectLightingEnabled);
+    settingsChanged |= ImGui::Checkbox("Russian roulette", &imguiData->RussianRouletteEnabled);
+    settingsChanged |= ImGui::Checkbox("Compact terminated paths", &imguiData->CompactionEnabled);
+    settingsChanged |= ImGui::Checkbox("Mesh BVH", &imguiData->MeshBVHEnabled);
+    settingsChanged |= ImGui::Checkbox("Stochastic antialiasing", &imguiData->AntialiasingEnabled);
+    if (settingsChanged) camchanged = true;
+    ImGui::Text("GPU trace %.2f ms/iteration", imguiData->LastTraceMs);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
@@ -344,17 +372,92 @@ int main(int argc, char** argv)
 
     if (argc < 2)
     {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+        printf("Usage: %s SCENEFILE.json [--headless] [--sort on|off] [--compact on|off]\n"
+            "  [--direct-light on|off] [--rr on|off] [--bvh on|off] [--aa on|off]\n"
+            "  [--iterations N] [--depth N] [--aperture R] [--seed N]\n"
+            "  [--output PREFIX] [--timings FILE.csv] [--stats FILE.csv]\n"
+            "  [--checkpoints 1,8,32,128] [--no-save]\n", argv[0]);
         return 1;
     }
 
     const char* sceneFile = argv[1];
+    bool headless = false;
+    bool noSave = false;
+    std::string timingsPath, statisticsPath;
+    std::set<int> checkpoints;
 
     // Load scene file
-    scene = new Scene(sceneFile);
+    try { scene = new Scene(sceneFile); }
+    catch (const std::exception& error)
+    {
+        fprintf(stderr, "Scene error: %s\n", error.what());
+        return 1;
+    }
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
+    try
+    {
+        for (int i = 2; i < argc; ++i)
+        {
+            std::string option = argv[i];
+            if (option == "--headless") { headless = true; continue; }
+            if (option == "--no-save") { noSave = true; continue; }
+            if (++i >= argc) throw std::runtime_error("Missing value for " + option);
+            std::string value = argv[i];
+            auto switchValue = [&]() {
+                if (value != "on" && value != "off") throw std::runtime_error(option + " expects on or off");
+                return value == "on";
+            };
+            if (option == "--sort") guiData->MaterialSortingEnabled = switchValue();
+            else if (option == "--compact") guiData->CompactionEnabled = switchValue();
+            else if (option == "--direct-light") guiData->DirectLightingEnabled = switchValue();
+            else if (option == "--rr") guiData->RussianRouletteEnabled = switchValue();
+            else if (option == "--bvh") guiData->MeshBVHEnabled = switchValue();
+            else if (option == "--aa") guiData->AntialiasingEnabled = switchValue();
+            else if (option == "--iterations")
+            {
+                int count = std::stoi(value);
+                if (count < 1 || count > 1000000) throw std::runtime_error("Iterations must be 1..1000000");
+                scene->state.iterations = count;
+            }
+            else if (option == "--depth")
+            {
+                int depth = std::stoi(value);
+                if (depth < 1 || depth > 64) throw std::runtime_error("Depth must be 1..64");
+                scene->state.traceDepth = depth;
+            }
+            else if (option == "--seed")
+            {
+                guiData->SeedOffset = std::stoi(value);
+                if (guiData->SeedOffset < 0 || guiData->SeedOffset > 1000000)
+                    throw std::runtime_error("Seed offset must be 0..1000000");
+            }
+            else if (option == "--aperture")
+            {
+                scene->state.camera.aperture = std::stof(value);
+                if (!std::isfinite(scene->state.camera.aperture) || scene->state.camera.aperture < 0)
+                    throw std::runtime_error("Aperture must be finite and nonnegative");
+            }
+            else if (option == "--output") scene->state.imageName = value;
+            else if (option == "--timings") timingsPath = value;
+            else if (option == "--stats") statisticsPath = value;
+            else if (option == "--checkpoints")
+            {
+                std::istringstream values(value);
+                std::string item;
+                while (std::getline(values, item, ',')) checkpoints.insert(std::stoi(item));
+            }
+            else throw std::runtime_error("Unknown option: " + option);
+        }
+        if (!headless && (!timingsPath.empty() || !statisticsPath.empty() || noSave || !checkpoints.empty()))
+            throw std::runtime_error("Timing, statistics, checkpoints and no-save options require --headless");
+    }
+    catch (const std::exception& error)
+    {
+        fprintf(stderr, "Argument error: %s\n", error.what());
+        return 1;
+    }
 
     // Set up camera stuff from loaded path tracer settings
     iteration = 0;
@@ -362,6 +465,73 @@ int main(int argc, char** argv)
     Camera& cam = renderState->camera;
     width = cam.resolution.x;
     height = cam.resolution.y;
+
+    if (headless)
+    {
+        auto openCSV = [](const std::string& filename, std::ofstream& stream) {
+            if (filename.empty()) return;
+            std::filesystem::path path(filename);
+            if (path.has_parent_path()) std::filesystem::create_directories(path.parent_path());
+            stream.open(path);
+            if (!stream) throw std::runtime_error("Cannot write CSV: " + filename);
+            stream << std::setprecision(9);
+        };
+        std::ofstream timings, statistics;
+        try
+        {
+            openCSV(timingsPath, timings);
+            openCSV(statisticsPath, statistics);
+            std::filesystem::path output(renderState->imageName);
+            if (!noSave && output.has_parent_path()) std::filesystem::create_directories(output.parent_path());
+        }
+        catch (const std::exception& error)
+        {
+            fprintf(stderr, "Output error: %s\n", error.what());
+            return 1;
+        }
+        if (timings) timings << "iteration,gpu_ms\n";
+        if (statistics) statistics << "iteration,bounce,rays_in,rays_alive,rays_scheduled,camera_ms,intersection_ms,sorting_ms,shading_ms,gather_ms,compaction_ms,iteration_gpu_ms\n";
+        enableTraceStatistics(!statisticsPath.empty());
+        InitDataContainer(guiData);
+        pathtraceInit(scene);
+        int device;
+        cudaGetDevice(&device);
+        cudaDeviceProp properties;
+        cudaGetDeviceProperties(&properties, device);
+        printf("GPU: %s | %d x %d | depth %d | sort %d compact %d direct %d rr %d bvh %d aa %d\n",
+            properties.name, width, height, renderState->traceDepth,
+            guiData->MaterialSortingEnabled, guiData->CompactionEnabled,
+            guiData->DirectLightingEnabled, guiData->RussianRouletteEnabled,
+            guiData->MeshBVHEnabled, guiData->AntialiasingEnabled);
+        auto renderStart = std::chrono::steady_clock::now();
+        for (iteration = 1; iteration <= static_cast<int>(renderState->iterations); ++iteration)
+        {
+            pathtrace(NULL, 0, iteration);
+            if (timings) timings << iteration << ',' << guiData->LastTraceMs << '\n';
+            if (statistics)
+            {
+                for (const auto& s : lastBounceStatistics())
+                    statistics << iteration << ',' << s.depth << ',' << s.raysIn << ','
+                        << s.raysAlive << ',' << s.raysScheduled << ',' << s.cameraMs << ','
+                        << s.intersectionMs << ',' << s.sortingMs << ',' << s.shadingMs << ','
+                        << s.gatherMs << ',' << s.compactionMs << ',' << guiData->LastTraceMs << '\n';
+            }
+            if (!noSave && checkpoints.count(iteration) && iteration < static_cast<int>(renderState->iterations)) saveImage();
+            if (iteration == 1 || iteration % 8 == 0 ||
+                iteration == static_cast<int>(renderState->iterations))
+            {
+                printf("Rendered %d / %u samples\n", iteration,
+                    renderState->iterations);
+            }
+        }
+        printf("Render loop wall time: %.3f s (initialization and final image encoding excluded)\n",
+            std::chrono::duration<double>(std::chrono::steady_clock::now() - renderStart).count());
+        iteration = static_cast<int>(renderState->iterations);
+        if (!noSave) saveImage();
+        pathtraceFree();
+        cudaDeviceReset();
+        return 0;
+    }
 
     glm::vec3 view = cam.view;
     glm::vec3 up = cam.up;
@@ -372,12 +542,11 @@ int main(int argc, char** argv)
 
     // compute phi (horizontal) and theta (vertical) relative 3D axis
     // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
     ogLookAt = cam.lookAt;
-    zoom = glm::length(cam.position - ogLookAt);
+    glm::vec3 cameraOffset = cam.position - ogLookAt;
+    zoom = glm::length(cameraOffset);
+    phi = std::atan2(cameraOffset.x, cameraOffset.z);
+    theta = std::acos(glm::clamp(cameraOffset.y / zoom, -1.0f, 1.0f));
 
     // Initialize CUDA and GL components
     init();
@@ -394,17 +563,22 @@ int main(int argc, char** argv)
 
 void saveImage()
 {
-    float samples = iteration;
+    float samples = std::max(1, iteration);
     // output image file
     Image img(width, height);
+    Image hdr(width, height);
 
     for (int x = 0; x < width; x++)
     {
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::vec3 pix = glm::max(renderState->image[index] / samples,
+                glm::vec3(0.0f));
+            hdr.setPixel(width - 1 - x, y, pix);
+            glm::vec3 mapped = pix / (glm::vec3(1.0f) + pix);
+            img.setPixel(width - 1 - x, y,
+                glm::pow(mapped, glm::vec3(1.0f / 2.2f)));
         }
     }
 
@@ -415,6 +589,7 @@ void saveImage()
 
     // CHECKITOUT
     img.savePNG(filename);
+    hdr.saveHDR(filename);
     //img.saveHDR(filename);  // Save a Radiance HDR file
 }
 
@@ -431,8 +606,8 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        cam.up = glm::normalize(glm::cross(r, v));
         cam.right = r;
 
         cam.position = cameraPosition;

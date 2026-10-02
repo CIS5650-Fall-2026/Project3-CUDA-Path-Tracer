@@ -1,0 +1,406 @@
+{
+  "Materials": {
+    "gallery_wall": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.055,
+        0.075,
+        0.13
+      ],
+      "RGB2": [
+        0.13,
+        0.16,
+        0.24
+      ],
+      "TEXTURE": "Marble",
+      "TEXTURE_SCALE": 18.0
+    },
+    "gallery_floor": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.11,
+        0.15,
+        0.21
+      ],
+      "RGB2": [
+        0.04,
+        0.055,
+        0.085
+      ],
+      "TEXTURE": "Checker",
+      "TEXTURE_SCALE": 28.0
+    },
+    "porcelain": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.72,
+        0.78,
+        0.83
+      ],
+      "RGB2": [
+        0.28,
+        0.36,
+        0.45
+      ],
+      "TEXTURE": "Marble",
+      "TEXTURE_SCALE": 25.0
+    },
+    "warm_metal": {
+      "TYPE": "Specular",
+      "RGB": [
+        0.94,
+        0.66,
+        0.29
+      ]
+    },
+    "copper_marble": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.94,
+        0.5,
+        0.19
+      ],
+      "RGB2": [
+        0.24,
+        0.055,
+        0.045
+      ],
+      "TEXTURE": "Marble",
+      "TEXTURE_SCALE": 30.0
+    },
+    "sea_glass": {
+      "TYPE": "Glass",
+      "RGB": [
+        0.86,
+        0.98,
+        0.97
+      ],
+      "IOR": 1.46
+    },
+    "gyroid_glaze": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.035,
+        0.52,
+        0.52
+      ],
+      "RGB2": [
+        0.53,
+        0.9,
+        0.77
+      ],
+      "TEXTURE": "Marble",
+      "TEXTURE_SCALE": 24.0
+    },
+    "warm_light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.015,
+        0.45
+      ],
+      "EMITTANCE": 160
+    },
+    "cool_light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.015,
+        1,
+        0.08
+      ],
+      "EMITTANCE": 140
+    },
+    "moon_ceramic": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.71,
+        0.84,
+        0.9
+      ],
+      "RGB2": [
+        0.46,
+        0.65,
+        0.74
+      ],
+      "TEXTURE": "Marble",
+      "TEXTURE_SCALE": 14
+    }
+  },
+  "Camera": {
+    "RES": [
+      512,
+      384
+    ],
+    "FOVY": 38.0,
+    "ITERATIONS": 256,
+    "DEPTH": 10,
+    "FILE": "nightclub_bunny",
+    "EYE": [
+      0,
+      3.3,
+      10.8
+    ],
+    "LOOKAT": [
+      0,
+      1.9,
+      0
+    ],
+    "UP": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "APERTURE": 0,
+    "FOCUS_DISTANCE": 10.9
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "gallery_floor",
+      "TRANS": [
+        0.0,
+        -0.14,
+        0.0
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SCALE": [
+        12.0,
+        0.25,
+        12.0
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "gallery_wall",
+      "TRANS": [
+        0.0,
+        3.0,
+        -4.0
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SCALE": [
+        12.0,
+        6.0,
+        0.2
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "porcelain",
+      "TRANS": [
+        -2.9000000000000004,
+        0.35,
+        -0.35
+      ],
+      "ROTAT": [
+        0.0,
+        14.0,
+        0.0
+      ],
+      "SCALE": [
+        2.3,
+        0.7,
+        2.3
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "porcelain",
+      "TRANS": [
+        2.9000000000000004,
+        0.35,
+        -0.35
+      ],
+      "ROTAT": [
+        0.0,
+        -13.0,
+        0.0
+      ],
+      "SCALE": [
+        2.3,
+        0.7,
+        2.3
+      ]
+    },
+    {
+      "TYPE": "torus",
+      "MATERIAL": "copper_marble",
+      "TRANS": [
+        -2.9000000000000004,
+        1.75,
+        -0.35
+      ],
+      "ROTAT": [
+        72.0,
+        18.0,
+        12.0
+      ],
+      "SCALE": [
+        2.7,
+        2.7,
+        2.7
+      ]
+    },
+    {
+      "TYPE": "woven_ring",
+      "MATERIAL": "warm_metal",
+      "TRANS": [
+        -2.9000000000000004,
+        1.75,
+        -0.35
+      ],
+      "ROTAT": [
+        14.0,
+        62.0,
+        35.0
+      ],
+      "SCALE": [
+        2.1,
+        2.1,
+        2.1
+      ]
+    },
+    {
+      "TYPE": "gyroid",
+      "MATERIAL": "gyroid_glaze",
+      "TRANS": [
+        2.9000000000000004,
+        1.73,
+        -0.35
+      ],
+      "ROTAT": [
+        20.0,
+        35.0,
+        0.0
+      ],
+      "SCALE": [
+        2.6,
+        2.6,
+        2.6
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "sea_glass",
+      "TRANS": [
+        1.15,
+        0.75,
+        2.05
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SCALE": [
+        1.35,
+        1.35,
+        1.35
+      ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "warm_metal",
+      "TRANS": [
+        0.0,
+        0.28,
+        -1.5
+      ],
+      "ROTAT": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SCALE": [
+        0.55,
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "warm_light",
+      "TRANS": [
+        -2.8,
+        4.9,
+        0.7
+      ],
+      "ROTAT": [
+        0.0,
+        20.0,
+        0.0
+      ],
+      "SCALE": [
+        2.0,
+        0.08,
+        1.6
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "cool_light",
+      "TRANS": [
+        2.7,
+        4.9,
+        0.4
+      ],
+      "ROTAT": [
+        0.0,
+        -20.0,
+        0.0
+      ],
+      "SCALE": [
+        2.0,
+        0.08,
+        1.6
+      ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "porcelain",
+      "TRANS": [
+        0,
+        0.4,
+        0
+      ],
+      "SCALE": [
+        2.35,
+        0.8,
+        2.35
+      ],
+      "ROTAT": [
+        0,
+        12,
+        0
+      ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "moon_ceramic",
+      "TRANS": [
+        0,
+        2.5,
+        0
+      ],
+      "SCALE": [
+        3.5,
+        3.5,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        -20,
+        0
+      ],
+      "FILE": "../../assets/models/stanford_bunny.obj"
+    }
+  ]
+}

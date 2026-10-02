@@ -245,6 +245,16 @@ install_manifest.txt
 x64/
 x86/
 build/
+assets/downloads/
+analysis/runs/
+analysis/profiles/
+analysis/local/
+img/local/
+__pycache__/
+*.csv
+*.py
+analysis/data/*
+!analysis/data/summary.json
 bld/
 [Bb]in/
 [Oo]bj/

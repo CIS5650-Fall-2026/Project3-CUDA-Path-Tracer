@@ -12,7 +12,18 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    TORUS,
+    WOVEN_RING,
+    GYROID,
+    MESH
+};
+
+enum TextureType
+{
+    SOLID,
+    CHECKER,
+    MARBLE
 };
 
 struct Ray
@@ -31,11 +42,32 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+    int triangleStart;
+    int triangleCount;
+    int bvhRoot;
+};
+
+struct Triangle
+{
+    glm::vec3 v0, v1, v2;
+    glm::vec3 n0, n1, n2;
+};
+
+// Preorder nodes use escape links, so GPU traversal needs neither recursion nor a stack.
+struct MeshBVHNode
+{
+    glm::vec3 minimum, maximum;
+    int first;
+    int count;
+    int escape;
 };
 
 struct Material
 {
     glm::vec3 color;
+    glm::vec3 secondaryColor;
+    TextureType texture;
+    float textureScale;
     struct
     {
         float exponent;
@@ -57,6 +89,8 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    float aperture;
+    float focusDistance;
 };
 
 struct RenderState
@@ -74,6 +108,7 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+    bool specularBounce;
 };
 
 // Use with a corresponding PathSegment to do:
@@ -84,4 +119,7 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  int geomIndex;
+  glm::vec3 objectPoint;
+  bool outside;
 };

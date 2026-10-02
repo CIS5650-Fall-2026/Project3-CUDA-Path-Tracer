@@ -1,0 +1,114 @@
+{
+  "Materials": {
+    "ceramic": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.66,
+        0.83,
+        0.89
+      ]
+    },
+    "floor": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.24,
+        0.27,
+        0.31
+      ]
+    },
+    "light": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.88,
+        0.72
+      ],
+      "EMITTANCE": 16
+    }
+  },
+  "Camera": {
+    "RES": [
+      64,
+      64
+    ],
+    "FOVY": 36,
+    "ITERATIONS": 16,
+    "DEPTH": 6,
+    "FILE": "analysis_mesh",
+    "EYE": [
+      0,
+      1.2,
+      3.6
+    ],
+    "LOOKAT": [
+      0,
+      0.95,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0,
+        -0.03,
+        0
+      ],
+      "SCALE": [
+        8,
+        0.06,
+        8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "ceramic",
+      "TRANS": [
+        0,
+        0.9,
+        0
+      ],
+      "SCALE": [
+        1.8,
+        1.8,
+        1.8
+      ],
+      "ROTAT": [
+        0,
+        -20,
+        0
+      ],
+      "FILE": "../../assets/models/stanford_bunny.obj"
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "light",
+      "TRANS": [
+        -1.1,
+        2.9,
+        1.1
+      ],
+      "SCALE": [
+        1.4,
+        0.08,
+        1.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

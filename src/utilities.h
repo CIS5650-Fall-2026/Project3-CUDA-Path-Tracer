@@ -18,8 +18,16 @@
 class GuiDataContainer
 {
 public:
-    GuiDataContainer() : TracedDepth(0) {}
+    GuiDataContainer() : TracedDepth(0), LastTraceMs(0.0f), MaterialSortingEnabled(true), DirectLightingEnabled(true), RussianRouletteEnabled(true) {}
     int TracedDepth;
+    float LastTraceMs;
+    bool MaterialSortingEnabled;
+    bool DirectLightingEnabled;
+    bool RussianRouletteEnabled;
+    bool CompactionEnabled = true;
+    bool MeshBVHEnabled = true;
+    bool AntialiasingEnabled = true;
+    int SeedOffset = 0;
 };
 
 namespace utilityCore

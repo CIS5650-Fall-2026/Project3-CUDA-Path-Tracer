@@ -1,0 +1,23 @@
+{
+  "model": "Stanford Bunny",
+  "credit": "Stanford Computer Graphics Laboratory; reconstructed by Greg Turk and Marc Levoy",
+  "source": "https://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz",
+  "terms_url": "https://graphics.stanford.edu/data/3Dscanrep/",
+  "usage": "Educational research; acknowledge the source. Consult the linked repository terms for other uses.",
+  "conversion": "PLY to OBJ, recentered and uniformly normalized, smooth vertex normals computed from incident face areas",
+  "archive_sha256": "a5720bd96d158df403d153381b8411a727a1d73cff2f33dc9b212d6f75455b84",
+  "outputs": [
+    {
+      "file": "assets/models/stanford_bunny.obj",
+      "vertices": 35947,
+      "triangles": 69451,
+      "sha256": "6a5922c7a18c0db812548c359d4723c6b393ac99c209d2fcdda51edf562d9035"
+    },
+    {
+      "file": "assets/models/stanford_bunny_low.obj",
+      "vertices": 8171,
+      "triangles": 16301,
+      "sha256": "4b668b2a5efd4804bb0dd69351964f9fe200537dabdd0e805efbf3d4c2f64faf"
+    }
+  ]
+}
