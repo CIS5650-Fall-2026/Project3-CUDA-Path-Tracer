@@ -57,6 +57,8 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    float aperture;
+    float focalDistance;
 };
 
 struct RenderState
@@ -74,6 +76,7 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+    int hitLight;
 };
 
 // Use with a corresponding PathSegment to do:
@@ -84,4 +87,36 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  bool outside;
 };
+
+struct BVHNode {
+    glm::vec3 bboxMin;
+    int leftFirst;
+    glm::vec3 bboxMax;
+    int triCount;
+};
+
+struct Triangle {
+    glm::vec3 v0, v1, v2;
+    glm::vec3 n0, n1, n2;
+};
+
+struct TriangleMesh {
+    std::vector<Triangle> triangles;
+    std::vector<BVHNode> bvhNodes;
+    glm::vec3 bboxMin, bboxMax;
+    int materialid;
+};
+
+struct MeshInfo {
+    int triStart;
+    int triCount;
+    int bvhStart;
+    int bvhCount;
+    int materialid;
+    int _pad[3];
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+};
+

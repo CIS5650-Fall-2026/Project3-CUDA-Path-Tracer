@@ -49,9 +49,79 @@ __host__ __device__ void scatterRay(
     glm::vec3 intersect,
     glm::vec3 normal,
     const Material &m,
+    bool outside,
     thrust::default_random_engine &rng)
 {
     // TODO: implement this.
     // A basic implementation of pure-diffuse shading will just call the
     // calculateRandomDirectionInHemisphere defined above.
+    
+    const float EPS = 0.001f;
+
+    if (m.hasRefractive > 0.f) {    // refractive (fresnel-split reflection/refraction)
+        float ior = m.indexOfRefraction;
+
+        // eta = n1 / n2
+        float eta = outside ? (1.0f / ior) : ior;
+
+        glm::vec3 incident = glm::normalize(pathSegment.ray.direction);
+        glm::vec3 refracted = glm::refract(incident, normal, eta);
+
+        // total internal reflection
+        bool tir = (glm::dot(refracted, refracted) < 1e-6f);
+
+        // schilck approx. (fresnel reflectance)
+        float cosTheta = glm::clamp(glm::dot(-incident, normal), 0.0f, 1.0f);
+        float F0 = (1.0f - ior) / (1.0f + ior);
+        F0 = F0 * F0;
+        float fresnel = F0 + (1.0f - F0) * powf(1.0f - cosTheta, 5.0f);
+
+        thrust::uniform_real_distribution<float> u01(0, 1);
+        float xi = u01(rng);
+
+        const float MAX_MULT = 2.0f;    // tune 2.0 - 8.0
+
+        if (tir || xi < fresnel) {  // reflect
+            // reflect 
+            glm::vec3 reflected = glm::reflect(incident, normal);
+            pathSegment.ray.origin = intersect + normal * EPS;
+            pathSegment.ray.direction = glm::normalize(reflected);
+
+            float p = tir ? 1.0f : fresnel;
+            float mult = glm::min(1.0f / p, MAX_MULT);
+            pathSegment.color *= mult;
+        }
+        else {  // refract
+            refracted = glm::normalize(refracted);
+            pathSegment.ray.origin = intersect + refracted * EPS;
+            pathSegment.ray.direction = refracted;
+
+            float p = 1.0f - fresnel;
+            float mult = glm::min(1.0f / p, MAX_MULT);
+			pathSegment.color *= m.color * mult;
+        }
+    }
+    else if (m.hasReflective > 0.f) {   // specular (perfect mirror)
+        glm::vec3 incident = glm::normalize(pathSegment.ray.direction);
+        glm::vec3 reflected = glm::reflect(incident, normal);
+
+
+        glm::vec3 specColor = (m.specular.color.x + m.specular.color.y + m.specular.color.z > 0.0f)
+            ? m.specular.color
+            : m.color;
+
+        pathSegment.ray.origin = intersect + normal * EPS;
+        pathSegment.ray.direction = glm::normalize(reflected);
+        pathSegment.color *= specColor;
+
+    } else {  // diffuse (lambertian)
+        glm::vec3 newDir = calculateRandomDirectionInHemisphere(normal, rng);
+
+        pathSegment.ray.origin = intersect + normal * EPS;
+        pathSegment.ray.direction = normalize(newDir);
+        pathSegment.color *= m.color;
+    }
+    
+
+    pathSegment.remainingBounces--;
 }

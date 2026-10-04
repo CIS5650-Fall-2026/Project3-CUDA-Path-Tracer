@@ -111,3 +111,148 @@ __host__ __device__ float sphereIntersectionTest(
 
     return glm::length(r.origin - intersectionPoint);
 }
+
+__host__ __device__ bool bboxIntersectionTest(
+    const glm::vec3& bmin,
+    const glm::vec3& bmax,
+    const Ray& r) 
+{
+    float tmin = 0.0f;
+    float tmax = FLT_MAX;
+
+    for (int i = 0; i < 3; i++) {
+        float invD = 1.0f / r.direction[i];
+        float t1 = (bmin[i] - r.origin[i]) * invD;
+        float t2 = (bmax[i] - r.origin[i]) * invD;
+
+        if (t1 > t2) { 
+            float tmp = t1; 
+            t1 = t2; 
+            t2 = tmp; 
+        }
+
+        tmin = glm::max(tmin, t1);
+        tmax = glm::min(tmax, t2);
+
+        if (tmin > tmax) {
+            return false; 
+        }
+    }
+
+    return true;
+}
+
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& tri,
+    const Ray& r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside)
+{
+    const float EPS = 1e-7f;
+
+    glm::vec3 edge1 = tri.v1 - tri.v0;
+    glm::vec3 edge2 = tri.v2 - tri.v0;
+
+    // determinant
+    glm::vec3 pvec = glm::cross(r.direction, edge2);
+    float det = glm::dot(edge1, pvec);
+
+    // ray parallel to triangle
+    if (fabsf(det) < EPS) {
+        return -1.0f;
+    }
+
+    float invDet = 1.0f / det;
+
+    // dist from v0 --> ray origin
+    glm::vec3 tvec = r.origin - tri.v0;
+
+    // u parameter
+    float u = glm::dot(tvec, pvec) * invDet;
+    if (u < 0.0f || u > 1.0f) {
+        return -1.0f;
+    }
+
+    // v parameter
+    glm::vec3 qvec = glm::cross(tvec, edge1);
+    float v = glm::dot(r.direction, qvec) * invDet;
+    if (v < 0.0f || u + v > 1.0f) {
+        return -1.0f;
+    }
+
+    // t along the ray
+    float t = glm::dot(edge2, qvec) * invDet;
+    if (t < EPS) {
+        return -1.0f;
+    }
+
+    intersectionPoint = r.origin + t * r.direction;
+
+    // barycentric interpolation of vertex normals
+    float w = 1.0f - u - v;
+    glm::vec3 n = w * tri.n0 + u * tri.n1 + v * tri.n2;
+
+    // fallback to geometric normal if vertex normals are missing
+    if (glm::dot(n, n) < 1e-12f) {
+        n = glm::cross(edge1, edge2);
+    }
+    normal = glm::normalize(n);
+
+    // flip normal if ray hit back face (closed meshes)
+    if (glm::dot(normal, r.direction) > 0.0f) {
+        normal = -normal;
+        outside = false;
+    } else {
+        outside = true;
+    }
+
+    return t;
+}
+
+__host__ __device__ float intersectMeshBVH(
+    const BVHNode* __restrict__ nodes,
+    const Triangle* __restrict__ tris,
+    const Ray& r,
+    glm::vec3& outNormal,
+    bool& outOutside)
+{
+    float t_min = FLT_MAX;
+
+    // 64 entries for balanced trees 
+    int stack[64];
+    int sp = 0;
+    stack[sp++] = 0;   // root
+
+    while (sp > 0) {
+        int nodeIdx = stack[--sp];
+        const BVHNode& node = nodes[nodeIdx];
+
+        // Ray-AABB reject
+        if (!bboxIntersectionTest(node.bboxMin, node.bboxMax, r)) {
+            continue;
+        }
+
+        if (node.triCount == 0) {
+            // interior --> push both children
+            stack[sp++] = node.leftFirst;
+            stack[sp++] = node.leftFirst + 1;
+        } else {
+            // leaf --> test all triangles in range
+            for (int i = 0; i < node.triCount; ++i) {
+                const Triangle& tri = tris[node.leftFirst + i];
+                glm::vec3 tmpP, tmpN;
+                bool tmpO;
+                float t = triangleIntersectionTest(tri, r, tmpP, tmpN, tmpO);
+
+                if (t > 0.0f && t < t_min) {
+                    t_min = t;
+                    outNormal = tmpN;
+                    outOutside = tmpO;
+                }
+            }
+        }
+    }
+
+    return (t_min < FLT_MAX) ? t_min : -1.0f;
+}
