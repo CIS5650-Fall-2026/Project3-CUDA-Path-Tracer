@@ -7,12 +7,26 @@
 #include <string>
 #include <vector>
 
-#define BACKGROUND_COLOR (glm::vec3(0.0f))
+#define BACKGROUND_COLOR (glm::vec3(0.0f, 0.0f, 0.0f))
+
+#define USE_BVH 1
+#define BVH_DEPTH 16
 
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    TRIANGLE
+};
+
+enum MaterialType
+{
+    EMISSIVE,
+    DIFFUSE,
+    REFLECTIVE,
+    REFRACTIVE,
+    DIELECTRIC,
+    MICROFACET
 };
 
 struct Ray
@@ -21,10 +35,49 @@ struct Ray
     glm::vec3 direction;
 };
 
+struct Triangle
+{
+    glm::vec3 v0;
+    glm::vec3 v1;
+    glm::vec3 v2;
+};
+
+struct BoundingBox
+{
+    glm::vec3 min;
+    glm::vec3 max;
+};
+
+struct BVHNode
+{
+    BoundingBox bbox;
+    int leftChild;
+    int rightChild;
+
+	// if triangleIndex is positive, its a triangle
+	// if geomIndex is positive, its a geom
+    int triangleIndex;
+    int geomIndex;
+
+	// Material ID for the triangle or geom - if -1, use parent node's material ID
+	int materialId;
+
+    bool isLeaf;
+};
+
+struct BVHTree
+{
+    std::vector<BVHNode> nodes;
+	std::vector<Triangle> triangles;
+    int materialId;
+	int rootNodeIndex;
+};
+
 struct Geom
 {
     enum GeomType type;
     int materialid;
+	glm::vec3 vertices[3]; // Triangle vertices
     glm::vec3 translation;
     glm::vec3 rotation;
     glm::vec3 scale;
@@ -35,6 +88,7 @@ struct Geom
 
 struct Material
 {
+    enum MaterialType type;
     glm::vec3 color;
     struct
     {
@@ -57,6 +111,9 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+
+	float lensRadius;
+	float focalDistance;
 };
 
 struct RenderState
@@ -85,3 +142,4 @@ struct ShadeableIntersection
   glm::vec3 surfaceNormal;
   int materialId;
 };
+

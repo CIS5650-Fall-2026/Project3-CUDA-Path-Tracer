@@ -5,7 +5,7 @@
         {
             "TYPE":"Emitting",
             "RGB":[1.0, 1.0, 1.0],
-            "EMITTANCE":5.0
+            "EMITTANCE":10.0
         },
         "diffuse_white":
         {
@@ -22,11 +22,49 @@
             "TYPE":"Diffuse",
             "RGB":[0.35, 0.85, 0.35]
         },
+        "diffuse_blue":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.45, 0.95, 0.95]
+        },
         "specular_white":
         {
             "TYPE":"Specular",
             "RGB":[0.98, 0.98, 0.98],
             "ROUGHNESS":0.0
+        },
+        "mirror_red":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.98, 0.28, 0.28],
+            "ROUGHNESS":0.0
+        },
+        "mirror_green":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.28, 0.98, 0.28],
+            "ROUGHNESS":0.0
+        },
+        "transmissive_white":
+        {
+            "TYPE":"Transmissive",
+            "RGB":[0.98, 0.98, 0.98],
+            "ROUGHNESS":0.0,
+            "IOR": 1.55
+        },
+        "transmissive_red":
+        {
+            "TYPE":"Transmissive",
+            "RGB":[0.98, 0.48, 0.48],
+            "ROUGHNESS":0.0,
+            "IOR": 1.55
+        },
+        "dielectric_white":
+        {
+            "TYPE":"Dielectric",
+            "RGB":[0.98, 0.98, 0.98],
+            "ROUGHNESS":0.0,
+            "IOR": 1.4
         }
     },
     "Camera":
@@ -38,9 +76,11 @@
         "FILE":"cornell",
         "EYE":[0.0,5.0,10.5],
         "LOOKAT":[0.0,5.0,0.0],
-        "UP":[0.0,1.0,0.0]
+        "UP":[0.0,1.0,0.0],
+        "FOCALDISTANCE": 13.0,
+        "LENSRADIUS": 0.0
     },
-    "Objects":
+    "Primitives":
     [
         {
             "TYPE":"cube",
@@ -86,8 +126,22 @@
         },
         {
             "TYPE":"sphere",
+            "MATERIAL":"transmissive_white",
+            "TRANS":[0.5,23.5,4.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[3.0,3.0,3.0]
+        },
+        {
+            "TYPE":"sphere",
             "MATERIAL":"specular_white",
-            "TRANS":[-1.0,4.0,-1.0],
+            "TRANS":[-2.5,3.5,1.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[3.0,3.0,3.0]
+        },
+        {
+            "TYPE":"sphere",
+            "MATERIAL":"transmissive_white",
+            "TRANS":[2.5,3.5,1.0],
             "ROTAT":[0.0,0.0,0.0],
             "SCALE":[3.0,3.0,3.0]
         }

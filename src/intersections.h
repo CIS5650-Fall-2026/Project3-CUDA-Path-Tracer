@@ -52,8 +52,7 @@ __host__ __device__ float boxIntersectionTest(
     Geom box,
     Ray r,
     glm::vec3& intersectionPoint,
-    glm::vec3& normal,
-    bool& outside);
+    glm::vec3& normal);
 
 // CHECKITOUT
 /**
@@ -69,5 +68,40 @@ __host__ __device__ float sphereIntersectionTest(
     Geom sphere,
     Ray r,
     glm::vec3& intersectionPoint,
-    glm::vec3& normal,
-    bool& outside);
+    glm::vec3& normal);
+
+
+__host__ __device__ float triangleGeomIntersectionTest(
+    Geom tri,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal);
+
+__host__ __device__ float anyGeomIntersectionTest(
+    Geom geom,
+    Ray r,
+    glm::vec3& intersectionPoint,
+	glm::vec3& normal);
+
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& triangle,
+    const Ray& ray,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal);
+
+__host__ __device__ bool AABBIntersectionTest(
+    const BoundingBox& bbox,
+    const Ray& ray,
+    float& tMin,
+    float& tMax);
+
+__host__ __device__ bool BVHIntersectionTest(
+    int nodeIndex,
+    const Ray& ray,
+    BVHNode* bvhNodes,
+    Triangle* triangles,
+    Geom* geoms,
+    float& closestT,
+    glm::vec3& hitPoint,
+    glm::vec3& hitNormal,
+    int& materialId);

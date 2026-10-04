@@ -3,6 +3,7 @@
 *.sln
 *.vcxproj
 *.xcodeproj
+3dmodels
 build
 
 # Created by https://www.gitignore.io/api/linux,osx,sublimetext,windows,jetbrains,vim,emacs,cmake,c++,cuda,visualstudio,webstorm,eclipse,xcode
@@ -557,3 +558,4 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+/external/include/tinygltf/attic

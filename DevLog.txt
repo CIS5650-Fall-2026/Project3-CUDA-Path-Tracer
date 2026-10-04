@@ -1,0 +1,53 @@
+
+
+> Setup and compiled Project
+
+==============================
+
+> Implemented Basic Path tracing with Perfectly Diffuse Material
+
+> Implemented Antialiasing
+
+> Implemented (VERY INEFFICIENT????) path data sorting based on material id
+
+==============================
+
+> Implemented Specular Reflection
+
+> Implemented Transmissive Material
+
+> Implemented Dielectic Material
+
+==============================
+
+> Moller Trumbore Triangle Intersection
+
+> tinygltf, from https://github.com/syoyo/tinygltf
+
+==============================
+
+> Basic gltf mesh loading (converts into triangles)
+
+> Multi Level BVH, creates trees for each mesh / geometry, then combines them at the very end into one top level BVH
+
+==============================
+
+> Physically based DOF camera effect
+
+==============================
+
+
+
+== Next Top Priority ==
+
+> Environment Map
+
+> Microfacet Materials
+
+> Save / Load state path tracer!
+
+> add a light list and work on MIS as well as direct light methods!
+
+> Physically based camera effects could be fun
+
+
