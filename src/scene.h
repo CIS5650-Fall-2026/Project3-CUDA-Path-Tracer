@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sceneStructs.h"
+#include "gltf_loader.h"
 #include <vector>
 
 class Scene
@@ -13,4 +14,9 @@ public:
     std::vector<Geom> geoms;
     std::vector<Material> materials;
     RenderState state;
+
+    std::vector<Triangle> triangles;
+    AABB meshAABB;
+
+    std::vector<BVHNode> bvhNodes;
 };

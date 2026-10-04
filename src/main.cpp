@@ -41,9 +41,9 @@ float zoom, theta, phi;
 glm::vec3 cameraPosition;
 glm::vec3 ogLookAt; // for recentering the camera
 
-Scene* scene;
-GuiDataContainer* guiData;
-RenderState* renderState;
+Scene *scene;
+GuiDataContainer *guiData;
+RenderState *renderState;
 int iteration;
 
 int width;
@@ -54,16 +54,16 @@ GLuint texcoordsLocation = 1;
 GLuint pbo;
 GLuint displayImage;
 
-GLFWwindow* window;
-GuiDataContainer* imguiData = NULL;
-ImGuiIO* io = nullptr;
+GLFWwindow *window;
+GuiDataContainer *imguiData = NULL;
+ImGuiIO *io = nullptr;
 bool mouseOverImGuiWinow = false;
 
 // Forward declarations for window loop and interactivity
 void runCuda();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
-void mousePositionCallback(GLFWwindow* window, double xpos, double ypos);
-void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+void mousePositionCallback(GLFWwindow *window, double xpos, double ypos);
+void mouseButtonCallback(GLFWwindow *window, int button, int action, int mods);
 
 std::string currentTimeString()
 {
@@ -90,20 +90,23 @@ void initTextures()
 void initVAO(void)
 {
     GLfloat vertices[] = {
-        -1.0f, -1.0f,
-        1.0f, -1.0f,
-        1.0f,  1.0f,
-        -1.0f,  1.0f,
+        -1.0f,
+        -1.0f,
+        1.0f,
+        -1.0f,
+        1.0f,
+        1.0f,
+        -1.0f,
+        1.0f,
     };
 
     GLfloat texcoords[] = {
         1.0f, 1.0f,
         0.0f, 1.0f,
         0.0f, 0.0f,
-        1.0f, 0.0f
-    };
+        1.0f, 0.0f};
 
-    GLushort indices[] = { 0, 1, 3, 3, 1, 2 };
+    GLushort indices[] = {0, 1, 3, 3, 1, 2};
 
     GLuint vertexBufferObjID[3];
     glGenBuffers(3, vertexBufferObjID);
@@ -124,11 +127,11 @@ void initVAO(void)
 
 GLuint initShader()
 {
-    const char* attribLocations[] = { "Position", "Texcoords" };
+    const char *attribLocations[] = {"Position", "Texcoords"};
     GLuint program = glslUtility::createDefaultProgram(attribLocations, 2);
     GLint location;
 
-    //glUseProgram(program);
+    // glUseProgram(program);
     if ((location = glGetUniformLocation(program, "u_image")) != -1)
     {
         glUniform1i(location, 0);
@@ -137,7 +140,7 @@ GLuint initShader()
     return program;
 }
 
-void deletePBO(GLuint* pbo)
+void deletePBO(GLuint *pbo)
 {
     if (pbo)
     {
@@ -151,7 +154,7 @@ void deletePBO(GLuint* pbo)
     }
 }
 
-void deleteTexture(GLuint* tex)
+void deleteTexture(GLuint *tex)
 {
     glDeleteTextures(1, tex);
     *tex = (GLuint)NULL;
@@ -195,7 +198,7 @@ void initPBO()
     cudaGLRegisterBufferObject(pbo);
 }
 
-void errorCallback(int error, const char* description)
+void errorCallback(int error, const char *description)
 {
     fprintf(stderr, "%s\n", description);
 }
@@ -227,11 +230,12 @@ bool init()
         return false;
     }
     printf("Opengl Version:%s\n", glGetString(GL_VERSION));
-    //Set up ImGui
+    // Set up ImGui
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    io = &ImGui::GetIO(); (void)io;
+    io = &ImGui::GetIO();
+    (void)io;
     ImGui::StyleColorsLight();
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 120");
@@ -249,11 +253,10 @@ bool init()
     return true;
 }
 
-void InitImguiData(GuiDataContainer* guiData)
+void InitImguiData(GuiDataContainer *guiData)
 {
     imguiData = guiData;
 }
-
 
 // LOOK: Un-Comment to check ImGui Usage
 void RenderImGui()
@@ -270,28 +273,33 @@ void RenderImGui()
     static float f = 0.0f;
     static int counter = 0;
 
-    ImGui::Begin("Path Tracer Analytics");                  // Create a window called "Hello, world!" and append into it.
-    
+    ImGui::Begin("Path Tracer Analytics"); // Create a window called "Hello, world!" and append into it.
+
     // LOOK: Un-Comment to check the output window and usage
-    //ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-    //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-    //ImGui::Checkbox("Another Window", &show_another_window);
+    // ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+    // ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+    // ImGui::Checkbox("Another Window", &show_another_window);
 
-    //ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    //ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+    // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+    // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 
-    //if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-    //    counter++;
-    //ImGui::SameLine();
-    //ImGui::Text("counter = %d", counter);
+    // if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+    //     counter++;
+    // ImGui::SameLine();
+    // ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    if (ImGui::Checkbox("Cull mesh triangles with AABB", &imguiData->UseMeshAABBCulling))
+    {
+        iteration = 0;
+        imguiData->IntersectionTimeMs = 0.0f;
+        imguiData->IntersectionTimingSamples = 0;
+    }
+    ImGui::Text("Intersection GPU time (average): %.3f ms", imguiData->IntersectionTimeMs);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
-
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
 }
 
 bool MouseOverImGuiWindow()
@@ -318,7 +326,7 @@ void mainLoop()
         glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
         // VAO, shader program, and texture already bound
-        glDrawElements(GL_TRIANGLES, 6,  GL_UNSIGNED_SHORT, 0);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 
         // Render ImGui Stuff
         RenderImGui();
@@ -338,7 +346,7 @@ void mainLoop()
 //-------------MAIN--------------
 //-------------------------------
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     startTimeString = currentTimeString();
 
@@ -348,18 +356,18 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    const char* sceneFile = argv[1];
+    const char *sceneFile = argv[1];
 
     // Load scene file
     scene = new Scene(sceneFile);
 
-    //Create Instance for ImGUIData
+    // Create Instance for ImGUIData
     guiData = new GuiDataContainer();
 
     // Set up camera stuff from loaded path tracer settings
     iteration = 0;
     renderState = &scene->state;
-    Camera& cam = renderState->camera;
+    Camera &cam = renderState->camera;
     width = cam.resolution.x;
     height = cam.resolution.y;
 
@@ -415,7 +423,7 @@ void saveImage()
 
     // CHECKITOUT
     img.savePNG(filename);
-    //img.saveHDR(filename);  // Save a Radiance HDR file
+    // img.saveHDR(filename);  // Save a Radiance HDR file
 }
 
 void runCuda()
@@ -423,14 +431,14 @@ void runCuda()
     if (camchanged)
     {
         iteration = 0;
-        Camera& cam = renderState->camera;
+        Camera &cam = renderState->camera;
         cameraPosition.x = zoom * sin(phi) * sin(theta);
         cameraPosition.y = zoom * cos(theta);
         cameraPosition.z = zoom * cos(phi) * sin(theta);
 
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
-        glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
+        glm::vec3 u = glm::vec3(0, 1, 0); // glm::normalize(cam.up);
         glm::vec3 r = glm::cross(v, u);
         cam.up = glm::cross(r, v);
         cam.right = r;
@@ -452,9 +460,9 @@ void runCuda()
 
     if (iteration < renderState->iterations)
     {
-        uchar4* pbo_dptr = NULL;
+        uchar4 *pbo_dptr = NULL;
         iteration++;
-        cudaGLMapBufferObject((void**)&pbo_dptr, pbo);
+        cudaGLMapBufferObject((void **)&pbo_dptr, pbo);
 
         // execute the kernel
         int frame = 0;
@@ -476,30 +484,30 @@ void runCuda()
 //------INTERACTIVITY SETUP------
 //-------------------------------
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     if (action == GLFW_PRESS)
     {
         switch (key)
         {
-            case GLFW_KEY_ESCAPE:
-                saveImage();
-                glfwSetWindowShouldClose(window, GL_TRUE);
-                break;
-            case GLFW_KEY_S:
-                saveImage();
-                break;
-            case GLFW_KEY_SPACE:
-                camchanged = true;
-                renderState = &scene->state;
-                Camera& cam = renderState->camera;
-                cam.lookAt = ogLookAt;
-                break;
+        case GLFW_KEY_ESCAPE:
+            saveImage();
+            glfwSetWindowShouldClose(window, GL_TRUE);
+            break;
+        case GLFW_KEY_S:
+            saveImage();
+            break;
+        case GLFW_KEY_SPACE:
+            camchanged = true;
+            renderState = &scene->state;
+            Camera &cam = renderState->camera;
+            cam.lookAt = ogLookAt;
+            break;
         }
     }
 }
 
-void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+void mouseButtonCallback(GLFWwindow *window, int button, int action, int mods)
 {
     if (MouseOverImGuiWindow())
     {
@@ -511,7 +519,7 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
     middleMousePressed = (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS);
 }
 
-void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
+void mousePositionCallback(GLFWwindow *window, double xpos, double ypos)
 {
     if (xpos == lastX || ypos == lastY)
     {
@@ -535,7 +543,7 @@ void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
     else if (middleMousePressed)
     {
         renderState = &scene->state;
-        Camera& cam = renderState->camera;
+        Camera &cam = renderState->camera;
         glm::vec3 forward = cam.view;
         forward.y = 0.0f;
         forward = glm::normalize(forward);

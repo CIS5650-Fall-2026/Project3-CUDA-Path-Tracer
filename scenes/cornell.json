@@ -85,11 +85,12 @@
             "SCALE":[0.01,10.0,10.0]
         },
         {
-            "TYPE":"sphere",
-            "MATERIAL":"specular_white",
-            "TRANS":[-1.0,4.0,-1.0],
-            "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[3.0,3.0,3.0]
+            "TYPE": "gltf",
+            "FILE": "scene.gltf",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [0.0, 3.0, 0.0],
+            "ROTAT": [-90.0, 0.0, 0.0],
+            "SCALE": [10.0, 10.0, 10.0]
         }
     ]
 }

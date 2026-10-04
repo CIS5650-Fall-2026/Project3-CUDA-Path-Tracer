@@ -12,13 +12,58 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
+};
+
+enum MeshAccel 
+{ 
+    ACCEL_NONE = 0, 
+    ACCEL_AABB = 1, 
+    ACCEL_BVH = 2 
 };
 
 struct Ray
 {
     glm::vec3 origin;
     glm::vec3 direction;
+};
+
+struct AABB {
+    glm::vec3 minBound{ FLT_MAX,  FLT_MAX,  FLT_MAX };
+    glm::vec3 maxBound{ -FLT_MAX, -FLT_MAX, -FLT_MAX };
+
+    __host__ __device__ AABB() = default;
+
+    __host__ __device__ AABB(const glm::vec3& minB, const glm::vec3& maxB)
+        : minBound(minB), maxBound(maxB) {
+    }
+
+    // Expand bounding box to enclose a point
+    __host__ __device__ void grow(const glm::vec3& p) {
+        minBound = glm::min(minBound, p);
+        maxBound = glm::max(maxBound, p);
+    }
+
+    // Expand bounding box to enclose another AABB
+    __host__ __device__ void grow(const AABB& box) {
+        minBound = glm::min(minBound, box.minBound);
+        maxBound = glm::max(maxBound, box.maxBound);
+    }
+};
+
+struct BVHNode {
+    AABB bounds;
+    int left = -1, right = -1;   // child node indices (internal nodes)
+    int firstTri = 0, triCount = 0; // triCount > 0 => leaf
+};
+
+struct Triangle {
+    glm::vec3 p0, p1, p2;
+    glm::vec3 n0, n1, n2;
+    glm::vec2 uv0, uv1, uv2;
+    int materialId;
+    AABB aabb;
 };
 
 struct Geom
@@ -31,6 +76,12 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+
+    // Mesh specific attributes
+    int triangleStartIdx = -1;
+    int triangleCount = 0;
+    AABB boundingBox; // Object-space AABB
+    int bvhRoot = -1;
 };
 
 struct Material
@@ -84,4 +135,5 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  bool outside;
 };

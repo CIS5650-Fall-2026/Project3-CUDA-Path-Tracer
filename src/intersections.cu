@@ -111,3 +111,76 @@ __host__ __device__ float sphereIntersectionTest(
 
     return glm::length(r.origin - intersectionPoint);
 }
+
+__host__ __device__ inline bool aabbHit(const AABB& b, const glm::vec3& ro,
+    const glm::vec3& invD, float tMax, float& tNear)
+{
+    glm::vec3 t0 = (b.minBound - ro) * invD;
+    glm::vec3 t1 = (b.maxBound - ro) * invD;
+    glm::vec3 lo = glm::min(t0, t1), hi = glm::max(t0, t1);
+    tNear = fmaxf(fmaxf(lo.x, lo.y), fmaxf(lo.z, 0.f));
+    float tFar = fminf(fminf(hi.x, hi.y), fminf(hi.z, tMax));
+    return tNear <= tFar;
+}
+
+__host__ __device__ inline void triTest(const Triangle* tris, int i, const glm::vec3& ro,
+    const glm::vec3& rd, float& bestT, int& bestTri, glm::vec2& bestUV)
+{
+    glm::vec3 bary;
+    if (glm::intersectRayTriangle(ro, rd, tris[i].p0, tris[i].p1, tris[i].p2, bary)
+        && bary.z > 1e-4f && bary.z < bestT) {
+        bestT = bary.z; bestTri = i; bestUV = glm::vec2(bary.x, bary.y);
+    }
+}
+
+__host__ __device__ float meshIntersectionTest(
+    Geom mesh, Ray r, const Triangle* tris, const BVHNode* nodes, int accelMode,
+    glm::vec3& intersectionPoint, glm::vec3& normal, bool& outside)
+{
+    glm::vec3 ro = multiplyMV(mesh.inverseTransform, glm::vec4(r.origin, 1.f));
+    glm::vec3 rd = glm::normalize(multiplyMV(mesh.inverseTransform, glm::vec4(r.direction, 0.f)));
+    glm::vec3 invD = 1.f / rd;
+
+    float bestT = 1e30f; int bestTri = -1; glm::vec2 uv(0.f);
+    float tn;
+
+    if (accelMode == 2 && mesh.bvhRoot >= 0) {
+        int stack[64]; int sp = 0;
+        stack[sp++] = mesh.bvhRoot;
+        while (sp > 0) {
+            const BVHNode& nd = nodes[stack[--sp]];
+            if (!aabbHit(nd.bounds, ro, invD, bestT, tn)) continue;
+            if (nd.triCount > 0) {
+                for (int i = nd.firstTri; i < nd.firstTri + nd.triCount; ++i)
+                    triTest(tris, i, ro, rd, bestT, bestTri, uv);
+            }
+            else {
+                float tl, tr;
+                bool hl = aabbHit(nodes[nd.left].bounds, ro, invD, bestT, tl);
+                bool hr = aabbHit(nodes[nd.right].bounds, ro, invD, bestT, tr);
+                if (hl && hr) { // push far child first so near child is popped first
+                    stack[sp++] = (tl < tr) ? nd.right : nd.left;
+                    stack[sp++] = (tl < tr) ? nd.left : nd.right;
+                }
+                else if (hl) stack[sp++] = nd.left;
+                else if (hr)   stack[sp++] = nd.right;
+            }
+        }
+    }
+    else {
+        if (accelMode == 1 && !aabbHit(mesh.boundingBox, ro, invD, bestT, tn)) return -1;
+        for (int i = mesh.triangleStartIdx; i < mesh.triangleStartIdx + mesh.triangleCount; ++i)
+            triTest(tris, i, ro, rd, bestT, bestTri, uv);
+    }
+    if (bestTri < 0) return -1;
+
+    const Triangle& t = tris[bestTri];
+    glm::vec3 gn = glm::cross(t.p1 - t.p0, t.p2 - t.p0);
+    outside = glm::dot(gn, rd) < 0.f;
+    glm::vec3 n = (1.f - uv.x - uv.y) * t.n0 + uv.x * t.n1 + uv.y * t.n2;
+    if (!outside) n = -n;
+
+    intersectionPoint = multiplyMV(mesh.transform, glm::vec4(ro + bestT * rd, 1.f));
+    normal = glm::normalize(multiplyMV(mesh.invTranspose, glm::vec4(n, 0.f)));
+    return glm::length(r.origin - intersectionPoint);
+}
