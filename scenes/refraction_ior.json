@@ -1,0 +1,809 @@
+{
+    "Materials": {
+        "light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "EMITTANCE": 2.5
+        },
+        "diffuse_white": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.75,
+                0.75,
+                0.75
+            ]
+        },
+        "stripe_red": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.85,
+                0.25,
+                0.2
+            ]
+        },
+        "stripe_yellow": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.95,
+                0.8,
+                0.2
+            ]
+        },
+        "stripe_blue": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.2,
+                0.4,
+                0.85
+            ]
+        },
+        "stripe_dark": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.08,
+                0.08,
+                0.08
+            ]
+        },
+        "water": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "IOR": 1.33
+        },
+        "glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "IOR": 1.5
+        },
+        "sapphire": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "IOR": 1.77
+        },
+        "diamond": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "IOR": 2.42
+        },
+        "glass_control": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "IOR": 1.5
+        }
+    },
+    "Camera": {
+        "RES": [
+            1600,
+            900
+        ],
+        "FOVY": 18.0,
+        "ITERATIONS": 5000,
+        "DEPTH": 12,
+        "FILE": "refraction_ior",
+        "EYE": [
+            0.0,
+            4.55,
+            16.0
+        ],
+        "LOOKAT": [
+            0.0,
+            4.55,
+            0.0
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ]
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "light",
+            "TRANS": [
+                0.0,
+                9.0,
+                2.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                14.0,
+                0.1,
+                6.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                0.0,
+                0.0,
+                2.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                20.0,
+                0.01,
+                18.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                0.0,
+                9.1,
+                2.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                20.0,
+                0.01,
+                18.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                0.0,
+                4.5,
+                -6.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                20.0,
+                9.0,
+                0.01
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                -10.0,
+                4.5,
+                2.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.01,
+                9.0,
+                18.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                10.0,
+                4.5,
+                2.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.01,
+                9.0,
+                18.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_red",
+            "TRANS": [
+                -9.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_yellow",
+            "TRANS": [
+                -8.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_blue",
+            "TRANS": [
+                -7.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                -6.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_red",
+            "TRANS": [
+                -5.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_yellow",
+            "TRANS": [
+                -4.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_blue",
+            "TRANS": [
+                -3.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                -2.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_red",
+            "TRANS": [
+                -1.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_yellow",
+            "TRANS": [
+                -0.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_blue",
+            "TRANS": [
+                0.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                1.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_red",
+            "TRANS": [
+                2.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_yellow",
+            "TRANS": [
+                3.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_blue",
+            "TRANS": [
+                4.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                5.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_red",
+            "TRANS": [
+                6.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_yellow",
+            "TRANS": [
+                7.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_blue",
+            "TRANS": [
+                8.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                9.5,
+                4.5,
+                -5.9
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.0,
+                9.0,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_dark",
+            "TRANS": [
+                0.0,
+                2.8499999999999996,
+                -5.8
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                20.0,
+                0.5,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stripe_dark",
+            "TRANS": [
+                0.0,
+                6.25,
+                -5.8
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                20.0,
+                0.5,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "water",
+            "TRANS": [
+                -6.0,
+                2.8499999999999996,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -2.0,
+                2.8499999999999996,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "sapphire",
+            "TRANS": [
+                2.0,
+                2.8499999999999996,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "diamond",
+            "TRANS": [
+                6.0,
+                2.8499999999999996,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_control",
+            "TRANS": [
+                -6.0,
+                6.25,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_control",
+            "TRANS": [
+                -2.0,
+                6.25,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_control",
+            "TRANS": [
+                2.0,
+                6.25,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_control",
+            "TRANS": [
+                6.0,
+                6.25,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.2,
+                3.2,
+                3.2
+            ]
+        }
+    ]
+}

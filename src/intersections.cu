@@ -1,5 +1,7 @@
 #include "intersections.h"
 
+#include "features.h"
+
 __host__ __device__ float boxIntersectionTest(
     Geom box,
     Ray r,
@@ -108,6 +110,146 @@ __host__ __device__ float sphereIntersectionTest(
     {
         normal = -normal;
     }
+
+    return glm::length(r.origin - intersectionPoint);
+}
+
+// Tests one triangle and, if the ray hits it closer than the best hit so far,
+// makes it the new best hit.
+__host__ __device__ inline void testTriangle(
+    const Triangle* triangles,
+    int index,
+    const Ray& q,
+    float& t_min,
+    int& hit_tri,
+    float& hit_u,
+    float& hit_v)
+{
+    const Triangle& tri = triangles[index];
+
+    glm::vec3 uvt;
+    if (glm::intersectRayTriangle(q.origin, q.direction, tri.v0, tri.v1, tri.v2, uvt) && uvt.z > 0.0f && uvt.z < t_min) {
+        hit_tri = index;
+        hit_u = uvt.x;
+        hit_v = uvt.y;
+        t_min = uvt.z;
+    }
+}
+
+__host__ __device__ float meshIntersectionTest(
+    Geom mesh,
+    DeviceBVH bvh,
+    Ray r,
+    glm::vec3 &intersectionPoint,
+    glm::vec3 &normal,
+    bool &outside)
+{
+    Ray q;
+    q.origin = multiplyMV(mesh.inverseTransform, glm::vec4(r.origin, 1.0f));
+    q.direction = glm::normalize(multiplyMV(mesh.inverseTransform, glm::vec4(r.direction, 0.0f)));
+
+    float t_min = FLT_MAX;
+    int hit_tri = -1;
+    float hit_u = 0.0f;
+    float hit_v = 0.0f;
+
+#if BVH
+    if (mesh.bvhRoot < 0) {
+        return -1;
+    }
+
+    glm::vec3 invDirection = 1.0f / q.direction;
+
+    // Nodes still to visit, with the distance at which the ray enters each so
+    // that one made redundant by a closer hit found since can be dropped
+    // without re-reading it. Popping a node pushes at most its two children, so
+    // this holds at most one waiting sibling per level plus the two just pushed.
+    int stackNode[BVH_MAX_DEPTH + 1];
+    float stackEntry[BVH_MAX_DEPTH + 1];
+    int sp = 0;
+
+    // The root's box is the mesh's bounding box, so this is the same early-out
+    // MESH_BOUNDING_VOLUME_CULLING does.
+    const BVHNode& root = bvh.nodes[mesh.bvhRoot];
+    float rootEntry = aabbEntryDistance(root.bboxMin, root.bboxMax, q.origin, invDirection, t_min);
+    if (rootEntry < FLT_MAX) {
+        stackNode[sp] = mesh.bvhRoot;
+        stackEntry[sp] = rootEntry;
+        ++sp;
+    }
+
+    while (sp > 0) {
+        --sp;
+        if (stackEntry[sp] >= t_min) {
+            continue;
+        }
+        const BVHNode& node = bvh.nodes[stackNode[sp]];
+
+        if (node.triCount > 0) {
+            for (int i = node.leftOrFirst; i < node.leftOrFirst + node.triCount; ++i) {
+                testTriangle(bvh.triangles, i, q, t_min, hit_tri, hit_u, hit_v);
+            }
+            continue;
+        }
+
+        int nearChild = node.leftOrFirst;
+        int farChild = node.leftOrFirst + 1;
+        const BVHNode& left = bvh.nodes[nearChild];
+        const BVHNode& right = bvh.nodes[farChild];
+        float nearEntry = aabbEntryDistance(left.bboxMin, left.bboxMax, q.origin, invDirection, t_min);
+        float farEntry = aabbEntryDistance(right.bboxMin, right.bboxMax, q.origin, invDirection, t_min);
+        if (farEntry < nearEntry) {
+            int tmpChild = nearChild;
+            nearChild = farChild;
+            farChild = tmpChild;
+            float tmpEntry = nearEntry;
+            nearEntry = farEntry;
+            farEntry = tmpEntry;
+        }
+
+        // Far child goes on first so the near one is popped next: finding a
+        // close hit early lets the far one be skipped.
+        if (farEntry < FLT_MAX) {
+            stackNode[sp] = farChild;
+            stackEntry[sp] = farEntry;
+            ++sp;
+        }
+        if (nearEntry < FLT_MAX) {
+            stackNode[sp] = nearChild;
+            stackEntry[sp] = nearEntry;
+            ++sp;
+        }
+    }
+#else
+#if MESH_BOUNDING_VOLUME_CULLING
+    // One slab test instead of mesh.triangleCount triangle tests, for every ray
+    // that never comes near the mesh.
+    if (!aabbIntersectionTest(mesh.bboxMin, mesh.bboxMax, q)) {
+        return -1;
+    }
+#endif
+
+    for (int i = mesh.triangleStart; i < mesh.triangleStart + mesh.triangleCount; ++i) {
+        testTriangle(bvh.triangles, i, q, t_min, hit_tri, hit_u, hit_v);
+    }
+#endif
+
+    if (hit_tri < 0) {
+        return -1;
+    }
+
+    const Triangle& tri = bvh.triangles[hit_tri];
+
+    glm::vec3 objspaceNormal = glm::normalize((1.0f - hit_u - hit_v) * tri.n0 + hit_u * tri.n1 + hit_v * tri.n2);
+
+    glm::vec3 faceNormal = glm::cross(tri.v1 - tri.v0, tri.v2 - tri.v0);
+    outside = glm::dot(q.direction, faceNormal) < 0.0f;
+    if (!outside) {
+        objspaceNormal = -objspaceNormal;
+    }
+
+    intersectionPoint = multiplyMV(mesh.transform, glm::vec4(getPointOnRay(q, t_min), 1.0f));
+    normal = glm::normalize(multiplyMV(mesh.invTranspose, glm::vec4(objspaceNormal, 0.0f)));
 
     return glm::length(r.origin - intersectionPoint);
 }

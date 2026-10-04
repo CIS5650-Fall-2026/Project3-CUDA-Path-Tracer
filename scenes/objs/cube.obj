@@ -1,0 +1,36 @@
+# Unit cube, -0.5 to 0.5 on each axis, centered at the origin.
+# Deliberately the same size and position as the built-in CUBE primitive, so the
+# same TRANS/ROTAT/SCALE should render identically whether loaded as a "mesh" or
+# declared as a "cube". 8 vertices, 6 face normals, 12 triangles.
+v -0.5 -0.5 -0.5
+v  0.5 -0.5 -0.5
+v  0.5  0.5 -0.5
+v -0.5  0.5 -0.5
+v -0.5 -0.5  0.5
+v  0.5 -0.5  0.5
+v  0.5  0.5  0.5
+v -0.5  0.5  0.5
+vn  0.0  0.0 -1.0
+vn  0.0  0.0  1.0
+vn -1.0  0.0  0.0
+vn  1.0  0.0  0.0
+vn  0.0 -1.0  0.0
+vn  0.0  1.0  0.0
+# -z
+f 1//1 4//1 3//1
+f 1//1 3//1 2//1
+# +z
+f 5//2 6//2 7//2
+f 5//2 7//2 8//2
+# -x
+f 1//3 5//3 8//3
+f 1//3 8//3 4//3
+# +x
+f 2//4 3//4 7//4
+f 2//4 7//4 6//4
+# -y
+f 1//5 2//5 6//5
+f 1//5 6//5 5//5
+# +y
+f 4//6 8//6 7//6
+f 4//6 7//6 3//6

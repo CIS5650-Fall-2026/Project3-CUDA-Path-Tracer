@@ -1,0 +1,10 @@
+# Tetrahedron with no "vn" lines at all, so it exercises the loader's
+# face-normal fallback (and therefore flat shading). 4 vertices, 4 triangles.
+v -0.5 -0.5 -0.289
+v  0.5 -0.5 -0.289
+v  0.0 -0.5  0.577
+v  0.0  0.5  0.0
+f 1 2 3
+f 1 4 2
+f 2 4 3
+f 3 4 1

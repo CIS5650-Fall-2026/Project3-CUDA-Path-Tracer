@@ -1,0 +1,604 @@
+{
+    "Materials": {
+        "sky": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.55,
+                0.72,
+                1.0
+            ],
+            "EMITTANCE": 0.9
+        },
+        "sun": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.9,
+                0.75
+            ],
+            "EMITTANCE": 18.0
+        },
+        "meadow": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.15,
+                0.3,
+                0.11
+            ]
+        },
+        "dirt": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.56,
+                0.45,
+                0.31
+            ]
+        },
+        "cliff": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.2,
+                0.23,
+                0.26
+            ]
+        },
+        "rock": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.4,
+                0.41,
+                0.4
+            ]
+        },
+        "moss": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.18,
+                0.36,
+                0.14
+            ]
+        },
+        "pine": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.1,
+                0.27,
+                0.12
+            ]
+        },
+        "stone": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.55,
+                0.55,
+                0.52
+            ]
+        },
+        "grass": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.26,
+                0.5,
+                0.15
+            ]
+        },
+        "brush": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.17,
+                0.38,
+                0.14
+            ]
+        },
+        "team_blue": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.25,
+                0.42,
+                0.85
+            ]
+        },
+        "team_red": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.82,
+                0.25,
+                0.2
+            ]
+        },
+        "iron": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.42,
+                0.42,
+                0.44
+            ]
+        },
+        "bronze": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.66,
+                0.42,
+                0.22
+            ]
+        },
+        "silver": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.9,
+                0.91,
+                0.93
+            ]
+        },
+        "gold": {
+            "TYPE": "Specular",
+            "RGB": [
+                1.0,
+                0.78,
+                0.34
+            ]
+        },
+        "platinum": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.55,
+                0.85,
+                0.82
+            ]
+        },
+        "emerald": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.4,
+                0.88,
+                0.58
+            ],
+            "IOR": 1.57
+        }
+    },
+    "Camera": {
+        "RES": [
+            2400,
+            1350
+        ],
+        "FOVY": 16.0,
+        "ITERATIONS": 1000,
+        "DEPTH": 8,
+        "FILE": "lane_simple",
+        "EYE": [
+            -47.2611,
+            -46.4289,
+            -56.2951
+        ],
+        "LOOKAT": [
+            -3.0,
+            0.0,
+            2.0
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ],
+        "APERTURE": 0.6
+    },
+    "Objects": [
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "sky",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0.0,
+                180.0,
+                0.0
+            ],
+            "SCALE": [
+                1200,
+                1200,
+                1200
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "sun",
+            "TRANS": [
+                164.9588,
+                185.9535,
+                -167.958
+            ],
+            "ROTAT": [
+                0.0,
+                180.0,
+                0.0
+            ],
+            "SCALE": [
+                120,
+                120,
+                120
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "dirt",
+            "TRANS": [
+                0,
+                -0.5,
+                0
+            ],
+            "ROTAT": [
+                0.0,
+                180.0,
+                0.0
+            ],
+            "SCALE": [
+                1000,
+                1.0,
+                1000
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_melee.obj",
+            "MATERIAL": "team_blue",
+            "TRANS": [
+                -2.5394,
+                0.0,
+                8.4406
+            ],
+            "ROTAT": [
+                0.0,
+                340.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_melee.obj",
+            "MATERIAL": "team_red",
+            "TRANS": [
+                -4.9757,
+                0.0,
+                8.8298
+            ],
+            "ROTAT": [
+                0.0,
+                520.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_melee.obj",
+            "MATERIAL": "team_blue",
+            "TRANS": [
+                -2.6012,
+                0.0,
+                2.982
+            ],
+            "ROTAT": [
+                0.0,
+                340.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_melee.obj",
+            "MATERIAL": "team_red",
+            "TRANS": [
+                -5.0376,
+                0.0,
+                3.3712
+            ],
+            "ROTAT": [
+                0.0,
+                520.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_melee.obj",
+            "MATERIAL": "team_blue",
+            "TRANS": [
+                -4.409,
+                0.0,
+                -1.9951
+            ],
+            "ROTAT": [
+                0.0,
+                340.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_melee.obj",
+            "MATERIAL": "team_red",
+            "TRANS": [
+                -6.8454,
+                0.0,
+                -1.6059
+            ],
+            "ROTAT": [
+                0.0,
+                520.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_ranged.obj",
+            "MATERIAL": "team_blue",
+            "TRANS": [
+                3.8542,
+                0.0,
+                6.204
+            ],
+            "ROTAT": [
+                0.0,
+                289.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_ranged.obj",
+            "MATERIAL": "team_blue",
+            "TRANS": [
+                4.0927,
+                0.0,
+                0.0898
+            ],
+            "ROTAT": [
+                0.0,
+                264.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_ranged.obj",
+            "MATERIAL": "team_blue",
+            "TRANS": [
+                1.5937,
+                0.0,
+                -4.7769
+            ],
+            "ROTAT": [
+                0.0,
+                309.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "renekton.obj",
+            "MATERIAL": "iron",
+            "TRANS": [
+                11.7565,
+                0.0,
+                -5.1852
+            ],
+            "ROTAT": [
+                0.0,
+                279.08,
+                0.0
+            ],
+            "SCALE": [
+                0.164,
+                0.164,
+                0.164
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "xinzhao.obj",
+            "MATERIAL": "bronze",
+            "TRANS": [
+                16.6908,
+                0.0,
+                6.6851
+            ],
+            "ROTAT": [
+                0.0,
+                279.08,
+                0.0
+            ],
+            "SCALE": [
+                0.129,
+                0.129,
+                0.129
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "galio.obj",
+            "MATERIAL": "silver",
+            "TRANS": [
+                21.9263,
+                0.0,
+                -1.7464
+            ],
+            "ROTAT": [
+                0.0,
+                279.08,
+                0.0
+            ],
+            "SCALE": [
+                0.15,
+                0.15,
+                0.15
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_ranged.obj",
+            "MATERIAL": "team_red",
+            "TRANS": [
+                -9.991,
+                0.0,
+                11.4538
+            ],
+            "ROTAT": [
+                0.0,
+                74.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_ranged.obj",
+            "MATERIAL": "team_red",
+            "TRANS": [
+                -12.0237,
+                0.0,
+                5.7025
+            ],
+            "ROTAT": [
+                0.0,
+                104.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "minion_ranged.obj",
+            "MATERIAL": "team_red",
+            "TRANS": [
+                -12.3818,
+                0.0,
+                0.2912
+            ],
+            "ROTAT": [
+                0.0,
+                119.08,
+                0.0
+            ],
+            "SCALE": [
+                2.6,
+                2.6,
+                2.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "leona.obj",
+            "MATERIAL": "platinum",
+            "TRANS": [
+                -18.1076,
+                0.0,
+                10.7251
+            ],
+            "ROTAT": [
+                0.0,
+                99.08,
+                0.0
+            ],
+            "SCALE": [
+                0.13,
+                0.13,
+                0.13
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "senna.obj",
+            "MATERIAL": "emerald",
+            "TRANS": [
+                -23.3779,
+                0.0,
+                -0.0788
+            ],
+            "ROTAT": [
+                0.0,
+                99.08,
+                0.0
+            ],
+            "SCALE": [
+                0.15,
+                0.15,
+                0.15
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "ashe.obj",
+            "MATERIAL": "gold",
+            "TRANS": [
+                -27.547,
+                0.0,
+                8.6887
+            ],
+            "ROTAT": [
+                0.0,
+                99.08,
+                0.0
+            ],
+            "SCALE": [
+                0.13,
+                0.13,
+                0.13
+            ]
+        }
+    ]
+}
