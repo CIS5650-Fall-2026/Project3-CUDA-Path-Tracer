@@ -27,7 +27,8 @@ __host__ __device__ inline unsigned int utilhash(unsigned int a)
  */
 __host__ __device__ inline glm::vec3 getPointOnRay(Ray r, float t)
 {
-    return r.origin + (t - .0001f) * glm::normalize(r.direction);
+    //return r.origin + (t - .0001f) * glm::normalize(r.direction);
+  return r.origin + t * r.direction; // We normalize again in intersections, need the actual surface point for reflecting
 }
 
 /**
@@ -71,3 +72,15 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ float triangleIntersectionTest(
+  const Triangle& triangle,
+  const Ray& ray,
+  glm::vec3& normal
+);
+
+__host__ __device__ bool intersectsAABB(
+  const Ray& ray,
+  const glm::vec3& boundsMin,
+  const glm::vec3& boundsMax
+);

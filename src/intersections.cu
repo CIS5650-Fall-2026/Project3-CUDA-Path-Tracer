@@ -1,4 +1,6 @@
 #include "intersections.h"
+#include <cmath>
+#include <cfloat>
 
 __host__ __device__ float boxIntersectionTest(
     Geom box,
@@ -26,7 +28,7 @@ __host__ __device__ float boxIntersectionTest(
             float tb = glm::max(t1, t2);
             glm::vec3 n;
             n[xyz] = t2 < t1 ? +1 : -1;
-            if (ta > 0 && ta > tmin)
+            if (ta > tmin)
             {
                 tmin = ta;
                 tmin_n = n;
@@ -34,7 +36,7 @@ __host__ __device__ float boxIntersectionTest(
             if (tb < tmax)
             {
                 tmax = tb;
-                tmax_n = n;
+                tmax_n = -n;
             }
         }
     }
@@ -104,10 +106,90 @@ __host__ __device__ float sphereIntersectionTest(
 
     intersectionPoint = multiplyMV(sphere.transform, glm::vec4(objspaceIntersection, 1.f));
     normal = glm::normalize(multiplyMV(sphere.invTranspose, glm::vec4(objspaceIntersection, 0.f)));
-    if (!outside)
-    {
-        normal = -normal;
-    }
+    //if (!outside)
+    //{
+    //    normal = -normal;
+    //}
 
     return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ float triangleIntersectionTest(
+  const Triangle& triangle,
+  const Ray& ray,
+  glm::vec3& normal
+) {
+  glm::vec3 edge1 = triangle.v1 - triangle.v0;
+  glm::vec3 edge2 = triangle.v2 - triangle.v0;
+
+  glm::vec3 p = glm::cross(ray.direction, edge2);
+  
+  float determinant = glm::dot(edge1, p);
+
+  // Case 1: Parallel ray
+  if (fabs(determinant) < 1e-7f) {
+    return -1.0;
+  }
+
+  float inverseDeterminant = 1.0f / determinant;
+  glm::vec3 offset = ray.origin - triangle.v0;
+
+  // Ensure inside tirangle
+  float u = glm::dot(offset, p) * inverseDeterminant;
+  if (u < 0.0f || u > 1.0f) {
+    return -1.0f;
+  }
+    
+  glm::vec3 q = glm::cross(offset, edge1);
+  float v = glm::dot(ray.direction, q) * inverseDeterminant;
+  if (v < 0.0f || u + v > 1.0f) {
+    return -1.0f;
+  }
+
+  float t = glm::dot(edge2, q) * inverseDeterminant;
+  if (t <= 1e-4f) {
+    return -1.0f;
+  }
+
+  normal = glm::normalize(glm::cross(edge1, edge2));
+  
+  // point normal towards incoming ray
+  //if (glm::dot(normal, ray.direction) > 0.0f) {
+  //  normal = -normal;
+  //}
+
+  return t;
+}
+
+__host__ __device__ bool intersectsAABB(
+  const Ray& ray,
+  const glm::vec3& boundsMin,
+  const glm::vec3& boundsMax
+) {
+  float tNear = 0.0f;
+  float tFar = FLT_MAX;
+
+  for (int dir = 0; dir < 3; dir++) {
+    float origin = ray.origin[dir];
+    float direction = ray.direction[dir];
+
+    if (direction == 0.0f) {
+      if (origin < boundsMin[dir] || origin > boundsMax[dir]) {
+        return false;
+      }
+      continue;
+    }
+
+    float t1 = (boundsMin[dir] - origin) / direction;
+    float t2 = (boundsMax[dir] - origin) / direction;
+
+    tNear = glm::max(tNear, glm::min(t1, t2));
+    tFar = glm::min(tFar, glm::max(t1, t2));
+
+    if (tNear > tFar) {
+      return false;
+    }
+  }
+
+  return true;
 }

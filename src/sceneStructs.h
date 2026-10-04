@@ -12,13 +12,21 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
 };
 
 struct Ray
 {
     glm::vec3 origin;
     glm::vec3 direction;
+};
+
+// For mesh loading, need to get tris
+struct Triangle {
+  glm::vec3 v0;
+  glm::vec3 v1;
+  glm::vec3 v2;
 };
 
 struct Geom
@@ -31,6 +39,13 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+
+    int triangleStart = 0;
+    int triangleCount = 0;
+
+    // BBOX
+    glm::vec3 boundsMin;
+    glm::vec3 boundsMax;
 };
 
 struct Material
@@ -57,6 +72,13 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    
+    // Physically-based Depth of Field
+    float lensRadius = 0.0f;
+    float focalDistance = 1.0f;
+
+    // anti aliasing flag
+    bool antiAliasingEnabled = true;
 };
 
 struct RenderState
@@ -84,4 +106,5 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  bool frontFace; // Materials like glass ned to know if ray is entering or exiting
 };

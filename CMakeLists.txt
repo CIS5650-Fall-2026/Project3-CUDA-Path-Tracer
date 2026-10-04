@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.24)
 project(cis565_path_tracer LANGUAGES CUDA CXX)
 
+if (MSVC)
+    add_compile_options(
+        $<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>
+        $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>
+    )
+endif()
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -57,6 +64,8 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/gltfLoader.h
+    src/objLoader.h
 )
 
 set(sources
@@ -69,6 +78,8 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/gltfLoader.cpp
+    src/objLoader.cpp
 )
 
 set(imgui_headers
@@ -107,6 +118,12 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    "${CMAKE_SOURCE_DIR}/external/tinygltf"
+)
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    "${CMAKE_SOURCE_DIR}/external/tinyobjloader"
+)
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction

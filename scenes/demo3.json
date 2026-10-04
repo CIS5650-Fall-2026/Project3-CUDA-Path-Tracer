@@ -1,0 +1,2445 @@
+{
+  "Materials": {
+    "hull_white": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.82,
+        0.85,
+        0.88
+      ]
+    },
+    "suit_orange": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.88,
+        0.27,
+        0.08
+      ]
+    },
+    "industrial_gold": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.82,
+        0.57,
+        0.14
+      ]
+    },
+    "station_teal": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.08,
+        0.36,
+        0.39
+      ]
+    },
+    "floor_slate": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.16,
+        0.19,
+        0.25
+      ]
+    },
+    "backdrop": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.25,
+        0.3,
+        0.4
+      ]
+    },
+    "cargo_blue": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.12,
+        0.28,
+        0.58
+      ]
+    },
+    "chrome": {
+      "TYPE": "Specular",
+      "RGB": [
+        0.96,
+        0.96,
+        0.96
+      ],
+      "ROUGHNESS": 0
+    },
+    "reactor_glass": {
+      "TYPE": "Glass",
+      "RGB": [
+        1,
+        1,
+        1
+      ],
+      "IOR": 1.5
+    },
+    "warm_key": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.68,
+        0.38
+      ],
+      "EMITTANCE":10
+    },
+    "magenta_fill": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.2,
+        0.55
+      ],
+      "EMITTANCE": 3.5
+    },
+    "cyan_signal": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.08,
+        0.72,
+        1
+      ],
+      "EMITTANCE": 3
+    },
+    "pink_signal": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.05,
+        0.35
+      ],
+      "EMITTANCE": 3
+    },
+    "amber_signal": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.48,
+        0.08
+      ],
+      "EMITTANCE": 3
+    },
+    "violet_signal": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.4,
+        0.12,
+        1
+      ],
+      "EMITTANCE": 3
+    },
+    "red_beacon": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.04,
+        0.02
+      ],
+      "EMITTANCE": 3
+    },
+    "green_status": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.15,
+        1,
+        0.4
+      ],
+      "EMITTANCE": 2
+    }
+  },
+  "Camera": {
+    "RES": [
+      960,
+      800
+    ],
+    "FOVY": 21.5,
+    "ITERATIONS": 5000,
+    "DEPTH": 12,
+    "FILE": "demo3",
+    "EYE": [
+      10.5,
+      11.5,
+      17.5
+    ],
+    "LOOKAT": [
+      0,
+      1,
+      -1
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ],
+    "LENS_RADIUS": 0.2,
+    "FOCAL_DISTANCE": 18.0
+  },
+  "Objects": [
+    {
+      "NAME": "Diorama foundation",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        0,
+        -0.25,
+        -1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14,
+        0.5,
+        14
+      ]
+    },
+    {
+      "NAME": "Ground below the raised block",
+      "TYPE": "cube",
+      "MATERIAL": "backdrop",
+      "TRANS": [
+        0,
+        -0.56,
+        -1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        30,
+        0.1,
+        30
+      ]
+    },
+    {
+      "NAME": "Rear spaceport wall",
+      "TYPE": "cube",
+      "MATERIAL": "backdrop",
+      "TRANS": [
+        0,
+        2.7,
+        -7.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14,
+        5.4,
+        0.3
+      ]
+    },
+    {
+      "NAME": "Left service wall",
+      "TYPE": "cube",
+      "MATERIAL": "backdrop",
+      "TRANS": [
+        -6.85,
+        1.1,
+        -3.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.3,
+        2.2,
+        7.7
+      ]
+    },
+    {
+      "NAME": "Right service wall",
+      "TYPE": "cube",
+      "MATERIAL": "backdrop",
+      "TRANS": [
+        6.85,
+        1.1,
+        -3.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.3,
+        2.2,
+        7.7
+      ]
+    },
+    {
+      "NAME": "Front fascia cyan trim",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        0,
+        -0.15,
+        6.025
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        13.6,
+        0.045,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Right fascia pink trim",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        7.025,
+        -0.15,
+        -1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.035,
+        0.045,
+        13.6
+      ]
+    },
+    {
+      "NAME": "Central landing deck",
+      "TYPE": "mesh",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        -0.6,
+        0.02,
+        0.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        1.8,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/platform_large.obj"
+    },
+    {
+      "NAME": "Ship being serviced",
+      "TYPE": "mesh",
+      "MATERIAL": "hull_white",
+      "TRANS": [
+        -0.8,
+        0.21,
+        0.15
+      ],
+      "ROTAT": [
+        0,
+        -20,
+        0
+      ],
+      "SCALE": [
+        1.35,
+        1.35,
+        1.35
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/craft_speederA.obj"
+    },
+    {
+      "NAME": "Pilot inspecting the ship",
+      "TYPE": "mesh",
+      "MATERIAL": "suit_orange",
+      "TRANS": [
+        -2.3,
+        0.21,
+        1.8
+      ],
+      "ROTAT": [
+        0,
+        -25,
+        0
+      ],
+      "SCALE": [
+        1.4,
+        1.4,
+        1.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/astronautA.obj"
+    },
+    {
+      "NAME": "Arriving second ship",
+      "TYPE": "mesh",
+      "MATERIAL": "cargo_blue",
+      "TRANS": [
+        -4.5,
+        2.25,
+        0.7
+      ],
+      "ROTAT": [
+        0,
+        65,
+        0
+      ],
+      "SCALE": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/craft_speederA.obj"
+    },
+    {
+      "NAME": "Arrival ship engine flare",
+      "TYPE": "sphere",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -5.15,
+        2.23,
+        0.34
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.22,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Tow rover under arriving ship",
+      "TYPE": "mesh",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -4.9,
+        0.02,
+        1.5
+      ],
+      "ROTAT": [
+        0,
+        25,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/rover.obj"
+    },
+    {
+      "NAME": "Front cargo access road",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        0,
+        0.035,
+        4.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        12.2,
+        0.07,
+        2
+      ]
+    },
+    {
+      "NAME": "Rover on the access road",
+      "TYPE": "mesh",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        1.4,
+        0.08,
+        4.3
+      ],
+      "ROTAT": [
+        0,
+        -60,
+        0
+      ],
+      "SCALE": [
+        3,
+        3,
+        3
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/rover.obj"
+    },
+    {
+      "NAME": "Road center dash 1",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -5.1,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Road center dash 2",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -3.3999999999999995,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Road center dash 3",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -1.6999999999999997,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Road center dash 4",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        0,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Road center dash 5",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        1.7000000000000002,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Road center dash 6",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        3.4000000000000004,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Road center dash 7",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        5.1,
+        0.073,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.65,
+        0.006,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Rear service walkway",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        0,
+        0.035,
+        -2.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        10.8,
+        0.07,
+        0.6
+      ]
+    },
+    {
+      "NAME": "Cargo handler beside the hangar",
+      "TYPE": "mesh",
+      "MATERIAL": "suit_orange",
+      "TRANS": [
+        -4.5,
+        0.02,
+        -2.15
+      ],
+      "ROTAT": [
+        0,
+        35,
+        0
+      ],
+      "SCALE": [
+        1.2,
+        1.2,
+        1.2
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/astronautA.obj"
+    },
+    {
+      "NAME": "Reactor engineer",
+      "TYPE": "mesh",
+      "MATERIAL": "hull_white",
+      "TRANS": [
+        3.15,
+        0.02,
+        1.45
+      ],
+      "ROTAT": [
+        0,
+        -80,
+        0
+      ],
+      "SCALE": [
+        1.3,
+        1.3,
+        1.3
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/astronautA.obj"
+    },
+    {
+      "NAME": "Left maintenance hangar",
+      "TYPE": "mesh",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        -3.9,
+        0.01,
+        -4.6
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.5,
+        2.2,
+        1.5
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/hangar_smallA.obj"
+    },
+    {
+      "NAME": "Rear communications hangar",
+      "TYPE": "mesh",
+      "MATERIAL": "backdrop",
+      "TRANS": [
+        -0.1,
+        0.01,
+        -5.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.5,
+        2.8,
+        1.3
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/hangar_smallA.obj"
+    },
+    {
+      "NAME": "Right power-services hangar",
+      "TYPE": "mesh",
+      "MATERIAL": "cargo_blue",
+      "TRANS": [
+        4.9,
+        0.01,
+        -5.6
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.1,
+        2,
+        1
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/hangar_smallA.obj"
+    },
+    {
+      "NAME": "Dish roof mount",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        -0.2,
+        2.86,
+        -5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.9,
+        0.1,
+        0.9
+      ]
+    },
+    {
+      "NAME": "Roof communications dish",
+      "TYPE": "mesh",
+      "MATERIAL": "hull_white",
+      "TRANS": [
+        -5.2,
+        2.92,
+        -8.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "FILE": "models/kenny_space-kit/GLTF-format/satelliteDish.glb"
+    },
+    {
+      "NAME": "Communications roof beacon plinth",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        0.9,
+        2.89,
+        -5.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.25,
+        0.15,
+        0.25
+      ]
+    },
+    {
+      "NAME": "Red communications beacon",
+      "TYPE": "sphere",
+      "MATERIAL": "red_beacon",
+      "TRANS": [
+        0.9,
+        3.08,
+        -5.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    {
+      "NAME": "Polished vertical storage tank",
+      "TYPE": "sphere",
+      "MATERIAL": "chrome",
+      "TRANS": [
+        -5.9,
+        1.02,
+        -4.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.8,
+        2,
+        0.8
+      ]
+    },
+    {
+      "NAME": "Storage tank base",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        -5.9,
+        0.07,
+        -4.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1,
+        0.14,
+        1
+      ]
+    },
+    {
+      "NAME": "Storage tank amber status strip",
+      "TYPE": "cube",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -5.9,
+        1.04,
+        -4.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.07,
+        1.35,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Maintenance bay left door light",
+      "TYPE": "cube",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -5.25,
+        1,
+        -3.04
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        1.9,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Maintenance bay right door light",
+      "TYPE": "cube",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -2.55,
+        1,
+        -3.04
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        1.9,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Maintenance bay lintel light",
+      "TYPE": "cube",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -3.9,
+        1.95,
+        -3.04
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.7800000000000002,
+        0.08,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Communications bay left door light",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -1.4500000000000002,
+        1.2750000000000001,
+        -3.72
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        2.45,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Communications bay right door light",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        1.25,
+        1.2750000000000001,
+        -3.72
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        2.45,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Communications bay lintel light",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -0.1,
+        2.5,
+        -3.72
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.7800000000000002,
+        0.08,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Power-services bay left door light",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        3.95,
+        0.925,
+        -4.53
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        1.75,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Power-services bay right door light",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        5.8500000000000005,
+        0.925,
+        -4.53
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        1.75,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Power-services bay lintel light",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        4.9,
+        1.8,
+        -4.53
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.98,
+        0.08,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Communications sign housing",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        -0.1,
+        2.62,
+        -3.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.5,
+        0.22,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Communications green sign",
+      "TYPE": "cube",
+      "MATERIAL": "green_status",
+      "TRANS": [
+        -0.1,
+        2.62,
+        -3.575
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.25,
+        0.08,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cargo barrel 1",
+      "TYPE": "mesh",
+      "MATERIAL": "suit_orange",
+      "TRANS": [
+        -5.2,
+        0.02,
+        -0.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 2",
+      "TYPE": "mesh",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -4.62,
+        0.02,
+        -0.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 3",
+      "TYPE": "mesh",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -5.2,
+        0.02,
+        -1.19
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 4",
+      "TYPE": "mesh",
+      "MATERIAL": "cargo_blue",
+      "TRANS": [
+        -4.62,
+        0.02,
+        -1.19
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 5",
+      "TYPE": "mesh",
+      "MATERIAL": "suit_orange",
+      "TRANS": [
+        -5.2,
+        0.63,
+        -1.19
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 6",
+      "TYPE": "mesh",
+      "MATERIAL": "chrome",
+      "TRANS": [
+        -4.62,
+        0.63,
+        -1.19
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 7",
+      "TYPE": "mesh",
+      "MATERIAL": "suit_orange",
+      "TRANS": [
+        2.2,
+        0.02,
+        -5.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 8",
+      "TYPE": "mesh",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        2.78,
+        0.02,
+        -5.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 9",
+      "TYPE": "mesh",
+      "MATERIAL": "cargo_blue",
+      "TRANS": [
+        2.2,
+        0.02,
+        -5.9
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Cargo barrel 10",
+      "TYPE": "mesh",
+      "MATERIAL": "suit_orange",
+      "TRANS": [
+        2.78,
+        0.02,
+        -5.9
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/barrel.obj"
+    },
+    {
+      "NAME": "Reactor foundation",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        4.7,
+        0.42,
+        -2.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.6,
+        0.84,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Glass reactor vessel",
+      "TYPE": "sphere",
+      "MATERIAL": "reactor_glass",
+      "TRANS": [
+        4.7,
+        2,
+        -2.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Cyan reactor core",
+      "TYPE": "sphere",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        4.7,
+        1.85,
+        -2.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Core suspension base",
+      "TYPE": "cube",
+      "MATERIAL": "chrome",
+      "TRANS": [
+        4.7,
+        0.78,
+        -2.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.6,
+        0.12,
+        0.6
+      ]
+    },
+    {
+      "NAME": "Reactor front cyan trim",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        4.7,
+        0.64,
+        -1.48
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.3,
+        0.08,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Reactor right cyan trim",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        6.02,
+        0.64,
+        -2.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.035,
+        0.08,
+        2.3
+      ]
+    },
+    {
+      "NAME": "Chrome reactor control generator",
+      "TYPE": "mesh",
+      "MATERIAL": "chrome",
+      "TRANS": [
+        2.9,
+        0.02,
+        -0.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.8,
+        1.8,
+        1.8
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/machine_generator.obj"
+    },
+    {
+      "NAME": "Secondary reactor generator",
+      "TYPE": "mesh",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        5.65,
+        0.02,
+        -0.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.6,
+        1.6,
+        1.6
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/machine_generator.obj"
+    },
+    {
+      "NAME": "Utility conduit across service area",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        4.35,
+        0.08,
+        -0.6
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.7,
+        0.09,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Utility conduit to reactor",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        5.5,
+        0.08,
+        -1.02
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.1,
+        0.09,
+        0.8
+      ]
+    },
+    {
+      "NAME": "Generator green status lamp",
+      "TYPE": "cube",
+      "MATERIAL": "green_status",
+      "TRANS": [
+        3.53,
+        0.54,
+        -0.48
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Secondary generator amber lamp",
+      "TYPE": "cube",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        6.2,
+        0.47,
+        -0.57
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.08,
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "NAME": "Reactor rear support",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        4.12,
+        1.75,
+        -4.16
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        3.5,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Reactor violet backlight",
+      "TYPE": "cube",
+      "MATERIAL": "violet_signal",
+      "TRANS": [
+        4.12,
+        1.8,
+        -4.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.06,
+        2.5,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Reactor rear support",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        5.28,
+        1.75,
+        -4.16
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        3.5,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Reactor violet backlight",
+      "TYPE": "cube",
+      "MATERIAL": "violet_signal",
+      "TRANS": [
+        5.28,
+        1.8,
+        -4.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.06,
+        2.5,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Reactor cross brace",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        4.7,
+        3.5,
+        -4.16
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.28,
+        0.12,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Landing deck left cyan strip",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -2.9,
+        0.205,
+        0.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.06,
+        0.008,
+        4.25
+      ]
+    },
+    {
+      "NAME": "Landing deck right cyan strip",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        1.7,
+        0.205,
+        0.4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.06,
+        0.008,
+        4.25
+      ]
+    },
+    {
+      "NAME": "Landing deck front cyan strip",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -0.6,
+        0.205,
+        2.525
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.6,
+        0.008,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Landing deck rear cyan strip",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -0.6,
+        0.205,
+        -1.725
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.6,
+        0.008,
+        0.06
+      ]
+    },
+    {
+      "NAME": "Landing beacon 1 mount",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        -2.98,
+        0.28,
+        -1.83
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.14,
+        0.16,
+        0.14
+      ]
+    },
+    {
+      "NAME": "Landing beacon 1",
+      "TYPE": "sphere",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -2.98,
+        0.4,
+        -1.83
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.13,
+        0.13,
+        0.13
+      ]
+    },
+    {
+      "NAME": "Landing beacon 2 mount",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        1.78,
+        0.28,
+        -1.83
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.14,
+        0.16,
+        0.14
+      ]
+    },
+    {
+      "NAME": "Landing beacon 2",
+      "TYPE": "sphere",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        1.78,
+        0.4,
+        -1.83
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.13,
+        0.13,
+        0.13
+      ]
+    },
+    {
+      "NAME": "Landing beacon 3 mount",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        -2.98,
+        0.28,
+        2.63
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.14,
+        0.16,
+        0.14
+      ]
+    },
+    {
+      "NAME": "Landing beacon 3",
+      "TYPE": "sphere",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -2.98,
+        0.4,
+        2.63
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.13,
+        0.13,
+        0.13
+      ]
+    },
+    {
+      "NAME": "Landing beacon 4 mount",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        1.78,
+        0.28,
+        2.63
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.14,
+        0.16,
+        0.14
+      ]
+    },
+    {
+      "NAME": "Landing beacon 4",
+      "TYPE": "sphere",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        1.78,
+        0.4,
+        2.63
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.13,
+        0.13,
+        0.13
+      ]
+    },
+    {
+      "NAME": "Road edge light 1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        -5.2,
+        0.12,
+        5.46
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.55,
+        0.12,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Road edge light 2",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        -2.6,
+        0.12,
+        5.46
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.55,
+        0.12,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Road edge light 3",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        0,
+        0.12,
+        5.46
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.55,
+        0.12,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Road edge light 4",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        2.6,
+        0.12,
+        5.46
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.55,
+        0.12,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Road edge light 5",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        5.2,
+        0.12,
+        5.46
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.55,
+        0.12,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Street lamp 1 foot",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        -5.85,
+        0.1,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.38,
+        0.2,
+        0.38
+      ]
+    },
+    {
+      "NAME": "Street lamp 1 pole",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        -5.85,
+        1.55,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        2.9,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Street lamp 1 hood",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        -5.85,
+        3.04,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.62,
+        0.12,
+        0.62
+      ]
+    },
+    {
+      "NAME": "Street lamp 1 glowing underside",
+      "TYPE": "cube",
+      "MATERIAL": "amber_signal",
+      "TRANS": [
+        -5.85,
+        2.968,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.5,
+        0.025,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Street lamp 2 foot",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        5.95,
+        0.1,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.38,
+        0.2,
+        0.38
+      ]
+    },
+    {
+      "NAME": "Street lamp 2 pole",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        5.95,
+        1.55,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        2.9,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Street lamp 2 hood",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        5.95,
+        3.04,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.62,
+        0.12,
+        0.62
+      ]
+    },
+    {
+      "NAME": "Street lamp 2 glowing underside",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        5.95,
+        2.968,
+        2.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.5,
+        0.025,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Street lamp 3 foot",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        2.45,
+        0.1,
+        -3.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.38,
+        0.2,
+        0.38
+      ]
+    },
+    {
+      "NAME": "Street lamp 3 pole",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        2.45,
+        1.55,
+        -3.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        2.9,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Street lamp 3 hood",
+      "TYPE": "cube",
+      "MATERIAL": "station_teal",
+      "TRANS": [
+        2.45,
+        3.04,
+        -3.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.62,
+        0.12,
+        0.62
+      ]
+    },
+    {
+      "NAME": "Street lamp 3 glowing underside",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        2.45,
+        2.968,
+        -3.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.5,
+        0.025,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Left foreground safety rail",
+      "TYPE": "cube",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -5.9,
+        0.45,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.5,
+        0.1,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Safety rail upright",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        -6.6,
+        0.23,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.1,
+        0.46,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Safety rail upright",
+      "TYPE": "cube",
+      "MATERIAL": "floor_slate",
+      "TRANS": [
+        -5.2,
+        0.23,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.1,
+        0.46,
+        0.1
+      ]
+    },
+    {
+      "NAME": "Foreground ore crystals",
+      "TYPE": "mesh",
+      "MATERIAL": "industrial_gold",
+      "TRANS": [
+        -5.4,
+        0.08,
+        4.1
+      ],
+      "ROTAT": [
+        0,
+        20,
+        0
+      ],
+      "SCALE": [
+        1.8,
+        1.8,
+        1.8
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/rock_crystals.obj"
+    },
+    {
+      "NAME": "Reactor-side ore crystals",
+      "TYPE": "mesh",
+      "MATERIAL": "cargo_blue",
+      "TRANS": [
+        6.2,
+        0.02,
+        0.7
+      ],
+      "ROTAT": [
+        0,
+        -25,
+        0
+      ],
+      "SCALE": [
+        1.2,
+        1.2,
+        1.2
+      ],
+      "FILE": "models/kenny_space-kit/OBJ-format/rock_crystals.obj"
+    },
+    {
+      "NAME": "Rear wall left pink accent",
+      "TYPE": "cube",
+      "MATERIAL": "pink_signal",
+      "TRANS": [
+        -6.1,
+        3.2,
+        -7.525
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        3.5,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Rear wall right violet accent",
+      "TYPE": "cube",
+      "MATERIAL": "violet_signal",
+      "TRANS": [
+        6.1,
+        3.2,
+        -7.525
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        3.5,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Rear wall cyan horizon strip",
+      "TYPE": "cube",
+      "MATERIAL": "cyan_signal",
+      "TRANS": [
+        0,
+        5.03,
+        -7.525
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        11.8,
+        0.12,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Off-camera warm overhead key",
+      "TYPE": "cube",
+      "MATERIAL": "warm_key",
+      "TRANS": [
+        -2,
+        12,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        8,
+        0.12,
+        7
+      ]
+    },
+    {
+      "NAME": "Off-camera magenta overhead fill",
+      "TYPE": "cube",
+      "MATERIAL": "magenta_fill",
+      "TRANS": [
+        5,
+        12,
+        -1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        5,
+        0.12,
+        6
+      ]
+    }
+  ]
+}

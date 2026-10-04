@@ -375,7 +375,9 @@ int main(int argc, char** argv)
     glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
     glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
     phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    // Fix initial camera positioning using -view
+    theta = glm::acos(glm::clamp(-view.y, -1.0f, 1.0f));
+    //theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
 
@@ -431,8 +433,8 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        cam.up = glm::normalize(glm::cross(r, v));
         cam.right = r;
 
         cam.position = cameraPosition;
