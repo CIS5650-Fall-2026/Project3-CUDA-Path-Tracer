@@ -1,3 +1,4 @@
+#include "denoise.h"
 #include "glslUtility.hpp"
 #include "image.h"
 #include "pathtrace.h"
@@ -23,8 +24,54 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <filesystem>
+#include <chrono>
+
+#define RENDERTIMETXT 0
+
+namespace fs = std::filesystem;
 
 static std::string startTimeString;
+
+// GUI button controls to start and stop rendering 
+// SET FALSE TO START WITH RENDERING DISABLE
+static bool renderRunning = true;
+static bool pathtraceInitialized = false;
+
+// Timer spent rendering for current render, excluding paused time
+static double activeSeconds = 0.0;
+// last active time, which we can update so we don't include pauses in render time
+static std::chrono::steady_clock::time_point activeSince;
+static bool renderTimerRunning = false;
+
+static double elapsedRenderSeconds()
+{
+    double elapsed = activeSeconds;
+    if (renderRunning)
+    {
+        elapsed += std::chrono::duration<double>(std::chrono::steady_clock::now() - activeSince).count();
+    }
+    return elapsed;
+}
+
+static void setRenderRunning(bool running)
+{
+    if (running == renderRunning)
+    {
+        return;
+    }
+    if (!running)
+    {
+        // If we toggle rendering off, we update the total so far.
+        activeSeconds = elapsedRenderSeconds();
+    }
+    else
+    {
+        // If we toggle to running render, then record time as start of active rendering
+        activeSince = std::chrono::steady_clock::now();
+    }
+    renderRunning = running;
+}
 
 // For camera controls
 static bool leftMousePressed = false;
@@ -38,6 +85,7 @@ static float dtheta = 0, dphi = 0;
 static glm::vec3 cammove;
 
 float zoom, theta, phi;
+float roll = 0.0f;
 glm::vec3 cameraPosition;
 glm::vec3 ogLookAt; // for recentering the camera
 
@@ -72,6 +120,25 @@ std::string currentTimeString()
     char buf[sizeof "0000-00-00_00-00-00z"];
     strftime(buf, sizeof buf, "%Y-%m-%d_%H-%M-%Sz", gmtime(&now));
     return std::string(buf);
+}
+
+void printRenderTime()
+{
+    if (!renderTimerRunning)
+    {
+        return;
+    }
+    double elapsed = elapsedRenderSeconds();
+    printf("Render time: %.3f s (%d iterations)\n", elapsed, iteration);
+
+#if RENDERTIMETXT
+    FILE* logFile = fopen("render_times.txt", "a");
+    if (logFile)
+    {
+        fprintf(logFile, "Render time: %.3f s (%d iterations)\n", elapsed, iteration);
+        fclose(logFile);
+    }
+#endif
 }
 
 //-------------------------------
@@ -216,6 +283,7 @@ bool init()
         return false;
     }
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(0); // VSync off
     glfwSetKeyCallback(window, keyCallback);
     glfwSetCursorPosCallback(window, mousePositionCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
@@ -264,27 +332,87 @@ void RenderImGui()
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    bool show_demo_window = true;
-    bool show_another_window = false;
-    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-    static float f = 0.0f;
-    static int counter = 0;
+    ImGui::Begin("Path Tracer Analytics");
 
-    ImGui::Begin("Path Tracer Analytics");                  // Create a window called "Hello, world!" and append into it.
-    
-    // LOOK: Un-Comment to check the output window and usage
-    //ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-    //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-    //ImGui::Checkbox("Another Window", &show_another_window);
+    // Performance readout
+    ImGui::Text("Path trace: %.2f ms/iteration (GPU)", imguiData->iterationMs);
+    ImGui::Text("Iteration %d / %d%s", iteration, renderState->iterations, renderRunning ? "" : "  (stopped)");
+    ImGui::Text("Traced depth %d", imguiData->TracedDepth);
+    ImGui::Separator();
 
-    //ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    //ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+    // Render controls
+    if (ImGui::Button(renderRunning ? "Stop rendering" : "Start rendering"))
+    {
+        setRenderRunning(!renderRunning);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Restart accumulation"))
+    {
+        camchanged = true; // camchanged is what restarts the accumulation in runCuda
+    }
+    static bool vsync = false;
+    if (ImGui::Checkbox("VSync", &vsync))
+    {
+        glfwSwapInterval(vsync ? 1 : 0);
+    }
+    ImGui::Separator();
 
-    //if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-    //    counter++;
-    //ImGui::SameLine();
-    //ImGui::Text("counter = %d", counter);
-    ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    // Toggles (BVH use and material sorting don't change the image, so they don't restart it)
+    ImGui::Checkbox("Use BVH", &imguiData->useBVH);
+    if (!imguiData->useBVH)
+    {
+        ImGui::TextColored(ImVec4(0.8f, 0.1f, 0.1f, 1.0f), "BVH off: big meshes take many seconds per iteration");
+    }
+    ImGui::Checkbox("Sort paths by material", &imguiData->sortByMaterial);
+    ImGui::Checkbox("Stream compaction", &imguiData->streamCompaction);
+    if (ImGui::Checkbox("MIS + NEE (light sampling)", &imguiData->useMIS))
+    {
+        camchanged = true;
+    }
+    if (denoiserAvailable())
+    {
+        ImGui::Checkbox("Denoise (OIDN)", &imguiData->denoise);
+    }
+    else
+    {
+        ImGui::TextDisabled("Denoiser unavailable (OIDN not found)");
+    }
+    ImGui::Checkbox("sRGB output (display gamma)", &imguiData->srgbOutput);
+    if (ImGui::Checkbox("Visualize BVH", &imguiData->visualizeBVH))
+    {
+        camchanged = true;
+    }
+    if (imguiData->visualizeBVH)
+    {
+        if (ImGui::RadioButton("Leaf colors", &imguiData->bvhVizMode, 0)) camchanged = true;
+        ImGui::SameLine();
+        if (ImGui::RadioButton("Traversal heat map", &imguiData->bvhVizMode, 1)) camchanged = true;
+        if (ImGui::Checkbox("Outline boxes", &imguiData->bvhOutlines)) camchanged = true;
+    }
+
+    ImGui::Separator();
+    if (ImGui::Checkbox("Physically based DOF", &imguiData->useDOF))
+    {
+        camchanged = true;
+    }
+    if (imguiData->useDOF)
+    {
+        // We want more options in low ranges, like 0.5-8 for fstop, so log slider works best.
+        static const float focusMax = std::fmax(100.0f, 10.0f * imguiData->focusDistance);
+        const Camera& dofCam = renderState->camera;
+        if (ImGui::SliderFloat("f-stop", &imguiData->fstop, 0.5f, 32.0f, "f/%.1f", ImGuiSliderFlags_Logarithmic))
+        {
+            camchanged = true;
+        }
+        if (ImGui::SliderFloat("Focus distance", &imguiData->focusDistance, 0.01f, focusMax, "%.2f", ImGuiSliderFlags_Logarithmic))
+        {
+            camchanged = true;
+        }
+        // Update with lens diameter and focalLength for convenience
+        ImGui::Text("%.1f mm lens (from FOV), aperture radius %.4f units",
+            dofCam.focalLengthMm, dofCam.focalLength / (2.0f * imguiData->fstop));
+    }
+    ImGui::Separator();
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
@@ -341,6 +469,7 @@ void mainLoop()
 int main(int argc, char** argv)
 {
     startTimeString = currentTimeString();
+    atexit(printRenderTime);
 
     if (argc < 2)
     {
@@ -356,6 +485,11 @@ int main(int argc, char** argv)
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
 
+    // arguments for collecting performance metrics
+    if (const char* e = std::getenv("PT_SORT")) guiData->sortByMaterial = std::atoi(e) != 0;
+    if (const char* e = std::getenv("PT_COMPACT")) guiData->streamCompaction = std::atoi(e) != 0;
+    if (const char* e = std::getenv("PT_BVH")) guiData->useBVH = std::atoi(e) != 0;
+
     // Set up camera stuff from loaded path tracer settings
     iteration = 0;
     renderState = &scene->state;
@@ -370,14 +504,31 @@ int main(int argc, char** argv)
 
     cameraPosition = cam.position;
 
-    // compute phi (horizontal) and theta (vertical) relative 3D axis
-    // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    // Made some fixes because camera angles were flipped
+    phi = atan2f(-view.x, -view.z);
+    theta = acosf(glm::clamp(-view.y, -1.0f, 1.0f));
+    theta = glm::clamp(theta, 0.001f, PI - 0.001f);
+
+    // Scope block for applying roll
+    {
+        glm::vec3 levelRight = glm::normalize(glm::cross(view, glm::vec3(0, 1, 0)));
+        glm::vec3 levelUp = glm::cross(levelRight, view);
+        // project camera up onto the plane perp to view vector.
+        // This way up vector in scene file doesn't need to be orthogonal
+        glm::vec3 sceneUp = cam.up - view * glm::dot(cam.up, view);
+        // as long as this component is nonzero, and levelRight isn't NaN, we can use it and set the roll
+        if (glm::dot(sceneUp, sceneUp) > 1e-12f && glm::all(glm::equal(levelRight, levelRight)))
+        {
+            sceneUp = glm::normalize(sceneUp);
+            roll = atan2f(glm::dot(glm::cross(levelUp, sceneUp), view), glm::dot(levelUp, sceneUp));
+        }
+    }
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
+
+    guiData->useDOF = cam.fstop > 0.0f;
+    guiData->fstop = cam.fstop > 0.0f ? cam.fstop : 2.8f;
+    guiData->focusDistance = cam.focalDistance;
 
     // Initialize CUDA and GL components
     init();
@@ -394,6 +545,8 @@ int main(int argc, char** argv)
 
 void saveImage()
 {
+    pathtraceCopyImageToHost();
+
     float samples = iteration;
     // output image file
     Image img(width, height);
@@ -404,22 +557,36 @@ void saveImage()
         {
             int index = x + (y * width);
             glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::vec3 color = glm::vec3(pix) / samples;
+            if (imguiData->srgbOutput && !imguiData->visualizeBVH) color = linearToSRGB(color);
+            img.setPixel(width - 1 - x, y, color);
         }
     }
 
-    std::string filename = renderState->imageName;
+    // doing this nonsense to avoid device path issues.
+    fs::path backDir = "..";
+    fs::path imgDir = "img";
+    fs::path file = renderState->imageName;
+    fs::path filePath = backDir / imgDir / file;
+
+    std::string filename = filePath.string();
+
     std::ostringstream ss;
     ss << filename << "." << startTimeString << "." << samples << "samp";
     filename = ss.str();
 
-    // CHECKITOUT
     img.savePNG(filename);
     //img.saveHDR(filename);  // Save a Radiance HDR file
 }
 
 void runCuda()
 {
+    // if rendering is stopped, don't update the view
+    if (!renderRunning)
+    {
+        return;
+    }
+
     if (camchanged)
     {
         iteration = 0;
@@ -431,13 +598,18 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
-        cam.right = r;
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        glm::vec3 levelUp = glm::cross(r, v);
+        float cr = cos(roll), sr = sin(roll);
+        cam.right = cr * r + sr * glm::cross(v, r);
+        cam.up = cr * levelUp + sr * glm::cross(v, levelUp);
 
         cam.position = cameraPosition;
         cameraPosition += cam.lookAt;
         cam.position = cameraPosition;
+
+        cam.focalDistance = imguiData->focusDistance;
+        cam.lensRadius = imguiData->useDOF ? cam.focalLength / (2.0f * imguiData->fstop) : 0.0f;
         camchanged = false;
     }
 
@@ -446,8 +618,19 @@ void runCuda()
 
     if (iteration == 0)
     {
-        pathtraceFree();
-        pathtraceInit(scene);
+        if (!pathtraceInitialized)
+        {
+            pathtraceInit(scene);
+            pathtraceInitialized = true;
+        }
+        else
+        {
+            // clear image for restart
+            pathtraceReset();
+        }
+        activeSeconds = 0.0;
+        activeSince = std::chrono::steady_clock::now();
+        renderTimerRunning = true;
     }
 
     if (iteration < renderState->iterations)
@@ -466,6 +649,7 @@ void runCuda()
     else
     {
         saveImage();
+        if (std::getenv("PT_STATS")) pathtracePrintStats();
         pathtraceFree();
         cudaDeviceReset();
         exit(EXIT_SUCCESS);

@@ -1,0 +1,37 @@
+Black images with white ball:
+I guess these technically aren't so bad. The scene is sphere.json, which from the file appears to be a ball with high emission. I guess that really would just be a white ball white a black background, but obviously nothing ahs been implemented yet. Still good to see it building, because this project had the MSVC preprocessor bug that stream compact had.
+
+Lambert cornell box:
+This was just me switching scenes to cornell.json
+
+Funky cornell boxes (green floor/ceiling, green floor and red wall):
+These were me messing with fakematerial. I made the dumb decision of putting the BDRF function in the final color calculation, and I guess that's what that looks like.
+
+White box:
+This one actually looked correct at first, then quickly brightened until everything was white. Since the funky cornel boxes, I made the fakematerial call scatterray, which updates the ray bounce and multiplies by material color (for diffuse). However, this is going to be an issue of stopping the threads from continuing to calculate light after they are supposed to be gone (stream compaction should be the solution).
+
+Kinda normal looking cornell box:
+Success! We have something cool looking. However, I will admit that I simply added an if statement to the intersection and shading kernels. This causes warp divergence, but I will fix it tomorrow, because I am very tired and wanted a win before I finished for the first day.
+Bonus: creepy dark cornell box:
+This is what happens when you add the if statement to the intersections, but not the shading.
+
+cornell.2026-09-21_03-04-06z.5000samp:
+I noticed that my "kinda normal" render was slightly lighter than the reference. After some poking around, I noticed that paths that terminated because they hit the max bounce number were contributing a mix of random colors to the final image. When changing that color to black, it suddenly wasn't as weird and bright, and started looking like the reference.
+
+base_pathtracer.png
+Finished part 1 path tracer, with stochastic antialiasing, material sorting, and diffuse lighting. Looks pretty similar to the reference at this point
+
+funnybunnyshadow.png
+After getting mesh loading working (most errors I ran into resulted in the program not running, so not really any good bloopers there), we have a bunny, but something is wrong. The shadow is messed up and looks like a figure eight.
+
+bunny.png
+The issue, as it turns out, was that the bunny mesh itself had holes in the bottom. This resulted in the rays hitting the ground, bouncing up into the mesh, and because backface culling is off (I use a built in glm function for triangle intersections that does backface culling), we then see light leaking through the mesh. Also, at this point I have BVH working, and I was happy to know it wasn't a BVH issue.
+
+nobvh/bvh.png
+Pictures for a comparison in the README. I was going to use the previous 1400 render for no bvh, but I think I may have had vsync on or something, so I had to scrap that.
+
+bvh_render_time.png
+Hopefully a well-formatted comparison chart for BVH. Not very meaningful given it's just two numbers, but it makes for a good visual.
+
+heatmap/colorleaves + bvh
+These are comparison pictures for a BVH debug tool. I loved seeing the BVH debug images int he presentations, so I wanted to provide one of my own. It also helped me understand more about BVH, since I have done BVH-like spatial partitioning optimizations in the past with my graphics programs, but I had never done one for a raytracer. So that was cool.

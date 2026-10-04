@@ -111,3 +111,87 @@ __host__ __device__ float sphereIntersectionTest(
 
     return glm::length(r.origin - intersectionPoint);
 }
+
+__host__ __device__ float rayTriangleTwoSided(Ray r, glm::vec3 v0, glm::vec3 v1, glm::vec3 v2,
+    float& u, float& v)
+{
+    // determinant of linear system. 
+    glm::vec3 e1 = v1 - v0, e2 = v2 - v0;
+    glm::vec3 p = glm::cross(r.direction, e2);
+    float a = glm::dot(e1, p);
+    // back faces are kept
+    if (fabsf(a) < 1e-8f) return -1.f;
+    
+    // compute u
+    float f = 1.f / a;
+    glm::vec3 s = r.origin - v0;
+    u = f * glm::dot(s, p);
+    if (u < 0.f || u > 1.f) return -1.f;
+    
+    // compute v
+    glm::vec3 q = glm::cross(s, e1);
+    v = f * glm::dot(r.direction, q);
+    if (v < 0.f || u + v > 1.f) return -1.f;
+    
+    // compute t
+    float t = f * glm::dot(e2, q);
+    return t > 1e-6f ? t : -1.f;
+}
+
+__host__ __device__ float triangleIntersectionTest(
+    Geom mesh,
+    Triangle tri,
+    Ray r,
+    Ray localRay,
+    glm::vec3 &intersectionPoint,
+    glm::vec3 &normal,
+    bool &outside)
+{
+    float u, v;
+    float t = rayTriangleTwoSided(localRay, tri.v0, tri.v1, tri.v2, u, v);
+    if (t <= 0.0f) return -1;
+
+    glm::vec3 objspaceIntersection = getPointOnRay(localRay, t);
+    glm::vec3 objspaceNormal = glm::normalize((1.0f - u - v) * tri.n0 + u * tri.n1 + v * tri.n2);
+
+    outside = glm::dot(objspaceNormal, localRay.direction) < 0.0f;
+    if (!outside) objspaceNormal = -objspaceNormal;
+
+    intersectionPoint = multiplyMV(mesh.transform, glm::vec4(objspaceIntersection, 1.f));
+    normal = glm::normalize(multiplyMV(mesh.invTranspose, glm::vec4(objspaceNormal, 0.f)));
+
+    return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 boundsMin,
+    glm::vec3 boundsMax,
+    Ray r,
+    float &tNear)
+{
+    float tFar;
+    return aabbIntersectionTest(boundsMin, boundsMax, r, tNear, tFar);
+}
+
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 boundsMin,
+    glm::vec3 boundsMax,
+    Ray r,
+    float &tNear,
+    float &tFar)
+{
+    float tmin = -1e38f;
+    float tmax = 1e38f;
+    for (int axis = 0; axis < 3; ++axis)
+    {
+        float invD = 1.0f / r.direction[axis];
+        float t0 = (boundsMin[axis] - r.origin[axis]) * invD;
+        float t1 = (boundsMax[axis] - r.origin[axis]) * invD;
+        tmin = glm::max(tmin, glm::min(t0, t1));
+        tmax = glm::min(tmax, glm::max(t0, t1));
+    }
+
+    tNear = tmin;
+    tFar = tmax;
+    return tmax >= tmin && tmax > 0.0f;
+}

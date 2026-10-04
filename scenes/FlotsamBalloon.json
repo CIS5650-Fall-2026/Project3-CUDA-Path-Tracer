@@ -1,0 +1,187 @@
+{
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 1.0, 1.0],
+            "EMITTANCE":3.5
+        },
+        "ropes":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.037, 0.011, 0.0]
+        },
+	"bags":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.145, 0.043, 0.007]
+        },
+	"basket":
+        {
+            "TYPE":"Specular",
+	    "ROUGHNESS":0.9,
+            "RGB":[0.650, 0.387, 0.123]
+        },
+        "ring":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.011, 0.006, 0.005]
+        },
+        "fish":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+	    "TEXTURE":"../../FlotsamBalloonResources/textures/Fish_Tex.png"
+        },
+        "pufferfish1":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+            "TEXTURE":"../../FlotsamBalloonResources/textures/Puffer3.png"
+        },
+	"pufferfish2":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+            "TEXTURE":"../../FlotsamBalloonResources/textures/Puffer1.png"
+        },
+	"pufferfish3":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+            "TEXTURE":"../../FlotsamBalloonResources/textures/Puffer2.png"
+        },
+	"pufferfish4":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0],
+            "TEXTURE":"../../FlotsamBalloonResources/textures/Puffer4.png"
+        },
+	"glassWater":
+	{
+	    "TYPE":"Specular",
+	    "RGB":[1.0, 1.0, 1.0],
+	    "REFLECTIVE":0.0,
+	    "REFRACTIVE":1.0,
+	    "IOR":1.333
+	}
+
+    },
+    "Camera":
+    {
+        "RES":[2160,1720],
+        "FOVY":16.3051,
+        "ITERATIONS":50,
+        "DEPTH":12,
+        "FILE":"FlotsamBalloon",
+        "HDRI":"../../FlotsamBalloonResources/textures/sunflowers_puresky_4k.exr",
+        "HDRI_ROTATION":-90.0,
+        "EYE":[0.0,0.0,4.5049],
+        "LOOKAT":[0.0,0.0,0.0],
+        "UP":[-0.06429,0.99793,0.0],
+	"METERS_PER_UNIT":1.0,
+	"FOCUS_DISTANCE":4.5049,
+	"FSTOP":4.0,
+	"SENSOR_HEIGHT":28.6667
+    },
+    "Objects":
+    [
+        {
+    	    "TYPE":"cube",
+    	    "MATERIAL":"light",
+    	    "TRANS":[0.2467, 5.9168, 0.0],
+    	    "ROTAT":[0.0, 0.0, -2.3875],
+    	    "SCALE":[50.9196, 0.7172, 20.9196],
+    	    "VISIBLE_IN_GLASS":true
+	},
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"glassWater",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Ocean_alt.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"glassWater",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Splash_alt.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"ropes",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Ropes.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"ring",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Ring.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"pufferfish1",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Pufferfish.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"pufferfish2",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Pufferfish.001.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"pufferfish3",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Pufferfish.002.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"pufferfish4",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Pufferfish.003.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"fish",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Fishes.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"bags",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Bags.gltf"
+        },
+	{
+            "TYPE":"mesh",
+            "MATERIAL":"basket",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0],
+	    "FILENAME":"../../FlotsamBalloonResources/gltf/Basket.gltf"
+        }
+    ]
+}

@@ -44,5 +44,24 @@ __host__ __device__ void scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    glm::vec3 geomNormal,
     const Material& m,
-    thrust::default_random_engine& rng);
+    thrust::default_random_engine& rng,
+    bool outside);
+
+__host__ __device__ inline bool isMicrofacet(const Material& m)
+{
+    return m.hasRefractive <= 0.0f && m.hasReflective > 0.0f && m.roughness > 0.0f;
+}
+
+/**
+ * Evaluates a non-delta BSDF (Lambertian diffuse or GGX microfacet) for light arriving from wi and
+ * leaving toward wo (both unit, pointing away from the surface). Returns f and writes the solid-angle
+ * pdf that scatterRay would have sampled wi with, for NEE + MIS.
+ */
+__host__ __device__ glm::vec3 evalBSDF(
+    const Material& m,
+    glm::vec3 normal,
+    glm::vec3 wo,
+    glm::vec3 wi,
+    float& pdf);

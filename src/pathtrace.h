@@ -6,4 +6,7 @@
 void InitDataContainer(GuiDataContainer* guiData);
 void pathtraceInit(Scene *scene);
 void pathtraceFree();
+void pathtraceReset();
+void pathtraceCopyImageToHost();
 void pathtrace(uchar4 *pbo, int frame, int iteration);
+void pathtracePrintStats();

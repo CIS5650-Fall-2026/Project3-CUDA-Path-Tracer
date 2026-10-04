@@ -71,3 +71,57 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+/**
+ * Möller-Trumbore intersection algorithm
+ *
+ * Computes the intersection distance and barycentric coordinates of a ray hitting
+ * a triangle. This is the same as glm::rayTriangle, but does not cull backfaces.
+ * 
+ * @param r             The incoming ray containing origin and normalized direction
+ * @param v0, v1, v2    vertex positions of the triangle
+ * @param u, v          Barycentric coordinates w.r.t. v1 and v2
+ * @return              float t : distance to hit from ray origin. -1.f if no hit
+ */
+    __host__ __device__ float rayTriangleTwoSided(Ray r, glm::vec3 v0, glm::vec3 v1, glm::vec3 v2,
+        float& u, float& v);
+
+/**
+ * Test intersection between a ray and one triangle of a mesh Geom.
+ * tri holds the triangle's object-space vertices and normals.
+ * r is considered to be transformed into mesh's object space beforehand.
+ *
+ * @param intersectionPoint  Output param for point of intersection.
+ * @param normal             Output param for surface normal.
+ * @param outside            Output param for whether ray came from outside.
+ * @return                   Ray parameter t value. -1 if no intersection.
+ */
+__host__ __device__ float triangleIntersectionTest(
+    Geom mesh,
+    Triangle tri,
+    Ray r,
+    Ray localRay,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+/**
+ * Test intersection between a ray and an axis-aligned bounding box. 
+ * r is considered to be transformed into mesh's object space beforehand.
+ *
+ * @param tNear  Output parameter for the near intersection distance.
+ * @return       Whether the ray hits the box.
+ */
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 boundsMin,
+    glm::vec3 boundsMax,
+    Ray r,
+    float& tNear);
+
+// Version that also outputs far distance
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 boundsMin,
+    glm::vec3 boundsMax,
+    Ray r,
+    float& tNear,
+    float& tFar);

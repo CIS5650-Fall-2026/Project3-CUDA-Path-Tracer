@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(cis565_path_tracer LANGUAGES CUDA CXX)
+project(cis565_path_tracer LANGUAGES CUDA CXX C)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -13,6 +13,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Set a default build type if none was specified
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -48,6 +50,14 @@ set(GLM_ROOT_DIR "${CMAKE_SOURCE_DIR}/external")
 find_package(GLM REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
+set(OIDN_ROOT "${CMAKE_SOURCE_DIR}/external/oidn" CACHE PATH "Open Image Denoise package (contains lib/cmake/OpenImageDenoise-*)")
+find_package(OpenImageDenoise 2.0 CONFIG QUIET HINTS "${OIDN_ROOT}")
+if(OpenImageDenoise_FOUND)
+    message(STATUS "Open Image Denoise found: denoiser enabled")
+else()
+    message(STATUS "Open Image Denoise not found (OIDN_ROOT=${OIDN_ROOT}): building without the denoiser")
+endif()
+
 set(headers
     src/image.h
     src/interactions.h
@@ -57,6 +67,17 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/mesh.h
+    external/include/tiny_gltf_v3.h
+    external/include/tinygltf_json_c.h
+    src/bvh.h
+    src/denoise.h
+    src/hdri.h
+    external/include/tinyexr.h
+    external/include/exr_reader.hh
+    external/include/streamreader.hh
+    external/include/miniz.h
+    src/texturing.h
 )
 
 set(sources
@@ -69,6 +90,13 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/mesh.cpp
+    external/include/tiny_gltf_v3.c
+    src/bvh.cpp
+    src/denoise.cpp
+    src/hdri.cpp
+    external/include/miniz.c
+    src/texturing.cu
 )
 
 set(imgui_headers
@@ -107,10 +135,23 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE TINYGLTF3_ENABLE_FS)
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction
 )
+if(OpenImageDenoise_FOUND)
+    target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE USE_OIDN)
+    target_link_libraries(${CMAKE_PROJECT_NAME} OpenImageDenoise)
+    if(WIN32)
+        get_filename_component(OIDN_BIN_DIR "${OpenImageDenoise_DIR}/../../../bin" ABSOLUTE)
+        foreach(dll OpenImageDenoise OpenImageDenoise_core OpenImageDenoise_device_cpu OpenImageDenoise_device_cuda tbb12)
+            add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${OIDN_BIN_DIR}/${dll}.dll" "$<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>")
+        endforeach()
+    endif()
+endif()
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
 
@@ -118,4 +159,9 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,Rel
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
+if(MSVC)
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
+        "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+    )
+endif()
 

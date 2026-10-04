@@ -1,0 +1,148 @@
+{
+    "Materials": {
+        "light": {
+            "TYPE": "Emitting",
+            "RGB": [1.0, 1.0, 1.0],
+            "EMITTANCE": 5.0
+        },
+        "diffuse_white": {
+            "TYPE": "Diffuse",
+            "RGB": [0.98, 0.98, 0.98]
+        },
+        "diffuse_red": {
+            "TYPE": "Diffuse",
+            "RGB": [0.85, 0.35, 0.35]
+        },
+        "diffuse_green": {
+            "TYPE": "Diffuse",
+            "RGB": [0.35, 0.85, 0.35]
+        },
+        "metal_rough_000": {
+            "TYPE": "Specular",
+            "RGB": [0.95, 0.95, 0.95],
+            "ROUGHNESS": 0.0
+        },
+        "metal_rough_020": {
+            "TYPE": "Specular",
+            "RGB": [0.95, 0.95, 0.95],
+            "ROUGHNESS": 0.2
+        },
+        "metal_rough_040": {
+            "TYPE": "Specular",
+            "RGB": [0.95, 0.95, 0.95],
+            "ROUGHNESS": 0.4
+        },
+        "metal_rough_060": {
+            "TYPE": "Specular",
+            "RGB": [0.95, 0.95, 0.95],
+            "ROUGHNESS": 0.6
+        },
+        "metal_rough_080": {
+            "TYPE": "Specular",
+            "RGB": [0.95, 0.95, 0.95],
+            "ROUGHNESS": 0.8
+        },
+        "metal_rough_100": {
+            "TYPE": "Specular",
+            "RGB": [0.95, 0.95, 0.95],
+            "ROUGHNESS": 1.0
+        }
+    },
+    "Camera": {
+        "RES": [1600, 700],
+        "FOVY": 12.3,
+        "ITERATIONS": 5000,
+        "DEPTH": 32,
+        "FILE": "roughnessSweep",
+        "EYE": [0.0, 2.2, 11.0],
+        "LOOKAT": [0.0, 1.2, 1.0],
+        "UP": [0.0, 1.0, 0.0],
+        "METERS_PER_UNIT": 0.01
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "light",
+            "TRANS": [0.0, 10.0, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [3.0, 0.3, 3.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [0.0, 0.0, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [10.0, 0.01, 10.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [0.0, 10.0, 0.0],
+            "ROTAT": [0.0, 0.0, 90.0],
+            "SCALE": [0.01, 10.0, 10.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [0.0, 5.0, -5.0],
+            "ROTAT": [0.0, 90.0, 0.0],
+            "SCALE": [0.01, 10.0, 10.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_red",
+            "TRANS": [-5.0, 5.0, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [0.01, 10.0, 10.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_green",
+            "TRANS": [5.0, 5.0, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [0.01, 10.0, 10.0]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "metal_rough_000",
+            "TRANS": [-3.875, 0.655, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.3, 1.3, 1.3]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "metal_rough_020",
+            "TRANS": [-2.325, 0.655, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.3, 1.3, 1.3]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "metal_rough_040",
+            "TRANS": [-0.775, 0.655, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.3, 1.3, 1.3]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "metal_rough_060",
+            "TRANS": [0.775, 0.655, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.3, 1.3, 1.3]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "metal_rough_080",
+            "TRANS": [2.325, 0.655, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.3, 1.3, 1.3]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "metal_rough_100",
+            "TRANS": [3.875, 0.655, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.3, 1.3, 1.3]
+        }
+    ]
+}
