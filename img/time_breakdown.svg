@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="462" viewBox="0 0 720 462" role="img" aria-label="Time per iteration by stage for each configuration">
+<style>
+  svg { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .surface { fill: #fcfcfb; }
+  .title { fill: #0b0b0b; font-size: 15px; font-weight: 600; }
+  .sub, .label { fill: #52514e; font-size: 12px; }
+  .value, .group { fill: #0b0b0b; font-size: 12px; }
+  .group { font-weight: 600; }
+  .tick { fill: #898781; font-size: 11px; font-variant-numeric: tabular-nums; }
+  .grid { stroke: #e1e0d9; stroke-width: 1; }
+  .axis { stroke: #c3c2b7; stroke-width: 1; }
+  polyline.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .s0 { fill: #2a78d6; stroke: #2a78d6; }
+  .s1 { fill: #eb6834; stroke: #eb6834; }
+  .s2 { fill: #1baf7a; stroke: #1baf7a; }
+  .s3 { fill: #eda100; stroke: #eda100; }
+  .s4 { fill: #e87ba4; stroke: #e87ba4; }
+  .s5 { fill: #008300; stroke: #008300; }
+  .ring { stroke: #fcfcfb; stroke-width: 2; }
+  @media (prefers-color-scheme: dark) {
+    .surface { fill: #1a1a19; }
+    .title, .value, .group { fill: #ffffff; }
+    .sub, .label { fill: #c3c2b7; }
+    .grid { stroke: #2c2c2a; }
+    .axis { stroke: #383835; }
+    .s0 { fill: #3987e5; stroke: #3987e5; }
+    .s1 { fill: #d95926; stroke: #d95926; }
+    .s2 { fill: #199e70; stroke: #199e70; }
+    .s3 { fill: #c98500; stroke: #c98500; }
+    .s4 { fill: #d55181; stroke: #d55181; }
+    .s5 { fill: #008300; stroke: #008300; }
+    .ring { stroke: #1a1a19; }
+  }
+</style>
+<rect class="surface" width="720" height="462" rx="8"/>
+<text class="title" x="20" y="28">Time per iteration by stage (ms, lower is better)</text>
+<text class="sub" x="20" y="46">800 x 800, max depth 8, 300 iterations; kernel times from Nsight Systems</text>
+<rect class="s0" x="20" y="67" width="10" height="10" rx="2"/>
+<text class="label" x="35" y="72" dominant-baseline="middle">Intersection</text>
+<rect class="s1" x="130" y="67" width="10" height="10" rx="2"/>
+<text class="label" x="145" y="72" dominant-baseline="middle">Shading</text>
+<rect class="s2" x="207" y="67" width="10" height="10" rx="2"/>
+<text class="label" x="222" y="72" dominant-baseline="middle">Compaction</text>
+<rect class="s3" x="304" y="67" width="10" height="10" rx="2"/>
+<text class="label" x="319" y="72" dominant-baseline="middle">Sorting</text>
+<rect class="s4" x="381" y="67" width="10" height="10" rx="2"/>
+<text class="label" x="396" y="72" dominant-baseline="middle">Other kernels</text>
+<rect class="s5" x="20" y="87" width="10" height="10" rx="2"/>
+<text class="label" x="35" y="92" dominant-baseline="middle">GPU idle (syncs, thrust allocations)</text>
+<line class="axis" x1="150.0" x2="150.0" y1="120" y2="416"/>
+<text class="tick" x="150.0" y="434" text-anchor="middle">0</text>
+<line class="grid" x1="252.0" x2="252.0" y1="120" y2="416"/>
+<text class="tick" x="252.0" y="434" text-anchor="middle">20</text>
+<line class="grid" x1="354.0" x2="354.0" y1="120" y2="416"/>
+<text class="tick" x="354.0" y="434" text-anchor="middle">40</text>
+<line class="grid" x1="456.0" x2="456.0" y1="120" y2="416"/>
+<text class="tick" x="456.0" y="434" text-anchor="middle">60</text>
+<line class="grid" x1="558.0" x2="558.0" y1="120" y2="416"/>
+<text class="tick" x="558.0" y="434" text-anchor="middle">80</text>
+<line class="grid" x1="660.0" x2="660.0" y1="120" y2="416"/>
+<text class="tick" x="660.0" y="434" text-anchor="middle">100</text>
+<text class="label" x="405.0" y="454" text-anchor="middle">ms per iteration</text>
+<text class="group" x="20" y="138">Open Cornell box</text>
+<text class="label" x="140" y="163.0" text-anchor="end" dominant-baseline="middle">Baseline</text>
+<rect class="s0" stroke="none" x="150.0" y="153.0" width="78.5" height="20"><title>Open Cornell box, Baseline - Intersection: 15.79 ms</title></rect>
+<rect class="s1" stroke="none" x="230.5" y="153.0" width="11.0" height="20"><title>Open Cornell box, Baseline - Shading: 2.55 ms</title></rect>
+<rect class="s4" stroke="none" x="243.5" y="153.0" width="0.6" height="20"><title>Open Cornell box, Baseline - Other kernels: 0.52 ms</title></rect>
+<path class="s5" stroke="none" d="M246.2,153.0 h0.0 a1.8,1.8 0 0 1 1.8,1.8 v16.3 a1.8,1.8 0 0 1 -1.8,1.8 h-0.0 z"><title>Open Cornell box, Baseline - GPU idle (syncs, thrust allocations): 0.36 ms</title></path>
+<text class="value" x="254.0" y="163.0" dominant-baseline="middle">19.2</text>
+<text class="label" x="140" y="193.0" text-anchor="end" dominant-baseline="middle">Compaction</text>
+<rect class="s0" stroke="none" x="150.0" y="183.0" width="43.6" height="20"><title>Open Cornell box, Compaction - Intersection: 8.94 ms</title></rect>
+<rect class="s1" stroke="none" x="195.6" y="183.0" width="5.4" height="20"><title>Open Cornell box, Compaction - Shading: 1.45 ms</title></rect>
+<rect class="s2" stroke="none" x="203.0" y="183.0" width="18.9" height="20"><title>Open Cornell box, Compaction - Compaction: 4.11 ms</title></rect>
+<rect class="s4" stroke="none" x="223.9" y="183.0" width="0.6" height="20"><title>Open Cornell box, Compaction - Other kernels: 0.51 ms</title></rect>
+<path class="s5" stroke="none" d="M226.6,183.0 h28.1 a4.0,4.0 0 0 1 4.0,4.0 v12.0 a4.0,4.0 0 0 1 -4.0,4.0 h-28.1 z"><title>Open Cornell box, Compaction - GPU idle (syncs, thrust allocations): 6.29 ms</title></path>
+<text class="value" x="264.6" y="193.0" dominant-baseline="middle">21.3</text>
+<text class="label" x="140" y="223.0" text-anchor="end" dominant-baseline="middle">Sort</text>
+<rect class="s0" stroke="none" x="150.0" y="213.0" width="48.5" height="20"><title>Open Cornell box, Sort - Intersection: 9.90 ms</title></rect>
+<rect class="s1" stroke="none" x="200.5" y="213.0" width="7.7" height="20"><title>Open Cornell box, Sort - Shading: 1.89 ms</title></rect>
+<rect class="s3" stroke="none" x="210.1" y="213.0" width="138.1" height="20"><title>Open Cornell box, Sort - Sorting: 27.47 ms</title></rect>
+<rect class="s4" stroke="none" x="350.2" y="213.0" width="1.0" height="20"><title>Open Cornell box, Sort - Other kernels: 0.59 ms</title></rect>
+<path class="s5" stroke="none" d="M353.3,213.0 h162.9 a4.0,4.0 0 0 1 4.0,4.0 v12.0 a4.0,4.0 0 0 1 -4.0,4.0 h-162.9 z"><title>Open Cornell box, Sort - GPU idle (syncs, thrust allocations): 32.73 ms</title></path>
+<text class="value" x="526.2" y="223.0" dominant-baseline="middle">72.6</text>
+<text class="label" x="140" y="253.0" text-anchor="end" dominant-baseline="middle">Compaction + sort</text>
+<rect class="s0" stroke="none" x="150.0" y="243.0" width="43.4" height="20"><title>Open Cornell box, Compaction + sort - Intersection: 8.90 ms</title></rect>
+<rect class="s1" stroke="none" x="195.4" y="243.0" width="4.9" height="20"><title>Open Cornell box, Compaction + sort - Shading: 1.35 ms</title></rect>
+<rect class="s2" stroke="none" x="202.3" y="243.0" width="18.9" height="20"><title>Open Cornell box, Compaction + sort - Compaction: 4.10 ms</title></rect>
+<rect class="s3" stroke="none" x="223.2" y="243.0" width="66.7" height="20"><title>Open Cornell box, Compaction + sort - Sorting: 13.47 ms</title></rect>
+<rect class="s4" stroke="none" x="291.9" y="243.0" width="0.9" height="20"><title>Open Cornell box, Compaction + sort - Other kernels: 0.57 ms</title></rect>
+<path class="s5" stroke="none" d="M294.8,243.0 h113.6 a4.0,4.0 0 0 1 4.0,4.0 v12.0 a4.0,4.0 0 0 1 -4.0,4.0 h-113.6 z"><title>Open Cornell box, Compaction + sort - GPU idle (syncs, thrust allocations): 23.05 ms</title></path>
+<text class="value" x="418.3" y="253.0" dominant-baseline="middle">51.4</text>
+<text class="group" x="20" y="286">Closed Cornell box</text>
+<text class="label" x="140" y="311.0" text-anchor="end" dominant-baseline="middle">Baseline</text>
+<rect class="s0" stroke="none" x="150.0" y="301.0" width="102.0" height="20"><title>Closed Cornell box, Baseline - Intersection: 20.39 ms</title></rect>
+<rect class="s1" stroke="none" x="254.0" y="301.0" width="13.3" height="20"><title>Closed Cornell box, Baseline - Shading: 3.00 ms</title></rect>
+<rect class="s4" stroke="none" x="269.3" y="301.0" width="0.7" height="20"><title>Closed Cornell box, Baseline - Other kernels: 0.53 ms</title></rect>
+<path class="s5" stroke="none" d="M271.9,301.0 h0.0 a1.3,1.3 0 0 1 1.3,1.3 v17.4 a1.3,1.3 0 0 1 -1.3,1.3 h-0.0 z"><title>Closed Cornell box, Baseline - GPU idle (syncs, thrust allocations): 0.25 ms</title></path>
+<text class="value" x="279.2" y="311.0" dominant-baseline="middle">24.2</text>
+<text class="label" x="140" y="341.0" text-anchor="end" dominant-baseline="middle">Compaction</text>
+<rect class="s0" stroke="none" x="150.0" y="331.0" width="94.1" height="20"><title>Closed Cornell box, Compaction - Intersection: 18.84 ms</title></rect>
+<rect class="s1" stroke="none" x="246.1" y="331.0" width="12.8" height="20"><title>Closed Cornell box, Compaction - Shading: 2.90 ms</title></rect>
+<rect class="s2" stroke="none" x="260.9" y="331.0" width="38.4" height="20"><title>Closed Cornell box, Compaction - Compaction: 7.92 ms</title></rect>
+<rect class="s4" stroke="none" x="301.3" y="331.0" width="0.6" height="20"><title>Closed Cornell box, Compaction - Other kernels: 0.50 ms</title></rect>
+<path class="s5" stroke="none" d="M303.9,331.0 h56.8 a4.0,4.0 0 0 1 4.0,4.0 v12.0 a4.0,4.0 0 0 1 -4.0,4.0 h-56.8 z"><title>Closed Cornell box, Compaction - GPU idle (syncs, thrust allocations): 11.92 ms</title></path>
+<text class="value" x="370.7" y="341.0" dominant-baseline="middle">42.1</text>
+<text class="label" x="140" y="371.0" text-anchor="end" dominant-baseline="middle">Sort</text>
+<rect class="s0" stroke="none" x="150.0" y="361.0" width="101.1" height="20"><title>Closed Cornell box, Sort - Intersection: 20.21 ms</title></rect>
+<rect class="s1" stroke="none" x="253.1" y="361.0" width="12.3" height="20"><title>Closed Cornell box, Sort - Shading: 2.80 ms</title></rect>
+<rect class="s3" stroke="none" x="267.4" y="361.0" width="139.1" height="20"><title>Closed Cornell box, Sort - Sorting: 27.66 ms</title></rect>
+<rect class="s4" stroke="none" x="408.4" y="361.0" width="1.3" height="20"><title>Closed Cornell box, Sort - Other kernels: 0.65 ms</title></rect>
+<path class="s5" stroke="none" d="M411.8,361.0 h161.5 a4.0,4.0 0 0 1 4.0,4.0 v12.0 a4.0,4.0 0 0 1 -4.0,4.0 h-161.5 z"><title>Closed Cornell box, Sort - GPU idle (syncs, thrust allocations): 32.46 ms</title></path>
+<text class="value" x="583.3" y="371.0" dominant-baseline="middle">83.8</text>
+<text class="label" x="140" y="401.0" text-anchor="end" dominant-baseline="middle">Compaction + sort</text>
+<rect class="s0" stroke="none" x="150.0" y="391.0" width="96.2" height="20"><title>Closed Cornell box, Compaction + sort - Intersection: 19.25 ms</title></rect>
+<rect class="s1" stroke="none" x="248.2" y="391.0" width="11.7" height="20"><title>Closed Cornell box, Compaction + sort - Shading: 2.69 ms</title></rect>
+<rect class="s2" stroke="none" x="261.9" y="391.0" width="38.5" height="20"><title>Closed Cornell box, Compaction + sort - Compaction: 7.95 ms</title></rect>
+<rect class="s3" stroke="none" x="302.4" y="391.0" width="129.7" height="20"><title>Closed Cornell box, Compaction + sort - Sorting: 25.82 ms</title></rect>
+<rect class="s4" stroke="none" x="434.1" y="391.0" width="1.1" height="20"><title>Closed Cornell box, Compaction + sort - Other kernels: 0.61 ms</title></rect>
+<path class="s5" stroke="none" d="M437.2,391.0 h206.2 a4.0,4.0 0 0 1 4.0,4.0 v12.0 a4.0,4.0 0 0 1 -4.0,4.0 h-206.2 z"><title>Closed Cornell box, Compaction + sort - GPU idle (syncs, thrust allocations): 41.21 ms</title></path>
+<text class="value" x="653.4" y="401.0" dominant-baseline="middle">97.5</text>
+</svg>

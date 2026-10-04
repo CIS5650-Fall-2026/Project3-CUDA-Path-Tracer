@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Live paths entering each bounce, open vs closed Cornell box">
+<style>
+  svg { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .surface { fill: #fcfcfb; }
+  .title { fill: #0b0b0b; font-size: 15px; font-weight: 600; }
+  .sub, .label { fill: #52514e; font-size: 12px; }
+  .value, .group { fill: #0b0b0b; font-size: 12px; }
+  .group { font-weight: 600; }
+  .tick { fill: #898781; font-size: 11px; font-variant-numeric: tabular-nums; }
+  .grid { stroke: #e1e0d9; stroke-width: 1; }
+  .axis { stroke: #c3c2b7; stroke-width: 1; }
+  polyline.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .s0 { fill: #2a78d6; stroke: #2a78d6; }
+  .s1 { fill: #eb6834; stroke: #eb6834; }
+  .ring { stroke: #fcfcfb; stroke-width: 2; }
+  @media (prefers-color-scheme: dark) {
+    .surface { fill: #1a1a19; }
+    .title, .value, .group { fill: #ffffff; }
+    .sub, .label { fill: #c3c2b7; }
+    .grid { stroke: #2c2c2a; }
+    .axis { stroke: #383835; }
+    .s0 { fill: #3987e5; stroke: #3987e5; }
+    .s1 { fill: #d95926; stroke: #d95926; }
+    .ring { stroke: #1a1a19; }
+  }
+</style>
+<rect class="surface" width="640" height="360" rx="8"/>
+<text class="title" x="20" y="28">Live paths entering each bounce</text>
+<text class="sub" x="20" y="46">Stream compaction on; 800 x 800 = 640,000 camera paths, max depth 8</text>
+<line class="axis" x1="76" x2="470" y1="312.0" y2="312.0"/>
+<text class="tick" x="68" y="312.0" text-anchor="end" dominant-baseline="middle">0</text>
+<line class="grid" x1="76" x2="470" y1="251.5" y2="251.5"/>
+<text class="tick" x="68" y="251.5" text-anchor="end" dominant-baseline="middle">200,000</text>
+<line class="grid" x1="76" x2="470" y1="191.0" y2="191.0"/>
+<text class="tick" x="68" y="191.0" text-anchor="end" dominant-baseline="middle">400,000</text>
+<line class="grid" x1="76" x2="470" y1="130.5" y2="130.5"/>
+<text class="tick" x="68" y="130.5" text-anchor="end" dominant-baseline="middle">600,000</text>
+<line class="grid" x1="76" x2="470" y1="70.0" y2="70.0"/>
+<text class="tick" x="68" y="70.0" text-anchor="end" dominant-baseline="middle">800,000</text>
+<text class="tick" x="76.0" y="330" text-anchor="middle">1</text>
+<text class="tick" x="132.3" y="330" text-anchor="middle">2</text>
+<text class="tick" x="188.6" y="330" text-anchor="middle">3</text>
+<text class="tick" x="244.9" y="330" text-anchor="middle">4</text>
+<text class="tick" x="301.1" y="330" text-anchor="middle">5</text>
+<text class="tick" x="357.4" y="330" text-anchor="middle">6</text>
+<text class="tick" x="413.7" y="330" text-anchor="middle">7</text>
+<text class="tick" x="470.0" y="330" text-anchor="middle">8</text>
+<text class="label" x="273.0" y="352" text-anchor="middle">Bounce</text>
+<polyline class="s0 line" points="76.0,118.4 132.3,153.8 188.6,203.0 244.9,228.2 301.1,245.3 357.4,257.9 413.7,268.0 470.0,276.0"/>
+<circle class="s0 ring" cx="76.0" cy="118.4" r="4"><title>Open Cornell box, bounce 1: 640,000 live paths</title></circle>
+<circle class="s0 ring" cx="132.3" cy="153.8" r="4"><title>Open Cornell box, bounce 2: 522,812 live paths</title></circle>
+<circle class="s0 ring" cx="188.6" cy="203.0" r="4"><title>Open Cornell box, bounce 3: 360,443 live paths</title></circle>
+<circle class="s0 ring" cx="244.9" cy="228.2" r="4"><title>Open Cornell box, bounce 4: 277,096 live paths</title></circle>
+<circle class="s0 ring" cx="301.1" cy="245.3" r="4"><title>Open Cornell box, bounce 5: 220,493 live paths</title></circle>
+<circle class="s0 ring" cx="357.4" cy="257.9" r="4"><title>Open Cornell box, bounce 6: 178,680 live paths</title></circle>
+<circle class="s0 ring" cx="413.7" cy="268.0" r="4"><title>Open Cornell box, bounce 7: 145,446 live paths</title></circle>
+<circle class="s0 ring" cx="470.0" cy="276.0" r="4"><title>Open Cornell box, bounce 8: 119,173 live paths</title></circle>
+<text class="value" x="482.0" y="276.0" dominant-baseline="middle">119,173</text>
+<polyline class="s1 line" points="76.0,118.4 132.3,123.6 188.6,126.8 244.9,130.0 301.1,133.1 357.4,136.2 413.7,139.1 470.0,142.0"/>
+<circle class="s1 ring" cx="76.0" cy="118.4" r="4"><title>Closed Cornell box, bounce 1: 640,000 live paths</title></circle>
+<circle class="s1 ring" cx="132.3" cy="123.6" r="4"><title>Closed Cornell box, bounce 2: 622,735 live paths</title></circle>
+<circle class="s1 ring" cx="188.6" cy="126.8" r="4"><title>Closed Cornell box, bounce 3: 612,181 live paths</title></circle>
+<circle class="s1 ring" cx="244.9" cy="130.0" r="4"><title>Closed Cornell box, bounce 4: 601,576 live paths</title></circle>
+<circle class="s1 ring" cx="301.1" cy="133.1" r="4"><title>Closed Cornell box, bounce 5: 591,386 live paths</title></circle>
+<circle class="s1 ring" cx="357.4" cy="136.2" r="4"><title>Closed Cornell box, bounce 6: 581,184 live paths</title></circle>
+<circle class="s1 ring" cx="413.7" cy="139.1" r="4"><title>Closed Cornell box, bounce 7: 571,414 live paths</title></circle>
+<circle class="s1 ring" cx="470.0" cy="142.0" r="4"><title>Closed Cornell box, bounce 8: 561,838 live paths</title></circle>
+<text class="value" x="482.0" y="142.0" dominant-baseline="middle">561,838</text>
+<rect class="s0" x="540" y="69" width="14" height="3" rx="1.5"/>
+<text class="label" x="560" y="70" dominant-baseline="middle">Open</text>
+<rect class="s1" x="540" y="89" width="14" height="3" rx="1.5"/>
+<text class="label" x="560" y="90" dominant-baseline="middle">Closed</text>
+</svg>
