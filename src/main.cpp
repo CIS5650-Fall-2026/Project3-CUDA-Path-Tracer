@@ -23,6 +23,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <chrono>
 
 static std::string startTimeString;
 
@@ -45,6 +46,7 @@ Scene* scene;
 GuiDataContainer* guiData;
 RenderState* renderState;
 int iteration;
+std::chrono::high_resolution_clock::time_point renderStartTime;
 
 int width;
 int height;
@@ -448,6 +450,7 @@ void runCuda()
     {
         pathtraceFree();
         pathtraceInit(scene);
+        renderStartTime = std::chrono::high_resolution_clock::now();
     }
 
     if (iteration < renderState->iterations)
@@ -465,6 +468,20 @@ void runCuda()
     }
     else
     {
+        cudaDeviceSynchronize();
+
+        auto renderEndTime = std::chrono::high_resolution_clock::now();
+        double renderSeconds = std::chrono::duration<double>(renderEndTime - renderStartTime).count();
+
+        std::cout << std::endl;
+        std::cout << "===== Render Performance =====" << std::endl;
+        std::cout << "Iterations: " << renderState->iterations << std::endl;
+        std::cout << "Resolution: " << width << " x " << height << std::endl;
+        std::cout << "Trace Depth: " << renderState->traceDepth << std::endl;
+        std::cout << "Total Render Time: " << renderSeconds << " seconds" << std::endl;
+        std::cout << "Average Time Per Iteration: " << renderSeconds / renderState->iterations << " seconds" << std::endl;
+        std::cout << "==============================" << std::endl;
+
         saveImage();
         pathtraceFree();
         cudaDeviceReset();

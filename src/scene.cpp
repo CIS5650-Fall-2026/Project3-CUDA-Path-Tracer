@@ -47,17 +47,34 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = 0.0f;
+            newMaterial.emittance = 0.0f;
         }
         else if (p["TYPE"] == "Emitting")
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = 0.0f;
             newMaterial.emittance = p["EMITTANCE"];
         }
         else if (p["TYPE"] == "Specular")
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+
+            newMaterial.specular.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.specular.exponent = 0.0f;
+
+            newMaterial.hasReflective = 1.0f;
+            newMaterial.emittance = 0.0f;
+        }
+        else if (p["TYPE"] == "Refractive")
+        {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+
+            newMaterial.hasRefractive = 1.0f;
+            newMaterial.indexOfRefraction = p["IOR"];
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -66,7 +83,7 @@ void Scene::loadFromJSON(const std::string& jsonName)
     for (const auto& p : objectsData)
     {
         const auto& type = p["TYPE"];
-        Geom newGeom;
+        Geom newGeom{};
         if (type == "cube")
         {
             newGeom.type = CUBE;
@@ -82,6 +99,15 @@ void Scene::loadFromJSON(const std::string& jsonName)
         newGeom.translation = glm::vec3(trans[0], trans[1], trans[2]);
         newGeom.rotation = glm::vec3(rotat[0], rotat[1], rotat[2]);
         newGeom.scale = glm::vec3(scale[0], scale[1], scale[2]);
+        if (p.contains("VELOCITY"))
+        {
+            const auto& velocity = p["VELOCITY"];
+            newGeom.velocity = glm::vec3(velocity[0], velocity[1], velocity[2]);
+        }
+        else
+        {
+            newGeom.velocity = glm::vec3(0.0f);
+        }
         newGeom.transform = utilityCore::buildTransformationMatrix(
             newGeom.translation, newGeom.rotation, newGeom.scale);
         newGeom.inverseTransform = glm::inverse(newGeom.transform);
