@@ -1,0 +1,2026 @@
+{
+  "Materials": {
+    "obsidian": {
+      "RGB": [
+        0.045,
+        0.055,
+        0.075
+      ],
+      "TYPE": "Diffuse"
+    },
+    "frame": {
+      "RGB": [
+        0.19,
+        0.23,
+        0.3
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.28
+    },
+    "floor": {
+      "RGB": [
+        0.12,
+        0.14,
+        0.18
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.24
+    },
+    "inset": {
+      "RGB": [
+        0.095,
+        0.12,
+        0.16
+      ],
+      "TYPE": "Diffuse"
+    },
+    "cyan": {
+      "EMITTANCE": 3.0,
+      "RGB": [
+        0.12,
+        0.7,
+        1.0
+      ],
+      "TYPE": "Emitting"
+    },
+    "amber": {
+      "EMITTANCE": 3.0,
+      "RGB": [
+        1.0,
+        0.42,
+        0.1
+      ],
+      "TYPE": "Emitting"
+    },
+    "white": {
+      "EMITTANCE": 5.0,
+      "RGB": [
+        1.0,
+        0.95,
+        0.86
+      ],
+      "TYPE": "Emitting"
+    },
+    "specimen_1": {
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.01
+    },
+    "specimen_2": {
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.02
+    },
+    "specimen_3": {
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.05
+    },
+    "specimen_4": {
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.1
+    },
+    "specimen_5": {
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.2
+    },
+    "specimen_6": {
+      "RGB": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.4
+    }
+  },
+  "Camera": {
+    "RES": [
+      840,
+      400
+    ],
+    "FOVY": 8.5,
+    "ITERATIONS": 1024,
+    "DEPTH": 10,
+    "FILE": "roughness_orbital_gallery",
+    "EYE": [
+      0,
+      -3.8,
+      44
+    ],
+    "LOOKAT": [
+      0,
+      2.1,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  },
+  "Objects": [
+    {
+      "NAME": "Continuous graphite floor",
+      "TYPE": "rectangle",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0,
+        -0.08,
+        0
+      ],
+      "ROTAT": [
+        -90,
+        0,
+        0
+      ],
+      "SCALE": [
+        160,
+        160,
+        1
+      ]
+    },
+    {
+      "NAME": "Rear architectural wall",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        0,
+        3,
+        -3.0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        29,
+        7,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Raised exhibition stage",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        0,
+        0.02,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        26,
+        0.2,
+        5.8
+      ]
+    },
+    {
+      "NAME": "Front stage cyan seam",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        0,
+        0.04,
+        2.92
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        25.5,
+        0.035,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Bay 1 pedestal",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        -10.5,
+        0.5,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.35,
+        0.8,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Bay 1 pedestal cap",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -10.5,
+        0.94,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.45,
+        0.08,
+        2.7
+      ]
+    },
+    {
+      "NAME": "Roughness 0.01 sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "specimen_1",
+      "TRANS": [
+        -10.5,
+        2.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Roughness 0.01 slanted swatch",
+      "TYPE": "cube",
+      "MATERIAL": "specimen_1",
+      "TRANS": [
+        -10.5,
+        0.73,
+        1.72
+      ],
+      "ROTAT": [
+        -25,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        0.8,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 1 inset",
+      "TYPE": "cube",
+      "MATERIAL": "inset",
+      "TRANS": [
+        -10.5,
+        2.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.7,
+        4.7,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 1 left pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -12.34,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 1 right pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -8.66,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 1 lintel",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -10.5,
+        4.78,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.83,
+        0.16,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 1 cyan rail",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        -12.14,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 1 amber rail",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        -8.86,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 1 overhead canopy",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -10.5,
+        4.88,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.75,
+        0.16,
+        3.4
+      ]
+    },
+    {
+      "NAME": "Bay 1 index 0",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        -10.5,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 2 pedestal",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        -6.3,
+        0.5,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.35,
+        0.8,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Bay 2 pedestal cap",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -6.3,
+        0.94,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.45,
+        0.08,
+        2.7
+      ]
+    },
+    {
+      "NAME": "Roughness 0.02 sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "specimen_2",
+      "TRANS": [
+        -6.3,
+        2.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Roughness 0.02 slanted swatch",
+      "TYPE": "cube",
+      "MATERIAL": "specimen_2",
+      "TRANS": [
+        -6.3,
+        0.73,
+        1.72
+      ],
+      "ROTAT": [
+        -25,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        0.8,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 2 inset",
+      "TYPE": "cube",
+      "MATERIAL": "inset",
+      "TRANS": [
+        -6.3,
+        2.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.7,
+        4.7,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 2 left pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -8.14,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 2 right pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -4.46,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 2 lintel",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -6.3,
+        4.78,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.83,
+        0.16,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 2 cyan rail",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        -7.9399999999999995,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 2 amber rail",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        -4.66,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 2 overhead canopy",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -6.3,
+        4.88,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.75,
+        0.16,
+        3.4
+      ]
+    },
+    {
+      "NAME": "Bay 2 index 0",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        -6.6,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 2 index 1",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        -6.0,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 3 pedestal",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        -2.0999999999999996,
+        0.5,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.35,
+        0.8,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Bay 3 pedestal cap",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -2.0999999999999996,
+        0.94,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.45,
+        0.08,
+        2.7
+      ]
+    },
+    {
+      "NAME": "Roughness 0.05 sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "specimen_3",
+      "TRANS": [
+        -2.0999999999999996,
+        2.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Roughness 0.05 slanted swatch",
+      "TYPE": "cube",
+      "MATERIAL": "specimen_3",
+      "TRANS": [
+        -2.0999999999999996,
+        0.73,
+        1.72
+      ],
+      "ROTAT": [
+        -25,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        0.8,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 3 inset",
+      "TYPE": "cube",
+      "MATERIAL": "inset",
+      "TRANS": [
+        -2.0999999999999996,
+        2.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.7,
+        4.7,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 3 left pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -3.9399999999999995,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 3 right pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -0.25999999999999956,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 3 lintel",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -2.0999999999999996,
+        4.78,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.83,
+        0.16,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 3 cyan rail",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        -3.7399999999999993,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 3 amber rail",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        -0.45999999999999974,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 3 overhead canopy",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        -2.0999999999999996,
+        4.88,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.75,
+        0.16,
+        3.4
+      ]
+    },
+    {
+      "NAME": "Bay 3 index 0",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        -2.6999999999999997,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 3 index 1",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        -2.0999999999999996,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 3 index 2",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        -1.4999999999999998,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 4 pedestal",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        2.1000000000000014,
+        0.5,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.35,
+        0.8,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Bay 4 pedestal cap",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        2.1000000000000014,
+        0.94,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.45,
+        0.08,
+        2.7
+      ]
+    },
+    {
+      "NAME": "Roughness 0.1 sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "specimen_4",
+      "TRANS": [
+        2.1000000000000014,
+        2.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Roughness 0.1 slanted swatch",
+      "TYPE": "cube",
+      "MATERIAL": "specimen_4",
+      "TRANS": [
+        2.1000000000000014,
+        0.73,
+        1.72
+      ],
+      "ROTAT": [
+        -25,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        0.8,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 4 inset",
+      "TYPE": "cube",
+      "MATERIAL": "inset",
+      "TRANS": [
+        2.1000000000000014,
+        2.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.7,
+        4.7,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 4 left pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        0.26000000000000134,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 4 right pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        3.9400000000000013,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 4 lintel",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        2.1000000000000014,
+        4.78,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.83,
+        0.16,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 4 cyan rail",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        0.4600000000000015,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 4 amber rail",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        3.740000000000001,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 4 overhead canopy",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        2.1000000000000014,
+        4.88,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.75,
+        0.16,
+        3.4
+      ]
+    },
+    {
+      "NAME": "Bay 4 index 0",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        1.2000000000000015,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 4 index 1",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        1.8000000000000016,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 4 index 2",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        2.4000000000000012,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 4 index 3",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        3.0000000000000013,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 5 pedestal",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        6.300000000000001,
+        0.5,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.35,
+        0.8,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Bay 5 pedestal cap",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        6.300000000000001,
+        0.94,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.45,
+        0.08,
+        2.7
+      ]
+    },
+    {
+      "NAME": "Roughness 0.2 sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "specimen_5",
+      "TRANS": [
+        6.300000000000001,
+        2.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Roughness 0.2 slanted swatch",
+      "TYPE": "cube",
+      "MATERIAL": "specimen_5",
+      "TRANS": [
+        6.300000000000001,
+        0.73,
+        1.72
+      ],
+      "ROTAT": [
+        -25,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        0.8,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 5 inset",
+      "TYPE": "cube",
+      "MATERIAL": "inset",
+      "TRANS": [
+        6.300000000000001,
+        2.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.7,
+        4.7,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 5 left pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        4.460000000000001,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 5 right pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        8.14,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 5 lintel",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        6.300000000000001,
+        4.78,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.83,
+        0.16,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 5 cyan rail",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        4.660000000000001,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 5 amber rail",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        7.94,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 5 overhead canopy",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        6.300000000000001,
+        4.88,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.75,
+        0.16,
+        3.4
+      ]
+    },
+    {
+      "NAME": "Bay 5 index 0",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        5.1000000000000005,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 5 index 1",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        5.7,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 5 index 2",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        6.300000000000001,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 5 index 3",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        6.9,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 5 index 4",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        7.5,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 6 pedestal",
+      "TYPE": "cube",
+      "MATERIAL": "obsidian",
+      "TRANS": [
+        10.5,
+        0.5,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.35,
+        0.8,
+        2.6
+      ]
+    },
+    {
+      "NAME": "Bay 6 pedestal cap",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        10.5,
+        0.94,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.45,
+        0.08,
+        2.7
+      ]
+    },
+    {
+      "NAME": "Roughness 0.4 sphere",
+      "TYPE": "sphere",
+      "MATERIAL": "specimen_6",
+      "TRANS": [
+        10.5,
+        2.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.2,
+        2.2,
+        2.2
+      ]
+    },
+    {
+      "NAME": "Roughness 0.4 slanted swatch",
+      "TYPE": "cube",
+      "MATERIAL": "specimen_6",
+      "TRANS": [
+        10.5,
+        0.73,
+        1.72
+      ],
+      "ROTAT": [
+        -25,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.5,
+        0.8,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 6 inset",
+      "TYPE": "cube",
+      "MATERIAL": "inset",
+      "TRANS": [
+        10.5,
+        2.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.7,
+        4.7,
+        0.12
+      ]
+    },
+    {
+      "NAME": "Bay 6 left pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        8.66,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 6 right pillar",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        12.34,
+        2.45,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.15,
+        4.6,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 6 lintel",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        10.5,
+        4.78,
+        -2.35
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.83,
+        0.16,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Bay 6 cyan rail",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        8.86,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 6 amber rail",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        12.14,
+        2.6,
+        -2.08
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        3.85,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Bay 6 overhead canopy",
+      "TYPE": "cube",
+      "MATERIAL": "frame",
+      "TRANS": [
+        10.5,
+        4.88,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.75,
+        0.16,
+        3.4
+      ]
+    },
+    {
+      "NAME": "Bay 6 index 0",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        9.0,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 6 index 1",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        9.6,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 6 index 2",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        10.2,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 6 index 3",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        10.8,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 6 index 4",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        11.4,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Bay 6 index 5",
+      "TYPE": "cube",
+      "MATERIAL": "white",
+      "TRANS": [
+        12.0,
+        0.42,
+        1.311
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.16,
+        0.08,
+        0.02
+      ]
+    },
+    {
+      "NAME": "Broad neutral key softbox",
+      "TYPE": "rectangle",
+      "MATERIAL": "white",
+      "TRANS": [
+        0,
+        8,
+        7
+      ],
+      "ROTAT": [
+        90,
+        0,
+        0
+      ],
+      "SCALE": [
+        36,
+        5,
+        1
+      ]
+    },
+    {
+      "NAME": "Cool front reflection ribbon",
+      "TYPE": "rectangle",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        0,
+        5.9,
+        11
+      ],
+      "ROTAT": [
+        180,
+        0,
+        0
+      ],
+      "SCALE": [
+        38,
+        0.22,
+        1
+      ]
+    },
+    {
+      "NAME": "Warm front reflection ribbon",
+      "TYPE": "rectangle",
+      "MATERIAL": "amber",
+      "TRANS": [
+        0,
+        4.8,
+        11
+      ],
+      "ROTAT": [
+        180,
+        0,
+        0
+      ],
+      "SCALE": [
+        38,
+        0.12,
+        1
+      ]
+    }
+  ]
+}

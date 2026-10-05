@@ -42,22 +42,41 @@ void Scene::loadFromJSON(const std::string& jsonName)
         const auto& name = item.key();
         const auto& p = item.value();
         Material newMaterial{};
-        // TODO: handle materials loading differently
+
         if (p["TYPE"] == "Diffuse")
         {
+            newMaterial.type = MATERIAL_DIFFUSE;
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
         }
         else if (p["TYPE"] == "Emitting")
         {
+            newMaterial.type = MATERIAL_EMITTING;
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
             newMaterial.emittance = p["EMITTANCE"];
         }
-        else if (p["TYPE"] == "Specular")
+        else if (p["TYPE"] == "Specular" ||
+                 p["TYPE"] == "Mirror")
         {
+            newMaterial.type = MATERIAL_MIRROR;
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+        }
+        else if (p["TYPE"] == "Dielectric")
+        {
+            newMaterial.type = MATERIAL_DIELECTRIC;
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.indexOfRefraction = p.contains("IOR") ? p["IOR"] : 1.5f;
+        }
+        else if (p["TYPE"] == "Microfacet")
+        {
+            newMaterial.type = MATERIAL_MICROFACET;
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.roughness = p.contains("ROUGHNESS") ? p["ROUGHNESS"] : 0.5f;
+            newMaterial.roughness = glm::clamp(newMaterial.roughness, 0.001f, 1.0f);
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -71,9 +90,22 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             newGeom.type = CUBE;
         }
-        else
+        else if (type == "sphere")
         {
             newGeom.type = SPHERE;
+        }
+        else if (type == "rectangle")
+        {
+            newGeom.type = RECTANGLE;
+        }
+        else
+        {
+            std::cerr
+                << "Unsupported geometry type: "
+                << type
+                << std::endl;
+
+            exit(EXIT_FAILURE);
         }
         newGeom.materialid = MatNameToID[p["MATERIAL"]];
         const auto& trans = p["TRANS"];
@@ -111,11 +143,13 @@ void Scene::loadFromJSON(const std::string& jsonName)
     float fovx = (atan(xscaled) * 180) / PI;
     camera.fov = glm::vec2(fovx, fovy);
 
-    camera.right = glm::normalize(glm::cross(camera.view, camera.up));
-    camera.pixelLength = glm::vec2(2 * xscaled / (float)camera.resolution.x,
-        2 * yscaled / (float)camera.resolution.y);
-
     camera.view = glm::normalize(camera.lookAt - camera.position);
+    camera.right = glm::normalize(glm::cross(camera.view, camera.up));
+    camera.up = glm::normalize(glm::cross(camera.right, camera.view));
+
+    camera.pixelLength = glm::vec2(
+        2.0f * xscaled / static_cast<float>(camera.resolution.x),
+        2.0f * yscaled / static_cast<float>(camera.resolution.y));
 
     //set up render camera stuff
     int arraylen = camera.resolution.x * camera.resolution.y;

@@ -6,19 +6,39 @@
 
 #include <string>
 #include <vector>
+#include <cfloat>
 
 #define BACKGROUND_COLOR (glm::vec3(0.0f))
 
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    RECTANGLE
 };
 
 struct Ray
 {
     glm::vec3 origin;
     glm::vec3 direction;
+};
+
+struct TriangleIndex
+{
+    int i0;
+    int i1;
+    int i2;
+};
+
+struct Hit
+{
+    float t = FLT_MAX;
+
+    int geomId = -1;
+    int primitiveId = -1;
+
+    float u = 0.0f;
+    float v = 0.0f;
 };
 
 struct Geom
@@ -33,17 +53,23 @@ struct Geom
     glm::mat4 invTranspose;
 };
 
+enum MaterialType
+{
+    MATERIAL_DIFFUSE = 0,
+    MATERIAL_MIRROR = 1,
+    MATERIAL_DIELECTRIC = 2,
+    MATERIAL_EMITTING = 3,
+    MATERIAL_MICROFACET = 4,
+    MATERIAL_TYPE_COUNT = 5
+};
+
 struct Material
 {
+    MaterialType type;
     glm::vec3 color;
-    struct
-    {
-        float exponent;
-        glm::vec3 color;
-    } specular;
-    float hasReflective;
-    float hasRefractive;
+
     float indexOfRefraction;
+    float roughness;
     float emittance;
 };
 
@@ -71,7 +97,14 @@ struct RenderState
 struct PathSegment
 {
     Ray ray;
-    glm::vec3 color;
+    glm::vec3 throughput;
+    glm::vec3 radiance;
+
+    glm::vec3 previousPosition;
+    float previousBsdfPdf;
+    bool previousBounceWasDelta;
+    bool previousLightSamplingEnabled;
+
     int pixelIndex;
     int remainingBounces;
 };
@@ -84,4 +117,25 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  int geomId;
+  bool outside;
+};
+
+struct BSDFSample
+{
+    glm::vec3 direction;
+    glm::vec3 bsdfValue;
+    float pdf;
+    bool isDelta;
+    bool valid;
+};
+
+struct LightSample
+{
+    glm::vec3 directionToLight;
+    glm::vec3 emittedRadiance;
+
+    float pdf;
+    int geomId;
+    bool valid;
 };
