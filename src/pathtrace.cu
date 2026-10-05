@@ -23,7 +23,7 @@
 #include "lighting.h"
 
 constexpr bool ENABLE_STREAM_COMPACTION = true;
-constexpr bool ENABLE_MATERIAL_SORTING = true;
+constexpr bool ENABLE_MATERIAL_SORTING = false;
 constexpr bool ENABLE_ANTIALIASING = true;
 constexpr bool ENABLE_MIS = true;
 
@@ -501,6 +501,11 @@ void pathtrace(uchar4* pbo, int frame, int iter)
 
     int numPaths = pixelcount;
 
+    // Capture one iteration for the path-survival plot
+    const bool capturePaths = (iter == 101);
+    std::vector<int> aliveAfterBounce(traceDepth + 1, 0);
+    aliveAfterBounce[0] = pixelcount;
+
     for (int depth = 0; depth < traceDepth && numPaths > 0; ++depth)
     {
         // clean shading chunks
@@ -556,12 +561,28 @@ void pathtrace(uchar4* pbo, int frame, int iter)
         if (ENABLE_STREAM_COMPACTION)
         {
             numPaths = streamCompaction::compact(dev_paths, numPaths);
+
+            if (capturePaths) {
+                aliveAfterBounce[depth + 1] = numPaths;
+            }
+
             checkCUDAError("compact active paths");
         }
 
         if (guiData != nullptr)
         {
             guiData->TracedDepth = depth + 1;
+        }
+    }
+
+    if (capturePaths && ENABLE_STREAM_COMPACTION) {
+        printf("bounce,alive_paths,alive_fraction\n");
+
+        for (int bounce = 0; bounce <= traceDepth; ++bounce) {
+            printf("%d,%d,%.6f\n",
+                bounce,
+                aliveAfterBounce[bounce],
+                static_cast<double>(aliveAfterBounce[bounce]) / pixelcount);
         }
     }
 

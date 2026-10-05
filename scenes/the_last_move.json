@@ -1,0 +1,3024 @@
+{
+  "Materials": {
+    "walnut": {
+      "RGB": [
+        0.12,
+        0.055,
+        0.03
+      ],
+      "TYPE": "Diffuse"
+    },
+    "brass": {
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.12,
+      "RGB": [
+        0.62,
+        0.39,
+        0.13
+      ]
+    },
+    "ivory": {
+      "RGB": [
+        0.62,
+        0.59,
+        0.5
+      ],
+      "TYPE": "Diffuse"
+    },
+    "ebony": {
+      "TYPE": "Microfacet",
+      "ROUGHNESS": 0.18,
+      "RGB": [
+        0.1,
+        0.12,
+        0.14
+      ]
+    },
+    "gold": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.9,
+        0.59,
+        0.2
+      ],
+      "ROUGHNESS": 0.23
+    },
+    "porcelain": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.78,
+        0.73,
+        0.62
+      ]
+    },
+    "gunmetal": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.22,
+        0.27,
+        0.32
+      ],
+      "ROUGHNESS": 0.16
+    },
+    "glass": {
+      "TYPE": "Dielectric",
+      "RGB": [
+        1,
+        1,
+        1
+      ],
+      "IOR": 1.5
+    },
+    "mirror": {
+      "TYPE": "Mirror",
+      "RGB": [
+        0.9,
+        0.93,
+        0.96
+      ]
+    },
+    "felt": {
+      "TYPE": "Diffuse",
+      "RGB": [
+        0.028,
+        0.045,
+        0.043
+      ]
+    },
+    "warm": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1.0,
+        0.28,
+        0.025
+      ],
+      "EMITTANCE": 1000
+    },
+    "cool": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.025,
+        0.18,
+        1.0
+      ],
+      "EMITTANCE": 650
+    },
+    "fill": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.45,
+        0.6,
+        1.0
+      ],
+      "EMITTANCE": 0.08
+    },
+    "rail_reflection": {
+      "TYPE": "Emitting",
+      "RGB": [
+        0.18,
+        0.45,
+        1.0
+      ],
+      "EMITTANCE": 1.2
+    },
+    "frontal_reflection": {
+      "TYPE": "Emitting",
+      "RGB": [
+        1.0,
+        0.4,
+        0.08
+      ],
+      "EMITTANCE": 0.45
+    },
+    "gold_polished": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.9,
+        0.59,
+        0.2
+      ],
+      "ROUGHNESS": 0.055
+    },
+    "gold_satin": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.9,
+        0.59,
+        0.2
+      ],
+      "ROUGHNESS": 0.32
+    },
+    "steel_polished": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.22,
+        0.27,
+        0.32
+      ],
+      "ROUGHNESS": 0.065
+    },
+    "steel_satin": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.22,
+        0.27,
+        0.32
+      ],
+      "ROUGHNESS": 0.3
+    },
+    "frame_endcap": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.075,
+        0.085,
+        0.1
+      ],
+      "ROUGHNESS": 0.26
+    },
+    "faction_satin": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.72,
+        0.65,
+        0.5
+      ],
+      "ROUGHNESS": 0.48
+    },
+    "faction_polished": {
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.62,
+        0.7,
+        0.8
+      ],
+      "ROUGHNESS": 0.025
+    }
+  },
+  "Camera": {
+    "RES": [
+      1600,
+      1100
+    ],
+    "FOVY": 22,
+    "ITERATIONS": 65536,
+    "DEPTH": 20,
+    "FILE": "the_last_move_silent_endgame",
+    "EYE": [
+      0,
+      -8.8,
+      20
+    ],
+    "LOOKAT": [
+      0,
+      1.2,
+      -0.3
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  },
+  "Objects": [
+    {
+      "NAME": "Solid walnut chessboard",
+      "TYPE": "cube",
+      "MATERIAL": "walnut",
+      "TRANS": [
+        0,
+        0.04,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        13.4,
+        0.32,
+        13.4
+      ]
+    },
+    {
+      "NAME": "Board lower brass reveal",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        0,
+        -0.08,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        13.5,
+        0.045,
+        13.5
+      ]
+    },
+    {
+      "NAME": "Chess square 0 0",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -5.25,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 1",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -3.75,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 2",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -2.25,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 3",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -0.75,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 4",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        0.75,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 5",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        2.25,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 6",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        3.75,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 0 7",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        5.25,
+        0.26,
+        -5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 0",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -5.25,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 1",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -3.75,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 2",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -2.25,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 3",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -0.75,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 4",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        0.75,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 5",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        2.25,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 6",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        3.75,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 1 7",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        5.25,
+        0.26,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 0",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -5.25,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 1",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -3.75,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 2",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -2.25,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 3",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -0.75,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 4",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        0.75,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 5",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        2.25,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 6",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        3.75,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 2 7",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        5.25,
+        0.26,
+        -2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 0",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -5.25,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 1",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -3.75,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 2",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -2.25,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 3",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -0.75,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 4",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        0.75,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 5",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        2.25,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 6",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        3.75,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 3 7",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        5.25,
+        0.26,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 0",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -5.25,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 1",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -3.75,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 2",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -2.25,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 3",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -0.75,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 4",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        0.75,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 5",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        2.25,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 6",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        3.75,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 4 7",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        5.25,
+        0.26,
+        0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 0",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -5.25,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 1",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -3.75,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 2",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -2.25,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 3",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -0.75,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 4",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        0.75,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 5",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        2.25,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 6",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        3.75,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 5 7",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        5.25,
+        0.26,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 0",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -5.25,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 1",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -3.75,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 2",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -2.25,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 3",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -0.75,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 4",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        0.75,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 5",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        2.25,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 6",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        3.75,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 6 7",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        5.25,
+        0.26,
+        3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 0",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -5.25,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 1",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -3.75,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 2",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        -2.25,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 3",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        -0.75,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 4",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        0.75,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 5",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        2.25,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 6",
+      "TYPE": "cube",
+      "MATERIAL": "ebony",
+      "TRANS": [
+        3.75,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Chess square 7 7",
+      "TYPE": "cube",
+      "MATERIAL": "ivory",
+      "TRANS": [
+        5.25,
+        0.26,
+        5.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.497,
+        0.12,
+        1.497
+      ]
+    },
+    {
+      "NAME": "Brass side inlay",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -6.15,
+        0.205,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.035,
+        0.025,
+        12.35
+      ]
+    },
+    {
+      "NAME": "Brass side inlay",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        6.15,
+        0.205,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.035,
+        0.025,
+        12.35
+      ]
+    },
+    {
+      "NAME": "Brass end inlay",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        0,
+        0.205,
+        -6.15
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        12.35,
+        0.025,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Brass end inlay",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        0,
+        0.205,
+        6.15
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        12.35,
+        0.025,
+        0.035
+      ]
+    },
+    {
+      "NAME": "Charcoal green tabletop",
+      "TYPE": "cube",
+      "MATERIAL": "felt",
+      "TRANS": [
+        0,
+        -0.35,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        140,
+        0.3,
+        140
+      ]
+    },
+    {
+      "NAME": "Crystal outer side rail",
+      "TYPE": "cube",
+      "MATERIAL": "glass",
+      "TRANS": [
+        -6.95,
+        0.26,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        0.68,
+        13.2
+      ]
+    },
+    {
+      "NAME": "Mirror side rail foundation",
+      "TYPE": "cube",
+      "MATERIAL": "mirror",
+      "TRANS": [
+        -6.95,
+        -0.1,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.48,
+        0.04,
+        13.2
+      ]
+    },
+    {
+      "NAME": "Crystal outer side rail",
+      "TYPE": "cube",
+      "MATERIAL": "glass",
+      "TRANS": [
+        6.95,
+        0.26,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        0.68,
+        13.2
+      ]
+    },
+    {
+      "NAME": "Mirror side rail foundation",
+      "TYPE": "cube",
+      "MATERIAL": "mirror",
+      "TRANS": [
+        6.95,
+        -0.1,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.48,
+        0.04,
+        13.2
+      ]
+    },
+    {
+      "NAME": "Crystal outer end rail",
+      "TYPE": "cube",
+      "MATERIAL": "glass",
+      "TRANS": [
+        0,
+        0.26,
+        -6.95
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14.35,
+        0.68,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Mirror end rail foundation",
+      "TYPE": "cube",
+      "MATERIAL": "mirror",
+      "TRANS": [
+        0,
+        -0.1,
+        -6.95
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14.35,
+        0.04,
+        0.48
+      ]
+    },
+    {
+      "NAME": "Crystal outer end rail",
+      "TYPE": "cube",
+      "MATERIAL": "glass",
+      "TRANS": [
+        0,
+        0.26,
+        6.95
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14.35,
+        0.68,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Mirror end rail foundation",
+      "TYPE": "cube",
+      "MATERIAL": "mirror",
+      "TRANS": [
+        0,
+        -0.1,
+        6.95
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14.35,
+        0.04,
+        0.48
+      ]
+    },
+    {
+      "NAME": "Ivory king foot",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        0.536,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.536,
+        0.432,
+        1.536
+      ]
+    },
+    {
+      "NAME": "Ivory king base bead",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        0.8,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.26,
+        0.24,
+        1.26
+      ]
+    },
+    {
+      "NAME": "Ivory king broad lower body",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        1.15,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.05,
+        1.1,
+        1.05
+      ]
+    },
+    {
+      "NAME": "Ivory king slender upper body",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        1.95,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.64,
+        1.4,
+        0.64
+      ]
+    },
+    {
+      "NAME": "Ivory king neck moulding",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        2.65,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.03,
+        0.18,
+        1.03
+      ]
+    },
+    {
+      "NAME": "Ivory king crown bowl",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        2.98,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.02,
+        0.57,
+        1.02
+      ]
+    },
+    {
+      "NAME": "Ivory king cross stem",
+      "TYPE": "cube",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        3.55,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.17,
+        0.75,
+        0.17
+      ]
+    },
+    {
+      "NAME": "Ivory king cross arms",
+      "TYPE": "cube",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -2.25,
+        3.64,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.62,
+        0.17,
+        0.17
+      ]
+    },
+    {
+      "NAME": "Golden queen foot",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        0.536,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.536,
+        0.432,
+        1.536
+      ]
+    },
+    {
+      "NAME": "Golden queen base bead",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        0.8,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.26,
+        0.24,
+        1.26
+      ]
+    },
+    {
+      "NAME": "Golden queen broad lower body",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        1.15,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.05,
+        1.1,
+        1.05
+      ]
+    },
+    {
+      "NAME": "Golden queen slender upper body",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        1.95,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.64,
+        1.4,
+        0.64
+      ]
+    },
+    {
+      "NAME": "Golden queen neck moulding",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        2.65,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.03,
+        0.18,
+        1.03
+      ]
+    },
+    {
+      "NAME": "Golden queen crown bowl",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        2.98,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.02,
+        0.57,
+        1.02
+      ]
+    },
+    {
+      "NAME": "Golden queen crown point",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        1.15,
+        3.32,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.4,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Golden queen crown point",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.9500000000000001,
+        3.32,
+        -0.40358983848622454
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.4,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Golden queen crown point",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.55,
+        3.32,
+        -0.4035898384862245
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.4,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Golden queen crown point",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.35,
+        3.32,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.4,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Golden queen crown point",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.5499999999999998,
+        3.32,
+        -1.0964101615137753
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.4,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Golden queen crown point",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.9500000000000001,
+        3.32,
+        -1.0964101615137753
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        0.4,
+        0.22
+      ]
+    },
+    {
+      "NAME": "Golden queen crown pearl",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        0.75,
+        3.52,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.3,
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "NAME": "Distant dark king foot",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        0.536,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.536,
+        0.432,
+        1.536
+      ]
+    },
+    {
+      "NAME": "Distant dark king base bead",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        0.8,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.26,
+        0.24,
+        1.26
+      ]
+    },
+    {
+      "NAME": "Distant dark king broad lower body",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        1.15,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.05,
+        1.1,
+        1.05
+      ]
+    },
+    {
+      "NAME": "Distant dark king slender upper body",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        1.95,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.64,
+        1.4,
+        0.64
+      ]
+    },
+    {
+      "NAME": "Distant dark king neck moulding",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        2.65,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.03,
+        0.18,
+        1.03
+      ]
+    },
+    {
+      "NAME": "Distant dark king crown bowl",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        2.98,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.02,
+        0.57,
+        1.02
+      ]
+    },
+    {
+      "NAME": "Distant dark king cross stem",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        3.55,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.17,
+        0.75,
+        0.17
+      ]
+    },
+    {
+      "NAME": "Distant dark king cross arms",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.75,
+        3.64,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.62,
+        0.17,
+        0.17
+      ]
+    },
+    {
+      "NAME": "Ivory pawn foot",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -3.75,
+        0.5,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.28,
+        0.36,
+        1.28
+      ]
+    },
+    {
+      "NAME": "Ivory pawn base bead",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -3.75,
+        0.72,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.05,
+        0.2,
+        1.05
+      ]
+    },
+    {
+      "NAME": "Ivory pawn stem",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -3.75,
+        1.04,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        0.94,
+        0.46
+      ]
+    },
+    {
+      "NAME": "Ivory pawn collar",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -3.75,
+        1.47,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.69,
+        0.16,
+        0.69
+      ]
+    },
+    {
+      "NAME": "Ivory pawn head",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -3.75,
+        1.85,
+        -0.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "NAME": "Dark pawn foot",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.25,
+        0.5,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.28,
+        0.36,
+        1.28
+      ]
+    },
+    {
+      "NAME": "Dark pawn base bead",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.25,
+        0.72,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.05,
+        0.2,
+        1.05
+      ]
+    },
+    {
+      "NAME": "Dark pawn stem",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.25,
+        1.04,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        0.94,
+        0.46
+      ]
+    },
+    {
+      "NAME": "Dark pawn collar",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.25,
+        1.47,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.69,
+        0.16,
+        0.69
+      ]
+    },
+    {
+      "NAME": "Dark pawn head",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.25,
+        1.85,
+        2.25
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "NAME": "Advancing gold pawn foot",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -0.75,
+        0.5,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.28,
+        0.36,
+        1.28
+      ]
+    },
+    {
+      "NAME": "Advancing gold pawn base bead",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -0.75,
+        0.72,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.05,
+        0.2,
+        1.05
+      ]
+    },
+    {
+      "NAME": "Advancing gold pawn stem",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -0.75,
+        1.04,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        0.94,
+        0.46
+      ]
+    },
+    {
+      "NAME": "Advancing gold pawn collar",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -0.75,
+        1.47,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.69,
+        0.16,
+        0.69
+      ]
+    },
+    {
+      "NAME": "Advancing gold pawn head",
+      "TYPE": "sphere",
+      "MATERIAL": "faction_polished",
+      "TRANS": [
+        -0.75,
+        1.85,
+        -3.75
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "NAME": "Fallen rook foot",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.9,
+        1.1,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        1.48,
+        0.25,
+        1.48
+      ]
+    },
+    {
+      "NAME": "Fallen rook step",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        3.65,
+        1.1,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        1.18,
+        0.22,
+        1.18
+      ]
+    },
+    {
+      "NAME": "Fallen rook shaft",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.9,
+        1.1,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        0.76,
+        1.3,
+        0.76
+      ]
+    },
+    {
+      "NAME": "Fallen rook crown base",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        2.12,
+        1.1,
+        4.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        1.2,
+        0.2,
+        1.2
+      ]
+    },
+    {
+      "NAME": "Fallen rook battlement",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        1.8599999999999999,
+        0.7000000000000001,
+        4.1499999999999995
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        0.35,
+        0.34,
+        0.35
+      ]
+    },
+    {
+      "NAME": "Fallen rook battlement",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        1.8599999999999999,
+        0.7000000000000001,
+        4.95
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        0.35,
+        0.34,
+        0.35
+      ]
+    },
+    {
+      "NAME": "Fallen rook battlement",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        1.8599999999999999,
+        1.5,
+        4.1499999999999995
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        0.35,
+        0.34,
+        0.35
+      ]
+    },
+    {
+      "NAME": "Fallen rook battlement",
+      "TYPE": "cube",
+      "MATERIAL": "faction_satin",
+      "TRANS": [
+        1.8599999999999999,
+        1.5,
+        4.95
+      ],
+      "ROTAT": [
+        0,
+        0,
+        90
+      ],
+      "SCALE": [
+        0.35,
+        0.34,
+        0.35
+      ]
+    },
+    {
+      "NAME": "Offscreen hard copper key",
+      "TYPE": "rectangle",
+      "MATERIAL": "warm",
+      "TRANS": [
+        -16.0,
+        6.5,
+        5.0
+      ],
+      "ROTAT": [
+        0,
+        90,
+        0
+      ],
+      "SCALE": [
+        1.2,
+        1.4,
+        1
+      ]
+    },
+    {
+      "NAME": "Offscreen cobalt counterlight",
+      "TYPE": "rectangle",
+      "MATERIAL": "cool",
+      "TRANS": [
+        18.0,
+        7.0,
+        -4.0
+      ],
+      "ROTAT": [
+        0,
+        -90,
+        0
+      ],
+      "SCALE": [
+        1.2,
+        2.0,
+        1
+      ]
+    },
+    {
+      "NAME": "Offscreen minimal blue fill",
+      "TYPE": "rectangle",
+      "MATERIAL": "fill",
+      "TRANS": [
+        0,
+        18,
+        7
+      ],
+      "ROTAT": [
+        90,
+        0,
+        0
+      ],
+      "SCALE": [
+        5,
+        4,
+        1
+      ]
+    },
+    {
+      "NAME": "Offscreen narrow blue glass glint",
+      "TYPE": "rectangle",
+      "MATERIAL": "rail_reflection",
+      "TRANS": [
+        0,
+        16,
+        -14
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        20,
+        0.4,
+        1
+      ]
+    },
+    {
+      "NAME": "Behind-camera narrow amber glass glint",
+      "TYPE": "rectangle",
+      "MATERIAL": "frontal_reflection",
+      "TRANS": [
+        0,
+        4,
+        26
+      ],
+      "ROTAT": [
+        180,
+        0,
+        0
+      ],
+      "SCALE": [
+        18,
+        0.4,
+        1
+      ]
+    },
+    {
+      "NAME": "Dark metal glass rail end connector",
+      "TYPE": "cube",
+      "MATERIAL": "frame_endcap",
+      "TRANS": [
+        -6.95,
+        0.26,
+        -6.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.58,
+        0.76,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Dark metal glass rail end connector",
+      "TYPE": "cube",
+      "MATERIAL": "frame_endcap",
+      "TRANS": [
+        -6.95,
+        0.26,
+        6.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.58,
+        0.76,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Dark metal glass rail end connector",
+      "TYPE": "cube",
+      "MATERIAL": "frame_endcap",
+      "TRANS": [
+        6.95,
+        0.26,
+        -6.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.58,
+        0.76,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Dark metal glass rail end connector",
+      "TYPE": "cube",
+      "MATERIAL": "frame_endcap",
+      "TRANS": [
+        6.95,
+        0.26,
+        6.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.58,
+        0.76,
+        1.3
+      ]
+    }
+  ]
+}

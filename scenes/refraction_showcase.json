@@ -1,0 +1,3257 @@
+{
+  "Materials": {
+    "basalt": {
+      "RGB": [
+        0.035,
+        0.05,
+        0.07
+      ],
+      "TYPE": "Diffuse"
+    },
+    "wall": {
+      "RGB": [
+        0.1,
+        0.14,
+        0.19
+      ],
+      "TYPE": "Diffuse"
+    },
+    "silver": {
+      "ROUGHNESS": 0.17,
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.52,
+        0.6,
+        0.68
+      ]
+    },
+    "brass": {
+      "ROUGHNESS": 0.2,
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.65,
+        0.37,
+        0.12
+      ]
+    },
+    "floor": {
+      "ROUGHNESS": 0.24,
+      "TYPE": "Microfacet",
+      "RGB": [
+        0.13,
+        0.17,
+        0.22
+      ]
+    },
+    "cyan": {
+      "EMITTANCE": 2,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.08,
+        0.65,
+        1.0
+      ]
+    },
+    "amber": {
+      "EMITTANCE": 2,
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.4,
+        0.08
+      ]
+    },
+    "softbox": {
+      "EMITTANCE": 6,
+      "TYPE": "Emitting",
+      "RGB": [
+        1,
+        0.94,
+        0.84
+      ]
+    },
+    "grid_dark": {
+      "RGB": [
+        0.012,
+        0.018,
+        0.03
+      ],
+      "TYPE": "Diffuse"
+    },
+    "stripe_0": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.12,
+        0.45,
+        1.0
+      ]
+    },
+    "stripe_1": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.08,
+        0.85,
+        0.85
+      ]
+    },
+    "stripe_2": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.65,
+        0.9,
+        0.92
+      ]
+    },
+    "stripe_3": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        1.0,
+        0.48,
+        0.12
+      ]
+    },
+    "stripe_4": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.95,
+        0.15,
+        0.12
+      ]
+    },
+    "stripe_5": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.65,
+        0.2,
+        0.8
+      ]
+    },
+    "stripe_6": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.16,
+        0.55,
+        1.0
+      ]
+    },
+    "stripe_7": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        0.15,
+        0.85,
+        0.62
+      ]
+    },
+    "stripe_8": {
+      "EMITTANCE": 0.85,
+      "TYPE": "Emitting",
+      "RGB": [
+        1.0,
+        0.75,
+        0.28
+      ]
+    },
+    "glass_1": {
+      "IOR": 1.1,
+      "TYPE": "Dielectric",
+      "RGB": [
+        1,
+        1,
+        1
+      ]
+    },
+    "glass_2": {
+      "IOR": 1.33,
+      "TYPE": "Dielectric",
+      "RGB": [
+        1,
+        1,
+        1
+      ]
+    },
+    "glass_3": {
+      "IOR": 1.5,
+      "TYPE": "Dielectric",
+      "RGB": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "Camera": {
+    "RES": [
+      840,
+      500
+    ],
+    "FOVY": 12.5,
+    "ITERATIONS": 512,
+    "DEPTH": 16,
+    "FILE": "refraction_optical_archive",
+    "EYE": [
+      0,
+      -0.5,
+      36
+    ],
+    "LOOKAT": [
+      0,
+      3.5,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  },
+  "Objects": [
+    {
+      "NAME": "Reflective archive floor",
+      "TYPE": "rectangle",
+      "MATERIAL": "floor",
+      "TRANS": [
+        0,
+        -0.16,
+        0
+      ],
+      "ROTAT": [
+        -90,
+        0,
+        0
+      ],
+      "SCALE": [
+        120,
+        120,
+        1
+      ]
+    },
+    {
+      "NAME": "Lower stage",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        0,
+        0,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        24.6,
+        0.3,
+        8
+      ]
+    },
+    {
+      "NAME": "Upper stage",
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        0,
+        0.25,
+        -0.3
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        23.6,
+        0.2,
+        6.8
+      ]
+    },
+    {
+      "NAME": "Front brass step",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        0,
+        0.09,
+        4.02
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        24.6,
+        0.05,
+        0.07
+      ]
+    },
+    {
+      "NAME": "Front cyan guide",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        0,
+        0.3,
+        3.13
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        23.4,
+        0.025,
+        0.045
+      ]
+    },
+    {
+      "NAME": "Archive rear wall",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        0,
+        3.9,
+        -4.15
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        25,
+        8,
+        0.4
+      ]
+    },
+    {
+      "NAME": "Top architectural beam",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        0,
+        7.55,
+        -2.7
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        24,
+        0.16,
+        1.8
+      ]
+    },
+    {
+      "NAME": "Cell 1 base",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        -7,
+        0.76,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.8,
+        0.82,
+        3.9
+      ]
+    },
+    {
+      "NAME": "Cell 1 upper plinth",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -7,
+        1.25,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.5,
+        0.16,
+        3.5
+      ]
+    },
+    {
+      "NAME": "Cell 1 glass IOR 1.1",
+      "TYPE": "sphere",
+      "MATERIAL": "glass_1",
+      "TRANS": [
+        -7,
+        3.0,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.3,
+        3.3,
+        3.3
+      ]
+    },
+    {
+      "NAME": "Cell 1 glass mounting pad",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -7,
+        1.34,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.3,
+        0.03,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 1 optical target backing",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        3.45,
+        -2.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        5.0,
+        5.5,
+        0.18
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 0",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_0",
+      "TRANS": [
+        -9.16,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 1",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_1",
+      "TRANS": [
+        -8.620000000000001,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 2",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_2",
+      "TRANS": [
+        -8.08,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 3",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_3",
+      "TRANS": [
+        -7.54,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 4",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_4",
+      "TRANS": [
+        -7.0,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 5",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_5",
+      "TRANS": [
+        -6.46,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 6",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_6",
+      "TRANS": [
+        -5.92,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 7",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_7",
+      "TRANS": [
+        -5.38,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target stripe 8",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_8",
+      "TRANS": [
+        -4.84,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 0",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        1.0,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 1",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        1.8,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 2",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        2.6,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 3",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        3.4000000000000004,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 4",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        4.2,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 5",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        5.0,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 target horizontal rule 6",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        -7,
+        5.800000000000001,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 pillar -1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -9.95,
+        2.55,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        4.4,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Cell 1 light rail -1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        -9.79,
+        2.55,
+        -1.27
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        4.1,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 buttress -1",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        -10.1,
+        1.2,
+        -1.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        1.7,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 1 pillar 1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -4.05,
+        2.55,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        4.4,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Cell 1 light rail 1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        -4.21,
+        2.55,
+        -1.27
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        4.1,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 1 buttress 1",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        -3.9,
+        1.2,
+        -1.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        1.7,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 0",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -4.075237658947259,
+        5.030631313273111,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        100.23945903715384
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 1",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -4.274555379091704,
+        5.572769379584943,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        119.61128165027618
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 2",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -4.659607646140856,
+        6.05883707236875,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        136.47457383315125
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 3",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -5.204153784424274,
+        6.455709681626155,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        150.78440722426313
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 4",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -5.871083874522985,
+        6.736340994899266,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        163.2017506589819
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 5",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -6.6149477329508475,
+        6.881606451953692,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        174.51924108011914
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 6",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -7.3850522670491525,
+        6.881606451953692,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -174.51924108011914
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 7",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -8.128916125477014,
+        6.736340994899267,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -163.20175065898195
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 8",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -8.795846215575725,
+        6.455709681626155,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -150.78440722426313
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 9",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -9.340392353859144,
+        6.05883707236875,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -136.47457383315128
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 10",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -9.725444620908295,
+        5.572769379584943,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -119.61128165027618
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 segmented arch 11",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -9.924762341052741,
+        5.030631313273112,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -100.23945903715385
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 1 plinth vent 0",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -8.2,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 1 plinth vent 1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -7.6,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 1 plinth vent 2",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -6.999999999999999,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 1 plinth vent 3",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -6.3999999999999995,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 1 plinth vent 4",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -5.799999999999999,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 1 amber index 0",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        -7.0,
+        1.02,
+        1.965
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        0.1,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 base",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        0,
+        0.76,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.8,
+        0.82,
+        3.9
+      ]
+    },
+    {
+      "NAME": "Cell 2 upper plinth",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        0,
+        1.25,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.5,
+        0.16,
+        3.5
+      ]
+    },
+    {
+      "NAME": "Cell 2 glass IOR 1.33",
+      "TYPE": "sphere",
+      "MATERIAL": "glass_2",
+      "TRANS": [
+        0,
+        3.0,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.3,
+        3.3,
+        3.3
+      ]
+    },
+    {
+      "NAME": "Cell 2 glass mounting pad",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        0,
+        1.34,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.3,
+        0.03,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 2 optical target backing",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        3.45,
+        -2.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        5.0,
+        5.5,
+        0.18
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 0",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_0",
+      "TRANS": [
+        -2.16,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 1",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_1",
+      "TRANS": [
+        -1.62,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 2",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_2",
+      "TRANS": [
+        -1.08,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 3",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_3",
+      "TRANS": [
+        -0.54,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 4",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_4",
+      "TRANS": [
+        0.0,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 5",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_5",
+      "TRANS": [
+        0.54,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 6",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_6",
+      "TRANS": [
+        1.08,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 7",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_7",
+      "TRANS": [
+        1.62,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target stripe 8",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_8",
+      "TRANS": [
+        2.16,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 0",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        1.0,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 1",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        1.8,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 2",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        2.6,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 3",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        3.4000000000000004,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 4",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        4.2,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 5",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        5.0,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 target horizontal rule 6",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        0,
+        5.800000000000001,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 pillar -1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -2.95,
+        2.55,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        4.4,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Cell 2 light rail -1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        -2.79,
+        2.55,
+        -1.27
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        4.1,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 buttress -1",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        -3.1,
+        1.2,
+        -1.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        1.7,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 2 pillar 1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        2.95,
+        2.55,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        4.4,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Cell 2 light rail 1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        2.79,
+        2.55,
+        -1.27
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        4.1,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 2 buttress 1",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        3.1,
+        1.2,
+        -1.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        1.7,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 0",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        2.924762341052741,
+        5.030631313273111,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        100.23945903715384
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 1",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        2.725444620908296,
+        5.572769379584943,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        119.61128165027618
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 2",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        2.340392353859144,
+        6.05883707236875,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        136.47457383315125
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 3",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        1.795846215575726,
+        6.455709681626155,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        150.78440722426313
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 4",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        1.128916125477015,
+        6.736340994899266,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        163.2017506589819
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 5",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        0.3850522670491526,
+        6.881606451953692,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        174.51924108011914
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 6",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -0.38505226704915224,
+        6.881606451953692,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -174.51924108011914
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 7",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -1.1289161254770141,
+        6.736340994899267,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -163.20175065898195
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 8",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -1.795846215575726,
+        6.455709681626155,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -150.78440722426313
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 9",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -2.3403923538591433,
+        6.05883707236875,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -136.47457383315128
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 10",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -2.725444620908296,
+        5.572769379584943,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -119.61128165027618
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 segmented arch 11",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        -2.924762341052741,
+        5.030631313273112,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -100.23945903715385
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 2 plinth vent 0",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -1.2,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 plinth vent 1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        -0.6,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 plinth vent 2",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        0.0,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 plinth vent 3",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        0.5999999999999999,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 plinth vent 4",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        1.2,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 amber index 0",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        -0.22,
+        1.02,
+        1.965
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        0.1,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 2 amber index 1",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        0.22,
+        1.02,
+        1.965
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        0.1,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 base",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        7,
+        0.76,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.8,
+        0.82,
+        3.9
+      ]
+    },
+    {
+      "NAME": "Cell 3 upper plinth",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        7,
+        1.25,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.5,
+        0.16,
+        3.5
+      ]
+    },
+    {
+      "NAME": "Cell 3 glass IOR 1.5",
+      "TYPE": "sphere",
+      "MATERIAL": "glass_3",
+      "TRANS": [
+        7,
+        3.0,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3.3,
+        3.3,
+        3.3
+      ]
+    },
+    {
+      "NAME": "Cell 3 glass mounting pad",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        7,
+        1.34,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        1.3,
+        0.03,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 3 optical target backing",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        3.45,
+        -2.65
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        5.0,
+        5.5,
+        0.18
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 0",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_0",
+      "TRANS": [
+        4.84,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 1",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_1",
+      "TRANS": [
+        5.38,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 2",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_2",
+      "TRANS": [
+        5.92,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 3",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_3",
+      "TRANS": [
+        6.46,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 4",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_4",
+      "TRANS": [
+        7.0,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 5",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_5",
+      "TRANS": [
+        7.54,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 6",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_6",
+      "TRANS": [
+        8.08,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 7",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_7",
+      "TRANS": [
+        8.620000000000001,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target stripe 8",
+      "TYPE": "cube",
+      "MATERIAL": "stripe_8",
+      "TRANS": [
+        9.16,
+        3.45,
+        -2.535
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.46,
+        5.15,
+        0.025
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 0",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        1.0,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 1",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        1.8,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 2",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        2.6,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 3",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        3.4000000000000004,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 4",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        4.2,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 5",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        5.0,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 target horizontal rule 6",
+      "TYPE": "cube",
+      "MATERIAL": "grid_dark",
+      "TRANS": [
+        7,
+        5.800000000000001,
+        -2.49
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4.9,
+        0.045,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 pillar -1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        4.05,
+        2.55,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        4.4,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Cell 3 light rail -1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        4.21,
+        2.55,
+        -1.27
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        4.1,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 buttress -1",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        3.9,
+        1.2,
+        -1.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        1.7,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 3 pillar 1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        9.95,
+        2.55,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.22,
+        4.4,
+        0.5
+      ]
+    },
+    {
+      "NAME": "Cell 3 light rail 1",
+      "TYPE": "cube",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        9.79,
+        2.55,
+        -1.27
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.045,
+        4.1,
+        0.04
+      ]
+    },
+    {
+      "NAME": "Cell 3 buttress 1",
+      "TYPE": "cube",
+      "MATERIAL": "basalt",
+      "TRANS": [
+        10.1,
+        1.2,
+        -1.85
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        1.7,
+        1.3
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 0",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        9.924762341052741,
+        5.030631313273111,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        100.23945903715384
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 1",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        9.725444620908295,
+        5.572769379584943,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        119.61128165027618
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 2",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        9.340392353859144,
+        6.05883707236875,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        136.47457383315125
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 3",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        8.795846215575725,
+        6.455709681626155,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        150.78440722426313
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 4",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        8.128916125477016,
+        6.736340994899266,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        163.2017506589819
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 5",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        7.3850522670491525,
+        6.881606451953692,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        174.51924108011914
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 6",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        6.6149477329508475,
+        6.881606451953692,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -174.51924108011914
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 7",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        5.871083874522986,
+        6.736340994899267,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -163.20175065898195
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 8",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        5.204153784424274,
+        6.455709681626155,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -150.78440722426313
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 9",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        4.659607646140857,
+        6.05883707236875,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -136.47457383315128
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 10",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        4.274555379091704,
+        5.572769379584943,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -119.61128165027618
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 segmented arch 11",
+      "TYPE": "cube",
+      "MATERIAL": "brass",
+      "TRANS": [
+        4.075237658947259,
+        5.030631313273112,
+        -1.55
+      ],
+      "ROTAT": [
+        0,
+        0,
+        -100.23945903715385
+      ],
+      "SCALE": [
+        0.78,
+        0.14,
+        0.45
+      ]
+    },
+    {
+      "NAME": "Cell 3 plinth vent 0",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        5.8,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 plinth vent 1",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        6.3999999999999995,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 plinth vent 2",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        7.0,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 plinth vent 3",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        7.6,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 plinth vent 4",
+      "TYPE": "cube",
+      "MATERIAL": "silver",
+      "TRANS": [
+        8.2,
+        0.72,
+        1.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.28,
+        0.035,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 amber index 0",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        6.56,
+        1.02,
+        1.965
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        0.1,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 amber index 1",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        7.0,
+        1.02,
+        1.965
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        0.1,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Cell 3 amber index 2",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        7.4399999999999995,
+        1.02,
+        1.965
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.12,
+        0.1,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Side tower",
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        -11.9,
+        3.2,
+        -2.2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.6,
+        6.1,
+        1.1
+      ]
+    },
+    {
+      "NAME": "Tower vertical amber inlay",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        -11.9,
+        3.2,
+        -1.63
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.06,
+        5.7,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Side tower",
+      "TYPE": "cube",
+      "MATERIAL": "wall",
+      "TRANS": [
+        11.9,
+        3.2,
+        -2.2
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.6,
+        6.1,
+        1.1
+      ]
+    },
+    {
+      "NAME": "Tower vertical amber inlay",
+      "TYPE": "cube",
+      "MATERIAL": "amber",
+      "TRANS": [
+        11.9,
+        3.2,
+        -1.63
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.06,
+        5.7,
+        0.03
+      ]
+    },
+    {
+      "NAME": "Overhead neutral area light",
+      "TYPE": "rectangle",
+      "MATERIAL": "softbox",
+      "TRANS": [
+        0,
+        9,
+        4
+      ],
+      "ROTAT": [
+        90,
+        0,
+        0
+      ],
+      "SCALE": [
+        27,
+        4,
+        1
+      ]
+    },
+    {
+      "NAME": "Front cool reflection strip",
+      "TYPE": "rectangle",
+      "MATERIAL": "cyan",
+      "TRANS": [
+        0,
+        7.2,
+        9
+      ],
+      "ROTAT": [
+        180,
+        0,
+        0
+      ],
+      "SCALE": [
+        27,
+        0.16,
+        1
+      ]
+    },
+    {
+      "NAME": "Front warm reflection strip",
+      "TYPE": "rectangle",
+      "MATERIAL": "amber",
+      "TRANS": [
+        0,
+        6.5,
+        9
+      ],
+      "ROTAT": [
+        180,
+        0,
+        0
+      ],
+      "SCALE": [
+        27,
+        0.1,
+        1
+      ]
+    }
+  ]
+}
