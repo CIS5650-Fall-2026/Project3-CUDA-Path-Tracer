@@ -1,22 +1,25 @@
-CUDA Path Tracer
-================
-
 **University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 3**
 
 * Alice Liu
   * [LinkedIn](https://www.linkedin.com/in/aliceliuu/), [personal website](https://aliceliu.xyz/)
 * Tested on: Windows 11, AMD Ryzen 5 7640HS @ 4.30GHz 16GB, RTX 4060 Laptop GPU 8GB (Personal Laptop)
 
-## Overview
+## CUDA Path Tracer
 <p align="center">
-  <img src="img/custom.png" width="800"><br>
-  Custom Scene Rendered (INSERT DEPTH + ITERATIONS HERE)
+  <img src="img/custom_1080px_7000i_8d_dof.png" width="600"><br>
+  1080 x 1080 pixels, 7000 iterations, 8 depth, 31.5k triangles
 </p>
+
+## Overview
+
 
 ## Refraction
 
 
 ## Physically-Based Depth-of-Field
+| No depth of field | With depth of field |
+|---|---|
+| ![](img/custom_1080px_7000i_8d_dof.png) | ![](img/custom_1080px_7000i_8d_no_dof.png) |
 
 
 ## GLTF Mesh Loading
@@ -26,10 +29,28 @@ CUDA Path Tracer
 
 
 ## Performance Analysis
+### Stream Compaction Analysis
+Stream compaction helps most after a few bounces. Print and plot the effects of stream compaction within a single iteration (i.e. the number of unterminated rays after each bounce) and evaluate the benefits you get from stream compaction.
+
+Compare scenes which are open (like the given cornell box) and closed (i.e. no light can escape the scene). Again, compare the performance effects of stream compaction! Remember, stream compaction only affects rays which terminate, so what might you expect?
+
+### Material Sorting Analysis
+
+### Bounding Volume Hierarchies Analysis
+
 
 
 ## Bloopers
+<p align="center">
+  <img src="img/bug_rng_no_depth.png" width="550"><br>
+  Blooper from the very beginning where I forgot to mark iterations as complete after <br> reaching the max trace depth. Resulted in these lines/sections in the render. 
+</p>
 
+
+<p align="center">
+  <img src="img/0.0001_refraction_blooper.png" width="550"><br>
+  Refraction implementation blooper where my original ray origin epsilon (0.0001) offset was <br> not large enough,  causing the white ring. Increasing epsilon to 0.001 fixed this!
+</p>
 
 ## Attribution
 ### Libraries: 
