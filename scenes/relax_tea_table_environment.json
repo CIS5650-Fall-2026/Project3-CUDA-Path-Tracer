@@ -1,0 +1,223 @@
+{
+    "Renderer":
+    {
+        "COMPACTION":true,
+        "SORT_MATERIALS":true,
+        "USE_BVH":true,
+        "BVH_LEAF_SIZE":4
+    },
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 0.92, 0.8],
+            "EMITTANCE":12.0
+        },
+        "room":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.7, 0.72, 0.75]
+        },
+        "accent":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.55, 0.25, 0.14]
+        },
+        "glass":
+        {
+            "TYPE":"Dielectric",
+            "RGB":[0.98, 0.99, 1.0],
+            "IOR":1.5
+        },
+        "base":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.3, 0.12, 0.05]
+        },
+        "lamp_surface":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.9, 0.75, 0.35],
+            "ROUGHNESS":0.25
+        },
+        "metal":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.75, 0.75, 0.78],
+            "ROUGHNESS":0.12
+        },
+        "plastic":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.12, 0.14, 0.16],
+            "ROUGHNESS":0.45
+        },
+        "tea":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.3, 0.08, 0.02]
+        },
+        "ceramic":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.9, 0.9, 0.86],
+            "ROUGHNESS":0.3
+        }
+    },
+    "Camera":
+    {
+        "RES":[1600, 1600],
+        "FOVY":45.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"relax_tea_table",
+        "EYE":[8.0, 4.0, 12.0],
+        "LOOKAT":[0.0, -3.0, 0.0],
+        "UP":[0.0, 1.0, 0.0]
+    },
+    "Environment":
+    {
+        "FILE":"environment/pillars_4k.hdr",
+        "INTENSITY":1.0,
+        "ROTATION":0.0,
+        "ENABLED":true
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cube.002_Cube.003.obj",
+            "MATERIAL":"room",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Suzanne.obj",
+            "MATERIAL":"accent",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cube.001.obj",
+            "MATERIAL":"glass",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cube.obj",
+            "MATERIAL":"base",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Sphere.obj",
+            "MATERIAL":"lamp_surface",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cylinder.005.obj",
+            "MATERIAL":"plastic",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cone.obj",
+            "MATERIAL":"metal",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Torus.obj",
+            "MATERIAL":"plastic",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cylinder.002.obj",
+            "MATERIAL":"tea",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Circle.002.obj",
+            "MATERIAL":"glass",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Circle.001.obj",
+            "MATERIAL":"glass",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cylinder.001.obj",
+            "MATERIAL":"tea",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Plane.obj",
+            "MATERIAL":"base",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Cylinder.obj",
+            "MATERIAL":"tea",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"obj",
+            "FILE":"relax_tea_table/Circle.obj",
+            "MATERIAL":"ceramic",
+            "TRANS":[0.0, 0.0, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[1.0, 1.0, 1.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[-3.0, 7.0, 1.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[2.5, 0.2, 2.5]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[3.0, 7.0, -2.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[2.5, 0.2, 2.5]
+        }
+    ]
+}

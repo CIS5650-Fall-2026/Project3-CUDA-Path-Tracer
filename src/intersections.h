@@ -23,11 +23,10 @@ __host__ __device__ inline unsigned int utilhash(unsigned int a)
 // CHECKITOUT
 /**
  * Compute a point at parameter value `t` on ray `r`.
- * Falls slightly short so that it doesn't intersect the object it's hitting.
  */
 __host__ __device__ inline glm::vec3 getPointOnRay(Ray r, float t)
 {
-    return r.origin + (t - .0001f) * glm::normalize(r.direction);
+    return r.origin + t * glm::normalize(r.direction); // offsets for ray origins are instead applied when spawning the next ray
 }
 
 /**
@@ -69,5 +68,25 @@ __host__ __device__ float sphereIntersectionTest(
     Geom sphere,
     Ray r,
     glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& triangle,
+    Ray r,
+    glm::vec3& normal,
+    bool& outside);
+
+__host__ __device__ bool aabbIntersectionTest(
+    const Aabb& bounds,
+    Ray r,
+    float maximumT,
+    float& nearT);
+
+__host__ __device__ float primitiveIntersectionTest(
+    const Primitive& primitive,
+    const Geom* geoms,
+    const Triangle* triangles,
+    Ray r,
     glm::vec3& normal,
     bool& outside);

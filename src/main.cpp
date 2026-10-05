@@ -270,6 +270,7 @@ void RenderImGui()
     static float f = 0.0f;
     static int counter = 0;
 
+    ImGui::SetNextWindowSize(ImVec2(380.0f, 550.0f), ImGuiCond_Once); // makes the window larger
     ImGui::Begin("Path Tracer Analytics");                  // Create a window called "Hello, world!" and append into it.
     
     // LOOK: Un-Comment to check the output window and usage
@@ -284,7 +285,44 @@ void RenderImGui()
     //    counter++;
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
-    ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    bool rendererSettingsChanged = false;
+    rendererSettingsChanged |= ImGui::Checkbox("Stream compaction", &imguiData->EnableCompaction);
+    rendererSettingsChanged |= ImGui::Checkbox("Sort paths by material", &imguiData->SortByMaterial);
+    rendererSettingsChanged |= ImGui::Checkbox("Use BVH", &imguiData->UseBvh);
+    rendererSettingsChanged |= ImGui::Checkbox("Depth of field", &imguiData->EnableDepthOfField);
+    if (imguiData->EnableDepthOfField)
+    {
+        rendererSettingsChanged |= ImGui::SliderFloat(
+            "Aperture radius", &renderState->camera.apertureRadius, 0.0f, 1.0f);
+        rendererSettingsChanged |= ImGui::SliderFloat(
+            "Focus distance", &renderState->camera.focusDistance, 0.1f, 100.0f);
+    }
+    rendererSettingsChanged |= ImGui::Checkbox("Environment map", &imguiData->EnableEnvironment);
+    if (rendererSettingsChanged)
+    {
+        camchanged = true;
+    }
+
+    ImGui::Separator();
+    ImGui::Text("Traced depth: %d", imguiData->TracedDepth);
+    ImGui::Text("Sample iteration: %d / %u", iteration, renderState->iterations);
+    ImGui::Text("Initial paths: %d", width * height);
+    for (int depth = 0; depth < static_cast<int>(imguiData->ActivePathsByDepth.size()); depth++)
+    {
+        if (imguiData->EnableCompaction)
+        {
+            ImGui::Text("After bounce %d: %d active paths", depth + 1, imguiData->ActivePathsByDepth[depth]);
+        }
+    }
+    ImGui::Text("Generate rays: %.3f ms", imguiData->GenerateRayMs);
+    ImGui::Text("Intersections: %.3f ms", imguiData->ComputeIntersectionsMs);
+    ImGui::Text("Material sort: %.3f ms", imguiData->SortMs);
+    ImGui::Text("Shade: %.3f ms", imguiData->ShadeMs);
+    ImGui::Text("Compaction: %.3f ms", imguiData->CompactMs);
+    ImGui::Text("Final gather: %.3f ms", imguiData->FinalGatherMs);
+    ImGui::Text("BVH build: %.3f ms", imguiData->BvhBuildMs);
+    ImGui::Text("BVH: %d nodes, %d leaves, depth %d",
+        imguiData->BvhNodeCount, imguiData->BvhLeafCount, imguiData->BvhMaxDepth);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
@@ -355,6 +393,15 @@ int main(int argc, char** argv)
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
+    guiData->EnableCompaction = scene->enableCompaction;
+    guiData->SortByMaterial = scene->sortByMaterial;
+    guiData->UseBvh = scene->useBvh;
+    guiData->EnableDepthOfField = scene->enableDepthOfField;
+    guiData->EnableEnvironment = scene->enableEnvironment;
+    guiData->BvhBuildMs = scene->bvhBuildMs;
+    guiData->BvhNodeCount = static_cast<int>(scene->bvhNodes.size());
+    guiData->BvhLeafCount = scene->bvhLeafCount;
+    guiData->BvhMaxDepth = scene->bvhMaxDepth;
 
     // Set up camera stuff from loaded path tracer settings
     iteration = 0;
@@ -431,8 +478,8 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        cam.up = glm::normalize(glm::cross(r, v));
         cam.right = r;
 
         cam.position = cameraPosition;

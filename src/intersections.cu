@@ -73,7 +73,7 @@ __host__ __device__ float sphereIntersectionTest(
     rt.direction = rd;
 
     float vDotDirection = glm::dot(rt.origin, rt.direction);
-    float radicand = vDotDirection * vDotDirection - (glm::dot(rt.origin, rt.origin) - powf(radius, 2));
+    float radicand = vDotDirection * vDotDirection - (glm::dot(rt.origin, rt.origin) - pow(radius, 2));
     if (radicand < 0)
     {
         return -1;
@@ -110,4 +110,93 @@ __host__ __device__ float sphereIntersectionTest(
     }
 
     return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& triangle,
+    Ray r,
+    glm::vec3& normal,
+    bool& outside)
+{
+    glm::vec3 edge1 = triangle.p1 - triangle.p0;
+    glm::vec3 edge2 = triangle.p2 - triangle.p0;
+    glm::vec3 p = glm::cross(r.direction, edge2);
+    float determinant = glm::dot(edge1, p);
+    if (abs(determinant) < 0.0000001f) return -1.0f;
+
+    float inverseDeterminant = 1.0f / determinant;
+    glm::vec3 t = r.origin - triangle.p0;
+    float u = glm::dot(t, p) * inverseDeterminant;
+    if (u < 0.0f || u > 1.0f) return -1.0f;
+
+    glm::vec3 q = glm::cross(t, edge1);
+    float v = glm::dot(r.direction, q) * inverseDeterminant;
+    if (v < 0.0f || u + v > 1.0f) return -1.0f;
+
+    float distance = glm::dot(edge2, q) * inverseDeterminant;
+    if (distance <= 0.00001f) return -1.0f;
+
+    glm::vec3 geometricNormal = glm::normalize(glm::cross(edge1, edge2));
+    normal = glm::normalize((1.0f - u - v) * triangle.n0 + u * triangle.n1 + v * triangle.n2);
+    if (glm::dot(normal, geometricNormal) < 0.0f) normal = -normal;
+    outside = glm::dot(r.direction, geometricNormal) < 0.0f;
+    return distance;
+}
+
+__host__ __device__ bool aabbIntersectionTest(
+    const Aabb& bounds,
+    Ray r,
+    float maximumT,
+    float& nearT)
+{
+    float minimumT = 0.0f;
+    float farT = maximumT;
+    for (int axis = 0; axis < 3; axis++)
+    {
+        if (abs(r.direction[axis]) < 0.0000001f)
+        {
+            if (r.origin[axis] < bounds.minimum[axis] || r.origin[axis] > bounds.maximum[axis])
+            {
+                return false;
+            }
+            continue;
+        }
+
+        float inverseDirection = 1.0f / r.direction[axis];
+        float t0 = (bounds.minimum[axis] - r.origin[axis]) * inverseDirection;
+        float t1 = (bounds.maximum[axis] - r.origin[axis]) * inverseDirection;
+        if (t0 > t1)
+        {
+            float swap = t0;
+            t0 = t1;
+            t1 = swap;
+        }
+        minimumT = max(minimumT, t0);
+        farT = min(farT, t1);
+        if (farT < minimumT) return false;
+    }
+
+    nearT = minimumT;
+    return true;
+}
+
+__host__ __device__ float primitiveIntersectionTest(
+    const Primitive& primitive,
+    const Geom* geoms,
+    const Triangle* triangles,
+    Ray r,
+    glm::vec3& normal,
+    bool& outside)
+{
+    if (primitive.type == PRIMITIVE_TRIANGLE)
+    {
+        return triangleIntersectionTest(triangles[primitive.index], r, normal, outside);
+    }
+
+    glm::vec3 intersection(0.0f);
+    if (primitive.type == PRIMITIVE_CUBE)
+    {
+        return boxIntersectionTest(geoms[primitive.index], r, intersection, normal, outside);
+    }
+    return sphereIntersectionTest(geoms[primitive.index], r, intersection, normal, outside);
 }

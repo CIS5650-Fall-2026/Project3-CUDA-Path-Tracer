@@ -1,0 +1,79 @@
+{
+    "Renderer":
+    {
+        "COMPACTION":true,
+        "SORT_MATERIALS":true,
+        "USE_BVH":true,
+        "BVH_LEAF_SIZE":4
+    },
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 0.95, 0.85],
+            "EMITTANCE":15.0
+        },
+        "piano_white":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.9, 0.9, 0.9],
+            "ROUGHNESS":0.8
+        },
+        "studio_gray":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.7, 0.7, 0.7]
+        }
+    },
+    "Camera":
+    {
+        "RES":[800, 800],
+        "FOVY":45.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"piano",
+        "EYE":[8.0, 4.5, 10.0],
+        "LOOKAT":[0.0, 2.5, 0.0],
+        "UP":[0.0, 1.0, 0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"obj",
+            "FILE":"piano/Hallet and Davis Piano 2-exported.obj",
+            "MATERIAL":"piano_white",
+            "TRANS":[-0.48, -0.34, -0.15],
+            "ROTAT":[-90.0, 0.0, 0.0],
+            "SCALE":[0.3, 0.3, 0.3]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"studio_gray",
+            "TRANS":[0.0, -0.1, 0.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[16.0, 0.2, 16.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"studio_gray",
+            "TRANS":[0.0, 4.0, -5.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[16.0, 8.0, 0.2]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[-3.0, 7.5, 0.5],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[3.0, 0.25, 3.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[3.0, 7.5, -1.0],
+            "ROTAT":[0.0, 0.0, 0.0],
+            "SCALE":[3.0, 0.25, 3.0]
+        }
+    ]
+}

@@ -18,8 +18,31 @@
 class GuiDataContainer
 {
 public:
-    GuiDataContainer() : TracedDepth(0) {}
+    GuiDataContainer()
+        : TracedDepth(0), EnableCompaction(true), SortByMaterial(true),
+          UseBvh(true), EnableDepthOfField(false), EnableEnvironment(true),
+          BvhBuildMs(0.0f), BvhNodeCount(0), BvhLeafCount(0), BvhMaxDepth(0),
+          GenerateRayMs(0.0f), ComputeIntersectionsMs(0.0f), SortMs(0.0f),
+          ShadeMs(0.0f), CompactMs(0.0f), FinalGatherMs(0.0f)
+    {}
+
     int TracedDepth;
+    std::vector<int> ActivePathsByDepth;
+    bool EnableCompaction;
+    bool SortByMaterial;
+    bool UseBvh;
+    bool EnableDepthOfField;
+    bool EnableEnvironment;
+    float BvhBuildMs;
+    int BvhNodeCount;
+    int BvhLeafCount;
+    int BvhMaxDepth;
+    float GenerateRayMs;
+    float ComputeIntersectionsMs;
+    float SortMs;
+    float ShadeMs;
+    float CompactMs;
+    float FinalGatherMs;
 };
 
 namespace utilityCore
