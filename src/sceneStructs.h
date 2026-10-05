@@ -12,7 +12,8 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    TRIANGLE
 };
 
 struct Ray
@@ -31,6 +32,13 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+    // for triangles only
+    glm::vec3 v0;
+    glm::vec3 v1;
+    glm::vec3 v2;
+    glm::vec3 norm0 = glm::vec3(0.0f);
+    glm::vec3 norm1 = glm::vec3(0.0f);
+    glm::vec3 norm2 = glm::vec3(0.0f);
 };
 
 struct Material
@@ -59,6 +67,30 @@ struct Camera
     glm::vec2 pixelLength;
 };
 
+struct Bounds
+{
+    glm::vec3 minCorner;
+    glm::vec3 maxCorner;
+};
+
+struct BVHPrimitive
+{
+    Geom boundingBox;
+    Bounds boundingCorners;
+    int leafGeomIndex; // actual triangle for this primitive
+};
+
+struct BVHNode
+{
+    Bounds boundingCorners;
+    Geom boundingBox;
+    int bvhNodeChildIndex_First = -1; 
+    int bvhNodeChildIndex_Second = -1;
+    int numPrims = -1;
+    int firstPrimOffset = -1;
+    int dim = -1; //axis it was split on
+};
+
 struct RenderState
 {
     Camera camera;
@@ -72,6 +104,8 @@ struct PathSegment
 {
     Ray ray;
     glm::vec3 color;
+    glm::vec3 throughput;
+    float pdf;
     int pixelIndex;
     int remainingBounces;
 };
@@ -83,5 +117,6 @@ struct ShadeableIntersection
 {
   float t;
   glm::vec3 surfaceNormal;
+  glm::vec3 intersectionPoint;
   int materialId;
 };

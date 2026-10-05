@@ -4,6 +4,7 @@
 
 #include <thrust/random.h>
 
+
 __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
     glm::vec3 normal,
     thrust::default_random_engine &rng)
@@ -44,6 +45,7 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
         + sin(around) * over * perpendicularDirection2;
 }
 
+// sets new ray, color and pdf for path segment
 __host__ __device__ void scatterRay(
     PathSegment & pathSegment,
     glm::vec3 intersect,
@@ -54,4 +56,23 @@ __host__ __device__ void scatterRay(
     // TODO: implement this.
     // A basic implementation of pure-diffuse shading will just call the
     // calculateRandomDirectionInHemisphere defined above.
+
+    // if reflective
+    if (m.hasReflective > 0.0f)
+    {
+        pathSegment.ray.direction = glm::reflect(pathSegment.ray.direction, normal);
+        pathSegment.pdf = 1.0f;
+
+        pathSegment.color = m.color;
+
+    }
+    // if diffuse
+    else {
+        pathSegment.ray.direction = glm::normalize(calculateRandomDirectionInHemisphere(normal, rng));
+        pathSegment.pdf = glm::dot(pathSegment.ray.direction, glm::normalize(normal)) / PI;
+        pathSegment.color = m.color/PI;
+    }
+    
+
+    pathSegment.ray.origin = EPSILON * normal + intersect;
 }

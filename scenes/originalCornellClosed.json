@@ -26,14 +26,14 @@
         {
             "TYPE":"Specular",
             "RGB":[0.98, 0.98, 0.98],
-            "ROUGHNESS":0.0
+            "ROUGHNESS":0.3
         }
     },
     "Camera":
     {
         "RES":[800,800],
         "FOVY":45.0,
-        "ITERATIONS":5000,
+        "ITERATIONS":1,
         "DEPTH":8,
         "FILE":"cornell",
         "EYE":[0.0,5.0,10.5],
@@ -54,35 +54,42 @@
             "MATERIAL":"diffuse_white",
             "TRANS":[0.0,0.0,0.0],
             "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[10.0,0.01,10.0]
+            "SCALE":[30.0,0.01,30.0]
         },
         {
             "TYPE":"cube",
             "MATERIAL":"diffuse_white",
             "TRANS":[0.0,10.0,0.0],
             "ROTAT":[0.0,0.0,90.0],
-            "SCALE":[0.01,10.0,10.0]
+            "SCALE":[0.01,30.0,30.0]
         },
         {
             "TYPE":"cube",
             "MATERIAL":"diffuse_white",
             "TRANS":[0.0,5.0,-5.0],
             "ROTAT":[0.0,90.0,0.0],
-            "SCALE":[0.01,10.0,10.0]
+            "SCALE":[0.01,30.0,30.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"diffuse_white",
+            "TRANS":[0.0,5.0,15.0],
+            "ROTAT":[0.0,90.0,0.0],
+            "SCALE":[0.01,30.0,30.0]
         },
         {
             "TYPE":"cube",
             "MATERIAL":"diffuse_red",
             "TRANS":[-5.0,5.0,0.0],
             "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[0.01,10.0,10.0]
+            "SCALE":[0.01,30.0,30.0]
         },
         {
             "TYPE":"cube",
             "MATERIAL":"diffuse_green",
             "TRANS":[5.0,5.0,0.0],
             "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[0.01,10.0,10.0]
+            "SCALE":[0.01,30.0,30.0]
         },
         {
             "TYPE":"sphere",

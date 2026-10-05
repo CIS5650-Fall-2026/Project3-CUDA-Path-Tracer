@@ -11,6 +11,11 @@ public:
     Scene(std::string filename);
 
     std::vector<Geom> geoms;
+    std::vector<Geom> lights;
     std::vector<Material> materials;
+    std::vector<BVHNode> bvhNodes;
+    std::vector<BVHPrimitive> bvhPrimitives;
+    std::vector<BVHPrimitive> orderedPrims;
+    std::vector<glm::vec3> textureImage;
     RenderState state;
 };
