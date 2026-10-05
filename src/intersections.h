@@ -20,6 +20,21 @@ __host__ __device__ inline unsigned int utilhash(unsigned int a)
     return a;
 }
 
+// xorshift from the slides on better random numbers
+__host__ __device__ inline unsigned long long betterRandom(unsigned long long& state) // we use long because now it is 64 bits
+{
+    state ^= state >> 21;
+    state ^= state << 35;
+    state ^= state >> 4;
+    return state;
+}
+
+// betterRandom gives a very big int, so we want to scale it down to interval [0, 1)
+__host__ __device__ inline float betterRandom01(unsigned long long& state)
+{
+    return (betterRandom(state) & 0xFFFFFFFFULL) * (1.0f / 4294967296.0f); // that big number is 2^32
+}
+
 // CHECKITOUT
 /**
  * Compute a point at parameter value `t` on ray `r`.

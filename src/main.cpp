@@ -24,6 +24,15 @@
 #include <sstream>
 #include <string>
 
+#ifdef _WIN32
+// Ask Optimus laptops to create the OpenGL window on the NVIDIA GPU.
+// Otherwise GLFW uses the Intel GPU and CUDA-GL interop fails.
+extern "C" {
+    __declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+    __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+}
+#endif
+
 static std::string startTimeString;
 
 // For camera controls
@@ -171,7 +180,9 @@ void cleanupCuda()
 
 void initCuda()
 {
-    cudaGLSetGLDevice(0);
+    // On this laptop OpenGL already owns the NVIDIA device, so
+    // cudaGLSetGLDevice fails with "device busy or unavailable".
+    // cudaGLRegisterBufferObject still sets up the interop.
 
     // Clean up on program exit
     atexit(cleanupCuda);
@@ -285,6 +296,7 @@ void RenderImGui()
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    ImGui::Checkbox("Material Sorting", &imguiData->materialSorting);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
