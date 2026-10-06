@@ -71,3 +71,24 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ float boundingBoxIntersectionTest(
+  const Geom& geom,
+  const Ray& r);
+
+__host__ __device__ float triangleIntersectionTest(
+  Triangle triangle,
+  Ray r,
+  glm::vec3& intersectionPoint,
+  glm::vec3& normal,
+  bool& outside);
+
+__host__ __device__ float meshIntersectionTest(
+  Geom geom,
+  Ray r,
+  glm::vec3& intersectionPoint,
+  glm::vec3& normal,
+  bool& outside,
+  Triangle* dev_triangles,
+  LinearBVHNode* dev_bvhNodes,
+  int& hitMaterialId);
