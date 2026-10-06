@@ -1,0 +1,131 @@
+{
+    "Materials": {
+        "warm_light": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 0.28, 0.06],
+            "TEXTURE": "Stripes"
+        },
+        "soft_light": {
+            "TYPE": "Diffuse",
+            "RGB": [0.18, 0.34, 0.58]
+        },
+        "midnight": {
+            "TYPE": "Diffuse",
+            "RGB": [0.025, 0.045, 0.080]
+        },
+        "charcoal": {
+            "TYPE": "Diffuse",
+            "RGB": [0.12, 0.14, 0.18]
+        },
+        "ivory": {
+            "TYPE": "Diffuse",
+            "RGB": [0.78, 0.74, 0.66]
+        },
+        "gold_stripes": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 0.38, 0.055],
+            "TEXTURE": "Stripes"
+        },
+        "cyan_checker": {
+            "TYPE": "Diffuse",
+            "RGB": [0.04, 0.72, 1.0],
+            "TEXTURE": "Checker"
+        },
+        "glass": {
+            "TYPE": "Refractive",
+            "RGB": [0.97, 0.99, 1.0],
+            "IOR": 1.5
+        }
+    },
+    "Camera": {
+        "RES": [800, 533],
+        "FOVY": 29.0,
+        "ITERATIONS": 1000,
+        "DEPTH": 8,
+        "FILE": "showcase",
+        "EYE": [0.0, 4.0, 10.5],
+        "LOOKAT": [0.0, 2.7, 0.0],
+        "UP": [0.0, 1.0, 0.0],
+        "LENS_RADIUS": 0.035,
+        "FOCAL_DISTANCE": 10.7
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "midnight",
+            "TRANS": [0.0, -0.2, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [18.0, 0.4, 18.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "midnight",
+            "TRANS": [0.0, 7.0, -5.2],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [30.0, 20.0, 0.35]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "charcoal",
+            "TRANS": [0.0, 0.35, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [9.5, 0.7, 5.5]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "ivory",
+            "TRANS": [-2.7, 0.85, -0.2],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [3.2, 0.35, 3.2]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "ivory",
+            "TRANS": [2.7, 0.85, -0.2],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [3.2, 0.35, 3.2]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "warm_light",
+            "TRANS": [0.0, 4.25, -4.75],
+            "ROTAT": [90.0, 0.0, 0.0],
+            "SCALE": [1.65, 1.65, 1.65]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "gold_stripes",
+            "TRANS": [-2.7, 1.05, -0.2],
+            "ROTAT": [72.0, -18.0, 8.0],
+            "SCALE": [1.45, 1.45, 1.45]
+        },
+        {
+            "TYPE": "vase",
+            "MATERIAL": "cyan_checker",
+            "TRANS": [2.7, 1.05, -0.2],
+            "ROTAT": [0.0, 16.0, 0.0],
+            "SCALE": [1.4, 1.4, 1.4]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass",
+            "TRANS": [0.0, 1.8, 1.4],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.55, 1.55, 1.55]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass",
+            "TRANS": [-4.5, 1.45, 1.8],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.35, 1.35, 1.35]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass",
+            "TRANS": [4.5, 1.45, 1.8],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.35, 1.35, 1.35]
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+# Materials for test_cube.obj
+
+newmtl CubeDiffuse
+Ka 0.0 0.0 0.0
+Kd 0.7 0.2 0.2
+Ks 0.0 0.0 0.0
+Ke 0.0 0.0 0.0
+illum 1
+map_Kd Wood026_4K-PNG_Color.png
+map_Bump -bm 1.0 Wood026_4K-PNG_Displacement.png
+
+newmtl AreaLight
+Ka 0.0 0.0 0.0
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+Ke 12.0 12.0 12.0
+illum 0

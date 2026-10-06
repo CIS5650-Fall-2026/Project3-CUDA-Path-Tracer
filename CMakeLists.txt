@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(cis565_path_tracer LANGUAGES CUDA CXX)
+project(cis565_path_tracer LANGUAGES C CUDA CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -49,6 +49,7 @@ find_package(GLM REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
 set(headers
+    src/bvh.h
     src/image.h
     src/interactions.h
     src/intersections.h
@@ -62,6 +63,7 @@ set(headers
 set(sources
     src/main.cpp
     src/stb.cpp
+    src/bvh.cpp
     src/image.cpp
     src/glslUtility.cpp
     src/pathtrace.cu
@@ -103,16 +105,24 @@ source_group("Sources" FILES ${sources})
 source_group("ImGui\\Headers" FILES ${imgui_headers})
 source_group("ImGui\\Sources" FILES ${imgui_sources})
 
-#add_subdirectory(src/ImGui)
-#add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
+# tinygltf loader
+add_library(tinygltf_v3 STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/tinygltf/tiny_gltf_v3.c)
+target_include_directories(tinygltf_v3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/external/tinygltf)
+target_compile_definitions(tinygltf_v3 PRIVATE TINYGLTF3_ENABLE_FS)
+
+# tinyobj loader
+add_library(tinyobjloader STATIC ${CMAKE_CURRENT_SOURCE_DIR}/external/tinyobjloader/tiny_obj_loader.cc)
+target_include_directories(tinyobjloader PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/external/tinyobjloader)
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
-    #stream_compaction  # TODO: uncomment if using your stream compaction
+    tinygltf_v3
+    tinyobjloader
 )
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
+# using ada arch, should change to specific gpu if changing computer, or native
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES 89)
 
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,RelWithDebInfo>,$<COMPILE_LANGUAGE:CUDA>>:-G;-src-in-ptx>")
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")

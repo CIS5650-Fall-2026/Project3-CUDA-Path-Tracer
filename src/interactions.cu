@@ -44,6 +44,13 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
         + sin(around) * over * perpendicularDirection2;
 }
 
+__host__ __device__ float schlickApproximation(float n1, float n2, float cosTheta) {
+    float r0 = (n1 - n2) / (n1 + n2);
+    r0 *= r0;
+    float i = 1 - cosTheta;
+    return r0 + (1 - r0) * i * i * i * i * i;
+}
+
 __host__ __device__ void scatterRay(
     PathSegment & pathSegment,
     glm::vec3 intersect,
@@ -51,7 +58,36 @@ __host__ __device__ void scatterRay(
     const Material &m,
     thrust::default_random_engine &rng)
 {
-    // TODO: implement this.
+    // simplified implementation of refraction using schlick's approximation
+    if (m.hasRefractive > 0) {
+        thrust::uniform_real_distribution<float> u01(0, 1);
+
+        glm::vec3 incident_norm = glm::normalize(pathSegment.ray.direction);
+        float n1 = pathSegment.n;
+        float n2 = n1 == 1 ? m.indexOfRefraction : 1;
+        float cosTheta = glm::min(glm::dot(-incident_norm, normal), 1.0f);
+        float reflectance = schlickApproximation(n1, n2, cosTheta);
+
+        float relRefractiveIdx = n1 / n2;
+        float sin2Theta = glm::max(0.0f, 1.0f - cosTheta * cosTheta);
+        float sin2Theta_t = relRefractiveIdx * relRefractiveIdx * sin2Theta;
+        bool totalInternalReflection = sin2Theta_t >= 1;
+        
+
+        if (totalInternalReflection || u01(rng) < reflectance) {
+            pathSegment.ray.direction = glm::reflect(incident_norm, normal);
+        } else {
+            pathSegment.ray.direction = glm::refract(incident_norm, normal, relRefractiveIdx);
+            pathSegment.n = n2;
+        }
+        pathSegment.ray.direction = glm::normalize(pathSegment.ray.direction);
+        pathSegment.color *= m.color;
+        pathSegment.ray.origin = intersect + 0.001f * incident_norm;
+        return;
+    }
     // A basic implementation of pure-diffuse shading will just call the
     // calculateRandomDirectionInHemisphere defined above.
+    pathSegment.ray.direction = glm::normalize(calculateRandomDirectionInHemisphere(normal, rng));
+    pathSegment.color *= m.color;
+    pathSegment.ray.origin = intersect + 0.001f * normal;
 }

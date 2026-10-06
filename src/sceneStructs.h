@@ -12,7 +12,8 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    TRIANGLE
 };
 
 struct Ray
@@ -31,6 +32,17 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+    glm::vec3 triangleVertices[3];
+    glm::vec3 triangleNormals[3];
+    bool hasNormals;
+    glm::vec2 triangleUVs[3];
+    bool hasUVs;
+};
+
+enum TextureType {
+    SOLID,
+    STRIPES,
+    CHECKER
 };
 
 struct Material
@@ -45,6 +57,16 @@ struct Material
     float hasRefractive;
     float indexOfRefraction;
     float emittance;
+    TextureType textureType;
+    
+    int colorTexOffset;
+    int colorTexWidth;
+    int colorTexHeight;
+
+    int bumpTexOffset;
+    int bumpTexWidth;
+    int bumpTexHeight;
+    float bumpStrength;
 };
 
 struct Camera
@@ -57,6 +79,8 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    float lensRadius;
+    float focalDistance;
 };
 
 struct RenderState
@@ -74,6 +98,11 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+    float n; // refractive index
+    glm::vec3 L;
+    float p_b;
+    bool specularBounce;
+
 };
 
 // Use with a corresponding PathSegment to do:
@@ -84,4 +113,5 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  int geomId;
 };

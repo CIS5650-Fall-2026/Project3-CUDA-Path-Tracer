@@ -6,7 +6,7 @@ This project involves a significant bit of running time to generate high-quality
 
 If you plan to use late days on this project (which we recommend), they can be applied to the code deadline (which will also push back the README deadline), or they can be applied to just the README deadline. For example, you can use one late day to push the code deadline to October 1st and the README deadline to October 2nd, and then use another late day to push the README deadline further to October 4th, for a total of two late days used.
 
-[Link to "Pathtracing Primer" Recitation Slides](https://docs.google.com/presentation/d/1rr6zFbpVkdMEkxBK4QLN4_tBRo168SJA_bMi2GkBB6I/edit?usp=drive_link)
+[Link to &#34;Pathtracing Primer&#34; Recitation Slides](https://docs.google.com/presentation/d/1rr6zFbpVkdMEkxBK4QLN4_tBRo168SJA_bMi2GkBB6I/edit?usp=drive_link)
 
 **Summary:**
 
@@ -70,16 +70,16 @@ You will need to implement the following features:
 
 ### Part 2 - Make Your Pathtracer Unique!
 
-The following features are a non-exhaustive list of features you can choose from based on your own interests and motivation. Each feature has an associated score (represented in emoji numbers, eg. :five:).
+The following features are a non-exhaustive list of features you can choose from based on your own interests and motivation. Each feature has an associated score (represented in emoji numbers, eg. 5️⃣).
 
 **You are required to implement additional features of your choosing from the list below totalling up to minimum 10 score points.**
 
 An example set of optional features is:
 
-* Mesh Loading - :four: points
-* Refraction - :two: points
-* Depth of field - :two: points
-* Final rays post processing - :three: points
+* Mesh Loading - 4️⃣ points
+* Refraction - 2️⃣ points
+* Depth of field - 2️⃣ points
+* Final rays post processing - 3️⃣ points
 
 This list is not comprehensive. If you have a particular idea you would like to implement (e.g. acceleration structures, etc.), please post on Ed.
 
@@ -87,26 +87,26 @@ This list is not comprehensive. If you have a particular idea you would like to 
 
 #### Visual Improvements
 
-* :two: Refraction (e.g. glass/water) [PBRTv4 9.3](https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission) with Frensel effects using [Schlick's approximation](https://en.wikipedia.org/wiki/Schlick's_approximation) or more accurate methods [PBRTv4 9.5](https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF.html). You can use `glm::refract` for Snell's law.
+* 2️⃣ Refraction (e.g. glass/water) [PBRTv4 9.3](https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission) with Frensel effects using [Schlick&#39;s approximation](https://en.wikipedia.org/wiki/Schlick's_approximation) or more accurate methods [PBRTv4 9.5](https://pbr-book.org/4ed/Reflection_Models/Dielectric_BSDF.html). You can use `glm::refract` for Snell's law.
   * Recommended but not required: non-perfect specular surfaces (see "Imperfect Specular Lighting" below).
-* :two: Physically-based depth-of-field (by jittering rays within an aperture). [PBRTv4 5.2.3](https://pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models#TheThinLensModelandDepthofField)
-* :four: Procedural Shapes & Textures.
+* 2️⃣ Physically-based depth-of-field (by jittering rays within an aperture). [PBRTv4 5.2.3](https://pbr-book.org/4ed/Cameras_and_Film/Projective_Camera_Models#TheThinLensModelandDepthofField)
+* 4️⃣ Procedural Shapes & Textures.
   * You must generate a minimum of two different complex shapes procedurally. (Not primitives)
   * You must be able to shade object with a minimum of two different textures
-* :five: (:six: if combined with Arbitrary Mesh Loading) Texture mapping [PBRTv4 10.4](https://pbr-book.org/4ed/Textures_and_Materials/Image_Texture) and bump mapping [PBRTv3 9.3](https://www.pbr-book.org/3ed-2018/Materials/Bump_Mapping.html).
+* 5️⃣ (6️⃣ if combined with Arbitrary Mesh Loading) Texture mapping [PBRTv4 10.4](https://pbr-book.org/4ed/Textures_and_Materials/Image_Texture) and bump mapping [PBRTv3 9.3](https://www.pbr-book.org/3ed-2018/Materials/Bump_Mapping.html).
   * Implement file-loaded textures AND a basic procedural texture
   * Provide a performance comparison between the two
-* :two: Direct lighting by taking a final ray directly to a random point on an emissive object acting as a light source). Or more advanced [PBRTv4 13.4](https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/A_Better_Path_Tracer).
-* :four: Subsurface scattering [PBRTv3 5.6.2](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Surface_Reflection#TheBSSRDF), [11.4](https://www.pbr-book.org/3ed-2018/Volume_Scattering/The_BSSRDF.html).
-* :three: [Better random number sequences for Monte Carlo ray tracing](https://cseweb.ucsd.edu/classes/sp17/cse168-a/CSE168_07_Random.pdf)
-* :three: Some method of defining object motion, and motion blur by averaging samples at different times in the animation.
-* :three: Use final rays to apply post-processing shaders. Please post your ideas on Piazza before starting.
+* 2️⃣ Direct lighting by taking a final ray directly to a random point on an emissive object acting as a light source). Or more advanced [PBRTv4 13.4](https://pbr-book.org/4ed/Light_Transport_I_Surface_Reflection/A_Better_Path_Tracer).
+* 4️⃣ Subsurface scattering [PBRTv3 5.6.2](https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Surface_Reflection#TheBSSRDF), [11.4](https://www.pbr-book.org/3ed-2018/Volume_Scattering/The_BSSRDF.html).
+* 3️⃣ [Better random number sequences for Monte Carlo ray tracing](https://cseweb.ucsd.edu/classes/sp17/cse168-a/CSE168_07_Random.pdf)
+* 3️⃣ Some method of defining object motion, and motion blur by averaging samples at different times in the animation.
+* 3️⃣ Use final rays to apply post-processing shaders. Please post your ideas on Piazza before starting.
 
 #### Mesh Improvements
 
 * Arbitrary mesh loading and rendering (e.g. glTF 2.0 (preferred) or `obj` files) with toggleable bounding volume intersection culling
-  * :four: glTF
-  * :two: OBJ
+  * 4️⃣ glTF
+  * 2️⃣ OBJ
   * For other formats, please check on the class forum
   * You can find models online or export them from your favorite 3D modeling application. With approval, you may use a third-party loading code to bring the data into C++.
     * [tinygltf](https://github.com/syoyo/tinygltf/) is highly recommended for glTF.
@@ -114,32 +114,34 @@ This list is not comprehensive. If you have a particular idea you would like to 
     * [obj2gltf](https://github.com/CesiumGS/obj2gltf) can be used to convert OBJ to glTF files. You can find similar projects for FBX and other formats.
   * You can use the triangle intersection function `glm::intersectRayTriangle`.
   * Bounding volume intersection culling: reduce the number of rays that have to be checked against the entire mesh by first checking rays against a volume that completely bounds the mesh. For full credit, provide performance analysis with and without this optimization.
+
   > Note: This goes great with the Hierarcical Spatial Data Structures.
+  >
 
 #### Performance Improvements
 
-* :one: Implement Russian roulette path termination, which terminates unimportant paths early without introducing bias. Make sure to include a performance evaluation with and without it enabled, especially for closed scenes. [PBRTv3 13.7](https://pbr-book.org/3ed-2018/Monte_Carlo_Integration/Russian_Roulette_and_Splitting)
-* :two: Work-efficient stream compaction using shared memory across multiple blocks. (See [*GPU Gems 3*, Chapter 39](https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-39-parallel-prefix-sum-scan-cuda).)
+* 1️⃣ Implement Russian roulette path termination, which terminates unimportant paths early without introducing bias. Make sure to include a performance evaluation with and without it enabled, especially for closed scenes. [PBRTv3 13.7](https://pbr-book.org/3ed-2018/Monte_Carlo_Integration/Russian_Roulette_and_Splitting)
+* 2️⃣ Work-efficient stream compaction using shared memory across multiple blocks. (See [*GPU Gems 3*, Chapter 39](https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-39-parallel-prefix-sum-scan-cuda).)
   * Note that you will NOT receieve extra credit for this if you implemented shared memory stream compaction as extra credit for Project 2.
-* :six: Hierarchical spatial data structures - for better ray/scene intersection testing
+* 6️⃣ Hierarchical spatial data structures - for better ray/scene intersection testing
   * BVH or Octree recommended - this feature is more about traversal on the GPU than perfect tree structure
   * CPU-side data structure construction is sufficient - GPU-side construction was a [final project.](https://github.com/jeremynewlin/Accel)
   * Make sure this is toggleable for performance comparisons
   * If implemented in conjunction with Arbitrary mesh loading (required for this year), this qualifies as the toggleable bounding volume intersection culling.
   * See below for more resources
-* :six: [Wavefront pathtracing](https://research.nvidia.com/publication/megakernels-considered-harmful-wavefront-path-tracing-gpus):
-Group rays by material without a sorting pass. A sane implementation will require considerable refactoring, since every supported material suddenly needs its own kernel.
-* :three: [*Open Image AI Denoiser or an alternative approve image denoiser*](https://github.com/OpenImageDenoise/oidn) Open Image Denoiser is an image denoiser which works by applying a filter on Monte-Carlo-based pathtracer output. The denoiser runs on the CPU and takes in path tracer output from 1spp to beyond. In order to get full credit for this, you must pass in at least one extra buffer along with the [raw "beauty" buffer](https://github.com/OpenImageDenoise/oidn#open-image-denoise-overview). **Ex:** Beauty + Normals.
+* 6️⃣ [Wavefront pathtracing](https://research.nvidia.com/publication/megakernels-considered-harmful-wavefront-path-tracing-gpus):
+  Group rays by material without a sorting pass. A sane implementation will require considerable refactoring, since every supported material suddenly needs its own kernel.
+* 3️⃣ [*Open Image AI Denoiser or an alternative approve image denoiser*](https://github.com/OpenImageDenoise/oidn) Open Image Denoiser is an image denoiser which works by applying a filter on Monte-Carlo-based pathtracer output. The denoiser runs on the CPU and takes in path tracer output from 1spp to beyond. In order to get full credit for this, you must pass in at least one extra buffer along with the [raw &#34;beauty&#34; buffer](https://github.com/OpenImageDenoise/oidn#open-image-denoise-overview). **Ex:** Beauty + Normals.
   * Part of this extra credit is figuring out where the filter should be called, and how you should manage the data for the filter step.
   * It is important to note that integrating this is not as simple as it may seem at first glance. Library integration, buffer creation, device compatibility, and more are all real problems which will appear, and it may be hard to debug them. Please only try this if you have finished the Part 2 early and would like extra points. While this is difficult, the result would be a significantly faster resolution of the path traced image.
-* :five: Re-startable Path tracing: Save some application state (iteration number, samples so far, acceleration structure) so you can start and stop rendering instead of leaving your computer running for hours at end (which will happen in this project)
-* :five: Switch the project from using CUDA-OpenGL Interop to using CUDA-Vulkan interop (this is a really great one for those of you interested in doing Vulkan). Talk to TAs if you are planning to pursue this.
+* 5️⃣ Re-startable Path tracing: Save some application state (iteration number, samples so far, acceleration structure) so you can start and stop rendering instead of leaving your computer running for hours at end (which will happen in this project)
+* 5️⃣ Switch the project from using CUDA-OpenGL Interop to using CUDA-Vulkan interop (this is a really great one for those of you interested in doing Vulkan). Talk to TAs if you are planning to pursue this.
 
 #### Optimization
 
 **For those of you that are not as interested in the topic of rendering**, we encourage you to focus on optimizing the basic path tracer using GPU programming techniques and more advanced CUDA features.
 In addition to the core features, we do recommend at least implementing an OBJ mesh loader before focusing on optimization so that you can load in heavy geometries to start seeing performance hit.
-Please refer to the course materials (especially the CUDA Performance lecture) and the [CUDA's Best Practice Guide](https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf) on how to optimize CUDA performance.
+Please refer to the course materials (especially the CUDA Performance lecture) and the [CUDA&#39;s Best Practice Guide](https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf) on how to optimize CUDA performance.
 Some examples include:
 
 * Use shared memory to improve memory bandwidth
@@ -164,15 +166,17 @@ You'll be working in the following files. Look for important parts of the code:
 
 * Search for `CHECKITOUT`.
 * You'll have to implement parts labeled with `TODO`. (But don't let these constrain you - you have free rein!)
-
 * `src/pathtrace.h`/`cu`: path tracing kernels, device functions, and calling code
+
   * `pathtraceInit` initializes the path tracer state - it should copy scene data (e.g. geometry, materials) from `Scene`.
   * `pathtraceFree` frees memory allocated by `pathtraceInit`
   * `pathtrace` performs one iteration of the rendering - it handles kernel launches, memory copies, transferring some data, etc.
     * See comments for a low-level path tracing recap.
 * `src/intersections.h`/`cu`: ray intersection functions
+
   * `boxIntersectionTest` and `sphereIntersectionTest`, which take in a ray and a geometry object and return various properties of the intersection.
 * `src/interactions.h`/`cu`: ray scattering functions
+
   * `calculateRandomDirectionInHemisphere`: a cosine-weighted random direction in a hemisphere. Needed for implementing diffuse surfaces.
   * `scatterRay`: this function should perform all ray scattering, and will call `calculateRandomDirectionInHemisphere`. See comments for details.
 * `src/main.cpp`: you don't need to do anything here, but you can change the program to save `.hdr` image files, if you want (for postprocessing).

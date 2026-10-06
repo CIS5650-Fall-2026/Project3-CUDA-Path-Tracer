@@ -111,3 +111,57 @@ __host__ __device__ float sphereIntersectionTest(
 
     return glm::length(r.origin - intersectionPoint);
 }
+
+
+__host__ __device__ float triangleIntersectionTest(
+    Geom triangle,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside) {
+        const glm::vec3 edge1 = triangle.triangleVertices[1] - triangle.triangleVertices[0];
+    const glm::vec3 edge2 = triangle.triangleVertices[2] - triangle.triangleVertices[0];
+
+    const glm::vec3 p = glm::cross(r.direction, edge2);
+    const float det = glm::dot(edge1, p);
+    if (fabsf(det) < 0.000001f) {
+        return -1;
+    }
+    const float inv_det = 1 / det;
+
+    const glm::vec3 fromVertex = r.origin - triangle.triangleVertices[0];
+    const float u = glm::dot(fromVertex, p) * inv_det;
+    if (u < 0 || u > 1) {
+        return -1;
+    }
+
+    const glm::vec3 q = glm::cross(fromVertex, edge1);
+    const float v = glm::dot(r.direction, q) * inv_det;
+    if (v < 0 || u + v > 1)
+    {
+        return -1;
+    }
+
+    const float t = glm::dot(edge2, q) * inv_det;
+    if (t <= 0.000001) {
+        return -1;
+    }
+
+    intersectionPoint = r.origin + t * r.direction;
+
+    if (triangle.hasNormals) {
+        normal = glm::normalize((1 - u - v) * triangle.triangleNormals[0] 
+        + u * triangle.triangleNormals[1] + v * triangle.triangleNormals[2]);
+    }
+    else
+    {
+        normal = glm::normalize(glm::cross(edge1, edge2));
+    }
+
+    outside = glm::dot(r.direction, normal) < 0;
+    if (!outside) {
+        normal = -normal;
+    }
+
+    return t;
+    }

@@ -1,0 +1,192 @@
+{
+    "Materials": {
+        "gallery_light": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 0.55, 0.24],
+            "TEXTURE": "Stripes"
+        },
+        "floor": {
+            "TYPE": "Diffuse",
+            "RGB": [0.42, 0.40, 0.46]
+        },
+        "backdrop": {
+            "TYPE": "Diffuse",
+            "RGB": [0.19, 0.15, 0.24]
+        },
+        "wall_panel": {
+            "TYPE": "Diffuse",
+            "RGB": [0.58, 0.30, 0.65]
+        },
+        "ceiling_light": {
+            "TYPE": "Emitting",
+            "RGB": [1.0, 0.92, 0.78],
+            "EMITTANCE": 6.0
+        },
+        "plinth": {
+            "TYPE": "Diffuse",
+            "RGB": [0.62, 0.60, 0.56]
+        },
+        "ember": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 0.20, 0.035],
+            "TEXTURE": "Stripes"
+        },
+        "lagoon": {
+            "TYPE": "Diffuse",
+            "RGB": [0.02, 0.78, 0.88],
+            "TEXTURE": "Checker"
+        },
+        "orchid": {
+            "TYPE": "Diffuse",
+            "RGB": [0.72, 0.16, 1.0],
+            "TEXTURE": "Stripes"
+        },
+        "gold": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 0.62, 0.08]
+        },
+        "ice": {
+            "TYPE": "Diffuse",
+            "RGB": [0.30, 0.62, 1.0],
+            "TEXTURE": "Checker"
+        },
+        "glass": {
+            "TYPE": "Refractive",
+            "RGB": [0.98, 0.99, 1.0],
+            "IOR": 1.5
+        }
+    },
+    "Camera": {
+        "RES": [800, 533],
+        "FOVY": 22.0,
+        "ITERATIONS": 1000,
+        "DEPTH": 8,
+        "FILE": "shell-gallery",
+        "EYE": [0.0, 4.8, 12.5],
+        "LOOKAT": [0.0, 2.75, -0.3],
+        "UP": [0.0, 1.0, 0.0],
+        "LENS_RADIUS": 0.025,
+        "FOCAL_DISTANCE": 12.8
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "floor",
+            "TRANS": [0.0, -0.2, 0.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [22.0, 0.4, 40.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "backdrop",
+            "TRANS": [0.0, 7.0, -5.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [30.0, 20.0, 0.3]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "wall_panel",
+            "TRANS": [0.0, 4.2, -4.78],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [14.5, 7.0, 0.18]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "wall_panel",
+            "TRANS": [-7.5, 4.5, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [0.3, 9.0, 22.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "wall_panel",
+            "TRANS": [7.5, 4.5, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [0.3, 9.0, 22.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "ceiling_light",
+            "TRANS": [0.0, 8.0, 1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [5.5, 0.12, 3.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "plinth",
+            "TRANS": [-4.8, 0.55, -0.2],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [2.5, 1.1, 3.2]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "plinth",
+            "TRANS": [-2.4, 0.72, -0.65],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [2.3, 1.45, 3.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "plinth",
+            "TRANS": [0.0, 0.9, -1.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [2.4, 1.8, 3.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "plinth",
+            "TRANS": [2.4, 0.72, -0.65],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [2.3, 1.45, 3.0]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "plinth",
+            "TRANS": [4.8, 0.55, -0.2],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [2.5, 1.1, 3.2]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "ember",
+            "TRANS": [-4.8, 1.15, -0.2],
+            "ROTAT": [70.0, -28.0, -8.0],
+            "SCALE": [0.82, 0.68, 0.82]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "lagoon",
+            "TRANS": [-2.4, 1.5, -0.65],
+            "ROTAT": [84.0, 18.0, 12.0],
+            "SCALE": [0.72, 1.05, 0.72]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "gold",
+            "TRANS": [0.0, 1.85, -1.0],
+            "ROTAT": [90.0, 0.0, 0.0],
+            "SCALE": [0.98, 0.98, 0.98]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "orchid",
+            "TRANS": [2.4, 1.5, -0.65],
+            "ROTAT": [78.0, -12.0, -15.0],
+            "SCALE": [0.82, 0.68, 0.82]
+        },
+        {
+            "TYPE": "shell",
+            "MATERIAL": "ice",
+            "TRANS": [4.8, 1.15, -0.2],
+            "ROTAT": [68.0, 30.0, 10.0],
+            "SCALE": [0.72, 1.05, 0.72]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass",
+            "TRANS": [0.0, 1.05, 2.4],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [1.25, 1.25, 1.25]
+        }
+    ]
+}

@@ -557,3 +557,6 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+models/*
+.vscode/*scenes/Wood_Texture_4K_PNG.zip

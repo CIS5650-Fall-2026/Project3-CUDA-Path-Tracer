@@ -1,0 +1,14 @@
+# Blender 4.5.1 LTS MTL File: 'Street_Lamp.blend'
+# www.blender.org
+
+newmtl Street_Lamp
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Textures/BaseColor_8bit.png
+map_Ns Textures/Roughness.png
+map_refl Textures/Metallic.png
+map_Ke Textures/Emission.png
+# map_Bump -bm 1.000000 Textures/Normal(OpenGL).png
