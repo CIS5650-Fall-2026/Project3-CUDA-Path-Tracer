@@ -74,6 +74,11 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+    int isDirectRay;
+    // Halton state. Travels with the path through stream compaction.
+    int sampleIndex;
+    int dimension;
+    float scramble;
 };
 
 // Use with a corresponding PathSegment to do:
@@ -84,4 +89,5 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  int outside; // 1 if the ray hit this surface from outside
 };

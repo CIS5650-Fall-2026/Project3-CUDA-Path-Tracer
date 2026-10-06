@@ -22,11 +22,22 @@
             "TYPE":"Diffuse",
             "RGB":[0.35, 0.85, 0.35]
         },
+        "diffuse_blue":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.35, 0.35, 0.85]
+        },
         "specular_white":
         {
             "TYPE":"Specular",
             "RGB":[0.98, 0.98, 0.98],
             "ROUGHNESS":0.0
+        },
+        "refractive_white":
+        {
+            "TYPE":"Refractive",
+            "RGB":[0.98, 0.98, 0.98],
+            "IOR":1.5
         }
     },
     "Camera":
@@ -86,10 +97,24 @@
         },
         {
             "TYPE":"sphere",
-            "MATERIAL":"specular_white",
+            "MATERIAL":"diffuse_blue",
             "TRANS":[-1.0,4.0,-1.0],
             "ROTAT":[0.0,0.0,0.0],
             "SCALE":[3.0,3.0,3.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"specular_white",
+            "TRANS":[3.0,4.0,2.0], 
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[2.0,2.0,2.0]
+        },
+        {
+            "TYPE":"sphere",
+            "MATERIAL":"refractive_white",
+            "TRANS":[-2.0,5.0,2.0], 
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[2.0,2.0,2.0]
         }
     ]
 }

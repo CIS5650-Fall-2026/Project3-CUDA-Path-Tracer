@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sceneStructs.h"
+#include "sampler.h"
 
 #include <glm/glm.hpp>
 
@@ -12,8 +13,9 @@
  * Used for diffuse lighting.
  */
 __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
-    glm::vec3 normal, 
-    thrust::default_random_engine& rng);
+    glm::vec3 normal,
+    thrust::default_random_engine& rng,
+    PathSegment& path);
 
 /**
  * Scatter a ray with some probabilities according to the material properties.
@@ -45,4 +47,5 @@ __host__ __device__ void scatterRay(
     glm::vec3 intersect,
     glm::vec3 normal,
     const Material& m,
-    thrust::default_random_engine& rng);
+    thrust::default_random_engine& rng,
+    bool outside);
