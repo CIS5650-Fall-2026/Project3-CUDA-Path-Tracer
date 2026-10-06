@@ -111,3 +111,92 @@ __host__ __device__ float sphereIntersectionTest(
 
     return glm::length(r.origin - intersectionPoint);
 }
+
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& triangle,
+    const Ray& ray,
+    glm::vec2& barycentric)
+{
+    glm::vec3 res;
+
+    //fills in our result where x and y are the ratio of the area for the subtriangles and z is our t val
+    bool hit = glm::intersectRayTriangle(
+        ray.origin,
+        ray.direction,
+        triangle.positions[0],
+        triangle.positions[1],
+        triangle.positions[2],
+        res
+    );
+
+    //if we miss from the "front" check the back. Needed if we have like transparent materials like glass
+    if (!hit) {
+        //we reverse the positions as a way to check back sided intersections
+        hit = glm::intersectRayTriangle(
+            ray.origin,
+            ray.direction,
+            triangle.positions[0], 
+            triangle.positions[2], 
+            triangle.positions[1], 
+            res
+        );
+
+        //since we swapped positions for the intersection we swap back to our original convention 
+        if (hit) {
+            float temporary = res.x;
+            res.x = res.y;
+            res.y = temporary;
+        }
+    }
+
+    //check if we just don't hit the triangle or it is behind us
+    if (!hit || res.z <= 0.0f) {
+        return -1.0f;
+    }
+
+    barycentric = glm::vec2(res.x, res.y);
+    return res.z;
+}
+
+__host__ __device__ bool boundingBoxIntersectionTest(
+    const glm::vec3& minCorner,
+    const glm::vec3& maxCorner,
+    const Ray& ray,
+    float t)
+{
+    float tEnter = 0.0f;
+    float tExit = t;
+
+    for (int axis = 0; axis < 3; axis++) {
+        float o = ray.origin[axis];
+        float dir = ray.direction[axis];
+        float min = minCorner[axis];
+        float max = maxCorner[axis];
+
+        //quick check for if that component is out of bounds
+        if (dir == 0.0f) {
+            if (o < min || o > max)
+                return false;
+            continue;
+        }
+
+        float t0 = (min - o)/dir;
+        float t1 = (max - o)/dir;
+
+        //negative directions reverse entry and exit
+        if (t0 > t1) {
+            float temporary = t0;
+            t0 = t1;
+            t1 = temporary;
+        }
+
+        tEnter = glm::max(tEnter, t0);
+        tExit = glm::min(tExit, t1);
+
+        if (tEnter > tExit) 
+            return false;
+        
+    }
+
+    return true;
+}

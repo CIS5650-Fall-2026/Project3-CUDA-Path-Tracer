@@ -1,0 +1,81 @@
+{
+    "DistantLights": 
+    [
+        {
+            "TO_LIGHT": [-0.3, 0.35, 1.0],
+            "STRENGTH": [0.5, 0.625, 0.75]
+        },
+        {
+            "TO_LIGHT": [-1.0, 0.25, 1.0],
+            "STRENGTH": [1.0, 0.02, 1.5]
+        },
+        {
+            "TO_LIGHT": [1.0, 0.25, 1.0],
+            "STRENGTH": [0.02, 1.5, 0.6]
+        }
+    ],
+    "Materials":
+    {
+        "violet": {
+            "TYPE": "Emitting",
+            "RGB": [0.65, 0.04, 1.0],
+            "EMITTANCE": 15.0
+        },
+        "mint": {
+            "TYPE": "Emitting",
+            "RGB": [0.04, 1.0, 0.45],
+            "EMITTANCE": 15.0
+        },
+        "checker": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 1.0, 1.0],
+            "CHECKERBOARD": true
+        },
+        "moon": {
+            "TYPE": "Diffuse",
+            "RGB": [1.0, 1.0, 1.0],
+            "COLOR_TEXTURE": "moon/lroc_color_poles_8k.png",
+            "BUMP_TEXTURE": "moon/ldem_16_uint.png",
+            "BUMP_STRENGTH": 3.0,
+            "RECEIVE_ACCENT_LIGHTS": false
+        }
+    },
+    "Camera":
+    {
+        "RES":[1200, 1200],
+        "FOVY":45.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"lucy",
+        "EYE":[0.0,5.0,10.5],
+        "LOOKAT":[0.0,5.0,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE": "mesh",
+            "FILE": "lucy_edgerunner/scene.gltf",
+            "TRANS": [-0.15, 0.05, -2.5],
+            "ROTAT": [0.0, 180.0, 0.0],
+            "SCALE": [4.0, 4.0, 4.0]
+        },
+         {
+            "TYPE":"sphere",
+            "MATERIAL":"moon",
+            "TRANS":[0.0,-4.8,0.0],
+            "ROTAT":[-90.0,0.0,0.0],
+            "SCALE":[80.0,80.0,10.0]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "EarthClouds_1_12756.glb",
+            "TRANS": [0.0, 80.0, -90.0],
+            "ROTAT": [0.0, 0.0, 0.0],
+            "SCALE": [0.13, 0.13, 0.13],
+            "RECEIVE_ACCENT_LIGHTS": false,
+            "ATMOSPHERE_STRENGTH": 1.0,
+            "LIGHTING_MULTIPLIER": 4.0
+        }
+    ]
+}

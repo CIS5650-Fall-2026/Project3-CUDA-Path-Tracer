@@ -1,0 +1,11 @@
+Model Information:
+* title:	LUCY (EDGERUNNER)
+* source:	https://sketchfab.com/3d-models/lucy-edgerunner-1042ed786b0946b6b1aa910cfb37e96c
+* author:	Adwerd Jr. (https://sketchfab.com/Adwerd.Jr.)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "LUCY (EDGERUNNER)" (https://sketchfab.com/3d-models/lucy-edgerunner-1042ed786b0946b6b1aa910cfb37e96c) by Adwerd Jr. (https://sketchfab.com/Adwerd.Jr.) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
