@@ -1,0 +1,378 @@
+{
+    "Materials": {
+        "floor": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.45,
+                0.45,
+                0.47
+            ]
+        },
+        "stage": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.25,
+                0.25,
+                0.27
+            ]
+        },
+        "gold_r0.05": {
+            "TYPE": "Metal",
+            "RGB": [
+                1.0,
+                0.76,
+                0.33
+            ],
+            "ROUGHNESS": 0.05
+        },
+        "glass_r0.0": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                1.0
+            ],
+            "IOR": 1.5,
+            "ROUGHNESS": 0.0
+        },
+        "gold_r0.15": {
+            "TYPE": "Metal",
+            "RGB": [
+                1.0,
+                0.76,
+                0.33
+            ],
+            "ROUGHNESS": 0.15
+        },
+        "glass_r0.08": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                1.0
+            ],
+            "IOR": 1.5,
+            "ROUGHNESS": 0.08
+        },
+        "gold_r0.3": {
+            "TYPE": "Metal",
+            "RGB": [
+                1.0,
+                0.76,
+                0.33
+            ],
+            "ROUGHNESS": 0.3
+        },
+        "glass_r0.18": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                1.0
+            ],
+            "IOR": 1.5,
+            "ROUGHNESS": 0.18
+        },
+        "gold_r0.5": {
+            "TYPE": "Metal",
+            "RGB": [
+                1.0,
+                0.76,
+                0.33
+            ],
+            "ROUGHNESS": 0.5
+        },
+        "glass_r0.32": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                1.0
+            ],
+            "IOR": 1.5,
+            "ROUGHNESS": 0.32
+        },
+        "gold_r0.8": {
+            "TYPE": "Metal",
+            "RGB": [
+                1.0,
+                0.76,
+                0.33
+            ],
+            "ROUGHNESS": 0.8
+        },
+        "glass_r0.5": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.98,
+                0.98,
+                1.0
+            ],
+            "IOR": 1.5,
+            "ROUGHNESS": 0.5
+        }
+    },
+    "Environment": {
+        "FILE": "hdr/venice_sunset_8k.hdr",
+        "INTENSITY": 0.8,
+        "ROTATION": 126
+    },
+    "Camera": {
+        "RES": [
+            1600,
+            900
+        ],
+        "FOVY": 13.5,
+        "ITERATIONS": 5000,
+        "DEPTH": 12,
+        "FILE": "ggx_spheres",
+        "EYE": [
+            0.0,
+            1.35,
+            9.5
+        ],
+        "LOOKAT": [
+            0.0,
+            0.85,
+            -0.5
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ],
+        "LENS_RADIUS": 0.0,
+        "FOCAL_DISTANCE": 9.5,
+        "TONEMAP": true
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "floor",
+            "TRANS": [
+                0,
+                -0.05,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                40,
+                0.1,
+                40
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "stage",
+            "TRANS": [
+                0,
+                0.45,
+                -1.8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                7.2,
+                0.9,
+                1.4
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "gold_r0.05",
+            "TRANS": [
+                -2.4,
+                1.35,
+                -1.8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_r0.0",
+            "TRANS": [
+                -2.4,
+                0.45,
+                1.1
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "gold_r0.15",
+            "TRANS": [
+                -1.2,
+                1.35,
+                -1.8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_r0.08",
+            "TRANS": [
+                -1.2,
+                0.45,
+                1.1
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "gold_r0.3",
+            "TRANS": [
+                0.0,
+                1.35,
+                -1.8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_r0.18",
+            "TRANS": [
+                0.0,
+                0.45,
+                1.1
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "gold_r0.5",
+            "TRANS": [
+                1.1999999999999997,
+                1.35,
+                -1.8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_r0.32",
+            "TRANS": [
+                1.1999999999999997,
+                0.45,
+                1.1
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "gold_r0.8",
+            "TRANS": [
+                2.4,
+                1.35,
+                -1.8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_r0.5",
+            "TRANS": [
+                2.4,
+                0.45,
+                1.1
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.9,
+                0.9,
+                0.9
+            ]
+        }
+    ]
+}

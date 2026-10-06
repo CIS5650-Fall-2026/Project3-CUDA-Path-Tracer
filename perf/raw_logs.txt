@@ -1,0 +1,680 @@
+##### 1a
+ 
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 640000
+  intersect @ bounce 0: 0.428 ms for 640000 paths, 0 bad rays
+bounce 1: 632847
+  intersect @ bounce 1: 0.472 ms for 632847 paths, 0 bad rays
+bounce 2: 624233
+  intersect @ bounce 2: 0.490 ms for 624233 paths, 0 bad rays
+bounce 3: 429588
+  intersect @ bounce 3: 0.346 ms for 429588 paths, 0 bad rays
+bounce 4: 365286
+  intersect @ bounce 4: 0.304 ms for 365286 paths, 0 bad rays
+bounce 5: 309871
+  intersect @ bounce 5: 0.266 ms for 309871 paths, 0 bad rays
+bounce 6: 261963
+  intersect @ bounce 6: 0.226 ms for 261963 paths, 0 bad rays
+bounce 7: 220702
+  intersect @ bounce 7: 0.191 ms for 220702 paths, 0 bad rays
+bounce 8: 0
+[avg of 200 iters] intersect 2.842 | sort 0.000 | shade 3.814 | compact 13.521 ms
+[avg of 200 iters] intersect 2.880 | sort 0.000 | shade 3.841 | compact 12.712 ms
+Saved perf_cornell_glass_closed.2026-10-05_15-05-52z.400samp.png.
+##### 1b
+ 
+--- alive paths per bounce (iter 10, compaction off) ---
+bounce 0: 640000
+  intersect @ bounce 0: 0.465 ms for 640000 paths, 0 bad rays
+bounce 1: 632847
+  intersect @ bounce 1: 0.528 ms for 640000 paths, 0 bad rays
+bounce 2: 624233
+  intersect @ bounce 2: 0.555 ms for 640000 paths, 0 bad rays
+bounce 3: 429498
+  intersect @ bounce 3: 0.567 ms for 640000 paths, 0 bad rays
+bounce 4: 365005
+  intersect @ bounce 4: 0.565 ms for 640000 paths, 0 bad rays
+bounce 5: 309798
+  intersect @ bounce 5: 0.554 ms for 640000 paths, 0 bad rays
+bounce 6: 262143
+  intersect @ bounce 6: 0.558 ms for 640000 paths, 0 bad rays
+bounce 7: 221390
+  intersect @ bounce 7: 0.559 ms for 640000 paths, 0 bad rays
+bounce 8: 0
+[avg of 200 iters] intersect 4.999 | sort 0.000 | shade 6.369 | compact 0.000 ms
+[avg of 200 iters] intersect 5.099 | sort 0.000 | shade 6.519 | compact 0.000 ms
+Saved perf_cornell_glass_closed.2026-10-05_15-08-52z.400samp.png.
+##### 1c
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 33.0629 ms
+Loaded environment map ../scenes/hdr/venice_sunset_2k.hdr: 2048x1024
+env CDF built: max pixel (1228, 492) prob 0.003980
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.609 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 0.903 ms for 426018 paths, 0 bad rays
+bounce 2: 76583
+  intersect @ bounce 2: 0.326 ms for 76583 paths, 0 bad rays
+bounce 3: 4577
+  intersect @ bounce 3: 0.103 ms for 4577 paths, 0 bad rays
+bounce 4: 1104
+  intersect @ bounce 4: 0.096 ms for 1104 paths, 0 bad rays
+bounce 5: 339
+  intersect @ bounce 5: 0.096 ms for 339 paths, 0 bad rays
+bounce 6: 133
+  intersect @ bounce 6: 0.107 ms for 133 paths, 0 bad rays
+bounce 7: 61
+  intersect @ bounce 7: 0.112 ms for 61 paths, 0 bad rays
+bounce 8: 40
+  intersect @ bounce 8: 0.106 ms for 40 paths, 0 bad rays
+bounce 9: 23
+  intersect @ bounce 9: 0.099 ms for 23 paths, 0 bad rays
+bounce 10: 14
+  intersect @ bounce 10: 0.072 ms for 14 paths, 0 bad rays
+bounce 11: 6
+  intersect @ bounce 11: 0.060 ms for 6 paths, 0 bad rays
+bounce 12: 0
+[avg of 200 iters] intersect 2.735 | sort 0.000 | shade 3.217 | compact 5.957 ms
+[avg of 200 iters] intersect 2.760 | sort 0.000 | shade 3.231 | compact 5.688 ms
+Saved perf_bunny_test_diffuse.2026-10-05_15-06-30z.400samp.png.
+##### 1d
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 32.8691 ms
+Loaded environment map ../scenes/hdr/venice_sunset_2k.hdr: 2048x1024
+env CDF built: max pixel (1228, 492) prob 0.003980
+--- alive paths per bounce (iter 10, compaction off) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.647 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 1.117 ms for 800000 paths, 0 bad rays
+bounce 2: 76583
+  intersect @ bounce 2: 1.041 ms for 800000 paths, 0 bad rays
+bounce 3: 4521
+  intersect @ bounce 3: 1.005 ms for 800000 paths, 0 bad rays
+bounce 4: 1050
+  intersect @ bounce 4: 0.915 ms for 800000 paths, 0 bad rays
+bounce 5: 288
+  intersect @ bounce 5: 0.912 ms for 800000 paths, 0 bad rays
+bounce 6: 103
+  intersect @ bounce 6: 0.920 ms for 800000 paths, 0 bad rays
+bounce 7: 40
+  intersect @ bounce 7: 0.912 ms for 800000 paths, 0 bad rays
+bounce 8: 19
+  intersect @ bounce 8: 0.934 ms for 800000 paths, 0 bad rays
+bounce 9: 12
+  intersect @ bounce 9: 0.914 ms for 800000 paths, 0 bad rays
+bounce 10: 9
+  intersect @ bounce 10: 1.021 ms for 800000 paths, 0 bad rays
+bounce 11: 6
+  intersect @ bounce 11: 0.917 ms for 800000 paths, 0 bad rays
+bounce 12: 0
+[avg of 200 iters] intersect 12.210 | sort 0.000 | shade 4.586 | compact 0.000 ms
+[avg of 200 iters] intersect 12.031 | sort 0.000 | shade 4.568 | compact 0.000 ms
+Saved perf_bunny_test_diffuse.2026-10-05_15-09-09z.400samp.png.
+##### 2a
+ 
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 640000
+  intersect @ bounce 0: 0.387 ms for 640000 paths, 0 bad rays
+bounce 1: 522801
+  intersect @ bounce 1: 0.338 ms for 522801 paths, 0 bad rays
+bounce 2: 362469
+  intersect @ bounce 2: 0.256 ms for 362469 paths, 0 bad rays
+bounce 3: 196098
+  intersect @ bounce 3: 0.149 ms for 196098 paths, 0 bad rays
+bounce 4: 135034
+  intersect @ bounce 4: 0.116 ms for 135034 paths, 0 bad rays
+bounce 5: 93970
+  intersect @ bounce 5: 0.091 ms for 93970 paths, 0 bad rays
+bounce 6: 65608
+  intersect @ bounce 6: 0.072 ms for 65608 paths, 0 bad rays
+bounce 7: 45905
+  intersect @ bounce 7: 0.060 ms for 45905 paths, 0 bad rays
+bounce 8: 0
+[avg of 200 iters] intersect 1.387 | sort 0.000 | shade 1.906 | compact 9.508 ms
+[avg of 200 iters] intersect 1.393 | sort 0.000 | shade 1.921 | compact 9.133 ms
+Saved perf_cornell.2026-10-05_15-06-46z.400samp.png.
+##### 2b
+ 
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 640000
+  intersect @ bounce 0: 0.375 ms for 640000 paths, 0 bad rays
+bounce 1: 522801
+  intersect @ bounce 1: 0.322 ms for 522801 paths, 0 bad rays
+bounce 2: 361838
+  intersect @ bounce 2: 0.255 ms for 361838 paths, 0 bad rays
+bounce 3: 196208
+  intersect @ bounce 3: 0.161 ms for 196208 paths, 0 bad rays
+bounce 4: 134940
+  intersect @ bounce 4: 0.120 ms for 134940 paths, 0 bad rays
+bounce 5: 94449
+  intersect @ bounce 5: 0.095 ms for 94449 paths, 0 bad rays
+bounce 6: 66433
+  intersect @ bounce 6: 0.075 ms for 66433 paths, 0 bad rays
+bounce 7: 46715
+  intersect @ bounce 7: 0.054 ms for 46715 paths, 0 bad rays
+bounce 8: 0
+[avg of 200 iters] intersect 1.509 | sort 33.093 | shade 2.065 | compact 9.292 ms
+[avg of 200 iters] intersect 1.525 | sort 35.877 | shade 2.058 | compact 9.317 ms
+Saved perf_cornell.2026-10-05_15-09-47z.400samp.png.
+##### 2c
+ 
+Loaded texture ../scenes/tex/helmet/helmet_damaged_basecolor.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_damaged_normal.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_scifi_basecolor.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_scifi_normal.png: 2048x2048
+Loaded ../scenes/models/helmet_damaged.obj: 15452 triangles
+  bad vertex normals fixed: 0
+BVH: 10195 nodes, built in 11.368 ms
+Loaded ../scenes/models/helmet_scifi.obj: 23358 triangles
+  bad vertex normals fixed: 0
+BVH: 15655 nodes, built in 14.4169 ms
+Loaded environment map ../scenes/hdr/brown_photostudio_02_8k.hdr: 8192x4096
+env CDF built: max pixel (5069, 1054) prob 0.000006
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 1440000
+  intersect @ bounce 0: 1.025 ms for 1440000 paths, 0 bad rays
+bounce 1: 502423
+  intersect @ bounce 1: 1.177 ms for 502423 paths, 0 bad rays
+bounce 2: 111634
+  intersect @ bounce 2: 0.537 ms for 111634 paths, 0 bad rays
+bounce 3: 852
+  intersect @ bounce 3: 0.138 ms for 852 paths, 0 bad rays
+bounce 4: 131
+  intersect @ bounce 4: 0.191 ms for 131 paths, 0 bad rays
+bounce 5: 52
+  intersect @ bounce 5: 0.113 ms for 52 paths, 0 bad rays
+bounce 6: 16
+  intersect @ bounce 6: 0.084 ms for 16 paths, 0 bad rays
+bounce 7: 9
+  intersect @ bounce 7: 0.057 ms for 9 paths, 0 bad rays
+bounce 8: 2
+  intersect @ bounce 8: 0.047 ms for 2 paths, 0 bad rays
+bounce 9: 1
+  intersect @ bounce 9: 0.021 ms for 1 paths, 0 bad rays
+bounce 10: 0
+[avg of 200 iters] intersect 3.423 | sort 0.000 | shade 1.324 | compact 8.005 ms
+[avg of 200 iters] intersect 3.451 | sort 0.000 | shade 1.329 | compact 7.637 ms
+Saved perf_helmets_textured.2026-10-05_15-07-01z.400samp.png.
+##### 2d
+ 
+Loaded texture ../scenes/tex/helmet/helmet_damaged_basecolor.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_damaged_normal.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_scifi_basecolor.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_scifi_normal.png: 2048x2048
+Loaded ../scenes/models/helmet_damaged.obj: 15452 triangles
+  bad vertex normals fixed: 0
+BVH: 10195 nodes, built in 7.3305 ms
+Loaded ../scenes/models/helmet_scifi.obj: 23358 triangles
+  bad vertex normals fixed: 0
+BVH: 15655 nodes, built in 19.4575 ms
+Loaded environment map ../scenes/hdr/brown_photostudio_02_8k.hdr: 8192x4096
+env CDF built: max pixel (5069, 1054) prob 0.000006
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 1440000
+  intersect @ bounce 0: 1.071 ms for 1440000 paths, 0 bad rays
+bounce 1: 502423
+  intersect @ bounce 1: 1.253 ms for 502423 paths, 0 bad rays
+bounce 2: 111467
+  intersect @ bounce 2: 0.444 ms for 111467 paths, 0 bad rays
+bounce 3: 930
+  intersect @ bounce 3: 0.132 ms for 930 paths, 0 bad rays
+bounce 4: 143
+  intersect @ bounce 4: 0.150 ms for 143 paths, 0 bad rays
+bounce 5: 75
+  intersect @ bounce 5: 0.109 ms for 75 paths, 0 bad rays
+bounce 6: 23
+  intersect @ bounce 6: 0.101 ms for 23 paths, 0 bad rays
+bounce 7: 13
+  intersect @ bounce 7: 0.071 ms for 13 paths, 0 bad rays
+bounce 8: 7
+  intersect @ bounce 8: 0.058 ms for 7 paths, 0 bad rays
+bounce 9: 2
+  intersect @ bounce 9: 0.060 ms for 2 paths, 0 bad rays
+bounce 10: 0
+[avg of 200 iters] intersect 3.680 | sort 34.933 | shade 1.395 | compact 8.317 ms
+[avg of 200 iters] intersect 3.620 | sort 37.608 | shade 1.539 | compact 7.988 ms
+Saved perf_helmets_textured.2026-10-05_15-10-17z.400samp.png.
+##### 3b
+ 
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 640000
+  intersect @ bounce 0: 0.385 ms for 640000 paths, 0 bad rays
+bounce 1: 522801
+  intersect @ bounce 1: 0.322 ms for 522801 paths, 0 bad rays
+bounce 2: 362469
+  intersect @ bounce 2: 0.249 ms for 362469 paths, 0 bad rays
+bounce 3: 280287
+  intersect @ bounce 3: 0.202 ms for 280287 paths, 0 bad rays
+bounce 4: 223378
+  intersect @ bounce 4: 0.163 ms for 223378 paths, 0 bad rays
+bounce 5: 180546
+  intersect @ bounce 5: 0.138 ms for 180546 paths, 0 bad rays
+bounce 6: 146730
+  intersect @ bounce 6: 0.118 ms for 146730 paths, 0 bad rays
+bounce 7: 119493
+  intersect @ bounce 7: 0.105 ms for 119493 paths, 0 bad rays
+bounce 8: 0
+[avg of 200 iters] intersect 1.670 | sort 0.000 | shade 2.226 | compact 10.107 ms
+[avg of 200 iters] intersect 1.684 | sort 0.000 | shade 2.231 | compact 9.786 ms
+Saved perf_cornell.2026-10-05_15-11-06z.400samp.png.
+##### 3c
+ 
+Loaded ../scenes/models/corridor/corridor_chrome.obj: 27456 triangles
+  bad vertex normals fixed: 0
+BVH: 16767 nodes, built in 10.7703 ms
+Loaded ../scenes/models/corridor/corridor_end_glow.obj: 12 triangles
+  bad vertex normals fixed: 0
+BVH: 9 nodes, built in 0.0027 ms
+Loaded ../scenes/models/corridor/corridor_floor_tile.obj: 50112 triangles
+  bad vertex normals fixed: 0
+BVH: 30767 nodes, built in 20.7127 ms
+Loaded ../scenes/models/corridor/corridor_frame.obj: 13676 triangles
+  bad vertex normals fixed: 0
+BVH: 8331 nodes, built in 5.2437 ms
+Loaded ../scenes/models/corridor/corridor_frame_inner.obj: 7140 triangles
+  bad vertex normals fixed: 0
+BVH: 3839 nodes, built in 2.5168 ms
+Loaded ../scenes/models/corridor/corridor_light_blue.obj: 900 triangles
+  bad vertex normals fixed: 0
+BVH: 419 nodes, built in 0.2281 ms
+Loaded ../scenes/models/corridor/corridor_light_white.obj: 6720 triangles
+  bad vertex normals fixed: 0
+BVH: 5499 nodes, built in 2.9179 ms
+Loaded ../scenes/models/corridor/corridor_panel.obj: 30240 triangles
+  bad vertex normals fixed: 0
+BVH: 17583 nodes, built in 12.0989 ms
+Loaded ../scenes/models/corridor/corridor_panel_dark.obj: 15444 triangles
+  bad vertex normals fixed: 0
+BVH: 8541 nodes, built in 6.0158 ms
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 2073600
+  intersect @ bounce 0: 8.286 ms for 2073600 paths, 0 bad rays
+bounce 1: 1855360
+  intersect @ bounce 1: 30.787 ms for 1855360 paths, 0 bad rays
+bounce 2: 1687172
+  intersect @ bounce 2: 28.182 ms for 1687172 paths, 0 bad rays
+bounce 3: 225935
+  intersect @ bounce 3: 5.627 ms for 225935 paths, 0 bad rays
+bounce 4: 115491
+  intersect @ bounce 4: 3.320 ms for 115491 paths, 0 bad rays
+bounce 5: 62067
+  intersect @ bounce 5: 1.713 ms for 62067 paths, 0 bad rays
+bounce 6: 34641
+  intersect @ bounce 6: 1.044 ms for 34641 paths, 0 bad rays
+bounce 7: 20111
+  intersect @ bounce 7: 0.797 ms for 20111 paths, 0 bad rays
+bounce 8: 11784
+  intersect @ bounce 8: 0.707 ms for 11784 paths, 0 bad rays
+bounce 9: 6924
+  intersect @ bounce 9: 0.701 ms for 6924 paths, 0 bad rays
+bounce 10: 0
+[avg of 200 iters] intersect 79.036 | sort 0.000 | shade 4.482 | compact 22.204 ms
+[avg of 200 iters] intersect 79.288 | sort 0.000 | shade 4.488 | compact 22.114 ms
+Saved perf_scifi_corridor.2026-10-05_15-07-18z.400samp.png.
+##### 3d
+ 
+Loaded ../scenes/models/corridor/corridor_chrome.obj: 27456 triangles
+  bad vertex normals fixed: 0
+BVH: 16767 nodes, built in 10.8867 ms
+Loaded ../scenes/models/corridor/corridor_end_glow.obj: 12 triangles
+  bad vertex normals fixed: 0
+BVH: 9 nodes, built in 0.0029 ms
+Loaded ../scenes/models/corridor/corridor_floor_tile.obj: 50112 triangles
+  bad vertex normals fixed: 0
+BVH: 30767 nodes, built in 20.6593 ms
+Loaded ../scenes/models/corridor/corridor_frame.obj: 13676 triangles
+  bad vertex normals fixed: 0
+BVH: 8331 nodes, built in 5.1912 ms
+Loaded ../scenes/models/corridor/corridor_frame_inner.obj: 7140 triangles
+  bad vertex normals fixed: 0
+BVH: 3839 nodes, built in 2.2953 ms
+Loaded ../scenes/models/corridor/corridor_light_blue.obj: 900 triangles
+  bad vertex normals fixed: 0
+BVH: 419 nodes, built in 0.2328 ms
+Loaded ../scenes/models/corridor/corridor_light_white.obj: 6720 triangles
+  bad vertex normals fixed: 0
+BVH: 5499 nodes, built in 2.8697 ms
+Loaded ../scenes/models/corridor/corridor_panel.obj: 30240 triangles
+  bad vertex normals fixed: 0
+BVH: 17583 nodes, built in 12.0535 ms
+Loaded ../scenes/models/corridor/corridor_panel_dark.obj: 15444 triangles
+  bad vertex normals fixed: 0
+BVH: 8541 nodes, built in 6.0429 ms
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 2073600
+  intersect @ bounce 0: 8.002 ms for 2073600 paths, 0 bad rays
+bounce 1: 1855360
+  intersect @ bounce 1: 29.970 ms for 1855360 paths, 0 bad rays
+bounce 2: 1687172
+  intersect @ bounce 2: 26.960 ms for 1687172 paths, 0 bad rays
+bounce 3: 1340229
+  intersect @ bounce 3: 26.068 ms for 1340229 paths, 0 bad rays
+bounce 4: 1133515
+  intersect @ bounce 4: 22.144 ms for 1133515 paths, 0 bad rays
+bounce 5: 964793
+  intersect @ bounce 5: 18.621 ms for 964793 paths, 0 bad rays
+bounce 6: 840563
+  intersect @ bounce 6: 15.905 ms for 840563 paths, 0 bad rays
+bounce 7: 742792
+  intersect @ bounce 7: 13.957 ms for 742792 paths, 0 bad rays
+bounce 8: 660478
+  intersect @ bounce 8: 11.954 ms for 660478 paths, 0 bad rays
+bounce 9: 589380
+  intersect @ bounce 9: 10.834 ms for 589380 paths, 0 bad rays
+bounce 10: 0
+[avg of 200 iters] intersect 191.250 | sort 0.000 | shade 8.974 | compact 40.076 ms
+[avg of 200 iters] intersect 192.708 | sort 0.000 | shade 9.026 | compact 40.082 ms
+Saved perf_scifi_corridor.2026-10-05_15-11-25z.400samp.png.
+##### 4a
+ 
+Loaded ../scenes/models/torus_knot.obj: 4800 triangles
+  bad vertex normals fixed: 0
+BVH: 3035 nodes, built in 1.6928 ms
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 640000
+  intersect @ bounce 0: 0.446 ms for 640000 paths, 0 bad rays
+bounce 1: 522801
+  intersect @ bounce 1: 1.044 ms for 522801 paths, 0 bad rays
+bounce 2: 360991
+  intersect @ bounce 2: 0.894 ms for 360991 paths, 0 bad rays
+bounce 3: 192219
+  intersect @ bounce 3: 0.518 ms for 192219 paths, 0 bad rays
+bounce 4: 133086
+  intersect @ bounce 4: 0.385 ms for 133086 paths, 0 bad rays
+bounce 5: 93276
+  intersect @ bounce 5: 0.294 ms for 93276 paths, 0 bad rays
+bounce 6: 66053
+  intersect @ bounce 6: 0.224 ms for 66053 paths, 0 bad rays
+bounce 7: 46931
+  intersect @ bounce 7: 0.173 ms for 46931 paths, 0 bad rays
+bounce 8: 0
+[avg of 200 iters] intersect 4.077 | sort 0.000 | shade 3.827 | compact 9.788 ms
+[avg of 200 iters] intersect 4.087 | sort 0.000 | shade 3.837 | compact 9.679 ms
+Saved perf_cornell_mesh.2026-10-05_15-08-18z.400samp.png.
+##### 4b
+ 
+Loaded ../scenes/models/torus_knot.obj: 4800 triangles
+  bad vertex normals fixed: 0
+BVH: 3035 nodes, built in 1.7069 ms
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 640000
+  intersect @ bounce 0: 8.547 ms for 640000 paths, 0 bad rays
+bounce 1: 522801
+  intersect @ bounce 1: 45.831 ms for 522801 paths, 0 bad rays
+bounce 2: 360991
+  intersect @ bounce 2: 32.180 ms for 360991 paths, 0 bad rays
+bounce 3: 192219
+  intersect @ bounce 3: 17.976 ms for 192219 paths, 0 bad rays
+bounce 4: 133086
+  intersect @ bounce 4: 12.819 ms for 133086 paths, 0 bad rays
+bounce 5: 93276
+  intersect @ bounce 5: 9.311 ms for 93276 paths, 0 bad rays
+bounce 6: 66053
+  intersect @ bounce 6: 6.896 ms for 66053 paths, 0 bad rays
+bounce 7: 46931
+  intersect @ bounce 7: 5.613 ms for 46931 paths, 0 bad rays
+bounce 8: 0
+[avg of 20 iters] intersect 136.307 | sort 0.000 | shade 148.564 | compact 12.167 ms
+[avg of 20 iters] intersect 154.855 | sort 0.000 | shade 169.209 | compact 13.156 ms
+Saved perf_cornell_mesh.2026-10-05_15-13-36z.40samp.png.
+##### 4d
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 34.7621 ms
+Loaded environment map ../scenes/hdr/venice_sunset_2k.hdr: 2048x1024
+env CDF built: max pixel (1228, 492) prob 0.003980
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 366.959 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 508.603 ms for 426018 paths, 0 bad rays
+bounce 2: 76583
+  intersect @ bounce 2: 120.613 ms for 76583 paths, 0 bad rays
+bounce 3: 4577
+  intersect @ bounce 3: 31.255 ms for 4577 paths, 0 bad rays
+bounce 4: 1104
+  intersect @ bounce 4: 31.132 ms for 1104 paths, 0 bad rays
+bounce 5: 339
+  intersect @ bounce 5: 31.517 ms for 339 paths, 0 bad rays
+bounce 6: 133
+  intersect @ bounce 6: 31.572 ms for 133 paths, 0 bad rays
+bounce 7: 61
+  intersect @ bounce 7: 30.066 ms for 61 paths, 0 bad rays
+bounce 8: 40
+  intersect @ bounce 8: 30.000 ms for 40 paths, 0 bad rays
+bounce 9: 23
+  intersect @ bounce 9: 30.219 ms for 23 paths, 0 bad rays
+bounce 10: 14
+  intersect @ bounce 10: 29.464 ms for 14 paths, 0 bad rays
+bounce 11: 6
+  intersect @ bounce 11: 29.441 ms for 6 paths, 0 bad rays
+bounce 12: 0
+[avg of 10 iters] intersect 1464.323 | sort 0.000 | shade 1321.857 | compact 8.767 ms
+[avg of 10 iters] intersect 1296.301 | sort 0.000 | shade 1161.848 | compact 8.075 ms
+Saved perf_bunny_test_diffuse.2026-10-05_15-14-20z.20samp.png.
+##### 5b
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 44817 nodes, built in 14.8278 ms
+Loaded environment map ../scenes/hdr/venice_sunset_2k.hdr: 2048x1024
+env CDF built: max pixel (1228, 492) prob 0.003980
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.660 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 1.045 ms for 426018 paths, 0 bad rays
+bounce 2: 76583
+  intersect @ bounce 2: 0.383 ms for 76583 paths, 0 bad rays
+bounce 3: 4577
+  intersect @ bounce 3: 0.108 ms for 4577 paths, 0 bad rays
+bounce 4: 1104
+  intersect @ bounce 4: 0.111 ms for 1104 paths, 0 bad rays
+bounce 5: 339
+  intersect @ bounce 5: 0.119 ms for 339 paths, 0 bad rays
+bounce 6: 133
+  intersect @ bounce 6: 0.148 ms for 133 paths, 0 bad rays
+bounce 7: 61
+  intersect @ bounce 7: 0.129 ms for 61 paths, 0 bad rays
+bounce 8: 40
+  intersect @ bounce 8: 0.131 ms for 40 paths, 0 bad rays
+bounce 9: 23
+  intersect @ bounce 9: 0.113 ms for 23 paths, 0 bad rays
+bounce 10: 14
+  intersect @ bounce 10: 0.095 ms for 14 paths, 0 bad rays
+bounce 11: 6
+  intersect @ bounce 11: 0.068 ms for 6 paths, 0 bad rays
+bounce 12: 0
+[avg of 200 iters] intersect 3.127 | sort 0.000 | shade 3.534 | compact 6.119 ms
+[avg of 200 iters] intersect 3.167 | sort 0.000 | shade 3.571 | compact 6.040 ms
+Saved perf_bunny_test_diffuse.2026-10-05_15-15-47z.400samp.png.
+##### 5d
+ 
+Loaded texture ../scenes/tex/helmet/helmet_damaged_basecolor.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_damaged_normal.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_scifi_basecolor.jpg: 2048x2048
+Loaded texture ../scenes/tex/helmet/helmet_scifi_normal.png: 2048x2048
+Loaded ../scenes/models/helmet_damaged.obj: 15452 triangles
+  bad vertex normals fixed: 0
+BVH: 10759 nodes, built in 3.4612 ms
+Loaded ../scenes/models/helmet_scifi.obj: 23358 triangles
+  bad vertex normals fixed: 0
+BVH: 16127 nodes, built in 5.3343 ms
+Loaded environment map ../scenes/hdr/brown_photostudio_02_8k.hdr: 8192x4096
+env CDF built: max pixel (5069, 1054) prob 0.000006
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 1440000
+  intersect @ bounce 0: 1.082 ms for 1440000 paths, 0 bad rays
+bounce 1: 502423
+  intersect @ bounce 1: 1.375 ms for 502423 paths, 0 bad rays
+bounce 2: 111635
+  intersect @ bounce 2: 0.642 ms for 111635 paths, 0 bad rays
+bounce 3: 911
+  intersect @ bounce 3: 0.188 ms for 911 paths, 0 bad rays
+bounce 4: 141
+  intersect @ bounce 4: 0.179 ms for 141 paths, 0 bad rays
+bounce 5: 58
+  intersect @ bounce 5: 0.174 ms for 58 paths, 0 bad rays
+bounce 6: 17
+  intersect @ bounce 6: 0.088 ms for 17 paths, 0 bad rays
+bounce 7: 8
+  intersect @ bounce 7: 0.053 ms for 8 paths, 0 bad rays
+bounce 8: 2
+  intersect @ bounce 8: 0.035 ms for 2 paths, 0 bad rays
+bounce 9: 2
+  intersect @ bounce 9: 0.063 ms for 2 paths, 0 bad rays
+bounce 10: 0
+[avg of 200 iters] intersect 3.911 | sort 0.000 | shade 1.326 | compact 8.095 ms
+[avg of 200 iters] intersect 3.959 | sort 0.000 | shade 1.385 | compact 7.826 ms
+Saved perf_helmets_textured.2026-10-05_15-16-05z.400samp.png.
+##### 6a
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 36.9944 ms
+Loaded environment map ../scenes/hdr/venice_sunset_8k.hdr: 8192x4096
+env CDF built: max pixel (4914, 1968) prob 0.000258
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.590 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 0.961 ms for 426018 paths, 0 bad rays
+bounce 2: 141886
+  intersect @ bounce 2: 0.743 ms for 141886 paths, 0 bad rays
+bounce 3: 54113
+  intersect @ bounce 3: 0.369 ms for 54113 paths, 0 bad rays
+bounce 4: 27507
+  intersect @ bounce 4: 0.254 ms for 27507 paths, 0 bad rays
+bounce 5: 19695
+  intersect @ bounce 5: 0.225 ms for 19695 paths, 0 bad rays
+bounce 6: 13778
+  intersect @ bounce 6: 0.158 ms for 13778 paths, 0 bad rays
+bounce 7: 9717
+  intersect @ bounce 7: 0.175 ms for 9717 paths, 0 bad rays
+bounce 8: 7185
+  intersect @ bounce 8: 0.156 ms for 7185 paths, 0 bad rays
+bounce 9: 5214
+  intersect @ bounce 9: 0.148 ms for 5214 paths, 0 bad rays
+bounce 10: 3855
+  intersect @ bounce 10: 0.156 ms for 3855 paths, 0 bad rays
+bounce 11: 2880
+  intersect @ bounce 11: 0.149 ms for 2880 paths, 0 bad rays
+bounce 12: 0
+[avg of 10 iters] intersect 4.263 | sort 0.000 | shade 2.686 | compact 8.804 ms
+[avg of 10 iters] intersect 4.115 | sort 0.000 | shade 2.508 | compact 8.586 ms
+Saved perf_bunny_sunset.2026-10-05_15-16-44z.20samp.png.
+##### 6b
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 34.6949 ms
+Loaded environment map ../scenes/hdr/venice_sunset_8k.hdr: 8192x4096
+env CDF built: max pixel (4914, 1968) prob 0.000258
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.597 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 0.985 ms for 426018 paths, 0 bad rays
+bounce 2: 142050
+  intersect @ bounce 2: 0.725 ms for 142050 paths, 0 bad rays
+bounce 3: 53987
+  intersect @ bounce 3: 0.371 ms for 53987 paths, 0 bad rays
+bounce 4: 27365
+  intersect @ bounce 4: 0.254 ms for 27365 paths, 0 bad rays
+bounce 5: 19563
+  intersect @ bounce 5: 0.228 ms for 19563 paths, 0 bad rays
+bounce 6: 13688
+  intersect @ bounce 6: 0.155 ms for 13688 paths, 0 bad rays
+bounce 7: 9718
+  intersect @ bounce 7: 0.178 ms for 9718 paths, 0 bad rays
+bounce 8: 7183
+  intersect @ bounce 8: 0.151 ms for 7183 paths, 0 bad rays
+bounce 9: 5243
+  intersect @ bounce 9: 0.156 ms for 5243 paths, 0 bad rays
+bounce 10: 3905
+  intersect @ bounce 10: 0.148 ms for 3905 paths, 0 bad rays
+bounce 11: 2852
+  intersect @ bounce 11: 0.164 ms for 2852 paths, 0 bad rays
+bounce 12: 0
+[avg of 10 iters] intersect 4.232 | sort 0.000 | shade 0.989 | compact 8.358 ms
+[avg of 10 iters] intersect 4.088 | sort 0.000 | shade 0.841 | compact 7.316 ms
+Saved perf_bunny_sunset.2026-10-05_15-17-29z.20samp.png.
+##### 6c
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 34.029 ms
+Loaded environment map ../scenes/hdr/venice_sunset_2k.hdr: 2048x1024
+env CDF built: max pixel (1228, 492) prob 0.003980
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.637 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 1.315 ms for 426018 paths, 0 bad rays
+bounce 2: 76583
+  intersect @ bounce 2: 0.329 ms for 76583 paths, 0 bad rays
+bounce 3: 4577
+  intersect @ bounce 3: 0.103 ms for 4577 paths, 0 bad rays
+bounce 4: 1104
+  intersect @ bounce 4: 0.097 ms for 1104 paths, 0 bad rays
+bounce 5: 339
+  intersect @ bounce 5: 0.095 ms for 339 paths, 0 bad rays
+bounce 6: 133
+  intersect @ bounce 6: 0.096 ms for 133 paths, 0 bad rays
+bounce 7: 61
+  intersect @ bounce 7: 0.126 ms for 61 paths, 0 bad rays
+bounce 8: 40
+  intersect @ bounce 8: 0.116 ms for 40 paths, 0 bad rays
+bounce 9: 23
+  intersect @ bounce 9: 0.099 ms for 23 paths, 0 bad rays
+bounce 10: 14
+  intersect @ bounce 10: 0.072 ms for 14 paths, 0 bad rays
+bounce 11: 6
+  intersect @ bounce 11: 0.073 ms for 6 paths, 0 bad rays
+bounce 12: 0
+[avg of 10 iters] intersect 2.861 | sort 0.000 | shade 3.337 | compact 6.853 ms
+[avg of 10 iters] intersect 2.704 | sort 0.000 | shade 3.210 | compact 6.459 ms
+Saved perf_bunny_test_diffuse.2026-10-05_15-17-02z.20samp.png.
+##### 6d
+ 
+Loaded ../scenes/models/bunny.obj: 69451 triangles
+  bad vertex normals fixed: 0
+BVH: 43501 nodes, built in 32.9491 ms
+Loaded environment map ../scenes/hdr/venice_sunset_2k.hdr: 2048x1024
+env CDF built: max pixel (1228, 492) prob 0.003980
+--- alive paths per bounce (iter 10, compaction on) ---
+bounce 0: 800000
+  intersect @ bounce 0: 0.594 ms for 800000 paths, 0 bad rays
+bounce 1: 426018
+  intersect @ bounce 1: 0.934 ms for 426018 paths, 0 bad rays
+bounce 2: 76884
+  intersect @ bounce 2: 0.331 ms for 76884 paths, 0 bad rays
+bounce 3: 4552
+  intersect @ bounce 3: 0.100 ms for 4552 paths, 0 bad rays
+bounce 4: 1073
+  intersect @ bounce 4: 0.092 ms for 1073 paths, 0 bad rays
+bounce 5: 321
+  intersect @ bounce 5: 0.114 ms for 321 paths, 0 bad rays
+bounce 6: 111
+  intersect @ bounce 6: 0.109 ms for 111 paths, 0 bad rays
+bounce 7: 44
+  intersect @ bounce 7: 0.098 ms for 44 paths, 0 bad rays
+bounce 8: 25
+  intersect @ bounce 8: 0.088 ms for 25 paths, 0 bad rays
+bounce 9: 12
+  intersect @ bounce 9: 0.068 ms for 12 paths, 0 bad rays
+bounce 10: 6
+  intersect @ bounce 10: 0.054 ms for 6 paths, 0 bad rays
+bounce 11: 5
+  intersect @ bounce 11: 0.055 ms for 5 paths, 0 bad rays
+bounce 12: 0
+[avg of 10 iters] intersect 2.783 | sort 0.000 | shade 0.871 | compact 6.622 ms
+[avg of 10 iters] intersect 2.749 | sort 0.000 | shade 0.784 | compact 6.899 ms
+Saved perf_bunny_test_diffuse.2026-10-05_15-17-38z.20samp.png.

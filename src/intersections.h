@@ -5,6 +5,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 
+#define MESH_BBOX_CULLING 1
+#define USE_BVH 1
+
 
 /**
  * Handy-dandy hash function that provides seeds for random number generation.
@@ -49,7 +52,7 @@ __host__ __device__ inline glm::vec3 multiplyMV(glm::mat4 m, glm::vec4 v)
  * @return                   Ray parameter `t` value. -1 if no intersection.
  */
 __host__ __device__ float boxIntersectionTest(
-    Geom box,
+    const Geom& box,
     Ray r,
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
@@ -66,8 +69,27 @@ __host__ __device__ float boxIntersectionTest(
  * @return                   Ray parameter `t` value. -1 if no intersection.
  */
 __host__ __device__ float sphereIntersectionTest(
-    Geom sphere,
+    const Geom& sphere,
     Ray r,
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+
+
+
+__host__ __device__ bool aabbIntersectionTest(glm::vec3 bmin, glm::vec3 bmax, const Ray& r);
+
+__host__ __device__ float triangleIntersectionTest(const Triangle& tri, const Ray& r, float& u, float& v);
+
+__host__ __device__ float meshIntersectionTest(
+    const Geom& mesh,
+    const Triangle* triangles,
+    const BVHNode* nodes,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    glm::vec2& uv,
+    glm::vec3& tangent,
+    glm::vec3& bitangent);

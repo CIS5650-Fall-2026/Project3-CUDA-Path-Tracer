@@ -1,0 +1,686 @@
+{
+    "Materials": {
+        "sponza_m01": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/7268504077753552595.jpg"
+        },
+        "sponza_m02": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/white.jpg"
+        },
+        "sponza_m04": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/8750083169368950601.jpg"
+        },
+        "sponza_m05": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/5792855332885324923.jpg"
+        },
+        "sponza_m06": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/14650633544276105767.jpg"
+        },
+        "sponza_m07": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/15295713303328085182.jpg"
+        },
+        "sponza_m08": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/6047387724914829168.jpg"
+        },
+        "sponza_m09": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/5823059166183034438.jpg"
+        },
+        "sponza_m10": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/7441062115984513793.jpg"
+        },
+        "sponza_m11": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/11490520546946913238.jpg"
+        },
+        "sponza_m12": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/6151467286084645207.jpg"
+        },
+        "sponza_m13": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/4975155472559461469.jpg"
+        },
+        "sponza_m14": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/4675343432951571524.jpg"
+        },
+        "sponza_m15": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/2775690330959970771.jpg"
+        },
+        "sponza_m16": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/2185409758123873465.jpg"
+        },
+        "sponza_m17": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/17876391417123941155.jpg"
+        },
+        "sponza_m18": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/11474523244911310074.jpg"
+        },
+        "sponza_m19": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/9288698199695299068.jpg"
+        },
+        "sponza_m21": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/755318871556304029.jpg"
+        },
+        "sponza_m22": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/8481240838833932244.jpg"
+        },
+        "sponza_m23": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/6772804448157695701.jpg"
+        },
+        "sponza_m24": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "TEXTURE": "tex/sponza/2969916736137545357.jpg"
+        },
+        "glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.97,
+                0.98,
+                1.0
+            ],
+            "IOR": 1.5
+        }
+    },
+    "Environment": {
+        "FILE": "hdr/venice_sunset_8k.hdr",
+        "INTENSITY": 6.0,
+        "ROTATION": 0
+    },
+    "Camera": {
+        "RES": [
+            1600,
+            900
+        ],
+        "FOVY": 30.0,
+        "ITERATIONS": 5000,
+        "DEPTH": 8,
+        "FILE": "sponza_textured",
+        "EYE": [
+            -9.0,
+            2.3,
+            0.0
+        ],
+        "LOOKAT": [
+            4.0,
+            3.9,
+            0.0
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ],
+        "LENS_RADIUS": 0.0,
+        "FOCAL_DISTANCE": 12.0,
+        "TONEMAP": true
+    },
+    "Objects": [
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m01",
+            "FILE": "models/sponza/sponza_m01.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m02",
+            "FILE": "models/sponza/sponza_m02.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m04",
+            "FILE": "models/sponza/sponza_m04.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m05",
+            "FILE": "models/sponza/sponza_m05.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m06",
+            "FILE": "models/sponza/sponza_m06.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m07",
+            "FILE": "models/sponza/sponza_m07.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m08",
+            "FILE": "models/sponza/sponza_m08.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m09",
+            "FILE": "models/sponza/sponza_m09.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m10",
+            "FILE": "models/sponza/sponza_m10.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m11",
+            "FILE": "models/sponza/sponza_m11.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m12",
+            "FILE": "models/sponza/sponza_m12.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m13",
+            "FILE": "models/sponza/sponza_m13.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m14",
+            "FILE": "models/sponza/sponza_m14.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m15",
+            "FILE": "models/sponza/sponza_m15.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m16",
+            "FILE": "models/sponza/sponza_m16.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m17",
+            "FILE": "models/sponza/sponza_m17.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m18",
+            "FILE": "models/sponza/sponza_m18.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m19",
+            "FILE": "models/sponza/sponza_m19.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m21",
+            "FILE": "models/sponza/sponza_m21.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m22",
+            "FILE": "models/sponza/sponza_m22.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m23",
+            "FILE": "models/sponza/sponza_m23.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "sponza_m24",
+            "FILE": "models/sponza/sponza_m24.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        }
+    ]
+}

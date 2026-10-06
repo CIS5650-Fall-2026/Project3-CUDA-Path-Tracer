@@ -1,0 +1,29 @@
+{
+    "Materials": {
+        "floor": {"TYPE": "Diffuse", "RGB": [0.3, 0.3, 0.32]},
+        "glass": {"TYPE": "Refractive", "RGB": [0.98, 0.98, 0.98], "IOR": 1.5},
+        "chrome": {"TYPE": "Specular", "RGB": [0.95, 0.95, 0.95]}
+    },
+    "Environment": {
+        "FILE": "hdr/studio_small_09_2k.hdr",
+        "INTENSITY": 0.5,
+        "ROTATION": 1.57
+    },
+    "Camera": {
+        "RES": [1000, 800],
+        "FOVY": 22.0,
+        "ITERATIONS": 5000,
+        "DEPTH": 12,
+        "FILE": "bunny_hdri",
+        "EYE": [0.0, 3.0, 11.0],
+        "LOOKAT": [0.0, 2.2, 0.0],
+        "UP": [0.0, 1.0, 0.0],
+        "LENS_RADIUS": 0.15,
+        "FOCAL_DISTANCE": 11.0,
+        "TONEMAP": true
+    },
+    "Objects": [
+        {"TYPE": "cube", "MATERIAL": "floor", "TRANS": [0, -0.05, 0], "ROTAT": [0, 0, 0], "SCALE": [40, 0.1, 40]},
+        {"TYPE": "mesh", "MATERIAL": "glass", "FILE": "models/bunny.obj", "TRANS": [0.5, -0.99, 0], "ROTAT": [0, 0, 0], "SCALE": [30, 30, 30]}
+    ]
+}

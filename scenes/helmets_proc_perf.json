@@ -1,0 +1,23 @@
+{
+    "Materials": {
+        "floor": {"TYPE": "Glossy", "RGB": [0.05, 0.05, 0.055], "ROUGHNESS": 0.15},
+        "pedestal": {"TYPE": "Metal", "RGB": [0.75, 0.76, 0.78], "ROUGHNESS": 0.35},
+        "damaged": {"TYPE": "Glossy", "RGB": [0.9, 0.9, 0.9], "RGB2": [0.08, 0.08, 0.1], "PROCEDURAL": "Checker", "PROC_SCALE": 12.0, "ROUGHNESS": 0.35},
+        "scifi": {"TYPE": "Glossy", "RGB": [0.9, 0.9, 0.9], "RGB2": [0.08, 0.08, 0.1], "PROCEDURAL": "Checker", "PROC_SCALE": 12.0, "ROUGHNESS": 0.3},
+        "strip": {"TYPE": "Emitting", "RGB": [1.0, 0.97, 0.92], "EMITTANCE": 6.0}
+    },
+    "Environment": {"FILE": "hdr/brown_photostudio_02_8k.hdr", "INTENSITY": 0.8, "ROTATION": 280},
+    "Camera": {
+        "RES": [1600, 900], "FOVY": 24.0, "ITERATIONS": 5000, "DEPTH": 10,
+        "FILE": "helmets_proc_perf", "EYE": [0.0, 0.95, 3.4], "LOOKAT": [0.0, 0.85, 0.0], "UP": [0.0, 1.0, 0.0],
+        "LENS_RADIUS": 0.0, "FOCAL_DISTANCE": 6.2, "TONEMAP": true
+    },
+    "Objects": [
+        {"TYPE": "cube", "MATERIAL": "floor", "TRANS": [0, -0.05, 0], "ROTAT": [0, 0, 0], "SCALE": [4.5, 0.1, 2.5]},
+        {"TYPE": "cube", "MATERIAL": "pedestal", "TRANS": [-0.9, 0.175, 0], "ROTAT": [0, 0, 0], "SCALE": [0.7, 0.35, 0.7]},
+        {"TYPE": "cube", "MATERIAL": "pedestal", "TRANS": [0.9, 0.175, 0], "ROTAT": [0, 0, 0], "SCALE": [0.7, 0.35, 0.7]},
+        {"TYPE": "mesh", "MATERIAL": "damaged", "FILE": "models/helmet_damaged.obj", "TRANS": [-0.9, 0.35, 0], "ROTAT": [0, 20, 0], "SCALE": [0.85, 0.85, 0.85]},
+        {"TYPE": "mesh", "MATERIAL": "scifi", "FILE": "models/helmet_scifi.obj", "TRANS": [0.9, 0.35, 0], "ROTAT": [0, -20, 0], "SCALE": [0.95, 0.95, 0.95]},
+        {"TYPE": "cube", "MATERIAL": "strip", "TRANS": [0, 3.2, -1.2], "ROTAT": [0, 0, 0], "SCALE": [4.0, 0.05, 0.3]}
+    ]
+}

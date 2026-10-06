@@ -1,0 +1,332 @@
+{
+    "Materials": {
+        "panel": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.42,
+                0.44,
+                0.48
+            ],
+            "ROUGHNESS": 0.35
+        },
+        "panel_dark": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.22,
+                0.23,
+                0.25
+            ],
+            "ROUGHNESS": 0.3
+        },
+        "floor_tile": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.18,
+                0.19,
+                0.2
+            ],
+            "ROUGHNESS": 0.18
+        },
+        "chrome": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.85,
+                0.86,
+                0.88
+            ],
+            "ROUGHNESS": 0.08
+        },
+        "frame": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.7,
+                0.72,
+                0.75
+            ],
+            "ROUGHNESS": 0.2
+        },
+        "frame_inner": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.8,
+                0.82,
+                0.86
+            ],
+            "ROUGHNESS": 0.1
+        },
+        "light_blue": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.12,
+                0.42,
+                1.0
+            ],
+            "EMITTANCE": 5.0
+        },
+        "light_white": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.85,
+                0.92,
+                1.0
+            ],
+            "EMITTANCE": 2.2
+        },
+        "end_glow": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.35,
+                0.65,
+                1.0
+            ],
+            "EMITTANCE": 4.0
+        },
+        "orb_glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.95,
+                0.97,
+                1.0
+            ],
+            "IOR": 1.5
+        },
+        "orb_chrome": {
+            "TYPE": "Metal",
+            "RGB": [
+                0.9,
+                0.9,
+                0.92
+            ],
+            "ROUGHNESS": 0.02
+        }
+    },
+    "Camera": {
+        "RES": [
+            1920,
+            1080
+        ],
+        "FOVY": 26.0,
+        "ITERATIONS": 5000,
+        "DEPTH": 10,
+        "FILE": "scifi_corridor",
+        "EYE": [
+            0.5,
+            2.1,
+            1.6
+        ],
+        "LOOKAT": [
+            0.0,
+            1.9,
+            -60.0
+        ],
+        "UP": [
+            0,
+            1,
+            0
+        ],
+        "LENS_RADIUS": 0.0,
+        "FOCAL_DISTANCE": 20.0,
+        "TONEMAP": true
+    },
+    "Objects": [
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "chrome",
+            "FILE": "models/corridor/corridor_chrome.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "end_glow",
+            "FILE": "models/corridor/corridor_end_glow.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "floor_tile",
+            "FILE": "models/corridor/corridor_floor_tile.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "frame",
+            "FILE": "models/corridor/corridor_frame.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "frame_inner",
+            "FILE": "models/corridor/corridor_frame_inner.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "light_blue",
+            "FILE": "models/corridor/corridor_light_blue.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "light_white",
+            "FILE": "models/corridor/corridor_light_white.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "panel",
+            "FILE": "models/corridor/corridor_panel.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "panel_dark",
+            "FILE": "models/corridor/corridor_panel_dark.obj",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "orb_glass",
+            "TRANS": [
+                0.0,
+                1.9,
+                -11.0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.7,
+                1.7,
+                1.7
+            ]
+        }
+    ]
+}

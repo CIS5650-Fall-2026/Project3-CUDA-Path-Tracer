@@ -24,6 +24,12 @@
 #include <sstream>
 #include <string>
 
+// Force the use of the discrete NVIDIA GPU on hybrid-graphics systems.
+extern "C" {
+    __declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+    __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+}
+
 static std::string startTimeString;
 
 // For camera controls
@@ -209,7 +215,7 @@ bool init()
         exit(EXIT_FAILURE);
     }
 
-    window = glfwCreateWindow(width, height, "CIS 565 Path Tracer", NULL, NULL);
+    window = glfwCreateWindow(width, height, "CIS 5650 Path Tracer", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -374,8 +380,10 @@ int main(int argc, char** argv)
     // so, (0 0 1) is forward, (0 1 0) is up
     glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
     glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    // Orbit angles from the eye's offset to the look-at point (base code mirrored pitch/yaw)
+    glm::vec3 offset = cam.position - cam.lookAt;
+    theta = glm::acos(glm::clamp(offset.y / glm::length(offset), -1.0f, 1.0f));
+    phi = atan2f(offset.x, offset.z);
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
 
@@ -404,7 +412,10 @@ void saveImage()
         {
             int index = x + (y * width);
             glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::vec3 hdr = glm::vec3(pix) / samples;
+            if (renderState->bloomStrength > 0.0f && !renderState->bloom.empty())
+                hdr += renderState->bloomStrength * renderState->bloom[index];
+            img.setPixel(width - 1 - x, y, toDisplay(hdr, renderState->toneMap));
         }
     }
 
