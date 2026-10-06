@@ -78,8 +78,6 @@ BVH starts with CPU Tree Construction, where the meshes are partitioned into an 
 Then, the tree is traversed iteratively on the GPU. Where sub-trees are pruned if the ray misses a box. Near and far child bounds are checked so the traversal stack prioritizes the closer node, reducing unnecessary leaf-level triangle intersections.
 
 
-### Performance Impact
-
 ## Performance Analysis
 
 All analysis was taken from the average of 1000 iterations, stream compaction on, and material sorting off unless otherwise specified. 
