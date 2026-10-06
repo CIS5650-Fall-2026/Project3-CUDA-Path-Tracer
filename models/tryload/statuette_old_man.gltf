@@ -1,0 +1,215 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "TurboSquid Stem Converter v1.0.0"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 1837,
+      "type": "VEC3",
+      "max": [
+        0.06413504481315613,
+        0.07250271737575531,
+        0.30000001192092896
+      ],
+      "min": [
+        -0.06413504481315613,
+        -0.07250271737575531,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 1837,
+      "type": "VEC3",
+      "max": [
+        0.9996352791786194,
+        0.9999269247055054,
+        0.9979945421218872
+      ],
+      "min": [
+        -0.9993532299995422,
+        -0.9999077320098877,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 1837,
+      "type": "VEC2",
+      "max": [
+        0.9859142303466797,
+        0.9893946647644043
+      ],
+      "min": [
+        0.010255894623696804,
+        0.011044085025787354
+      ]
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 10152,
+      "type": "SCALAR",
+      "max": [
+        1836.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 79088,
+      "uri": "statuette_old_man.bin"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 22044,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 22044,
+      "byteLength": 22044,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 44088,
+      "byteLength": 14696,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 58784,
+      "byteLength": 20304,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "mt_statuette_old_man",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      },
+      "alphaMode": "OPAQUE",
+      "occlusionTexture": {
+        "index": 1
+      },
+      "normalTexture": {
+        "index": 2
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "statuette_old_man",
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 3,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "name": "node",
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.6292067812173627e-05,
+        -100.0,
+        0.0,
+        0.0,
+        100.0,
+        -1.6292067812173627e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "children": [
+        2
+      ]
+    },
+    {
+      "name": "statuette_old_man",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0,
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "images": [
+    {
+      "uri": "baseColor.jpg"
+    },
+    {
+      "uri": "occlusionRoughnessMetallic.jpg"
+    },
+    {
+      "uri": "normal.png"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

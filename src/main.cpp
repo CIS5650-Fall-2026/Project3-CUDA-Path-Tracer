@@ -26,6 +26,9 @@
 
 static std::string startTimeString;
 
+// flag for allocating memory
+static bool initialize = true;
+
 // For camera controls
 static bool leftMousePressed = false;
 static bool rightMousePressed = false;
@@ -394,6 +397,8 @@ int main(int argc, char** argv)
 
 void saveImage()
 {
+    pathtraceCopyImg();
+
     float samples = iteration;
     // output image file
     Image img(width, height);
@@ -446,10 +451,17 @@ void runCuda()
 
     if (iteration == 0)
     {
-        pathtraceFree();
-        pathtraceInit(scene);
+        if (initialize) {
+            pathtraceInit(scene);
+            initialize = false;
+        }
+        else {
+            // dont want to delete and reallocate every time cam changes
+            pathtraceReset();
+        }
     }
 
+    // iterations are = number of samples per pixel?
     if (iteration < renderState->iterations)
     {
         uchar4* pbo_dptr = NULL;

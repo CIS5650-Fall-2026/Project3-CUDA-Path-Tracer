@@ -1,0 +1,216 @@
+{
+  "Materials": {
+    "light": {
+      "TYPE": "Emitting",
+      "ALBEDO": [ 1, 0.196, 0.984 ],
+      "EMITTANCE": 5.0
+    },
+    "fuchsia_light": {
+      "TYPE": "Emitting",
+      "ALBEDO": [ 0.945, 0.294, 1 ],
+      "EMITTANCE": 2.0
+    },
+    "purple_light": {
+      "TYPE": "Emitting",
+      "ALBEDO": [ 0.424, 0.31, 1 ],
+      "EMITTANCE": 2.0
+    },
+    "blue_light": {
+      "TYPE": "Emitting",
+      "ALBEDO": [ 0.576, 0.969, 1 ],
+      "EMITTANCE": 2.0
+    },
+    "diffuse_white": {
+      "TYPE": "MetallicWorkflow",
+      "ALBEDO": [ 1.0, 1.0, 1.0 ],
+      "ROUGHNESS": 0.5,
+      "METALLIC": 0.0
+    },
+    "diffuse_blue": {
+      "TYPE": "MetallicWorkflow",
+      "ALBEDO": [ 0.839, 0.961, 1 ],
+      "ROUGHNESS": 0.5,
+      "METALLIC": 0.0
+    },
+    "glass": {
+      "TYPE": "Dielectric",
+      "ALBEDO": [ 0.0, 0.0, 0.0 ],
+      "IOR": 1.5,
+      "ABSORPTION": [ 0.0, 0.0, 0.0 ]
+    },
+    "tinted_glass": {
+      "TYPE": "Dielectric",
+      "ALBEDO": [ 0.0, 0.0, 0.0 ],
+      "IOR": 1.5,
+      "ABSORPTION": [ 0.04, 0.30, 0.009 ]
+    },
+    "gloss": {
+      "TYPE": "MetallicWorkflow",
+      "ALBEDO": [ 0.99, 0.99, 0.99 ],
+      "ROUGHNESS": 0.1,
+      "METALLIC": 1.0
+    },
+    "mirror": {
+      "TYPE": "MetallicWorkflow",
+      "ALBEDO": [ 0.99, 0.99, 0.99 ],
+      "ROUGHNESS": 0.0,
+      "METALLIC": 1.0
+    }
+  },
+  "Environment Map": {
+    "FILEPATH": "environment\\qwantani_dusk_2_puresky_4k.exr"
+  },
+  "Camera": {
+    "RES": [ 800, 800 ],
+    "FOVY": 45.0,
+    "ITERATIONS": 5000,
+    "DEPTH": 4,
+    "FILE": "envmap",
+    "EYE": [ 0.0, 5.0, 10.5 ],
+    "LOOKAT": [ 0.0, 5.0, 0.0 ],
+    "UP": [ 0.0, 1.0, 0.0 ]
+  },
+  "Objects": [
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "fuchsia_light",
+      "TRANS": [ 0.0, 8.0, 0.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 3.0, 3.0, 3.0 ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "gloss",
+      "TRANS": [ 5.0, 8.0, 0.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 3.0, 3.0, 3.0 ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "glass",
+      "TRANS": [ -5.0, 8.0, 0.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 3.0, 3.0, 3.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\room.gltf",
+      "TRANS": [ -12.0, 0.0, 15.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 5.0, 5.0, 5.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\bed.gltf",
+      "TRANS": [ 3.0, 0.0, -2.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 20.0, 20.0, 20.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "diffuse_white",
+      "FILEPATH": "models\\desk.gltf",
+      "TRANS": [ 11.5, 0.0, 4.0 ],
+      "ROTAT": [ 0.0, -90.0, 0.0 ],
+      "SCALE": [ 3.0, 3.0, 3.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\chair.gltf",
+      "TRANS": [ 7.0, 0.0, 6.0 ],
+      "ROTAT": [ 0.0, 90.0, 0.0 ],
+      "SCALE": [ 4.2, 4.2, 4.2 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\PC.gltf",
+      "TRANS": [ 10.0, 4.0, 6.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 0.4, 0.4, 0.4 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "diffuse_white",
+      "FILEPATH": "models\\cabinet.gltf",
+      "TRANS": [ -10.0, 0.0, 4.0 ],
+      "ROTAT": [ 0.0, 90.0, 0.0 ],
+      "SCALE": [ 5.0, 5.0, 5.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\mirror.gltf",
+      "TRANS": [ -10.0, 7.0, 4.0 ],
+      "ROTAT": [ 0.0, 0.0, -90.0 ],
+      "SCALE": [ 2.5, 2.5, 2.5 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "diffuse_white",
+      "FILEPATH": "models\\crate.gltf",
+      "TRANS": [ -10.0, 0.0, 12.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 4.0, 4.0, 4.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\plant.gltf",
+      "TRANS": [ -7.0, 0.0, -2.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 5.0, 5.0, 5.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\plant2.gltf",
+      "TRANS": [ 9.0, 0.0, 10.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 5.0, 5.0, 5.0 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\plant3.gltf",
+      "TRANS": [ 6.5, 1.5, -2.9 ],
+      "ROTAT": [ 0.0, 90.0, 0.0 ],
+      "SCALE": [ 2.5, 2.5, 2.5 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "blue_light",
+      "FILEPATH": "models\\cat_neon.gltf",
+      "TRANS": [ 10.0, 2.5, 2.5 ],
+      "ROTAT": [ 0.0, 90.0, 0.0 ],
+      "SCALE": [ 0.8, 0.8, 0.8 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "purple_light",
+      "FILEPATH": "models\\sign_neon2.gltf",
+      "TRANS": [ -10.0, 9.0, 3.5 ],
+      "ROTAT": [ 90.0, 0.0, -90.0 ],
+      "SCALE": [ 0.8, 0.8, 0.8 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "none",
+      "FILEPATH": "models\\shelves.gltf",
+      "TRANS": [ 11.0, 4.0, 6.5 ],
+      "ROTAT": [ 0.0, 90.0, 0.0 ],
+      "SCALE": [ 2.5, 2.5, 2.5 ]
+    },
+    {
+      "TYPE": "mesh",
+      "MATERIAL": "diffuse_blue",
+      "FILEPATH": "models\\rug.gltf",
+      "TRANS": [ 6.7, 0.05, 6.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 2.0, 2.0, 2.0 ]
+    }
+  ]
+}

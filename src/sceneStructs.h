@@ -12,13 +12,23 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
+};
+
+enum MatType {
+    DIFFUSE,
+    SPECULAR,
+    METALLICWORKFLOW,
+    DIELECTRIC
 };
 
 struct Ray
 {
     glm::vec3 origin;
     glm::vec3 direction;
+    glm::vec3 lastHit;
+    float distTraveled;
 };
 
 struct Geom
@@ -35,6 +45,7 @@ struct Geom
 
 struct Material
 {
+    enum MatType type;
     glm::vec3 color;
     struct
     {
@@ -44,7 +55,20 @@ struct Material
     float hasReflective;
     float hasRefractive;
     float indexOfRefraction;
+
+    // point to texture in cudaTextureObjects_t array, -1 if none
+    int texIdx = -1;
+    int roughmapIdx = -1;
+
     float emittance;
+
+    // for metallic workflow pbr
+    float roughness;
+    float metallic;
+
+    // for diaeletric handling reflection & refraction 
+    float refractionIndex;
+    glm::vec3 absorption;
 };
 
 struct Camera
@@ -84,4 +108,21 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  bool outside;
+  glm::vec2 uv;
+};
+
+struct Triangle {
+    int materialid;
+    glm::vec3 positions[3];
+    glm::vec3 normal;
+    glm::vec3 centroid;
+    glm::vec2 uv[3];
+};
+
+struct BVHNode
+{
+    glm::vec3 aabbMin, aabbMax;
+    // leftFirst -> == index of left child if triCount = 0 (not a leaf) & == firstPrim if triCount > 0 (is a leaf) 
+    int leftFirst, triCount;
 };

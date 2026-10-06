@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
-project(cis565_path_tracer LANGUAGES CUDA CXX)
+find_package(CUDAToolkit REQUIRED)
+project(cis565_path_tracer LANGUAGES C CUDA CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -48,6 +49,10 @@ set(GLM_ROOT_DIR "${CMAKE_SOURCE_DIR}/external")
 find_package(GLM REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
+set(OIDN_ROOT "${CMAKE_SOURCE_DIR}/oidn-2.5.1.x64.windows")
+list(APPEND CMAKE_PREFIX_PATH "${OIDN_ROOT}")
+find_package(OpenImageDenoise REQUIRED)
+
 set(headers
     src/image.h
     src/interactions.h
@@ -57,6 +62,12 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/tiny_gltf_v3.h
+    src/tinygltf_json_c.h
+    src/bvh.h
+    src/tinyexr.h
+    src/miniz.h
+    src/denoiser.h
 )
 
 set(sources
@@ -69,6 +80,11 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/tiny_gltf_v3.c
+    src/bvh.cpp
+    src/bvh.cu
+    src/miniz.c
+    src/denoiser.cpp
 )
 
 set(imgui_headers
@@ -107,15 +123,40 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
+    TINYGLTF3_ENABLE_FS
+    TINYGLTF3_ENABLE_STB_IMAGE
+)
+
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction
+    CUDA::cudart
 )
+
+if (OpenImageDenoise_FOUND) 
+    message(STATUS "OIDN found ${OpenImageDenoise_DIR}")
+    target_link_libraries(${CMAKE_PROJECT_NAME} OpenImageDenoise)
+
+    add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${OIDN_ROOT}/bin"
+            "$<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>")
+else()
+    message(WARNING "OIDN not found")
+endif()
+
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
 
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,RelWithDebInfo>,$<COMPILE_LANGUAGE:CUDA>>:-G;-src-in-ptx>")
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")
+
+target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
+    "$<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>"
+    "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+)
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
 

@@ -15,6 +15,41 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
     glm::vec3 normal, 
     thrust::default_random_engine& rng);
 
+__host__ __device__ glm::vec3 calculateReflectedRayDirection(
+    glm::vec3 wo,
+    glm::vec3 normal);
+
+__host__ __device__ glm::vec3 calculateRefractedRayDirection(
+    glm::vec3 wo,
+    glm::vec3 normal,
+    float ri);
+
+__host__ __device__ glm::vec3 metallicFresnel(
+    glm::vec3 r0,
+    float cosine);
+
+__host__ __device__ float transmissiveFresnel(
+    float r0,
+    float cosine);
+
+__host__ __device__ float smithGGXMaskingShadowing(
+    glm::vec3 wi,
+    glm::vec3 wo,
+    float a2);
+
+__host__ __device__ void sampleGGXNorm(
+    const Material& m,
+    glm::vec3 wo,
+    glm::vec3& wi,
+    glm::vec3& reflectance,
+    thrust::default_random_engine& rng);
+
+/*__host__ __device__ void uniformSampleOneLight(
+    const int numLights,
+    glm::vec3 point,
+    thrust::default_random_engine& rng
+);*/
+
 /**
  * Scatter a ray with some probabilities according to the material properties.
  * For example, a diffuse surface scatters in a cosine-weighted hemisphere.
@@ -40,7 +75,24 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
  *
  * You may need to change the parameter list for your purposes!
  */
-__host__ __device__ void scatterRay(
+__host__ __device__ void scatterRayOpaque(
+    PathSegment& pathSegment,
+    glm::vec3 intersect,
+    glm::vec3 normal,
+    glm::vec3 texAlbedo,
+    glm::vec3 texRough,
+    Material& m,
+    thrust::default_random_engine& rng);
+
+__host__ __device__ void scatterRayTransparent(
+    PathSegment& pathSegment,
+    glm::vec3 intersect,
+    glm::vec3 normal,
+    const Material& m,
+    bool outside,
+    thrust::default_random_engine& rng);
+
+__host__ __device__ void scatterRayFake(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
