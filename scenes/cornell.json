@@ -22,11 +22,15 @@
             "TYPE":"Diffuse",
             "RGB":[0.35, 0.85, 0.35]
         },
-        "specular_white":
-        {
-            "TYPE":"Specular",
-            "RGB":[0.98, 0.98, 0.98],
-            "ROUGHNESS":0.0
+        "specular_white": {
+          "TYPE": "Specular",
+          "RGB": [ 0.98, 0.98, 0.98 ],
+          "ROUGHNESS": 0.0
+        },
+        "glass": {
+          "TYPE": "Refractive",
+          "RGB": [ 1.0, 1.0, 1.0 ],
+          "IOR": 1.5
         }
     },
     "Camera":
@@ -38,7 +42,9 @@
         "FILE":"cornell",
         "EYE":[0.0,5.0,10.5],
         "LOOKAT":[0.0,5.0,0.0],
-        "UP":[0.0,1.0,0.0]
+        "UP": [ 0.0, 1.0, 0.0 ],
+        "LENS_RADIUS": 1.0,
+        "FOCAL_DISTANCE":  10.5
     },
     "Objects":
     [
@@ -85,11 +91,18 @@
             "SCALE":[0.01,10.0,10.0]
         },
         {
-            "TYPE":"sphere",
-            "MATERIAL":"specular_white",
-            "TRANS":[-1.0,4.0,-1.0],
-            "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[3.0,3.0,3.0]
+          "TYPE": "sphere",
+          "MATERIAL": "diffuse_white",
+          "TRANS": [ -1.0, 4.0, -1.0 ],
+          "ROTAT": [ 0.0, 0.0, 0.0 ],
+          "SCALE": [ 3.0, 3.0, 3.0 ]
+        },
+        {
+          "TYPE": "sphere",
+          "MATERIAL": "glass",
+          "TRANS": [ 2.5, 3.0, 0.0 ],
+          "ROTAT": [ 0.0, 0.0, 0.0 ],
+          "SCALE": [ 2.5, 2.5, 2.5 ]
         }
     ]
 }

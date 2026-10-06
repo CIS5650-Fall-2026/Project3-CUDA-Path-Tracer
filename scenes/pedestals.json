@@ -1,0 +1,219 @@
+{
+  "Materials": {
+    "light": {
+      "TYPE": "Emitting",
+      "RGB": [ 1.0, 1.0, 1.0 ],
+      "EMITTANCE": 5.0
+    },
+    "diffuse_white": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.98, 0.98, 0.98 ]
+    },
+    "diffuse_red": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.85, 0.35, 0.35 ]
+    },
+    "diffuse_green": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.35, 0.85, 0.35 ]
+    },
+    "specular_white": {
+      "TYPE": "Specular",
+      "RGB": [ 0.98, 0.98, 0.98 ]
+    },
+    "glass": {
+      "TYPE": "Refractive",
+      "RGB": [ 1.0, 1.0, 1.0 ],
+      "IOR": 1.5
+    },
+    "duck_yellow": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.98, 0.8, 0.1 ]
+
+    },
+    "teapot": {
+      "TYPE": "Specular",
+      "RGB": [ 0.8, 0.5, 0.25 ],
+      "DIFFUSE_RGB": [ 0.3, 0.17, 0.07 ]
+    },
+    "duck_yellow_glass": {
+      "TYPE": "Refractive",
+      "RGB": [ 0.98, 0.8, 0.1 ],
+      "IOR": 1.5
+    },
+    "diffuse_mix": {
+      "TYPE": "Specular",
+      "RGB": [ 0.3, 0.3, 0.3 ],
+      "DIFFUSE_RGB": [ 0.65, 0.1, 0.1 ]
+
+    },
+    "pedestal": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.85, 0.85, 0.82 ]
+    },
+    "floor": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.2, 0.2, 0.2 ]
+    },
+    "sky": {
+      "TYPE": "Emitting",
+      "RGB": [ 0.3, 0.6, 1.0 ],
+      "EMITTANCE": 1.0
+    },
+    "light_source": {
+      "TYPE": "Emitting",
+      "RGB": [ 1.0, 0.85, 0.7 ],
+      "EMITTANCE": 12.0
+    },
+    "dragon": {
+      "TYPE": "Diffuse",
+      "RGB": [ 0.45, 0.55, 0.48 ]
+    }
+
+  },
+    "Camera":
+    {
+        "RES":[800,800],
+        "FOVY":25.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"pedestals",
+        "EYE":[0.0,1.0,11.0],
+        "LOOKAT":[0.0,2.5,0.0],
+        "UP": [ 0.0, 1.0, 0.0 ],
+        "LENS_RADIUS": 0.0,
+        "FOCAL_DISTANCE":  12.4
+    },
+  "Objects": [
+    {
+      "TYPE": "cube",
+      "MATERIAL": "light_source",
+      "TRANS": [ -3.0, 9.0, 2.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 4.0, 0.2, 4.0 ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "sky",
+      "TRANS": [ 0.0, 0.0, 0.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 60.0, 60.0, 60.0 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "floor",
+      "TRANS": [ 0.0, 0.0, 0.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 40.0, 0.01, 40.0 ]
+    },
+    {
+      "TYPE": "gltf",
+      "FILE": "../scenes/Duck.glb",
+      "MATERIAL": "duck_yellow_glass",
+      "TRANS": [ -2.8, 1.9, 0.5 ],
+      "ROTAT": [ 0.0, -10.0, 0.0 ],
+      "SCALE": [ 0.01, 0.01, 0.01 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "pedestal",
+      "TRANS": [ 0.0, 1.5, -1.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 2.5, 3.0, 2.5 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "pedestal",
+      "TRANS": [ -2.8, 1.0, 0.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 1.8, 2.0, 1.8 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "pedestal",
+      "TRANS": [ 2.8, 0.75, 0.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 1.8, 1.5, 1.8 ]
+    },
+    {
+      "TYPE": "gltf",
+      "FILE": "../scenes/dragon.glb",
+      "MATERIAL": "dragon",
+      "TRANS": [ 0.0, 3.8, -1.5 ],
+      "ROTAT": [ 90.0, 0.0, 0.0 ],
+      "SCALE": [ 15.0, 15.0, 15.0 ]
+    },
+    {
+      "TYPE": "gltf",
+      "FILE": "../scenes/teapot.glb",
+      "MATERIAL": "teapot",
+      "TRANS": [ 2.8, 1.5, 0.5 ],
+      "ROTAT": [ 90.0, 0.0, 0.0 ],
+      "SCALE": [ 0.45, 0.45, 0.45 ]
+    },
+    {
+      "TYPE": "gltf",
+      "FILE": "../scenes/cloud_large.glb",
+      "MATERIAL": "diffuse_white",
+      "TRANS": [ 3.0, 7.0, -8.0 ],
+      "ROTAT": [ 155.0, 0.0, 0.0 ],
+      "SCALE": [ 0.45, 0.45, 0.45 ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "diffuse_red",
+      "TRANS": [ -4.0, 1.5, -3.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 3.0, 3.0, 3.0 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "diffuse_green",
+      "TRANS": [ 4.0, 2.0, -3.5 ],
+      "ROTAT": [ 0.0, 30.0, 0.0 ],
+      "SCALE": [ 1.5, 4.0, 1.5 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "pedestal",
+      "TRANS": [ -0.9, 0.4, 3.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 1.2, 0.8, 1.2 ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "glass",
+      "TRANS": [ -0.9, 1.4, 3.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 1.2, 1.2, 1.2 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "pedestal",
+      "TRANS": [ 1.0, 0.4, 3.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 1.2, 0.8, 1.2 ]
+    },
+    {
+      "TYPE": "sphere",
+      "MATERIAL": "diffuse_mix",
+      "TRANS": [ 1.0, 1.4, 3.5 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 1.2, 1.2, 1.2 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "duck_yellow",
+      "TRANS": [ -7.0, 4.0, 16.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 8.0, 8.0, 0.5 ]
+    },
+    {
+      "TYPE": "cube",
+      "MATERIAL": "duck_yellow",
+      "TRANS": [ 7.0, 4.0, 16.0 ],
+      "ROTAT": [ 0.0, 0.0, 0.0 ],
+      "SCALE": [ 8.0, 8.0, 0.5 ]
+    }
+  ]
+}

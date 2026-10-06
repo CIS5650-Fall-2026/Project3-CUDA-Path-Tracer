@@ -12,7 +12,13 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
+};
+
+struct Triangle {
+    glm::vec3 v0, v1, v2; // points on triangle
+    glm::vec3 n0, n1, n2; // normals
 };
 
 struct Ray
@@ -31,6 +37,11 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+    int triStart = 0;
+    int triCount = 0;
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+    int root;
 };
 
 struct Material
@@ -57,6 +68,8 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    float lensRadius;
+    float focalDistance;
 };
 
 struct RenderState
@@ -84,4 +97,13 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+};
+
+struct BVHNode {
+    int t_start_idx = 0; // if leaf, first triangle
+    int t_count= 0; // if leaf, num triangles
+    glm::vec3 bottom_corner = glm::vec3(FLT_MAX); // bounding box mins
+    glm::vec3 top_corner = glm::vec3(-FLT_MAX); // bounding box maxes
+    int left_child = -1; // left child index
+    int right_child = -1; // right child index
 };

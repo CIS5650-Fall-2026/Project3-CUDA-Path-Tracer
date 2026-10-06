@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(cis565_path_tracer LANGUAGES CUDA CXX)
+project(cis565_path_tracer LANGUAGES C CUDA CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -57,6 +57,8 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/tiny_gltf_v3.h
+    src/tinygltf_json_c.h
 )
 
 set(sources
@@ -69,6 +71,7 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/tiny_gltf_v3.c
 )
 
 set(imgui_headers
@@ -107,13 +110,18 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE TINYGLTF3_ENABLE_FS)
+
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction
 )
+
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
 
+target_compile_options(cis565_path_tracer PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>)
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,RelWithDebInfo>,$<COMPILE_LANGUAGE:CUDA>>:-G;-src-in-ptx>")
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")
 
