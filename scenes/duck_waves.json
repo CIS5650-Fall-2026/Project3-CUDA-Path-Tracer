@@ -1,0 +1,473 @@
+{
+    "Materials": {
+        "sky_glow": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.72,
+                0.5
+            ],
+            "EMITTANCE": 1.6
+        },
+        "sun": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.85,
+                0.6
+            ],
+            "EMITTANCE": 18.0
+        },
+        "top_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.97,
+                0.92
+            ],
+            "EMITTANCE": 4.0
+        },
+        "lantern_orange": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.5,
+                0.15
+            ],
+            "EMITTANCE": 14.0
+        },
+        "lantern_cyan": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.3,
+                0.85,
+                1
+            ],
+            "EMITTANCE": 14.0
+        },
+        "lantern_pink": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.35,
+                0.7
+            ],
+            "EMITTANCE": 14.0
+        },
+        "water": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.9,
+                0.97,
+                1.0
+            ],
+            "IOR": 1.33
+        },
+        "sand": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.76,
+                0.68,
+                0.5
+            ]
+        },
+        "duck_yellow": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                1.0,
+                0.78,
+                0.08
+            ]
+        },
+        "avocado_green": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.4,
+                0.6,
+                0.2
+            ]
+        },
+        "key_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.95,
+                0.88
+            ],
+            "EMITTANCE": 70.0
+        },
+        "fill_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.8,
+                0.9,
+                1.0
+            ],
+            "EMITTANCE": 50.0
+        },
+        "top_spot": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.97,
+                0.9
+            ],
+            "EMITTANCE": 60.0
+        }
+    },
+    "Camera": {
+        "RES": [
+            800,
+            800
+        ],
+        "FOVY": 45.0,
+        "ITERATIONS": 2000,
+        "DEPTH": 14,
+        "FILE": "duck_waves",
+        "EYE": [
+            0,
+            2.4,
+            9
+        ],
+        "LOOKAT": [
+            0,
+            0.9,
+            0
+        ],
+        "UP": [
+            0,
+            1,
+            0
+        ],
+        "RADIUS": 0.3,
+        "FOCAL_DIST": 9.2
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "sky_glow",
+            "TRANS": [
+                0,
+                30,
+                -60
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                240,
+                120,
+                0.01
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "sun",
+            "TRANS": [
+                -8,
+                5,
+                -52
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                9,
+                9,
+                9
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "top_light",
+            "TRANS": [
+                0,
+                18,
+                6
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                14,
+                0.3,
+                10
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "sand",
+            "TRANS": [
+                0,
+                -1.6,
+                -20
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                240,
+                0.01,
+                200
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "water",
+            "FILE": "scenes/models/Waves.gltf",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "duck_yellow",
+            "FILE": "scenes/models/Duck.gltf",
+            "TRANS": [
+                0,
+                -0.8145,
+                0
+            ],
+            "ROTAT": [
+                0,
+                -35,
+                0
+            ],
+            "SCALE": [
+                0.025,
+                0.025,
+                0.025
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "avocado_green",
+            "FILE": "scenes/models/Avocado.gltf",
+            "TRANS": [
+                -2.4,
+                -0.2017,
+                5.5
+            ],
+            "ROTAT": [
+                8,
+                150,
+                10
+            ],
+            "SCALE": [
+                35,
+                35,
+                35
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_orange",
+            "TRANS": [
+                -6,
+                0.3254,
+                -12
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.4,
+                1.4,
+                1.4
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_cyan",
+            "TRANS": [
+                4,
+                0.232,
+                -16
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.6,
+                1.6,
+                1.6
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_pink",
+            "TRANS": [
+                -2,
+                0.4759,
+                -22
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.8,
+                1.8,
+                1.8
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_orange",
+            "TRANS": [
+                8,
+                0.6133,
+                -26
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                2.0,
+                2.0,
+                2.0
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_cyan",
+            "TRANS": [
+                -9,
+                0.3595,
+                -30
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                2.0,
+                2.0,
+                2.0
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_pink",
+            "TRANS": [
+                13,
+                0.4443,
+                -14
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.4,
+                1.4,
+                1.4
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "lantern_orange",
+            "TRANS": [
+                1.5,
+                0.523,
+                -34
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                2.2,
+                2.2,
+                2.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "key_light",
+            "TRANS": [
+                -3.6,
+                3.8,
+                3.2
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                2.2,
+                2.2,
+                2.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "fill_light",
+            "TRANS": [
+                3.8,
+                3.0,
+                3.5
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.6,
+                1.6,
+                1.6
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "top_spot",
+            "TRANS": [
+                0.5,
+                7.5,
+                1.0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                2,
+                2,
+                2
+            ]
+        }
+    ]
+}

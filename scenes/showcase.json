@@ -1,0 +1,786 @@
+{
+    "Materials": {
+        "strip_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.95,
+                0.85
+            ],
+            "EMITTANCE": 6.0
+        },
+        "rim_cyan": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.4,
+                0.85,
+                1
+            ],
+            "EMITTANCE": 5.0
+        },
+        "bokeh_orange": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.55,
+                0.15
+            ],
+            "EMITTANCE": 14.0
+        },
+        "bokeh_cyan": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.2,
+                0.8,
+                1
+            ],
+            "EMITTANCE": 14.0
+        },
+        "bokeh_pink": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.3,
+                0.7
+            ],
+            "EMITTANCE": 14.0
+        },
+        "bokeh_gold": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1,
+                0.85,
+                0.3
+            ],
+            "EMITTANCE": 14.0
+        },
+        "pedestal": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.9,
+                0.9,
+                0.92
+            ]
+        },
+        "backdrop": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.12,
+                0.16,
+                0.3
+            ]
+        },
+        "avocado_green": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.4,
+                0.6,
+                0.2
+            ]
+        },
+        "floor_mirror": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.55,
+                0.6,
+                0.65
+            ],
+            "ROUGHNESS": 0.0
+        },
+        "mirror": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ROUGHNESS": 0.0
+        },
+        "glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                1,
+                1,
+                1
+            ],
+            "IOR": 1.5
+        },
+        "amber_glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                1.0,
+                0.88,
+                0.55
+            ],
+            "IOR": 1.5
+        },
+        "blue_glass": {
+            "TYPE": "Refractive",
+            "RGB": [
+                0.7,
+                0.9,
+                1.0
+            ],
+            "IOR": 1.5
+        }
+    },
+    "Camera": {
+        "RES": [
+            800,
+            800
+        ],
+        "FOVY": 45.0,
+        "ITERATIONS": 2000,
+        "DEPTH": 14,
+        "FILE": "showcase",
+        "EYE": [
+            0,
+            1.8,
+            12
+        ],
+        "LOOKAT": [
+            0,
+            1.6,
+            2
+        ],
+        "UP": [
+            0,
+            1,
+            0
+        ],
+        "RADIUS": 0.35,
+        "FOCAL_DIST": 7.0
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "strip_light",
+            "TRANS": [
+                0,
+                10,
+                -4
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                2,
+                0.3,
+                16
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "rim_cyan",
+            "TRANS": [
+                -7,
+                4,
+                -12
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.3,
+                6,
+                3
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "floor_mirror",
+            "TRANS": [
+                0,
+                0,
+                0
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                80,
+                0.01,
+                80
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "backdrop",
+            "TRANS": [
+                0,
+                10,
+                -24
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                80,
+                40,
+                0.01
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "pedestal",
+            "TRANS": [
+                0.3,
+                0.2,
+                5
+            ],
+            "ROTAT": [
+                0,
+                20,
+                0
+            ],
+            "SCALE": [
+                3,
+                0.4,
+                3
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "amber_glass",
+            "FILE": "scenes/models/Duck.gltf",
+            "TRANS": [
+                0.3,
+                0.23119,
+                5
+            ],
+            "ROTAT": [
+                0,
+                -35,
+                0
+            ],
+            "SCALE": [
+                0.017,
+                0.017,
+                0.017
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "blue_glass",
+            "TRANS": [
+                -2.4,
+                0.5,
+                -0.5
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "pedestal",
+            "TRANS": [
+                4,
+                0.75,
+                -3.5
+            ],
+            "ROTAT": [
+                0,
+                15,
+                0
+            ],
+            "SCALE": [
+                1.6,
+                1.5,
+                1.6
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "mirror",
+            "FILE": "scenes/models/Suzanne.gltf",
+            "TRANS": [
+                4,
+                2.9,
+                -3.5
+            ],
+            "ROTAT": [
+                -10,
+                -25,
+                0
+            ],
+            "SCALE": [
+                2.4,
+                2.4,
+                2.4
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "pedestal",
+            "TRANS": [
+                -2.6,
+                0.15,
+                8
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.4,
+                0.3,
+                1.4
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "MATERIAL": "avocado_green",
+            "FILE": "scenes/models/Avocado.gltf",
+            "TRANS": [
+                -2.6,
+                0.3,
+                8
+            ],
+            "ROTAT": [
+                0,
+                150,
+                0
+            ],
+            "SCALE": [
+                35,
+                35,
+                35
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -5.5,
+                3.5,
+                2
+            ],
+            "ROTAT": [
+                0,
+                20,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                5.5,
+                3.5,
+                2
+            ],
+            "ROTAT": [
+                0,
+                20,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -5.5,
+                3.5,
+                -2
+            ],
+            "ROTAT": [
+                0,
+                35,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                5.5,
+                3.5,
+                -2
+            ],
+            "ROTAT": [
+                0,
+                35,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -5.5,
+                3.5,
+                -6
+            ],
+            "ROTAT": [
+                0,
+                50,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                5.5,
+                3.5,
+                -6
+            ],
+            "ROTAT": [
+                0,
+                50,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -5.5,
+                3.5,
+                -10
+            ],
+            "ROTAT": [
+                0,
+                65,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                5.5,
+                3.5,
+                -10
+            ],
+            "ROTAT": [
+                0,
+                65,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -5.5,
+                3.5,
+                -14
+            ],
+            "ROTAT": [
+                0,
+                80,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                5.5,
+                3.5,
+                -14
+            ],
+            "ROTAT": [
+                0,
+                80,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                -5.5,
+                3.5,
+                -18
+            ],
+            "ROTAT": [
+                0,
+                95,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glass",
+            "TRANS": [
+                5.5,
+                3.5,
+                -18
+            ],
+            "ROTAT": [
+                0,
+                95,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                7,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_orange",
+            "TRANS": [
+                -8,
+                1,
+                -18
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.4,
+                1.4,
+                1.4
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_cyan",
+            "TRANS": [
+                -4,
+                3.5,
+                -20
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.2,
+                1.2,
+                1.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_pink",
+            "TRANS": [
+                -1,
+                0.6,
+                -20
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.6,
+                1.6,
+                1.6
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_gold",
+            "TRANS": [
+                2.5,
+                5,
+                -21
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.2,
+                1.2,
+                1.2
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_orange",
+            "TRANS": [
+                6,
+                2,
+                -19
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.4,
+                1.4,
+                1.4
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_cyan",
+            "TRANS": [
+                9,
+                4.5,
+                -20
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.6,
+                1.6,
+                1.6
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_pink",
+            "TRANS": [
+                -7,
+                6,
+                -21
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_gold",
+            "TRANS": [
+                0.5,
+                2.6,
+                -22
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_cyan",
+            "TRANS": [
+                7.5,
+                0.5,
+                -14
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "bokeh_pink",
+            "TRANS": [
+                -6.5,
+                0.5,
+                -9
+            ],
+            "ROTAT": [
+                0,
+                0,
+                0
+            ],
+            "SCALE": [
+                0.8,
+                0.8,
+                0.8
+            ]
+        }
+    ]
+}

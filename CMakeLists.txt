@@ -50,6 +50,9 @@ include_directories(${GLM_INCLUDE_DIRS})
 
 set(headers
     src/image.h
+    src/boundingVolume.h
+    src/meshLoader.h
+    src/tinygltf_include.h
     src/interactions.h
     src/intersections.h
     src/glslUtility.hpp
@@ -61,6 +64,9 @@ set(headers
 
 set(sources
     src/main.cpp
+    src/boundingVolume.cpp
+    src/meshLoader.cpp
+    src/tinygltf_impl.cpp
     src/stb.cpp
     src/image.cpp
     src/glslUtility.cpp
@@ -119,3 +125,6 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
 
+if(MSVC)
+    target_compile_options(cis565_path_tracer PRIVATE "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>")
+endif()

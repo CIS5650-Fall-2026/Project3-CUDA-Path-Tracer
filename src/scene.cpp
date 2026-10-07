@@ -1,6 +1,8 @@
 #include "scene.h"
 
 #include "utilities.h"
+#include "meshLoader.h"
+#include "boundingVolume.h"
 
 #include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtx/string_cast.hpp>
@@ -56,8 +58,15 @@ void Scene::loadFromJSON(const std::string& jsonName)
         }
         else if (p["TYPE"] == "Specular")
         {
+            newMaterial.hasReflective = 1.0f;
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+        }
+        else if (p["TYPE"] == "Refractive") {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.indexOfRefraction = p["IOR"];
+            newMaterial.hasRefractive = 1.0f;
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -66,13 +75,21 @@ void Scene::loadFromJSON(const std::string& jsonName)
     for (const auto& p : objectsData)
     {
         const auto& type = p["TYPE"];
-        Geom newGeom;
+        Geom newGeom{};
         if (type == "cube")
         {
             newGeom.type = CUBE;
         }
-        else
+        else if (type == "mesh")
         {
+            newGeom.type = MESH;
+            newGeom.start = (int) triangles.size();
+            std::string file = p["FILE"];
+            loadMesh(file, triangles, newGeom.bboxMin, newGeom.bboxMax);
+            newGeom.triCount = (int)triangles.size() - newGeom.start;
+            newGeom.bouindingVolumeHierarchyRoot = buildBoundingVolumeHierarchy(triangles, newGeom.start, newGeom.triCount, bvhNodes);
+        }
+        else {
             newGeom.type = SPHERE;
         }
         newGeom.materialid = MatNameToID[p["MATERIAL"]];
@@ -111,11 +128,19 @@ void Scene::loadFromJSON(const std::string& jsonName)
     float fovx = (atan(xscaled) * 180) / PI;
     camera.fov = glm::vec2(fovx, fovy);
 
+    camera.view = glm::normalize(camera.lookAt - camera.position);
     camera.right = glm::normalize(glm::cross(camera.view, camera.up));
     camera.pixelLength = glm::vec2(2 * xscaled / (float)camera.resolution.x,
         2 * yscaled / (float)camera.resolution.y);
-
-    camera.view = glm::normalize(camera.lookAt - camera.position);
+    
+    camera.radius = 0.0f;
+    if (cameraData.contains("RADIUS")) {
+        camera.radius = (float) cameraData["RADIUS"];
+    }
+    camera.focalDist = glm::length(camera.lookAt - camera.position); //use camera.view as default
+    if (cameraData.contains("FOCAL_DIST")) {
+        camera.focalDist = (float) cameraData["FOCAL_DIST"];
+    }
 
     //set up render camera stuff
     int arraylen = camera.resolution.x * camera.resolution.y;

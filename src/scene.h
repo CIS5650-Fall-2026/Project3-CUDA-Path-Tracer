@@ -11,6 +11,8 @@ public:
     Scene(std::string filename);
 
     std::vector<Geom> geoms;
+    std::vector<BoundingVolumeHierarchyNode> bvhNodes;
+    std::vector<Triangle> triangles;
     std::vector<Material> materials;
     RenderState state;
 };

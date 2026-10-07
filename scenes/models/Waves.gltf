@@ -1,0 +1,88 @@
+{
+  "asset": {
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "Waves.bin",
+      "byteLength": 1987536
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 504156,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 504156,
+      "byteLength": 504156,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1008312,
+      "byteLength": 979224,
+      "target": 34963
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 42013,
+      "type": "VEC3",
+      "min": [
+        -30.0,
+        -1.0,
+        -45.0
+      ],
+      "max": [
+        30.0,
+        0.3465134447195349,
+        15.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 42013,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5125,
+      "count": 244806,
+      "type": "SCALAR"
+    }
+  ]
+}

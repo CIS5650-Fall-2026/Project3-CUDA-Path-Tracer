@@ -344,11 +344,29 @@ int main(int argc, char** argv)
 
     if (argc < 2)
     {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+        printf("Usage: %s SCENEFILE.json [--sort-materials] [--russian-roulette] [--no-bbox-culling] [--no-bvh]\n", argv[0]);
         return 1;
     }
 
     const char* sceneFile = argv[1];
+    for (int i = 2; i < argc; i++) {
+        if (strcmp(argv[i], "--sort-materials") == 0) {
+            setMaterialSort(true);
+        }
+        else if (strcmp(argv[i], "--russian-roulette") == 0) {
+            setRussianRoulettePathTerm(true);
+        }
+        else if (strcmp(argv[i], "--no-bbox-culling") == 0) {
+            setMeshBoundsCulling(false);
+        }
+        else if (strcmp(argv[i], "--no-bvh") == 0) {
+            setMeshBoundingVolHier(false);
+        }
+        else {
+            printf("Unknown opt: %s\n", argv[i]);
+            return 1;
+        }
+    }
 
     // Load scene file
     scene = new Scene(sceneFile);

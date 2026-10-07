@@ -12,7 +12,8 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH  // a triangle mesh loaded from a glTF file
 };
 
 struct Ray
@@ -31,6 +32,25 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+
+    int start;
+    int triCount;
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+    int bouindingVolumeHierarchyRoot;
+};
+
+struct BoundingVolumeHierarchyNode {
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+    int left;
+    int right;
+    int start;
+    int triCount;
+};
+struct Triangle {
+    glm::vec3 v0, v1, v2;
+    glm::vec3 n0, n1, n2;
 };
 
 struct Material
@@ -57,6 +77,8 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    float radius;
+    float focalDist;
 };
 
 struct RenderState
