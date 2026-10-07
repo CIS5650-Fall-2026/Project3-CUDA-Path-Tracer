@@ -1,12 +1,7 @@
 {
     "Materials":
     {
-        "light":
-        {
-            "TYPE":"Emitting",
-            "RGB":[1.0, 1.0, 1.0],
-            "EMITTANCE":5.0
-        },
+        
         "diffuse_white":
         {
             "TYPE":"Diffuse",
@@ -42,13 +37,7 @@
     },
     "Objects":
     [
-        {
-            "TYPE":"cube",
-            "MATERIAL":"light",
-            "TRANS":[0.0,10.0,0.0],
-            "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[3.0,0.3,3.0]
-        },
+        
         {
             "TYPE":"cube",
             "MATERIAL":"diffuse_white",
@@ -91,5 +80,18 @@
             "ROTAT":[0.0,0.0,0.0],
             "SCALE":[3.0,3.0,3.0]
         }
-    ]
+    ],
+ "Lights":
+    
+    [
+        {
+            "TYPE": "AREA",
+            "RGB": [ 0.98, 0.98, 0.98 ],
+            "INTENSITY": 10.0,
+            "TRANS": [ 0.0, 9.9, 0.0 ],
+            "ROTAT": [180, 0,0 ],
+            "SCALE": [ 3.0, 0.1, 3.0 ]
+        }
+     ]
+
 }
