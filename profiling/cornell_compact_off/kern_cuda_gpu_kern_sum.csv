@@ -1,0 +1,6 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+47.8,3669661264,8000,458707.7,473269.0,312313,724783,88503.7,"shade_material(int, int, int, const ShadeableIntersection *, const unsigned char *, PathSegment *, ShadowRay *, const Material *, LightSampler, const Geom *, glm::vec<(int)3, float, (glm::qualifier)0> *)"
+26.3,2022258394,8000,252782.3,254282.5,191643,582867,24554.6,"compute_intersections(int, const PathSegment *, const Geom *, int, ShadeableIntersection *, unsigned char *)"
+17.5,1346796835,8000,168349.6,171836.0,121213,454486,21181.6,"trace_shadow_rays(int, int, ShadowRay *, const Geom *, glm::vec<(int)3, float, (glm::qualifier)0> *)"
+7.2,550573829,1000,550573.8,538756.0,486805,669873,47524.7,"gen_ray_from_cam(CameraData, int, int, PathSegment *)"
+1.2,93743379,1000,93743.4,91645.5,83230,114141,8047.9,"send_image_to_pbo(uchar4 *, glm::vec<(int)2, int, (glm::qualifier)0>, int, glm::vec<(int)3, float, (glm::qualifier)0> *, bool)"

@@ -557,3 +557,13 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+
+# mine
+/compile_commands.json
+/imgui.ini
+.clang*
+
+# only commit saves
+scene_renders/*
+renders/*

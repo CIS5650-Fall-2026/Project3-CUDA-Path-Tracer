@@ -1,0 +1,71 @@
+{
+    "file": "single_fractal",
+    "iterations": 5000,
+    "settings": {
+        "max_depth": 8,
+        "sdf_max_steps": 256,
+        "sdf_hit_eps": 0.0001,
+        "sdf_normal_eps": 0.0001,
+        "agx": true
+    },
+    "environment": {
+        "path": "../assets/hdri/HDR_white_dwarf_star.hdr",
+        "strength": 1.0
+    },
+    "camera": {
+        "focal_distance": 11.0,
+        "fovy": 19.194,
+        "lens_radius": 0,
+        "look_at": [-0.04357268, 4.0054326, 12.085245],
+        "position": [-0.05749067, 4.173866, 13.07086],
+        "resolution": [1920, 804],
+        "up": [0.0023782304, 0.98571306, -0.16841651]
+    },
+    "controls": {
+        "accel": 254.40753,
+        "damping": 37.258,
+        "mouse_sens": 0.095,
+        "scroll_sens": 0.1
+    },
+    "materials": {
+        "disney bsdf": {
+            "type": "disney bsdf",
+            "color": [0.8, 0.5, 0.3],
+            "specular_transmission": 0,
+            "metallic": 0,
+            "subsurface": 0,
+            "specular": 0.5,
+            "roughness": 0.5,
+            "specular_tint": 0,
+            "anisotropic": 0,
+            "sheen": 0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        }
+    },
+    "objects": [
+        {
+            "type": "plane",
+            "light": {
+                "color": [1.0, 0.8, 0.6],
+                "strength": 12.0
+            },
+            "transform": {
+                "translation": [0.0, 2.0, 0.0],
+                "rotation": [120.0, 0.0, 0.0],
+                "scale": [1.5, 0.6, 1.5]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "disney bsdf",
+            "transform": {
+                "translation": [0.0, 0.0, 0.0],
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [1, 1, 1]
+            }
+        }
+    ]
+}

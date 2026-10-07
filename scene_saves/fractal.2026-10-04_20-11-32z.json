@@ -1,0 +1,174 @@
+{
+    "camera": {
+        "focal_distance": 19.0,
+        "fovy": 64.908,
+        "lens_radius": 0.0,
+        "look_at": [0.23641962, 2.7392836, 1.5283561],
+        "position": [1.118745, 2.36673, 1.2407696],
+        "resolution": [1920, 804],
+        "up": [0.35421303, 0.9280108, -0.1154527]
+    },
+    "controls": {
+        "accel": 137.48297,
+        "damping": 37.258,
+        "mouse_sens": 0.095,
+        "scroll_sens": 0.1
+    },
+    "environment": {
+        "path": "../assets/hdri/HDR_white_dwarf_star.hdr",
+        "strength": 1.092
+    },
+    "file": "fractal",
+    "iterations": 5000,
+    "materials": {
+        "diffuse_green": {
+            "color": [0.35, 0.85, 0.35],
+            "emission": {
+                "color": [1.0, 1.0, 1.0],
+                "strength": 0.0
+            },
+            "type": "diffuse"
+        },
+        "diffuse_red": {
+            "color": [0.85, 0.35, 0.35],
+            "emission": {
+                "color": [1.0, 1.0, 1.0],
+                "strength": 0.0
+            },
+            "type": "diffuse"
+        },
+        "diffuse_white": {
+            "color": [0.98, 0.98, 0.98],
+            "emission": {
+                "color": [1.0, 1.0, 1.0],
+                "strength": 0.0
+            },
+            "type": "diffuse"
+        },
+        "glass": {
+            "emission": {
+                "color": [1.0, 1.0, 1.0],
+                "strength": 0.0
+            },
+            "ior": 1.573,
+            "roughness": 0.0,
+            "type": "dielectric"
+        },
+        "gold": {
+            "anisotropy": 0.0,
+            "emission": {
+                "color": [1.0, 1.0, 1.0],
+                "strength": 0.0
+            },
+            "eta": [0.18, 0.42, 1.37],
+            "k": [3.42, 2.4, 1.77],
+            "roughness": 0.21,
+            "type": "conductor"
+        }
+    },
+    "objects": [
+        {
+            "light": {
+                "color": [0.6, 1.0, 0.6],
+                "strength": 0.6
+            },
+            "transform": {
+                "rotation": [180.0, 0.0, 0.0],
+                "scale": [3.0, 0.3, 3.0],
+                "translation": [-3.0, 9.5, 0.0]
+            },
+            "type": "plane"
+        },
+        {
+            "light": {
+                "color": [1.0, 0.8, 0.6],
+                "strength": 2.9
+            },
+            "transform": {
+                "rotation": [180.0, 0.0, 0.0],
+                "scale": [1.0, 0.3, 1.0],
+                "translation": [3.0, 9.5, 0.0]
+            },
+            "type": "plane"
+        },
+        {
+            "material": "diffuse_white",
+            "transform": {
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [10.0, 0.01, 10.0],
+                "translation": [0.0, 0.0, 0.0]
+            },
+            "type": "cube"
+        },
+        {
+            "material": "diffuse_white",
+            "transform": {
+                "rotation": [0.0, 0.0, 90.0],
+                "scale": [0.01, 10.0, 10.0],
+                "translation": [0.0, 10.0, 0.0]
+            },
+            "type": "cube"
+        },
+        {
+            "material": "diffuse_white",
+            "transform": {
+                "rotation": [0.0, 90.0, 0.0],
+                "scale": [0.01, 10.0, 10.0],
+                "translation": [0.0, 5.0, -5.0]
+            },
+            "type": "cube"
+        },
+        {
+            "material": "diffuse_red",
+            "transform": {
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [0.01, 10.0, 10.0],
+                "translation": [-5.0, 5.0, 0.0]
+            },
+            "type": "cube"
+        },
+        {
+            "material": "diffuse_green",
+            "transform": {
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [0.01, 10.0, 10.0],
+                "translation": [5.0, 5.0, 0.0]
+            },
+            "type": "cube"
+        },
+        {
+            "material": "gold",
+            "transform": {
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "translation": [-2.0, 2.0, 1.0]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "glass",
+            "transform": {
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "translation": [2.0, 2.0, 1.0]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "diffuse_green",
+            "transform": {
+                "rotation": [0.0, 0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "translation": [-1.0, 1.0, -3.0]
+            },
+            "type": "sphere"
+        }
+    ],
+    "settings": {
+        "agx": true,
+        "max_depth": 16,
+        "sdf_hit_eps": 0.0001,
+        "sdf_max_steps": 128,
+        "sdf_normal_eps": 0.0001
+    }
+}

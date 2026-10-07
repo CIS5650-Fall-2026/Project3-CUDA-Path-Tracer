@@ -1,0 +1,10 @@
+WARNING: CPU context switches trace requires administrative privileges, disabling.
+WARNING: CPU sampling requires administrative privileges, disabling.
+Collecting data...
+Generating 'C:\Users\Zachary\AppData\Local\Temp\nsys-Zachary\nsys-report-d495.qdstrm'
+[1/1] [0%                          ] report.nsys-rep[1/1] [0%                          ] report.nsys-rep[1/1] [1%                          ] report.nsys-rep[1/1] [2%                          ] report.nsys-rep[1/1] [5%                          ] report.nsys-rep[1/1] [6%                          ] report.nsys-rep[1/1] [7%                          ] report.nsys-rep[1/1] [8%                          ] report.nsys-rep[1/1] [9%                          ] report.nsys-rep[1/1] [10%                         ] report.nsys-rep[1/1] [11%                         ] report.nsys-rep[1/1] [12%                         ] report.nsys-rep[1/1] [13%                         ] report.nsys-rep[1/1] [14%                         ] report.nsys-rep[1/1] [=15%                        ] report.nsys-rep[1/1] [=16%                        ] report.nsys-rep[1/1] [=17%                        ] report.nsys-rep[1/1] [==18%                       ] report.nsys-rep[1/1] [==19%                       ] report.nsys-rep[1/1] [==20%                       ] report.nsys-rep[1/1] [=====================89%    ] report.nsys-rep[1/1] [======================91%   ] report.nsys-rep[1/1] [=======================96%  ] report.nsys-rep[1/1] [========================98% ] report.nsys-rep[1/1] [========================100%] report.nsys-rep[1/1] [========================100%] report.nsys-rep
+Generated:
+	C:\Users\Zachary\MASTER\CODE\active-projects\cis565\Project3-CUDA-Path-Tracer\profiling/disney_showcase_sort_on/report.nsys-rep
+Generating SQLite file profiling/disney_showcase_sort_on/report.sqlite from profiling/disney_showcase_sort_on/report.nsys-rep
+Processing [profiling/disney_showcase_sort_on/report.sqlite] with [C:\Program Files\NVIDIA Corporation\Nsight Systems 2026.4.1\target-windows-x64\reports\cuda_gpu_kern_sum.py] to [profiling/disney_showcase_sort_on/kern_cuda_gpu_kern_sum.csv]... PROCESSED
+

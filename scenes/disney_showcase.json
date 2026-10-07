@@ -1,0 +1,365 @@
+{
+    "file": "disney_showcase",
+    "iterations": 5000,
+    "settings": {
+        "max_depth": 12,
+        "sdf_max_steps": 128,
+        "sdf_hit_eps": 0.0001,
+        "sdf_normal_eps": 0.0001,
+        "agx": true
+    },
+    "environment": {
+        "path": "../assets/hdri/HDR_white_dwarf_star.hdr",
+        "strength": 0.25
+    },
+    "camera": {
+        "resolution": [1920, 1080],
+        "position": [0.0, 7.5, 13.0],
+        "look_at": [0.0, 1.0, 0.0],
+        "up": [0.0, 1.0, 0.0],
+        "fovy": 38.0,
+        "lens_radius": 0.0,
+        "focal_distance": 14.5
+    },
+    "materials": {
+        "wall_white": {
+            "type": "diffuse",
+            "color": [0.4, 0.4, 0.4]
+        },
+        "brushed_aluminum": {
+            "type": "disney bsdf",
+            "color": [0.91, 0.92, 0.92],
+            "specular_transmission": 0.0,
+            "metallic": 1.0,
+            "edge_tint": [0.96, 0.96, 0.97],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.35,
+            "specular_tint": 0.0,
+            "anisotropic": 0.9,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "polished_gold": {
+            "type": "disney bsdf",
+            "color": [1.0, 0.71, 0.29],
+            "specular_transmission": 0.0,
+            "metallic": 1.0,
+            "edge_tint": [1.0, 0.86, 0.57],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.08,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "rough_copper": {
+            "type": "disney bsdf",
+            "color": [0.95, 0.64, 0.54],
+            "specular_transmission": 0.0,
+            "metallic": 1.0,
+            "edge_tint": [1.0, 0.82, 0.72],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.45,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "car_paint": {
+            "type": "disney bsdf",
+            "color": [0.55, 0.02, 0.03],
+            "specular_transmission": 0.0,
+            "metallic": 0.6,
+            "edge_tint": [0.9, 0.3, 0.3],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.4,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "clear_glass": {
+            "type": "disney bsdf",
+            "color": [1.0, 1.0, 1.0],
+            "specular_transmission": 1.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.0,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "frosted_plastic": {
+            "type": "disney bsdf",
+            "color": [0.55, 0.9, 0.65],
+            "specular_transmission": 1.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.35,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.45
+        },
+        "amber_glass": {
+            "type": "disney bsdf",
+            "color": [1.0, 0.55, 0.15],
+            "specular_transmission": 1.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.02,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.55
+        },
+        "wax": {
+            "type": "disney bsdf",
+            "color": [0.95, 0.78, 0.62],
+            "specular_transmission": 0.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 1.0,
+            "specular": 0.35,
+            "roughness": 0.5,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.2,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "red_velvet": {
+            "type": "disney bsdf",
+            "color": [0.45, 0.03, 0.06],
+            "specular_transmission": 0.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.3,
+            "specular": 0.2,
+            "roughness": 1.0,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 1.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "gold_silk": {
+            "type": "disney bsdf",
+            "color": [0.8, 0.55, 0.18],
+            "specular_transmission": 0.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.3,
+            "specular_tint": 0.6,
+            "anisotropic": 0.8,
+            "sheen": 0.6,
+            "sheen_tint": 0.8,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "blue_plastic": {
+            "type": "disney bsdf",
+            "color": [0.05, 0.2, 0.75],
+            "specular_transmission": 0.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.15,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "ior": 1.5
+        },
+        "glazed_porcelain": {
+            "type": "disney bsdf",
+            "color": [0.92, 0.92, 0.88],
+            "specular_transmission": 0.0,
+            "metallic": 0.0,
+            "edge_tint": [1.0, 1.0, 1.0],
+            "subsurface": 0.0,
+            "specular": 0.5,
+            "roughness": 0.35,
+            "specular_tint": 0.0,
+            "anisotropic": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 0.95,
+            "ior": 1.5
+        }
+    },
+    "objects": [
+        {
+            "type": "cube",
+            "material": "wall_white",
+            "transform": {
+                "translation": [0, 0, 0],
+                "rotation": [0, 0, 0],
+                "scale": [100.0, 0.01, 100.0]
+            }
+        },
+        {
+            "type": "plane",
+            "light": {
+                "color": [1.0, 1.0, 1.0],
+                "strength": 4.0
+            },
+            "transform": {
+                "translation": [0, 8.0, 0],
+                "rotation": [180, 0, 0],
+                "scale": [10.0, 1.0, 8.0]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "brushed_aluminum",
+            "transform": {
+                "translation": [-4.5, 1.2, -3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "polished_gold",
+            "transform": {
+                "translation": [-1.5, 1.2, -3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "rough_copper",
+            "transform": {
+                "translation": [1.5, 1.2, -3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "car_paint",
+            "transform": {
+                "translation": [4.5, 1.2, -3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "clear_glass",
+            "transform": {
+                "translation": [-4.5, 1.2, 0.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "frosted_plastic",
+            "transform": {
+                "translation": [-1.5, 1.2, 0.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "amber_glass",
+            "transform": {
+                "translation": [1.5, 1.2, 0.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "wax",
+            "transform": {
+                "translation": [4.5, 1.2, 0.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "red_velvet",
+            "transform": {
+                "translation": [-4.5, 1.2, 3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "gold_silk",
+            "transform": {
+                "translation": [-1.5, 1.2, 3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "blue_plastic",
+            "transform": {
+                "translation": [1.5, 1.2, 3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        },
+        {
+            "type": "sdf",
+            "material": "glazed_porcelain",
+            "transform": {
+                "translation": [4.5, 1.2, 3.0],
+                "rotation": [0, 0, 0],
+                "scale": [1.2, 1.2, 1.2]
+            }
+        }
+    ]
+}

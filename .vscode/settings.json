@@ -1,0 +1,27 @@
+{
+    "cmake.generator": "Ninja",
+    "cmake.buildDirectory": "${workspaceFolder}/build/ninja",
+    "cmake.debugConfig": {
+        "args": ["scenes/single_fractal.json"],
+        "cwd": "${workspaceFolder}"
+    },
+    "cmake.exportCompileCommandsFile": true,
+    "cmake.parallelJobs": 4,
+    "files.associations": {
+        "*.cu": "cuda-cpp",
+        "*.cuh": "cuda-cpp"
+    },
+    "cmake.modifyLists.addNewSourceFiles": "yes",
+    "cmake.modifyLists.removeDeletedSourceFiles": "yes",
+    "cmake.modifyLists.variableSelection": "askFirstParentDir",
+    "cmake.modifyLists.sourceVariables": ["sources", "headers"],
+
+    "C_Cpp.intelliSenseEngine": "disabled",
+
+    "clangd.path": "C:\\Program Files\\LLVM\\bin\\clangd.exe",
+    "clangd.arguments": [
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed"
+    ]
+}

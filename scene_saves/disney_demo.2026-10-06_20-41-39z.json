@@ -1,0 +1,3937 @@
+{
+    "camera": {
+        "focal_distance": 14.0,
+        "fovy": 13.529,
+        "lens_radius": 0.0,
+        "look_at": [
+            0.0,
+            0.0,
+            29.268257
+        ],
+        "position": [
+            0.0,
+            0.0,
+            30.268257
+        ],
+        "resolution": [
+            1920,
+            804
+        ],
+        "up": [
+            -0.0,
+            1.0,
+            0.0
+        ]
+    },
+    "controls": {
+        "accel": 100.0,
+        "damping": 5.0,
+        "mouse_sens": 0.15,
+        "scroll_sens": 0.1
+    },
+    "environment": {
+        "path": "../assets/hdri/brown_photostudio_02_4k.hdr",
+        "strength": 1.0
+    },
+    "file": "disney_demo",
+    "iterations": 5000,
+    "materials": {
+        "anisotropic_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.45,
+                0.08,
+                0.55
+            ],
+            "edge_tint": [
+                0.9,
+                0.5,
+                0.95
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.3,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "anisotropic_0.2": {
+            "anisotropic": 0.2,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.45,
+                0.08,
+                0.55
+            ],
+            "edge_tint": [
+                0.9,
+                0.5,
+                0.95
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.3,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "anisotropic_0.4": {
+            "anisotropic": 0.4,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.45,
+                0.08,
+                0.55
+            ],
+            "edge_tint": [
+                0.9,
+                0.5,
+                0.95
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.3,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "anisotropic_0.6": {
+            "anisotropic": 0.6,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.45,
+                0.08,
+                0.55
+            ],
+            "edge_tint": [
+                0.9,
+                0.5,
+                0.95
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.3,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "anisotropic_0.8": {
+            "anisotropic": 0.8,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.45,
+                0.08,
+                0.55
+            ],
+            "edge_tint": [
+                0.9,
+                0.5,
+                0.95
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.3,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "anisotropic_1.0": {
+            "anisotropic": 1.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.45,
+                0.08,
+                0.55
+            ],
+            "edge_tint": [
+                0.9,
+                0.5,
+                0.95
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.3,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.2,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.4,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.6,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.8,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_gloss_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 0.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_gloss_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 0.2,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_gloss_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 0.4,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_gloss_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 0.6,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_gloss_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 0.8,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "clearcoat_gloss_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 1.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.2,
+                0.45,
+                0.78
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "metallic_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.95,
+                0.75,
+                0.15
+            ],
+            "edge_tint": [
+                1.0,
+                0.9,
+                0.5
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "metallic_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.95,
+                0.75,
+                0.15
+            ],
+            "edge_tint": [
+                1.0,
+                0.9,
+                0.5
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.2,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "metallic_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.95,
+                0.75,
+                0.15
+            ],
+            "edge_tint": [
+                1.0,
+                0.9,
+                0.5
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.4,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "metallic_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.95,
+                0.75,
+                0.15
+            ],
+            "edge_tint": [
+                1.0,
+                0.9,
+                0.5
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.6,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "metallic_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.95,
+                0.75,
+                0.15
+            ],
+            "edge_tint": [
+                1.0,
+                0.9,
+                0.5
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.8,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "metallic_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.95,
+                0.75,
+                0.15
+            ],
+            "edge_tint": [
+                1.0,
+                0.9,
+                0.5
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 1.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "roughness_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.5,
+                0.92
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "roughness_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.5,
+                0.92
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.2,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "roughness_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.5,
+                0.92
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.4,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "roughness_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.5,
+                0.92
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "roughness_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.5,
+                0.92
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "roughness_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.5,
+                0.92
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 1.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.0,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.2,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.4,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.6,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.8,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_tint_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 0.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_tint_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 0.2,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_tint_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 0.4,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_tint_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 0.6,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_tint_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 0.8,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "sheen_tint_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.78,
+                0.38,
+                0.13
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 1.0,
+            "sheen_tint": 1.0,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.0,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.2,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.4,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.6,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.8,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_tint_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_tint_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 0.2,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_tint_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 0.4,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_tint_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 0.6,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_tint_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 0.8,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_tint_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.9,
+                0.12,
+                0.18
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.25,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 1.0,
+            "specular_tint": 1.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_transmission_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.7,
+                0.92,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_transmission_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.7,
+                0.92,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.2,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_transmission_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.7,
+                0.92,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.4,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_transmission_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.7,
+                0.92,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.6,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_transmission_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.7,
+                0.92,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.8,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "specular_transmission_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.7,
+                0.92,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "subsurface_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.8,
+                0.78,
+                0.74
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.5,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "subsurface_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.8,
+                0.78,
+                0.74
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.5,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.2,
+            "type": "disney bsdf"
+        },
+        "subsurface_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.8,
+                0.78,
+                0.74
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.5,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.4,
+            "type": "disney bsdf"
+        },
+        "subsurface_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.8,
+                0.78,
+                0.74
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.5,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.6,
+            "type": "disney bsdf"
+        },
+        "subsurface_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.8,
+                0.78,
+                0.74
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.5,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.8,
+            "type": "disney bsdf"
+        },
+        "subsurface_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.8,
+                0.78,
+                0.74
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.5,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 1.0,
+            "type": "disney bsdf"
+        },
+        "transmission_roughness_0.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.88,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "transmission_roughness_0.2": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.88,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.2,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "transmission_roughness_0.4": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.88,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.4,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "transmission_roughness_0.6": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.88,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.6,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "transmission_roughness_0.8": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.88,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 0.8,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        },
+        "transmission_roughness_1.0": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.55,
+                0.88,
+                0.8
+            ],
+            "edge_tint": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.0,
+            "roughness": 1.0,
+            "sheen": 0.0,
+            "sheen_tint": 0.5,
+            "specular": 0.5,
+            "specular_tint": 0.0,
+            "specular_transmission": 1.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        }
+    },
+    "objects": [
+        {
+            "material": "subsurface_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -7.7,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "subsurface_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -7.7,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "subsurface_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -7.7,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "subsurface_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -7.7,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "subsurface_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -7.7,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "subsurface_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -7.7,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "metallic_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -6.3,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "metallic_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -6.3,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "metallic_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -6.3,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "metallic_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -6.3,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "metallic_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -6.3,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "metallic_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -6.3,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -4.9,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -4.9,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -4.9,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -4.9,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -4.9,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -4.9,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_tint_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -3.5,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_tint_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -3.5,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_tint_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -3.5,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_tint_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -3.5,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_tint_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -3.5,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_tint_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -3.5,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "roughness_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -2.1,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "roughness_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -2.1,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "roughness_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -2.1,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "roughness_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -2.1,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "roughness_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -2.1,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "roughness_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -2.1,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "anisotropic_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -0.7,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "anisotropic_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -0.7,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "anisotropic_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -0.7,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "anisotropic_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -0.7,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "anisotropic_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -0.7,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "anisotropic_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    -0.7,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    0.7,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    0.7,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    0.7,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    0.7,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    0.7,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    0.7,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_tint_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    2.1,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_tint_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    2.1,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_tint_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    2.1,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_tint_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    2.1,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_tint_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    2.1,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "sheen_tint_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    2.1,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    3.5,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    3.5,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    3.5,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    3.5,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    3.5,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    3.5,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_gloss_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    4.9,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_gloss_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    4.9,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_gloss_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    4.9,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_gloss_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    4.9,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_gloss_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    4.9,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "clearcoat_gloss_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    4.9,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_transmission_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    6.3,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_transmission_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    6.3,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_transmission_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    6.3,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_transmission_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    6.3,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_transmission_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    6.3,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "specular_transmission_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    6.3,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "transmission_roughness_0.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    7.7,
+                    -2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "transmission_roughness_0.2",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    7.7,
+                    -1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "transmission_roughness_0.4",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    7.7,
+                    -0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "transmission_roughness_0.6",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    7.7,
+                    0.55,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "transmission_roughness_0.8",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    7.7,
+                    1.65,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        },
+        {
+            "material": "transmission_roughness_1.0",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.42,
+                    0.42,
+                    0.42
+                ],
+                "translation": [
+                    7.7,
+                    2.75,
+                    0.0
+                ]
+            },
+            "type": "sphere"
+        }
+    ],
+    "settings": {
+        "agx": true,
+        "max_depth": 12,
+        "sdf_hit_eps": 0.0001,
+        "sdf_max_steps": 128,
+        "sdf_normal_eps": 0.0001
+    }
+}

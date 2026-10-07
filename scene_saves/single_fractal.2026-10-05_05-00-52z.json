@@ -1,0 +1,131 @@
+{
+    "camera": {
+        "focal_distance": 3.65,
+        "fovy": 13.747,
+        "lens_radius": 0.085,
+        "look_at": [
+            1.0630469,
+            0.90377486,
+            -3.2658877
+        ],
+        "position": [
+            1.2266992,
+            0.9968799,
+            -4.2480025
+        ],
+        "resolution": [
+            1920,
+            804
+        ],
+        "up": [
+            -0.015303325,
+            0.9956564,
+            0.09183874
+        ]
+    },
+    "controls": {
+        "accel": 254.40753,
+        "damping": 37.258,
+        "mouse_sens": 0.095,
+        "scroll_sens": 0.1
+    },
+    "environment": {
+        "path": "../assets/hdri/HDR_white_dwarf_star.hdr",
+        "strength": 1.0
+    },
+    "file": "single_fractal",
+    "iterations": 5000,
+    "materials": {
+        "disney bsdf": {
+            "anisotropic": 0.0,
+            "clearcoat": 0.0,
+            "clearcoat_gloss": 1.0,
+            "color": [
+                0.639009,
+                0.72279465,
+                0.99509805
+            ],
+            "edge_tint": [
+                0.7214532,
+                0.58823526,
+                1.0
+            ],
+            "emission": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 0.0
+            },
+            "ior": 1.5,
+            "metallic": 0.915,
+            "roughness": 0.357,
+            "sheen": 0.0,
+            "sheen_tint": 0.0,
+            "specular": 0.521,
+            "specular_tint": 0.0,
+            "specular_transmission": 0.0,
+            "subsurface": 0.0,
+            "type": "disney bsdf"
+        }
+    },
+    "objects": [
+        {
+            "light": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "strength": 364.5
+            },
+            "transform": {
+                "rotation": [
+                    130.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.5,
+                    0.6,
+                    1.5
+                ],
+                "translation": [
+                    3.0,
+                    9.5,
+                    0.0
+                ]
+            },
+            "type": "plane"
+        },
+        {
+            "material": "disney bsdf",
+            "transform": {
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "type": "sdf"
+        }
+    ],
+    "settings": {
+        "agx": true,
+        "max_depth": 8,
+        "sdf_hit_eps": 0.0001,
+        "sdf_max_steps": 256,
+        "sdf_normal_eps": 0.0001
+    }
+}
