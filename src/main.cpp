@@ -23,6 +23,11 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <filesystem>
+#include <algorithm>
+#include <cctype>
+#include <cmath>
+#include <stdexcept>
 
 static std::string startTimeString;
 
@@ -64,6 +69,7 @@ void runCuda();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos);
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 
 std::string currentTimeString()
 {
@@ -219,6 +225,7 @@ bool init()
     glfwSetKeyCallback(window, keyCallback);
     glfwSetCursorPosCallback(window, mousePositionCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
+    glfwSetScrollCallback(window, scrollCallback);
 
     // Set up GL context
     glewExperimental = GL_TRUE;
@@ -285,6 +292,19 @@ void RenderImGui()
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    ImGui::Separator();
+    ImGui::Text("Depth of Field");
+
+    bool lensSettingsChanged = false;
+    lensSettingsChanged |= ImGui::SliderFloat(
+        "Focal Length", &imguiData->FocalLength, 0.1f, 20.0f, "%.3f");
+    lensSettingsChanged |= ImGui::SliderFloat(
+        "Lens Radius", &imguiData->LensRadius, 0.0f, 0.1f, "%.4f");
+    if (lensSettingsChanged)
+    {
+        camchanged = true;
+    }
+
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
@@ -344,14 +364,64 @@ int main(int argc, char** argv)
 
     if (argc < 2)
     {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+        printf("Usage: %s SCENEFILE.(json|gltf|glb) [HDRI_FILE] [VOLUME_FILE.nvdb] [--volume-scale FACTOR]\n", argv[0]);
+        printf("   or: %s HDRI_FILE VOLUME_FILE.nvdb [--volume-scale FACTOR]\n", argv[0]);
+        printf("Files and options can be given in any order; only one of each is allowed.\n");
+        printf("Volume scale defaults to 1; positive values scale about the volume center.\n");
         return 1;
     }
 
-    const char* sceneFile = argv[1];
-
-    // Load scene file
-    scene = new Scene(sceneFile);
+    std::string sceneFile, environmentFile, volumeFile;
+    float volumeScale = 1.0f;
+    bool volumeScaleSpecified = false;
+    try
+    {
+        for (int i = 1; i < argc; ++i)
+        {
+            const std::string argument = argv[i];
+            if (argument == "--volume-scale")
+            {
+                if (volumeScaleSpecified) throw std::runtime_error("--volume-scale may only be supplied once");
+                if (++i >= argc) throw std::runtime_error("--volume-scale requires a positive finite number");
+                const std::string value = argv[i];
+                size_t consumed = 0;
+                try { volumeScale = std::stof(value, &consumed); }
+                catch (const std::exception&) { throw std::runtime_error("--volume-scale requires a positive finite number"); }
+                if (consumed != value.size() || !std::isfinite(volumeScale) || volumeScale <= 0.0f ||
+                    !std::isfinite(1.0f / volumeScale))
+                    throw std::runtime_error("--volume-scale requires a positive finite number with a finite reciprocal");
+                volumeScaleSpecified = true;
+                continue;
+            }
+            if (argument.rfind("--", 0) == 0)
+                throw std::runtime_error("Unknown option: " + argument);
+            std::string extension = std::filesystem::path(argv[i]).extension().string();
+            std::transform(extension.begin(), extension.end(), extension.begin(),
+                [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+            const bool sceneArgument = extension == ".json" || extension == ".gltf" || extension == ".glb";
+            std::string& target = sceneArgument ? sceneFile : (extension == ".nvdb" ? volumeFile : environmentFile);
+            if (!target.empty()) throw std::runtime_error("Only one scene, one HDRI and one NanoVDB file may be supplied");
+            target = argv[i];
+        }
+        if (volumeScaleSpecified && volumeFile.empty())
+            throw std::runtime_error("--volume-scale requires a NanoVDB file");
+        if (sceneFile.empty() && (environmentFile.empty() || volumeFile.empty()))
+            throw std::runtime_error("Supply a JSON/glTF/GLB scene, or both an HDRI and a NanoVDB file");
+        scene = new Scene(sceneFile, environmentFile, volumeFile, volumeScale);
+    }
+    catch (const std::exception& error)
+    {
+        std::cerr << "Error: " << error.what() << std::endl;
+        delete scene;
+        return EXIT_FAILURE;
+    }
+    if (scene->emissivePrimitives.empty() && !scene->environment.valid())
+    {
+        std::cerr << "Error: scene has no light sources. Add an emissive primitive or pass an HDRI "
+                  << "environment map." << std::endl;
+        delete scene;
+        return EXIT_FAILURE;
+    }
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
@@ -363,21 +433,17 @@ int main(int argc, char** argv)
     width = cam.resolution.x;
     height = cam.resolution.y;
 
-    glm::vec3 view = cam.view;
-    glm::vec3 up = cam.up;
-    glm::vec3 right = glm::cross(view, up);
-    up = glm::cross(right, view);
-
-    cameraPosition = cam.position;
-
-    // compute phi (horizontal) and theta (vertical) relative 3D axis
-    // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    // Compute spherical orbit coordinates from the camera offset. Using the
+    // offset directly avoids normalizing a zero XZ or YZ projection when the
+    // initial camera is aligned with a world axis.
+    const glm::vec3 cameraOffset = cam.position - cam.lookAt;
+    zoom = std::fmax(glm::length(cameraOffset), 0.1f);
+    phi = std::atan2(cameraOffset.x, cameraOffset.z);
+    const float normalizedHeight = std::fmax(-1.0f, std::fmin(1.0f, cameraOffset.y / zoom));
+    theta = std::acos(normalizedHeight);
+    theta = std::fmax(0.001f, std::fmin(theta, PI - 0.001f));
+    cameraPosition = cameraOffset;
     ogLookAt = cam.lookAt;
-    zoom = glm::length(cam.position - ogLookAt);
 
     // Initialize CUDA and GL components
     init();
@@ -385,6 +451,7 @@ int main(int argc, char** argv)
     // Initialize ImGui Data
     InitImguiData(guiData);
     InitDataContainer(guiData);
+    pathtraceInit(scene);
 
     // GLFW main loop
     mainLoop();
@@ -394,7 +461,11 @@ int main(int argc, char** argv)
 
 void saveImage()
 {
-    float samples = iteration;
+    // The renderer keeps its accumulation buffer on the GPU during
+    // interactive rendering.
+    pathtraceCopyImageToHost();
+    // Avoid dividing by zero when the user saves before the first iteration.
+    float samples = static_cast<float>(std::max(iteration, 1));
     // output image file
     Image img(width, height);
 
@@ -429,11 +500,10 @@ void runCuda()
         cameraPosition.z = zoom * cos(phi) * sin(theta);
 
         cam.view = -glm::normalize(cameraPosition);
-        glm::vec3 v = cam.view;
-        glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
-        cam.right = r;
+        const glm::vec3 v = cam.view;
+        const glm::vec3 worldUp(0.0f, 1.0f, 0.0f);
+        cam.right = glm::normalize(glm::cross(v, worldUp));
+        cam.up = glm::normalize(glm::cross(cam.right, v));
 
         cam.position = cameraPosition;
         cameraPosition += cam.lookAt;
@@ -446,8 +516,7 @@ void runCuda()
 
     if (iteration == 0)
     {
-        pathtraceFree();
-        pathtraceInit(scene);
+        pathtraceResetAccumulation();
     }
 
     if (iteration < renderState->iterations)
@@ -478,16 +547,44 @@ void runCuda()
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+    if (action == GLFW_PRESS || action == GLFW_REPEAT)
+    {
+        glm::vec3 movementAxis(0.0f);
+        bool movementKey = true;
+        renderState = &scene->state;
+        Camera& cam = renderState->camera;
+        switch (key)
+        {
+            case GLFW_KEY_W: movementAxis = cam.view; break;
+            case GLFW_KEY_S: movementAxis = -cam.view; break;
+            case GLFW_KEY_A: movementAxis = -cam.right; break;
+            case GLFW_KEY_D: movementAxis = cam.right; break;
+            default: movementKey = false; break;
+        }
+
+        if (movementKey)
+        {
+            const glm::vec3 translation = glm::normalize(movementAxis) *
+                std::fmax(0.01f, zoom * 0.05f);
+
+            // Translate the camera and its point of interest together. Keeping
+            // their offset unchanged preserves the orbit radius and makes the
+            // next left-button tumble rotate around the translated target.
+            cam.position += translation;
+            cam.lookAt += translation;
+            camchanged = true;
+            return;
+        }
+    }
+
     if (action == GLFW_PRESS)
     {
         switch (key)
         {
             case GLFW_KEY_ESCAPE:
+            case GLFW_KEY_X:
                 saveImage();
                 glfwSetWindowShouldClose(window, GL_TRUE);
-                break;
-            case GLFW_KEY_S:
-                saveImage();
                 break;
             case GLFW_KEY_SPACE:
                 camchanged = true;
@@ -501,53 +598,89 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-    if (MouseOverImGuiWindow())
+    // Do not start a camera drag from an ImGui window, but always process the
+    // release so a drag cannot remain latched if the cursor crosses the UI.
+    if (MouseOverImGuiWindow() && action == GLFW_PRESS)
     {
         return;
     }
 
-    leftMousePressed = (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS);
-    rightMousePressed = (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS);
-    middleMousePressed = (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS);
+    const bool pressed = action == GLFW_PRESS;
+    if (button == GLFW_MOUSE_BUTTON_LEFT)
+    {
+        leftMousePressed = pressed;
+    }
+    else if (button == GLFW_MOUSE_BUTTON_RIGHT)
+    {
+        rightMousePressed = pressed;
+    }
+    else if (button == GLFW_MOUSE_BUTTON_MIDDLE)
+    {
+        middleMousePressed = pressed;
+    }
+
+    if (pressed)
+    {
+        // Initialize the drag anchor at press time so the first motion event
+        // does not jump from the global (0, 0) cursor position.
+        glfwGetCursorPos(window, &lastX, &lastY);
+    }
 }
 
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    if (xpos == lastX || ypos == lastY)
+    if (xpos == lastX && ypos == lastY)
     {
         return; // otherwise, clicking back into window causes re-start
     }
 
     if (leftMousePressed)
     {
-        // compute new camera parameters
+        // Tumble/orbit around the current point of interest.
         phi -= (xpos - lastX) / width;
         theta -= (ypos - lastY) / height;
-        theta = std::fmax(0.001f, std::fmin(theta, PI));
+        phi = std::fmod(phi, 2.0f * PI);
+        theta = std::fmax(0.001f, std::fmin(theta, PI - 0.001f));
         camchanged = true;
     }
     else if (rightMousePressed)
     {
-        zoom += (ypos - lastY) / height;
+        // Dolly horizontally: dragging right moves away, dragging left moves
+        // toward the target. Exponential scaling keeps the control useful at
+        // both near and far distances.
+        zoom *= std::exp(static_cast<float>((xpos - lastX) / width));
         zoom = std::fmax(0.1f, zoom);
         camchanged = true;
     }
     else if (middleMousePressed)
     {
+        // Track/pan in the camera's screen plane. pixelLength.y is the world
+        // size of one pixel at a unit distance, so scaling it by zoom keeps
+        // pan speed proportional to the current framing.
         renderState = &scene->state;
         Camera& cam = renderState->camera;
-        glm::vec3 forward = cam.view;
-        forward.y = 0.0f;
-        forward = glm::normalize(forward);
-        glm::vec3 right = cam.right;
-        right.y = 0.0f;
-        right = glm::normalize(right);
-
-        cam.lookAt -= (float)(xpos - lastX) * right * 0.01f;
-        cam.lookAt += (float)(ypos - lastY) * forward * 0.01f;
+        const float panScale = zoom * cam.pixelLength.y;
+        const glm::vec3 right = glm::normalize(cam.right);
+        const glm::vec3 up = glm::normalize(cam.up);
+        cam.lookAt -= static_cast<float>(xpos - lastX) * right * panScale;
+        cam.lookAt += static_cast<float>(ypos - lastY) * up * panScale;
         camchanged = true;
     }
 
     lastX = xpos;
     lastY = ypos;
+}
+
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    (void) xoffset;
+    if (MouseOverImGuiWindow())
+    {
+        return;
+    }
+
+    // Positive wheel motion conventionally means up, which zooms in.
+    zoom *= std::pow(0.85f, static_cast<float>(yoffset));
+    zoom = std::fmax(0.1f, zoom);
+    camchanged = true;
 }
