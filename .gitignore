@@ -5,6 +5,8 @@
 *.xcodeproj
 build
 
+/KNOWN-ISSUES.md
+
 # Created by https://www.gitignore.io/api/linux,osx,sublimetext,windows,jetbrains,vim,emacs,cmake,c++,cuda,visualstudio,webstorm,eclipse,xcode
 
 ### Linux ###
@@ -362,7 +364,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings 
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -557,3 +559,67 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# Build outputs and Visual Studio state
+/build/
+/build-*/
+/cmake-build-*/
+/out/
+/.vs/
+/CMakeUserPresets.json
+*.vcxproj.user
+*.suo
+*.user
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local checkpoints and logs
+*.ptc
+*.log
+
+# Local validation/report orchestration
+/tools/finish_project.py
+/tools/project_scenes.py
+/tools/project_report.py
+/tools/checkpoint_report.py
+/tools/requirements-report.txt
+/tests/test_automation.py
+
+# One-time README preparation
+/fix_readme_figures.py
+/APPLY.txt
+/README.pdf
+/README.skeleton.md
+/START_HERE.md
+/docs/CHANGED_FILES.md
+/docs/PACKAGE_VALIDATION.md
+/docs/README.template.md
+/docs/WORK_PACKAGES.md
+/docs/renderer_changes.patch
+
+# Portable results only; exclude local run bookkeeping
+/results/*
+!/results/performance.csv
+!/results/iterations.csv
+!/results/active_paths.csv
+!/results/checkpoint_io.csv
+!/results/checkpoint_comparison.json
+!/results/materials.json
+!/results/material_settings.md
+!/results/performance.md
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+/imgui.ini

@@ -11,6 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Enable C++17 for host code
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CUDA_STANDARD_REQUIRED ON)
 
@@ -56,6 +57,7 @@ set(headers
     src/pathtrace.h
     src/scene.h
     src/sceneStructs.h
+    src/render_checkpoint.h
     src/utilities.h
 )
 
@@ -68,6 +70,7 @@ set(sources
     src/intersections.cu
     src/interactions.cu
     src/scene.cpp
+    src/render_checkpoint.cpp
     src/utilities.cpp
 )
 
@@ -107,10 +110,28 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    src/generated/metal_presets.h
+    src/generated/transmission_presets.h
+)
+
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}
+)
+
+if(MSVC)
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
+        "$<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>"
+        "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+    )
+endif()
+
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction
 )
+
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
 
@@ -119,3 +140,31 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
 
+include(cmake/CheckpointBuildIdentity.cmake)
+
+option(PATH_TRACER_BUILD_TESTS "Build focused glass/checkpoint tests" OFF)
+if(PATH_TRACER_BUILD_TESTS)
+    enable_testing()
+    add_executable(checkpoint_tests tests/checkpoint_tests.cpp src/render_checkpoint.cpp)
+    target_include_directories(checkpoint_tests PRIVATE src)
+    add_test(NAME checkpoint_codec COMMAND checkpoint_tests)
+
+    add_executable(glass_tests tests/glass_tests.cu src/interactions.cu src/intersections.cu)
+    target_include_directories(glass_tests PRIVATE src ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})
+    set_target_properties(glass_tests PROPERTIES CUDA_SEPARABLE_COMPILATION ON CUDA_ARCHITECTURES native)
+    add_test(NAME smooth_glass COMMAND glass_tests)
+
+    add_executable(scene_tests tests/scene_tests.cpp src/scene.cpp src/utilities.cpp)
+    target_include_directories(scene_tests PRIVATE src ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})
+    add_test(NAME transmission_scene COMMAND scene_tests "${CMAKE_CURRENT_SOURCE_DIR}/scenes/cornell_glass.json")
+
+    # Compile tests against the same MSVC preprocessor behavior as the renderer.
+    if(MSVC)
+        foreach(validation_target checkpoint_tests glass_tests scene_tests)
+            target_compile_options(${validation_target} PRIVATE
+                "$<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>"
+                "$<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>"
+            )
+        endforeach()
+    endif()
+endif()

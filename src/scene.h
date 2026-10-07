@@ -13,4 +13,7 @@ public:
     std::vector<Geom> geoms;
     std::vector<Material> materials;
     RenderState state;
+    // parsed JSON captured at load time, excluding target samples,
+    // output filename, and material-sort toggle
+    std::string checkpointSceneIdentity;
 };

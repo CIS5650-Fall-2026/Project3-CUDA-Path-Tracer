@@ -1,0 +1,285 @@
+{
+  "sortMaterials": true,
+  "compactPaths": true,
+  "antialiasing": true,
+  "materials": [
+    {
+      "name": "light",
+      "type": "standard",
+      "Kd": 0,
+      "Ks": 0,
+      "emission": {
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "strength": 5
+      }
+    },
+    {
+      "name": "floor",
+      "type": "standard",
+      "Kd": 0.28,
+      "Ks": 0
+    },
+    {
+      "name": "backdrop",
+      "type": "standard",
+      "Kd": 0.16,
+      "Ks": 0
+    },
+    {
+      "name": "Gold",
+      "type": "metal",
+      "metalPresetID": 0,
+      "Ks": 1,
+      "roughness": 0.1
+    },
+    {
+      "name": "Silver",
+      "type": "metal",
+      "metalPresetID": 1,
+      "Ks": 1,
+      "roughness": 0.1
+    },
+    {
+      "name": "Copper",
+      "type": "metal",
+      "metalPresetID": 2,
+      "Ks": 1,
+      "roughness": 0.1
+    },
+    {
+      "name": "Aluminum",
+      "type": "metal",
+      "metalPresetID": 3,
+      "Ks": 1,
+      "roughness": 0.1
+    },
+    {
+      "name": "Chrome",
+      "type": "metal",
+      "metalPresetID": 4,
+      "Ks": 1,
+      "roughness": 0.1
+    },
+    {
+      "name": "overhead_light",
+      "type": "standard",
+      "Kd": 0,
+      "Ks": 0,
+      "emission": {
+        "color": [1, 1, 1],
+        "strength": 3.5
+      }
+    }
+  ],
+  "Objects": [
+    {
+      "name": "floor",
+      "TYPE": "cube",
+      "material": 1,
+      "TRANS": [
+        0,
+        -0.05,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        18,
+        0.1,
+        18
+      ]
+    },
+    {
+      "name": "backdrop",
+      "TYPE": "cube",
+      "material": 2,
+      "TRANS": [
+        0,
+        3,
+        -4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        22,
+        6,
+        0.1
+      ]
+    },
+    {
+      "name": "large_top_light",
+      "TYPE": "cube",
+      "material": 8,
+      "TRANS": [
+        0,
+        6,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        14,
+        0.1,
+        6
+      ]
+    },
+    {
+      "name": "front_reflection_card",
+      "TYPE": "cube",
+      "material": 0,
+      "TRANS": [
+        0,
+        4.8,
+        4
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        12,
+        3,
+        0.1
+      ]
+    },
+    {
+      "name": "Gold",
+      "TYPE": "sphere",
+      "material": 3,
+      "TRANS": [
+        -5.6,
+        1.01,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "Silver",
+      "TYPE": "sphere",
+      "material": 4,
+      "TRANS": [
+        -2.8,
+        1.01,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "Copper",
+      "TYPE": "sphere",
+      "material": 5,
+      "TRANS": [
+        0,
+        1.01,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "Aluminum",
+      "TYPE": "sphere",
+      "material": 6,
+      "TRANS": [
+        2.8,
+        1.01,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "Chrome",
+      "TYPE": "sphere",
+      "material": 7,
+      "TRANS": [
+        5.6,
+        1.01,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    }
+  ],
+  "Camera": {
+    "RES": [
+      1280,
+      384
+    ],
+    "FOVY": 9.5,
+    "ITERATIONS": 2048,
+    "DEPTH": 8,
+    "FILE": "metal_row",
+    "EYE": [
+      0,
+      1.1,
+      14
+    ],
+    "LOOKAT": [
+      0,
+      1.1,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  }
+}

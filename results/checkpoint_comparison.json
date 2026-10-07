@@ -1,0 +1,58 @@
+[
+  {
+    "name": "uninterrupted_vs_resumed",
+    "first": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\000_direct_128\\state.ptc",
+    "second": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\002_resumed_128\\state.ptc",
+    "samples": 128,
+    "allowed_optimization_differences": false,
+    "metadata_mismatches": [],
+    "bitwise_equal": true,
+    "passed": true,
+    "mismatched_floats": 0,
+    "max_abs_accumulation": 0.0,
+    "max_abs_linear_rgb": 0.0,
+    "rmse_linear_rgb": 0.0
+  },
+  {
+    "name": "invariance_c0_s0",
+    "first": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\000_direct_128\\state.ptc",
+    "second": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\003_invariance_c0_s0\\state.ptc",
+    "samples": 128,
+    "allowed_optimization_differences": true,
+    "metadata_mismatches": [],
+    "bitwise_equal": true,
+    "passed": true,
+    "mismatched_floats": 0,
+    "max_abs_accumulation": 0.0,
+    "max_abs_linear_rgb": 0.0,
+    "rmse_linear_rgb": 0.0
+  },
+  {
+    "name": "invariance_c0_s1",
+    "first": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\000_direct_128\\state.ptc",
+    "second": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\004_invariance_c0_s1\\state.ptc",
+    "samples": 128,
+    "allowed_optimization_differences": true,
+    "metadata_mismatches": [],
+    "bitwise_equal": true,
+    "passed": true,
+    "mismatched_floats": 0,
+    "max_abs_accumulation": 0.0,
+    "max_abs_linear_rgb": 0.0,
+    "rmse_linear_rgb": 0.0
+  },
+  {
+    "name": "invariance_c1_s0",
+    "first": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\000_direct_128\\state.ptc",
+    "second": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T164629.604330Z_validate\\005_invariance_c1_s0\\state.ptc",
+    "samples": 128,
+    "allowed_optimization_differences": true,
+    "metadata_mismatches": [],
+    "bitwise_equal": true,
+    "passed": true,
+    "mismatched_floats": 0,
+    "max_abs_accumulation": 0.0,
+    "max_abs_linear_rgb": 0.0,
+    "rmse_linear_rgb": 0.0
+  }
+]

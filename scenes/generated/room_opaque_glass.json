@@ -1,0 +1,425 @@
+{
+  "sortMaterials": true,
+  "materials": [
+    {
+      "name": "light",
+      "type": "standard",
+      "Kd": 0.0,
+      "Ks": 0.0,
+      "emission": {
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "strength": 9.0
+      }
+    },
+    {
+      "name": "diffuse_white",
+      "type": "standard",
+      "Kd": [
+        0.98,
+        0.98,
+        0.98
+      ],
+      "Ks": 0.0
+    },
+    {
+      "name": "diffuse_red",
+      "type": "standard",
+      "Kd": [
+        0.85,
+        0.35,
+        0.35
+      ],
+      "Ks": 0.0
+    },
+    {
+      "name": "diffuse_green",
+      "type": "standard",
+      "Kd": [
+        0.35,
+        0.85,
+        0.35
+      ],
+      "Ks": 0.0
+    },
+    {
+      "name": "plastic_white",
+      "type": "standard",
+      "Kd": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "Ks": 0.5,
+      "roughness": 0.1,
+      "ior": 1.5,
+      "diffuseSigmaDegrees": 0.0
+    },
+    {
+      "name": "silver",
+      "type": "metal",
+      "metalPresetID": 1,
+      "roughness": 0.1
+    },
+    {
+      "name": "Glass",
+      "type": "standard",
+      "Kd": 0.5,
+      "Ks": 0
+    },
+    {
+      "name": "glossy_blue",
+      "type": "standard",
+      "Kd": [
+        0.25,
+        0.45,
+        0.7
+      ],
+      "Ks": 0.3,
+      "roughness": 0.03,
+      "ior": 1.5,
+      "diffuseSigmaDegrees": 0
+    },
+    {
+      "name": "rough_diffuse",
+      "type": "standard",
+      "Kd": 0.6,
+      "Ks": 0,
+      "roughness": 0.1,
+      "ior": 1.5,
+      "diffuseSigmaDegrees": 30
+    }
+  ],
+  "Camera": {
+    "RES": [
+      768,
+      768
+    ],
+    "FOVY": 30,
+    "ITERATIONS": 1024,
+    "DEPTH": 8,
+    "FILE": "room_opaque_glass",
+    "EYE": [
+      0,
+      5,
+      10.5
+    ],
+    "LOOKAT": [
+      0,
+      5,
+      0
+    ],
+    "UP": [
+      0,
+      1,
+      0
+    ]
+  },
+  "Objects": [
+    {
+      "name": "ceiling_emitter",
+      "TYPE": "cube",
+      "material": 0,
+      "TRANS": [
+        0,
+        9.8,
+        0
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        4,
+        0.2,
+        4
+      ]
+    },
+    {
+      "name": "floor",
+      "TYPE": "cube",
+      "material": 1,
+      "TRANS": [
+        0,
+        -0.025,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        10.1,
+        0.05,
+        17.1
+      ]
+    },
+    {
+      "name": "ceiling",
+      "TYPE": "cube",
+      "material": 1,
+      "TRANS": [
+        0,
+        10.025,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        10.1,
+        0.05,
+        17.1
+      ]
+    },
+    {
+      "name": "back",
+      "TYPE": "cube",
+      "material": 1,
+      "TRANS": [
+        0,
+        5,
+        -5.025
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        10.1,
+        10.1,
+        0.05
+      ]
+    },
+    {
+      "name": "left",
+      "TYPE": "cube",
+      "material": 2,
+      "TRANS": [
+        -5.025,
+        5,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.05,
+        10.1,
+        17.1
+      ]
+    },
+    {
+      "name": "right",
+      "TYPE": "cube",
+      "material": 3,
+      "TRANS": [
+        5.025,
+        5,
+        3.5
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.05,
+        10.1,
+        17.1
+      ]
+    },
+    {
+      "name": "glass_subject",
+      "TYPE": "sphere",
+      "material": 6,
+      "TRANS": [
+        -1.3,
+        4.2,
+        -1.1
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "name": "silver_subject",
+      "TYPE": "sphere",
+      "material": 5,
+      "TRANS": [
+        2.3,
+        1.15,
+        0.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2.25,
+        2.25,
+        2.25
+      ]
+    },
+    {
+      "name": "glossy_subject",
+      "TYPE": "sphere",
+      "material": 7,
+      "TRANS": [
+        -3,
+        1.05,
+        0.8
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "oren_subject",
+      "TYPE": "cube",
+      "material": 8,
+      "TRANS": [
+        2.2,
+        4.2,
+        -1.7
+      ],
+      "ROTAT": [
+        0,
+        20,
+        18
+      ],
+      "SCALE": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "background_band_0",
+      "TYPE": "cube",
+      "material": 2,
+      "TRANS": [
+        -2.4,
+        4.2,
+        -4.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        4,
+        0.04
+      ]
+    },
+    {
+      "name": "background_band_1",
+      "TYPE": "cube",
+      "material": 3,
+      "TRANS": [
+        -1.2,
+        4.2,
+        -4.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        4,
+        0.04
+      ]
+    },
+    {
+      "name": "background_band_2",
+      "TYPE": "cube",
+      "material": 2,
+      "TRANS": [
+        0,
+        4.2,
+        -4.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        4,
+        0.04
+      ]
+    },
+    {
+      "name": "background_band_3",
+      "TYPE": "cube",
+      "material": 3,
+      "TRANS": [
+        1.2,
+        4.2,
+        -4.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        4,
+        0.04
+      ]
+    },
+    {
+      "name": "background_band_4",
+      "TYPE": "cube",
+      "material": 2,
+      "TRANS": [
+        2.4,
+        4.2,
+        -4.96
+      ],
+      "ROTAT": [
+        0,
+        0,
+        0
+      ],
+      "SCALE": [
+        0.45,
+        4,
+        0.04
+      ]
+    }
+  ],
+  "compactPaths": true,
+  "antialiasing": true
+}

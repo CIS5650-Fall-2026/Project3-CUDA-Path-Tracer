@@ -4,6 +4,10 @@
 #include "scene.h"
 #include "sceneStructs.h"
 #include "utilities.h"
+#include "render_checkpoint.h"
+#include "checkpoint_build_id.h"
+#include "json.hpp"
+#include <thrust/version.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
@@ -23,6 +27,12 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <stdexcept>
+#include <chrono>
+#include <iomanip>
 
 static std::string startTimeString;
 
@@ -45,6 +55,32 @@ Scene* scene;
 GuiDataContainer* guiData;
 RenderState* renderState;
 int iteration;
+static bool rendererInitialized = false;
+static bool restoreAccumulation = false;
+static std::string checkpointPath;
+static int checkpointAt = 0; // Optional exact boundary: save and exit.
+static std::string statsPrefix;
+using StatsClock = std::chrono::steady_clock;
+struct IterationStat {
+    int sample;
+    double milliseconds;
+    bool sorted, compacted, antialiased;
+};
+struct CheckpointStat {
+    std::string operation, file;
+    int sample;
+    double milliseconds;
+    std::uintmax_t bytes;
+};
+static std::vector<IterationStat> iterationStats;
+static std::vector<PathTraceBounce> diagnosticBounces;
+static std::vector<CheckpointStat> checkpointStats;
+static constexpr int diagnosticSample = 32;
+
+static double elapsedMilliseconds(StatsClock::time_point start)
+{
+    return std::chrono::duration<double, std::milli>(StatsClock::now() - start).count();
+}
 
 int width;
 int height;
@@ -64,6 +100,165 @@ void runCuda();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos);
 void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+void saveImage();
+
+static std::string renderingBuildIdentity()
+{
+    return std::string(CHECKPOINT_SOURCE_ID) + ":" + CHECKPOINT_SETTINGS_ID + ":" +
+        CHECKPOINT_BUILD_CONFIG + ":glm=" + std::to_string(GLM_VERSION) +
+        ":thrust=" + std::to_string(THRUST_VERSION) + ":cuda=" + std::to_string(CUDART_VERSION);
+}
+
+static std::array<float, 3> fields(const glm::vec3& v) { return {v.x, v.y, v.z}; }
+static glm::vec3 vector3(const std::array<float, 3>& v) { return glm::vec3(v[0], v[1], v[2]); }
+
+static checkpoint::Data captureCheckpoint()
+{
+    checkpoint::Data d;
+    const Camera& c = renderState->camera;
+    d.width = c.resolution.x; d.height = c.resolution.y;
+    d.traceDepth = renderState->traceDepth;
+    d.completedSamples = iteration;
+    d.sortMaterials = renderState->sortMaterials;
+    d.sceneIdentity = scene->checkpointSceneIdentity;
+    d.buildIdentity = renderingBuildIdentity();
+    d.camera.position = fields(c.position); d.camera.lookAt = fields(c.lookAt);
+    d.camera.view = fields(c.view); d.camera.up = fields(c.up); d.camera.right = fields(c.right);
+    d.camera.fov = {c.fov.x, c.fov.y};
+    d.camera.pixelLength = {c.pixelLength.x, c.pixelLength.y};
+    d.controller.zoom = zoom; d.controller.theta = theta; d.controller.phi = phi;
+    d.controller.originalLookAt = fields(ogLookAt);
+    d.controller.cameraPosition = fields(cameraPosition);
+    d.accumulation.reserve(renderState->image.size() * 3);
+    for (const glm::vec3& pixel : renderState->image) {
+        d.accumulation.push_back(pixel.x);
+        d.accumulation.push_back(pixel.y);
+        d.accumulation.push_back(pixel.z);
+    }
+    return d;
+}
+
+static void restoreCheckpoint(const checkpoint::Data& d)
+{
+    Camera& c = renderState->camera;
+    checkpoint::requireCompatible(d, {
+        static_cast<std::uint32_t>(c.resolution.x), static_cast<std::uint32_t>(c.resolution.y),
+        static_cast<std::uint32_t>(renderState->traceDepth),
+        scene->checkpointSceneIdentity, renderingBuildIdentity()});
+    if (renderState->iterations < d.completedSamples) {
+        throw std::runtime_error("Target samples are below checkpoint count; increase --samples");
+    }
+    // Restore exact float bits; rebuilding the basis would perturb future rays.
+    c.resolution = glm::ivec2(d.width, d.height);
+    c.position = vector3(d.camera.position); c.lookAt = vector3(d.camera.lookAt);
+    c.view = vector3(d.camera.view); c.up = vector3(d.camera.up); c.right = vector3(d.camera.right);
+    c.fov = glm::vec2(d.camera.fov[0], d.camera.fov[1]);
+    c.pixelLength = glm::vec2(d.camera.pixelLength[0], d.camera.pixelLength[1]);
+    zoom = d.controller.zoom; theta = d.controller.theta; phi = d.controller.phi;
+    ogLookAt = vector3(d.controller.originalLookAt);
+    cameraPosition = vector3(d.controller.cameraPosition);
+    renderState->traceDepth = static_cast<int>(d.traceDepth);
+    renderState->sortMaterials = d.sortMaterials;
+    for (std::size_t i = 0; i < renderState->image.size(); ++i) {
+        renderState->image[i] = glm::vec3(
+            d.accumulation[3 * i], d.accumulation[3 * i + 1], d.accumulation[3 * i + 2]);
+    }
+    iteration = static_cast<int>(d.completedSamples);
+    restoreAccumulation = true;
+    camchanged = false;
+    leftMousePressed = rightMousePressed = middleMousePressed = false;
+}
+
+static void saveCheckpointAtBoundary()
+{
+    if (camchanged || iteration <= 0) {
+        throw std::runtime_error("Checkpoint needs at least one completed sample of the current camera");
+    }
+    // pathtrace() synchronously copies dev_image to state.image before returning
+    // Called only outside pathtrace() after the count has been committed
+    const auto started = statsPrefix.empty() ? StatsClock::time_point{} : StatsClock::now();
+    checkpoint::write(checkpointPath, captureCheckpoint());
+    if (!statsPrefix.empty()) {
+        const double ms = elapsedMilliseconds(started);
+        checkpointStats.push_back({"save_capture_write", checkpointPath, iteration,
+            ms, std::filesystem::file_size(checkpointPath)});
+    }
+    std::cout << "Checkpoint: " << checkpointPath << " (" << iteration << " completed samples)\n";
+}
+
+static int positiveCount(const std::string& value)
+{
+    if (value.empty() || value.find_first_not_of("0123456789") != std::string::npos)
+        throw std::runtime_error("Sample counts must be positive integers");
+    const auto n = std::stoull(value);
+    if (n == 0 || n > std::numeric_limits<int>::max())
+        throw std::runtime_error("Sample count must be in [1, INT_MAX]");
+    return static_cast<int>(n);
+}
+
+static void cudaOrThrow(cudaError_t e, const char* operation)
+{
+    if (e != cudaSuccess)
+        throw std::runtime_error(std::string(operation) + ": " + cudaGetErrorString(e));
+}
+
+// Buffered output: no file/console I/O occurs inside the timed pathtrace call.
+static void writeStatistics()
+{
+    if (statsPrefix.empty()) return;
+    auto output = [](const std::string& path) {
+        std::ofstream file(path);
+        if (!file) throw std::runtime_error("Cannot write statistics: " + path);
+        file << std::setprecision(17);
+        return file;
+    };
+    auto iterations = output(statsPrefix + ".iterations.csv");
+    iterations << "sample,pathtrace_ms,sort_materials,compact_paths,antialiasing\n";
+    for (const auto& r : iterationStats)
+        iterations << r.sample << ',' << r.milliseconds << ',' << r.sorted << ','
+                   << r.compacted << ',' << r.antialiased << '\n';
+    auto bounces = output(statsPrefix + ".active_paths.csv");
+    bounces << "sample,bounce,active_after,launched_paths\n";
+    for (const auto& r : diagnosticBounces) {
+        bounces << diagnosticSample << ',' << r.bounce << ',' << r.activeAfter
+                << ',' << r.launchedPaths << '\n';
+        std::cout << "Sample " << diagnosticSample << ", bounce " << r.bounce
+                  << ": active=" << r.activeAfter << ", launched=" << r.launchedPaths << '\n';
+    }
+    nlohmann::json metadata;
+    metadata["schema_version"] = 1;
+    metadata["build_identity"] = renderingBuildIdentity();
+    metadata["build_configuration"] = CHECKPOINT_BUILD_CONFIG;
+    metadata["scene_identity"] = scene->checkpointSceneIdentity;
+    metadata["width"] = width; metadata["height"] = height;
+    metadata["depth"] = renderState->traceDepth;
+    metadata["completed_samples"] = iteration;
+    metadata["target_samples"] = renderState->iterations;
+    metadata["sort_materials"] = renderState->sortMaterials;
+    metadata["compact_paths"] = renderState->compactPaths;
+    metadata["antialiasing"] = renderState->antialiasing;
+    metadata["diagnostic_sample"] = diagnosticSample;
+    metadata["cuda_runtime"] = CUDART_VERSION;
+    metadata["glm_version"] = GLM_VERSION;
+    metadata["thrust_version"] = THRUST_VERSION;
+    metadata["timing_scope"] = "pathtrace wall time including PBO write, RGB download and ERRORCHECK synchronization; excludes map/unmap, UI, initialization, file output";
+    int device = 0, driver = 0;
+    cudaDeviceProp properties{};
+    cudaOrThrow(cudaGetDevice(&device), "statistics device");
+    cudaOrThrow(cudaGetDeviceProperties(&properties, device), "statistics device properties");
+    cudaOrThrow(cudaDriverGetVersion(&driver), "statistics driver version");
+    metadata["gpu"] = properties.name;
+    metadata["cuda_driver_api_version"] = driver;
+    metadata["compute_capability"] = {properties.major, properties.minor};
+    metadata["checkpoint_io"] = nlohmann::json::array();
+    for (const auto& r : checkpointStats)
+        metadata["checkpoint_io"].push_back({{"operation", r.operation}, {"file", r.file},
+            {"completed_samples", r.sample}, {"milliseconds", r.milliseconds}, {"bytes", r.bytes}});
+    auto meta = output(statsPrefix + ".metadata.json");
+    meta << metadata.dump(2) << '\n';
+    iterations.flush(); bounces.flush(); meta.flush();
+    if (!iterations || !bounces || !meta) throw std::runtime_error("Statistics write failed");
+}
 
 std::string currentTimeString()
 {
@@ -285,6 +480,7 @@ void RenderImGui()
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
+    ImGui::Checkbox("Sort by material", &renderState->sortMaterials);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();
 
@@ -304,10 +500,11 @@ void mainLoop()
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
+        if (glfwWindowShouldClose(window)) break;
 
         runCuda();
 
-        std::string title = "CIS565 Path Tracer | " + utilityCore::convertIntToString(iteration) + " Iterations";
+        std::string title = "Jacob Path Tracer | " + utilityCore::convertIntToString(iteration) + " Iterations";
         glfwSetWindowTitle(window, title.c_str());
         glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
         glBindTexture(GL_TEXTURE_2D, displayImage);
@@ -326,6 +523,9 @@ void mainLoop()
         glfwSwapBuffers(window);
     }
 
+    pathtraceFree();
+    rendererInitialized = false;
+    cleanupCuda(); // Release interop while the GL context still exists.
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
@@ -342,10 +542,31 @@ int main(int argc, char** argv)
 {
     startTimeString = currentTimeString();
 
-    if (argc < 2)
-    {
-        printf("Usage: %s SCENEFILE.json\n", argv[0]);
+    if (argc < 2) {
+        printf("Usage: %s SCENE.json [--resume FILE.ptc] [--samples TOTAL]\n"
+               "       [--checkpoint FILE.ptc] [--checkpoint-at N] [--stats PREFIX]\n", argv[0]);
         return 1;
+    }
+
+    try {
+    std::string resumePath;
+    int targetSamples = 0;
+    for (int i = 2; i < argc; ++i) {
+        const std::string option = argv[i];
+        if (i + 1 >= argc) throw std::runtime_error("Missing option value: " + option);
+        const std::string value = argv[++i];
+        if (option == "--resume") resumePath = value;
+        else if (option == "--checkpoint") checkpointPath = value;
+        else if (option == "--samples") targetSamples = positiveCount(value);
+        else if (option == "--checkpoint-at") checkpointAt = positiveCount(value);
+        else if (option == "--stats") statsPrefix = value;
+        else throw std::runtime_error("Unknown option: " + option);
+    }
+
+    if (!statsPrefix.empty()) {
+        const auto parent = std::filesystem::path(statsPrefix).parent_path();
+        if (!parent.empty()) std::filesystem::create_directories(parent);
+        iterationStats.reserve(1024);
     }
 
     const char* sceneFile = argv[1];
@@ -359,6 +580,9 @@ int main(int argc, char** argv)
     // Set up camera stuff from loaded path tracer settings
     iteration = 0;
     renderState = &scene->state;
+    if (targetSamples) renderState->iterations = static_cast<unsigned int>(targetSamples);
+    if (checkpointPath.empty()) checkpointPath = resumePath.empty()
+        ? renderState->imageName + ".ptc" : resumePath;
     Camera& cam = renderState->camera;
     width = cam.resolution.x;
     height = cam.resolution.y;
@@ -379,8 +603,24 @@ int main(int argc, char** argv)
     ogLookAt = cam.lookAt;
     zoom = glm::length(cam.position - ogLookAt);
 
+    if (!resumePath.empty()) {
+        const auto started = statsPrefix.empty() ? StatsClock::time_point{} : StatsClock::now();
+        restoreCheckpoint(checkpoint::read(resumePath));
+        if (!statsPrefix.empty()) {
+            const double ms = elapsedMilliseconds(started);
+            checkpointStats.push_back({"read_host_restore", resumePath, iteration,
+                ms, std::filesystem::file_size(resumePath)});
+        }
+        std::cout << "Resuming after sample " << iteration << "; next sample is " << iteration + 1ll << '\n';
+    }
+    if (checkpointAt && (checkpointAt < iteration ||
+        static_cast<unsigned int>(checkpointAt) > renderState->iterations)) {
+        throw std::runtime_error("--checkpoint-at must be between the completed count and target");
+    }
+
     // Initialize CUDA and GL components
-    init();
+    if (!init()) throw std::runtime_error("Could not initialize the preview");
+    glfwGetCursorPos(window, &lastX, &lastY);
 
     // Initialize ImGui Data
     InitImguiData(guiData);
@@ -388,12 +628,24 @@ int main(int argc, char** argv)
 
     // GLFW main loop
     mainLoop();
+    writeStatistics();
 
+    delete guiData;
+    delete scene;
     return 0;
+    }
+    catch (const std::exception& error) {
+        std::cerr << "Path tracer: " << error.what() << '\n';
+        return EXIT_FAILURE;
+    }
 }
 
 void saveImage()
 {
+    if (iteration <= 0) {
+        std::cout << "No completed samples to export.\n";
+        return;
+    }
     float samples = iteration;
     // output image file
     Image img(width, height);
@@ -410,7 +662,7 @@ void saveImage()
 
     std::string filename = renderState->imageName;
     std::ostringstream ss;
-    ss << filename << "." << startTimeString << "." << samples << "samp";
+    ss << filename << "." << startTimeString << "." << iteration << "samp";
     filename = ss.str();
 
     // CHECKITOUT
@@ -423,6 +675,12 @@ void runCuda()
     if (camchanged)
     {
         iteration = 0;
+        restoreAccumulation = false;
+        if (rendererInitialized) {
+            pathtraceFree();
+            rendererInitialized = false;
+        }
+        std::fill(renderState->image.begin(), renderState->image.end(), glm::vec3(0.0f));
         Camera& cam = renderState->camera;
         cameraPosition.x = zoom * sin(phi) * sin(theta);
         cameraPosition.y = zoom * cos(theta);
@@ -444,31 +702,56 @@ void runCuda()
     // Map OpenGL buffer object for writing from CUDA on a single GPU
     // No data is moved (Win & Linux). When mapped to CUDA, OpenGL should not use this buffer
 
-    if (iteration == 0)
+    if (!rendererInitialized)
     {
-        pathtraceFree();
-        pathtraceInit(scene);
+        const bool restoring = restoreAccumulation;
+        const auto started = statsPrefix.empty() ? StatsClock::time_point{} : StatsClock::now();
+        pathtraceInit(scene, restoreAccumulation);
+        if (!statsPrefix.empty())
+            checkpointStats.push_back({restoring ? "restore_gpu_init" : "fresh_gpu_init",
+                "", iteration, elapsedMilliseconds(started), 0});
+        rendererInitialized = true;
+        restoreAccumulation = false;
+        // Also display the restored image when its target is already reached.
+        uchar4* restoredPbo = nullptr;
+        cudaOrThrow(cudaGLMapBufferObject((void**)&restoredPbo, pbo), "map initial preview");
+        pathtraceDisplay(restoredPbo, iteration);
+        cudaOrThrow(cudaGLUnmapBufferObject(pbo), "unmap initial preview");
+    }
+
+    if (checkpointAt != 0 && iteration == checkpointAt) {
+        saveCheckpointAtBoundary();
+        glfwSetWindowShouldClose(window, GL_TRUE);
+        return;
     }
 
     if (iteration < renderState->iterations)
     {
         uchar4* pbo_dptr = NULL;
-        iteration++;
-        cudaGLMapBufferObject((void**)&pbo_dptr, pbo);
+        cudaOrThrow(cudaGLMapBufferObject((void**)&pbo_dptr, pbo), "map preview");
 
         // execute the kernel
         int frame = 0;
-        pathtrace(pbo_dptr, frame, iteration);
+        std::vector<PathTraceBounce>* counts = !statsPrefix.empty() && iteration + 1 == diagnosticSample
+            ? &diagnosticBounces : nullptr;
+        const auto started = statsPrefix.empty() ? StatsClock::time_point{} : StatsClock::now();
+        pathtrace(pbo_dptr, frame, iteration + 1, counts);
+        if (!statsPrefix.empty())
+            iterationStats.push_back({iteration + 1, elapsedMilliseconds(started),
+                renderState->sortMaterials, renderState->compactPaths, renderState->antialiasing});
 
         // unmap buffer object
-        cudaGLUnmapBufferObject(pbo);
+        cudaOrThrow(cudaGLUnmapBufferObject(pbo), "unmap preview");
+        ++iteration; // Commit only after a full iteration and host image copy.
+        if (checkpointAt != 0 && iteration == checkpointAt) {
+            saveCheckpointAtBoundary();
+            glfwSetWindowShouldClose(window, GL_TRUE);
+        }
     }
     else
     {
         saveImage();
-        pathtraceFree();
-        cudaDeviceReset();
-        exit(EXIT_SUCCESS);
+        glfwSetWindowShouldClose(window, GL_TRUE);
     }
 }
 
@@ -488,6 +771,14 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
                 break;
             case GLFW_KEY_S:
                 saveImage();
+                break;
+            case GLFW_KEY_C:
+                // GLFW dispatches this callback during glfwPollEvents(),
+                // between complete pathtrace calls. Save before any close event.
+                try { saveCheckpointAtBoundary(); }
+                catch (const std::exception& error) {
+                    std::cerr << "Checkpoint not saved: " << error.what() << '\n';
+                }
                 break;
             case GLFW_KEY_SPACE:
                 camchanged = true;

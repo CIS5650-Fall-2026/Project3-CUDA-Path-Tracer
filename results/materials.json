@@ -1,0 +1,4615 @@
+{
+  "presets": [
+    {
+      "id": 0,
+      "name": "Gold",
+      "source_file": "Au-Johnson.yml",
+      "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Au/nk/Johnson.yml",
+      "sha256": "48d7ae50295f2dd18944bb488b3da03d83c79727aa732d53d7d343b48939afb8",
+      "eta": [
+        0.15557377,
+        0.424149254,
+        1.383088235
+      ],
+      "k": [
+        3.602444965,
+        2.472050746,
+        1.9155
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Silver",
+      "source_file": "Ag-Johnson.yml",
+      "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+      "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+      "eta": [
+        0.052224824,
+        0.05958209,
+        0.04
+      ],
+      "k": [
+        4.409358314,
+        3.597367164,
+        2.648397059
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Copper",
+      "source_file": "Cu-Johnson.yml",
+      "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Cu/nk/Johnson.yml",
+      "sha256": "7ef2ccb91f1e29cf65637315921bbb40b7626f834134314fa6753a972d117f6d",
+      "eta": [
+        0.237798595,
+        1.006626866,
+        1.240441176
+      ],
+      "k": [
+        3.62641452,
+        2.582307463,
+        2.392941176
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Aluminum",
+      "source_file": "Al-Rakic.yml",
+      "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Al/nk/Rakic.yml",
+      "sha256": "e7de2304512358a39df33354418c6498f8ed57e52cbc385271eb80a641de1538",
+      "eta": [
+        1.558031188,
+        1.015191782,
+        0.633238421
+      ],
+      "k": [
+        7.712412686,
+        6.627283074,
+        5.454350807
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Chrome (chromium)",
+      "source_file": "Cr-Johnson.yml",
+      "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Cr/nk/Johnson.yml",
+      "sha256": "2aba7234f79ae035394ac163a0201e048db9f6a941976ddc3b9f1b84bd310ef5",
+      "eta": [
+        3.107142857,
+        3.181212121,
+        2.323
+      ],
+      "k": [
+        3.331428571,
+        3.329090909,
+        3.135
+      ]
+    }
+  ],
+  "scenes": {
+    "room_open": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          768,
+          768
+        ],
+        "FOVY": 30,
+        "ITERATIONS": 4096,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T174958.525143Z_render_refine\\000_room_open\\image",
+        "EYE": [
+          0,
+          5,
+          10.5
+        ],
+        "LOOKAT": [
+          0,
+          5,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "ceiling_emitter"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "diffuse_white",
+          "type": "standard",
+          "Kd": [
+            0.98,
+            0.98,
+            0.98
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor",
+            "ceiling",
+            "back"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "diffuse_red",
+          "type": "standard",
+          "Kd": [
+            0.85,
+            0.35,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "left",
+            "background_band_0",
+            "background_band_2",
+            "background_band_4"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "diffuse_green",
+          "type": "standard",
+          "Kd": [
+            0.35,
+            0.85,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "right",
+            "background_band_1",
+            "background_band_3"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "plastic_white",
+          "type": "standard",
+          "Kd": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Ks": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0.0,
+          "objects": []
+        },
+        {
+          "index": 5,
+          "name": "silver",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 1,
+            "name": "Silver",
+            "source_file": "Ag-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+            "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+            "eta": [
+              0.052224824,
+              0.05958209,
+              0.04
+            ],
+            "k": [
+              4.409358314,
+              3.597367164,
+              2.648397059
+            ]
+          },
+          "objects": [
+            "silver_subject"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Glass",
+          "type": "transmission",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "transmissionPresetID": 0,
+          "ior": 1.5,
+          "objects": [
+            "glass_subject"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "glossy_blue",
+          "type": "standard",
+          "Kd": [
+            0.25,
+            0.45,
+            0.7
+          ],
+          "Ks": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.03,
+          "alpha_reference": 0.2370290550759264,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "glossy_subject"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "rough_diffuse",
+          "type": "standard",
+          "Kd": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 30,
+          "objects": [
+            "oren_subject"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "ceiling_emitter",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            9.8,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            4,
+            0.2,
+            4
+          ]
+        },
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "ceiling",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            10.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "back",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            5,
+            -5.025
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            10.1,
+            0.05
+          ]
+        },
+        {
+          "name": "left",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "right",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "glass_subject",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            -1.3,
+            4.2,
+            -1.1
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "silver_subject",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            2.3,
+            1.15,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.25,
+            2.25,
+            2.25
+          ]
+        },
+        {
+          "name": "glossy_subject",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            -3,
+            1.05,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "oren_subject",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            2.2,
+            4.2,
+            -1.7
+          ],
+          "ROTAT": [
+            0,
+            20,
+            18
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "background_band_0",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_1",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            -1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_2",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_3",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_4",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        }
+      ]
+    },
+    "room_closed": {
+      "rendered": false,
+      "camera": {
+        "RES": [
+          768,
+          768
+        ],
+        "FOVY": 30,
+        "ITERATIONS": 1024,
+        "DEPTH": 8,
+        "FILE": "room_closed",
+        "EYE": [
+          0,
+          5,
+          10.5
+        ],
+        "LOOKAT": [
+          0,
+          5,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "ceiling_emitter"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "diffuse_white",
+          "type": "standard",
+          "Kd": [
+            0.98,
+            0.98,
+            0.98
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor",
+            "ceiling",
+            "back",
+            "closing_wall"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "diffuse_red",
+          "type": "standard",
+          "Kd": [
+            0.85,
+            0.35,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "left",
+            "background_band_0",
+            "background_band_2",
+            "background_band_4"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "diffuse_green",
+          "type": "standard",
+          "Kd": [
+            0.35,
+            0.85,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "right",
+            "background_band_1",
+            "background_band_3"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "plastic_white",
+          "type": "standard",
+          "Kd": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Ks": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0.0,
+          "objects": []
+        },
+        {
+          "index": 5,
+          "name": "silver",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 1,
+            "name": "Silver",
+            "source_file": "Ag-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+            "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+            "eta": [
+              0.052224824,
+              0.05958209,
+              0.04
+            ],
+            "k": [
+              4.409358314,
+              3.597367164,
+              2.648397059
+            ]
+          },
+          "objects": [
+            "silver_subject"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Glass",
+          "type": "transmission",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "transmissionPresetID": 0,
+          "ior": 1.5,
+          "objects": [
+            "glass_subject"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "glossy_blue",
+          "type": "standard",
+          "Kd": [
+            0.25,
+            0.45,
+            0.7
+          ],
+          "Ks": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.03,
+          "alpha_reference": 0.2370290550759264,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "glossy_subject"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "rough_diffuse",
+          "type": "standard",
+          "Kd": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 30,
+          "objects": [
+            "oren_subject"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "ceiling_emitter",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            9.8,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            4,
+            0.2,
+            4
+          ]
+        },
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "ceiling",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            10.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "back",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            5,
+            -5.025
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            10.1,
+            0.05
+          ]
+        },
+        {
+          "name": "left",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "right",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "glass_subject",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            -1.3,
+            4.2,
+            -1.1
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "silver_subject",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            2.3,
+            1.15,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.25,
+            2.25,
+            2.25
+          ]
+        },
+        {
+          "name": "glossy_subject",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            -3,
+            1.05,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "oren_subject",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            2.2,
+            4.2,
+            -1.7
+          ],
+          "ROTAT": [
+            0,
+            20,
+            18
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "background_band_0",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_1",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            -1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_2",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_3",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_4",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "closing_wall",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            5,
+            12.025
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            10.1,
+            0.05
+          ]
+        }
+      ]
+    },
+    "room_no_gloss": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          768,
+          768
+        ],
+        "FOVY": 30,
+        "ITERATIONS": 1024,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T173812.300211Z_render\\002_room_no_gloss\\image",
+        "EYE": [
+          0,
+          5,
+          10.5
+        ],
+        "LOOKAT": [
+          0,
+          5,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "ceiling_emitter"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "diffuse_white",
+          "type": "standard",
+          "Kd": [
+            0.98,
+            0.98,
+            0.98
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor",
+            "ceiling",
+            "back"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "diffuse_red",
+          "type": "standard",
+          "Kd": [
+            0.85,
+            0.35,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "left",
+            "background_band_0",
+            "background_band_2",
+            "background_band_4"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "diffuse_green",
+          "type": "standard",
+          "Kd": [
+            0.35,
+            0.85,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "right",
+            "background_band_1",
+            "background_band_3"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "plastic_white",
+          "type": "standard",
+          "Kd": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Ks": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0.0,
+          "objects": []
+        },
+        {
+          "index": 5,
+          "name": "silver",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 1,
+            "name": "Silver",
+            "source_file": "Ag-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+            "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+            "eta": [
+              0.052224824,
+              0.05958209,
+              0.04
+            ],
+            "k": [
+              4.409358314,
+              3.597367164,
+              2.648397059
+            ]
+          },
+          "objects": [
+            "silver_subject"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Glass",
+          "type": "transmission",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "transmissionPresetID": 0,
+          "ior": 1.5,
+          "objects": [
+            "glass_subject"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "glossy_blue",
+          "type": "standard",
+          "Kd": [
+            0.25,
+            0.45,
+            0.7
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.03,
+          "alpha_reference": 0.2370290550759264,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "glossy_subject"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "rough_diffuse",
+          "type": "standard",
+          "Kd": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 30,
+          "objects": [
+            "oren_subject"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "ceiling_emitter",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            9.8,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            4,
+            0.2,
+            4
+          ]
+        },
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "ceiling",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            10.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "back",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            5,
+            -5.025
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            10.1,
+            0.05
+          ]
+        },
+        {
+          "name": "left",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "right",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "glass_subject",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            -1.3,
+            4.2,
+            -1.1
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "silver_subject",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            2.3,
+            1.15,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.25,
+            2.25,
+            2.25
+          ]
+        },
+        {
+          "name": "glossy_subject",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            -3,
+            1.05,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "oren_subject",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            2.2,
+            4.2,
+            -1.7
+          ],
+          "ROTAT": [
+            0,
+            20,
+            18
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "background_band_0",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_1",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            -1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_2",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_3",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_4",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        }
+      ]
+    },
+    "room_no_oren": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          768,
+          768
+        ],
+        "FOVY": 30,
+        "ITERATIONS": 1024,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T173812.300211Z_render\\004_room_no_oren\\image",
+        "EYE": [
+          0,
+          5,
+          10.5
+        ],
+        "LOOKAT": [
+          0,
+          5,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "ceiling_emitter"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "diffuse_white",
+          "type": "standard",
+          "Kd": [
+            0.98,
+            0.98,
+            0.98
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor",
+            "ceiling",
+            "back"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "diffuse_red",
+          "type": "standard",
+          "Kd": [
+            0.85,
+            0.35,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "left",
+            "background_band_0",
+            "background_band_2",
+            "background_band_4"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "diffuse_green",
+          "type": "standard",
+          "Kd": [
+            0.35,
+            0.85,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "right",
+            "background_band_1",
+            "background_band_3"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "plastic_white",
+          "type": "standard",
+          "Kd": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Ks": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0.0,
+          "objects": []
+        },
+        {
+          "index": 5,
+          "name": "silver",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 1,
+            "name": "Silver",
+            "source_file": "Ag-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+            "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+            "eta": [
+              0.052224824,
+              0.05958209,
+              0.04
+            ],
+            "k": [
+              4.409358314,
+              3.597367164,
+              2.648397059
+            ]
+          },
+          "objects": [
+            "silver_subject"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Glass",
+          "type": "transmission",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "transmissionPresetID": 0,
+          "ior": 1.5,
+          "objects": [
+            "glass_subject"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "glossy_blue",
+          "type": "standard",
+          "Kd": [
+            0.25,
+            0.45,
+            0.7
+          ],
+          "Ks": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.03,
+          "alpha_reference": 0.2370290550759264,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "glossy_subject"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "rough_diffuse",
+          "type": "standard",
+          "Kd": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "oren_subject"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "ceiling_emitter",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            9.8,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            4,
+            0.2,
+            4
+          ]
+        },
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "ceiling",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            10.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "back",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            5,
+            -5.025
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            10.1,
+            0.05
+          ]
+        },
+        {
+          "name": "left",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "right",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "glass_subject",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            -1.3,
+            4.2,
+            -1.1
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "silver_subject",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            2.3,
+            1.15,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.25,
+            2.25,
+            2.25
+          ]
+        },
+        {
+          "name": "glossy_subject",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            -3,
+            1.05,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "oren_subject",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            2.2,
+            4.2,
+            -1.7
+          ],
+          "ROTAT": [
+            0,
+            20,
+            18
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "background_band_0",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_1",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            -1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_2",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_3",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_4",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        }
+      ]
+    },
+    "room_opaque_glass": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          768,
+          768
+        ],
+        "FOVY": 30,
+        "ITERATIONS": 1024,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T173812.300211Z_render\\006_room_opaque_glass\\image",
+        "EYE": [
+          0,
+          5,
+          10.5
+        ],
+        "LOOKAT": [
+          0,
+          5,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "ceiling_emitter"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "diffuse_white",
+          "type": "standard",
+          "Kd": [
+            0.98,
+            0.98,
+            0.98
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor",
+            "ceiling",
+            "back"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "diffuse_red",
+          "type": "standard",
+          "Kd": [
+            0.85,
+            0.35,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "left",
+            "background_band_0",
+            "background_band_2",
+            "background_band_4"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "diffuse_green",
+          "type": "standard",
+          "Kd": [
+            0.35,
+            0.85,
+            0.35
+          ],
+          "Ks": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "right",
+            "background_band_1",
+            "background_band_3"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "plastic_white",
+          "type": "standard",
+          "Kd": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Ks": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0.0,
+          "objects": []
+        },
+        {
+          "index": 5,
+          "name": "silver",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 1,
+            "name": "Silver",
+            "source_file": "Ag-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+            "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+            "eta": [
+              0.052224824,
+              0.05958209,
+              0.04
+            ],
+            "k": [
+              4.409358314,
+              3.597367164,
+              2.648397059
+            ]
+          },
+          "objects": [
+            "silver_subject"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Glass",
+          "type": "standard",
+          "Kd": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "glass_subject"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "glossy_blue",
+          "type": "standard",
+          "Kd": [
+            0.25,
+            0.45,
+            0.7
+          ],
+          "Ks": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.03,
+          "alpha_reference": 0.2370290550759264,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "glossy_subject"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "rough_diffuse",
+          "type": "standard",
+          "Kd": [
+            0.6,
+            0.6,
+            0.6
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 30,
+          "objects": [
+            "oren_subject"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "ceiling_emitter",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            9.8,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            4,
+            0.2,
+            4
+          ]
+        },
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "ceiling",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            10.025,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            0.05,
+            17.1
+          ]
+        },
+        {
+          "name": "back",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            5,
+            -5.025
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10.1,
+            10.1,
+            0.05
+          ]
+        },
+        {
+          "name": "left",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "right",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            5.025,
+            5,
+            3.5
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.05,
+            10.1,
+            17.1
+          ]
+        },
+        {
+          "name": "glass_subject",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            -1.3,
+            4.2,
+            -1.1
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "silver_subject",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            2.3,
+            1.15,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.25,
+            2.25,
+            2.25
+          ]
+        },
+        {
+          "name": "glossy_subject",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            -3,
+            1.05,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "oren_subject",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            2.2,
+            4.2,
+            -1.7
+          ],
+          "ROTAT": [
+            0,
+            20,
+            18
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "background_band_0",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            -2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_1",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            -1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_2",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_3",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            1.2,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        },
+        {
+          "name": "background_band_4",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            2.4,
+            4.2,
+            -4.96
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.45,
+            4,
+            0.04
+          ]
+        }
+      ]
+    },
+    "metal_row": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          1280,
+          384
+        ],
+        "FOVY": 9.5,
+        "ITERATIONS": 2048,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T173812.300211Z_render\\008_metal_row\\image",
+        "EYE": [
+          0,
+          1.1,
+          14
+        ],
+        "LOOKAT": [
+          0,
+          1.1,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            5,
+            5,
+            5
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "front_reflection_card"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "floor",
+          "type": "standard",
+          "Kd": [
+            0.28,
+            0.28,
+            0.28
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "backdrop",
+          "type": "standard",
+          "Kd": [
+            0.16,
+            0.16,
+            0.16
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "backdrop"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Gold",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 0,
+            "name": "Gold",
+            "source_file": "Au-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Au/nk/Johnson.yml",
+            "sha256": "48d7ae50295f2dd18944bb488b3da03d83c79727aa732d53d7d343b48939afb8",
+            "eta": [
+              0.15557377,
+              0.424149254,
+              1.383088235
+            ],
+            "k": [
+              3.602444965,
+              2.472050746,
+              1.9155
+            ]
+          },
+          "objects": [
+            "Gold"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Silver",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 1,
+            "name": "Silver",
+            "source_file": "Ag-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Ag/nk/Johnson.yml",
+            "sha256": "efc40817e499eb26c1556ba6c72366079168144d6c82be3ca41c68f3eebe78f6",
+            "eta": [
+              0.052224824,
+              0.05958209,
+              0.04
+            ],
+            "k": [
+              4.409358314,
+              3.597367164,
+              2.648397059
+            ]
+          },
+          "objects": [
+            "Silver"
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Copper",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 2,
+            "name": "Copper",
+            "source_file": "Cu-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Cu/nk/Johnson.yml",
+            "sha256": "7ef2ccb91f1e29cf65637315921bbb40b7626f834134314fa6753a972d117f6d",
+            "eta": [
+              0.237798595,
+              1.006626866,
+              1.240441176
+            ],
+            "k": [
+              3.62641452,
+              2.582307463,
+              2.392941176
+            ]
+          },
+          "objects": [
+            "Copper"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Aluminum",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 3,
+            "name": "Aluminum",
+            "source_file": "Al-Rakic.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Al/nk/Rakic.yml",
+            "sha256": "e7de2304512358a39df33354418c6498f8ed57e52cbc385271eb80a641de1538",
+            "eta": [
+              1.558031188,
+              1.015191782,
+              0.633238421
+            ],
+            "k": [
+              7.712412686,
+              6.627283074,
+              5.454350807
+            ]
+          },
+          "objects": [
+            "Aluminum"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Chrome",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 4,
+            "name": "Chrome (chromium)",
+            "source_file": "Cr-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Cr/nk/Johnson.yml",
+            "sha256": "2aba7234f79ae035394ac163a0201e048db9f6a941976ddc3b9f1b84bd310ef5",
+            "eta": [
+              3.107142857,
+              3.181212121,
+              2.323
+            ],
+            "k": [
+              3.331428571,
+              3.329090909,
+              3.135
+            ]
+          },
+          "objects": [
+            "Chrome"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "overhead_light",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            3.5,
+            3.5,
+            3.5
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "large_top_light"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.05,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            18,
+            0.1,
+            18
+          ]
+        },
+        {
+          "name": "backdrop",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            3,
+            -4
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            22,
+            6,
+            0.1
+          ]
+        },
+        {
+          "name": "large_top_light",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            0,
+            6,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            14,
+            0.1,
+            6
+          ]
+        },
+        {
+          "name": "front_reflection_card",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            4.8,
+            4
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            12,
+            3,
+            0.1
+          ]
+        },
+        {
+          "name": "Gold",
+          "TYPE": "sphere",
+          "material": 3,
+          "TRANS": [
+            -5.6,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Silver",
+          "TYPE": "sphere",
+          "material": 4,
+          "TRANS": [
+            -2.8,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Copper",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            0,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Aluminum",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            2.8,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Chrome",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            5.6,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    "metal_reference": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          1280,
+          384
+        ],
+        "FOVY": 9.5,
+        "ITERATIONS": 2048,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T173812.300211Z_render\\010_metal_reference\\image",
+        "EYE": [
+          0,
+          1.1,
+          14
+        ],
+        "LOOKAT": [
+          0,
+          1.1,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "light",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            5,
+            5,
+            5
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "front_reflection_card"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "floor",
+          "type": "standard",
+          "Kd": [
+            0.28,
+            0.28,
+            0.28
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "floor"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "backdrop",
+          "type": "standard",
+          "Kd": [
+            0.16,
+            0.16,
+            0.16
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "backdrop"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Gold",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "Gold"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Silver",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "Silver"
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Copper",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "Copper"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Aluminum",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "Aluminum"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Chrome",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "Chrome"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "overhead_light",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            3.5,
+            3.5,
+            3.5
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "large_top_light"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "floor",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            0,
+            -0.05,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            18,
+            0.1,
+            18
+          ]
+        },
+        {
+          "name": "backdrop",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            3,
+            -4
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            22,
+            6,
+            0.1
+          ]
+        },
+        {
+          "name": "large_top_light",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            0,
+            6,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            14,
+            0.1,
+            6
+          ]
+        },
+        {
+          "name": "front_reflection_card",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            4.8,
+            4
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            12,
+            3,
+            0.1
+          ]
+        },
+        {
+          "name": "Gold",
+          "TYPE": "sphere",
+          "material": 3,
+          "TRANS": [
+            -5.6,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Silver",
+          "TYPE": "sphere",
+          "material": 4,
+          "TRANS": [
+            -2.8,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Copper",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            0,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Aluminum",
+          "TYPE": "sphere",
+          "material": 6,
+          "TRANS": [
+            2.8,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Chrome",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            5.6,
+            1.01,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2,
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    "cover": {
+      "rendered": true,
+      "camera": {
+        "RES": [
+          1280,
+          720
+        ],
+        "FOVY": 13,
+        "ITERATIONS": 4096,
+        "DEPTH": 8,
+        "FILE": "C:\\Users\\jmoll\\OneDrive\\Documents\\UPENN\\Fall 2026\\CIS 5650 - GPU\\CUDA-Path-Tracer\\out\\runs\\20261007T173812.300211Z_render\\013_cover\\image",
+        "EYE": [
+          0,
+          2.5,
+          13
+        ],
+        "LOOKAT": [
+          0,
+          2.5,
+          0
+        ],
+        "UP": [
+          0,
+          1,
+          0
+        ]
+      },
+      "materials": [
+        {
+          "index": 0,
+          "name": "warm_light",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            5,
+            4.5,
+            3.8
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "warm_top_light"
+          ]
+        },
+        {
+          "index": 1,
+          "name": "cool_light",
+          "type": "standard",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            2.8,
+            3.4,
+            4
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "cool_side_light"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "stage",
+          "type": "standard",
+          "Kd": [
+            0.12,
+            0.14,
+            0.17
+          ],
+          "Ks": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.3,
+          "alpha_reference": 0.8570364675174544,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "stage"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "pedestal",
+          "type": "standard",
+          "Kd": [
+            0.21,
+            0.38,
+            0.23
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 30,
+          "objects": [
+            "pedestal"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "copper",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 2,
+            "name": "Copper",
+            "source_file": "Cu-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Cu/nk/Johnson.yml",
+            "sha256": "7ef2ccb91f1e29cf65637315921bbb40b7626f834134314fa6753a972d117f6d",
+            "eta": [
+              0.237798595,
+              1.006626866,
+              1.240441176
+            ],
+            "k": [
+              3.62641452,
+              2.582307463,
+              2.392941176
+            ]
+          },
+          "objects": [
+            "copper_hero"
+          ]
+        },
+        {
+          "index": 5,
+          "name": "glass",
+          "type": "transmission",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "transmissionPresetID": 0,
+          "ior": 1.5,
+          "objects": [
+            "glass_hero"
+          ]
+        },
+        {
+          "index": 6,
+          "name": "blue",
+          "type": "standard",
+          "Kd": [
+            0.08,
+            0.25,
+            0.48
+          ],
+          "Ks": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 0,
+          "objects": [
+            "blue_block"
+          ]
+        },
+        {
+          "index": 7,
+          "name": "chrome",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "metal": {
+            "id": 4,
+            "name": "Chrome (chromium)",
+            "source_file": "Cr-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Cr/nk/Johnson.yml",
+            "sha256": "2aba7234f79ae035394ac163a0201e048db9f6a941976ddc3b9f1b84bd310ef5",
+            "eta": [
+              3.107142857,
+              3.181212121,
+              2.323
+            ],
+            "k": [
+              3.331428571,
+              3.329090909,
+              3.135
+            ]
+          },
+          "objects": [
+            "chrome_accent"
+          ]
+        },
+        {
+          "index": 8,
+          "name": "red_column",
+          "type": "standard",
+          "Kd": [
+            0.48,
+            0.18,
+            0.16
+          ],
+          "Ks": [
+            0,
+            0,
+            0
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.1,
+          "alpha_reference": 0.46176003200863397,
+          "ior": 1.5,
+          "diffuseSigmaDegrees": 30,
+          "objects": [
+            "tilted_column"
+          ]
+        },
+        {
+          "index": 9,
+          "name": "gold_backdrop",
+          "type": "metal",
+          "Kd": [
+            0,
+            0,
+            0
+          ],
+          "Ks": [
+            1,
+            1,
+            1
+          ],
+          "emitted_rgb": [
+            0,
+            0,
+            0
+          ],
+          "roughness": 0.3,
+          "alpha_reference": 0.8570364675174544,
+          "metal": {
+            "id": 0,
+            "name": "Gold",
+            "source_file": "Au-Johnson.yml",
+            "source_url": "https://raw.githubusercontent.com/polyanskiy/refractiveindex.info-database/master/database/data/main/Au/nk/Johnson.yml",
+            "sha256": "48d7ae50295f2dd18944bb488b3da03d83c79727aa732d53d7d343b48939afb8",
+            "eta": [
+              0.15557377,
+              0.424149254,
+              1.383088235
+            ],
+            "k": [
+              3.602444965,
+              2.472050746,
+              1.9155
+            ]
+          },
+          "objects": [
+            "gold_backdrop"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "name": "stage",
+          "TYPE": "cube",
+          "material": 2,
+          "TRANS": [
+            0,
+            -0.05,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            30,
+            0.1,
+            30
+          ]
+        },
+        {
+          "name": "pedestal",
+          "TYPE": "cube",
+          "material": 3,
+          "TRANS": [
+            -2,
+            0.5,
+            0
+          ],
+          "ROTAT": [
+            0,
+            12,
+            0
+          ],
+          "SCALE": [
+            2.7,
+            1,
+            2.7
+          ]
+        },
+        {
+          "name": "copper_hero",
+          "TYPE": "sphere",
+          "material": 4,
+          "TRANS": [
+            -2,
+            2.1,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.2,
+            2.2,
+            2.2
+          ]
+        },
+        {
+          "name": "glass_hero",
+          "TYPE": "sphere",
+          "material": 5,
+          "TRANS": [
+            1.3,
+            1.45,
+            0.8
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            2.8,
+            2.8,
+            2.8
+          ]
+        },
+        {
+          "name": "blue_block",
+          "TYPE": "cube",
+          "material": 6,
+          "TRANS": [
+            0.8,
+            0.55,
+            -2.4
+          ],
+          "ROTAT": [
+            0,
+            -20,
+            0
+          ],
+          "SCALE": [
+            2.7,
+            1.1,
+            1.5
+          ]
+        },
+        {
+          "name": "chrome_accent",
+          "TYPE": "sphere",
+          "material": 7,
+          "TRANS": [
+            0.9,
+            2.4,
+            -2.3
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            1.8,
+            1.8,
+            1.8
+          ]
+        },
+        {
+          "name": "tilted_column",
+          "TYPE": "cube",
+          "material": 8,
+          "TRANS": [
+            4,
+            2.2,
+            -3
+          ],
+          "ROTAT": [
+            0,
+            0,
+            -15
+          ],
+          "SCALE": [
+            0.7,
+            4,
+            0.6
+          ]
+        },
+        {
+          "name": "warm_top_light",
+          "TYPE": "cube",
+          "material": 0,
+          "TRANS": [
+            0,
+            7,
+            0
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            10,
+            0.1,
+            7
+          ]
+        },
+        {
+          "name": "cool_side_light",
+          "TYPE": "cube",
+          "material": 1,
+          "TRANS": [
+            -5,
+            4,
+            4
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            0.1,
+            6,
+            5
+          ]
+        },
+        {
+          "name": "gold_backdrop",
+          "TYPE": "cube",
+          "material": 9,
+          "TRANS": [
+            0,
+            6,
+            -6
+          ],
+          "ROTAT": [
+            0,
+            0,
+            0
+          ],
+          "SCALE": [
+            30,
+            12,
+            0.1
+          ]
+        }
+      ]
+    }
+  },
+  "rgb_wavelengths_nm": [
+    650,
+    550,
+    450
+  ],
+  "note": "alpha_reference uses the source polynomial in Python float64; not a device-bit dump"
+}

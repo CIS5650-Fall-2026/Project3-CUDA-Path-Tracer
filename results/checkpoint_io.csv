@@ -1,0 +1,94 @@
+run,operation,width,height,completed_samples,milliseconds,bytes,file
+direct_128,fresh_gpu_init,256,256,0,0.8793,0,
+direct_128,save_capture_write,256,256,128,3.6001,789422,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\000_direct_128\state.ptc
+split_32,fresh_gpu_init,256,256,0,0.551,0,
+split_32,save_capture_write,256,256,32,12.2014,789422,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\001_split_32\state.ptc
+resumed_128,read_host_restore,256,256,32,1.6333,789422,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\001_split_32\state.ptc
+resumed_128,restore_gpu_init,256,256,32,0.5306,0,
+resumed_128,save_capture_write,256,256,128,12.6424,789422,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\002_resumed_128\state.ptc
+invariance_c0_s0,fresh_gpu_init,256,256,0,0.5687,0,
+invariance_c0_s0,save_capture_write,256,256,128,10.1731,789423,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\003_invariance_c0_s0\state.ptc
+invariance_c0_s1,fresh_gpu_init,256,256,0,0.5002,0,
+invariance_c0_s1,save_capture_write,256,256,128,3.482,789423,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\004_invariance_c0_s1\state.ptc
+invariance_c1_s0,fresh_gpu_init,256,256,0,0.5592,0,
+invariance_c1_s0,save_capture_write,256,256,128,3.6708,789422,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\005_invariance_c1_s0\state.ptc
+export_completed_128,read_host_restore,256,256,128,1.7621,789422,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T164629.604330Z_validate\000_direct_128\state.ptc
+export_completed_128,restore_gpu_init,256,256,128,0.5603,0,
+room_open_c0_s0_r1,fresh_gpu_init,512,512,0,0.8583,0,
+room_open_c0_s0_r1,save_capture_write,512,512,288,18.5196,3148719,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\000_room_open_c0_s0_r1\state.ptc
+room_open_c0_s1_r1,fresh_gpu_init,512,512,0,0.8941,0,
+room_open_c0_s1_r1,save_capture_write,512,512,288,18.4962,3148719,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\001_room_open_c0_s1_r1\state.ptc
+room_open_c1_s0_r1,fresh_gpu_init,512,512,0,1.196,0,
+room_open_c1_s0_r1,save_capture_write,512,512,288,9.7231,3148718,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\002_room_open_c1_s0_r1\state.ptc
+room_open_c1_s1_r1,fresh_gpu_init,512,512,0,0.8246,0,
+room_open_c1_s1_r1,save_capture_write,512,512,288,19.2441,3148718,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\003_room_open_c1_s1_r1\state.ptc
+room_closed_c0_s0_r1,fresh_gpu_init,512,512,0,0.8749,0,
+room_closed_c0_s0_r1,save_capture_write,512,512,288,10.5069,3148832,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\004_room_closed_c0_s0_r1\state.ptc
+room_closed_c0_s1_r1,fresh_gpu_init,512,512,0,1.0684,0,
+room_closed_c0_s1_r1,save_capture_write,512,512,288,17.3479,3148832,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\005_room_closed_c0_s1_r1\state.ptc
+room_closed_c1_s0_r1,fresh_gpu_init,512,512,0,0.8724,0,
+room_closed_c1_s0_r1,save_capture_write,512,512,288,18.3919,3148831,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\006_room_closed_c1_s0_r1\state.ptc
+room_closed_c1_s1_r1,fresh_gpu_init,512,512,0,0.9235,0,
+room_closed_c1_s1_r1,save_capture_write,512,512,288,9.6621,3148831,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\007_room_closed_c1_s1_r1\state.ptc
+room_no_gloss_r1,fresh_gpu_init,512,512,0,0.8211,0,
+room_no_gloss_r1,save_capture_write,512,512,288,19.1165,3148716,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\008_room_no_gloss_r1\state.ptc
+room_no_oren_r1,fresh_gpu_init,512,512,0,0.8278,0,
+room_no_oren_r1,save_capture_write,512,512,288,18.1535,3148717,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\009_room_no_oren_r1\state.ptc
+room_opaque_glass_r1,fresh_gpu_init,512,512,0,0.8401,0,
+room_opaque_glass_r1,save_capture_write,512,512,288,19.0798,3148705,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\010_room_opaque_glass_r1\state.ptc
+metal_row_r1,fresh_gpu_init,640,192,0,0.7586,0,
+metal_row_r1,save_capture_write,640,192,288,14.477,1476652,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\011_metal_row_r1\state.ptc
+metal_reference_r1,fresh_gpu_init,640,192,0,0.5667,0,
+metal_reference_r1,save_capture_write,640,192,288,14.6692,1476662,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\012_metal_reference_r1\state.ptc
+metal_reference_r2,fresh_gpu_init,640,192,0,0.6292,0,
+metal_reference_r2,save_capture_write,640,192,288,14.4737,1476662,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\013_metal_reference_r2\state.ptc
+metal_row_r2,fresh_gpu_init,640,192,0,0.7716,0,
+metal_row_r2,save_capture_write,640,192,288,5.7266,1476652,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\014_metal_row_r2\state.ptc
+room_opaque_glass_r2,fresh_gpu_init,512,512,0,0.8485,0,
+room_opaque_glass_r2,save_capture_write,512,512,288,18.471,3148705,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\015_room_opaque_glass_r2\state.ptc
+room_no_oren_r2,fresh_gpu_init,512,512,0,1.0036,0,
+room_no_oren_r2,save_capture_write,512,512,288,18.8046,3148717,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\016_room_no_oren_r2\state.ptc
+room_no_gloss_r2,fresh_gpu_init,512,512,0,0.8659,0,
+room_no_gloss_r2,save_capture_write,512,512,288,19.3561,3148716,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\017_room_no_gloss_r2\state.ptc
+room_closed_c1_s1_r2,fresh_gpu_init,512,512,0,0.8646,0,
+room_closed_c1_s1_r2,save_capture_write,512,512,288,18.1161,3148831,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\018_room_closed_c1_s1_r2\state.ptc
+room_closed_c1_s0_r2,fresh_gpu_init,512,512,0,0.8558,0,
+room_closed_c1_s0_r2,save_capture_write,512,512,288,19.0927,3148831,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\019_room_closed_c1_s0_r2\state.ptc
+room_closed_c0_s1_r2,fresh_gpu_init,512,512,0,1.0075,0,
+room_closed_c0_s1_r2,save_capture_write,512,512,288,9.7114,3148832,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\020_room_closed_c0_s1_r2\state.ptc
+room_closed_c0_s0_r2,fresh_gpu_init,512,512,0,0.8602,0,
+room_closed_c0_s0_r2,save_capture_write,512,512,288,17.352,3148832,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\021_room_closed_c0_s0_r2\state.ptc
+room_open_c1_s1_r2,fresh_gpu_init,512,512,0,0.8324,0,
+room_open_c1_s1_r2,save_capture_write,512,512,288,10.0717,3148718,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\022_room_open_c1_s1_r2\state.ptc
+room_open_c1_s0_r2,fresh_gpu_init,512,512,0,0.7883,0,
+room_open_c1_s0_r2,save_capture_write,512,512,288,10.6215,3148718,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\023_room_open_c1_s0_r2\state.ptc
+room_open_c0_s1_r2,fresh_gpu_init,512,512,0,0.997,0,
+room_open_c0_s1_r2,save_capture_write,512,512,288,18.7411,3148719,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\024_room_open_c0_s1_r2\state.ptc
+room_open_c0_s0_r2,fresh_gpu_init,512,512,0,0.8548,0,
+room_open_c0_s0_r2,save_capture_write,512,512,288,18.5211,3148719,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\025_room_open_c0_s0_r2\state.ptc
+room_open_c0_s0_r3,fresh_gpu_init,512,512,0,0.922,0,
+room_open_c0_s0_r3,save_capture_write,512,512,288,18.4471,3148719,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\026_room_open_c0_s0_r3\state.ptc
+room_open_c0_s1_r3,fresh_gpu_init,512,512,0,0.8921,0,
+room_open_c0_s1_r3,save_capture_write,512,512,288,10.2134,3148719,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\027_room_open_c0_s1_r3\state.ptc
+room_open_c1_s0_r3,fresh_gpu_init,512,512,0,0.9793,0,
+room_open_c1_s0_r3,save_capture_write,512,512,288,19.1343,3148718,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\028_room_open_c1_s0_r3\state.ptc
+room_open_c1_s1_r3,fresh_gpu_init,512,512,0,0.7582,0,
+room_open_c1_s1_r3,save_capture_write,512,512,288,10.1201,3148718,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\029_room_open_c1_s1_r3\state.ptc
+room_closed_c0_s0_r3,fresh_gpu_init,512,512,0,0.9219,0,
+room_closed_c0_s0_r3,save_capture_write,512,512,288,9.9271,3148832,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\030_room_closed_c0_s0_r3\state.ptc
+room_closed_c0_s1_r3,fresh_gpu_init,512,512,0,1.121,0,
+room_closed_c0_s1_r3,save_capture_write,512,512,288,18.5396,3148832,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\031_room_closed_c0_s1_r3\state.ptc
+room_closed_c1_s0_r3,fresh_gpu_init,512,512,0,0.8556,0,
+room_closed_c1_s0_r3,save_capture_write,512,512,288,18.3773,3148831,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\032_room_closed_c1_s0_r3\state.ptc
+room_closed_c1_s1_r3,fresh_gpu_init,512,512,0,0.8315,0,
+room_closed_c1_s1_r3,save_capture_write,512,512,288,10.2981,3148831,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\033_room_closed_c1_s1_r3\state.ptc
+room_no_gloss_r3,fresh_gpu_init,512,512,0,0.8735,0,
+room_no_gloss_r3,save_capture_write,512,512,288,18.1985,3148716,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\034_room_no_gloss_r3\state.ptc
+room_no_oren_r3,fresh_gpu_init,512,512,0,0.9012,0,
+room_no_oren_r3,save_capture_write,512,512,288,9.9198,3148717,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\035_room_no_oren_r3\state.ptc
+room_opaque_glass_r3,fresh_gpu_init,512,512,0,1.0917,0,
+room_opaque_glass_r3,save_capture_write,512,512,288,18.8972,3148705,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\036_room_opaque_glass_r3\state.ptc
+metal_row_r3,fresh_gpu_init,640,192,0,0.6454,0,
+metal_row_r3,save_capture_write,640,192,288,14.1592,1476652,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\037_metal_row_r3\state.ptc
+metal_reference_r3,fresh_gpu_init,640,192,0,0.5906,0,
+metal_reference_r3,save_capture_write,640,192,288,13.8205,1476662,C:\Users\jmoll\OneDrive\Documents\UPENN\Fall 2026\CIS 5650 - GPU\CUDA-Path-Tracer\out\runs\20261007T173247.940766Z_benchmark\038_metal_reference_r3\state.ptc
