@@ -1,5 +1,6 @@
 #pragma once
 
+#include "bvh.h"
 #include "sceneStructs.h"
 
 #include <glm/glm.hpp>
@@ -40,9 +41,31 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
  *
  * You may need to change the parameter list for your purposes!
  */
-__host__ __device__ void scatterRay(
+struct ScatterResult
+{
+    glm::vec3 throughputMultiplier;
+    glm::vec3 contribution;
+    float etaScale;
+    float pdf;
+    bool wasSpecular;
+    bool wasTransmission;
+};
+
+__device__ ScatterResult scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    bool outside,
     const Material& m,
+    SceneLight* lights,
+    int lights_size,
+    Geom* geoms,
+    int geoms_size,
+    Triangle* triangles,
+    int triangles_size,
+    BVHNode* bvh,
+    Material* materials,
+    int materials_size,
+    int materialId,
+    float totalLightArea,
     thrust::default_random_engine& rng);

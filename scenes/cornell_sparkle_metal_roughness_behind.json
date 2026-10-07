@@ -1,0 +1,629 @@
+{
+    "Materials": {
+        "light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                5.0,
+                5.0,
+                5.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "cool_rim_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.45,
+                0.75,
+                1.0
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                0.9,
+                2.2,
+                5.5
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "warm_floor_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.78,
+                0.45
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                3.0,
+                1.9,
+                0.9
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "thin_highlight_light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                0.9,
+                0.95,
+                1.0
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                5.0,
+                5.8,
+                7.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "diffuse_white": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "diffuse_red": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.85,
+                0.35,
+                0.35
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "diffuse_green": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.35,
+                0.85,
+                0.35
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 1.0,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "specular_white": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.0,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "alpha_small": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 0.2,
+            "METALLIC": 0.0,
+            "ROUGHNESS": 0.0,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r0": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.0,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r1": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.04,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r2": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.08,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r3": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.16,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r4": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.28,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r5": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.45,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        },
+        "metal_pane_r6": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.98,
+                0.98,
+                0.98
+            ],
+            "ALPHA": 1.0,
+            "METALLIC": 1.0,
+            "ROUGHNESS": 0.65,
+            "EMISSIVE_FACTOR": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "DOUBLE_SIDED": false
+        }
+    },
+    "Camera": {
+        "RES": [
+            800,
+            800
+        ],
+        "FOVY": 50.0,
+        "ITERATIONS": 5000,
+        "DEPTH": 10,
+        "FILE": "cornell_sparkle_metal_roughness_behind",
+        "EYE": [
+            0.0,
+            5.0,
+            0.85
+        ],
+        "LOOKAT": [
+            0.0,
+            5.0,
+            -3.35
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ]
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "light",
+            "TRANS": [
+                0.0,
+                8,
+                1.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.5,
+                0.35,
+                3.5
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "cool_rim_light",
+            "TRANS": [
+                -4.85,
+                4.0,
+                1.2
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.05,
+                3.8,
+                2.4
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "thin_highlight_light",
+            "TRANS": [
+                3.6,
+                5.0,
+                2.55
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                18.0
+            ],
+            "SCALE": [
+                0.08,
+                3.0,
+                0.8
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "warm_floor_light",
+            "TRANS": [
+                0.0,
+                0.04,
+                1.6
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                4.2,
+                0.03,
+                1.6
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                10.0,
+                0.01,
+                10.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                0.0,
+                10.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                90.0
+            ],
+            "SCALE": [
+                0.01,
+                10.0,
+                10.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [
+                0.0,
+                5.0,
+                -5.0
+            ],
+            "ROTAT": [
+                0.0,
+                90.0,
+                0.0
+            ],
+            "SCALE": [
+                0.01,
+                10.0,
+                10.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_red",
+            "TRANS": [
+                -5.0,
+                5.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.01,
+                10.0,
+                10.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_green",
+            "TRANS": [
+                5.0,
+                5.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.01,
+                10.0,
+                10.0
+            ]
+        },
+        {
+            "TYPE": "mesh",
+            "FILE": "sparkle_star_rail.glb",
+            "TRANS": [
+                4.3715,
+                5.0,
+                1.5
+            ],
+            "ROTAT": [
+                0.0,
+                180.0,
+                -90.0
+            ],
+            "SCALE": [
+                4.0,
+                4.0,
+                4.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r0",
+            "TRANS": [
+                -4.1,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.95,
+                6.8,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r1",
+            "TRANS": [
+                -2.8,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.55,
+                6.8,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r2",
+            "TRANS": [
+                -1.5,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.55,
+                6.8,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r3",
+            "TRANS": [
+                -0.2,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.55,
+                6.8,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r4",
+            "TRANS": [
+                1.1,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.55,
+                6.8,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r5",
+            "TRANS": [
+                2.4,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.55,
+                6.8,
+                0.05
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "metal_pane_r6",
+            "TRANS": [
+                3.7,
+                5.0,
+                -3.35
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                1.55,
+                6.8,
+                0.05
+            ]
+        }
+    ],
+    "Environment": {
+        "Path": "none"
+    }
+}

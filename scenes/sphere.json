@@ -5,7 +5,11 @@
         {
             "TYPE":"Emitting",
             "RGB":[1.0,1.0,1.0],
-            "EMITTANCE":5.0
+            "ALPHA":1.0,
+            "METALLIC":0.0,
+            "ROUGHNESS":1.0,
+            "EMISSIVE_FACTOR":[5.0,5.0,5.0],
+            "DOUBLE_SIDED":false
         }
     },
     "Camera":

@@ -5,28 +5,73 @@
         {
             "TYPE":"Emitting",
             "RGB":[1.0, 1.0, 1.0],
-            "EMITTANCE":5.0
+            "ALPHA":1.0,
+            "METALLIC":0.0,
+            "ROUGHNESS":1.0,
+            "EMISSIVE_FACTOR":[5.0, 5.0, 5.0],
+            "DOUBLE_SIDED":false
         },
         "diffuse_white":
         {
             "TYPE":"Diffuse",
-            "RGB":[0.98, 0.98, 0.98]
+            "RGB":[0.98, 0.98, 0.98],
+            "ALPHA":1.0,
+            "METALLIC":0.0,
+            "ROUGHNESS":1.0,
+            "EMISSIVE_FACTOR":[0.0, 0.0, 0.0],
+            "DOUBLE_SIDED":false
         },
         "diffuse_red":
         {
             "TYPE":"Diffuse",
-            "RGB":[0.85, 0.35, 0.35]
+            "RGB":[0.85, 0.35, 0.35],
+            "ALPHA":1.0,
+            "METALLIC":0.0,
+            "ROUGHNESS":1.0,
+            "EMISSIVE_FACTOR":[0.0, 0.0, 0.0],
+            "DOUBLE_SIDED":false
         },
         "diffuse_green":
         {
             "TYPE":"Diffuse",
-            "RGB":[0.35, 0.85, 0.35]
+            "RGB":[0.35, 0.85, 0.35],
+            "ALPHA":1.0,
+            "METALLIC":0.0,
+            "ROUGHNESS":1.0,
+            "EMISSIVE_FACTOR":[0.0, 0.0, 0.0],
+            "DOUBLE_SIDED":false
         },
         "specular_white":
         {
             "TYPE":"Specular",
             "RGB":[0.98, 0.98, 0.98],
-            "ROUGHNESS":0.0
+            "ALPHA":1.0,
+            "METALLIC":1.0,
+            "ROUGHNESS":0.0,
+            "EMISSIVE_FACTOR":[0.0, 0.0, 0.0],
+            "DOUBLE_SIDED":false
+        },
+        "alpha_small":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.98,0.98,0.98],
+            "ALPHA":0.2,
+            "METALLIC":0.0,
+            "ROUGHNESS":0.0,
+            "EMISSIVE_FACTOR":[0.0,0.0,0.0],
+            "DOUBLE_SIDED":false
+        },
+        "refractive_glass":
+        {
+            "TYPE":"Refractive",
+            "RGB":[0.98,0.98,1.0],
+            "ALPHA":1.0,
+            "METALLIC":0.0,
+            "ROUGHNESS":0.0,
+            "EMISSIVE_FACTOR":[0.0,0.0,0.0],
+            "DOUBLE_SIDED":false,
+            "REFRACTIVE":true,
+            "IOR":1.5
         }
     },
     "Camera":
@@ -85,11 +130,11 @@
             "SCALE":[0.01,10.0,10.0]
         },
         {
-            "TYPE":"sphere",
-            "MATERIAL":"specular_white",
-            "TRANS":[-1.0,4.0,-1.0],
+            "TYPE":"mesh",
+            "FILE": "glass_skull/scene.gltf",
+            "TRANS":[-7.0,-4.0,3.0],
             "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[3.0,3.0,3.0]
+            "SCALE":[15.0,15.0,15.0]
         }
     ]
 }

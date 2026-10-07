@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(cis565_path_tracer LANGUAGES CUDA CXX)
+project(cis565_path_tracer LANGUAGES CUDA CXX C)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -22,6 +22,17 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 find_package(OpenGL REQUIRED)
+
+set(OIDN_ROOT "${CMAKE_SOURCE_DIR}/denoiser/oidn-2.5.1.x86_64.linux")
+find_package(OpenImageDenoise CONFIG REQUIRED
+    PATHS "${OIDN_ROOT}/lib/cmake/OpenImageDenoise-2.5.1"
+    NO_DEFAULT_PATH
+)
+set_target_properties(OpenImageDenoise OpenImageDenoise_core PROPERTIES
+    MAP_IMPORTED_CONFIG_DEBUG Release
+    MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
+    MAP_IMPORTED_CONFIG_MINSIZEREL Release
+)
 
 if(UNIX)
     include_directories("${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}")
@@ -49,9 +60,13 @@ find_package(GLM REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
 set(headers
+    src/bvh.h
+    src/dielectric.h
     src/image.h
     src/interactions.h
     src/intersections.h
+    src/microfacet.h
+    src/nee.h
     src/glslUtility.hpp
     src/pathtrace.h
     src/scene.h
@@ -61,13 +76,18 @@ set(headers
 
 set(sources
     src/main.cpp
+    src/bvh.cpp
     src/stb.cpp
     src/image.cpp
     src/glslUtility.cpp
     src/pathtrace.cu
     src/intersections.cu
     src/interactions.cu
+    src/dielectric.cu
+    src/microfacet.cu
+    src/nee.cu
     src/scene.cpp
+    src/tinygltf/tiny_gltf_v3.c
     src/utilities.cpp
 )
 
@@ -109,13 +129,19 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
+    OpenImageDenoise
     #stream_compaction  # TODO: uncomment if using your stream compaction
 )
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE TINYGLTF3_ENABLE_FS)
+target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE "${OIDN_ROOT}/lib")
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+    BUILD_RPATH "${OIDN_ROOT}/lib"
+    INSTALL_RPATH "${OIDN_ROOT}/lib"
+)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES "75;86;89")
 
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,RelWithDebInfo>,$<COMPILE_LANGUAGE:CUDA>>:-G;-src-in-ptx>")
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
-

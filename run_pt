@@ -1,0 +1,1 @@
+env XDG_SESSION_TYPE=x11 __GLX_VENDOR_LIBRARY_NAME=nvidia ./build/bin/cis565_path_tracer $1

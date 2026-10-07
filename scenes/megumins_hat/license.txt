@@ -1,0 +1,11 @@
+Model Information:
+* title:	Megumin's Hat
+* source:	https://sketchfab.com/3d-models/megumins-hat-aac68a65adac4c69a8b0ed15ffd5ef3e
+* author:	Superior (https://sketchfab.com/SuperiorOne)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Megumin's Hat" (https://sketchfab.com/3d-models/megumins-hat-aac68a65adac4c69a8b0ed15ffd5ef3e) by Superior (https://sketchfab.com/SuperiorOne) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

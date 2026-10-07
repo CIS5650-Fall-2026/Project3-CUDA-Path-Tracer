@@ -71,3 +71,33 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+/**
+ * Test intersection between a ray and a world-space triangle.
+ *
+ * TODO: implement this.
+ */
+__host__ __device__ float triangleIntersectionTest(
+    Triangle triangle,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+__host__ __device__ float triangleIntersectionTest(
+    Triangle triangle,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    glm::vec2& uv);
+
+__host__ __device__ float triangleIntersectionTest(
+    Triangle triangle,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside,
+    glm::vec2& uv,
+    glm::vec3& tangent,
+    float& tangentSign);

@@ -1,0 +1,288 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1385,
+      "max": [
+        0.051396358758211136,
+        -0.06174753978848457,
+        0.1610725373029709
+      ],
+      "min": [
+        -0.0210408978164196,
+        -0.06174753978848457,
+        0.10066867619752884
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 16620,
+      "componentType": 5126,
+      "count": 1385,
+      "max": [
+        0.996871829032898,
+        1.0,
+        0.9821498990058899
+      ],
+      "min": [
+        -0.9756235480308533,
+        -0.7054867148399353,
+        -0.9990549087524414
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1385,
+      "max": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 6996,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 33240,
+      "componentType": 5126,
+      "count": 38870,
+      "max": [
+        0.051396358758211136,
+        -0.06174753978848457,
+        0.17768943309783936
+      ],
+      "min": [
+        -0.03881299868226051,
+        -0.13313516974449158,
+        0.09646043181419373
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 499680,
+      "componentType": 5126,
+      "count": 38870,
+      "max": [
+        0.9999327659606934,
+        1.0,
+        0.9999411702156067
+      ],
+      "min": [
+        -0.9998626112937927,
+        -0.9997963905334473,
+        -0.9999933242797852
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 11080,
+      "componentType": 5126,
+      "count": 38870,
+      "max": [
+        0.9912930130958557,
+        0.9920409917831421
+      ],
+      "min": [
+        0.00800199992954731,
+        0.060759998857975006
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 27984,
+      "componentType": 5125,
+      "count": 213840,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Terrie Simmons-Ehrhardt (https://sketchfab.com/terrielsimmons)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/glass-skull-2ae73736baa34083860880ea1cd92978",
+      "title": "Glass Skull"
+    },
+    "generator": "Sketchfab-13.17.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 883344,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 322040,
+      "byteOffset": 883344,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 966120,
+      "byteOffset": 1205384,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 2171504,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/material0000_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1.0
+        },
+        "KHR_materials_ior": {
+          "ior": 1.47
+        },
+        "KHR_materials_volume": {
+          "thicknessFactor": 0.16,
+          "attenuationDistance": 8.5,
+          "attenuationColor": [
+            1.0,
+            0.88,
+            0.945
+          ]
+        }
+      },
+      "name": "material0000",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1.0,
+          0.955,
+          0.978,
+          1.0
+        ],
+        "roughnessFactor": 0.0,
+        "metallicFactor": 0.0
+      },
+      "doubleSided": true,
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        2.114608615647114,
+        -0.3412023841810281,
+        3.026983789565776,
+        0.0,
+        0.03375065021796342,
+        -3.6819966634033108,
+        -0.4386133430670051,
+        0.0,
+        3.0459662937311407,
+        0.2776719207460485,
+        -2.09657032993681,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        3
+      ],
+      "name": "glassskull_cut.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_3"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}

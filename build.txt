@@ -1,0 +1,8 @@
+(cd build && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Release .. && make)
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/veerkakar/Documents/classes/gpu/3-CUDA-Path-Tracer/build
+make[1]: Entering directory '/home/veerkakar/Documents/classes/gpu/3-CUDA-Path-Tracer/build'
+make[1]: *** No targets specified and no makefile found.  Stop.
+make[1]: Leaving directory '/home/veerkakar/Documents/classes/gpu/3-CUDA-Path-Tracer/build'
+make: *** [GNUmakefile:19: Release] Error 2
