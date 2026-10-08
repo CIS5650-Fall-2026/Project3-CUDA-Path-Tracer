@@ -18,6 +18,7 @@
 #include <cuda_gl_interop.h>
 
 #include <cstdlib>
+#include <filesystem>
 #include <cstring>
 #include <iostream>
 #include <fstream>
@@ -307,7 +308,7 @@ void mainLoop()
 
         runCuda();
 
-        std::string title = "CIS565 Path Tracer | " + utilityCore::convertIntToString(iteration) + " Iterations";
+        std::string title = "CIS565 Path Tracer | Mark Melkumyan Fall 2026 |" + utilityCore::convertIntToString(iteration) + " Iterations";
         glfwSetWindowTitle(window, title.c_str());
         glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
         glBindTexture(GL_TEXTURE_2D, displayImage);
@@ -395,6 +396,7 @@ int main(int argc, char** argv)
 void saveImage()
 {
     float samples = iteration;
+    const Camera& cam = renderState->camera;
     // output image file
     Image img(width, height);
 
@@ -403,15 +405,18 @@ void saveImage()
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+            glm::ivec3 color = finalizeColor(renderState->image[index], iteration, cam.exposure, cam.gammaCorrect);
+            img.setPixel(width - 1 - x, y, glm::vec3(color) / 255.f);
         }
     }
 
-    std::string filename = renderState->imageName;
+    // Output to /out folder
+    std::filesystem::path outDir = "out";
+    std::filesystem::create_directories(outDir);
+
     std::ostringstream ss;
-    ss << filename << "." << startTimeString << "." << samples << "samp";
-    filename = ss.str();
+    ss << renderState->imageName << "." << startTimeString << "." << samples << "samp";
+    std::string filename = (outDir / ss.str()).string();
 
     // CHECKITOUT
     img.savePNG(filename);

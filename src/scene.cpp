@@ -6,6 +6,7 @@
 #include <glm/gtx/string_cast.hpp>
 #include "json.hpp"
 
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -13,6 +14,16 @@
 
 using namespace std;
 using json = nlohmann::json;
+
+static const unordered_map<string, GeomType> STR_TO_GEOM_TYPE = {
+    {"cube",          CUBE},
+    {"sphere",        SPHERE},
+    {"sdf_sphere",    SDF_SPHERE},
+    {"sdf_cube",      SDF_CUBE},
+    {"sdf_metaballs", SDF_METABALLS},
+    {"sdf_menger",    SDF_MENGER},
+    {"sdf_mandelbulb",SDF_MANDELBULB},
+};
 
 Scene::Scene(string filename)
 {
@@ -58,6 +69,14 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = 1.f;
+        }
+        else if (p["TYPE"] == "Refractive")
+        {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasRefractive = 1.f;
+            newMaterial.indexOfRefraction = p["IOR"];
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -67,14 +86,14 @@ void Scene::loadFromJSON(const std::string& jsonName)
     {
         const auto& type = p["TYPE"];
         Geom newGeom;
-        if (type == "cube")
-        {
-            newGeom.type = CUBE;
+
+        const auto geomType = STR_TO_GEOM_TYPE.find(type.get<string>());
+        if (geomType == STR_TO_GEOM_TYPE.end()) {
+            cout << "Unknown object TYPE: " << type << endl;
+            exit(-1);
         }
-        else
-        {
-            newGeom.type = SPHERE;
-        }
+        newGeom.type = geomType->second;
+        
         newGeom.materialid = MatNameToID[p["MATERIAL"]];
         const auto& trans = p["TRANS"];
         const auto& rotat = p["ROTAT"];
@@ -116,6 +135,21 @@ void Scene::loadFromJSON(const std::string& jsonName)
         2 * yscaled / (float)camera.resolution.y);
 
     camera.view = glm::normalize(camera.lookAt - camera.position);
+
+    // Optional DOF. Lens width of 0 = pinhole
+    camera.lensRadius = cameraData.value("LENS_RADIUS", 0.f);
+    camera.focalDistance = cameraData.value("FOCAL_DISTANCE", glm::length(camera.lookAt - camera.position));
+
+    // Post process
+    camera.exposure = cameraData.value("EXPOSURE", 1.f);
+    camera.gammaCorrect = cameraData.value("GAMMA_CORRECTION", false);
+
+    // Optional env map
+    const json envMap = data.value("environment_map", json());
+    if (envMap.is_string() && !envMap.get<std::string>().empty()) {
+        const std::filesystem::path sceneDir = std::filesystem::path(jsonName).parent_path();
+        envMapPath = (sceneDir / envMap.get<std::string>()).string();
+    }
 
     //set up render camera stuff
     int arraylen = camera.resolution.x * camera.resolution.y;

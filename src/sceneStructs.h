@@ -12,7 +12,12 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    SDF_SPHERE,
+    SDF_CUBE,
+    SDF_METABALLS,
+    SDF_MENGER,
+    SDF_MANDELBULB
 };
 
 struct Ray
@@ -57,6 +62,10 @@ struct Camera
     glm::vec3 right;
     glm::vec2 fov;
     glm::vec2 pixelLength;
+    float lensRadius;
+    float focalDistance;
+    float exposure;
+    bool gammaCorrect;
 };
 
 struct RenderState
@@ -84,4 +93,5 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  int geomId; // For SDF specific shading
 };

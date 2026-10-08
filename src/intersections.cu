@@ -1,4 +1,5 @@
 #include "intersections.h"
+#include "sdf.h"
 
 __host__ __device__ float boxIntersectionTest(
     Geom box,
@@ -104,10 +105,50 @@ __host__ __device__ float sphereIntersectionTest(
 
     intersectionPoint = multiplyMV(sphere.transform, glm::vec4(objspaceIntersection, 1.f));
     normal = glm::normalize(multiplyMV(sphere.invTranspose, glm::vec4(objspaceIntersection, 0.f)));
-    if (!outside)
-    {
-        normal = -normal;
-    }
 
     return glm::length(r.origin - intersectionPoint);
+}
+
+#define MAX_MARCH_STEPS 512
+#define T_MAX 200.f
+#define ISECT_EPSILON 0.0001f
+__host__ __device__ float sdfIntersectionTest(
+    Geom sdf,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside) {
+
+    // Convert ray to object space
+    Ray q;
+    q.origin    =                multiplyMV(sdf.inverseTransform, glm::vec4(r.origin   , 1.0f));
+    q.direction = glm::normalize(multiplyMV(sdf.inverseTransform, glm::vec4(r.direction, 0.0f)));
+
+    // RAY MARCH
+    float t = 0.f;
+    glm::vec3 p;
+    float dist;
+    bool hit = false;
+    for (int i=0; i < MAX_MARCH_STEPS && t <= T_MAX; ++i) {
+        // Step along ray by t
+        p = q.origin + t * q.direction;
+
+        // Get distance to surface
+        dist = sceneSdf(p, sdf.type);
+        if (abs(dist) < ISECT_EPSILON) {
+            hit = true;
+            break;
+        }
+        t += fabsf(dist);
+    } 
+
+    if (hit) {
+        // Convert p to worldspace
+        intersectionPoint = multiplyMV(sdf.transform, glm::vec4(p, 1.f)); 
+        normal = glm::normalize(multiplyMV(sdf.invTranspose, glm::vec4(sdfNormal(p, sdf.type), 0.f))); 
+        outside = true; // FIXME?
+        return glm::length(r.origin - intersectionPoint);
+    } else {
+        return -1.f;
+    }
 }

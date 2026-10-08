@@ -13,4 +13,6 @@ public:
     std::vector<Geom> geoms;
     std::vector<Material> materials;
     RenderState state;
+    // HDRI path. Empty means no env map
+    std::string envMapPath;
 };

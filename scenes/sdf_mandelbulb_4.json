@@ -1,0 +1,64 @@
+{
+    "environment_map": "../env_maps/Frozen_Waterfall_Ref.hdr",
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 1.0, 1.0],
+            "EMITTANCE":5.0
+        },
+        "diffuse_white":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.98, 0.98, 0.98]
+        },
+        "diffuse_red":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.85, 0.35, 0.35]
+        },
+        "diffuse_green":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.35, 0.85, 0.35]
+        },
+        "specular_white":
+        {
+            "TYPE":"Specular",
+            "RGB":[0.98, 0.98, 0.98],
+            "ROUGHNESS":0.0
+        },
+        "glass":
+        {
+            "TYPE": "Refractive",
+            "RGB": [1.0, 1.0, 1.0],
+            "IOR": 1.5
+        }
+    },
+    "Camera":
+    {
+        "RES":[400,400],
+        "FOVY":45.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"sdf_mandelbulb_4",
+        "EYE":[-2.682,5.896,1.189],
+        "LOOKAT":[-1.962,4.500,-4.118],
+        "UP":[0.0,1.0,0.0],
+        "LENS_RADIUS":0.00,
+        "FOCAL_DISTANCE":1.1,
+        "EXPOSURE":0.5,
+        "GAMMA_CORRECTION":true
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"sdf_mandelbulb",
+            "MATERIAL":"Diffuse",
+            "TRANS":[0.0,4.5,0.0],
+            "ROTAT":[-45.0,0.0,0.0],
+            "SCALE":[3.0,3.0,3.0]
+        }
+    ]
+}

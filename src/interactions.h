@@ -46,3 +46,6 @@ __host__ __device__ void scatterRay(
     glm::vec3 normal,
     const Material& m,
     thrust::default_random_engine& rng);
+
+
+__host__ __device__ float fresnelDielectric(float cosThetaI, float ior);

@@ -557,3 +557,7 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# Exclude all but one HDRI
+env_maps/*
+!env_maps/interior_atelier_soft_daylight.hdr
