@@ -178,6 +178,7 @@ tramp
 
 ### CMake ###
 CMakeCache.txt
+CMakeSettings.json
 CMakeFiles
 CMakeScripts
 Makefile

@@ -1,124 +1,201 @@
 #include "scene.h"
 
-#include "utilities.h"
+#include "bvh.h"
+#include "material.h"
+#include "pathTraceCommon.h"
+#include "textureLoader.h"
+#include "cudaHelpers.h"
 
-#include <glm/gtc/matrix_inverse.hpp>
-#include <glm/gtx/string_cast.hpp>
-#include "json.hpp"
+// External Includes
+#include <cuda_runtime.h>
 
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <unordered_map>
-
-using namespace std;
-using json = nlohmann::json;
-
-Scene::Scene(string filename)
+Scene::Scene()
 {
-    cout << "Reading scene from " << filename << " ..." << endl;
-    cout << " " << endl;
-    auto ext = filename.substr(filename.find_last_of('.'));
-    if (ext == ".json")
-    {
-        loadFromJSON(filename);
-        return;
+}
+
+Scene::Scene(const std::vector<Geom>& geometry,
+    int lightCount,
+    const std::vector<Triangle>& triangles, 
+    const std::vector<BLASNode>& blasNodes, 
+    const std::vector<TLASNode>& tlasNodes, 
+    const std::vector<Material>& materials, 
+    const std::vector<cudaTextureObject_t>& textures, 
+    const std::vector<cudaArray_t>& textureArrays) :
+	m_geometryCount(geometry.size()),
+	m_lightCount(lightCount),
+	m_triangleCount(triangles.size()),
+	m_blasNodeCount(blasNodes.size()),
+	m_tlasNodeCount(tlasNodes.size()),
+	m_materialCount(materials.size()),
+	m_textures(textures),
+	m_textureArrays(textureArrays)
+{
+    if (!geometry.empty()) {
+        CUDA_CHECK(cudaMalloc((void**)&dev_geometry, geometry.size() * sizeof(Geom)));
+        CUDA_CHECK(cudaMemcpy(dev_geometry, geometry.data(), geometry.size() * sizeof(Geom), cudaMemcpyHostToDevice));
     }
-    else
-    {
-        cout << "Couldn't read from " << filename << endl;
-        exit(-1);
+
+    // Allocate materials
+    if (!materials.empty()) {
+        CUDA_CHECK(cudaMalloc((void**)&dev_materials, materials.size() * sizeof(Material)));
+        CUDA_CHECK(cudaMemcpy(dev_materials, materials.data(), materials.size() * sizeof(Material), cudaMemcpyHostToDevice));
+    }
+
+    // Allocate triangles
+    if (!triangles.empty()) {
+        CUDA_CHECK(cudaMalloc((void**)&dev_triangles, triangles.size() * sizeof(Triangle)));
+        CUDA_CHECK(cudaMemcpy(dev_triangles, triangles.data(), triangles.size() * sizeof(Triangle), cudaMemcpyHostToDevice));
+    }
+
+    // Allocate BLAS nodes
+    if (!blasNodes.empty()) {
+        CUDA_CHECK(cudaMalloc((void**)&dev_blasNodes, blasNodes.size() * sizeof(BLASNode)));
+        CUDA_CHECK(cudaMemcpy(dev_blasNodes, blasNodes.data(), blasNodes.size() * sizeof(BLASNode), cudaMemcpyHostToDevice));
+    }
+
+    // Allocate TLAS nodes
+    if (!tlasNodes.empty()) {
+        CUDA_CHECK(cudaMalloc((void**)&dev_tlasNodes, tlasNodes.size() * sizeof(TLASNode)));
+        CUDA_CHECK(cudaMemcpy(dev_tlasNodes, tlasNodes.data(), tlasNodes.size() * sizeof(TLASNode), cudaMemcpyHostToDevice));
     }
 }
 
-void Scene::loadFromJSON(const std::string& jsonName)
+Scene::~Scene()
 {
-    std::ifstream f(jsonName);
-    json data = json::parse(f);
-    const auto& materialsData = data["Materials"];
-    std::unordered_map<std::string, uint32_t> MatNameToID;
-    for (const auto& item : materialsData.items())
-    {
-        const auto& name = item.key();
-        const auto& p = item.value();
-        Material newMaterial{};
-        // TODO: handle materials loading differently
-        if (p["TYPE"] == "Diffuse")
-        {
-            const auto& col = p["RGB"];
-            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
-        }
-        else if (p["TYPE"] == "Emitting")
-        {
-            const auto& col = p["RGB"];
-            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
-            newMaterial.emittance = p["EMITTANCE"];
-        }
-        else if (p["TYPE"] == "Specular")
-        {
-            const auto& col = p["RGB"];
-            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
-        }
-        MatNameToID[name] = materials.size();
-        materials.emplace_back(newMaterial);
+    if (dev_geometry) {
+        cudaFree(dev_geometry);
+        dev_geometry = nullptr;
     }
-    const auto& objectsData = data["Objects"];
-    for (const auto& p : objectsData)
-    {
-        const auto& type = p["TYPE"];
-        Geom newGeom;
-        if (type == "cube")
-        {
-            newGeom.type = CUBE;
-        }
-        else
-        {
-            newGeom.type = SPHERE;
-        }
-        newGeom.materialid = MatNameToID[p["MATERIAL"]];
-        const auto& trans = p["TRANS"];
-        const auto& rotat = p["ROTAT"];
-        const auto& scale = p["SCALE"];
-        newGeom.translation = glm::vec3(trans[0], trans[1], trans[2]);
-        newGeom.rotation = glm::vec3(rotat[0], rotat[1], rotat[2]);
-        newGeom.scale = glm::vec3(scale[0], scale[1], scale[2]);
-        newGeom.transform = utilityCore::buildTransformationMatrix(
-            newGeom.translation, newGeom.rotation, newGeom.scale);
-        newGeom.inverseTransform = glm::inverse(newGeom.transform);
-        newGeom.invTranspose = glm::inverseTranspose(newGeom.transform);
 
-        geoms.push_back(newGeom);
+    if (dev_triangles) {
+        cudaFree(dev_triangles);
+        dev_triangles = nullptr;
     }
-    const auto& cameraData = data["Camera"];
-    Camera& camera = state.camera;
-    RenderState& state = this->state;
-    camera.resolution.x = cameraData["RES"][0];
-    camera.resolution.y = cameraData["RES"][1];
-    float fovy = cameraData["FOVY"];
-    state.iterations = cameraData["ITERATIONS"];
-    state.traceDepth = cameraData["DEPTH"];
-    state.imageName = cameraData["FILE"];
-    const auto& pos = cameraData["EYE"];
-    const auto& lookat = cameraData["LOOKAT"];
-    const auto& up = cameraData["UP"];
-    camera.position = glm::vec3(pos[0], pos[1], pos[2]);
-    camera.lookAt = glm::vec3(lookat[0], lookat[1], lookat[2]);
-    camera.up = glm::vec3(up[0], up[1], up[2]);
 
-    //calculate fov based on resolution
-    float yscaled = tan(fovy * (PI / 180));
-    float xscaled = (yscaled * camera.resolution.x) / camera.resolution.y;
-    float fovx = (atan(xscaled) * 180) / PI;
-    camera.fov = glm::vec2(fovx, fovy);
+    if (dev_blasNodes) {
+        cudaFree(dev_blasNodes);
+        dev_blasNodes = nullptr;
+    }
 
-    camera.right = glm::normalize(glm::cross(camera.view, camera.up));
-    camera.pixelLength = glm::vec2(2 * xscaled / (float)camera.resolution.x,
-        2 * yscaled / (float)camera.resolution.y);
+    if (dev_tlasNodes) {
+        cudaFree(dev_tlasNodes);
+        dev_tlasNodes = nullptr;
+    }
 
-    camera.view = glm::normalize(camera.lookAt - camera.position);
+    if (dev_materials) {
+        cudaFree(dev_materials);
+        dev_materials = nullptr;
+    }
 
-    //set up render camera stuff
-    int arraylen = camera.resolution.x * camera.resolution.y;
-    state.image.resize(arraylen);
-    std::fill(state.image.begin(), state.image.end(), glm::vec3());
+    for(auto texture : m_textures) {
+        if(texture) {
+            cudaDestroyTextureObject(texture);
+        }
+	}
+    m_textures.clear();
+
+    for(auto textureArray : m_textureArrays) {
+        if (textureArray) {
+            cudaFreeArray(textureArray);
+        }
+    }
+	m_textureArrays.clear();
+}
+
+Scene& Scene::operator=(Scene&& other) noexcept
+{
+    if (this != &other) {
+		freeDeviceMemory();
+
+        // Move from other scene
+        dev_geometry = other.dev_geometry;
+        m_geometryCount = other.m_geometryCount;
+        dev_materials = other.dev_materials;
+        m_materialCount = other.m_materialCount;
+        dev_triangles = other.dev_triangles;
+        m_triangleCount = other.m_triangleCount;
+		dev_blasNodes = other.dev_blasNodes;
+		m_blasNodeCount = other.m_blasNodeCount;
+        dev_tlasNodes = other.dev_tlasNodes;
+		m_tlasNodeCount = other.m_tlasNodeCount;
+		m_textures = std::move(other.m_textures);
+		m_textureArrays = std::move(other.m_textureArrays);
+		
+        // Clear other scene
+        other.dev_geometry = nullptr;
+        other.m_geometryCount = 0;
+        other.dev_materials = nullptr;
+        other.m_materialCount = 0;
+		other.dev_triangles = nullptr;
+		other.m_triangleCount = 0;
+        other.dev_blasNodes = nullptr;
+        other.m_blasNodeCount = 0;
+		other.dev_tlasNodes = nullptr;
+		other.m_tlasNodeCount = 0;
+    }
+
+    return *this;
+}
+
+Scene::Scene(Scene&& other) noexcept :
+    dev_geometry(other.dev_geometry),
+    m_geometryCount(other.m_geometryCount),
+    dev_materials(other.dev_materials),
+    m_materialCount(other.m_materialCount),
+    dev_triangles(other.dev_triangles),
+    m_triangleCount(other.m_triangleCount),
+    dev_blasNodes(other.dev_blasNodes),
+    m_blasNodeCount(other.m_blasNodeCount),
+	dev_tlasNodes(other.dev_tlasNodes),
+	m_tlasNodeCount(other.m_tlasNodeCount),
+    m_textures(std::move(other.m_textures)),
+	m_textureArrays(std::move(other.m_textureArrays))
+{
+    other.dev_geometry = nullptr;
+    other.m_geometryCount = 0;
+    other.dev_materials = nullptr;
+    other.m_materialCount = 0;
+    other.dev_triangles = nullptr;
+    other.m_triangleCount = 0;
+    other.dev_blasNodes = nullptr;
+    other.m_blasNodeCount = 0;
+    other.dev_tlasNodes = nullptr;
+    other.m_tlasNodeCount = 0;
+}
+
+void Scene::freeDeviceMemory()
+{
+    if (dev_geometry) {
+        cudaFree(dev_geometry);
+        dev_geometry = nullptr;
+    }
+
+    if (dev_materials) {
+        cudaFree(dev_materials);
+        dev_materials = nullptr;
+    }
+
+    if (dev_triangles) {
+        cudaFree(dev_triangles);
+        dev_triangles = nullptr;
+    }
+
+    if (dev_blasNodes) {
+        cudaFree(dev_blasNodes);
+        dev_blasNodes = nullptr;
+    }
+
+    for (auto texture : m_textures) {
+        if (texture) {
+            cudaDestroyTextureObject(texture);
+        }
+    }
+    m_textures.clear();
+
+    for (auto textureArray : m_textureArrays) {
+        if (textureArray) {
+            cudaFreeArray(textureArray);
+        }
+    }
+    m_textureArrays.clear();
 }

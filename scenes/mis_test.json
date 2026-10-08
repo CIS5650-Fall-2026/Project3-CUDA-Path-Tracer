@@ -1,0 +1,161 @@
+{
+    "Materials": {
+        "light_small": {
+            "TYPE": "Emitting",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "EMITTANCE": 800.0
+        },
+        "light_med_small": {
+            "TYPE": "Emitting",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "EMITTANCE": 200.0
+        },
+        "light_med_large": {
+            "TYPE": "Emitting",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "EMITTANCE": 50.0
+        },
+        "light_large": {
+            "TYPE": "Emitting",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "EMITTANCE": 12.5
+        },
+
+        "diffuse_white": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.2, 0.2, 0.2 ]
+        },
+        "diffuse_red": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.5, 0.1, 0.1 ]
+        },
+        "diffuse_green": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.1, 0.5, 0.1 ]
+        },
+
+        "glossy_002": {
+            "TYPE": "Specular",
+            "RGB": [ 0.7, 0.7, 0.7 ],
+            "ROUGHNESS": 0.002
+        },
+        "glossy_250": {
+            "TYPE": "Specular",
+            "RGB": [ 0.7, 0.7, 0.7 ],
+            "ROUGHNESS": 0.25
+        },
+        "glossy_500": {
+            "TYPE": "Specular",
+            "RGB": [ 0.7, 0.7, 0.7 ],
+            "ROUGHNESS": 0.5
+        },
+        "glossy_1000": {
+            "TYPE": "Specular",
+            "RGB": [ 0.7, 0.7, 0.7 ],
+            "ROUGHNESS": 0.90
+        }
+    },
+    "Camera": {
+        "RES": [ 800, 800 ],
+        "FOVY": 40.0,
+        "ITERATIONS": 2000,
+        "DEPTH": 6,
+        "FILE": "veach_mis_aligned",
+        "EYE": [ 0.0, 3.5, 10.0 ],
+        "LOOKAT": [ 0.0, 3.5, 0.0 ],
+        "UP": [ 0.0, 1.0, 0.0 ]
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [ 0.0, 0.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 15.0, 0.01, 15.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [ 0.0, 10.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 90.0 ],
+            "SCALE": [ 0.01, 15.0, 15.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [ 0.0, 5.0, -5.0 ],
+            "ROTAT": [ 0.0, 90.0, 0.0 ],
+            "SCALE": [ 0.01, 15.0, 15.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_red",
+            "TRANS": [ -6.0, 5.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.01, 15.0, 15.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_green",
+            "TRANS": [ 6.0, 5.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.01, 15.0, 15.0 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "light_small",
+            "TRANS": [ -3.75, 7.0, -3.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.06, 0.06, 0.06 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "light_med_small",
+            "TRANS": [ -1.25, 7.0, -3.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.18, 0.18, 0.18 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "light_med_large",
+            "TRANS": [ 1.25, 7.0, -3.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.54, 0.54, 0.54 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "light_large",
+            "TRANS": [ 3.75, 7.0, -3.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 1.62, 1.62, 1.62 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glossy_002",
+            "TRANS": [ 0.0, 4.2, -1.0 ],
+            "ROTAT": [ 35.0, 0.0, 0.0 ],
+            "SCALE": [ 10.0, 0.02, 1.5 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glossy_250",
+            "TRANS": [ 0.0, 3.1, 0.5 ],
+            "ROTAT": [ 31.0, 0.0, 0.0 ],
+            "SCALE": [ 10.0, 0.02, 1.5 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glossy_500",
+            "TRANS": [ 0.0, 2.1, 2.0 ],
+            "ROTAT": [ 27.0, 0.0, 0.0 ],
+            "SCALE": [ 10.0, 0.02, 1.5 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "glossy_1000",
+            "TRANS": [ 0.0, 1.2, 3.5 ],
+            "ROTAT": [ 22.0, 0.0, 0.0 ],
+            "SCALE": [ 10.0, 0.02, 1.5 ]
+        }
+    ]
+}

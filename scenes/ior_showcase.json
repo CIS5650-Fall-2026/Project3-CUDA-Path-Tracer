@@ -1,0 +1,146 @@
+{
+    "Materials": {
+        "light": {
+            "TYPE": "Emitting",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "EMITTANCE": 4.0
+        },
+        "diffuse_white": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.90, 0.90, 0.90 ]
+        },
+        "diffuse_red": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.85, 0.35, 0.35 ]
+        },
+        "diffuse_green": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.35, 0.85, 0.35 ]
+        },
+        "diffuse_blue": {
+            "TYPE": "Diffuse",
+            "RGB": [ 0.2, 0.4, 0.85 ]
+        },
+        "glass_ior_1_10": {
+            "TYPE": "Glass",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "IOR": 1.1
+        },
+        "glass_ior_1_33": {
+            "TYPE": "Glass",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "IOR": 1.33
+        },
+        "glass_ior_1_50": {
+            "TYPE": "Glass",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "IOR": 1.5
+        },
+        "glass_ior_1_80": {
+            "TYPE": "Glass",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "IOR": 1.8
+        },
+        "glass_ior_2_42": {
+            "TYPE": "Glass",
+            "RGB": [ 1.0, 1.0, 1.0 ],
+            "IOR": 2.42
+        }
+    },
+    "Camera": {
+        "RES": [ 1920, 1080 ],
+        "FOVY": 40.0,
+        "ITERATIONS": 2048,
+        "DEPTH": 12,
+        "FILE": "ior_showcase",
+        "EYE": [ 0.0, 4.0, 17.0 ],
+        "LOOKAT": [ 0.0, 3.0, 0.0 ],
+        "UP": [ 0.0, 1.0, 0.0 ]
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "light",
+            "TRANS": [ 0.0, 7.9, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 19.0, 0.2, 2.5 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [ 0.0, 0.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 20.0, 0.01, 8.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [ 0.0, 8.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 20.0, 0.01, 8.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_white",
+            "TRANS": [ 0.0, 4.0, -4.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 20.0, 8.0, 0.01 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_red",
+            "TRANS": [ -10.0, 4.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.01, 8.0, 8.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_green",
+            "TRANS": [ 10.0, 4.0, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 0.01, 8.0, 8.0 ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "diffuse_blue",
+            "TRANS": [ 0.0, 1.25, -3.95 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 20.0, 0.4, 0.05 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_ior_1_10",
+            "TRANS": [ -8.0, 1.25, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 2.5, 2.5, 2.5 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_ior_1_33",
+            "TRANS": [ -4.0, 1.25, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 2.5, 2.5, 2.5 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_ior_1_50",
+            "TRANS": [ 0.0, 1.25, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 2.5, 2.5, 2.5 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_ior_1_80",
+            "TRANS": [ 4.0, 1.25, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 2.5, 2.5, 2.5 ]
+        },
+        {
+            "TYPE": "sphere",
+            "MATERIAL": "glass_ior_2_42",
+            "TRANS": [ 8.0, 1.25, 0.0 ],
+            "ROTAT": [ 0.0, 0.0, 0.0 ],
+            "SCALE": [ 2.5, 2.5, 2.5 ]
+        }
+    ]
+}
