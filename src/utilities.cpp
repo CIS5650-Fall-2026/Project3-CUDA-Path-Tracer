@@ -11,6 +11,8 @@
 
 #include <cstdio>
 #include <iostream>
+#include <iomanip>
+
 
 float utilityCore::clamp(float f, float min, float max)
 {

@@ -12,7 +12,8 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    PLANE
 };
 
 struct Ray
@@ -31,6 +32,42 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+    int lightid;
+};
+
+struct Light
+{
+    int geomid;
+    float localPdf; // Assuming constant
+};
+
+struct Volume {
+    glm::mat4 invTransform;
+    glm::mat4 userInvTransform;
+    float albedo;
+    float extinctionMult; // For the entire volume, or should it be calculated along ray first?
+    float g;
+    int materialid;
+};
+
+struct VolumeData {
+    Volume* volumes;
+    int num_volumes;
+
+    void* density;
+    void* temperature;
+    int bounceDepth;
+
+    float gDecay;
+    float densityDecay;
+    float scatteringDecay;
+
+    float temperatureScale;
+
+    float emissionContrast;
+    float emissionScale;
+
+    float extinctionMult;
 };
 
 struct Material
@@ -45,6 +82,11 @@ struct Material
     float hasRefractive;
     float indexOfRefraction;
     float emittance;
+
+    float isVolume;
+    float g1;
+    float g2;
+    float gBlend;
 };
 
 struct Camera
@@ -74,6 +116,7 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+    float lastBsdfPdf;
 };
 
 // Use with a corresponding PathSegment to do:
@@ -84,4 +127,6 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+  int geomId;
+  int pathIdx;
 };

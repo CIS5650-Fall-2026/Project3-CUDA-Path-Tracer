@@ -1,6 +1,18 @@
 cmake_minimum_required(VERSION 3.24)
 project(cis565_path_tracer LANGUAGES CUDA CXX)
 
+
+
+if(MSVC)
+    # 1. Apply to standard C++ files (.cpp, .h)
+    add_compile_options($<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>)
+
+    # 2. Correctly wrap it for CUDA files (.cu) so nvcc passes it safely via -Xcompiler
+    if(CMAKE_CUDA_COMPILER)
+        add_compile_options($<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>)
+    endif()
+endif()
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -48,6 +60,13 @@ set(GLM_ROOT_DIR "${CMAKE_SOURCE_DIR}/external")
 find_package(GLM REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
+#
+set(NANOVDB_USE_CUDA ON CACHE BOOL "Enable CUDA in NanoVDB" FORCE)
+set(USE_NANOVDB ON CACHE BOOL "Enable NanoVDB" FORCE)
+
+#add_subdirectory(nanovdb)
+#
+
 set(headers
     src/image.h
     src/interactions.h
@@ -57,6 +76,13 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/thrust_usage.h
+    src/sampling.h
+    src/cuda-utilities.h
+    src/Volume/volume.h
+    src/Volume/vdb_usage.h
+    src/Volume/vdb_loading.h
+    src/Temperature/temperature.h
 )
 
 set(sources
@@ -69,6 +95,13 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/thrust_usage.cu
+    src/sampling.cu
+    src/cuda-utilities.cu
+    src/Volume/volume.cu
+    src/Volume/vdb_usage.cu
+    src/Volume/vdb_loading.cpp
+    src/Temperature/temperature.cu
 )
 
 set(imgui_headers
@@ -111,6 +144,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction
 )
+#target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE nanovdb)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CUDA_ARCHITECTURES native)
 
@@ -118,4 +152,8 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Debug,Rel
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "$<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CUDA>>:-lineinfo;-src-in-ptx>")
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CMAKE_PROJECT_NAME})
+
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --extended-lambda")
+
+# 
 

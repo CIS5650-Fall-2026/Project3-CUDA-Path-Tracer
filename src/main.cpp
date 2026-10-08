@@ -23,6 +23,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <iomanip>
 
 static std::string startTimeString;
 
@@ -34,6 +35,8 @@ static double lastX;
 static double lastY;
 
 static bool camchanged = true;
+static bool importantparamchanged = false;
+bool frameindexchanged = false;
 static float dtheta = 0, dphi = 0;
 static glm::vec3 cammove;
 
@@ -254,6 +257,7 @@ void InitImguiData(GuiDataContainer* guiData)
     imguiData = guiData;
 }
 
+void renderAnimation();
 
 // LOOK: Un-Comment to check ImGui Usage
 void RenderImGui()
@@ -270,8 +274,6 @@ void RenderImGui()
     static float f = 0.0f;
     static int counter = 0;
 
-    ImGui::Begin("Path Tracer Analytics");                  // Create a window called "Hello, world!" and append into it.
-    
     // LOOK: Un-Comment to check the output window and usage
     //ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
     //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
@@ -284,8 +286,52 @@ void RenderImGui()
     //    counter++;
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
+
+    // TODO: change 119 to json var
+    ImGui::Text("Rendering");
+    if (ImGui::SliderInt("Frame Index", &imguiData->FrameIndex, 0, 119)) frameindexchanged = true;
+    ImGui::InputInt("Animation Iteration Count", &imguiData->AnimationIterationCount, 50, 200);
+    if (ImGui::Button("Render Animation")) {
+        renderAnimation();
+    }
+
+    ImGui::Separator();
+    ImGui::Text("Settings");
+
+    char* renderTypeOptions[2] = {"Basic", "Pathtraced"};
+    ImGui::Combo("Render Type", &imguiData->RenderType, renderTypeOptions, 2);
+
+    ImGui::SliderInt("Max Ray Depth", &imguiData->MaxDepth, 1, 50);
+    
+    ImGui::Checkbox("Sort Rays by Material", &imguiData->SortRaysByMaterial);
+    if(ImGui::CollapsingHeader("Camera")) {
+        char* colorCorrectionOptions[2] = { "None", "Gamma Reinhard" };
+        if (ImGui::Combo("Color Correction", &imguiData->ColorCorrection, colorCorrectionOptions, 2)) importantparamchanged = true;
+
+        ImGui::Checkbox("Depth of Field", &imguiData->UseDepthOfField);
+        if (imguiData->UseDepthOfField) {
+            ImGui::SliderFloat("Focal Distance", &imguiData->FocalDistance, 1.0f, 25.0f, "%.1f");
+            ImGui::SliderFloat("FStop", &imguiData->ApertureFNumber, 1.0f, 100.0f, "%.1f");
+        }
+    }
+
+    if (ImGui::CollapsingHeader("Volume")) {
+        if (ImGui::SliderFloat("Density Multiplier", &imguiData->DensityMultiplier, 0.01f, 100.0f, "%.2f", ImGuiSliderFlags_Logarithmic)) importantparamchanged = true;
+
+        if (ImGui::Checkbox("Use Temperature", &imguiData->UseTemperature)) importantparamchanged = true;
+        if (imguiData->UseTemperature) {
+            if (ImGui::SliderFloat("Temperature Scale", &imguiData->TemperatureScale, 0.01f, 4.0f, "%.2f")) importantparamchanged = true;
+            if (ImGui::SliderFloat("Emission Scale", &imguiData->EmissionScale, 1.0f, 1500.0f, "%.1f", ImGuiSliderFlags_Logarithmic)) importantparamchanged = true;
+            if (ImGui::SliderFloat("Emission Contrast", &imguiData->EmissionContrast, 1.0f, 4.0f, "%.1f")) importantparamchanged = true;
+        }
+    }
+
+    ImGui::Separator();
+    ImGui::Text("Analytics");
+
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
     ImGui::End();
 
 
@@ -340,6 +386,7 @@ void mainLoop()
 
 int main(int argc, char** argv)
 {
+
     startTimeString = currentTimeString();
 
     if (argc < 2)
@@ -360,7 +407,7 @@ int main(int argc, char** argv)
     iteration = 0;
     renderState = &scene->state;
     Camera& cam = renderState->camera;
-    width = cam.resolution.x;
+    width =  cam.resolution.x;
     height = cam.resolution.y;
 
     glm::vec3 view = cam.view;
@@ -404,18 +451,58 @@ void saveImage()
         {
             int index = x + (y * width);
             glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+
+            // Gamma Reinhard
+            glm::vec3 col = pix / static_cast<float>(samples);
+            if (guiData->ColorCorrection == 1) {
+                col = col / (glm::vec3(1.0f) + col);
+                col = pow(col, glm::vec3(2.2f));
+            }
+
+            img.setPixel(width - 1 - x, y, col);
         }
     }
 
-    std::string filename = renderState->imageName;
     std::ostringstream ss;
-    ss << filename << "." << startTimeString << "." << samples << "samp";
+    std::string filename = renderState->imageName;
+    ss << filename << "." << std::setfill('0') << std::setw(4) << guiData->FrameIndex;// startTimeString << "." << samples << "samp";
     filename = ss.str();
 
     // CHECKITOUT
     img.savePNG(filename);
     //img.saveHDR(filename);  // Save a Radiance HDR file
+}
+
+void renderIter() {
+    uchar4* pbo_dptr = NULL;
+    iteration++;
+    cudaGLMapBufferObject((void**)&pbo_dptr, pbo);
+
+    // execute the kernel
+    int frame = 0;
+    pathtrace(pbo_dptr, frame, iteration);
+
+    // unmap buffer object
+    cudaGLUnmapBufferObject(pbo);
+}
+
+void renderAnimation() {
+    for (int i = 0; i <= 119; ++i) {
+        imguiData->FrameIndex = i;
+        iteration = 0;
+
+        scene->setFrame(imguiData->FrameIndex);
+        pathtraceFree();
+        pathtraceInit(scene);
+
+        for (int k = 0; k < imguiData->AnimationIterationCount; k++) {
+            renderIter();
+            std::cout << "did iter " << k << std::endl;
+        }
+
+        saveImage();
+
+    }
 }
 
 void runCuda()
@@ -441,6 +528,17 @@ void runCuda()
         camchanged = false;
     }
 
+    if (importantparamchanged) {
+        iteration = 0;
+        importantparamchanged = false;
+    }
+
+    if (frameindexchanged) {
+        iteration = 0;
+        frameindexchanged = false;
+        scene->setFrame(imguiData->FrameIndex);
+    }
+
     // Map OpenGL buffer object for writing from CUDA on a single GPU
     // No data is moved (Win & Linux). When mapped to CUDA, OpenGL should not use this buffer
 
@@ -452,16 +550,7 @@ void runCuda()
 
     if (iteration < renderState->iterations)
     {
-        uchar4* pbo_dptr = NULL;
-        iteration++;
-        cudaGLMapBufferObject((void**)&pbo_dptr, pbo);
-
-        // execute the kernel
-        int frame = 0;
-        pathtrace(pbo_dptr, frame, iteration);
-
-        // unmap buffer object
-        cudaGLUnmapBufferObject(pbo);
+        renderIter();
     }
     else
     {

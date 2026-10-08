@@ -3,13 +3,16 @@
 #include "utilities.h"
 
 #include <glm/gtc/matrix_inverse.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include "json.hpp"
 
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <unordered_map>
+
+#include <sstream>
+#include <iomanip>
 
 using namespace std;
 using json = nlohmann::json;
@@ -22,6 +25,7 @@ Scene::Scene(string filename)
     if (ext == ".json")
     {
         loadFromJSON(filename);
+        setFrame(0);
         return;
     }
     else
@@ -29,10 +33,25 @@ Scene::Scene(string filename)
         cout << "Couldn't read from " << filename << endl;
         exit(-1);
     }
+
+}
+
+void Scene::setFrame(int i)
+{
+    // Only volumes load rn
+    int charInd = vdbFileName.find("{i}");
+    std::ostringstream indSStr;
+    indSStr << setfill('0') << setw(4) << i;
+    std::string indStr = indSStr.str();
+
+    vdbFileNameCurrent = vdbFileName;
+    if (charInd != -1) vdbFileNameCurrent.replace(charInd, 3, indStr);
 }
 
 void Scene::loadFromJSON(const std::string& jsonName)
 {
+    vdbFileName = "NONE";
+
     std::ifstream f(jsonName);
     json data = json::parse(f);
     const auto& materialsData = data["Materials"];
@@ -58,6 +77,15 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = 1.0f;
+        }
+        else if (p["TYPE"] == "Volume") {
+            newMaterial.isVolume = true;
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.g1 = p["G1"];
+            newMaterial.g2 = p["G2"];
+            newMaterial.gBlend = p["GBLEND"];
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -71,9 +99,12 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             newGeom.type = CUBE;
         }
-        else
+        else if (type == "sphere")
         {
             newGeom.type = SPHERE;
+        }
+        else {
+            newGeom.type = PLANE;
         }
         newGeom.materialid = MatNameToID[p["MATERIAL"]];
         const auto& trans = p["TRANS"];
@@ -87,8 +118,51 @@ void Scene::loadFromJSON(const std::string& jsonName)
         newGeom.inverseTransform = glm::inverse(newGeom.transform);
         newGeom.invTranspose = glm::inverseTranspose(newGeom.transform);
 
+        if (materials[newGeom.materialid].emittance > 0.0f) {
+            // Should be put in light array
+            Light l;
+            assert(newGeom.type == PLANE);
+            l.geomid = geoms.size();
+            l.localPdf = 1.0f / (newGeom.scale.x * newGeom.scale.y);
+            lights.push_back(l);
+
+            newGeom.lightid = lights.size() - 1;
+        }
+        else {
+            newGeom.lightid = -1;
+        }
+
         geoms.push_back(newGeom);
     }
+
+    const auto& volumesData = data["Volumes"];
+    assert(volumesData.size() == 1);
+    for (const auto& p : volumesData)
+    {
+        Volume v;
+
+        v.extinctionMult = p["DENSITYMULT"];
+        v.materialid = MatNameToID[p["MATERIAL"]];
+
+        {
+            const auto& trans = p["TRANS"];
+            const auto& rotat = p["ROTAT"];
+            const auto& scal = p["SCALE"];
+            glm::vec3 translation = glm::vec3(trans[0], trans[1], trans[2]);
+            glm::vec3 rotation = glm::vec3(rotat[0], rotat[1], rotat[2]);
+            glm::vec3 scale = glm::vec3(scal[0], scal[1], scal[2]);
+            glm::mat4 transform = utilityCore::buildTransformationMatrix(
+                translation, rotation, scale);
+            v.invTransform = glm::mat4(1.0f);
+            v.userInvTransform = glm::inverse(transform);
+
+            vdbFileName = p["VDBFILE"];
+        }
+
+        volumes.push_back(v);
+    }
+
+    
     const auto& cameraData = data["Camera"];
     Camera& camera = state.camera;
     RenderState& state = this->state;

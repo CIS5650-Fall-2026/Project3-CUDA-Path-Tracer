@@ -15,6 +15,17 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
     glm::vec3 normal, 
     thrust::default_random_engine& rng);
 
+// PBRT Method of taking the 8 Slices of a Square and warping them into a circle
+__host__ __device__ glm::vec2 calculateRandomPositionOnDisk(thrust::default_random_engine &rng);
+__host__ __device__ glm::vec2 calculateRandomPositionOnSquare(thrust::default_random_engine &rng);
+
+
+
+__host__ __device__ float powerHeuristic(float myPdf, float otherPdf);
+
+__host__ __device__ float pdfBSDF(glm::vec3 wi, glm::vec3 normal, const Material& m, glm::vec3& fLambert);
+__host__ __device__ float pdfLight(glm::vec3 intersect, glm::vec3 lightSamplePos, glm::vec3 lightSampleNorm, int num_lights, const Light& light); // Since wi refers to light direction, intersect is the intersection before the light..
+
 /**
  * Scatter a ray with some probabilities according to the material properties.
  * For example, a diffuse surface scatters in a cosine-weighted hemisphere.
@@ -40,9 +51,9 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
  *
  * You may need to change the parameter list for your purposes!
  */
-__host__ __device__ void scatterRay(
-    PathSegment& pathSegment,
-    glm::vec3 intersect,
+__host__ __device__ void sampleBSDF(
+    glm::vec3 wo,
     glm::vec3 normal,
     const Material& m,
-    thrust::default_random_engine& rng);
+    thrust::default_random_engine& rng,
+    float& outPdf, glm::vec3& fLambert, glm::vec3& wi);

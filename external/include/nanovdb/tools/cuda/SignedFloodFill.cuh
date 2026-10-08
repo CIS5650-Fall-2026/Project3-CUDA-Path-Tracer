@@ -1,0 +1,278 @@
+// Copyright Contributors to the OpenVDB Project
+// SPDX-License-Identifier: Apache-2.0
+
+/*!
+    \file nanovdb/tools/cuda/SignedFloodFill.cuh
+
+    \author Ken Museth
+
+    \date May 3, 2023
+
+    \brief Performs signed flood-fill operation on the hierarchical tree structure on the device
+
+    \todo This tools needs to handle the (extremely) rare case when the root node
+          needs to be modified during the signed flood fill operation. This happens
+          when the root-table needs to be expanded with tile values (of size 4096^3)
+          that are completely inside the implicit surface.
+
+    \warning The header file contains cuda device code so be sure
+             to only include it in .cu files (or other .cuh files)
+*/
+
+#ifndef NANOVDB_TOOLS_CUDA_SIGNEDFLOODFILL_CUH_HAS_BEEN_INCLUDED
+#define NANOVDB_TOOLS_CUDA_SIGNEDFLOODFILL_CUH_HAS_BEEN_INCLUDED
+
+#include <nanovdb/NanoVDB.h>
+#include <nanovdb/cuda/Buffer.h>
+#include <nanovdb/GridHandle.h>
+#include <nanovdb/cuda/ManagedResource.h>
+#include <nanovdb/util/cuda/Timer.h>
+#include <nanovdb/util/cuda/Util.h>
+#include <nanovdb/tools/cuda/GridChecksum.cuh>
+#include <nanovdb/io/IO.h>// debugging needs io of Coord
+
+namespace nanovdb {
+
+namespace tools::cuda {
+
+/// @brief Performs signed flood-fill operation on the hierarchical tree structure on the device
+/// @tparam BuildT Build type of the grid to be flood-filled
+/// @tparam ResourceT Template type of optional resource used for internal temporary memory
+/// @param d_grid Non-const device pointer to the grid that will be flood-filled
+/// @param verbose If true timing information will be printed to the terminal
+/// @param stream optional cuda stream
+template<typename BuildT, typename ResourceT = nanovdb::cuda::DeviceResource>
+typename util::enable_if<BuildTraits<BuildT>::is_float, void>::type
+signedFloodFill(NanoGrid<BuildT> *d_grid, bool verbose = false, cudaStream_t stream = 0);
+
+template<typename BuildT, typename ResourceT = nanovdb::cuda::DeviceResource>
+class SignedFloodFill
+{
+    static_assert(nanovdb::cuda::is_async_resource<ResourceT>::value,
+                  "SignedFloodFill allocates stream-ordered scratch and requires an AsyncResource");
+public:
+    /// @brief Constructor
+    /// @param verbose if true timing information is printed to the terminal
+    /// @param stream optional CUDA stream (defaults to CUDA stream 0)
+    /// @param resource resource instance all device scratch is allocated from;
+    ///        must outlive this instance (defaults to the per-type default resource)
+    SignedFloodFill(bool verbose = false, cudaStream_t stream = 0,
+                    ResourceT& resource = nanovdb::cuda::default_resource<ResourceT>())
+        : mStream(stream), mVerbose(verbose), mResource(&resource) {}
+
+    /// @brief Toggle on and off verbose mode
+    /// @param on if true verbose is turned on
+    void setVerbose(bool on = true) {mVerbose = on;}
+
+    void operator()(NanoGrid<BuildT> *d_grid);
+
+private:
+    cudaStream_t      mStream{0};
+    util::cuda::Timer mTimer;
+    bool              mVerbose{false};
+    ResourceT*        mResource;// non-owning; all device scratch routes through this resource instance
+
+    template<typename T>
+    using BufT = nanovdb::cuda::Buffer<T, nanovdb::cuda::ResourceRef<ResourceT>>;
+    nanovdb::cuda::ResourceRef<ResourceT> ref() { return nanovdb::cuda::ResourceRef<ResourceT>(*mResource); }
+
+};// SignedFloodFill
+
+//================================================================================================
+
+namespace kernels {// kernels namespace
+
+template <typename ValueT>
+struct RootChild {
+    Coord    ijk;// origin of the child node
+    uint32_t idx;// linear offset for the child node
+    ValueT   val[2];// first and last values as defined by child->getFirstValue/getLastValue
+    RootChild(Coord i=Coord(), uint32_t j=0) : ijk(i), idx(j) {};// c-tor
+    bool operator()(const RootChild &a, const RootChild &b) const { return a.ijk < b.ijk; }// for sorting
+};
+
+// CPU kernel!
+template<typename BuildT>
+void processRoot(NanoTree<BuildT> *d_tree, cudaStream_t stream = 0)
+{// the root needs special care since unlike other nodes it's sparse and not dense!
+    using TreeT  = NanoTree<BuildT>;
+    using RootT  = NanoRoot<BuildT>;
+    using TileT  = typename RootT::Tile;
+    using ValueT = typename RootT::ValueType;
+    using ChildT = RootChild<ValueT>;
+    static const int dim = int(RootT::ChildNodeType::DIM);
+
+    // Ensure node passes issued on a non-default 'stream' have completed before
+    // the synchronous default-stream cudaMemcpy below reads d_tree. For the
+    // default stream (0) that blocking copy already orders after prior stream-0
+    // work, so the extra sync there is pure overhead - skip it.
+    if (stream != cudaStream_t{0}) cudaCheck(cudaStreamSynchronize(stream));
+
+    // First copy the tree and root and then its tiles, which is of unknown size;
+    // managed memory, because the scanline pass below interleaves host access
+    // with device reads of the same bytes
+    using ManagedBufT = nanovdb::cuda::Buffer<std::byte, nanovdb::cuda::ManagedResource>;
+    ManagedBufT uBuffer(sizeof(TreeT) + sizeof(RootT) + 64*sizeof(TileT), nanovdb::cuda::noInit);
+    cudaCheck(cudaMemcpy(uBuffer.data(), d_tree, sizeof(TreeT) + sizeof(RootT), cudaMemcpyDeviceToHost)); // copy Tree and Root (minus tiles)
+    auto *tree = reinterpret_cast<TreeT*>(uBuffer.data());
+    if (!tree->isRootNext()) throw std::runtime_error("ERROR: expected no padding between tree and root!");
+    if ( tree->root().tileCount() == 0) return; // empty root node so nothing to do
+    uBuffer.resize(sizeof(TreeT) + tree->root().memUsage()); // grows (with a copy) past the 64 reserved tiles
+    tree = reinterpret_cast<TreeT*>(uBuffer.data()); // resize may reallocate
+    RootT *root = &tree->root();
+    // Device-resident root, used only to resolve Tile::child byte-offsets into valid child-node
+    // pointers. The 'root' buffer above is a truncated copy (tree + root + tiles, no child nodes),
+    // so offsets must be applied relative to the real device root, not the host/managed copy.
+    RootT *d_root = reinterpret_cast<RootT*>(d_tree + 1);
+    cudaCheck(cudaMemcpy(root + 1, (char*)(d_tree + 1) + sizeof(RootT), root->tileCount()*sizeof(TileT), cudaMemcpyDeviceToHost));// copy tiles
+
+    // Sort the child nodes of the root in lexicographic order
+    nanovdb::cuda::Buffer<ChildT, nanovdb::cuda::ManagedResource> nodeBuffer(root->tileCount(), nanovdb::cuda::noInit); // potential over-allocation
+    auto *first = nodeBuffer.data(), *last = first;
+    for (auto it=root->beginChild(); it; ++it) *last++ = ChildT(it.getCoord(), it.pos());
+    if (last - first < 2) return;// zero or one child node so nothing to do!
+    std::sort(first, last, ChildT());// lexicographic ordering
+
+    // We employ a simple z-scanline algorithm that inserts inactive tiles with
+    // the inside value if they are sandwiched between inside child nodes only!
+    for (ChildT *a = first, *b = a+1; b!=last; ++a, ++b) {// loop over pairs of adjacent child nodes
+        const Coord d = b->ijk - a->ijk;// coord delta of adjacent child nodes
+        if (d[0]!=0 || d[1]!=0 || d[2]==dim) continue;// not same z-scanline or they are neighbors
+        util::cuda::lambdaKernel<<<1, 1, 0, stream>>>(1, [=] __device__(size_t) {
+            // Tile::child is a byte offset relative to the root; resolve it against the real
+            // device root (d_root), not the truncated host/managed copy (root), since the
+            // latter's memory ends right after the tiles and holds no child-node data.
+            a->val[1] = d_root->getChild(root->tile(a->idx))->getLastValue();
+            b->val[0] = d_root->getChild(root->tile(b->idx))->getFirstValue();
+        });
+        cudaCheck(cudaStreamSynchronize(stream));// required for host access to RootChild::val[2]
+        if (a->val[1] > 0 || b->val[0] > 0) continue; // scanline is not inside a surface
+        for (Coord c = a->ijk.offsetBy(0,0,dim); c[2] != b->ijk[2]; c[2] += dim) {
+            TileT *tile = root->probeTile(c);
+            if (!tile) throw std::runtime_error("ERROR: missing internal tile! Please add them and try again!");
+            tile->setValue(c, false, -root->background());
+        }
+    }
+    cudaCheck(cudaMemcpy(d_tree + 1, root, root->memUsage(), cudaMemcpyHostToDevice));// copy tiles back to device
+}// processRoot
+
+//================================================================================================
+
+template<typename BuildT, int LEVEL>
+__global__ void processNode(NanoTree<BuildT> *d_tree, size_t count)
+{
+    using NodeT = typename NanoNode<BuildT, LEVEL>::type;
+    const int tid = blockIdx.x * blockDim.x + threadIdx.x;
+    if (tid >= count) return;
+    const uint32_t nValue = tid & (NodeT::SIZE - 1u);
+    auto &node = *(d_tree->template getFirstNode<LEVEL>() + (tid >> (3*NodeT::LOG2DIM)));
+    const auto &mask = node.childMask();
+    if (mask.isOn(nValue)) return;// ignore if child
+    auto value = d_tree->background();// initiate to outside value
+    auto n = mask.template findNext<true>(nValue);
+    if (n < NodeT::SIZE) {
+        if (node.getChild(n)->getFirstValue() < 0) value = -value;
+    } else if ((n = mask.template findPrev<true>(nValue)) < NodeT::SIZE) {
+        if (node.getChild(n)->getLastValue()  < 0) value = -value;
+    } else if (node.getValue(0)<0) {
+        value = -value;
+    }
+    node.setValue(nValue, value);
+}// processNode
+
+//================================================================================================
+
+template<typename BuildT>
+__global__ void processLeaf(NanoTree<BuildT> *d_tree, size_t count)
+{
+    using LeafT = NanoLeaf<BuildT>;
+    const size_t tid = blockIdx.x * blockDim.x + threadIdx.x;
+    if (tid >= count) return;
+    const uint32_t nVoxel = tid & (LeafT::SIZE - 1u);
+    auto *leaf = d_tree->getFirstLeaf() + (tid >> (3*LeafT::LOG2DIM));
+    const auto &mask = leaf->valueMask();
+    if (mask.isOn(nVoxel)) return;
+    auto *buffer = leaf->mValues;
+    auto n = mask.template findNext<true>(nVoxel);
+    if (n == LeafT::SIZE && (n = mask.template findPrev<true>(nVoxel)) == LeafT::SIZE) n = 0u;
+    buffer[nVoxel] = buffer[n]<0 ? -d_tree->background() : d_tree->background();
+}// processLeaf
+
+//================================================================================================
+
+template <typename BuildT>
+__global__ void cpyNodeCountKernel(NanoGrid<BuildT> *d_grid, uint64_t *d_count)
+{
+    NANOVDB_ASSERT(d_grid->isSequential());
+    for (int i=0; i<3; ++i) *d_count++ = d_grid->tree().nodeCount(i);
+    *d_count = d_grid->tree().root().tileCount();
+}
+
+}// kernels namespace
+
+//================================================================================================
+
+template <typename BuildT, typename ResourceT>
+void SignedFloodFill<BuildT, ResourceT>::operator()(NanoGrid<BuildT> *d_grid)
+{
+    static_assert(BuildTraits<BuildT>::is_float, "cuda::SignedFloodFill only works on float grids");
+    NANOVDB_ASSERT(d_grid);
+    uint64_t count[4];
+    BufT<uint64_t> countBuf(mStream, this->ref(), 4, nanovdb::cuda::noInit);
+    uint64_t *d_count = countBuf.data();
+    kernels::cpyNodeCountKernel<BuildT><<<1, 1, 0, mStream>>>(d_grid, d_count);
+    cudaCheckError();
+    cudaCheck(cudaMemcpyAsync(&count, d_count, 4*sizeof(uint64_t), cudaMemcpyDeviceToHost, mStream));
+    countBuf.destroy(mStream);
+
+    static const int threadsPerBlock = 128;
+    auto blocksPerGrid = [&](size_t count)->uint32_t{return (count + (threadsPerBlock - 1)) / threadsPerBlock;};
+    auto *d_tree = reinterpret_cast<NanoTree<BuildT>*>(d_grid + 1);
+
+    if (mVerbose) mTimer.start("\nProcess leaf nodes");
+    kernels::processLeaf<BuildT><<<blocksPerGrid(count[0]<<9), threadsPerBlock, 0, mStream>>>(d_tree, count[0]<<9);
+    cudaCheckError();
+
+    if (mVerbose) mTimer.restart("Process lower internal nodes");
+    kernels::processNode<BuildT,1><<<blocksPerGrid(count[1]<<12), threadsPerBlock, 0, mStream>>>(d_tree, count[1]<<12);
+    cudaCheckError();
+
+    if (mVerbose) mTimer.restart("Process upper internal nodes");
+    kernels::processNode<BuildT,2><<<blocksPerGrid(count[2]<<15), threadsPerBlock, 0, mStream>>>(d_tree, count[2]<<15);
+    cudaCheckError();
+
+    if (mVerbose) mTimer.restart("Process root node");
+    kernels::processRoot<BuildT>(d_tree, mStream);
+    if (mVerbose) mTimer.stop();
+    cudaCheckError();
+}// SignedFloodFill::operator()
+
+//================================================================================================
+
+template<typename BuildT, typename ResourceT>
+typename util::enable_if<BuildTraits<BuildT>::is_float, void>::type
+signedFloodFill(NanoGrid<BuildT> *d_grid, bool verbose, cudaStream_t stream)
+{
+    SignedFloodFill<BuildT, ResourceT> sff(verbose, stream);
+    sff(d_grid);
+    auto *d_gridData = d_grid->data();
+    Checksum cs = getChecksum(d_gridData, stream);
+    if (cs.isFull()) {// CheckMode::Partial checksum is unaffected
+        updateChecksum(d_gridData, CheckMode::Full, stream);
+    }
+    cudaCheck(cudaStreamSynchronize(stream));
+}
+
+}// namespace tools::cuda
+
+template<typename BuildT>
+[[deprecated("Use nanovdb::tools::cuda::signedFloodFill instead.")]]
+typename util::enable_if<BuildTraits<BuildT>::is_float, void>::type
+cudaSignedFloodFill(NanoGrid<BuildT> *d_grid, bool verbose = false, cudaStream_t stream = 0)
+{
+    return tools::cuda::signedFloodFill<BuildT>(d_grid, verbose, stream);
+}
+
+}// namespace nanovdb
+
+#endif // NANOVDB_TOOLS_CUDA_SIGNEDFLOODFILL_CUH_HAS_BEEN_INCLUDED

@@ -5,6 +5,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 
+#include <thrust/random.h>
+
 
 /**
  * Handy-dandy hash function that provides seeds for random number generation.
@@ -55,6 +57,9 @@ __host__ __device__ float boxIntersectionTest(
     glm::vec3& normal,
     bool& outside);
 
+__host__ __device__ glm::vec2 alignedBbxIntersectionTest(glm::vec3 ro, glm::vec3 rd, glm::vec3 min, glm::vec3 max);
+ __host__ __device__ glm::vec2 bbxIntersectionTest(Ray r, glm::mat4 inverseTransform);
+
 // CHECKITOUT
 /**
  * Test intersection between a ray and a transformed sphere. Untransformed,
@@ -71,3 +76,9 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+// Plane has normal along Z+ and ranges from -0.5 to 0.5
+__host__ __device__ float planeIntersectionTest(Geom plane, Ray r, glm::vec3 &intersectionPoint, glm::vec3 &normal);
+
+//
+__host__ __device__ void sceneIntersectionTest(Geom* geoms, VolumeData& vd, Ray r, int geoms_size, thrust::default_random_engine& rng, int& hit_geom_index, float& t_min, glm::vec3& intersect_point, glm::vec3& normal, bool& hitVolume);
