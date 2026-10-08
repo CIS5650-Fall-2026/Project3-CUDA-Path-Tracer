@@ -111,3 +111,147 @@ __host__ __device__ float sphereIntersectionTest(
 
     return glm::length(r.origin - intersectionPoint);
 }
+
+__host__ __device__ static float finishMeshHit(
+    const Triangle& tri,
+    const Ray& r,
+    float t,
+    const glm::vec2& bary,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside) {
+    glm::vec3 geometricNormal = glm::cross(tri.v1 - tri.v0, tri.v2 - tri.v0);
+    if (glm::dot(geometricNormal, r.direction) > 0.0f) {
+        geometricNormal = -geometricNormal;
+    }
+
+    glm::vec3 shadingNormal = (1.0f - bary.x - bary.y) * tri.n0 + bary.x * tri.n1 + bary.y * tri.n2;
+    if (!(glm::dot(shadingNormal, shadingNormal) > 0.0f)) {
+        shadingNormal = geometricNormal;
+    }
+    shadingNormal = glm::normalize(shadingNormal);
+
+    outside = glm::dot(shadingNormal, r.direction) < 0.0f;
+    if (glm::dot(shadingNormal, geometricNormal) < 0.0f) {
+        shadingNormal = -shadingNormal;
+    }
+    normal = shadingNormal;
+
+    intersectionPoint = getPointOnRay(r, t);
+    return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ float meshIntersectionTest(
+    const Geom& mesh,
+    const Triangle* triangles,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside) {
+    r.direction = glm::normalize(r.direction);
+
+    float tClosest = FLT_MAX;
+    int closest = -1;
+    glm::vec2 closestBary;
+    for (int i = mesh.triangleStart; i < mesh.triangleStart + mesh.triangleCount; i++) {
+        glm::vec2 bary;
+        const float t = triangleIntersectionTest(triangles[i], r, bary);
+        if (t > 0.0f && t < tClosest) {
+            tClosest = t;
+            closest = i;
+            closestBary = bary;
+        }
+    }
+
+    if (closest < 0) {
+        return -1;
+    }
+    return finishMeshHit(triangles[closest], r, tClosest, closestBary, intersectionPoint, normal, outside);
+}
+
+__host__ __device__ float meshIntersectionTestBVH(
+    const Geom& mesh,
+    const Triangle* triangles,
+    const BVHNode* nodes,
+    Ray r,
+    float tMax,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside) {
+    if (mesh.bvhRoot < 0) {
+        return -1;
+    }
+
+    r.direction = glm::normalize(r.direction);
+    const glm::vec3 indvDirection = 1.0f / r.direction;
+
+    const BVHNode& root = nodes[mesh.bvhRoot];
+    if (aabbIntersectionTest(root.boundsMin, root.boundsMax, r.origin, indvDirection, tMax) < 0.0f) {
+        return -1;
+    }
+
+    float tClosest = FLT_MAX;
+    int closest = -1;
+    glm::vec2 closestBary;
+
+    int pendingNode[BVH_MAX_DEPTH];
+    float pendingEntry[BVH_MAX_DEPTH];
+    int pending = 0;
+
+    int nodeIndex = mesh.bvhRoot;
+    while (true) {
+        const BVHNode& node = nodes[nodeIndex];
+        if (node.triangleCount > 0 ) {
+            for (int i = node.leftOrFirst; i < node.leftOrFirst + node.triangleCount; i++) {
+                glm::vec2 bary;
+                const float t = triangleIntersectionTest(triangles[i], r, bary);
+                if (t > 0.0f && t < tClosest) {
+                    tClosest = t;
+                    closest = i;
+                    closestBary = bary;
+                }
+            }
+        } else {
+            const int left = node.leftOrFirst;
+            const int right = left + 1;
+            const float tLeft = aabbIntersectionTest(nodes[left].boundsMin, nodes[left].boundsMax,
+                r.origin, indvDirection, tClosest);
+            const float tRight = aabbIntersectionTest(nodes[right].boundsMin, nodes[right].boundsMax,
+                r.origin, indvDirection, tClosest);
+
+            if (tLeft >= 0.0f && tRight >= 0.0f) {
+                const bool leftFirst = tLeft <= tRight;
+                pendingNode[pending] = leftFirst ? right : left;
+                pendingEntry[pending] = leftFirst ? tRight : tLeft;
+                pending++;
+                nodeIndex = leftFirst ? left : right;
+                continue;
+            }
+            if (tLeft >= 0.0f) {
+                nodeIndex = left;
+                continue;
+            }
+            if (tRight >= 0.0f) {
+                nodeIndex = right;
+                continue;
+            }
+        }
+
+        bool resumed = false;
+        while (pending > 0) {
+            pending--;
+            if (pendingEntry[pending] < tClosest) {
+                nodeIndex = pendingNode[pending];
+                resumed = true;
+                break;
+            }
+        }
+        if (!resumed) {
+            break;
+        }
+    }
+    if (closest < 0) {
+        return -1;
+    }
+    return finishMeshHit(triangles[closest], r, tClosest, closestBary, intersectionPoint, normal, outside);
+}

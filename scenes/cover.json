@@ -1,0 +1,292 @@
+{
+    "Materials": {
+        "light": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "EMITTANCE": 40.0
+        },
+        "backdrop": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.03,
+                0.03
+            ],
+            "EMITTANCE": 0.55
+        },
+        "fill": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "EMITTANCE": 2.0
+        },
+        "black": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.02,
+                0.02,
+                0.02
+            ]
+        },
+        "floor_matte": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.92,
+                0.92,
+                0.92
+            ]
+        },
+        "floor_mirror": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.92,
+                0.92,
+                0.92
+            ],
+            "ROUGHNESS": 0.0
+        },
+        "gold": {
+            "TYPE": "Specular",
+            "RGB": [
+                0.95,
+                0.75,
+                0.3
+            ],
+            "ROUGHNESS": 0.0
+        },
+        "marble": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.88,
+                0.86,
+                0.82
+            ]
+        }
+    },
+    "Camera": {
+        "RES": [
+            1200,
+            800
+        ],
+        "FOVY": 21.0,
+        "ITERATIONS": 10000,
+        "DEPTH": 8,
+        "FILE": "cover",
+        "EYE": [
+            0.0,
+            7.0,
+            44.0
+        ],
+        "LOOKAT": [
+            0.0,
+            7.0,
+            0.0
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ]
+    },
+    "Objects": [
+        {
+            "TYPE": "cube",
+            "MATERIAL": "light",
+            "TRANS": [
+                0.0,
+                46.0,
+                4.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                16.0,
+                0.3,
+                16.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "black",
+            "TRANS": [
+                8.15,
+                40.0,
+                4.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.1,
+                12.0,
+                16.400000000000002
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "black",
+            "TRANS": [
+                -8.15,
+                40.0,
+                4.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.1,
+                12.0,
+                16.400000000000002
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "black",
+            "TRANS": [
+                0.0,
+                40.0,
+                12.15
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                16.400000000000002,
+                12.0,
+                0.1
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "black",
+            "TRANS": [
+                0.0,
+                40.0,
+                -4.15
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                16.400000000000002,
+                12.0,
+                0.1
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "fill",
+            "TRANS": [
+                0.0,
+                25.0,
+                75.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                70.0,
+                40.0,
+                0.3
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "floor_matte",
+            "TRANS": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                600.0,
+                0.01,
+                600.0
+            ]
+        },
+        {
+            "TYPE": "cube",
+            "MATERIAL": "backdrop",
+            "TRANS": [
+                0.0,
+                0.0,
+                -30.0
+            ],
+            "ROTAT": [
+                0.0,
+                90.0,
+                0.0
+            ],
+            "SCALE": [
+                0.01,
+                600.0,
+                600.0
+            ]
+        },
+        {
+            "TYPE": "gltf",
+            "FILE": "models/perseus/source/Greek Sculpture.glb",
+            "MATERIAL": "marble",
+            "TRANS": [
+                -8.5,
+                0.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                -110.0,
+                0.0
+            ],
+            "SCALE": [
+                16.0,
+                16.0,
+                16.0
+            ]
+        },
+        {
+            "TYPE": "gltf",
+            "FILE": "models/satans-fall-to-hell/source/Satan's Fall to Hell.glb",
+            "MATERIAL": "gold",
+            "TRANS": [
+                5.5,
+                -1.456,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                230.0,
+                0.0
+            ],
+            "SCALE": [
+                14.0,
+                14.0,
+                14.0
+            ]
+        }
+    ]
+}
