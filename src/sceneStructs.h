@@ -12,7 +12,9 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    SDF,
+    RECT2D
 };
 
 struct Ray
@@ -43,7 +45,8 @@ struct Material
     } specular;
     float hasReflective;
     float hasRefractive;
-    float indexOfRefraction;
+    glm::vec3 indexOfRefraction; 
+    bool dispersive;
     float emittance;
 };
 
@@ -64,6 +67,8 @@ struct RenderState
     Camera camera;
     unsigned int iterations;
     int traceDepth;
+    int photonCount = 500000;
+    int sdfScene = 0;
     std::vector<glm::vec3> image;
     std::string imageName;
 };
@@ -71,9 +76,13 @@ struct RenderState
 struct PathSegment
 {
     Ray ray;
-    glm::vec3 color;
+    glm::vec3 color; // passthrough
     int pixelIndex;
     int remainingBounces;
+    bool prevSpecular;
+    bool seenDiffuse; 
+    bool dispersed;
+    int channel;
 };
 
 // Use with a corresponding PathSegment to do:
@@ -85,3 +94,4 @@ struct ShadeableIntersection
   glm::vec3 surfaceNormal;
   int materialId;
 };
+

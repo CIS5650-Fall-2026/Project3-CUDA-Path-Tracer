@@ -404,7 +404,12 @@ void saveImage()
         {
             int index = x + (y * width);
             glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+
+            // same tone mapping as preview (pathtracer.cu)
+            glm::vec3 c = glm::max(glm::vec3(pix) / samples, glm::vec3(0.0f));
+            c = glm::clamp((c * (2.51f * c + glm::vec3(0.03f))) / (c * (2.43f * c + glm::vec3(0.59f)) + glm::vec3(0.14f)), 0.0f, 1.0f);
+            c = glm::pow(c, glm::vec3(1.0f / 2.2f));
+            img.setPixel(width - 1 - x, y, c);
         }
     }
 
@@ -431,8 +436,8 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        cam.up = glm::normalize(glm::cross(r, v));
         cam.right = r;
 
         cam.position = cameraPosition;

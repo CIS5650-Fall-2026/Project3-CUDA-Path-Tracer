@@ -557,3 +557,7 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+saved/*
+!saved/keep
+!saved/keep/**

@@ -3,6 +3,15 @@ project(cis565_path_tracer LANGUAGES CUDA CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+
+if(MSVC)
+    add_compile_options($<$<COMPILE_LANGUAGE:CXX>:/Zc:preprocessor>)
+    if(CMAKE_CUDA_COMPILER)
+        add_compile_options($<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=/Zc:preprocessor>)
+    endif()
+endif()
+
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -20,6 +29,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     # Set the possible values of build type for cmake-gui
     SET_PROPERTY(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
+
 
 find_package(OpenGL REQUIRED)
 
@@ -57,6 +67,9 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/bsdf.h
+    src/photons.h
+    src/sdf.h
 )
 
 set(sources
@@ -69,6 +82,9 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/bsdf.cu
+    src/photons.cu
+    src/sdf.cu
 )
 
 set(imgui_headers

@@ -1,5 +1,5 @@
 #include "interactions.h"
-
+#include "bsdf.h"
 #include "utilities.h"
 
 #include <thrust/random.h>
@@ -10,8 +10,8 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
 {
     thrust::uniform_real_distribution<float> u01(0, 1);
 
-    float up = sqrt(u01(rng)); // cos(theta)
-    float over = sqrt(1 - up * up); // sin(theta)
+    float up = sqrt(u01(rng));
+    float over = sqrt(1 - up * up);
     float around = u01(rng) * TWO_PI;
 
     // Find a direction that is not the normal based off of whether or not the
@@ -44,14 +44,27 @@ __host__ __device__ glm::vec3 calculateRandomDirectionInHemisphere(
         + sin(around) * over * perpendicularDirection2;
 }
 
-__host__ __device__ void scatterRay(
-    PathSegment & pathSegment,
+__host__ __device__ glm::vec3 scatterRay(
+    Ray & ray,
     glm::vec3 intersect,
     glm::vec3 normal,
     const Material &m,
+    float &pdf,
+    float ior, 
     thrust::default_random_engine &rng)
 {
-    // TODO: implement this.
-    // A basic implementation of pure-diffuse shading will just call the
-    // calculateRandomDirectionInHemisphere defined above.
+   
+    if (m.hasRefractive > 0.0f) // DIELECTRIC 
+    {
+        return sampleDielectric(ray, intersect, normal, m, pdf, ior, rng);
+
+    }
+    else if (m.hasReflective > 0.0f) // SPECULAR MIRROR 
+    {
+        return sampleSpecularReflect(ray, intersect, normal, m, pdf, rng);
+    }
+	else // DIFFUSE
+    {
+        return sampleDiffuse(ray, intersect, normal, m, pdf, rng);
+    }
 }

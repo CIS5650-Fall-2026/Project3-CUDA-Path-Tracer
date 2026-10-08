@@ -1,4 +1,7 @@
 #include "intersections.h"
+#include "sdf.h"
+
+#include <cfloat>
 
 __host__ __device__ float boxIntersectionTest(
     Geom box,
@@ -34,7 +37,7 @@ __host__ __device__ float boxIntersectionTest(
             if (tb < tmax)
             {
                 tmax = tb;
-                tmax_n = n;
+                tmax_n = - n;
             }
         }
     }
@@ -104,10 +107,95 @@ __host__ __device__ float sphereIntersectionTest(
 
     intersectionPoint = multiplyMV(sphere.transform, glm::vec4(objspaceIntersection, 1.f));
     normal = glm::normalize(multiplyMV(sphere.invTranspose, glm::vec4(objspaceIntersection, 0.f)));
-    if (!outside)
+    /*if (!outside)
     {
         normal = -normal;
-    }
+    }*/
 
     return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ float rectIntersectionTest(
+    Geom rect,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside)
+{
+    glm::vec3 ro = multiplyMV(rect.inverseTransform, glm::vec4(r.origin, 1.0f));
+    glm::vec3 rd = multiplyMV(rect.inverseTransform, glm::vec4(r.direction, 0.0f));
+
+    if (glm::abs(rd.y) < 1e-8f) return -1;
+    float t = (-0.5f - ro.y) / rd.y;
+    if (t <= 0.0f) return -1;
+
+    glm::vec3 p = ro + t * rd;
+    if (glm::abs(p.x) > 0.5f || glm::abs(p.z) > 0.5f) return -1;
+
+    intersectionPoint = multiplyMV(rect.transform, glm::vec4(p, 1.0f));
+    normal = glm::normalize(multiplyMV(rect.invTranspose, glm::vec4(0.0f, -1.0f, 0.0f, 0.0f)));
+    outside = glm::dot(r.direction, normal) < 0.0f;
+    return glm::length(r.origin - intersectionPoint);
+}
+
+__host__ __device__ void findClosestIntersection(
+    Ray r,
+    Geom* geoms,
+    int geoms_size,
+    float& t_min,
+    glm::vec3& intersect_point,
+    glm::vec3& normal,
+    int& hit_geom_index,
+    Geom* emissiveGeoms,
+    int emissive_size)
+{
+    float t;
+    glm::vec3 tmp_intersect;
+    glm::vec3 tmp_normal;
+    bool outside = true;
+
+    t_min = FLT_MAX;
+    hit_geom_index = -1;
+
+    for (int i = 0; i < geoms_size + emissive_size; i++)
+    {
+        Geom& geom = (i < geoms_size) ? geoms[i] : emissiveGeoms[i - geoms_size];
+        t = -1.0f;
+
+        if (geom.type == CUBE)
+        {
+            t = boxIntersectionTest(geom, r, tmp_intersect, tmp_normal, outside);
+        }
+        else if (geom.type == SPHERE)
+        {
+            t = sphereIntersectionTest(geom, r, tmp_intersect, tmp_normal, outside);
+        }
+        else if (geom.type == SDF)         {
+            t = sdfIntersectionTest(r, tmp_intersect, tmp_normal);
+		}
+        else if (geom.type == RECT2D)
+        {
+            t = rectIntersectionTest(geom, r, tmp_intersect, tmp_normal, outside);
+        }
+
+        if (t > 0.0f && t_min > t)
+        {
+            t_min = t;
+            hit_geom_index = i;
+            intersect_point = tmp_intersect;
+            normal = tmp_normal;
+        }
+    }
+}
+
+__host__ __device__ float rectArea(const Geom& rect) {
+    glm::vec3 e1 = glm::vec3(rect.transform * glm::vec4(1.0f, 0.0f, 0.0f, 0.0f));
+    glm::vec3 e2 = glm::vec3(rect.transform * glm::vec4(0.0f, 0.0f, 1.0f, 0.0f));
+    return glm::length(glm::cross(e1, e2));
+}
+
+__host__ __device__ void sampleRect(const Geom& rect, float u, float v, glm::vec3& pos, glm::vec3& nor) {
+	glm::vec4 localPos = glm::vec4(u - 0.5f, -0.5f, v - 0.5f, 1.0f); // -0.5, 0.5
+    pos = glm::vec3(rect.transform * localPos);
+    nor = glm::normalize(glm::vec3(rect.invTranspose * glm::vec4(0.0f, -1.0f, 0.0f, 0.0f)));
 }

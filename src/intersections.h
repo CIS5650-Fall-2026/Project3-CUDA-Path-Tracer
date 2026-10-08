@@ -71,3 +71,28 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ float rectIntersectionTest(
+    Geom rect,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside);
+
+__host__ __device__ void findClosestIntersection(
+    Ray r,
+    Geom* geoms,
+    int geoms_size,
+    float& t_min,
+    glm::vec3& intersect_point,
+    glm::vec3& normal,
+    int& hit_geom_index,
+    Geom* emissiveGeoms = nullptr,
+    int emissive_size = 0);
+
+// use for area of rect light (bottom face of cube)
+__host__ __device__ float rectArea(const Geom& rect);
+
+// point on a rect light
+// downward emission normal
+__host__ __device__ void sampleRect(const Geom& rect, float u, float v, glm::vec3& pos, glm::vec3& nor);

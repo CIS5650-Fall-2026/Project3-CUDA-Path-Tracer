@@ -10,6 +10,7 @@ private:
 public:
     Scene(std::string filename);
 
+    std::vector<Geom> emissiveGeoms;
     std::vector<Geom> geoms;
     std::vector<Material> materials;
     RenderState state;

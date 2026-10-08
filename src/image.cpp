@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <filesystem>
 
 Image::Image(int x, int y)
     : xSize(x), ySize(y), pixels(new glm::vec3[x * y]) 
@@ -34,8 +35,9 @@ void Image::savePNG(const std::string &baseFilename)
             bytes[3 * i + 2] = (unsigned char) pix.z;
         }
     }
+    std::filesystem::create_directories("../saved");
 
-    std::string filename = baseFilename + ".png";
+    std::string filename = "../saved/" + baseFilename + ".png";
     stbi_write_png(filename.c_str(), xSize, ySize, 3, bytes, xSize * 3);
     std::cout << "Saved " << filename << "." << std::endl;
 

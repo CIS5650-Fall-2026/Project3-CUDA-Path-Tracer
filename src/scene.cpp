@@ -42,7 +42,6 @@ void Scene::loadFromJSON(const std::string& jsonName)
         const auto& name = item.key();
         const auto& p = item.value();
         Material newMaterial{};
-        // TODO: handle materials loading differently
         if (p["TYPE"] == "Diffuse")
         {
             const auto& col = p["RGB"];
@@ -59,6 +58,27 @@ void Scene::loadFromJSON(const std::string& jsonName)
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
         }
+        else if (p["TYPE"] == "Reflective")
+        {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+			newMaterial.hasReflective = 1;
+        }
+        else if (p["TYPE"] == "Glass")
+        {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+			newMaterial.hasReflective = 1;
+			newMaterial.hasRefractive = 1;
+            if (p.contains("IOR_RGB")) {
+                const auto& n = p["IOR_RGB"];
+                newMaterial.indexOfRefraction = glm::vec3(n[0], n[1], n[2]);
+                newMaterial.dispersive = (DISPERSION != 0);
+            } else {
+                newMaterial.indexOfRefraction = glm::vec3(static_cast<float>(p["IOR"]));
+                newMaterial.dispersive = false;
+            }
+        }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
     }
@@ -71,9 +91,12 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             newGeom.type = CUBE;
         }
-        else
+        else if (type == "sphere")
         {
             newGeom.type = SPHERE;
+        }
+        else {
+			newGeom.type = SDF;
         }
         newGeom.materialid = MatNameToID[p["MATERIAL"]];
         const auto& trans = p["TRANS"];
@@ -87,7 +110,16 @@ void Scene::loadFromJSON(const std::string& jsonName)
         newGeom.inverseTransform = glm::inverse(newGeom.transform);
         newGeom.invTranspose = glm::inverseTranspose(newGeom.transform);
 
-        geoms.push_back(newGeom);
+        if (materials[newGeom.materialid].emittance > 0.0f)
+        {
+            // support 2D rectangle area lights
+            newGeom.type = RECT2D;
+            emissiveGeoms.push_back(newGeom);
+        }
+        else
+        {
+            geoms.push_back(newGeom);
+        }
     }
     const auto& cameraData = data["Camera"];
     Camera& camera = state.camera;
@@ -98,6 +130,8 @@ void Scene::loadFromJSON(const std::string& jsonName)
     state.iterations = cameraData["ITERATIONS"];
     state.traceDepth = cameraData["DEPTH"];
     state.imageName = cameraData["FILE"];
+    state.photonCount = cameraData.value("PHOTONS", state.photonCount);
+    state.sdfScene = cameraData.value("SDF", 0);
     const auto& pos = cameraData["EYE"];
     const auto& lookat = cameraData["LOOKAT"];
     const auto& up = cameraData["UP"];
