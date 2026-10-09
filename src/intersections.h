@@ -71,3 +71,41 @@ __host__ __device__ float sphereIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+/**
+* This is the moller-trumbore intersection algorithm for simple ray-triangle intersection testing.
+* 
+* @param intersectionPoint  Output parameter for point of intersection.
+* @param normal             Output parameter for surface normal.
+* @param outside            Output param for whether the ray came from outside.
+*/
+__host__ __device__ float mollerTrumbore(
+    const Triangle& tri,
+    const Ray& r,
+	glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    glm::vec3& tangent,
+    glm::vec2& uv,
+    bool& outside
+);
+/**
+ * Test intersection between a ray and a transformed triangle mesh. Untransformed,
+ * the mesh is triangulated.
+ * 
+ * @param intersectionPoint  Output parameter for point of intersection.
+ * @param normal             Output parameter for surface normal.
+ * @param outside            Output param for whether the ray came from outside.
+ * @param triIdx             Output parameter for intersected triangle index.
+ * @return                   Ray parameter `t` value. -1 if no intersection.
+ */
+__host__ __device__ float triangleIntersectionTest(
+    const Geom& mesh,
+    const Triangle* triangles,
+    const BVHNode* nodes,
+    const Ray& r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    glm::vec3& tangent,
+    glm::vec2& uv,
+    bool& outside,
+	int& triIdx);

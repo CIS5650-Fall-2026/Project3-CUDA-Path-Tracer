@@ -381,6 +381,7 @@ int main(int argc, char** argv)
 
     // Initialize CUDA and GL components
     init();
+    pathtraceInit(scene);
 
     // Initialize ImGui Data
     InitImguiData(guiData);
@@ -403,8 +404,12 @@ void saveImage()
         for (int y = 0; y < height; y++)
         {
             int index = x + (y * width);
-            glm::vec3 pix = renderState->image[index];
-            img.setPixel(width - 1 - x, y, glm::vec3(pix) / samples);
+
+            // ** tonemapping changes here as well
+            glm::vec3 pix = renderState->image[index] / (float)samples;
+            pix = pix / (pix + glm::vec3(1.f));
+            pix = glm::pow(pix, glm::vec3(1.f / 2.2f));
+            img.setPixel(width - 1 - x, y, pix);
         }
     }
 
@@ -444,10 +449,11 @@ void runCuda()
     // Map OpenGL buffer object for writing from CUDA on a single GPU
     // No data is moved (Win & Linux). When mapped to CUDA, OpenGL should not use this buffer
 
+    // ** The base code appears to be destroying and reallocating everything.
+    // Instead, can just reset the state
     if (iteration == 0)
     {
-        pathtraceFree();
-        pathtraceInit(scene);
+        pathtraceReset();
     }
 
     if (iteration < renderState->iterations)

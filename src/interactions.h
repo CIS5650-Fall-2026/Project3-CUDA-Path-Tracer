@@ -44,5 +44,24 @@ __host__ __device__ void scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    bool outside,
     const Material& m,
     thrust::default_random_engine& rng);
+
+__host__ __device__ float schlickFresnel(
+    float cosTheta,
+    float etaI,
+    float etaT
+);
+
+__host__ __device__ glm::vec4 sampleTexture(
+    const Texture& tex,
+    const glm::vec4* texels,
+    glm::vec2 uv
+);
+
+__host__ __device__ glm::vec3 sampleEnvironment(
+    const Texture& env,
+    const glm::vec4* texels,
+    glm::vec3 dir
+);

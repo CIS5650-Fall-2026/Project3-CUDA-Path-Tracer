@@ -1,0 +1,12 @@
+# Blender 5.2.2 LTS MTL File: 'balls.blend'
+# www.blender.org
+
+newmtl Impala_Metal
+Ns 425.844971
+Ka 0.178248 0.178248 0.178248
+Ks 0.370091 0.370091 0.370091
+Ke 0.000000 0.000000 0.000000
+Ni 2.800000
+d 1.000000
+illum 3
+map_Kd MetalBall.png
