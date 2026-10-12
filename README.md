@@ -226,6 +226,8 @@ https://nvpro-samples.github.io/vk_raytracing_tutorial_KHR/tutorial/
 
 cube.h, icosphere.h - Primitive mesh generators adapted from *HW 0: Intro to Javascript and WebGL*
 
+(Note: I used Claude to convert these files from Typescript to C++ for use as meshes in my scene.)
+
 https://github.com/nchortek/hw00-intro-base/blob/main/src/geometry/Cube.ts
 https://github.com/nchortek/hw00-intro-base/blob/main/src/geometry/Icosphere.ts
 
