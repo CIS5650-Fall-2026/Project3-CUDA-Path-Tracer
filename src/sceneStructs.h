@@ -12,7 +12,29 @@
 enum GeomType
 {
     SPHERE,
-    CUBE
+    CUBE,
+    MESH
+};
+
+struct Triangle
+{
+    glm::vec3 v0;
+    glm::vec3 v1;
+    glm::vec3 v2;
+    glm::vec3 n0;
+    glm::vec3 n1;
+    glm::vec3 n2;
+};
+
+// Children of an interior node are 8 consecutive nodes starting at firstChild,
+// ordered by octant bits (x = 1, y = 2, z = 4).
+struct OctNode
+{
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+    int firstChild; // -1 for a leaf o.t. offset into 8 children nodes
+    int triStart;   // leaf only offset into the triangle index buffer
+    int triCount;   // leaf only
 };
 
 struct Ray
@@ -31,6 +53,13 @@ struct Geom
     glm::mat4 transform;
     glm::mat4 inverseTransform;
     glm::mat4 invTranspose;
+
+    //Mesh only
+    int triangleStart;
+    int triangleCount;
+    glm::vec3 bboxMin;
+    glm::vec3 bboxMax;
+    int octreeRoot;
 };
 
 struct Material
@@ -41,7 +70,8 @@ struct Material
         float exponent;
         glm::vec3 color;
     } specular;
-    float hasReflective;
+    float hasReflective; // probability of a mirror bounce instead of a diffuse one
+    float roughness;     // 0 = perfect mirror, 1 = reflection as blurry as diffuse
     float hasRefractive;
     float indexOfRefraction;
     float emittance;
@@ -74,6 +104,15 @@ struct PathSegment
     glm::vec3 color;
     int pixelIndex;
     int remainingBounces;
+};
+
+//for passing into stream compaction to remove dead paths
+struct PathAlive
+{
+    __host__ __device__ bool operator()(const PathSegment& p)
+    {
+        return p.remainingBounces > 0;
+    }
 };
 
 // Use with a corresponding PathSegment to do:

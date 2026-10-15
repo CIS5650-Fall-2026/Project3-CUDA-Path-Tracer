@@ -1,0 +1,53 @@
+{
+    "Materials": {
+        "key_light": { "TYPE": "Emitting", "RGB": [1.0, 0.92, 0.82], "EMITTANCE": 9.0 },
+        "rim_magenta": { "TYPE": "Emitting", "RGB": [1.0, 0.25, 0.6], "EMITTANCE": 10.0 },
+        "rim_cyan": { "TYPE": "Emitting", "RGB": [0.2, 0.75, 1.0], "EMITTANCE": 10.0 },
+        "backdrop": { "TYPE": "Diffuse", "RGB": [0.55, 0.56, 0.6] },
+        "gold": { "TYPE": "Specular", "RGB": [1.0, 0.78, 0.34], "ROUGHNESS": 0.05 },
+        "chrome": { "TYPE": "Specular", "RGB": [0.95, 0.95, 0.97] },
+        "red_lacquer": { "TYPE": "Glossy", "RGB": [0.75, 0.08, 0.1], "REFLECTIVITY": 0.25 }
+    },
+    "Camera": {
+        "RES": [1200, 800],
+        "FOVY": 15.0,
+        "ITERATIONS": 5000,
+        "DEPTH": 8,
+        "FILE": "dragon_showcase",
+        "EYE": [0.0, 3.5, 16.0],
+        "LOOKAT": [0.0, 2.4, 0.0],
+        "UP": [0.0, 1.0, 0.0]
+    },
+    "Objects": [
+        {
+            "TYPE": "mesh", "FILE": "models/Dragon.glb", "NODE": "Cloth Backdrop", "NORMALIZE": false,
+            "MATERIAL": "backdrop",
+            "TRANS": [0.0, 2.56, 0.0], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [3.0, 3.0, 3.0]
+        },
+        {
+            "TYPE": "mesh", "FILE": "models/Dragon.glb", "NODE": "Dragon", "NORMALIZE": false,
+            "MATERIAL": "gold",
+            "TRANS": [0.0, 1.68, 0.0], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [2.0, 2.0, 2.0]
+        },
+        {
+            "TYPE": "cube", "MATERIAL": "key_light",
+            "TRANS": [0.0, 11.0, 6.0], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [8.0, 0.2, 4.0]
+        },
+        {
+            "TYPE": "cube", "MATERIAL": "rim_magenta",
+            "TRANS": [-5.0, 9.5, -2.0], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [3.0, 0.2, 2.0]
+        },
+        {
+            "TYPE": "cube", "MATERIAL": "rim_cyan",
+            "TRANS": [5.0, 9.5, -2.0], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [3.0, 0.2, 2.0]
+        },
+        {
+            "TYPE": "sphere", "MATERIAL": "chrome",
+            "TRANS": [-3.7, 1.12, 3.2], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [1.8, 1.8, 1.8]
+        },
+        {
+            "TYPE": "sphere", "MATERIAL": "red_lacquer",
+            "TRANS": [3.8, 0.92, 3.6], "ROTAT": [0.0, 0.0, 0.0], "SCALE": [1.4, 1.4, 1.4]
+        }
+    ]
+}
