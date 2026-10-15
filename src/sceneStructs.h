@@ -1,8 +1,8 @@
 #pragma once
 
-#include <cuda_runtime.h>
-
 #include "glm/glm.hpp"
+
+#include "gpu/shared.h"
 
 #include <string>
 #include <vector>
@@ -84,4 +84,30 @@ struct ShadeableIntersection
   float t;
   glm::vec3 surfaceNormal;
   int materialId;
+};
+
+struct MeshPrimitive
+{
+    // NCHORTEK TODO: this might want to own materialId
+    // instead of MeshInstance later
+    std::vector<gpu::Vertex> vertices;
+    std::vector<uint32_t> indices;
+};
+
+struct MeshData
+{
+    std::vector<MeshPrimitive> primitives;
+};
+
+// One placement of a MeshData
+struct MeshInstance
+{
+    // Index into Scene::meshes
+    uint32_t meshIndex;
+
+    // Object-to-world
+    glm::mat4 modelMatrix;
+
+    // Index into Scene::materials
+    int materialId;
 };

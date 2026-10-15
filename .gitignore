@@ -557,3 +557,5 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+imgui.ini

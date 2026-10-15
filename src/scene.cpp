@@ -6,6 +6,9 @@
 #include <glm/gtx/string_cast.hpp>
 #include "json.hpp"
 
+#include "cube.h"
+#include "icosphere.h"
+
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -16,13 +19,16 @@ using json = nlohmann::json;
 
 Scene::Scene(string filename)
 {
+    meshes.reserve(2);
+    meshes.push_back(generateCube());
+    meshes.push_back(generateIcosphere(kIcosphereSubdivisions));
+
     cout << "Reading scene from " << filename << " ..." << endl;
     cout << " " << endl;
     auto ext = filename.substr(filename.find_last_of('.'));
     if (ext == ".json")
     {
         loadFromJSON(filename);
-        return;
     }
     else
     {
@@ -58,6 +64,14 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = 1.0;
+        }
+        else if (p["TYPE"] == "Glass")
+        {
+            const auto& col = p["RGB"];
+            newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasRefractive = 1.0;
+            newMaterial.indexOfRefraction = p.value("IOR", 1.55f);
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);
@@ -67,15 +81,20 @@ void Scene::loadFromJSON(const std::string& jsonName)
     {
         const auto& type = p["TYPE"];
         Geom newGeom;
+        MeshInstance instance{};
+
         if (type == "cube")
         {
             newGeom.type = CUBE;
+            instance.meshIndex = kCubeMeshIndex;
         }
         else
         {
             newGeom.type = SPHERE;
+            instance.meshIndex = kSphereMeshIndex;
         }
-        newGeom.materialid = MatNameToID[p["MATERIAL"]];
+
+        newGeom.materialid = MatNameToID.at(p["MATERIAL"]);
         const auto& trans = p["TRANS"];
         const auto& rotat = p["ROTAT"];
         const auto& scale = p["SCALE"];
@@ -86,6 +105,10 @@ void Scene::loadFromJSON(const std::string& jsonName)
             newGeom.translation, newGeom.rotation, newGeom.scale);
         newGeom.inverseTransform = glm::inverse(newGeom.transform);
         newGeom.invTranspose = glm::inverseTranspose(newGeom.transform);
+
+        instance.materialId = newGeom.materialid;
+        instance.modelMatrix = newGeom.transform;
+        meshInstances.push_back(instance);
 
         geoms.push_back(newGeom);
     }
@@ -111,11 +134,10 @@ void Scene::loadFromJSON(const std::string& jsonName)
     float fovx = (atan(xscaled) * 180) / PI;
     camera.fov = glm::vec2(fovx, fovy);
 
+    camera.view = glm::normalize(camera.lookAt - camera.position);
     camera.right = glm::normalize(glm::cross(camera.view, camera.up));
     camera.pixelLength = glm::vec2(2 * xscaled / (float)camera.resolution.x,
         2 * yscaled / (float)camera.resolution.y);
-
-    camera.view = glm::normalize(camera.lookAt - camera.position);
 
     //set up render camera stuff
     int arraylen = camera.resolution.x * camera.resolution.y;
