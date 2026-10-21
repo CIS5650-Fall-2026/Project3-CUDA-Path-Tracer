@@ -135,7 +135,7 @@ I used cuda streams for all the kernels I launch (include thrust) so that sortin
 
 ### intrinsics
 
-I didn't do a formal measurement of this: using cuda intrinsics in the distance estimator hot paths (for trig functions and exponents) helped significantly increase the framerate (about 10x, empirically). The CUDA Best Practices article recommended to not enable project wide intrinsics, but to only uses them in specific places.
+I didn't do a formal measurement of this: using cuda intrinsics in the distance estimator hot paths (for trig functions and exponents) helped significantly increase the framerate (observed about 4x speedup). The CUDA Best Practices article recommended to not enable project wide intrinsics, but to only uses them in specific places.
 
 ### other notes
 We update the `num_paths` variable each iteration after compacting to reduce the number of blocks we launch, however this performs a synchronization between the device and the host. I plan to profile and determine if this is a bottleneck in the future.
