@@ -6,6 +6,59 @@
 
 #include <thrust/random.h>
 
+// Blend the four texels around the sample point instead of taking the nearest one
+#define TEXTURE_BILINEAR 1
+
+/**
+ * Looks up the color of texture `tex` at `uv`, nearest texel or bilinear
+ * depending on TEXTURE_BILINEAR
+ */
+__host__ __device__ glm::vec3 sampleTexture(
+    const glm::vec3* texels,
+    const TextureInfo& tex,
+    glm::vec2 uv);
+
+/**
+ * Computes a tile-and-grout pattern at `uv` from the material's tile parameters
+ */
+__host__ __device__ glm::vec3 proceduralTiles(
+    const Material& m,
+    glm::vec2 uv);
+
+/**
+ * Height of the tile pattern at `uv`: 1 on a tile, 0 at the bottom of the grout,
+ * with a short ramp between them
+ */
+__host__ __device__ float proceduralTilesHeight(
+    const Material& m,
+    glm::vec2 uv);
+
+/**
+ * Tilts the shading normal by the slope of the material's height pattern
+ *
+ * @param normal   geometric normal at the hit, world space
+ * @param tangent  direction of increasing u at the hit, world space
+ */
+__host__ __device__ glm::vec3 bumpNormal(
+    glm::vec3 normal,
+    glm::vec3 tangent,
+    const Material& m,
+    glm::vec2 uv);
+
+/**
+ * Picks a point uniformly by area on the surface of an emissive box
+ *
+ * @param point   Output parameter, world-space position on the light
+ * @param normal  Output parameter, outward normal of the light at that point
+ * @param area    Output parameter, total surface area of the box, world units
+ */
+__host__ __device__ void sampleBoxLight(
+    const Geom& light,
+    thrust::default_random_engine& rng,
+    glm::vec3& point,
+    glm::vec3& normal,
+    float& area);
+
 // CHECKITOUT
 /**
  * Computes a cosine-weighted random direction in a hemisphere.
@@ -44,5 +97,6 @@ __host__ __device__ void scatterRay(
     PathSegment& pathSegment,
     glm::vec3 intersect,
     glm::vec3 normal,
+    glm::vec3 geomNormal,
     const Material& m,
     thrust::default_random_engine& rng);

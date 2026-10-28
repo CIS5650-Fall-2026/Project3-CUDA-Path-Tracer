@@ -370,14 +370,21 @@ int main(int argc, char** argv)
 
     cameraPosition = cam.position;
 
-    // compute phi (horizontal) and theta (vertical) relative 3D axis
-    // so, (0 0 1) is forward, (0 1 0) is up
-    glm::vec3 viewXZ = glm::vec3(view.x, 0.0f, view.z);
-    glm::vec3 viewZY = glm::vec3(0.0f, view.y, view.z);
-    phi = glm::acos(glm::dot(glm::normalize(viewXZ), glm::vec3(0, 0, -1)));
-    theta = glm::acos(glm::dot(glm::normalize(viewZY), glm::vec3(0, 1, 0)));
+    // The camera sits at lookAt + offset, and runCuda rebuilds that offset from two angles:
+    //     offset = zoom * (sin(phi) * sin(theta), cos(theta), cos(phi) * sin(theta))
+    // so theta is the angle between the offset and +y, and phi is the direction of the
+    // offset's horizontal part, measured from +z toward +x
+    // The base code took both angles from the view direction, which points the opposite
+    // way, so any camera above or below its target ended up mirrored to the other side
     ogLookAt = cam.lookAt;
-    zoom = glm::length(cam.position - ogLookAt);
+    glm::vec3 offset = cam.position - cam.lookAt;
+    zoom = glm::length(offset);
+
+    // offset.y = zoom * cos(theta)
+    theta = glm::acos(offset.y / zoom);
+
+    // two-argument atan keeps the left/right sign that acos drops
+    phi = glm::atan(offset.x, offset.z);
 
     // Initialize CUDA and GL components
     init();
@@ -431,7 +438,9 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
+        // v and u are only perpendicular for a level camera, so the cross product is
+        // shorter than 1 once the camera tilts
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
         cam.up = glm::cross(r, v);
         cam.right = r;
 

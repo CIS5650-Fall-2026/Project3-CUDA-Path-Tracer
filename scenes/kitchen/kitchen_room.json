@@ -1,0 +1,415 @@
+{
+    "Materials": {
+        "window": {
+            "TYPE": "Emitting",
+            "RGB": [
+                1.0,
+                0.97,
+                0.92
+            ],
+            "EMITTANCE": 3.0
+        },
+        "wall": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.85,
+                0.85,
+                0.83
+            ]
+        },
+        "cabinet": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.78,
+                0.78,
+                0.76
+            ]
+        },
+        "counter": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.8,
+                0.8,
+                0.78
+            ]
+        },
+        "tiles": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.93,
+                0.93,
+                0.9
+            ],
+            "PROCEDURAL": "tiles",
+            "TILES": [
+                12,
+                8
+            ],
+            "GROUT": [
+                0.03,
+                0.06
+            ],
+            "GROUT_RGB": [
+                0.6,
+                0.6,
+                0.57
+            ],
+            "BUMP": 0.01
+        },
+        "gray": {
+            "TYPE": "Diffuse",
+            "RGB": [
+                0.6,
+                0.6,
+                0.6
+            ]
+        }
+    },
+    "Camera": {
+        "RES": [
+            800,
+            800
+        ],
+        "FOVY": 20.0,
+        "ITERATIONS": 2000,
+        "DEPTH": 8,
+        "FILE": "kitchen_room",
+        "EYE": [
+            4.5,
+            3.4,
+            9.0
+        ],
+        "LOOKAT": [
+            -1.2,
+            0.7,
+            -0.4
+        ],
+        "UP": [
+            0.0,
+            1.0,
+            0.0
+        ]
+    },
+    "Objects": [
+        {
+            "NAME": "window_back_light",
+            "TYPE": "cube",
+            "MATERIAL": "window",
+            "TRANS": [
+                5.0,
+                6.7,
+                -3.95
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                7.0,
+                5.0,
+                0.1
+            ]
+        },
+        {
+            "NAME": "window_right_light",
+            "TYPE": "cube",
+            "MATERIAL": "window",
+            "TRANS": [
+                8.9,
+                5.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.1,
+                6.0,
+                7.0
+            ]
+        },
+        {
+            "NAME": "counter_top",
+            "TYPE": "cube",
+            "MATERIAL": "counter",
+            "TRANS": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.0,
+                0.4,
+                8.0
+            ]
+        },
+        {
+            "NAME": "cabinet_base",
+            "TYPE": "cube",
+            "MATERIAL": "cabinet",
+            "TRANS": [
+                0.0,
+                -4.2,
+                -0.2
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.0,
+                8.0,
+                7.6
+            ]
+        },
+        {
+            "NAME": "tile_backsplash",
+            "TYPE": "cube",
+            "MATERIAL": "tiles",
+            "TRANS": [
+                0.0,
+                3.2,
+                -4.1
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.0,
+                6.0,
+                0.2
+            ]
+        },
+        {
+            "NAME": "upper_back_wall",
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                0.0,
+                7.7,
+                -4.1
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.0,
+                3.0,
+                0.2
+            ]
+        },
+        {
+            "NAME": "ceiling",
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                0.0,
+                9.0,
+                4.5
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.2,
+                0.2,
+                17.4
+            ]
+        },
+        {
+            "NAME": "left_wall",
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                -9.0,
+                2.5,
+                4.5
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.2,
+                13.4,
+                17.4
+            ]
+        },
+        {
+            "NAME": "right_wall",
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                9.1,
+                2.5,
+                4.5
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.2,
+                13.4,
+                17.4
+            ]
+        },
+        {
+            "NAME": "front_wall",
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                0.0,
+                2.5,
+                13.0
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.2,
+                13.4,
+                0.2
+            ]
+        },
+        {
+            "NAME": "floor",
+            "TYPE": "cube",
+            "MATERIAL": "wall",
+            "TRANS": [
+                0.0,
+                -4.2,
+                4.5
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                18.2,
+                0.2,
+                17.4
+            ]
+        },
+        {
+            "NAME": "sink_basin_placeholder",
+            "TYPE": "cube",
+            "MATERIAL": "gray",
+            "TRANS": [
+                -2.6,
+                0.22,
+                0.6
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                3.8,
+                0.06,
+                3.8
+            ]
+        },
+        {
+            "NAME": "faucet_placeholder",
+            "TYPE": "cube",
+            "MATERIAL": "gray",
+            "TRANS": [
+                -2.6,
+                1.7,
+                -1.6
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.3,
+                3.0,
+                0.3
+            ]
+        },
+        {
+            "NAME": "glass_placeholder",
+            "TYPE": "cube",
+            "MATERIAL": "gray",
+            "TRANS": [
+                -0.2,
+                0.7,
+                -1.4
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.55,
+                1.0,
+                0.55
+            ]
+        },
+        {
+            "NAME": "cutting_board_placeholder",
+            "TYPE": "cube",
+            "MATERIAL": "gray",
+            "TRANS": [
+                1.1,
+                0.35,
+                1.7
+            ],
+            "ROTAT": [
+                0.0,
+                20.0,
+                0.0
+            ],
+            "SCALE": [
+                3.0,
+                0.3,
+                2.0
+            ]
+        },
+        {
+            "NAME": "lemon_placeholder",
+            "TYPE": "sphere",
+            "MATERIAL": "gray",
+            "TRANS": [
+                1.4,
+                0.85,
+                1.6
+            ],
+            "ROTAT": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "SCALE": [
+                0.7,
+                0.7,
+                0.7
+            ]
+        }
+    ]
+}

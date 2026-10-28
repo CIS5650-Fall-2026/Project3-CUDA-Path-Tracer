@@ -1,0 +1,10 @@
+scene,ms_per_iter,fps
+tiles_plain,43.83,22.8
+tiles_plain,44.53,22.5
+tiles_plain,43.66,22.9
+tiles_image,44.33,22.6
+tiles_image,45.00,22.2
+tiles_image,44.37,22.5
+tiles_procedural,43.96,22.7
+tiles_procedural,44.52,22.5
+tiles_procedural,43.63,22.9

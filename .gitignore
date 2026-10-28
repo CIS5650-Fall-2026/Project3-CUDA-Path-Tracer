@@ -557,3 +557,11 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# local perf artifacts
+imgui.ini
+analysis/run-500/
+
+# per-launch kernel timelines exported by run-nsys.sh, 30 MB each; the summaries next to them are kept
+analysis/data/*_cuda_gpu_trace.csv
+analysis/logs/

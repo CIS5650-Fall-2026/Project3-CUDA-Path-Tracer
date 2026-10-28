@@ -1,0 +1,6 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+91.7,6029318695,2400,2512216.1,2502846.0,2128212,3087230,168209.5,"computeIntersections(int, int, PathSegment *, Geom *, int, Triangle *, BVHNode *, ShadeableIntersection *)"
+7.5,493617899,2400,205674.1,205052.0,200796,225563,2634.7,"shadeMaterial(int, int, ShadeableIntersection *, PathSegment *, Material *, glm::tvec3<float, (glm::precision)0> *, TextureInfo *, Geom *, int *, int)"
+0.5,34554194,300,115180.6,114910.0,113501,125309,1538.3,"generateRayFromCamera(Camera, int, int, PathSegment *)"
+0.2,14599118,300,48663.7,48543.0,48319,52383,574.3,"finalGather(int, glm::tvec3<float, (glm::precision)0> *, PathSegment *)"
+0.1,6366696,300,21222.3,21088.0,20895,24384,499.8,"sendImageToPBO(uchar4 *, glm::tvec2<int, (glm::precision)0>, int, glm::tvec3<float, (glm::precision)0> *)"

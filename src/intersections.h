@@ -45,6 +45,8 @@ __host__ __device__ inline glm::vec3 multiplyMV(glm::mat4 m, glm::vec4 v)
  *
  * @param intersectionPoint  Output parameter for point of intersection.
  * @param normal             Output parameter for surface normal.
+ * @param uv                 Output parameter, each face covers the whole [0, 1] square
+ * @param tangent            Output parameter, world-space direction of increasing u
  * @param outside            Output param for whether the ray came from outside.
  * @return                   Ray parameter `t` value. -1 if no intersection.
  */
@@ -53,6 +55,8 @@ __host__ __device__ float boxIntersectionTest(
     Ray r,
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
+    glm::vec2& uv,
+    glm::vec3& tangent,
     bool& outside);
 
 // CHECKITOUT
@@ -70,4 +74,31 @@ __host__ __device__ float sphereIntersectionTest(
     Ray r,
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
+    bool& outside);
+
+/**
+ * Slab test between a ray and an axis-aligned bounding box in world space
+ *
+ * @return true if the ray enters the box at any t > 0 (the origin may be inside)
+ */
+__host__ __device__ bool aabbIntersectionTest(
+    glm::vec3 aabbMin,
+    glm::vec3 aabbMax,
+    Ray r);
+
+/**
+ * Test intersection between a ray and a triangle.
+ *
+ * @param intersectionPoint  Output parameter for point of intersection.
+ * @param normal             Output parameter for surface normal.
+ * @param outside            Output param for whether the ray came from outside.
+ * @return                   Ray parameter `t` value. -1 if no intersection.
+ */
+__host__ __device__ float triangleIntersectionTest(
+    const Triangle& triangle,
+    Ray r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    glm::vec2& uv,
+    glm::vec3& tangent,
     bool& outside);

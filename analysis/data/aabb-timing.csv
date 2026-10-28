@@ -1,0 +1,5 @@
+model,triangles,aabb_cull,ms_per_iter,fps
+suzanne_4k,3936,1,274.72,3.6
+suzanne_4k,3936,0,365.39,2.7
+suzanne_16k,15744,1,1020.36,1.0
+suzanne_16k,15744,0,1396.48,0.7

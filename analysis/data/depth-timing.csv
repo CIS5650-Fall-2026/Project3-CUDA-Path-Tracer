@@ -1,0 +1,13 @@
+scene,depth,ms_per_iter,fps
+glass_open,8,44.81,22.3
+glass_open,8,45.20,22.1
+glass_open,8,43.97,22.7
+glass_open,32,67.07,14.9
+glass_open,32,68.57,14.6
+glass_open,32,68.64,14.6
+glass_closed,8,78.53,12.7
+glass_closed,8,78.98,12.7
+glass_closed,8,80.02,12.5
+glass_closed,32,259.48,3.9
+glass_closed,32,260.29,3.8
+glass_closed,32,259.31,3.9

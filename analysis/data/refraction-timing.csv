@@ -1,0 +1,13 @@
+scene,material,box,ms_per_iter,fps
+cornell,mirror,open,43.86,22.8
+cornell,mirror,open,44.71,22.4
+cornell,mirror,open,43.73,22.9
+glass_open,glass,open,45.07,22.2
+glass_open,glass,open,45.48,22.0
+glass_open,glass,open,44.37,22.5
+cornell_closed,mirror,closed,78.96,12.7
+cornell_closed,mirror,closed,77.84,12.8
+cornell_closed,mirror,closed,78.20,12.8
+glass_closed,glass,closed,78.62,12.7
+glass_closed,glass,closed,77.73,12.9
+glass_closed,glass,closed,78.95,12.7

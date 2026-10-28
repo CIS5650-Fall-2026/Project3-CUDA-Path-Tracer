@@ -1,0 +1,60 @@
+depth 2, off then on
+image                                   region          mean   noise
+build/direct-depth-2-0-100samp.png      whole frame    13.73        
+                                        floor          29.77   46.77
+                                        back wall      33.05   46.88
+                                        ceiling         1.33    2.61
+build/direct-depth-2-1-100samp.png      whole frame    13.57        
+                                        floor          30.12    4.92
+                                        back wall      33.83    5.62
+                                        ceiling         0.84    0.67
+depth 3, off then on
+image                                   region          mean   noise
+build/direct-depth-3-0-100samp.png      whole frame    23.24        
+                                        floor          44.10   62.47
+                                        back wall      48.88   63.53
+                                        ceiling        16.00   27.72
+build/direct-depth-3-1-100samp.png      whole frame    21.95        
+                                        floor          40.41   52.36
+                                        back wall      46.02   51.87
+                                        ceiling        15.63    7.02
+depth 4, off then on
+image                                   region          mean   noise
+build/direct-depth-4-0-100samp.png      whole frame    29.20        
+                                        floor          52.77   69.95
+                                        back wall      59.68   72.01
+                                        ceiling        23.13   37.15
+build/direct-depth-4-1-100samp.png      whole frame    28.38        
+                                        floor          52.30   64.74
+                                        back wall      58.71   65.18
+                                        ceiling        21.19   30.32
+depth 5, off then on
+image                                   region          mean   noise
+build/direct-depth-5-0-100samp.png      whole frame    33.04        
+                                        floor          58.28   74.77
+                                        back wall      65.95   76.82
+                                        ceiling        28.11   43.25
+build/direct-depth-5-1-100samp.png      whole frame    32.51        
+                                        floor          57.64   72.44
+                                        back wall      65.20   73.46
+                                        ceiling        27.62   39.73
+depth 6, off then on
+image                                   region          mean   noise
+build/direct-depth-6-0-100samp.png      whole frame    35.38        
+                                        floor          60.64   76.57
+                                        back wall      70.33   78.83
+                                        ceiling        31.24   46.61
+build/direct-depth-6-1-100samp.png      whole frame    34.98        
+                                        floor          60.20   75.13
+                                        back wall      69.88   76.84
+                                        ceiling        30.55   44.66
+depth 8, off then on
+image                                   region          mean   noise
+build/direct-depth-8-0-100samp.png      whole frame    38.04        
+                                        floor          64.51   77.75
+                                        back wall      74.67   81.05
+                                        ceiling        34.05   49.06
+build/direct-depth-8-1-100samp.png      whole frame    37.78        
+                                        floor          64.25   77.43
+                                        back wall      74.37   80.47
+                                        ceiling        33.73   48.47
