@@ -1,0 +1,44 @@
+{
+    "Materials":
+    {
+        "floor_gray":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[0.5, 0.5, 0.5]
+        }
+    },
+    "Environment":
+    {
+        "FILE":"assets/hdri/venice_sunset_4k.hdr",
+        "STRENGTH":1.0,
+        "ROTATION":0.0
+    },
+    "Camera":
+    {
+        "RES":[1024,1024],
+        "FOVY":40.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"helmet_plane",
+        "EYE":[0.0,1.6,7.0],
+        "LOOKAT":[0.0,0.9,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"cube",
+            "MATERIAL":"floor_gray",
+            "TRANS":[0.0,-0.05,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[20.0,0.1,20.0]
+        },
+        {
+            "TYPE":"mesh",
+            "FILE":"assets/DamagedHelmet/glTF/DamagedHelmet.gltf",
+            "TRANS":[0.0,1.0,0.0],
+            "ROTAT":[0.0,20.0,0.0],
+            "SCALE":[1.0,1.0,1.0]
+        }
+    ]
+}

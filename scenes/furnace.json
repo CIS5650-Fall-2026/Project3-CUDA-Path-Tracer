@@ -1,0 +1,35 @@
+{
+    "Materials":
+    {
+        "white":
+        {
+            "TYPE":"Diffuse",
+            "RGB":[1.0, 1.0, 1.0]
+        }
+    },
+    "Environment":
+    {
+        "RGB":[1.0, 1.0, 1.0]
+    },
+    "Camera":
+    {
+        "RES":[400,400],
+        "FOVY":45.0,
+        "ITERATIONS":64,
+        "DEPTH":8,
+        "FILE":"furnace",
+        "EYE":[0.0,0.0,4.0],
+        "LOOKAT":[0.0,0.0,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"sphere",
+            "MATERIAL":"white",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[2.0,2.0,2.0]
+        }
+    ]
+}

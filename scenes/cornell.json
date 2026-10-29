@@ -31,8 +31,8 @@
     },
     "Camera":
     {
-        "RES":[800,800],
-        "FOVY":45.0,
+        "RES":[1024,1024],
+        "FOVY":90.0,
         "ITERATIONS":5000,
         "DEPTH":8,
         "FILE":"cornell",
@@ -45,9 +45,9 @@
         {
             "TYPE":"cube",
             "MATERIAL":"light",
-            "TRANS":[0.0,10.0,0.0],
+            "TRANS":[0.0,9.99,0.0],
             "ROTAT":[0.0,0.0,0.0],
-            "SCALE":[3.0,0.3,3.0]
+            "SCALE":[3.0,0.01,3.0]
         },
         {
             "TYPE":"cube",

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="380" viewBox="0 0 1100 380" font-family="'Segoe UI', Arial, sans-serif">
+<defs><marker id="headb9788d" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b9788d"/></marker></defs>
+<rect width="1100" height="380" fill="#1a1a19"/>
+<text x="40" y="130.0" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">buffer A</text>
+<text x="40" y="260.0" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">buffer B</text>
+<text x="315.0" y="64" font-size="14" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">generate</text>
+<rect x="230" y="100" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="231" y="101" width="168.0" height="58" rx="7" fill="#523b42"/>
+<text x="315.0" y="122" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">100%</text>
+<text x="315.0" y="142" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">dev_paths, written</text>
+<rect x="230" y="230" width="170" height="60" rx="8" fill="none" stroke="#4f4d49" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="315.0" y="260.0" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">spare, stale</text>
+<text x="535.0" y="64" font-size="14" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">bounce 1</text>
+<rect x="450" y="100" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="451" y="101" width="168.0" height="58" rx="7" fill="#4a4844"/>
+<text x="535.0" y="122" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">100%</text>
+<text x="535.0" y="142" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">dev_paths, read</text>
+<rect x="450" y="230" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="451" y="231" width="137.8" height="58" rx="7" fill="#523b42"/>
+<text x="535.0" y="252" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">82%</text>
+<text x="535.0" y="272" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">spare, written</text>
+<path d="M535.0 160 L535.0 230" fill="none" stroke="#b9788d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#headb9788d)"/>
+<text x="545.0" y="195.0" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="start" dominant-baseline="middle">shade</text>
+<rect x="619" y="182.0" width="52" height="26" rx="6" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="645" y="195.0" font-size="13" font-weight="400" fill="#a0bcc6" text-anchor="middle" dominant-baseline="middle">swap</text>
+<text x="755.0" y="64" font-size="14" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">bounce 2</text>
+<rect x="670" y="100" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="671" y="101" width="94.1" height="58" rx="7" fill="#523b42"/>
+<text x="755.0" y="122" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">56%</text>
+<text x="755.0" y="142" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">spare, written</text>
+<rect x="670" y="230" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="671" y="231" width="137.8" height="58" rx="7" fill="#4a4844"/>
+<text x="755.0" y="252" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">82%</text>
+<text x="755.0" y="272" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">dev_paths, read</text>
+<path d="M755.0 230 L755.0 160" fill="none" stroke="#b9788d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#headb9788d)"/>
+<text x="765.0" y="195.0" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="start" dominant-baseline="middle">shade</text>
+<rect x="839" y="182.0" width="52" height="26" rx="6" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="865" y="195.0" font-size="13" font-weight="400" fill="#a0bcc6" text-anchor="middle" dominant-baseline="middle">swap</text>
+<text x="975.0" y="64" font-size="14" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">bounce 3</text>
+<rect x="890" y="100" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="891" y="101" width="94.1" height="58" rx="7" fill="#4a4844"/>
+<text x="975.0" y="122" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">56%</text>
+<text x="975.0" y="142" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">dev_paths, read</text>
+<rect x="890" y="230" width="170" height="60" rx="8" fill="#1a1a19" stroke="#a29d95" stroke-width="1.5"/>
+<rect x="891" y="231" width="40.3" height="58" rx="7" fill="#523b42"/>
+<text x="975.0" y="252" font-size="15" font-weight="600" fill="#ecebe6" text-anchor="middle" dominant-baseline="middle">24%</text>
+<text x="975.0" y="272" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">spare, written</text>
+<path d="M975.0 160 L975.0 230" fill="none" stroke="#b9788d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#headb9788d)"/>
+<text x="985.0" y="195.0" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="start" dominant-baseline="middle">shade</text>
+<rect x="230" y="332" width="16" height="16" rx="3" fill="#4a4844" stroke="#a29d95" stroke-width="1.5"/>
+<text x="254" y="340" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">paths read this bounce</text>
+<rect x="424.0" y="332" width="16" height="16" rx="3" fill="#523b42" stroke="#b9788d" stroke-width="1.5"/>
+<text x="448.0" y="340" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">written this bounce</text>
+<rect x="594.0" y="332" width="16" height="16" rx="3" fill="none" stroke="#4f4d49" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="618.0" y="340" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">stale</text>
+</svg>

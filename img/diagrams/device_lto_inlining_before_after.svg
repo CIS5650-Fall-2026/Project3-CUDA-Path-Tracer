@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="504" viewBox="0 0 1000 504" font-family="'Segoe UI', Arial, sans-serif">
+<defs><marker id="head76736d" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#76736d"/></marker></defs>
+<rect width="1000" height="504" fill="#1a1a19"/>
+<rect x="24" y="20" width="464" height="432" rx="12" fill="#201f1e" stroke="#201f1e" stroke-width="1.5"/>
+<text x="44" y="46" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">Before: separate compilation</text>
+<rect x="512" y="20" width="464" height="432" rx="12" fill="#201f1e" stroke="#201f1e" stroke-width="1.5"/>
+<text x="532" y="46" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">After: device LTO (-dlto)</text>
+<rect x="60" y="76" width="392" height="52" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="256.0" y="102.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">computeIntersections</text>
+<path d="M256 128 L256 180" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="270" y="154" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">2 calls, 72 local mem ops</text>
+<rect x="60" y="180" width="392" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="256.0" y="199.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">intersections.cu</text>
+<text x="256.0" y="218.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">box + sphere tests</text>
+<rect x="60" y="268" width="392" height="52" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="256.0" y="294.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">shadeMaterial</text>
+<path d="M256 320 L256 372" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="270" y="346" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">4 calls, 38 local mem ops</text>
+<rect x="60" y="372" width="392" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="256.0" y="391.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">interactions.cu</text>
+<text x="256.0" y="410.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">scatterRay</text>
+<rect x="548" y="76" width="392" height="160" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="744" y="100" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">computeIntersections</text>
+<text x="744" y="120" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">0 calls, 0 local mem ops</text>
+<rect x="588" y="152" width="312" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="744.0" y="180.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">box + sphere tests</text>
+<rect x="548" y="268" width="392" height="160" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="744" y="292" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">shadeMaterial</text>
+<text x="744" y="312" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">0 calls, 10 local mem ops</text>
+<rect x="588" y="344" width="312" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="744.0" y="372.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">scatterRay</text>
+<rect x="40" y="474" width="16" height="16" rx="3" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="64" y="482" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">kernel in pathtrace.cu</text>
+<rect x="224.0" y="474" width="16" height="16" rx="3" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="248.0" y="482" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">device function from another .cu file</text>
+</svg>

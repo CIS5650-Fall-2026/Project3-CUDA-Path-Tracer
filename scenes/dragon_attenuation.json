@@ -1,0 +1,39 @@
+{
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 1.0, 1.0],
+            "EMITTANCE":4.0
+        }
+    },
+    "Camera":
+    {
+        "RES":[1280,720],
+        "FOVY":35.0,
+        "ITERATIONS":5000,
+        "DEPTH":16,
+        "FILE":"dragon_attenuation",
+        "EYE":[0.0,1.2,8.0],
+        "LOOKAT":[0.0,0.3,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[0.0,7.0,2.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[8.0,0.05,8.0]
+        },
+        {
+            "TYPE":"mesh",
+            "FILE":"assets/KhronosTests/DragonAttenuation.glb",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0]
+        }
+    ]
+}

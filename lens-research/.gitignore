@@ -1,0 +1,7 @@
+# Only the transcribed notes are tracked. The patent PDFs, product images and
+# other people's data files stay local; every NOTES.md records the URL it
+# came from.
+*
+!*/
+!.gitignore
+!NOTES.md

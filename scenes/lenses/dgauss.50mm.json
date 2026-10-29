@@ -1,0 +1,22 @@
+{
+  "name": "Double Gauss 50mm f/2 (PBRT dgauss.50mm)",
+  "source": "Tronnier, US 2,673,491, as PBRT-v3's dgauss.50mm.dat (Modern Lens Design p. 312, scaled from 100 mm). Abbe numbers from the patent's glass list, matched by index; rows 1 and 8 are the least certain. The last gap is the film distance at infinity focus, 36.106 mm, from a paraxial trace of the table.",
+  "focalLength": 50.0,
+  "fNumber": 2.0,
+  "sensor": [36.0, 24.0],
+  "blades": 0,
+  "apertures": "the lens file (Modern Lens Design)",
+  "surfaces": [
+    {"radius": 29.475, "thickness": 3.76, "ior": 1.67, "abbe": 47.1, "aperture": 25.2},
+    {"radius": 84.83, "thickness": 0.12, "aperture": 25.2},
+    {"radius": 19.275, "thickness": 4.025, "ior": 1.67, "abbe": 47.1, "aperture": 23.0},
+    {"radius": 40.77, "thickness": 3.275, "ior": 1.699, "abbe": 30.1, "aperture": 23.0},
+    {"radius": 12.75, "thickness": 5.705, "aperture": 18.0},
+    {"radius": 0.0, "thickness": 4.5, "aperture": 17.1, "stop": true},
+    {"radius": -14.495, "thickness": 1.18, "ior": 1.603, "abbe": 38.4, "aperture": 17.0},
+    {"radius": 40.77, "thickness": 6.065, "ior": 1.658, "abbe": 57.0, "aperture": 20.0},
+    {"radius": -20.385, "thickness": 0.19, "aperture": 20.0},
+    {"radius": 437.065, "thickness": 3.22, "ior": 1.717, "abbe": 48.1, "aperture": 20.0},
+    {"radius": -39.73, "thickness": 36.106, "aperture": 20.0}
+  ]
+}

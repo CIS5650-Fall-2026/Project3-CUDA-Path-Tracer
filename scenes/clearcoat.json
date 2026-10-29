@@ -1,0 +1,52 @@
+{
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 1.0, 1.0],
+            "EMITTANCE":12.0
+        },
+        "fill":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 1.0, 1.0],
+            "EMITTANCE":0.6
+        }
+    },
+    "Camera":
+    {
+        "RES":[800,1000],
+        "FOVY":30.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"clearcoat",
+        "EYE":[-2.13,0.3,26.0],
+        "LOOKAT":[-2.13,0.3,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[-8.0,10.0,14.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[4.0,0.05,4.0]
+        },
+        {
+            "TYPE":"cube",
+            "MATERIAL":"fill",
+            "TRANS":[-2.13,0.3,40.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[40.0,40.0,0.05]
+        },
+        {
+            "TYPE":"mesh",
+            "FILE":"assets/KhronosTests/ClearCoatTest.glb",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0]
+        }
+    ]
+}

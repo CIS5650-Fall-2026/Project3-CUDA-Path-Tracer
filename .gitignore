@@ -557,3 +557,20 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# auto-saved renders (keep locally for the README, not in git)
+img/auto_saved/*.png
+imgui.ini
+img/test/
+
+# glTF test models (downloaded, see the README's asset list)
+scenes/assets/
+
+# profiling (plan step 3i): raw logs and Nsight reports stay local, the records and summary are tracked
+profiling/results/logs/
+profiling/results/nsys/
+profiling/results/ncu/
+profiling/results/*.log
+
+# Blender scene migration (working .blend, exported glTF, textures, reference renders); large, stays local
+scenes/blender-migration/

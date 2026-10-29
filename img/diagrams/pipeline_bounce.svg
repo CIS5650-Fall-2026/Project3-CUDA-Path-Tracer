@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="540" viewBox="0 0 1000 540" font-family="'Segoe UI', Arial, sans-serif">
+<defs><marker id="head76736d" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#76736d"/></marker></defs>
+<rect width="1000" height="540" fill="#1a1a19"/>
+<rect x="30" y="105" width="130" height="70" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="95.0" y="131.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">dev_paths</text>
+<text x="95.0" y="150.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">live paths</text>
+<rect x="30" y="195" width="130" height="70" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="95.0" y="221.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">shadow queue</text>
+<text x="95.0" y="240.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">last bounce</text>
+<rect x="190" y="84" width="180" height="200" rx="8" fill="#2c292a" stroke="#d1b2bf" stroke-width="1.5"/>
+<text x="280" y="108" font-size="15" font-weight="600" fill="#e6dedd" text-anchor="middle" dominant-baseline="middle">OptiX launch</text>
+<line x1="202" y1="188" x2="358" y2="188" stroke="#d1b2bf" stroke-opacity="0.4" stroke-width="1"/>
+<text x="280" y="146" font-size="14" font-weight="400" fill="#d9c3cb" text-anchor="middle" dominant-baseline="middle">path rays</text>
+<text x="280" y="232" font-size="14" font-weight="400" fill="#d9c3cb" text-anchor="middle" dominant-baseline="middle">shadow rays</text>
+<path d="M160 140 L190 140" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<path d="M160 230 L190 230" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="400" y="112" width="150" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="475.0" y="140.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">dev_intersections</text>
+<path d="M370 140 L400 140" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="400" y="205" width="150" height="56" rx="8" fill="none" stroke="#4f4d49" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="475.0" y="224.0" font-size="15" font-weight="600" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">material sort</text>
+<text x="475.0" y="243.5" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">optional</text>
+<path d="M475 168 L475 205" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#head76736d)"/>
+<path d="M550 233 L580 233" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#head76736d)"/>
+<rect x="580" y="84" width="220" height="200" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="690" y="143" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">shadeMaterial</text>
+<text x="690" y="178" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">adds emission</text>
+<text x="690" y="200" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">queues a shadow ray</text>
+<text x="690" y="222" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">scatters, compacts</text>
+<path d="M550 140 L580 140" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="830" y="84" width="140" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="900.0" y="103.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">dev_image</text>
+<text x="900.0" y="122.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">running sum</text>
+<rect x="830" y="156" width="140" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="900.0" y="175.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">survivors</text>
+<text x="900.0" y="194.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">live paths only</text>
+<rect x="830" y="228" width="140" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="900.0" y="247.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">shadow queue</text>
+<text x="900.0" y="266.5" font-size="13" font-weight="400" fill="#b8b4ad" text-anchor="middle" dominant-baseline="middle">next launch</text>
+<path d="M800 112 L830 112" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<path d="M800 184 L830 184" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<path d="M800 256 L830 256" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<path d="M300 84 L300 44 L900 44 L900 84" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="600" y="30" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="middle" dominant-baseline="middle">shadow ray reaches its light</text>
+<rect x="420" y="318" width="200" height="80" rx="8" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="520.0" y="349.0" font-size="15" font-weight="600" fill="#d4dcdc" text-anchor="middle" dominant-baseline="middle">Host</text>
+<text x="520.0" y="368.5" font-size="13" font-weight="400" fill="#a0bcc6" text-anchor="middle" dominant-baseline="middle">swap buffers</text>
+<path d="M900 284 L900 338 L620 338" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M420 338 L95 338 L95 265" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<path d="M970 184 L988 184 L988 378 L620 378" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M420 378 L14 378 L14 140 L30 140" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="104" y="304" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">next bounce</text>
+<rect x="30" y="424" width="200" height="56" rx="8" fill="#2c292a" stroke="#d1b2bf" stroke-width="1.5"/>
+<text x="130.0" y="443.0" font-size="15" font-weight="600" fill="#e6dedd" text-anchor="middle" dominant-baseline="middle">Last shadow rays</text>
+<text x="130.0" y="462.5" font-size="13" font-weight="400" fill="#d9c3cb" text-anchor="middle" dominant-baseline="middle">after the loop</text>
+<path d="M520 398 L520 452 L230 452" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="30" y="506" width="16" height="16" rx="3" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="54" y="514" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">CUDA kernel</text>
+<rect x="163.0" y="506" width="16" height="16" rx="3" fill="#2c292a" stroke="#d1b2bf" stroke-width="1.5"/>
+<text x="187.0" y="514" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">OptiX</text>
+<rect x="256.0" y="506" width="16" height="16" rx="3" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="280.0" y="514" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">host code</text>
+<rect x="374.0" y="506" width="16" height="16" rx="3" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="398.0" y="514" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">buffer</text>
+</svg>

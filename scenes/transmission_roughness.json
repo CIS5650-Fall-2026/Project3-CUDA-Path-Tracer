@@ -1,0 +1,39 @@
+{
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 1.0, 1.0],
+            "EMITTANCE":3.0
+        }
+    },
+    "Camera":
+    {
+        "RES":[1280,640],
+        "FOVY":28.0,
+        "ITERATIONS":5000,
+        "DEPTH":12,
+        "FILE":"transmission_roughness",
+        "EYE":[0.0,0.0,9.0],
+        "LOOKAT":[0.0,0.0,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[0.0,6.0,6.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[12.0,0.05,6.0]
+        },
+        {
+            "TYPE":"mesh",
+            "FILE":"assets/KhronosTests/TransmissionRoughnessTest.glb",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[4.0,4.0,4.0]
+        }
+    ]
+}

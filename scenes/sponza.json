@@ -1,0 +1,39 @@
+{
+    "Materials":
+    {
+        "light":
+        {
+            "TYPE":"Emitting",
+            "RGB":[1.0, 0.95, 0.85],
+            "EMITTANCE":6.0
+        }
+    },
+    "Camera":
+    {
+        "RES":[1024,1024],
+        "FOVY":60.0,
+        "ITERATIONS":5000,
+        "DEPTH":8,
+        "FILE":"sponza",
+        "EYE":[-11.0,3.0,-0.5],
+        "LOOKAT":[6.0,2.6,0.0],
+        "UP":[0.0,1.0,0.0]
+    },
+    "Objects":
+    [
+        {
+            "TYPE":"cube",
+            "MATERIAL":"light",
+            "TRANS":[0.0,13.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[40.0,0.1,40.0]
+        },
+        {
+            "TYPE":"mesh",
+            "FILE":"assets/Sponza/glTF/Sponza.gltf",
+            "TRANS":[0.0,0.0,0.0],
+            "ROTAT":[0.0,0.0,0.0],
+            "SCALE":[1.0,1.0,1.0]
+        }
+    ]
+}

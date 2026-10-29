@@ -1,0 +1,196 @@
+<!doctype html><html data-theme="dark"><head><meta charset="utf-8">
+<style>
+/* Layout: one reading column; each figure keeps the 680-unit drawing width and scales down on phones.
+   Contents: a sticky column on the left on wide screens, a floating button and panel on narrow ones. */
+:root {
+  --bg: #fbfbfa; --surface: #f2f1ee; --fg: #1f1e1c; --fg2: #5f5d58; --muted: #8a8780;
+  --border: rgba(31,30,28,0.14); --border-strong: rgba(31,30,28,0.38); --shadow: rgba(31,30,28,0.16);
+  --amber: #BA7517; --pink: #D4537E; --blue: #378ADD; --teal: #1D9E75; --coral: #D85A30; --purple: #7F77DD;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1c1b1a; --surface: #262523; --fg: #ecebe7; --fg2: #a9a69f; --muted: #7d7a74;
+  --border: rgba(236,235,231,0.14); --border-strong: rgba(236,235,231,0.42); --shadow: rgba(0,0,0,0.5); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #1c1b1a; --surface: #262523; --fg: #ecebe7; --fg2: #a9a69f; --muted: #7d7a74;
+  --border: rgba(236,235,231,0.14); --border-strong: rgba(236,235,231,0.42); --shadow: rgba(0,0,0,0.5); color-scheme: dark }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.65; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); }
+.page { max-width: 720px; width: 100%; box-sizing: border-box; margin: 0 auto; padding-inline: 16px; padding-block: 40px 80px; }
+.toc { font-size: 14px; line-height: 1.4; }
+.toc-head { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg); margin: 0 0 14px 8px; }
+.toc .navparts { display: grid; gap: 14px; }
+.toc .eyebrow { margin: 0 0 4px 8px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.toc a { display: grid; grid-template-columns: 1.7em 1fr; padding: 3px 8px 3px 6px; border-left: 2px solid transparent; border-radius: 0 6px 6px 0; color: var(--fg2); text-decoration: none; }
+.toc a .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.toc a:hover { color: var(--fg); background: var(--surface); }
+.toc a.active { color: var(--fg); font-weight: 500; background: var(--surface); border-left-color: var(--amber); }
+/* Phones: the contents sit at the front of the page, under the title. */
+@media (max-width: 759.98px) {
+  .toc { margin-top: 4px; padding-top: 18px; border-top: 1px solid var(--border); }
+}
+/* Tablets and wider: the contents float at the left edge of the window. The reading column stays
+   centered while the margin beside it can hold the contents, and moves right when it can't. */
+@media (min-width: 760px) {
+  :root {
+    --toc-left: calc(clamp(16px, 2.5vw, 40px) + env(safe-area-inset-left, 0px));
+    --toc-gap: clamp(24px, 3vw, 48px);
+    --toc-w: clamp(190px, calc((100vw - 720px) / 2 - var(--toc-left) - var(--toc-gap)), 280px);
+  }
+  .layout { grid-template-columns: minmax(calc(var(--toc-left) + var(--toc-w) + var(--toc-gap) - 16px), 1fr) minmax(0, 720px) minmax(0, 1fr); }
+  .page { grid-column: 2; margin: 0; }
+  .toc { position: fixed; z-index: 5; left: var(--toc-left); top: calc(env(safe-area-inset-top, 0px) + 40px); width: var(--toc-w);
+    max-height: calc(100vh - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto; overscroll-behavior: contain; box-sizing: border-box; padding-bottom: 8px; }
+}
+h1 { font-size: 26px; font-weight: 500; margin: 0 0 6px; text-wrap: balance; }
+h2 { font-size: 19px; font-weight: 500; margin: 0 0 6px; text-wrap: balance; }
+.lede { color: var(--fg2); margin: 0 0 20px; max-width: 62ch; }
+section { border-top: 1px solid var(--border); padding-block: 32px 8px; margin-top: 32px; scroll-margin-top: 16px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.point { color: var(--fg); margin: 0 0 14px; max-width: 64ch; }
+.caption { color: var(--fg2); font-size: 15px; margin: 0 0 12px; max-width: 64ch; }
+.pts { color: var(--fg2); font-size: 15px; margin: 14px 0 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 64ch; }
+.pts b { color: var(--fg); font-weight: 500; }
+svg { display: block; width: 100%; height: auto; }
+svg .ts { font: 12px var(--font); fill: var(--fg2); }
+svg .th { font: 500 14px var(--font); fill: var(--fg); }
+.row { display: flex; align-items: center; gap: 12px; margin: 8px 0; font-size: 14px; color: var(--fg2); flex-wrap: wrap; }
+.row label { min-width: 110px; }
+.row input[type=range] { flex: 1; min-width: 140px; accent-color: var(--fg2); }
+.row .val { min-width: 64px; text-align: right; font-weight: 500; color: var(--fg); font-variant-numeric: tabular-nums; }
+.readout { font-size: 14px; color: var(--fg2); line-height: 1.7; font-variant-numeric: tabular-nums; margin-top: 6px; }
+.seg { display: flex; gap: 8px; margin: 0 0 10px; }
+button { font: 14px var(--font); color: var(--fg2); background: transparent; border: 0.5px solid var(--border-strong); border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+button:hover { background: var(--surface); }
+button.on { color: var(--fg); font-weight: 500; border-color: var(--fg); }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.tablewrap { overflow-x: auto; margin: 14px 0 0; }
+table { border-collapse: collapse; font: 13px var(--mono); font-variant-numeric: tabular-nums; color: var(--fg2); }
+th, td { text-align: right; padding: 3px 14px 3px 0; white-space: nowrap; }
+th { font-family: var(--font); font-weight: 500; color: var(--fg); border-bottom: 1px solid var(--border); }
+table.text { font: 14px var(--font); }
+table.text th, table.text td { text-align: left; white-space: normal; padding: 4px 18px 4px 0; vertical-align: top; }
+table.text td:first-child { color: var(--fg); }
+table.text td.num, table.text th.num { font-family: var(--mono); font-size: 13px; white-space: nowrap; text-align: right; }
+table.text td.note { color: var(--muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+code { font: 0.92em var(--mono); }
+.part { margin-top: 72px; padding-top: 18px; border-top: 2px solid var(--border-strong); }
+.part h2 { font-size: 22px; margin: 0; }
+.part p { color: var(--fg2); margin: 4px 0 0; max-width: 64ch; font-size: 15px; }
+.part + section { border-top: none; margin-top: 4px; }
+h3.sub { font-size: 16px; font-weight: 500; margin: 28px 0 6px; }
+footer { color: var(--muted); font-size: 13px; margin-top: 40px; max-width: 64ch; }
+</style>
+<style>
+:root[data-theme="dark"] { --bg: #1a1a19; --surface: #1a1a19; }
+html, body { margin: 0; padding: 0; background: #1a1a19; }
+body { width: 680px; height: 320px; overflow: hidden; }
+section { border: 0; padding: 0; margin: 0; }
+svg { width: 680px; height: 320px; }
+</style></head><body>
+<script>
+/* The double Gauss as the renderer stores it (scenes/lenses/dgauss.50mm.json) and a port of
+   render/lens_trace.h: spheres, the PBRT root choice, clear-aperture checks, Snell, TIR = blocked.
+   Lens space: z = 0 at the front vertex, z grows toward the film. Checked against the C++:
+   f 50.358, f/2.018, entrance pupil 19.95 mm behind the front vertex, 39% blocked on a 24x24 film. */
+window.DG = (function(){
+  const T=[[29.475,3.76,1.67,25.2],[84.83,0.12,1,25.2],[19.275,4.025,1.67,23],[40.77,3.275,1.699,23],[12.75,5.705,1,18],[0,4.5,1,17.1,1],[-14.495,1.18,1.603,17],[40.77,6.065,1.658,20],[-20.385,0.19,1,20],[437.065,3.22,1.717,20],[-39.73,36.106,1,20]];
+  const S=T.map(a=>({radius:a[0],thickness:a[1],ior:a[2],ap:a[3]/2,stop:!!a[4]}));
+  const ZV=[];{let z=0;for(const s of S){ZV.push(z);z+=s.thickness;}}
+  const FILM=68.146,REAR=ZV[10],ZSTOP=ZV[5],EPZ=19.946,EPR=12.478,EFL=50.358,HP=FILM-EFL;
+  const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],mul=(a,k)=>[a[0]*k,a[1]*k,a[2]*k],sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],norm=a=>mul(a,1/Math.sqrt(dot(a,a)));
+  function isect(s,z,o,d){
+    if(s.radius===0){if(d[2]===0)return null;const t=(z-o[2])/d[2];if(t<=0)return null;return{p:add(o,mul(d,t)),n:[0,0,d[2]>0?-1:1]};}
+    const R=s.radius,c=[0,0,z+R],oc=sub(o,c),b=dot(oc,d),cc=dot(oc,oc)-R*R,disc=b*b-cc;if(disc<0)return null;
+    const sq=Math.sqrt(disc),t=((d[2]>0)===(R>0))?-b-sq:-b+sq;if(t<=0)return null;
+    const p=add(o,mul(d,t));let n=mul(sub(p,c),1/Math.abs(R));if(dot(n,d)>0)n=mul(n,-1);return{p,n};}
+  function refr(d,n,n1,n2){const eta=n1/n2,ci=-dot(n,d),s2=eta*eta*(1-ci*ci);if(s2>=1)return null;return add(mul(d,eta),mul(n,eta*ci-Math.sqrt(1-s2)));}
+  function trace(from,to,zFrom,o,d,pts){const step=to>=from?1:-1;let z=zFrom;
+    for(let i=from;;i+=step){const f=S[i],h=isect(f,z,o,d);if(!h)return{ok:false,o,d};if(pts)pts.push(h.p);
+      if(h.p[0]*h.p[0]+h.p[1]*h.p[1]>f.ap*f.ap)return{ok:false,o:h.p,d};o=h.p;
+      if(!f.stop){const ss=i>0?S[i-1].ior:1,n1=step>0?ss:f.ior,n2=step>0?f.ior:ss;if(n1!==n2){const nd=refr(d,h.n,n1,n2);if(!nd)return{ok:false,o,d};d=nd;}}
+      if(i===to)return{ok:true,o,d};z+=step>0?f.thickness:-S[i-1].thickness;}}
+  function prof(i,y){const R=S[i].radius;return R===0?ZV[i]:ZV[i]+R-Math.sign(R)*Math.sqrt(R*R-y*y);}
+  function glass(X,Y,opacity){let h='';
+    for(const i of [0,2,3,6,7,9]){const j=i+1,a=S[i].ap,b=S[j].ap,p=[];
+      for(let k=0;k<=24;k++){const y=-a+2*a*k/24;p.push(X(prof(i,y)).toFixed(1)+','+Y(y).toFixed(1));}
+      for(let k=0;k<=24;k++){const y=b-2*b*k/24;p.push(X(prof(j,y)).toFixed(1)+','+Y(y).toFixed(1));}
+      h+=`<polygon points="${p.join(' ')}" fill="var(--blue)" fill-opacity="0.16" stroke="var(--blue)" stroke-width="0.8" opacity="${opacity==null?1:opacity}"/>`;}
+    for(const s of [1,-1])h+=`<line x1="${X(ZSTOP).toFixed(1)}" y1="${Y(s*S[5].ap).toFixed(1)}" x2="${X(ZSTOP).toFixed(1)}" y2="${Y(s*(S[5].ap+2.5)).toFixed(1)}" stroke="var(--fg)" stroke-width="2"/>`;
+    return h;}
+  return{S,ZV,FILM,REAR,ZSTOP,EPZ,EPR,EFL,HP,add,mul,sub,norm,trace,prof,glass};
+})();
+</script>
+<section id="real-lens">
+            <input type="range" id="rl-h" min="0" max="21.6" step="0.1" value="18.0" hidden><span class="val" id="rl-hv" hidden></span><input type="range" id="rl-sd" min="2" max="17.1" step="0.1" value="17.1" hidden><span class="val" id="rl-sdv" hidden></span><svg viewBox="0 0 680 320" aria-hidden="true">
+    <defs><clipPath id="rl-clip"><rect x="0" y="30" width="470" height="262"/></clipPath></defs>
+    <g id="rl-glass"></g>
+    <g id="rl-rays" clip-path="url(#rl-clip)"></g>
+    <g id="rl-marks"></g>
+    <text class="ts" x="60" y="304" text-anchor="middle">film</text>
+    <text class="ts" id="rl-rearL" x="0" y="96" text-anchor="middle">rear disk</text>
+    <text class="ts" id="rl-stopL" x="0" y="96" text-anchor="middle">stop</text>
+    <text class="ts" id="rl-eyeL" x="0" y="262" text-anchor="middle">EYE = entrance pupil</text>
+    <text class="ts" x="466" y="304" text-anchor="end">toward the scene</text>
+    <text class="ts" x="575" y="52" text-anchor="middle">rear disk, face-on</text>
+    <g id="rl-face"></g>
+    <circle cx="506" cy="262" r="4" fill="var(--teal)"/><text class="ts" x="518" y="266">gets out</text>
+    <circle cx="506" cy="284" r="4" fill="var(--coral)" opacity="0.6"/><text class="ts" x="518" y="288">blocked</text>
+    <line x1="494" y1="306" x2="516" y2="306" stroke="var(--teal)" stroke-width="1.5" stroke-dasharray="4 3"/><text class="ts" x="522" y="310">sampling box</text>
+  </svg>
+      <div class="readout" id="rl-ro" hidden></div>
+  
+  
+  <script>
+  (function(){
+    const $=id=>document.getElementById(id),D=DG,NS='http://www.w3.org/2000/svg',K=5,CY=170,X=z=>60+(D.FILM-z)*K,Y=y=>CY-y*K,f1=v=>v.toFixed(1);
+    const S5=D.S[5],AP=S5.ap,ZEND=-14,FC=[575,155],FS=8;
+    $('rl-glass').innerHTML=`<line x1="20" y1="${CY}" x2="468" y2="${CY}" stroke="var(--muted)" stroke-width="0.5" stroke-dasharray="2 4"/>`+D.glass(X,Y)
+      +`<line x1="${f1(X(D.FILM))}" y1="${f1(Y(21.6))}" x2="${f1(X(D.FILM))}" y2="${f1(Y(-21.6))}" stroke="var(--fg)" stroke-width="1.6"/>`
+      +`<line x1="${f1(X(D.REAR))}" y1="${f1(Y(10))}" x2="${f1(X(D.REAR))}" y2="${f1(Y(-10))}" stroke="var(--amber)" stroke-width="1.2" stroke-dasharray="3 3"/>`;
+    $('rl-rearL').setAttribute('x',f1(X(D.REAR)));$('rl-stopL').setAttribute('x',f1(X(D.ZSTOP)+14));
+    $('rl-eyeL').setAttribute('x',f1(X(D.EPZ)));
+    const gets=(fp,x,y,pts)=>D.trace(10,0,D.REAR,fp,D.norm(D.sub([x,y,D.REAR],fp)),pts);
+    function draw(){
+      const h=+$('rl-h').value,sd=+$('rl-sd').value,sa=sd/2,fp=[0,-h,D.FILM];
+      $('rl-hv').textContent=h.toFixed(1).replace(/\.0$/,'')+' mm';$('rl-sdv').textContent=sd.toFixed(1)+' mm';
+      S5.ap=sa;
+      try{
+        let r='';
+        for(let k=-10;k<=10;k++){const pts=[fp],res=gets(fp,0,k,pts),pl=p=>p.map(q=>f1(X(q[2]))+','+f1(Y(q[1]))).join(' ');
+          if(res.ok){const t=(ZEND-res.o[2])/res.d[2];pts.push([0,res.o[1]+t*res.d[1],ZEND]);
+            r+=`<polyline points="${pl(pts)}" fill="none" stroke="var(--teal)" stroke-width="1.1"/>`;}
+          else{const e=pts[pts.length-1];
+            r+=`<polyline points="${pl(pts)}" fill="none" stroke="var(--fg)" stroke-width="0.8" opacity="0.25"/><circle cx="${f1(X(e[2]))}" cy="${f1(Y(e[1]))}" r="2.4" fill="var(--coral)"/>`;}}
+        $('rl-rays').innerHTML=r;
+        let m='';
+        if(sa<AP-1e-6)for(const s of [1,-1])m+=`<line x1="${f1(X(D.ZSTOP))}" y1="${f1(Y(s*sa))}" x2="${f1(X(D.ZSTOP))}" y2="${f1(Y(s*AP))}" stroke="var(--fg)" stroke-width="2"/>`;
+        m+=`<line x1="${f1(X(D.EPZ))}" y1="${CY+5}" x2="${f1(X(D.EPZ))}" y2="${248}" stroke="var(--muted)" stroke-width="0.5" stroke-dasharray="2 2"/>`;
+        m+=`<circle cx="${f1(X(D.EPZ))}" cy="${CY}" r="3.5" fill="var(--amber)"/><circle cx="${f1(X(D.FILM))}" cy="${f1(Y(-h))}" r="3.5" fill="var(--fg)"/>`;
+        $('rl-marks').innerHTML=m;
+        // Face-on: dots on a coarse grid; the numbers and the box from a finer one
+        let face=`<circle cx="${FC[0]}" cy="${FC[1]}" r="${10*FS}" fill="none" stroke="var(--amber)" stroke-width="1.2"/>`;
+        const G=37;
+        for(let i=0;i<G;i++)for(let j=0;j<G;j++){const x=-10+20*i/(G-1),y=-10+20*j/(G-1);if(x*x+y*y>100.0001)continue;const ok=gets(fp,x,y).ok;
+          face+=`<circle cx="${f1(FC[0]+x*FS)}" cy="${f1(FC[1]-y*FS)}" r="${ok?1.8:1.5}" fill="var(${ok?'--teal':'--coral'})" opacity="${ok?0.95:0.45}"/>`;}
+        const N=81,st=20/(N-1),P=[];let tot=0,pass=0,bx=[1e9,-1e9,1e9,-1e9];
+        for(let i=0;i<N;i++)for(let j=0;j<N;j++){const x=-10+i*st,y=-10+j*st;if(x*x+y*y>100.0001)continue;tot++;const ok=gets(fp,x,y).ok;P.push([x,y,ok]);
+          if(ok){pass++;bx=[Math.min(bx[0],x),Math.max(bx[1],x),Math.min(bx[2],y),Math.max(bx[3],y)];}}
+        let inBox=0,inPass=0;
+        if(pass){bx=[bx[0]-st/2,bx[1]+st/2,bx[2]-st/2,bx[3]+st/2];
+          for(const[x,y,ok]of P)if(x>=bx[0]&&x<=bx[1]&&y>=bx[2]&&y<=bx[3]){inBox++;if(ok)inPass++;}
+          face+=`<rect x="${f1(FC[0]+bx[0]*FS)}" y="${f1(FC[1]-bx[3]*FS)}" width="${f1((bx[1]-bx[0])*FS)}" height="${f1((bx[3]-bx[2])*FS)}" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-dasharray="4 3"/>`;}
+        $('rl-face').innerHTML=face;
+        $('rl-ro').textContent=`About f/${(2.02*17.1/sd).toFixed(1)}. Aiming anywhere on the rear disk, ${Math.round(100*pass/tot)}% of rays get out; aiming inside the box, ${inBox?Math.round(100*inPass/inBox):0}%.`;
+      }finally{S5.ap=AP;}
+    }
+    ['rl-h','rl-sd'].forEach(id=>$(id).addEventListener('input',draw));draw();
+  })();
+  </script>
+</section>
+</body></html>

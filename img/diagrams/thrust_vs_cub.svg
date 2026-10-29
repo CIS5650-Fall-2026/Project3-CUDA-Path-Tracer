@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1130" height="482" viewBox="0 0 1130 482" font-family="'Segoe UI', Arial, sans-serif">
+<defs><marker id="head76736d" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#76736d"/></marker></defs>
+<rect width="1130" height="482" fill="#1a1a19"/>
+<text x="40" y="40" font-size="17" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">Material sort</text>
+<line x1="40" y1="56" x2="1090" y2="56" stroke="#4f4d49" stroke-width="1"/>
+<text x="40" y="91.0" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">thrust</text>
+<text x="40" y="111.0" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">sort_by_key on a zip</text>
+<rect x="200" y="72" width="160" height="56" rx="8" fill="#2b2822" stroke="#c4a271" stroke-width="1.5"/>
+<text x="280.0" y="100.0" font-size="15" font-weight="600" fill="#e3dbcc" text-anchor="middle" dominant-baseline="middle">cudaMalloc</text>
+<rect x="384" y="72" width="160" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="464.0" y="100.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">copy to tuples</text>
+<path d="M360 100.0 L384 100.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="568" y="72" width="160" height="56" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="648.0" y="91.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">radix sort</text>
+<text x="648.0" y="110.5" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">whole tuples</text>
+<path d="M544 100.0 L568 100.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="752" y="72" width="160" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="832.0" y="100.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">copy back</text>
+<path d="M728 100.0 L752 100.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="936" y="72" width="160" height="56" rx="8" fill="#2b2822" stroke="#c4a271" stroke-width="1.5"/>
+<text x="1016.0" y="100.0" font-size="15" font-weight="600" fill="#e3dbcc" text-anchor="middle" dominant-baseline="middle">cudaFree</text>
+<path d="M912 100.0 L936 100.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="40" y="169.0" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">CUB</text>
+<text x="40" y="189.0" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">DeviceRadixSort</text>
+<rect x="200" y="150" width="160" height="56" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="280.0" y="169.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">radix sort</text>
+<text x="280.0" y="188.5" font-size="13" font-weight="400" fill="#c89aa8" text-anchor="middle" dominant-baseline="middle">keys only</text>
+<rect x="384" y="150" width="160" height="56" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="464.0" y="178.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">gather</text>
+<path d="M360 178.0 L384 178.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="568" y="150" width="160" height="56" rx="8" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="648.0" y="178.0" font-size="15" font-weight="600" fill="#d4dcdc" text-anchor="middle" dominant-baseline="middle">swap pointers</text>
+<path d="M544 178.0 L568 178.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="756" y="178.0" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">workspace allocated once</text>
+<text x="40" y="244" font-size="17" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">Compaction</text>
+<line x1="40" y1="260" x2="1090" y2="260" stroke="#4f4d49" stroke-width="1"/>
+<text x="40" y="295.0" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">thrust</text>
+<text x="40" y="315.0" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">stable_partition</text>
+<rect x="200" y="276" width="160" height="56" rx="8" fill="#2b2822" stroke="#c4a271" stroke-width="1.5"/>
+<text x="280.0" y="304.0" font-size="15" font-weight="600" fill="#e3dbcc" text-anchor="middle" dominant-baseline="middle">cudaMalloc</text>
+<rect x="384" y="276" width="160" height="56" rx="8" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="464.0" y="304.0" font-size="15" font-weight="600" fill="#dcdad4" text-anchor="middle" dominant-baseline="middle">copy</text>
+<path d="M360 304.0 L384 304.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="568" y="276" width="160" height="56" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="648.0" y="304.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">live to front</text>
+<path d="M544 304.0 L568 304.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="752" y="276" width="160" height="56" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="832.0" y="304.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">ended to back</text>
+<path d="M728 304.0 L752 304.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="936" y="276" width="160" height="56" rx="8" fill="#2b2822" stroke="#c4a271" stroke-width="1.5"/>
+<text x="1016.0" y="304.0" font-size="15" font-weight="600" fill="#e3dbcc" text-anchor="middle" dominant-baseline="middle">cudaFree</text>
+<path d="M912 304.0 L936 304.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<text x="40" y="373.0" font-size="16" font-weight="600" fill="#ecebe6" text-anchor="start" dominant-baseline="middle">CUB</text>
+<text x="40" y="393.0" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">DeviceSelect</text>
+<rect x="200" y="354" width="160" height="56" rx="8" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="280.0" y="382.0" font-size="15" font-weight="600" fill="#e1d2d2" text-anchor="middle" dominant-baseline="middle">select live</text>
+<rect x="384" y="354" width="160" height="56" rx="8" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="464.0" y="382.0" font-size="15" font-weight="600" fill="#d4dcdc" text-anchor="middle" dominant-baseline="middle">swap pointers</text>
+<path d="M360 382.0 L384 382.0" fill="none" stroke="#76736d" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#head76736d)"/>
+<rect x="40" y="446" width="16" height="16" rx="3" fill="#2b2822" stroke="#c4a271" stroke-width="1.5"/>
+<text x="64" y="454" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">per-call allocation</text>
+<rect x="204.0" y="446" width="16" height="16" rx="3" fill="#2a2325" stroke="#b9788d" stroke-width="1.5"/>
+<text x="228.0" y="454" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">kernel</text>
+<rect x="299.0" y="446" width="16" height="16" rx="3" fill="#252423" stroke="#a29d95" stroke-width="1.5"/>
+<text x="323.0" y="454" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">memory copy</text>
+<rect x="439.0" y="446" width="16" height="16" rx="3" fill="#242829" stroke="#80a8b9" stroke-width="1.5"/>
+<text x="463.0" y="454" font-size="13" font-weight="400" fill="#9d9a93" text-anchor="start" dominant-baseline="middle">pointer swap</text>
+</svg>
