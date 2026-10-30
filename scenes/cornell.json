@@ -31,14 +31,16 @@
     },
     "Camera":
     {
-        "RES":[800,800],
+        "RES":[1150,760],
         "FOVY":45.0,
-        "ITERATIONS":5000,
+        "ITERATIONS":50000,
         "DEPTH":8,
         "FILE":"cornell",
-        "EYE":[0.0,5.0,10.5],
-        "LOOKAT":[0.0,5.0,0.0],
-        "UP":[0.0,1.0,0.0]
+        "EYE":[0.0,0.0,3.0],
+        "LOOKAT":[0.0,0.0,0.0],
+        "UP":[0.0,1.0,0.0],
+        "APERTURE_RADIUS": 0.05,
+        "FOCAL_DISTANCE": 5.0
     },
     "Objects":
     [

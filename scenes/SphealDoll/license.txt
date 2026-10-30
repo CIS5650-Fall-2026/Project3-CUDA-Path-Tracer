@@ -1,0 +1,11 @@
+Model Information:
+* title:	Spheal Doll 3D Scan
+* source:	https://sketchfab.com/3d-models/spheal-doll-3d-scan-f084074fa24a4ca49a99f201fb978e9c
+* author:	Fallen_ice (https://sketchfab.com/Fallen_ice)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Spheal Doll 3D Scan" (https://sketchfab.com/3d-models/spheal-doll-3d-scan-f084074fa24a4ca49a99f201fb978e9c) by Fallen_ice (https://sketchfab.com/Fallen_ice) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

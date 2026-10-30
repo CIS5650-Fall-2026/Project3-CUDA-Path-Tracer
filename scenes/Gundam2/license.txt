@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gundam Unicorn
+* source:	https://sketchfab.com/3d-models/gundam-unicorn-1410ff9dd1c94807a00b8a0936170196
+* author:	kurojishi (https://sketchfab.com/kurojishi)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gundam Unicorn" (https://sketchfab.com/3d-models/gundam-unicorn-1410ff9dd1c94807a00b8a0936170196) by kurojishi (https://sketchfab.com/kurojishi) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

@@ -17,12 +17,16 @@
 #include <cuda_runtime.h>
 #include <cuda_gl_interop.h>
 
+#include "optixSetup.h"
+
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
+
+#include "gltfLoader.h"
 
 static std::string startTimeString;
 
@@ -200,7 +204,8 @@ void errorCallback(int error, const char* description)
     fprintf(stderr, "%s\n", description);
 }
 
-bool init()
+bool init(const std::vector<MeshData>& loadedMeshes, const std::vector<ImageData>& loadedImages, 
+    const std::vector<TextureData>& loadedTextures, const EnvironmentData& environment, int lightMaterialId)
 {
     glfwSetErrorCallback(errorCallback);
 
@@ -240,6 +245,7 @@ bool init()
     initVAO();
     initTextures();
     initCuda();
+    initOptixContext(loadedMeshes, loadedImages, loadedTextures, environment, lightMaterialId); // Create the OptiX context after selecting the CUDA device, cuda device is selected with cudaGLSetDevice(0) in initCuda
     initPBO();
     GLuint passthroughProgram = initShader();
 
@@ -325,6 +331,7 @@ void mainLoop()
 
         glfwSwapBuffers(window);
     }
+    destroyOptixContext(); //Clean up optiX when closing the window or pressing Escape
 
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
@@ -342,6 +349,23 @@ int main(int argc, char** argv)
 {
     startTimeString = currentTimeString();
 
+    std::vector<MeshData> loadedMeshes;
+    std::vector<ImageData> loadedImages;
+    std::vector<TextureData> loadedTextures;
+
+    // loadGltf into loadedMeshes and loadedImages
+    bool loaded = loadGltf("../scenes/TabletopFinal/tabletop16.gltf", loadedMeshes, loadedImages, loadedTextures);
+    if (loaded == false) {
+        return EXIT_FAILURE;
+    }
+
+    std::cout << "Returned " << loadedMeshes.size() << " mesh part(s)\n";
+
+    EnvironmentData environment;
+    if (!loadEnvironment("../img/greenwich_park_4k.hdr", environment)) {
+        return EXIT_FAILURE;
+    }
+
     if (argc < 2)
     {
         printf("Usage: %s SCENEFILE.json\n", argv[0]);
@@ -350,8 +374,56 @@ int main(int argc, char** argv)
 
     const char* sceneFile = argv[1];
 
-    // Load scene file
+    // Create scene file from Json
     scene = new Scene(sceneFile);
+
+    //Materials for OptiX box and emitter scene
+    if (loadedMeshes.empty()) {
+        std::cerr << "No mesh parts loaded\n";
+        return EXIT_FAILURE;
+    }
+
+    //////////////////
+    // Populate scene materials from loaded loadedMeshes
+    //////////////////
+
+    //renderer's material array
+    scene->materials.clear();
+
+    for (MeshData& mesh : loadedMeshes) {
+        mesh.rendererMaterialId = int(scene->materials.size());
+
+        //Fix so we read it from gltf?
+        Material material = {};
+        material.color = glm::vec3(mesh.baseColorFactor);
+        material.baseColorTextureId = mesh.gltfBaseColorTextureIndex;
+        material.emittance = 0.0f;
+        material.hasRefractive = 0.0f;
+        material.hasReflective = 0.0f;
+        material.roughness = mesh.roughnessFactor * mesh.roughnessFactor; //GPU multiplies this by texture.g * texture.g. final alpha is (factor*texture.g)^2, no need to square in BSDF
+        //when useMetallicRoughness = 1, we still get reflective (depending on roughness)
+        material.useMetallicRoughness = 1;
+        material.metallic = mesh.metallicFactor;
+        material.metallicRoughnessTextureId = mesh.gltfMetallicRoughnessTextureIndex;
+        material.normalTextureId = mesh.gltfNormalTextureIndex;
+        material.normalScale = mesh.normalScale;
+
+        if (mesh.gltfMaterialIndex >= 47 && mesh.gltfMaterialIndex <= 50) {
+            material.hasRefractive = 1.0f;
+            material.hasReflective = 0.0f;
+            material.indexOfRefraction = 1.5f;
+            material.useMetallicRoughness = 0;
+        }
+
+        scene->materials.push_back(material);
+    }
+
+    const int lightMaterialId = int(scene->materials.size());
+
+    Material lightMaterial = {};
+    lightMaterial.color = glm::vec3(1.0f);
+    lightMaterial.emittance = 5.0f;
+    scene->materials.push_back(lightMaterial);
 
     //Create Instance for ImGUIData
     guiData = new GuiDataContainer();
@@ -380,7 +452,7 @@ int main(int argc, char** argv)
     zoom = glm::length(cam.position - ogLookAt);
 
     // Initialize CUDA and GL components
-    init();
+    init(loadedMeshes, loadedImages, loadedTextures, environment, lightMaterialId);
 
     // Initialize ImGui Data
     InitImguiData(guiData);
@@ -394,7 +466,14 @@ int main(int argc, char** argv)
 
 void saveImage()
 {
+    if (iteration <= 0) {
+        return;
+    }
+
+    pathtraceReadback();
+
     float samples = iteration;
+
     // output image file
     Image img(width, height);
 
@@ -431,8 +510,8 @@ void runCuda()
         cam.view = -glm::normalize(cameraPosition);
         glm::vec3 v = cam.view;
         glm::vec3 u = glm::vec3(0, 1, 0);//glm::normalize(cam.up);
-        glm::vec3 r = glm::cross(v, u);
-        cam.up = glm::cross(r, v);
+        glm::vec3 r = glm::normalize(glm::cross(v, u));
+        cam.up = glm::normalize(glm::cross(r, v));
         cam.right = r;
 
         cam.position = cameraPosition;
@@ -446,8 +525,7 @@ void runCuda()
 
     if (iteration == 0)
     {
-        pathtraceFree();
-        pathtraceInit(scene);
+        pathtraceReset(scene);
     }
 
     if (iteration < renderState->iterations)
@@ -467,6 +545,7 @@ void runCuda()
     {
         saveImage();
         pathtraceFree();
+        destroyOptixContext(); // Destroy OptiX while its CUDA context still exists
         cudaDeviceReset();
         exit(EXIT_SUCCESS);
     }
@@ -513,7 +592,7 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 
 void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    if (xpos == lastX || ypos == lastY)
+    if (xpos == lastX && ypos == lastY)
     {
         return; // otherwise, clicking back into window causes re-start
     }
@@ -523,7 +602,7 @@ void mousePositionCallback(GLFWwindow* window, double xpos, double ypos)
         // compute new camera parameters
         phi -= (xpos - lastX) / width;
         theta -= (ypos - lastY) / height;
-        theta = std::fmax(0.001f, std::fmin(theta, PI));
+        theta = std::fmax(0.001f, std::fmin(theta, PI - 0.001f));
         camchanged = true;
     }
     else if (rightMousePressed)

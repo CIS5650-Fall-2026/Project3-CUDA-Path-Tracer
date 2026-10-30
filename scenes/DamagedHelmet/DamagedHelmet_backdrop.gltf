@@ -1,0 +1,294 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5123,
+      "count": 46356,
+      "max": [
+        14555
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 14556,
+      "max": [
+        0.9424954056739807,
+        0.8128451108932495,
+        0.900973916053772
+      ],
+      "min": [
+        -0.9474585652351379,
+        -1.18715500831604,
+        -0.9009949564933777
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 14556,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 14556,
+      "max": [
+        0.9999759793281555,
+        1.998665988445282
+      ],
+      "min": [
+        0.002448640065267682,
+        1.0005531199858524
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3",
+      "min": [
+        -4,
+        -2,
+        -2
+      ],
+      "max": [
+        4,
+        3,
+        -2
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5123,
+      "count": 6,
+      "type": "SCALAR",
+      "min": [
+        0
+      ],
+      "max": [
+        3
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "Khronos Blender glTF 2.0 exporter",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 92712,
+      "byteOffset": 0,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 174672,
+      "byteOffset": 92712,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 174672,
+      "byteOffset": 267384,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 116448,
+      "byteOffset": 442056,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 48,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 48,
+      "byteLength": 48,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 96,
+      "byteLength": 12,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 558504,
+      "uri": "DamagedHelmet.bin"
+    },
+    {
+      "byteLength": 108,
+      "uri": "data:application/octet-stream;base64,AABAwQAA4MAAAADAAABAQQAA4MAAAADAAABAQQAAAEEAAADAAABAwQAAAEEAAADAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAABAAIAAAACAAMA"
+    }
+  ],
+  "images": [
+    {
+      "uri": "Default_albedo.jpg"
+    },
+    {
+      "uri": "Default_metalRoughness.jpg"
+    },
+    {
+      "uri": "Default_emissive.jpg"
+    },
+    {
+      "uri": "Default_AO.jpg"
+    },
+    {
+      "uri": "Default_normal.jpg"
+    }
+  ],
+  "materials": [
+    {
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 2
+      },
+      "name": "Material_MR",
+      "normalTexture": {
+        "index": 4
+      },
+      "occlusionTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "name": "AzureBlueBackdrop",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.53,
+          0.81,
+          0.98,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 1.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh_helmet_LP_13930damagedHelmet",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TEXCOORD_0": 3
+          },
+          "indices": 0,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "name": "BlueBackdropQuad",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5
+          },
+          "indices": 6,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "node_damagedHelmet_-6514",
+      "rotation": [
+        0.7071068286895752,
+        0.0,
+        -0.0,
+        0.7071068286895752
+      ]
+    },
+    {
+      "name": "BlueBackdropQuad",
+      "mesh": 1,
+      "scale": [0.35, 0.5, 1.0]
+    }
+  ],
+  "samplers": [
+    {}
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        1
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Kirby Fofinho
+* source:	https://sketchfab.com/3d-models/kirby-fofinho-79bab9e6d16c43aebf04a70abd0c7dfd
+* author:	Dante Rossi - Zion (https://sketchfab.com/rossidante)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Kirby Fofinho" (https://sketchfab.com/3d-models/kirby-fofinho-79bab9e6d16c43aebf04a70abd0c7dfd) by Dante Rossi - Zion (https://sketchfab.com/rossidante) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

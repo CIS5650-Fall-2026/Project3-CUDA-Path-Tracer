@@ -1,0 +1,11 @@
+Model Information:
+* title:	Jigglypuff
+* source:	https://sketchfab.com/3d-models/jigglypuff-76ab579e21b74697a90efe566a7293c3
+* author:	DreamNoms (https://sketchfab.com/DreamNoms)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Jigglypuff" (https://sketchfab.com/3d-models/jigglypuff-76ab579e21b74697a90efe566a7293c3) by DreamNoms (https://sketchfab.com/DreamNoms) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

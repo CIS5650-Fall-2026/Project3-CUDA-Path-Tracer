@@ -57,6 +57,9 @@ set(headers
     src/scene.h
     src/sceneStructs.h
     src/utilities.h
+    src/optixSetup.h
+    src/optixLaunchParams.h
+    src/gltfLoader.h
 )
 
 set(sources
@@ -69,6 +72,8 @@ set(sources
     src/interactions.cu
     src/scene.cpp
     src/utilities.cpp
+    src/optixSetup.cpp
+    src/gltfLoader.cpp
 )
 
 set(imgui_headers
@@ -107,6 +112,48 @@ source_group("ImGui\\Sources" FILES ${imgui_sources})
 #add_subdirectory(stream_compaction)  # TODO: uncomment if using your stream compaction
 
 add_executable(${CMAKE_PROJECT_NAME} ${sources} ${headers} ${imgui_sources} ${imgui_headers})
+
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    "${CMAKE_SOURCE_DIR}/external/tinygltf"
+)
+
+# OptiX SDK
+set(OPTIX_ROOT "C:/ProgramData/NVIDIA Corporation/OptiX SDK 9.1.0")
+
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    "${OPTIX_ROOT}/include"
+)
+
+# Separate target for the GPU programs that OptiX will load.
+add_library(optixPrograms OBJECT
+    src/optixPrograms.cu
+)
+
+# This target needs its own OptiX header search path.
+target_include_directories(optixPrograms PRIVATE
+    "${OPTIX_ROOT}/include"
+)
+
+set_target_properties(optixPrograms PROPERTIES
+    # Produce a .ptx file instead of a normal .obj file.
+    CUDA_PTX_COMPILATION ON
+
+    # Generate PTX for compute capability 8.6 (RTX 3060).
+    CUDA_ARCHITECTURES 86-virtual
+
+    # OptiX will handle assembling these GPU programs.
+    CUDA_SEPARABLE_COMPILATION OFF
+)
+
+# Build the PTX whenever we build the renderer.
+add_dependencies(${CMAKE_PROJECT_NAME} optixPrograms)
+
+# Give the renderer a C++ macro containing the generated PTX file's path.
+# Escaped quotes make the macro's value a C++ string literal.
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
+    "OPTIX_PTX_PATH=\"$<TARGET_OBJECTS:optixPrograms>\""
+)
+
 target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GL_LIBRARIES}
     #stream_compaction  # TODO: uncomment if using your stream compaction

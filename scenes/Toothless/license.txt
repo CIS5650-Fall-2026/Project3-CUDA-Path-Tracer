@@ -1,0 +1,11 @@
+Model Information:
+* title:	Toothless - HTTYD
+* source:	https://sketchfab.com/3d-models/toothless-httyd-3aca4dc141f141d794bce159dcf6bb62
+* author:	Malin Helene Rosenkrantz Ottesen (https://sketchfab.com/MH_Rosenkrantz)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Toothless - HTTYD" (https://sketchfab.com/3d-models/toothless-httyd-3aca4dc141f141d794bce159dcf6bb62) by Malin Helene Rosenkrantz Ottesen (https://sketchfab.com/MH_Rosenkrantz) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

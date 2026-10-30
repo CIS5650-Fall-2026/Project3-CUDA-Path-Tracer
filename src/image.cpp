@@ -11,7 +11,7 @@ Image::Image(int x, int y)
 
 Image::~Image()
 {
-    delete pixels;
+    delete[] pixels;
 }
 
 void Image::setPixel(int x, int y, const glm::vec3 &pixel)
@@ -28,10 +28,28 @@ void Image::savePNG(const std::string &baseFilename)
         for (int x = 0; x < xSize; x++)
         {
             int i = y * xSize + x;
-            glm::vec3 pix = glm::clamp(pixels[i], glm::vec3(), glm::vec3(1)) * 255.f;
-            bytes[3 * i + 0] = (unsigned char) pix.x;
-            bytes[3 * i + 1] = (unsigned char) pix.y;
-            bytes[3 * i + 2] = (unsigned char) pix.z;
+            //averaged by saveImage()
+            glm::vec3 color = pixels[i];
+
+            //same test value as render
+            float exposure = 1.0f;
+            color *= exposure;
+
+            color = glm::max(color, glm::vec3(0.0f));
+
+            //Reinhard
+            color = color / (glm::vec3(1.0f) + color);
+
+            //Gamma
+            color.r = std::pow(color.r, 1.0f / 2.2f);
+            color.g = std::pow(color.g, 1.0f / 2.2f);
+            color.b = std::pow(color.b, 1.0f / 2.2f);
+
+            color = glm::clamp(color, glm::vec3(0.0f), glm::vec3(1.0f));
+
+            bytes[3 * i + 0] = (unsigned char)(color.r * 255.0f + 0.5f);
+            bytes[3 * i + 1] = (unsigned char)(color.g * 255.0f + 0.5f);
+            bytes[3 * i + 2] = (unsigned char)(color.b * 255.0f + 0.5f);
         }
     }
 
